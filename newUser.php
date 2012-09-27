@@ -1,10 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-			"http://www.w3.org/TR/html4/loose.dtd">
-			<html xmlns="http://www.w3.org/1999/xhtml">
-   			<head>
-   			<title>New User Page</title>
-   			<link rel="shortcut icon" href="images/favicon.ico" />
+
 <?php
+        $title = "LeaseHood - New User";
 	include 'Header.php';
 ?>
 <h1 class="Title">Account Set Up</h1>

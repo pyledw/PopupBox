@@ -1,10 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-			"http://www.w3.org/TR/html4/loose.dtd">
-			<html xmlns="http://www.w3.org/1999/xhtml">
-   			<head>
-   			<title>LeaseHood - Welcome Page</title>
-   			<link rel="shortcut icon" href="images/favicon.ico" />
+                 
 <?php
+        $title = "LeaseHood - Welcome";
 	include 'Header.php';
 ?>
 				<h1 class="Title">Welcome to LeaseHood</h1>
