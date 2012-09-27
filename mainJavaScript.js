@@ -7,6 +7,9 @@
  * call the onmouseover="tooltip.show('Testing , 200);"
                onmouseout="tooltip.hide();">
  */
+
+
+//Content for tooltip box
 var tooltip=function(){
  var id = 'tt';
  var top = 3;
@@ -82,6 +85,8 @@ var tooltip=function(){
  };
 }();
 
+
+//Funciton for managing grey text in box when user enters
 function changeTextInBox(currentText,oldValue)
 {
 	if(currentText == oldValue)
@@ -94,6 +99,7 @@ function changeTextInBox(currentText,oldValue)
 	}
 }
 
+//Funciton for managing grey text in box when user exits
 function textBoxExit(curentText,newText)
 {
 	
@@ -106,6 +112,8 @@ function textBoxExit(curentText,newText)
  		return curentText;
  	}
 }
+
+//Funciton for managing color of text when user enters box
 function changeColorInBox(currentValue,DefaultValue)
 {
 	if(currentValue == DefaultValue)
@@ -118,6 +126,8 @@ function changeColorInBox(currentValue,DefaultValue)
 	}
 
 }
+
+//Funciton for managing text color when user exits box
 function textBoxExitColor(curentValue,DefaultValue)
 {
 	
@@ -130,6 +140,8 @@ function textBoxExitColor(curentValue,DefaultValue)
  		return "Black";
  	}
 }
+
+//Test popup box
 function popupVariable(Variable)
 {
 	alert(Variable);

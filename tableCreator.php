@@ -1,4 +1,6 @@
 <?php
+
+//This function initialized the table with 3 rows
 function createTable($Title1,$Tile2,$Title3)
 {
 	echo '<table class="displayTable">
@@ -9,6 +11,8 @@ function createTable($Title1,$Tile2,$Title3)
 		</tr>';
 		  
 }
+
+//This function will add one row
 function addRow($Data1, $Data2, $Data3)
 {
 	echo '<tr>
@@ -17,6 +21,8 @@ function addRow($Data1, $Data2, $Data3)
 		<td style="text-align: center;">' . $Data2 . '</td>
 		</tr>';
 }
+
+//This funciton closes the table
 function closeTable()
 {
 	echo '</table>';

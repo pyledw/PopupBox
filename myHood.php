@@ -3,8 +3,11 @@
         $title = "LeaseHood - MyHood";
 	include 'Header.php';
 
-	?>
-	
+?>
+
+<!-- Page Content -->
+        
+        
 	<form id='login' action='login.php' method='post' accept-charset='UTF-8' style="float:left;padding: 100px 100px 100px 100px;">
 	<fieldset >
 	<legend>Login</legend>
@@ -17,6 +20,6 @@
 	</fieldset>
 	</form>
 
-	<?php
+<?php
 	include 'Footer.php';
 ?>

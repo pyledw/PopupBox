@@ -1,21 +1,29 @@
+<!--//Header to be displayed on all pages.  This will show deal with HTML head elements as well
+//as the Title, and CSS/Javascript References.  It also contains the navigation bar element.-->
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 			"http://www.w3.org/TR/html4/loose.dtd">
-			<html xmlns="http://www.w3.org/1999/xhtml">
-   			<head>
-   			<title>
-<?php
-echo "$title";
-?>
-</title>
-<link rel="shortcut icon" href="images/favicon.ico" />
-<link rel="stylesheet" type="text/css" href="mainStyle.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script src="mainJavaScript.js"></script>
-    		</head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+
+        <?php
+            echo "$title";//Element defined in the Html document before the Header.php is called
+        ?>
+
+    </title>
+    <link rel="shortcut icon" href="images/favicon.ico" /><!--Link to Favicon-->
+    <link rel="stylesheet" type="text/css" href="mainStyle.css" /><!--Link to Main css file -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--Meta Data-->
+    <script src="mainJavaScript.js"></script><!--Javascript Reference-->
+</head>
 
     <body>
         
-        
+<!-- This section creates the wrapper, and then creates and aligns the wrapper
+     It then inserts the navigation bar.-->
+
 	<div id="wrapper">
             
             <a href="index.php"><img class="logo" src="images/leasehoodlogo.jpg" alt="LeaseHood Logo"></a>
@@ -27,7 +35,7 @@ echo "$title";
                                 
                                 
 	       			<!--This section enables the navigation bar to detect what page it is currently on and change the color so that the user will
-	       				Know when they are alread on a page in the main navigiont bar. -->
+	       				Know when they are already on a page in the main navigation bar. -->
 	       			<?php
 	       				$currentFile = $_SERVER["PHP_SELF"];
 						$parts = Explode('/', $currentFile);
@@ -93,5 +101,5 @@ echo "$title";
 				  
 				</ul>
 			</div>
-			
-				<img src="images/Special.jpg" style="float:right;" />
+                              
+          <img src="images/Special.jpg" style="float:right;" /> <!--This image is for the later placed object for county specials-->
