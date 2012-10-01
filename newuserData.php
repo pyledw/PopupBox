@@ -1,6 +1,8 @@
 <?php
+
 include 'Header.php';
-echo $_POST["username"];
+
+/*echo $_POST["username"];
 echo "</br>";
 echo $_POST["password1"];
 echo "</br>";
@@ -28,7 +30,19 @@ echo $_POST["zip"];
 echo "</br>";
 echo $_POST["SSN"];
 echo "</br>";
-echo $_POST["profileType"];
+ * 
+ */
+
+$type = $_POST["profileType"];
+
+if($type == "tenant")
+{
+    include 'leaseApplication.php';   
+}
+else
+{
+    include 'newHousingApplication.php';
+}
 
 
 
