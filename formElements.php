@@ -32,13 +32,13 @@ function createPasswordField($name,$label)
 function radioGroup($names,$values,$groupName,$groupLabel)
 {
     echo $groupLabel;
-    $checked = "checked";
+    
     $numb = 0;
     foreach ($values as $value) 
         {
             
-            echo '<input type="radio"' . $checked . ' name="' . $groupName . '" value="' . $values[$numb] . '">' . $names[$numb] . ' ';
-            ++$numb;
+            echo '<input type="radio" name="' . $groupName . '" ' . "checked" . '  value="' . $value . '">' . $names[$numb] . ' ';
+            $numb = $numb + 1;
         }
 }
 //This will create a radio list in a vertical format

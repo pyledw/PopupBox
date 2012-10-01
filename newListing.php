@@ -19,8 +19,8 @@
                 createTextField("zip", "Zip", "", "50px");
                 echo '<hr>';
                 createTextField("squareFootage", "Sq. Ft.", "Square Feet: ", "");
-                createDropdownMenu("numberOfBedrooms", ["1","2","3","4","5"], "Number Of Bedrooms: ");
-                createDropdownMenu("numberOfBathrooms",["1","2","3","4","5"],"Number Of Bathrooms: ");
+                createDropdownMenu("numberOfBedrooms", array("1","2","3","4","5"), "Number Of Bedrooms: ");
+                createDropdownMenu("numberOfBathrooms", array("1","2","3","4","5"),"Number Of Bathrooms: ");
 
 
 

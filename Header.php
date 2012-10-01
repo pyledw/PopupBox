@@ -47,11 +47,11 @@
 							echo '<li><a href="gettingStarted.php">Getting Started</a></li>';
 						}
 
-	       				if ($fileName == 'searchHolmes.php') {
-							echo '<li><a href="searchHolmes.php" class="current">Search Holmes</a></li>';
+	       				if ($fileName == 'searchHomes.php') {
+							echo '<li><a href="searchHomes.php" class="current">Search Homes</a></li>';
 						}
 						else {
-							echo '<li><a href="searchHolmes.php">Search Holmes</a></li>';
+							echo '<li><a href="searchHomes.php">Search Homes</a></li>';
 						}
 
 	       				if ($fileName == 'searchApplicants.php') {
