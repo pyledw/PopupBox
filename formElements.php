@@ -29,27 +29,18 @@ function createPasswordField($name,$label)
 }
 
 //This funciton will create a new radio group with the specified elements in a hoizontal line
-function createRadioGroup($numberOfElements, $titles,$names, $groupName,$label)
+function radioGroup($names,$values,$groupName,$groupLabel)
 {
-    echo $label;
-    $bool = true;
-    for ($numb = 0;$numb < $numberOfElements;++$numb) 
-    {
-        $checked = "";
-        if($bool)
+    echo $groupLabel;
+    $checked = "checked";
+    $numb = 0;
+    foreach ($values as $value) 
         {
-            $checked = "checked";
-            $bool = false;
+            
+            echo '<input type="radio"' . $checked . ' name="' . $groupName . '" value="' . $values[$numb] . '">' . $names[$numb] . ' ';
+            ++$numb;
         }
-        else
-        {
-            $checked = "";
-        }
-        echo '<input type="radio"' . $checked . ' name="' . $groupName . '" value="' . $names[$numb] . '"> ' . $titles[$numb] . ' ';
-        
-    }
 }
-
 //This will create a radio list in a vertical format
 function createRadioGroupList($numberOfElements, $titles,$names, $groupName)
 {

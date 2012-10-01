@@ -28,6 +28,7 @@ echo $_POST["zip"];
 echo "</br>";
 echo $_POST["SSN"];
 echo "</br>";
+echo $_POST["profileType"];
 
 
 

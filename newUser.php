@@ -16,7 +16,7 @@
         ?>
 
         <?php
-                createRadioGroup(2, ['Landlord', 'Tenant'], ['landlord', 'Tenant'], "profileType","I am a: ");
+                RadioGroup(['Landlord', 'Tenant'], ['landlord', 'tenant'], "profileType","I am a: ");
                 newline();
                 createTextField("username", "Enter username","");
                 ?>
