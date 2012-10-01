@@ -20,8 +20,7 @@
                 newline();
                 createTextField("username", "Enter username","");
                 ?>
-                <a href="" style="left:-10px; position:relative;" onmouseover="tooltip.show('Please Select a Username', 200);"
-                   onmouseout="tooltip.hide();">?</a>
+                
         <?php
 
                 createPasswordField("password1","Enter Password: ");
