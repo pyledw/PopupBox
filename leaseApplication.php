@@ -14,8 +14,8 @@
    include 'formElements.php';
    createForm("90%", "90%", "Renter Application", "leaseApplicationData.php");
    createTextField("rentalDate", "Rental Date", "", "");
-   createRadioGroup("2", ["Yes","No"], ["yes","no"], "smokingPreferance", "Will you be Smoking?");
-   createRadioGroup("2", ["Yes","No"], ["yes","no"], "ADA", "Do you need ADA (Americans with Disability Act) facilities?");
+   createRadioGroup("2",["Yes","No"], ["yes","no"], "smokingPreferance", "Will you be Smoking?");
+   createRadioGroup("2",["Yes","No"], ["yes","no"], "ADA", "Do you need ADA (Americans with Disability Act) facilities?");
    createDropdownMenu("numberOfResidents", ["1","2","3","4","5","6","7"], "Number of residents: ");
    createButton("submit", "Submit and Continue", "button");
    createButton("reset", "Reset", "button");
