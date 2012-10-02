@@ -82,14 +82,14 @@
 							echo '<li><a href="resources.php">Resources</a></li>';
 						}
 						
-						if ($fileName == 'pricing.php') {
+					if ($fileName == 'pricing.php') {
 							echo '<li><a href="pricing.php" class="current">Pricing</a></li>';
 						}
 						else {
 							echo '<li><a href="pricing.php">Pricing</a></li>';
 						}
 
-						if ($fileName == 'support.php') {
+					if ($fileName == 'support.php') {
 							echo '<li><a href="support.php" class="current">Support</a></li>';
 						}
 						else {
