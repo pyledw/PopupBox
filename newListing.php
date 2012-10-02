@@ -1,9 +1,4 @@
 
-<?php
-        $title = "LeaseHood - New Listing";
-	include 'Header.php';
-?>
-
 <!-- Page Content -->
 
     <h1 class="Title">Account Set Up</h1>
@@ -27,7 +22,3 @@
         ?>
         </form>
     </div>                    
-
-<?php
-        include 'Footer.php';
-?>
