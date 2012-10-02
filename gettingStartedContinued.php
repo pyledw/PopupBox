@@ -66,7 +66,10 @@
                     time constraints or other  factors to deal with.
 
             </p>
+            
+            <p><a href="newUser.php" class="button"">Sign Up Now!</a></p>
 	</div>
 	<?php
+        
 	include 'Footer.php';
         ?>

@@ -9,6 +9,8 @@
    include 'formElements.php';
    createForm("90%", "90%", "Housing Application", "newHousingApplication.php");
    radioGroup(array("yes","no"), array("yes","no"), "Smoking", "Will you be smoking?");
-           
+   newLine();
+   
+   
 ?>
 </div>

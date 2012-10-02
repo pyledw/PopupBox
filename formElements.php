@@ -68,7 +68,8 @@ function createDropdownMenu($name,$Items,$label)
 }
 
 //This funciton creates a checkbox field
-function createCheckBox($name,$value,$title){
+function createCheckBox($name,$value,$title)
+{
     echo '<input type="checkbox" name="' . $name . '" value="' . $value . '">' . $title .  '';
     
 }
@@ -78,4 +79,11 @@ function createButton($type,$label,$class)
 {
     echo '<input class="' . $class . '" type="' . $type . '" value="' . $label . '">';
 }
+
+function createTextBoxField($cols,$rows,$name,$label)
+{
+    echo $label . ' <textarea cols="' . $cols . '" rows="' . $rows .'" name="' . $name . '">
+    </textarea>';
+}
+
 ?>
