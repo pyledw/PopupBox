@@ -6,8 +6,6 @@
  * This section is attributed to the tooltip.  It will apear when you
  * call the onmouseover="tooltip.show('Testing , 200);"
                onmouseout="tooltip.hide();">
-
-Jason testing commit
  */
 
 
