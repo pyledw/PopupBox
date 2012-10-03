@@ -53,10 +53,10 @@ function createRadioGroupList($numberOfElements, $titles,$names, $groupName)
 }
 
 //This function creates a new dropdown list using teh specified elements
-function createDropdownMenu($name,$Items,$label)
+function createDropdownMenu($class, $name,$Items,$label)
 {
     echo $label;
-    echo '<select name="' . $name . '">';
+    echo '<select id="' . $class . '" name="' . $name . '">';
     
     foreach ($Items as $value) 
     {

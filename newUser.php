@@ -12,7 +12,7 @@
 
         <?php
                include 'formElements.php';
-                createForm('100%', '100%', 'Create new profile', 'newUserData.php');
+                createForm('100%', '90%', 'Create new profile', 'newUserData.php');
         ?>
 
         <?php

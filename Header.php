@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="mainStyle.css" /><!--Link to Main css file -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--Meta Data-->
     <script src="mainJavaScript.js"></script><!--Javascript Reference-->
+    <script src="jquery-1.8.2.js"></script>
 </head>
 
     <body>
