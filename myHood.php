@@ -6,19 +6,20 @@
 ?>
 
 <!-- Page Content -->
-        
-        
-	<form id='login' action='login.php' method='post' accept-charset='UTF-8' style="float:left;padding: 100px 100px 100px 100px;">
-	<fieldset >
-	<legend>Login</legend>
-	<input type='hidden' name='submitted' id='submitted' value='1'/>
-	<label for='username' >UserName*:</label>
-	<input type='text' name='username' id='username'  maxlength="50" />
-	<label for='password' >Password*:</label>
-	<input type='password' name='password' id='password' maxlength="50" />
-	<input type='submit' name='Submit' value='Submit' />
-	</fieldset>
-	</form>
+<h1 class="Title">Login</h1>
+    <hr class="Title">
+<div id="mainContent">
+<?php
+
+include "formElements.php";
+createForm("300px", "300px", "Login", "login.php");
+createPasswordField("password", "Password: ");
+createTextField("username", "Username", "Username: ", "");
+createButton("submit", "continue", "button");
+echo '</form>';
+?>
+    
+</div>
 
 <?php
 	include 'Footer.php';

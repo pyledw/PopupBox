@@ -4,7 +4,7 @@
 //This function initiates and creates the form with the specified peramiters
 function createForm($height, $width, $title, $sendDataTo)
 {
-    echo '<form class="formStyle" height="' . $height . '" width="' . $width . '" method="post" action="' . $sendDataTo . '">';
+    echo '<form class="formStyle" style="width: ' . $width . '; height:' . $height . ';" method="post" action="' . $sendDataTo . '">';
     echo '<h2>' . $title . '</h2></br>';
     
 }
