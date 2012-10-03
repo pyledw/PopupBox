@@ -1,6 +1,6 @@
 
 <?php
-        $title = "LeaseHood - Login";
+        $title = "Login";
 	include 'Header.php';
 	
 	session_start();

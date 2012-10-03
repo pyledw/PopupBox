@@ -1,5 +1,5 @@
 <?php
-        $title = "LeaseHood - Welcome";
+        $title = "Welcome";
 	include 'Header.php';
 ?>
 	Zip code entered was: <?php echo $_POST["zip"];?>

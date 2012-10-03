@@ -9,7 +9,8 @@
     <title>
 
         <?php
-            echo "$title";//Element defined in the Html document before the Header.php is called
+            
+            echo $title;//Element defined in the Html document before the Header.php is called
         ?>
 
     </title>

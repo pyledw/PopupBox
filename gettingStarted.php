@@ -1,6 +1,6 @@
 
 <?php
-        $title = "LeaseHood - Getting Started";
+        $title = "Getting Started";
 	include 'Header.php';
 ?>
 

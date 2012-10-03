@@ -1,5 +1,5 @@
 <?php
-        $title = "LeaseHood - Search Holmes";
+        $title = "Resources";
 	include 'Header.php';
 	
 	include 'Footer.php';
