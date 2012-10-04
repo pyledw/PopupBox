@@ -24,7 +24,8 @@
 
     <body>
         
-<!-- This section creates the wrapper, and then creates and aligns the wrapper
+<!-- This section creates the wrapper, and then 
+    creates and aligns the wrapper
      It then inserts the navigation bar.-->
 
 	<div id="wrapper">

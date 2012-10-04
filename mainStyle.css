@@ -142,6 +142,7 @@ hr.Title{
         padding:0 0 0 0;
         margin: 5px 0 0 0;
         float:left;
+        
 	list-style:none;
 	color: #FFFFFF;
 	text-align:left;
@@ -159,6 +160,7 @@ hr.Title{
 #list-nav li a {
         
 	text-decoration:none;
+        display: inline-block;
 	padding:10px 15px 10px 15px;
 	width:auto;
 	color:#eee;
