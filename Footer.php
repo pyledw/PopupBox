@@ -1,5 +1,4 @@
 <!-- This document contains all the footer information as well as the closing page elements. -->
-    
 </div><!-- Tag for closing the wrapper -->
 
     <!-- This Portion contains the footer links. -->

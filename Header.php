@@ -19,6 +19,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--Meta Data-->
     <script src="mainJavaScript.js"></script><!--Javascript Reference-->
     <script src="jquery-1.8.2.js"></script>
+    <script src="css_browser_selector.js" type="text/javascript"></script>
 </head>
 
     <body>
