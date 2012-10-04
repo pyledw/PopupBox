@@ -1,5 +1,5 @@
-/*TEST CSS*/
 
+/*Gradient Fill for the background of the body*/
 body 
 {
 	min-height: 1000px;
@@ -29,11 +29,16 @@ body
     min-width:1000px;
     min-height:250px;
 }
+
+/*Class to be used on the Logo photo*/
 .logo{
     width:100px;
     height:100px;
     border:none;
 }
+
+/*header for the title of each page in the content section
+*/
 h1.Title{
 	color:#4F6228;
 	font:Times;
@@ -48,7 +53,6 @@ h2.Title{
 	padding:0 0 0 60px;
 }
 hr.Title{
-	
 	margin:0 0 0 0;
         padding:0 0 0 0;
 	position:relative;
@@ -57,14 +61,17 @@ hr.Title{
 	background-color:#4F6228;
 	width:100%;
 	height: 3px;
-	
 }
 
+
+/*Main content section where the content will be stored on each page
+*/
 #mainContent{
 	padding:0px 20px 0px 20px;
 	height:100%;
 }
 
+/*Layout left of the content on a page*/
 #LayoutLeft
 {
 	width:20%;
@@ -73,6 +80,7 @@ hr.Title{
 	margin: 0 0 0 0;
 }
 
+/*layout right for the content on a page*/
 #layoutRight
 {
 	float:left;
@@ -81,6 +89,7 @@ hr.Title{
 	margin: 0 0 0 0;
 }
 
+/*layout bottom for the content on a page*/
 #layoutBottom
 {
 	background-color:#FFFFFF;
@@ -88,6 +97,9 @@ hr.Title{
 	width:100%;
 }
 
+
+/*css for the button class for creating buttons
+*/
 .button{
 	border:none;
 	text-shadow: #DDD 2px 2px 2px;
@@ -102,6 +114,8 @@ hr.Title{
 	background: -ms-linear-gradient(-45deg,  rgba(214,209,174,1) 0%,rgba(237,237,237,1) 44%,rgba(214,209,174,1) 99%); /* IE10+ */
 	background: linear-gradient(135deg,  rgba(214,209,174,1) 0%,rgba(237,237,237,1) 44%,rgba(214,209,174,1) 99%); /* W3C */
 }
+
+/*css button class for hover event over buttons*/
 .button:hover{
 	
 	text-decoration:none;
@@ -115,10 +129,14 @@ hr.Title{
 	background: linear-gradient(to bottom,  #f6e6b4 0%,#ed9017 100%); /* W3C */
         
 }
-/*Navigation bar element in order to control the navigation pane*/
 
+
+/*Navigation bar element in order to control the navigation pane
+*/
 #list-nav{
 }
+
+/*this controls the nav bar as a whole*/
 #list-nav ul {
         width:100%;
         padding:0 0 0 0;
@@ -137,15 +155,7 @@ hr.Title{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#0d0d0d',GradientType=0 ); /* IE6-9 */
 }
 	
-
-#list-nav li {
-        
-	display:inline;
-	padding:0 0px 0 0;
-	text-align:center;
-
-}
-
+/*This section controls each individual element*/
 #list-nav li a {
         
 	text-decoration:none;
@@ -165,6 +175,8 @@ hr.Title{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#0d0d0d',GradientType=0 ); /* IE6-9 */
 	
 }
+
+/*this controls teh format of the current page item*/
 #list-nav li a.current{
 	color:#000000;
 	text-decoration:none;
@@ -186,6 +198,8 @@ hr.Title{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#747474',GradientType=0 ); /* IE6-9 */
 	
 }
+
+/*this controls teh reaction of a button after it is hovered over.*/
 #list-nav li a:hover {
   
 	color:#000000;
@@ -207,6 +221,39 @@ hr.Title{
 	text-align:left;
 	float:left;
 }
+
+
+
+/* this section controls the table format of the tables
+*/
+.displayTable{
+	border-collapse:collapse;
+	border-style:solid;
+	border-color:#000000;
+	border-width: 1px;
+	max-width:85%;
+}
+
+/*This section controls the sections of the table*/
+.displayTable tr{
+	border-style:solid;
+	background-color:#EEEEEE;
+	border-color:#000000;
+	border-width: 1px;
+	max-width:85%;
+}
+
+/*This section controls the display secitons of the table*/
+.displayTable td{
+	
+	padding:5px 10px 5px 10px;
+	border-style:solid;
+	border-color:#000000;
+	border-width: 1px;
+	max-width:85%;
+        
+}/*This section controls the bottom navigation area
+*/
 #bottomNav{
 	position:relative;
 	bottom:10px;
@@ -230,28 +277,6 @@ hr.Title{
 	float:left;
 	
 }
-.displayTable{
-	border-collapse:collapse;
-	border-style:solid;
-	border-color:#000000;
-	border-width: 1px;
-	max-width:85%;
-}
-.displayTable tr{
-	border-style:solid;
-	background-color:#EEEEEE;
-	border-color:#000000;
-	border-width: 1px;
-	max-width:85%;
-}
-.displayTable td{
-	
-	padding:5px 10px 5px 10px;
-	border-style:solid;
-	border-color:#000000;
-	border-width: 1px;
-	max-width:85%;
-}
 #bottomNav li{
 	list-style:none;
 	text-decoration:none;
@@ -272,6 +297,8 @@ hr.Title{
 }
 
 
+/*Elements for controling the default aperance of the forms
+*/
 .formStyle {
     
     padding: 5px 20px 20px 20px;
@@ -294,6 +321,9 @@ hr.Title{
     
 }
 
+
+/*This section controls the tooltip
+*/
 #tt {
  position:absolute;
  display:block;
