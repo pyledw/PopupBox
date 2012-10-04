@@ -29,9 +29,11 @@
      It then inserts the navigation bar.-->
 
 	<div id="wrapper">
-            
+            <div id="header">
             <a href="index.php"><img class="logo" src="images/leasehoodlogo.jpg" alt="LeaseHood Logo"></a>
             
+            <h1 class="header">Lease<font color="black">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
+            </div>
             <div id="nav">
                 <?php
 	       				$currentFile = $_SERVER["PHP_SELF"];
