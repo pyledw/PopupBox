@@ -29,6 +29,7 @@
      It then inserts the navigation bar.-->
 
 	<div id="wrapper">
+            
             <div id="header">
             <a href="index.php"><img class="logo" src="images/leasehoodlogo.jpg" alt="LeaseHood Logo"></a>
             
