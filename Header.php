@@ -31,79 +31,72 @@
 	<div id="wrapper">
             
             <a href="index.php"><img class="logo" src="images/leasehoodlogo.jpg" alt="LeaseHood Logo"></a>
-    		
-    		<div id="list-nav">
-                    
-	       		<ul>
-                            
-                                
-                                
-	       			<!--This section enables the navigation bar to detect what page it is currently on and change the color so that the user will
-	       				Know when they are already on a page in the main navigation bar. -->
-	       			<?php
+            
+            <div id="nav">
+                <?php
 	       				$currentFile = $_SERVER["PHP_SELF"];
 						$parts = Explode('/', $currentFile);
 						$fileName = $parts[count($parts) - 1];
 	       				if ($fileName == 'gettingStarted.php') {
-							echo '<li><a href="gettingStarted.php" class="current">Getting Started</a></li>';
+							echo '<a href="gettingStarted.php" class="current">Getting Started</a>';
 						}
 						else {
-							echo '<li><a href="gettingStarted.php">Getting Started</a></li>';
+							echo '<a href="gettingStarted.php">Getting Started</a>';
 						}
 
 	       				if ($fileName == 'searchHomes.php') {
-							echo '<li><a href="searchHomes.php" class="current">Search Homes</a></li>';
+							echo '<a href="searchHomes.php" class="current">Search Homes</a>';
 						}
 						else {
-							echo '<li><a href="searchHomes.php">Search Homes</a></li>';
+							echo '<a href="searchHomes.php">Search Homes</a>';
 						}
 
 	       				if ($fileName == 'searchApplicants.php') {
-							echo '<li><a href="searchApplicants.php" class="current">Search Applicants</a></li>';
+							echo '<a href="searchApplicants.php" class="current">Search Applicants</a>';
 						}
 						else {
-							echo '<li><a href="searchApplicants.php">Search Applicants</a></li>';
+							echo '<a href="searchApplicants.php">Search Applicants</a>';
 						}
 	       			
 	       				if ($fileName == 'myHood.php') {
-							echo '<li><a href="myHood.php" class="current">My Hood (Login)</a></li>';
+							echo '<a href="myHood.php" class="current">My Hood (Login)</a>';
 						}
 						else {
-							echo '<li><a href="myHood.php">My Hood (Login)</a></li>';
+							echo '<a href="myHood.php">My Hood (Login)</a>';
 						}
 	       			
 	       				if ($fileName == 'newUser.php') {
-							echo '<li><a href="newUser.php" class="current">New User</a></li>';
+							echo '<a href="newUser.php" class="current">New User</a>';
 						}
 						else {
-							echo '<li><a href="newUser.php">New User</a></li>';
+							echo '<a href="newUser.php">New User</a>';
 						}
 	       			
 	       				if ($fileName == 'resources.php') {
-							echo '<li><a href="resources.php" class="current">Resources</a></li>';
+							echo '<a href="resources.php" class="current">Resources</a>';
 						}
 						else {
-							echo '<li><a href="resources.php">Resources</a></li>';
+							echo '<a href="resources.php">Resources</a>';
 						}
 						
 					if ($fileName == 'pricing.php') {
-							echo '<li><a href="pricing.php" class="current">Pricing</a></li>';
+							echo '<a href="pricing.php" class="current">Pricing</a>';
 						}
 						else {
-							echo '<li><a href="pricing.php">Pricing</a></li>';
+							echo '<a href="pricing.php">Pricing</a>';
 						}
 
 					if ($fileName == 'support.php') {
-							echo '<li><a href="support.php" class="current">Support</a></li>';
+							echo '<a href="support.php" class="current">Support</a>';
 						}
 						else {
-							echo '<li><a href="support.php">Support</a></li>';
+							echo '<a href="support.php">Support</a>';
 						}
 
 
 	       			?>
-				  
-				</ul>
-			</div>
+            </div>
+            
+    		
                               
           <img src="images/Special.jpg" style="float:right;" /> <!--This image is for the later placed object for county specials-->
