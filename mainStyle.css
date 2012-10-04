@@ -149,7 +149,18 @@ hr.Title{
 	background: linear-gradient(to bottom,  #f6e6b4 0%,#ed9017 100%); /* W3C */
         
 }
-
+.ie .button{
+        border:none;
+	padding:0 15px 0 15px;
+	text-decoration:none;
+	color:black;
+        background: #DEDBC3;
+}
+.ie .button:hover{
+	text-decoration:none;
+	color:white;
+	background: #EE9E30; /* Old browsers */
+}
 
 /*this section will display the elements for the navigation bar*/
 #nav{
