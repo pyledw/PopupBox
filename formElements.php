@@ -5,7 +5,7 @@
 function createForm($height, $width, $title, $sendDataTo)
 {
     echo '<form class="formStyle" style="width: ' . $width . '; height:' . $height . ';" method="post" action="' . $sendDataTo . '">';
-    echo '<h2>' . $title . '</h2></br>';
+    echo '<h2>' . $title . '</h2><br />';
     
 }
 
@@ -37,7 +37,7 @@ function radioGroup($names,$values,$groupName,$groupLabel)
     foreach ($values as $value) 
         {
             
-            echo '<input type="radio" name="' . $groupName . '" ' . "checked" . '  value="' . $value . '">' . $names[$numb] . ' ';
+            echo '<input type="radio" name="' . $groupName . '" ' . "checked='checked'" . '  value="' . $value . '" />' . $names[$numb] . ' ';
             $numb = $numb + 1;
         }
 }
@@ -47,7 +47,7 @@ function createRadioGroupList($numberOfElements, $titles,$names, $groupName)
     
     for ($numb = 0;$numb < $numberOfElements;++$numb) 
     {
-        echo '<input type="radio" name="' . $groupName . '" value="' . $names[$numb] . '"> ' . $titles[$numb] . ' ';
+        echo '<input type="radio" name="' . $groupName . '" value="' . $names[$numb] . '" /> ' . $titles[$numb] . ' ';
         
     }
 }
@@ -70,14 +70,14 @@ function createDropdownMenu($class, $name,$Items,$label)
 //This funciton creates a checkbox field
 function createCheckBox($name,$value,$title)
 {
-    echo '<input type="checkbox" name="' . $name . '" value="' . $value . '">' . $title .  '';
+    echo '<input type="checkbox" name="' . $name . '" value="' . $value . '" />' . $title .  '';
     
 }
 
 //This funciton creates a simple button
 function createButton($type,$label,$class)
 {
-    echo '<input class="' . $class . '" type="' . $type . '" value="' . $label . '">';
+    echo '<input class="' . $class . '" type="' . $type . '" value="' . $label . '" />';
 }
 
 function createTextBoxField($cols,$rows,$name,$label)

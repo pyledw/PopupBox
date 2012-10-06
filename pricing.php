@@ -6,14 +6,14 @@
         include 'formElements.php';
 ?>
 <h1 class="Title">Pricing</h1>
-    <hr class="Title">
+    <hr class="Title" />
     
     <?php
     createForm("", "", "test Form", "form.php");
     createDropdownMenu("drop1","drop1", array("1","2","3","4","5"), "Number: ");
     ?>
 </form>
-<script>
+<script type="text/javascript">
     
 $(document).ready(function()
 {
@@ -45,9 +45,7 @@ $(document).ready(function()
 });
 
 </script>
-</head>
 
-<body>
 <h2>This is a heading</h2>
 <p>This is a paragraph.</p>
 <p>This is another paragraph.</p>
