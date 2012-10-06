@@ -2,8 +2,8 @@
 //as the Title, and CSS/Javascript References.  It also contains the navigation bar element.-->
 
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-			"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>
@@ -17,9 +17,9 @@
     <link rel="shortcut icon" href="images/favicon.ico" /><!--Link to Favicon-->
     <link rel="stylesheet" type="text/css" href="mainStyle.css" /><!--Link to Main css file -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--Meta Data-->
-    <script src="mainJavaScript.js"></script><!--Javascript Reference-->
-    <script src="jquery-1.8.2.js"></script>
-    <script src="css_browser_selector.js" type="text/javascript"></script>
+    <script type="text/javascript" src="mainJavaScript.js"></script><!--Javascript Reference-->
+    <script type="text/javascript" src="jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="css_browser_selector.js"></script>
 </head>
 
     <body>
@@ -31,9 +31,9 @@
 	<div id="wrapper">
             
             <div id="header">
-            <a href="index.php"><img class="logo" src="images/leasehoodlogo.jpg" alt="LeaseHood Logo"></a>
+            <a href="index.php"><img class="logo" src="images/leasehoodlogo.jpg" alt="LeaseHood Logo" /></a>
             
-            <h1 class="header">Lease<font color="black">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
+            <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
             </div>
             <div id="nav">
                 <?php
@@ -102,4 +102,4 @@
             
     		
                               
-          <img src="images/Special.jpg" style="float:right;" /> <!--This image is for the later placed object for county specials-->
+          <img src="images/Special.jpg" alt="Special Deals" style="float:right;" /> <!--This image is for the later placed object for county specials-->

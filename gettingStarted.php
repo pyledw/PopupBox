@@ -7,9 +7,9 @@
 <!--PAGE CONTENT -->
 
 	<h1 class="Title">What is Leasehood?</h1>
-        <hr class="Title">
+        <hr class="Title" />
         <div id="mainContent">
-            <img src="images/ForRent.png" style="float:right;" />
+            <img src="images/ForRent.png" alt="For Rent" style="float:right;" />
                 <p>LeaseHood provides a most unique opportunity for prospective residents of rental homes,
                          primarily single family and similar homes, to be paired with landlords.  
                          Both prospective residents (applicants) and landlords can advertise their 
@@ -18,7 +18,7 @@
                          Whether a tenancy is advertised or a rental home is advertised, both are available 
                          for a specified time to solicit interest from opposing parties.
                 </p>
-            <p>
+            
                     <ul style="list-style: none;">
                             <li>A prospective resident can:</li>
                             <li>
@@ -31,8 +31,8 @@
                                     </ul>
                             </li>
                     </ul>
-            </p>
-            <p>
+            
+            
                     <ul style="list-style: none;">
                             <li>A landlord can:</li>
                             <li>
@@ -41,12 +41,13 @@
                                             criteria such as housing history, salary, pets, etc. or</li>
                                             <li>
                                                     Search for applicants whose tenancy needs conform to the landlord's  offering
+                                            </li>
                                     </ul>
                             </li>
                     </ul>
-            </p>
+            
             <h2>Quick Glance</h2>
-            <p>
+            
                     <h3>For the LandLord</h3>
 
             <?php
@@ -77,9 +78,9 @@
                     closeTable();
             ?>
 
-            </p>
+            
 
-            <p>
+            
 
                     <h3>For the Renter</h3>
             <?php
@@ -100,8 +101,9 @@
                     closeTable();
             ?>
 
-            </p>
+            <p>
             <a href="gettingStartedContinued.php" class="button">Continue</a>
+            </p>
 </div>
 <?php
 	include 'Footer.php';

@@ -7,7 +7,7 @@
 <!-- PAGE CONTENT -->
 
         <h1 class="Title">Welcome to LeaseHood</h1>
-        <hr class="Title">
+        <hr class="Title" />
         <h2 class="Title">"Putting the Best Residents in Rental Homes"</h2>
 
         <div id="mainContent">
@@ -21,7 +21,7 @@
 
                 <div id="layoutRight">
 
-                    <img src="images/House.jpg" style="float:right" />
+                    <img src="images/House.jpg" alt="House" style="float:right" />
                     <p>How it works</p>
                     <p>Rent a property</p>
                     <p>List a home</p>
@@ -41,12 +41,12 @@
 
                     <p>
 
-                        <img src="images/Fox.png" style="float:left" />
-                        <img src="images/NetQuote.png" style="float: left" />
-                        <img src="images/FirstTN.png" style="float: left" />
-                        <img src="images/BBB.png" style="float:left" />
-                        <img src="images/Flame.png" style="float:left" />
-                        <img src="images/homes.png" style="float:left" />
+                        <img src="images/Fox.png" alt="Fox" style="float:left" />
+                        <img src="images/NetQuote.png" alt="Net Quote" style="float: left" />
+                        <img src="images/FirstTN.png" alt="FirstTN" style="float: left" />
+                        <img src="images/BBB.png" alt="BBB" style="float:left" />
+                        <img src="images/Flame.png" alt="Flame" style="float:left" />
+                        <img src="images/homes.png" alt="Homes" style="float:left" />
                     </p>
                 </div>
         </div>
