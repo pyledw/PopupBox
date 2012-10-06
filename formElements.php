@@ -18,7 +18,7 @@ function createTextField($name,$display,$label,$width)
 
 //This funciton inserts a simple line break
 function newLine(){
-    echo '</br>';
+    echo '<br />';
 }
 
 //This function creates a new text box for a password
