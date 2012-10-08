@@ -20,6 +20,7 @@
     <script type="text/javascript" src="mainJavaScript.js"></script><!--Javascript Reference-->
     <script type="text/javascript" src="jquery-1.8.2.js"></script>
     <script type="text/javascript" src="css_browser_selector.js"></script>
+    <script type="text/javascript" src="jquery.bpopup-0.7.0.min.js"></script>
 </head>
 
     <body>
