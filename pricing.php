@@ -6,17 +6,15 @@
         include 'formElements.php';
 ?>
 <h1 class="Title">Pricing</h1>
+
     <hr class="Title" />
     
     <?php
         createForm("", "", "test Form", "form.php");
         createDropdownMenu("drop1","drop1", array("1","2","3","4","5"), "Number: ");
     ?>
+    
 </form>
-
-<script>
-    $('element_to_pop_up').bPopup();
-</script>
 
 <h2>This is a heading</h2>
 <p>This is a paragraph.</p>
