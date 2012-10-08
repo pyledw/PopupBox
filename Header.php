@@ -15,12 +15,14 @@
 
     </title>
     <link rel="shortcut icon" href="images/favicon.ico" /><!--Link to Favicon-->
-    <link rel="stylesheet" type="text/css" href="mainStyle.css" /><!--Link to Main css file -->
+    <link rel="stylesheet" type="text/css" href="css/mainStyle.css" /><!--Link to Main css file -->
+    <link rel="stylesheet" type="text/css" href="css/popupControl.css" /><!--Link to Main css file -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--Meta Data-->
-    <script type="text/javascript" src="mainJavaScript.js"></script><!--Javascript Reference-->
-    <script type="text/javascript" src="jquery-1.8.2.js"></script>
-    <script type="text/javascript" src="css_browser_selector.js"></script>
-    <script type="text/javascript" src="jquery.bpopup-0.7.0.min.js"></script>
+    <script type="text/javascript" src="js/mainJavaScript.js"></script><!--Javascript Reference-->
+    <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="js/css_browser_selector.js"></script>
+    <script type="text/javascript" src="js/popupControl.js"></script>
+    
 </head>
 
     <body>
