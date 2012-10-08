@@ -14,10 +14,14 @@
     ?>
 </form>
 
+<script>
+    $('element_to_pop_up').bPopup();
+</script>
+
 <h2>This is a heading</h2>
 <p>This is a paragraph.</p>
 <p>This is another paragraph.</p>
-<button id="show" class="button">show</button>
+<button id="show" onclick="bPopup()" class="button">show</button>
 <button id="hide" class="button">hide</button>
 
 
