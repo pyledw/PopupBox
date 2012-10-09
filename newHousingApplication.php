@@ -1,11 +1,17 @@
 <?php
 include 'Header.php';
 include 'formElements.php';
-$resident = 1;
 ?>
 
 
-
+<script>
+    $(function() {
+        $( "#datepicker" ).datepicker();
+    });
+    $(function() {
+        $( "#datepicker2" ).datepicker();
+    });
+</script>
 
 <!-- Page Content -->
 
@@ -25,14 +31,6 @@ $(document).ready(function(){
   });
 });
 
-$(function()
-            {
-				$('.date-pick').datePicker({autoFocusNextInput: true});
-            });
-
-
-
-
 </script>
 
     <h1 class="Title">New Housing Application</h1>
@@ -44,9 +42,14 @@ $(function()
    
 ?>
 
-    Earliest Move in Date: <input type="text" name="earliestDate" id="datepicker" /><br />
-    Latest Move in Date: <input type="text" name="latestDate" id="datepicker" />
+    Earliest Move in Date: <input type="text" name="earliestDate" id="datepicker" />
+    Latest Move in Date: <input type="text" name="latestDate" id="datepicker2" />
     
+<?php
+radioGroup(array("Yes","No"), array("yes","no"), "ADA", "Do you need ADA (Americans with Disability Act) facilities?");
+radioGroup(array("Yes","No"), array("yes","no"), "smoking", "Will you be smoking?");
+    
+?>
     <div id="residents">
         <div id="resident">
             Name: <input type="text" name="Name' + val1 + '" />

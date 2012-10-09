@@ -16,12 +16,18 @@
     </title>
     <link rel="shortcut icon" href="images/favicon.ico" /><!--Link to Favicon-->
     <link rel="stylesheet" type="text/css" href="css/mainStyle.css" /><!--Link to Main css file -->
-    <link rel="stylesheet" type="text/css" href="css/popupControl.css" /><!--Link to Main css file -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--Meta Data-->
     <script type="text/javascript" src="js/mainJavaScript.js"></script><!--Javascript Reference-->
     <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
     <script type="text/javascript" src="js/css_browser_selector.js"></script>
+    
+    <!-- These reference the external files for popups -->
     <script type="text/javascript" src="js/popupControl.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/popupControl.css" />
+    
+    <!-- These reference the needed external files for the date picker -->
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="js/jquery-ui.js"></script>
     
 </head>
 
