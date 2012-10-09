@@ -11,22 +11,39 @@ include 'formElements.php';
     $(function() {
         $( "#datepicker2" ).datepicker();
     });
-</script>
 
-<!-- Page Content -->
-
-<script>
-var val1 = 0;
+var val1 = 1;
 $(document).ready(function(){
-  $("#btn1").click(function(){
-      val1 = val1 + 1;
-      $("#residents").append('<div id="resident' + val1 + '">Name: <input type="text" name="Name' + val1 + '" /> Age: <input type="text" name="age' + val1 + '"/><br />Relationship: <input type="text" name"relationship' + val1 + '"/></div>');
+  $("#addResident").click(function(){
+      if(val1 < 6)
+          {
+            val1 = val1 + 1;
+            $("#residents").append('<div id="resident' + val1 + '">Resident #'+(val1)+'<br /> Name: <input type="text" name="Name' + val1 + '" /> Age: <input type="text" name="age' + val1 + '"/><br />Relationship: <input type="text" name"relationship' + val1 + '"/></div>');
+          }
   });
   $("#removeResident").click(function(){
-      if(val1 > 0)
+      if(val1 > 1)
           {
             $("#resident" + val1).remove();
             val1 = val1 - 1;
+          }
+  });
+});
+
+var val2 = 1;
+$(document).ready(function(){
+  $("#addPet").click(function(){
+      if(val2 < 4)
+          {
+            val2 = val2 + 1;
+            $("#pets").append('<div id="pet' + val2 + '">Pet #' + val2 + '<br/>Type:<select id="animalType1"><option>Dog</option><option>Cat</option><option>Bird</option><option>Other</option></select><br/>Weight:<input type="text" id="weight1" />Breed:<input type="text" id="breed1" />Age:<input type="text" id="age1" /> </div>');
+          }
+  });
+  $("#removePet").click(function(){
+      if(val2 > 1)
+          {
+            $("#pet" + val2).remove();
+            val2 = val2 - 1;
           }
   });
 });
@@ -44,23 +61,47 @@ $(document).ready(function(){
 
     Earliest Move in Date: <input type="text" name="earliestDate" id="datepicker" />
     Latest Move in Date: <input type="text" name="latestDate" id="datepicker2" />
-    
+    <br/>
 <?php
-radioGroup(array("Yes","No"), array("yes","no"), "ADA", "Do you need ADA (Americans with Disability Act) facilities?");
-radioGroup(array("Yes","No"), array("yes","no"), "smoking", "Will you be smoking?");
+    radioGroup(array("Yes","No"), array("yes","no"), "ADA", "Do you need ADA (Americans with Disability Act) facilities?");
+    radioGroup(array("Yes","No"), array("yes","no"), "smoking", "Will you be smoking?");
     
 ?>
     <div id="residents">
-        <div id="resident">
-            Name: <input type="text" name="Name' + val1 + '" />
-            Age: <input type="text" name="age' + val1 + '"/><br />
-            Relationship: <input type="text" name="relationship"/>
+        <div id="resident1">
+            Resident #1<br />
+            Name: <input type="text" name="Name1" />
+            Age: <input type="text" name="age1"/><br />
+            Relationship: <input type="text" name="relationship1"/>
         </div>
         
-        <font class="button" id="btn1">Add new resident</font>
-        <font class="button" id="removeResident">remove</font>
+        
+        
+        
     </div>
-  
+    <font class="button" id="addResident">Add resident</font>
+    <font class="button"  id="removeResident">Remove resident</font>
+        
+        <div id="pets">
+            <div id="pet1">
+                Pet #1<br/>
+                Type:<select id="animalType1">
+                    <option>Dog</option>
+                    <option>Cat</option>
+                    <option>Bird</option>
+                    <option>Other</option>
+                </select>
+                <br/>
+                Weight:<input type="text" id="weight1" />
+                Breed:<input type="text" id="breed1" />
+                Age:<input type="text" id="age1" />
+            </div>
+            
+        </div>
+    <font class="button" id="addPet">Add pet</font>
+    <font class="button"  id="removePet">Remove pet</font>
+    <button type="submit" class="button">Save and Continue</button>
+    <button type="reset" class="button">Clear</button>
     </form>
 </div>
 
