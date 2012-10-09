@@ -99,7 +99,7 @@ $(document).ready(function(){
             
         </div>
     <font class="button" id="addPet">Add pet</font>
-    <font class="button"  id="removePet">Remove pet</font>
+    <font class="button"  id="removePet">Remove pet</font><br/><br/>
     <button type="submit" class="button">Save and Continue</button>
     <button type="reset" class="button">Clear</button>
     </form>

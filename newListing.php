@@ -1,4 +1,6 @@
-
+<?php
+    include 'Header.php';
+?>
 <!-- Page Content -->
 
     <h1 class="Title">Account Set Up</h1>
@@ -32,4 +34,7 @@
 
         ?>
         </form>
-    </div>                    
+    </div>         
+    <?php
+        include 'Footer.php';
+    ?>
