@@ -55,7 +55,7 @@ $(document).ready(function(){
     <div id="mainContent">
         
 <?php
-   createForm("90%", "90%", "Housing Application", "newHousingApplication.php");
+   createForm("90%", "90%", "Housing Application part #1", "newHousingApplication2.php");
    
 ?>
 
