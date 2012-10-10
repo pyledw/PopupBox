@@ -13,6 +13,9 @@ $(document).ready(function(){
             val1 = val1 + 1;
             $("#employers").append('<div id="employer' + val1 + '">Employer #'+(val1)+'<br />Employer: <input type="text" name="employerName' + val1 + '" />Supervisor Name: <input type="text" name="superVisorName' + val1 + '" /><br/>Supervisor Phone: <input type="text" name="superVisorPhone' + val1 + '" />Position Held: <input type="text" name="position' + val1 + '" /><br/>Months Employed: <input type="text" name="monthsEmployed' + val1 + '" />Annual Salary: <input type="text" name="annualSalary' + val1 + '" /></div>');
           }
+      else{
+          alert("Maximum number of employers has been met");
+      }
   });
   $("#removeEmployer").click(function(){
       if(val1 > 1)
@@ -20,6 +23,10 @@ $(document).ready(function(){
             $("#employer" + val1).remove();
             val1 = val1 - 1;
           }
+      else
+      {
+        alert("Must fill in at least one employer");
+      }
   });
 });
 
