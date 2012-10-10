@@ -14,7 +14,7 @@
     for the property for which an applicant may have submitted a PFO may allow you to 
     withdraw your PFO, especially if other, more attractive PFOs have been submitted.</p>
 
-<p><font color="red">What about commissions, brokerage, and agency relationships?</font>
+<p><font color="red">What about commissions, brokerage, and agency relationships?</font><br/>
     An agency relationship is only formed with a landlord when he decides to utilize the
     back-end payment option to access and pursue the submitted PFOs. This relationship is
     referred to as a Facilitator relationship and favors neither the landlord of the applicant.
@@ -24,8 +24,15 @@
     If the landlord chooses the front-end listing fee, no agency relationship is established.
     Rather, only a listing fee is charged.</p>
 
-<p><font color="red">What if I missed teh open house and another is not scheduled?</font>
-    Typically, an open house will be offered at the beginning of the home's Show Period and
-    possibly at the end of the Show Period. If you have missed all open houses, you may 
-    email the landlord at anytime to request an additional open house be held. The landlord 
-    may or may not offer an additional open house, but the</p>
+<p><font color="red">What if I missed the open house and another is not scheduled?</font><br/>
+    Typically, an open house will be offered at the beginning of the home's Show Period
+    and possibly at the end of the Show Period.  If you have missed all open houses, you 
+    may email the landlord at anytime to request an additional open house be held.  The 
+    landlord may or may not offer an additional open house, but the more requests he 
+    receives, the more likely he will offer an additional open house, especially if few 
+    or no PFOs have been submitted.  If a landlord offers an additional open house, and 
+    the property is listed as a "Favorite" property in the applicant's account, the applicant 
+    will be informed of the details of the additional open house. </p>
+
+<p><font color="red">What are the fees for using LeaseHood?</font><br/>
+    Fees can be viewed <a href="pricing.php">here.</a></p>
