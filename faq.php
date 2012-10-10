@@ -2,8 +2,6 @@
 
         $title = "Support";
 	include 'Header.php';
-	
-	include 'Footer.php';
 ?>
 <h3>Frequently Asked Questions</h3>
 <br/>
@@ -36,3 +34,7 @@
 
 <p><font color="red">What are the fees for using LeaseHood?</font><br/>
     Fees can be viewed <a href="pricing.php">here.</a></p>
+
+<?php
+    include 'Footer.php';
+?>
