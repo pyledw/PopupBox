@@ -9,44 +9,35 @@
     <h1 class="Title">Account Set Up</h1>
     <hr class="Title" />
     <div id="mainContent">
-
+             <form class="formStyle" width="90%" height="90%" method="post" action="newUserRedirect.php">
         <?php
                include 'formElements.php';
-                createForm('100%', '90%', 'Create new profile', 'newUserRedirect.php');
         ?>
-
-        <?php
-                radioGroup(array("Tenant","Landlord"), array("tenant","landlord"), "classification", "You are a: ");
-                newline();
-                createTextField("username", "Enter username","","");
+                 You are a: 
+                 Tenant<input type="radio" checked="checked" name="classification" value="tenant">
+                 Landlord<input type="radio" name="classification" value="landlord">
+                 <br/>
+                 Enter username:<input type="text" name="username">
+                 
+                 Password:<input type="password" name="password1">
+                 Confirm Password:<input type="password" name="password2">
+                 
+                 First Name: <input type="text" name="fname">
+                 Last Name: <input type="text" name="lname">
+                 Email: <input type="text" name="email1">
+                 Confirm Email: <input type="text" name="email2">
+                 Phone: <input type="text" name="phone">
+                 Address: <input type="text" name="address" width="400px">
+                 City: <input type="text" name="city">
+                 State: <input type="text" name="state">
+                 Zip Code: <input type="text" name="city">
+                 Date of birth: <input type="text" name="DOB">
+                 Last 4 digits in your Social Security Number<input type="text" name="SSN">
+                 <br/>
+                 <br/>
+                 <button type="submit" class="button">Save and Continue</button>
+                 <button type="reset" class="button">Clear</button>
                 
-                ?>
-                
-        <?php
-
-                createPasswordField("password1","Enter Password: ");
-
-                createPasswordField("password2", "Confirm Password: ");
-
-                createTextField("fname", "First name", "","");
-                createTextField("lname", "Last name", "","");
-                createTextField("email1", 'Email', "","");
-                createTextField("email2", 'Confirm email',"","");
-
-                createTextField("phone", "Phone Number", "","");
-                createTextField("address", "Enter Address", "","400px");
-
-                createTextField("DOB", "Date Of Birth", "","");
-                createTextField("city", "City", "","");
-                createTextField("state", "State", "","");
-                createTextField("zip", "Zip", "","");
-
-                createTextField("SSN", "Enter last 4 of SSN", "","");
-                newLine();
-                createButton("submit", "Save and Continue", "button");
-                createButton("reset", "Reset Form", "button");
-
-        ?>
         </form>
     </div>
 <?
