@@ -153,7 +153,8 @@
                 Yes<input type="radio" name="ADA"  value="Y" />
                 No<input type="radio" name="ADA"checked='checked'  value="N" /><br/>
                 
-                Comments about the home:<textarea rows="4" cols="50"></textarea>
+                Comments about the home:<textarea id="message" rows="4" cols="50"></textarea>
+
                 <br/>
                 <br/>
                 <button type="submit" class="button">Save and Continue</button>
@@ -166,3 +167,13 @@
     <?php
         include 'Footer.php';
     ?>
+    
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#message").charCount({
+			allowed: 500,		
+			warning: 50,
+			counterText: 'Characters left: '	
+		});
+	});
+</script>

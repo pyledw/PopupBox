@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/jquery-ui.css" />
     <script src="js/jquery-ui.js"></script>
     
-    <script src="js/textBoxHints.js"></script>
+    <script src="js/charCount.js"></script>
     <script>
         $(function() {
         $( document ).tooltip();
