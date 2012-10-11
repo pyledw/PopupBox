@@ -3,7 +3,7 @@
         $title = "Support";
 	include 'Header.php';
 ?>
-<h1 class="Title">What is Leasehood?</h1>
+<h1 class="Title">Support</h1>
 <hr class="Title" />
 <div id="mainContent">
     
