@@ -1,5 +1,5 @@
 <?php
-    $title = "New Listing Part 6";
+    $title = "New Listing Part 5";
     include 'Header.php';
 ?>
     <h1 class="Title">New House Listing - Certification</h1>
