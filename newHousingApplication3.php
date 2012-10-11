@@ -12,7 +12,7 @@
         <div id="formerHomes">
             <div class="formElement" id="formerHome1">
                 <h3>Former Residence #1</h3><br/>
-                Type Of Residence:<select name="type">
+                Type Of Residence:<select id="select" name="type">
                     <option>
                         Rented
                     </option>
@@ -27,10 +27,12 @@
                 City:<input type="text" name="city1">
                 State:<input type="text" name="state1">
                 Zip Code:<input type="text" name="zipCode1">
+                <div id="landlord">
                 Landlords Name:<input type="text" name="landlordsName1">
                 Phone Number:<input type="text" name="phoneNumber1">
                 Reason For Leaving:<input type="text" name="reasonForLeaving1">
                 Rent:<input type="text" name="rent1">
+                </div>
                 Mortgage:<input type="text" name="mortgage1">
 
             </div>
@@ -107,4 +109,19 @@ $(document).ready(function(){
       }
   });
 });
+$(document).ready(function(){
+  $("#select").change(function(){
+      var value = $("select").val();
+      if(value == 'Owned')
+          {
+              $('#landlord').hide();
+          }
+      else
+          {
+              $('#landlord').show();
+          }
+  });
+     
+});
+
 </script>
