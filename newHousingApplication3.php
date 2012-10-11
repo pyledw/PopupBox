@@ -14,10 +14,10 @@
                 <h3>Former Residence #1</h3><br/>
                 Type Of Residence:<select id="select" name="type">
                     <option>
-                        Rented
+                        Owned
                     </option>
                     <option>
-                        Owned
+                        Rented
                     </option>
                     <option>
                         Family Friend
@@ -27,13 +27,15 @@
                 City:<input type="text" name="city1">
                 State:<input type="text" name="state1">
                 Zip Code:<input  type="text" name="zipCode1">
-                <div id="landlord">
+                <div id="renter" style="display: none;">
                 Landlords Name:<input type="text" name="landlordsName1">
                 Phone Number:<input type="text" name="phoneNumber1">
                 Reason For Leaving:<input type="text" name="reasonForLeaving1">
                 Rent:<input type="text" name="rent1">
                 </div>
+                <div id="owner">
                 Mortgage:<input type="text" name="mortgage1">
+                </div>
 
             </div>
         </div>
@@ -114,11 +116,13 @@ $(document).ready(function(){
       var value = $("select").val();
       if(value == 'Owned')
           {
-              $('#landlord').hide();
+              $('#renter').hide();
+              $('#owner').show();
           }
       else
           {
-              $('#landlord').show();
+              $('#renter').show();
+              $('#owner').hide();
           }
   });
      
