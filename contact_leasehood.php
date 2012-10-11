@@ -2,19 +2,29 @@
 
         $title = "Contact LeaseHood";
 	include 'Header.php';
-        include 'formElements.php'
 ?>
     <h1 class="Title">Contact LeaseHood</h1>
     <hr class="Title" />
     <div id="mainContent">
-
-<?php        
-    createTextField("fname", "First name", "","");
-    createTextField("lname", "Last name", "","");
-    createTextField("email1", 'Email', "","");
-    createTextField("email2", 'Confirm email',"","");
-    createTextBoxField("2", "4", "comments", "Comments");
-?>                
+        <form action="processComments.php" method="post">
+        <table border="0" align="left">
+            <tr>
+                <td>First Name: </td>
+                <td><input type="text" name="fname" size="15" maxlength="25"></td>
+            </tr>
+            <tr>
+                <td>Last Name: </td>
+                <td><input type="text" name="lname" size="15" maxlength="25"</td>
+            </tr>
+            <tr>
+                <td>Comments: </td>
+                <td><textarea name="comments" rows="6" cols="30" wrap="virtual" /></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" align="center" value="Submit" />
+            </tr>
+        </table>
+        </form>
     </div>
 
 <?php
