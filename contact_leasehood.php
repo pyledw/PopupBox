@@ -7,18 +7,18 @@
     <hr class="Title" />
     <div id="mainContent">
         <form action="processComments.php" method="post">
-        <table border="0" align="center">
+        <table border="0" width="100%" align="left">
             <tr>
                 <td>First Name: </td>
-                <td><input type="text" name="fname" size="10" maxlength="25"></td>
+                <td><input type="text" name="fname" size="20" maxlength="25"></td>
             </tr>
             <tr>
                 <td>Last Name: </td>
-                <td><input type="text" name="lname" size="10" maxlength="25"</td>
+                <td><input type="text" name="lname" size="20" maxlength="25"</td>
             </tr>
             <tr>
                 <td>Comments: </td>
-                <td><textarea name="comments" rows="8" cols="40" wrap="virtual" /></textarea></td>
+                <td><textarea name="comments" rows="6" cols="30" wrap="virtual" /></textarea></td>
             </tr>
             <tr>
                 <td><input type="submit" value="Submit" />
