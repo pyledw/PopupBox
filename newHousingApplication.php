@@ -1,6 +1,6 @@
 <?php
+$title = "New Application";
 include 'Header.php';
-include 'formElements.php';
 ?>
 
 
@@ -67,10 +67,16 @@ include 'formElements.php';
     
 <script>
     $(function() {
-        $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker({
+            numberOfMonths: 3,
+            showButtonPanel: true
+        });
     });
     $(function() {
-        $( "#datepicker2" ).datepicker();
+        $( "#datepicker2" ).datepicker({
+            numberOfMonths: 3,
+            showButtonPanel: true
+        });
     });
 
 var val1 = 1;
