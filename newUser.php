@@ -19,8 +19,8 @@
                  <br/>
                  Enter username:<input type="text" name="username">
                  
-                 Password:<input type="password" name="password1">
-                 Confirm Password:<input type="password" name="password2">
+                 Password:<input id="password1" type="password" name="password1">
+                 Confirm Password:<input id="password2" type="password" name="password2">
                  
                  First Name: <input type="text" name="fname">
                  Last Name: <input type="text" name="lname">
@@ -43,3 +43,22 @@
 <?
 	include 'Footer.php';
 ?>
+    <script>
+$(document).ready(function(){
+    $("#password2").blur(function(){
+        
+        var pw1 = $("#password2").val();
+        var pw2 = $("#password1").val();
+        
+        if(pw1 == pw2){
+            
+        }
+        else{
+            $("#password2").val("");
+            $("#password1").val("");
+            alert("Passwords Must Match");
+        }
+     
+});
+  });
+    </script>

@@ -111,6 +111,7 @@ $(document).ready(function(){
       }
   });
 });
+
 $(document).ready(function(){
   $("#select").change(function(){
       var value = $("select").val();
