@@ -8,6 +8,6 @@
     }
     else 
     {
-        header( 'Location: /newListing.php' );
+        header( 'Location: /newListing1.php' );
     }
 ?>
