@@ -29,6 +29,14 @@
     <link rel="stylesheet" href="css/jquery-ui.css" />
     <script src="js/jquery-ui.js"></script>
     
+    <script src="js/textBoxHints.js"></script>
+    <script>
+        $(function() {
+        $( document ).tooltip();
+        });
+    </script>
+    
+    
 </head>
 
     <body>
@@ -63,18 +71,18 @@
 							echo '<a href="searchHomes.php">Search Homes</a>';
 						}
 
-	       				if ($fileName == 'searchApplicants.php') {
-							echo '<a href="searchApplicants.php" class="current">Search Applicants</a>';
+	       				if ($fileName == 'listHome.php') {
+							echo '<a href="listHome.php" class="current">List Home/a>';
 						}
 						else {
-							echo '<a href="searchApplicants.php">Search Applicants</a>';
+							echo '<a href="listHome.php">List Home</a>';
 						}
 	       			
 	       				if ($fileName == 'myHood.php') {
-							echo '<a href="myHood.php" class="current">My Hood (Login)</a>';
+							echo '<a href="myHood.php" class="current">Login</a>';
 						}
 						else {
-							echo '<a href="myHood.php">My Hood (Login)</a>';
+							echo '<a href="myHood.php">Login</a>';
 						}
 	       			
 	       				if ($fileName == 'newUser.php') {

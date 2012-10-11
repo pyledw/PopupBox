@@ -3,7 +3,6 @@
     include 'Header.php';
     include "formElements.php";
     ?>
-
 <h1 class="Title">Application Page #3</h1>
 <hr class="Title">
 
@@ -11,6 +10,7 @@
     <form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplication4.php">
         <div id="formerHomes">
             <div class="formElement" id="formerHome1">
+                
                 <h3>Former Residence #1</h3><br/>
                 Type Of Residence:<select id="select" name="type">
                     <option>
@@ -23,10 +23,10 @@
                         Family Friend
                     </option>
                 </select>
-                Address:<input type="text" name="address1">
+                Address:<input title="THIS IS A TOOLTIP" type="text" name="address1">
                 City:<input type="text" name="city1">
                 State:<input type="text" name="state1">
-                Zip Code:<input type="text" name="zipCode1">
+                Zip Code:<input  type="text" name="zipCode1">
                 <div id="landlord">
                 Landlords Name:<input type="text" name="landlordsName1">
                 Phone Number:<input type="text" name="phoneNumber1">
@@ -125,3 +125,4 @@ $(document).ready(function(){
 });
 
 </script>
+
