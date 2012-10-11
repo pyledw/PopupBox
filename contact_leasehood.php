@@ -13,7 +13,7 @@
     createTextField("lname", "Last name", "","");
     createTextField("email1", 'Email', "","");
     createTextField("email2", 'Confirm email',"","");
-    createTextBoxField("2", "4", "Comments", "commentBox")
+    createTextBoxField("2", "4", "comments", "Comments");
 ?>                
     </div>
 
