@@ -2,7 +2,6 @@
 
         $title = "Contact LeaseHood";
 	include 'Header.php';
-        include 'formElements.php'
 ?>
     <h1 class="Title">Contact LeaseHood</h1>
     <hr class="Title" />
