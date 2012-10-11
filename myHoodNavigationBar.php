@@ -78,7 +78,7 @@
 							echo '<a href="listHome.php">List Home</a>';
 						}
 	       			
-	       				if ($fileName == 'myHood.php') {
+	       				if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
 							echo '<a href="myHood.php" class="current">Login</a>';
 						}
 						else {
@@ -117,9 +117,36 @@
 	       			?>
             </div>
             <div id="myHoodNavigation">
-                <a href="#">Home</a>
-                <a href="#">Account</a>
-                <a href="#">Mail</a>
+                <?php
+                    if($fileName == "myHood.php")
+                    {
+                       echo '<a class="current" href="myHood.php">Home</a>';
+                    }
+                    else
+                    {
+                        echo '<a href="myHood.php">Home</a>';
+                    }
+                ?>
+                <?php
+                    if($fileName == "myHood_Account.php")
+                    {
+                       echo '<a class="current" href="myHood_Account.php">Account</a>';
+                    }
+                    else
+                    {
+                        echo '<a href="myHood_Account.php">Account</a>';
+                    }
+                ?>
+                <?php
+                    if($fileName == "myHood_Mail.php")
+                    {
+                       echo '<a class="current" href="myHood_Mail.php">Mail</a>';
+                    }
+                    else
+                    {
+                        echo '<a href="myHood_Mail.php">Mail</a>';
+                    }
+                ?>
             </div>
             
     		
