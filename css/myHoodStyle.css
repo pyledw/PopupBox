@@ -104,17 +104,3 @@
 #myHoodListing .footer{
     float:right;
 }
-#myHoodListing .auctionEnding{
-    background:#600;
-    padding:5px 5px 5px 5px;
-    float:right;
-    margin:0px 5px 0px 5px;
-    border:1px solid #000000;
-}
-#myHoodListing .currentBid{
-    background:#600;
-    padding:5px 5px 5px 5px;
-    margin:0px 5px 0px 5px;
-    float:right;
-    border:1px solid #000000;
-}

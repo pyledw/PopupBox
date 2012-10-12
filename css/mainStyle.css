@@ -329,4 +329,22 @@ form .exceeded{color:#e00;}
     float:right;
     margin-top: -20px;
 }
+.tanTextArea{
+    padding:5px 5px 5px 5px;
+    background:#999900;
+}
+.redTextArea{
+    padding:5px 5px 5px 5px;
+    background:#ff0000;
+}
+.yellowTextArea{    
+    padding:5px 5px 5px 5px;
+    background:#ffff00;
+     margin:0 5px 0 5px;
+}
+.greenTextArea{
+    padding:5px 5px 5px 5px;
+    background:#66ff00;
+    margin:0 5px 0 5px;
+}
 

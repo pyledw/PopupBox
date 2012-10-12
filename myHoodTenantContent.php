@@ -10,6 +10,11 @@
         </div>
         You are free to submit a Proposal for Occupancy or Your Proposal for Occupancy has been submitted.
     </div>
+    <br/>
+    <br/>
+    Based on your application, you are most likely to be considered for the following maximum monthly rent :
+    <font class="tanTextArea">Number would go here</font>
+
     
     <h1>My PFOs</h1>
     <?php
@@ -17,8 +22,8 @@
     ?>
     <div id="myHoodListing">
         <div class="header">
-            <font class="auctionEnding">Action Ends</font>
-            <font class="currentBid">Current Bid</font>
+            <font class="redTextArea" style="float:right;">Action Ends</font>
+            <font class="greenTextArea" style="float:right;">Current Bid</font>
         </div>
         
         <div class="content">
