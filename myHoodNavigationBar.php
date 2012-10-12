@@ -1,7 +1,7 @@
 <?php                    
 //SETTING USER TYPE - Will be defined by database eventually
                     
-$userType = '1';
+$userType = '2';
 
 ?>
 

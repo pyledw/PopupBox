@@ -347,4 +347,9 @@ form .exceeded{color:#e00;}
     background:#66ff00;
     margin:0 5px 0 5px;
 }
+.greyTextArea{
+    padding:5px 5px 5px 5px;
+    background:#cccccc;
+    margin:0 5px 0 5px;
+}
 
