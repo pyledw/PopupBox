@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" type="text/css" href="css/myHoodStyle.css" /><!--Link to Main css file -->
 <div id="myHoodNavigation">
                 <?php
                     if($fileName == "myHood.php")
