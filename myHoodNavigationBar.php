@@ -1,3 +1,10 @@
+<?php                    
+//SETTING USER TYPE - Will be defined by database eventually
+                    
+$userType = '1';
+
+?>
+
 <link rel="stylesheet" type="text/css" href="css/myHoodStyle.css" /><!--Link to Main css file -->
 <div id="myHoodNavigation">
                 <?php
@@ -29,6 +36,15 @@
                     {
                         echo '<a href="myHood_Mail.php">Mail</a>';
                     }
+                    
+
+                    
+                    if($userType == '2')
+                    {
+                       echo '<a href="newListing1.php">Create New Listing</a>';
+                    }
+                   
+                    
                 ?>
             </div>
             <img src="images/Special.jpg" class="special" style="margin-top: -40px;">

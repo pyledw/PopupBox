@@ -95,8 +95,8 @@
         </div>
         
         <div class="footer">
-            <a class="button">Move in now at:$price</a>
-            <a class="button">Change my PFO</a>
+            <a class="button">Submit a PFO</a>
+            <a class="button">MOVE IN NOW</a>
             <a class="button">Contact Landlord</a>
         </div>
         </div>
@@ -136,8 +136,8 @@
         </div>
         
         <div class="footer">
-            <a class="button">Move in now at:$price</a>
-            <a class="button">Change my PFO</a>
+            <a class="button">Submit a PFO</a>
+            <a class="button">MOVE IN NOW</a>
             <a class="button">Contact Landlord</a>
         </div>
         </div>

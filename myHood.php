@@ -7,7 +7,15 @@
 
 <?php
     //Test for user type calling content based apon user type
-    include 'myHoodTenantContent.php';
+    if($userType == "1")
+    {
+        include 'myHoodTenantContent.php';
+    }
+    //Test for user type calling content based apon user type
+    if($userType == "2")
+    {
+        include 'myHoodLandlordContent.php';
+    }
 ?>
     
 
