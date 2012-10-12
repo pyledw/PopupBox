@@ -474,3 +474,7 @@ form .exceeded{color:#e00;}
     border-left-width: 1px;
     border-left-style: solid;
 }
+.special{
+    float:right;
+    margin-top: -20px;
+}

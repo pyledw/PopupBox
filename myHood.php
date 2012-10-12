@@ -1,7 +1,7 @@
 
 <?php
         $title = "MyHood - Home";
-	include 'myHoodNavigationBar.php';
+	include "Header.php"
 ?>
 
 <!-- Page Content -->

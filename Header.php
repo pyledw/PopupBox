@@ -78,11 +78,11 @@
 							echo '<a href="listHome.php">List Home</a>';
 						}
 	       			
-	       				if ($fileName == 'myHood.php') {
-							echo '<a href="myHood.php" class="current">Login</a>';
+	       				if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
+							echo '<a href="myHood.php" class="current">My Hood</a>';
 						}
 						else {
-							echo '<a href="myHood.php">Login</a>';
+							echo '<a href="myHood.php">My Hood</a>';
 						}
 	       			
 	       				if ($fileName == 'newUser.php') {
@@ -112,11 +112,15 @@
 						else {
 							echo '<a href="support.php">Support</a>';
 						}
-
-
+                                         
 	       			?>
             </div>
+                                <?php
+                                if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
+                                                        include 'myHoodNavigationBar.php';
+						}
+						else {
+							echo '<img src="images/Special.jpg" class="special">';
+						}
+                                ?>
             
-    		
-                              
-          <img src="images/Special.jpg" alt="Special Deals" style="float:right;" /> <!--This image is for the later placed object for county specials-->
