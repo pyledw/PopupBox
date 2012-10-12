@@ -4,16 +4,12 @@
 	include "Header.php"
 ?>
 
-<!-- Page Content -->
-<h1 class="Title">Login</h1>
-    <hr class="Title" />
-<div id="mainContent">
+
 <?php
-
-
+    //Test for user type calling content based apon user type
+    include 'myHoodTenantContent.php';
 ?>
     
-</div>
 
 <?php
 	include 'Footer.php';
