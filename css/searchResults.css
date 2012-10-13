@@ -1,0 +1,16 @@
+/* 
+    Document   : searchResults
+    Created on : Oct 13, 2012, 3:06:22 PM
+    Author     : dwpyle1
+    Description:
+        This stylesheet controls the elements on the search results pages.
+*/
+#searchResult{
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: center;
+}
+.searchHeader{
+    color:orange;
+    text-decoration:underline;
+}
