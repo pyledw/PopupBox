@@ -10,43 +10,43 @@
 <div id="mainContent">
     <table id="searchResults">
             <tr class="searchHeader">
-                <td>
+                <td width="75px">
                     ID#
                 </td>
-                <td>
+                <td width="75px">
                     Media
                 </td>
-                <td>
+                <td width="150px">
                     Street Address
                 </td>
-                <td>
+                <td width="50px">
                     Zip Code
                 </td>
-                <td>
+                <td width="75px">
                     City
                 </td>
-                <td>
+                <td width="50px">
                     Square Footage
                 </td>
-                <td>
+                <td width="50px">
                     BR/BA
                 </td>
-                <td>
+                <td width="75px">
                     Current Price
                 </td>
-                <td>
+                <td width="75px">
                     Move In Now Price
                 </td>
-                <td>
+                <td width="40px">
                     Pets
                 </td>
-                <td>
+                <td width="50px">
                     Smoking
                 </td>
-                <td>
+                <td width="75px">
                     Open House
                 </td>
-                <td>
+                <td width="75px">
                     Ending
                 </td>
             </tr>

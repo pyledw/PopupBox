@@ -5,12 +5,24 @@
     Description:
         This stylesheet controls the elements on the search results pages.
 */
-#searchResult{
+#searchResults{
     border-collapse: collapse;
     text-align: center;
-    vertical-align: center;
+    vertical-align: middle;
+    
 }
+
+#searchResults td{
+    padding:0 5px 0 5px;
+    
+}
+
 .searchHeader{
     color:orange;
     text-decoration:underline;
 }
+
+.searchResult{
+    background: #EEEEEE;
+}
+
