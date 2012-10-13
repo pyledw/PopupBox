@@ -92,6 +92,48 @@
                     <font class="redTextArea">4Hrs</font>
                 </td>
             </tr>
+            
+            <tr class="searchResult">
+                <td>
+                    Test ID
+                </td>
+                <td>
+                    MEdia
+                </td>
+                <td>
+                    105 riverchase dr
+                </td>
+                <td>
+                    37221
+                </td>
+                <td>
+                    Nashville
+                </td>
+                <td>
+                    1,200
+                </td>
+                <td>
+                    4BR 3BA
+                </td>
+                <td>
+                    900
+                </td>
+                <td>
+                    1,400
+                </td>
+                <td>
+                    Dogs
+                </td>
+                <td>
+                    No
+                </td>
+                <td>
+                    09/16/2014
+                </td>
+                <td>
+                    <font class="redTextArea">4Hrs</font>
+                </td>
+            </tr>
     </table>
 </div>
 
