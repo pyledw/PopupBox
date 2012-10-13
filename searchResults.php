@@ -1,6 +1,7 @@
 <?php
         $title = "Search Homes";
 	include 'Header.php';
+        $searchTerm = $_POST['search'];
 ?>
 
 <link rel="stylesheet" type="text/css" href="css/searchResults.css" /><!--Link to Main css file -->
@@ -8,6 +9,10 @@
 <h1 class="Title">Home Search Results</h1>
 <hr class="Title" />
 <div id="mainContent">
+    <?php
+        echo "Searched by: ";
+        echo $searchTerm;
+    ?>
     <table id="searchResults">
             <tr class="searchHeader">
                 <th width="75px">
@@ -56,7 +61,7 @@
                     Test ID
                 </td>
                 <td>
-                    MEdia
+                    Media
                 </td>
                 <td>
                     105 riverchase dr

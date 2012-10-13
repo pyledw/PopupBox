@@ -9,7 +9,7 @@
 <hr class="Title" />
 <div id="mainContent">
     <form class="formStyle" width="90%" height="90%" method="post" action="searchResults.php">
-
+        Search: <input type="text" name="search">
         <a href="advancedHomeSearch.php">Advanced Search</a>
         <br/>
             <button type="submit" class="button">Save and Continue</button>
