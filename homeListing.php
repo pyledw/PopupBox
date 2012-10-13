@@ -94,6 +94,17 @@
                     BID AMOUNT
                 </td>
             </tr>
+            <tr>
+                
+            </tr>
+            <tr>
+                
+            </tr>
+            <tr>
+                <td colspan="4">
+                    MyHood Match
+                </td>
+            </tr>
         </table>
 
 
