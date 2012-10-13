@@ -10,52 +10,53 @@
 <div id="mainContent">
     <table id="searchResults">
             <tr class="searchHeader">
-                <td width="75px">
+                <th width="75px">
                     ID#
-                </td>
-                <td width="75px">
+                </th>
+                <th width="75px">
                     Media
-                </td>
-                <td width="150px">
+                </th>
+                <th width="150px">
                     Street Address
-                </td>
-                <td width="50px">
+                </th>
+                <th width="50px">
                     Zip Code
-                </td>
-                <td width="75px">
+                </th>
+                <th width="75px">
                     City
-                </td>
-                <td width="50px">
+                </th>
+                <th width="50px">
                     Square Footage
-                </td>
-                <td width="50px">
+                </th>
+                <th width="50px">
                     BR/BA
-                </td>
-                <td width="75px">
+                </th>
+                <th width="75px">
                     Current Price
-                </td>
-                <td width="75px">
+                </th>
+                <th width="75px">
                     Move In Now Price
-                </td>
-                <td width="40px">
+                </th>
+                <th width="40px">
                     Pets
-                </td>
-                <td width="50px">
+                </th>
+                <th width="50px">
                     Smoking
-                </td>
-                <td width="75px">
+                </th>
+                <th width="75px">
                     Open House
-                </td>
-                <td width="75px">
+                </th>
+                <th width="75px">
                     Ending
-                </td>
+                </th>
             </tr>
+            
             <tr class="searchResult">
                 <td>
                     Test ID
                 </td>
                 <td>
-                    SOme media Infor
+                    MEdia
                 </td>
                 <td>
                     105 riverchase dr
