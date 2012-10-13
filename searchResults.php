@@ -3,7 +3,17 @@
 	include 'Header.php';
         $searchTerm = $_POST['search'];
 ?>
+<script>
+$(document).ready(function(){
+    $(".searchResult").click(function(){
+        $("#mainContent").append($(".idNumb").text());
+        
+  });
+     
+});
 
+
+</script>
 <link rel="stylesheet" type="text/css" href="css/searchResults.css" /><!--Link to Main css file -->
 
 <h1 class="Title">Home Search Results</h1>
@@ -14,6 +24,7 @@
         echo $searchTerm;
     ?>
     <table id="searchResults">
+        
             <tr class="searchHeader">
                 <th width="75px">
                     ID#
@@ -55,9 +66,10 @@
                     Ending
                 </th>
             </tr>
+        
             
             <tr class="searchResult">
-                <td>
+                <td class="idNumb">
                     Test ID
                 </td>
                 <td>
@@ -99,7 +111,7 @@
             </tr>
             
             <tr class="searchResult">
-                <td>
+                <td class="ID">
                     Test ID
                 </td>
                 <td>

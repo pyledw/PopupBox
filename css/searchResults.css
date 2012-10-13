@@ -26,4 +26,9 @@
     border:1px solid #484848;
     background: #EEEEEE;
 }
+.searchResult:hover{
+    cursor:pointer;
+    background:#484848;
+}
+
 
