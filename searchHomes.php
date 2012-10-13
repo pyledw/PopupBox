@@ -9,7 +9,7 @@
 <hr class="Title" />
 <form class="formStyle" width="90%" height="90%" method="post" action="searchResults.php">
 
-    
+    <a href="advancedHomeSearch.php">Advanced Search</a>
     <br/>
         <button type="submit" class="button">Save and Continue</button>
         <button type="reset" class="button">Clear</button>

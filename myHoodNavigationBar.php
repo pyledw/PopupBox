@@ -1,11 +1,11 @@
 <?php                    
 //SETTING USER TYPE - Will be defined by database eventually
                     
-$userType = '2';
-
+$userType = $_POST['userType'];
 ?>
 
 <link rel="stylesheet" type="text/css" href="css/myHoodStyle.css" /><!--Link to Main css file -->
+
 <div id="myHoodNavigation">
                 <?php
                     if($fileName == "myHood.php")
