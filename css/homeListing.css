@@ -1,0 +1,42 @@
+/* 
+    Document   : homeListing
+    Created on : Oct 13, 2012, 5:37:10 PM
+    Author     : dwpyle1
+    Description:
+        This stylesheet will manage the elements on the individual house pages
+*/
+
+#houseListing{
+    
+    border-collapse: collapse;
+    border:1px solid #000000;
+}
+#houseListing tr{
+    padding:0 10px 0 10px;
+    border:1px #000000 solid;
+}
+#houseListing td{
+    padding:5px 5px 5px 5px;
+    border:1px #000000 solid;
+}
+.redBackground{
+    background:#ff3300;
+}
+.greyBackground{
+    background:#959595;
+}
+.greenBackground{
+    background:#4f6220;
+}
+.mainPhoto{
+    width:150px;
+    height:150px;
+}
+.thumbs{
+    width:40px;
+    height:40px;
+}
+.alignCenter{
+    vertical-align: middle;
+    text-align: center;
+}
