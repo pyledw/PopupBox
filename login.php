@@ -2,7 +2,7 @@
 <?php
         $title = "Login";
 	include 'Header.php';
-	
+        
 ?>
 <div id="wrapper">
     <form class="formStyle" width="90%" height="90%" method="post" action="myHood.php">
