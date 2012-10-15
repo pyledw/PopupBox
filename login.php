@@ -8,6 +8,7 @@
     <form class="formStyle" width="90%" height="90%" method="post" action="myHood.php">
         Username:<input type="text" name="userName">
         Password:<input type="password" name="Password">
+        1.Tenant - 2.Landlord - 3.Administrator
         <select name="userType">
             <option name="1">1</option>
             <option name="2">2</option>
