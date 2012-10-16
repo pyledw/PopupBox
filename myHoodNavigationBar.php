@@ -1,7 +1,6 @@
 <?php                    
-//SETTING USER TYPE - Will be defined by database eventually
-                    
-$userType = $_POST['userType'];
+//SETTING USER TYPE - Will be defined by database eventually cookies set from the database
+$userType = $_COOKIE['type'];
 ?>
 
 <link rel="stylesheet" type="text/css" href="css/myHoodStyle.css" /><!--Link to Main css file -->

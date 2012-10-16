@@ -11,7 +11,7 @@
 
 ?>
 <div id="wrapper">
-    <form class="formStyle" width="90%" height="90%" method="post" action="myHood.php">
+    <form class="formStyle" width="90%" height="90%" method="post" action="loginRedirect.php">
         Username:<input id="userName" type="text" name="userName">
         Password:<input type="password" name="Password">
         1.Tenant - 2.Landlord - 3.Administrator

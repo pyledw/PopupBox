@@ -1,20 +1,8 @@
 
 <?php
-    
-    
-            $myName = $_POST["userName"];
-            $userType = $_POST['userType'];
-            
-            if(!isset($_COOKIE['user']))
-            {
-                
-                setcookie("user", $myName,time()+3600);
-                setcookie("type", $userType,time()+3600);
-            }
-        
-        
-    
-        
+        if(!isset($_COOKIE['user'])){
+            header( 'Location: /login.php' );
+        }
         $title = "MyHood - Home";
 	include "Header.php"
 ?>
