@@ -1,4 +1,7 @@
-<?php print_r($_COOKIE);//Printing all cookies in order to determin all the cookies in the system?>
+<?php session_start(); ?>
+
+
+<?php echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';//This displayes all session variables?>
 
 <!--//Header to be displayed on all pages.  This will show deal with HTML head elements as well
 //as the Title, and CSS/Javascript References.  It also contains the navigation bar element.-->
@@ -56,9 +59,9 @@
             
             <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
             <?php
-                if(isset($_COOKIE["user"]))
+                if(isset($_SESSION["userID"]))
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_COOKIE['user'] . '</h3> Not you <a href="#loginPopup" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["userID"] . '</h3> Not you <a href="#loginPopup" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
                 }
             ?>
             </div>

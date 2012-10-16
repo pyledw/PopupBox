@@ -2,7 +2,7 @@
 <?php
         $title = "Login";
 	include 'Header.php';
-        if(isset($_COOKIE['user'])){
+        if(isset($_SESSION['userID'])){
             header( 'Location: /myHood.php' ) ;
         }
         
@@ -33,15 +33,4 @@
 	include 'Footer.php';
 
 ?>
-<script>
-$(document).ready(function(){
-    $("#submit").click(function(){
-        var userType = $('select').val();
-        var userName = $("userName").val();
-      $.cookie('type', userType);
-      $.cookie('user', userName);
-  });
-     
-});
-</script>
 

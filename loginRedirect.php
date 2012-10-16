@@ -1,4 +1,5 @@
 <?php
+        session_start();
         //taking information from login page
         $myName = $_POST["userName"];
         $userType = $_POST['userType'];
@@ -15,11 +16,11 @@
         //It then redirects the user to the myHood page.
         else
         {
-            setcookie("user", $myName,time()+3600);
-            setcookie("type", $userType,time()+3600);
+            
+            $_SESSION['userID'] = $myName;
+            $_SESSION['userIDType'] = $userType;
             header( 'Location: /myHood.php' );
         }
-        
         
     
 ?>

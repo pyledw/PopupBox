@@ -1,8 +1,8 @@
 
 <?php
-        if(!isset($_COOKIE['user'])){
-            header( 'Location: /login.php' );
-        }
+        //if(!isset($_SESSION['userID'])){
+          //  header( 'Location: /login.php' );
+        //}
         $title = "MyHood - Home";
 	include "Header.php"
 ?>
