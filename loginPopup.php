@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/popupStyles.css" />
+<div id="popupContent" style="width:400px;">
 <h1 class="popupHeader">Login Please</h1>
 
 <form class="formStyle" width="" height="" method="post" action="loginRedirect.php">
@@ -16,3 +17,4 @@
         <button id="submit" type="submit" class="button">Save and Continue</button>
         <button type="reset" class="button">Clear</button>
 </form>
+</div>
