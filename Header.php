@@ -1,3 +1,5 @@
+<?php print_r($_COOKIE);//Printing all cookies in order to determin all the cookies in the system?>
+
 <!--//Header to be displayed on all pages.  This will show deal with HTML head elements as well
 //as the Title, and CSS/Javascript References.  It also contains the navigation bar element.-->
 
@@ -21,6 +23,7 @@
     <script type="text/javascript" src="js/mainJavaScript.js"></script><!--Javascript Reference-->
     <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
     <script type="text/javascript" src="js/css_browser_selector.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
     
     <!-- These reference the external files for popups -->
     <script type="text/javascript" src="js/popupControl.js"></script>
@@ -52,6 +55,12 @@
             <a href="index.php"><img class="logo" src="images/leasehoodlogo.jpg" alt="LeaseHood Logo" /></a>
             
             <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
+            <?php
+                if(isset($_COOKIE["user"]))
+                {
+                    echo '<h3>Welcome '. $_COOKIE['user']; 
+                }
+            ?>
             </div>
             <div id="nav">
                 <?php
@@ -117,7 +126,7 @@
 	       			?>
             </div>
                                 <?php
-                                if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
+                                        if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
                                                         include 'myHoodNavigationBar.php';
 						}
 						else {

@@ -21,7 +21,6 @@ function getLatandLong($addr,$city,$state)
  
 		$lngs = $result->getElementsByTagName("lng");
 		$lng = $lngs->item(0)->nodeValue;
-		}
-                
+		}             
 }		
 ?>
