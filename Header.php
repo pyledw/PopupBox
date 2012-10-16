@@ -87,13 +87,22 @@
 						else {
 							echo '<a href="listHome.php">List Home</a>';
 						}
-	       			
-	       				if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
+                                        if(isset($_COOKIE['user'])){
+                                            if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
 							echo '<a href="login.php" class="current">My Hood</a>';
 						}
 						else {
 							echo '<a href="login.php">My Hood</a>';
 						}
+                                        }
+                                        else{
+                                            if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
+                                                            echo '<a href="login.php" class="current">Login</a>';
+                                                    }
+                                                    else {
+                                                            echo '<a href="login.php">Login</a>';
+                                                    }
+                                        }
 	       			
 	       				if ($fileName == 'newUser.php') {
 							echo '<a href="newUser.php" class="current">New User</a>';
