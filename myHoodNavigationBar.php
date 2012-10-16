@@ -1,5 +1,5 @@
 <?php                    
-//SETTING USER TYPE - Will be defined by database eventually cookies set from the database
+//SETTING USER TYPE - Will be defined by database eventually set from the database
 $userType = $_SESSION["userIDType"];
 ?>
 

@@ -90,7 +90,7 @@
 						else {
 							echo '<a href="listHome.php">List Home</a>';
 						}
-                                        if(isset($_COOKIE['user'])){
+                                        if(isset($_SESSION['userID'])){
                                             if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
 							echo '<a href="login.php" class="current">My Hood</a>';
 						}
