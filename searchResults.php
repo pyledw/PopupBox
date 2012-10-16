@@ -7,7 +7,6 @@
 $(document).ready(function(){
     $(".searchResult").click(function(){
         $("#mainContent").append($(".idNumb").text());
-        
   });
      
 });
@@ -67,7 +66,7 @@ $(document).ready(function(){
                 </th>
             </tr>
         
-            
+            <form>
             <tr class="searchResult">
                 <td class="idNumb">
                     Test ID
@@ -109,8 +108,8 @@ $(document).ready(function(){
                     <font class="redTextArea">4Hrs</font>
                 </td>
             </tr>
-            
             <tr class="searchResult">
+                
                 <td class="ID">
                     Test ID
                 </td>
