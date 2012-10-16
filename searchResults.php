@@ -1,7 +1,11 @@
 <?php
         $title = "Search Homes";
 	include 'Header.php';
-        $searchTerm = $_POST['search'];
+        if(!isset($_COOKIE['search']))
+        {
+            header( 'Location: /searchHomes.php' );
+        }
+        $searchTerm = $_COOKIE['search'];
 ?>
 <script>
 $(document).ready(function(){
@@ -66,7 +70,6 @@ $(document).ready(function(){
                 </th>
             </tr>
         
-            <form>
             <tr class="searchResult">
                 <td class="idNumb">
                     Test ID
