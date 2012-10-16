@@ -147,12 +147,12 @@
                                 ?>
             <div id="loginPopup" style="display: none;">
                 <?php
-                    include "loginPopup.php";
+                    include "popupLogin.php";
                 ?>
             </div>
             <div id="specialsPopup" style="display:none;">
                 <?php
-                    include 'specialsPopup.php';
+                    include 'popupSpecials.php';
                 ?>
             </div>
             

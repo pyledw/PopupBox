@@ -9,18 +9,17 @@
         Calculated rent available per month:<br/>
         <input type="text" id="result" />
         <font type="none" class="button" id="submit">Calculate</font>
-        <font type="clear" class="button" id="clear">Clear</font>
+        <button type="clear" class="button" id="clear">Clear</button>
 </form>
 </div>
 <script>
 $(document).ready(function(){
     $("#submit").click(function(){
         var percent = $('#percent').val(); 
-        alert(percent);
+        
         var salary = $('#salary').val();
-        alert(salary);
+        
         var total = salary * percent;
-        alert(total);
         $('#result').val(total);
     });
 });
