@@ -59,9 +59,9 @@
             
             <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
             <?php
-                if(isset($_SESSION["userID"]))
+                if(isset($_SESSION["user"]))
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["userID"] . '</h3> Not you <a href="#loginPopup" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3> Not you <a href="#loginPopup" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
                 }
             ?>
             </div>
@@ -90,7 +90,7 @@
 						else {
 							echo '<a href="listHome.php">List Home</a>';
 						}
-                                        if(isset($_SESSION['userID'])){
+                                        if(isset($_SESSION['user'])){
                                             if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
 							echo '<a href="login.php" class="current">My Hood</a>';
 						}

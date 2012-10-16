@@ -1,6 +1,6 @@
 <?php                    
 //SETTING USER TYPE - Will be defined by database eventually set from the database
-$userType = $_SESSION["userIDType"];
+$userType = $_SESSION["type"];
 ?>
 
 <link rel="stylesheet" type="text/css" href="css/myHoodStyle.css" /><!--Link to Main css file -->

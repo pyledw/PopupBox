@@ -25,7 +25,6 @@ body
     margin-top: 50px; 
     padding:0px 0px 155px 0px;
     text-align: left;
-    height: 95%;
     min-width:1000px;
     min-height:250px;
 }
@@ -88,7 +87,7 @@ hr.Title{
 */
 #mainContent{
 	padding:0px 20px 0px 20px;
-	height:100%;
+	
 }
 
 /*Layout left of the content on a page*/

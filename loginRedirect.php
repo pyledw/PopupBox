@@ -10,15 +10,15 @@
         {
             echo 'USER LOGIN FAILED';
         }
-        //if credentials are correct this will set the session so the session will
+        //if credentials are correct this will set the  so the session will
         //be remembered.  Might also eventually use a session to store some of this data
         //as it is more secure.
         //It then redirects the user to the myHood page.
         else
         {
             
-            $_SESSION['userID'] = $myName;
-            $_SESSION['userIDType'] = $userType;
+            $_SESSION['user'] = $myName;
+            $_SESSION['type'] = $userType;
             header( 'Location: /myHood.php' );
         }
         
