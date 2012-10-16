@@ -6,7 +6,6 @@
         $title = "MyHood - Home";
 	include "Header.php"
 ?>
-    <a href="login.php" class="button" id="logout">Log Out</a>
 
 <?php
 
@@ -27,13 +26,3 @@
 <?php
 	include 'Footer.php';
 ?>
-
-    <script>
-        $(document).ready(function(){
-    $("#logout").click(function(){
-        $.removeCookie('user');
-        $.removeCookie('type');
-  });
-     
-});
-    </script>

@@ -58,7 +58,7 @@
             <?php
                 if(isset($_COOKIE["user"]))
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_COOKIE['user'] . '</h3> Not you <a href="#loginPopup" rel="facebox" >Login</a></div>' ; 
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_COOKIE['user'] . '</h3> Not you <a href="#loginPopup" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
                 }
             ?>
             </div>
