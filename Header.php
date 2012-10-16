@@ -26,8 +26,8 @@
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     
     <!-- These reference the external files for popups -->
-    <script type="text/javascript" src="js/popupControl.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/popupControl.css" />
+    <script type="text/javascript" src="js/facebox.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/facebox.css" />
     
     <!-- These reference the needed external files for the date picker -->
     <link rel="stylesheet" href="css/jquery-ui.css" />
@@ -58,7 +58,7 @@
             <?php
                 if(isset($_COOKIE["user"]))
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_COOKIE['user'] . '</h3> Not you <a href="logout.php">Login</a></div>' ; 
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_COOKIE['user'] . '</h3> Not you <a href="#loginPopup" rel="facebox" >Login</a></div>' ; 
                 }
             ?>
             </div>
@@ -142,4 +142,15 @@
 							echo '<img src="images/Special.jpg" class="special">';
 						}
                                 ?>
+            <div id="loginPopup" style="display: none;">
+                <?php
+                    include "loginPopup.php";
+                ?>
+            </div>
             
+            <script>
+                jQuery(document).ready(function($) {
+                    $('a[rel*=facebox]').facebox()
+                    })
+            </script>
+             
