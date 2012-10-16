@@ -142,12 +142,17 @@
                                                         include 'myHoodNavigationBar.php';
 						}
 						else {
-							echo '<img src="images/Special.jpg" class="special">';
+							echo '<a href="#specialsPopup" rel="facebox"><img src="images/Special.jpg" class="special"></a>';
 						}
                                 ?>
             <div id="loginPopup" style="display: none;">
                 <?php
                     include "loginPopup.php";
+                ?>
+            </div>
+            <div id="specialsPopup" style="display:none;">
+                <?php
+                    include 'specialsPopup.php';
                 ?>
             </div>
             

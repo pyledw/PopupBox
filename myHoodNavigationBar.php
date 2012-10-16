@@ -46,5 +46,5 @@ $userType = $_SESSION["type"];
                     
                 ?>
             </div>
-            <img src="images/Special.jpg" class="special" style="margin-top: -40px;">
+            <a href="#specialsPopup" rel="facebox"><img src="images/Special.jpg" class="special" style="margin-top: -40px;" /></a>
 

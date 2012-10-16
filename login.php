@@ -2,7 +2,7 @@
 <?php
         $title = "Login";
 	include 'Header.php';
-        if(isset($_SESSION['userID'])){
+        if(isset($_SESSION['user'])){
             header( 'Location: /myHood.php' ) ;
         }
         
