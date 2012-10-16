@@ -1,0 +1,20 @@
+/* 
+    Document   : popupStyles
+    Created on : Oct 15, 2012, 10:55:28 PM
+    Author     : dwpyle1
+    Description:
+        This style sheet will controll all of the popups styles includeing content
+        and size elements.
+*/
+
+.popupHeader{
+    width:100%;
+    height:30px;
+    background-color: #4f6220;
+    color:#000000;
+    margin-left: -5px;
+    padding:5px 5px 5px 5px;
+}
+#popupContent{
+    padding:0px 10px 10px 10px;
+}

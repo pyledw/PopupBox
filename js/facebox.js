@@ -66,6 +66,7 @@
  *   $(document).bind('reveal.facebox', function() { ...stuff to do after the facebox and contents are revealed... })
  *
  */
+
 (function($) {
   $.facebox = function(data, klass) {
     $.facebox.loading()

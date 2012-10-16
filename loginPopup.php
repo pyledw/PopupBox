@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="css/popupStyles.css" />
+<h1 class="popupHeader">Login Please</h1>
+
 <form class="formStyle" width="" height="" method="post" action="loginRedirect.php">
         Username:<input id="userName" type="text" name="userName">
         Password:<input type="password" name="Password">
