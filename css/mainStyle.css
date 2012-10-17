@@ -13,7 +13,7 @@ body
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#a69e64',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
         text-align: center;
 
-} 
+}
 
 
 /*Wrapper element to hold all content on the page*/
@@ -27,7 +27,9 @@ body
     text-align: left;
     min-width:1000px;
     min-height:250px;
+    
 }
+
 .ie #wrapper{
     width:expression(document.body.clientWidth < 1000? "1000px": "90%" );
 }
@@ -204,11 +206,11 @@ hr.Title{
 #bottomNav{
 	position:relative;
 	bottom:10px;
-    margin: 0 auto;
-    padding:0px 0px 0px 0px;
-    text-align: left;
-    height: 90%;
-    min-width:1000px;
+        margin: 0 auto;
+        padding:0px 0px 0px 0px;
+        text-align: left;
+        height: 90%;
+        min-width:1000px;
 	width:90%;
 	height:150px;
 	background: #363636; /* Old browsers */
