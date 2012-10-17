@@ -6,8 +6,8 @@
     <h1 class="Title">Contact LeaseHood</h1>
     <hr class="Title" />
     <div id="mainContent">
-        <form action="processComments.php" method="post" style="padding-bottom: 50px;">
-        <table border="0" align="left">
+        <form action="processComments.php" method="post" style="display: inline;">
+        <table border="0" align="left" >
             <tr>
                 <td>First Name: </td>
                 <td><input type="text" name="fname" size="15" maxlength="25"></td>
@@ -25,6 +25,7 @@
             </tr>
         </table>
         </form>
+    
     </div>
 
 <?php

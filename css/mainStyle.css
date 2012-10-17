@@ -23,7 +23,7 @@ body
     width: 90%;
     margin: 0 auto;
     margin-top: 50px; 
-    padding:0px 0px 155px 0px;
+    padding:0px 0px 20px 0px;
     text-align: left;
     min-width:1000px;
     min-height:250px;
@@ -89,7 +89,6 @@ hr.Title{
 */
 #mainContent{
 	padding:0px 20px 0px 20px;
-	
 }
 
 /*Layout left of the content on a page*/
@@ -114,8 +113,10 @@ hr.Title{
 #layoutBottom
 {
 	background-color:#FFFFFF;
-	float:left;
+	
 	width:100%;
+        height:100px;
+        
 }
 
 
