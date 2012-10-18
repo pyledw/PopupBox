@@ -51,6 +51,7 @@
                 header( 'Location: /myHood.php' );
             }
         }
+        echo "Username does not exist";
         
         
         
