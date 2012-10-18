@@ -52,11 +52,13 @@
 
             </ul>
         </div>
+<?php	
+if ($cfg['show_buildinfo'])  { ?>
 	<br />
 	<span style='text-align: center; font-size: 60%;'>Built: 
-<?php
-	include 'build-date.txt';
-?>
+<?php	include 'build-date.txt'; ?>
 	</span>
+<?php  	}?>
+
     </body>
 </html>
