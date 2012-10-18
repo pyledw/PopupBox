@@ -30,7 +30,7 @@
                  Address: <input type="text" name="address" width="400px">
                  City: <input type="text" name="city">
                  State: <input type="text" name="state">
-                 Zip Code: <input type="text" name="city">
+                 Zip Code: <input type="text" name="zip">
                  Date of birth: <input type="text" name="DOB">
                  Last 4 digits in your Social Security Number<input type="text" name="SSN">
                  <br/>

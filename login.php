@@ -13,7 +13,7 @@
 <div id="wrapper">
     <form class="formStyle" width="" height="" method="post" action="loginRedirect.php">
         Username:<input id="userName" type="text" name="userName">
-        Password:<input type="password" name="Password">
+        Password:<input type="password" name="password">
         1.Tenant - 2.Landlord - 3.Administrator
         <select id="select" name="userType">
             <option name="1">1</option>
