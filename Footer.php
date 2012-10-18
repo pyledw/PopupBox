@@ -39,7 +39,7 @@
 
             </ul>
             <ul>
-                    <li>About LeaseHood</li>
+                    <li>About LeaseHoffffod</li>
                     <li>
                             <ul>
                                     <li><a href="#">Philosophy/Mission</a></li>
@@ -52,5 +52,13 @@
 
             </ul>
         </div>
+<?php	
+if ($cfg['show_buildinfo'])  { ?>
+	<br />
+	<span style='text-align: center; font-size: 60%;'>Built: 
+<?php	include 'build-date.txt'; ?>
+	</span>
+<?php  	}?>
+
     </body>
 </html>

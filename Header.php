@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+	require 'config.inc.php';
+	session_start(); 
+?>
 
 
 <?php echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';//This displayes all session variables?>
