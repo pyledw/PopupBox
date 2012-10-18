@@ -1,5 +1,6 @@
 
 <?php
+    session_start();
     $userType = $_POST["classification"];
     $classification;
     if($userType == "tenant")
@@ -43,8 +44,16 @@
     }
     echo "1 record added";
 
+    
+    
+    $result = mysql_query("SELECT * FROM USER
+            WHERE UserName ='" . $_POST[username] . "'");
+    $userData = mysql_fetch_array($result);
+    
+    $_SESSION['userID'] = $userData['UserID'];
+    $_SESSION['user'] = $_POST['username'];
+    
     mysql_close($con);
-
     if($userType == "tenant")
     {
         header( 'Location: /newHousingApplication.php' ) ;

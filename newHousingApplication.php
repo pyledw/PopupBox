@@ -1,6 +1,7 @@
 <?php
 $title = "New Application";
 include 'Header.php';
+
 ?>
 
 

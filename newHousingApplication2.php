@@ -1,7 +1,50 @@
 <?php
-$title = "New Housing Application";
-include 'Header.php';
-include "formElements.php";
+    $title = "New Housing Application";
+    include 'Header.php';
+    include "formElements.php";
+    
+//echo $userType;
+    $server = "199.115.231.216";
+    $username = "scribe";
+    $password = "board his combination flat";
+    $con = mysql_connect($server,$username,$password );
+    if(!$con)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+    else
+    {
+        //echo "connected to mySQL";
+    }
+    $select = mysql_selectdb("leasehood", $con);
+    if(!$select)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+    else
+    {
+        //echo "Selected Database";
+    }
+    
+    
+    $sql="INSERT INTO APPLICATION (UserID, EarlyMoveIn, LateMoveIn, IsADA, IsSmokingRequired, SecondaryOccupantFName, SecondaryOccupantLName, SecondaryOccupantAge, SecondaryOccupantRelationship)
+    VALUES
+    ('$_SESSION[userID]','$_POST[earliestDate]','$_POST[latestDate]','$_POST[ADA]','$_POST[smoking]','$_POST[name1]','$_POST[name1]','$_POST[age1]','$_POST[relationship]')";
+    
+    if (!mysql_query($sql,$con))
+    {
+        die('Error: ' . mysql_error());
+    }
+    echo "1 record added";
+    
+
+
+
+
+
+
+
+
 ?>   
 <h1 class="Title" >New Housing Application Continued</h1>
 <hr class="Title">
