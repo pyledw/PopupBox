@@ -2,8 +2,9 @@
 
 $cfg['show_buildinfo'] = true;
 
-$cfg['db_user'] = 'leasehood';
-$cfg['db_pass'] = 'sunlight blanket floating change';
-$cfg['db_server'] = 'localhost';
+$db_user = 'leasehood';
+$db_pass = 'sunlight blanket floating change';
+$db_server = 'localhost';
+$db_database = 'leasehood';
 
 ?>

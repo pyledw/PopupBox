@@ -1,5 +1,6 @@
 
 <?php
+	require "config.inc.php";
     session_start();
     $userType = $_POST["classification"];
     $classification;
@@ -12,10 +13,7 @@
         $classification = "2";
     }
     //echo $userType;
-    $server = "199.115.231.216";
-    $username = "scribe";
-    $password = "board his combination flat";
-    $con = mysql_connect($server,$username,$password );
+    $con = mysql_connect($db_server,$db_user,$db_pass );
     if(!$con)
     {
         die('could not connect: ' .mysql_error());
@@ -24,7 +22,7 @@
     {
         //echo "connected to mySQL";
     }
-    $select = mysql_selectdb("leasehood", $con);
+    $select = mysql_selectdb($db_database, $con);
     if(!$select)
     {
         die('could not connect: ' .mysql_error());
