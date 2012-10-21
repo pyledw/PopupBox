@@ -3,14 +3,12 @@
         //taking information from login page
         $myName = $_POST["userName"];
         $userPassword = $_POST['password'];
-        
+        require "config.inc.php";
         //SQL connection information
-        $server = "199.115.231.216";
-        $username = "scribe";
-        $password = "board his combination flat";
+
         
         //Connecting to the sql database
-        $con = mysql_connect($server,$username,$password );
+        $con = mysql_connect($db_server,$db_user,$db_pass );
         if(!$con)
         {
             die('could not connect: ' .mysql_error());
@@ -21,7 +19,7 @@
         }
         
         //Selecting the Database
-        $select = mysql_selectdb("leasehood", $con);
+        $select = mysql_selectdb($db_database, $con);
         if(!$select)
         {
             die('could not connect: ' .mysql_error());
