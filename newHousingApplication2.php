@@ -12,20 +12,31 @@
         <div id="employers">
             <div class="formElement" id="employer1">
                 Current Employer</br>
-                Employer: <input type="text" name="employerName" />
-                Supervisor First Name: <input type="text" name="superVisorFName" /><br/>
-                Supervisor Last Name: <input type="text" name="superVisorLName" /><br/>
-                Supervisor Phone: <input type="text" name="superVisorPhone" />
-                Position Held: <input type="text" name="position" /><br/>
-                Months Employed: <input type="text" name="monthsEmployed" />
-                Annual Salary: <input type="text" name="annualSalary" />
+                Employer: <input type="text" name="employerName1" />
+                Supervisor First Name: <input type="text" name="superVisorFName1" /><br/>
+                Supervisor Last Name: <input type="text" name="superVisorLName1" /><br/>
+                Supervisor Phone: <input type="text" name="superVisorPhone1" />
+                Position Held: <input type="text" name="position1" /><br/>
+                Months Employed: <input type="text" name="monthsEmployed1" />
+                Annual Salary: <input type="text" name="annualSalary1" />
+            </div>
+            
+            <div class="formElement" id="employer2" style="display:none;">
+                Employer #1</br>
+                Employer: <input type="text" name="employerName2" />
+                Supervisor First Name: <input type="text" name="superVisorFName2" /><br/>
+                Supervisor Last Name: <input type="text" name="superVisorLName2" /><br/>
+                Supervisor Phone: <input type="text" name="superVisorPhone2" />
+                Position Held: <input type="text" name="position2" /><br/>
+                Months Employed: <input type="text" name="monthsEmployed2" />
+                Annual Salary: <input type="text" name="annualSalary2" />
             </div>
         </div>
         <font class="button" id="addEmployer">Add Employer</font>
         <font class="button"  id="removeEmployer">Remove Employer</font><br/><br/>
         
         <div id="coAppEmployers">
-            <div class="formElement" id="coAppEmployer1">
+            <div class="formElement" id="coAppEmployer1" style="display: none;">
                 Co Applicant Employer #1</br>
                 Employer: <input type="text" name="coAppEmployerName1" />
                 Supervisor First Name: <input type="text" name="coAppSuperVisorFName1" /><br/>
@@ -36,7 +47,21 @@
                 Annual Salary: <input type="text" name="coAppAnnualSalary1" />
 
             </div>
+            <div class="formElement" id="coAppEmployer2" style="display: none;">
+                Co Applicant Employer #2</br>
+                Employer: <input type="text" name="coAppEmployerName2" />
+                Supervisor First Name: <input type="text" name="coAppSuperVisorFName2" /><br/>
+                Supervisor Last Name: <input type="text" name="coAppSuperVisorLName2" /><br/>
+                Supervisor Phone: <input type="text" name="coAppSuperVisorPhone2" />
+                Position Held: <input type="text" name="coAppPosition2" /><br/>
+                Months Employed: <input type="text" name="coAppMonthsEmployed2" />
+                Annual Salary: <input type="text" name="coAppAnnualSalary2" />
+
+            </div>
         </div>
+        
+        <font class="button" id="addCoAppEmployer">Add Co Applicant Employer</font>
+        <font class="button"  id="removeCoAppEmployer">Remove Co Applicant Employer</font><br/><br/>
         
         <!--<font class="button" id="addCoAppEmployer">Add Co Applicant Employer</font>
         <font class="button"  id="removeCoAppEmployer">Remove Co Applicant Employer</font><br/><br/>-->
@@ -54,17 +79,8 @@ $(document).ready(function(){
   $("#addEmployer").click(function(){
       if(val1 < 2)
           {
-            val1 = val1 + 1;
-            var employerContent = '<div class="formElement" id="employer' + val1 + '">\n\
-                Employer #'+(val1)+'<br />\n\
-                Employer: <input type="text" name="employerName' + val1 + '" />\n\
-                Supervisor Firt Name: <input type="text" name="superVisorFName' + val1 + '" /><br/>\n\
-                Supervisor Last Name: <input type="text" name="superVisorLName' + val1 + '" /><br/>\n\
-                Supervisor Phone: <input type="text" name="superVisorPhone' + val1 + '" />\n\
-                Position Held: <input type="text" name="position' + val1 + '" /><br/>\n\
-                Months Employed: <input type="text" name="monthsEmployed' + val1 + '" />\n\
-                Annual Salary: <input type="text" name="annualSalary' + val1 + '" /></div>';
-            $("#employers").append(employerContent);
+            val1 +=1 ;
+            $('#employer' + val1).show();
           }
       else{
           alert("You have reached the maximum number of employers");
@@ -73,8 +89,8 @@ $(document).ready(function(){
   $("#removeEmployer").click(function(){
       if(val1 > 1)
           {
-            $("#employer" + val1).remove();
-            val1 = val1 - 1;
+            $('#employer' + val1).hide();
+            val1 -= 1;
           }
       else
       {
@@ -83,30 +99,27 @@ $(document).ready(function(){
   });
 });
 
-var val2 = 1;
+var val2 = 0;
 $(document).ready(function(){
   $("#addCoAppEmployer").click(function(){
       if(val2 < 2)
           {
-            val2 = val2 + 1;
-            var coAppEmployerContent = '<div class="formElement" id="coAppEmployer' + val2 + '">\n\
-                Co Applicant Employer #'+(val2)+'<br />\n\
-                Employer: <input type="text" name="employerName' + val2 + '" />\n\
-                Supervisor First Name: <input type="text" name="superVisorFName' + val2 + '" /><br/>\n\
-                Supervisor Last Name: <input type="text" name="superVisorLName' + val2 + '" /><br/>\n\
-                Supervisor Phone: <input type="text" name="superVisorPhone' + val2 + '" />\n\
-                Position Held: <input type="text" name="position' + val2 + '" /><br/>\n\
-                Months Employed: <input type="text" name="monthsEmployed' + val2 + '" />\n\
-                Annual Salary: <input type="text" name="annualSalary' + val2 + '" /></div>';
-            $("#coAppEmployers").append(coAppEmployerContent);
+            val2 +=1 ;
+            $('#coAppEmployer' + val2).show();
           }
+      else{
+          alert("You have reached the maximum number of Co Applicant Employers");
+      }
   });
   $("#removeCoAppEmployer").click(function(){
-      if(val2 > 1)
+      if(val2 > 0)
           {
-            $("#coAppEmployer" + val2).remove();
-            val2 = val2 - 1;
+            $('#coAppEmployer' + val2).hide();
+            val2 -= 1;
           }
+      else
+      {
+      }
   });
 });
 
