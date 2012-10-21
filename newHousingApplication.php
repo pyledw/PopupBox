@@ -8,7 +8,7 @@ include 'Header.php';
     <h1 class="Title">New Housing Application</h1>
     <hr class="Title">
     <div id="mainContent">
-    <form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplication2.php">
+    <form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplicationRedirect.php">
 
 
         Earliest Move in Date: <input type="text" name="earliestDate" id="datepicker" />
