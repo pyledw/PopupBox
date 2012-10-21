@@ -2,6 +2,40 @@
 $title = "New Application #4";
     include 'Header.php';
     include 'formElements.php';
+    
+    
+    require "config.inc.php";
+         
+    $con = mysql_connect($db_server,$db_user,$db_pass );
+    if(!$con)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+    else
+    {
+        //echo "connected to mySQL";
+    }
+    $select = mysql_selectdb($db_database, $con);
+    if(!$select)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+    else
+    {
+        //echo "Selected Database";
+    }
+    
+    mysql_query("UPDATE APPLICATION SET ContactAddress='$_POST[address1]'
+    WHERE UserID = '$_SESSION[userID]'");
+    
+    mysql_query("UPDATE APPLICATION SET ContactAddress='$_POST[city1]'
+    WHERE UserID = '$_SESSION[userID]'");
+    
+    mysql_query("UPDATE APPLICATION SET ContactAddress='$_POST[zipCode1]'
+    WHERE UserID = '$_SESSION[userID]'");
+    
+    mysql_query("UPDATE APPLICATION SET ContactAddress='$_POST[address1]'
+    WHERE UserID = '$_SESSION[userID]'");
 ?>
 <h1 class="Title">Other</h1>
 <hr class="Title" />

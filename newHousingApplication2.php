@@ -51,24 +51,25 @@
     <form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplication3.php">
         <div id="employers">
             <div class="formElement" id="employer1">
-                Employer #1</br>
-                Employer: <input type="text" name="employerName1" />
-                Supervisor Name: <input type="text" name="superVisorName1" /><br/>
-                Supervisor Phone: <input type="text" name="superVisorPhone1" />
-                Position Held: <input type="text" name="position1" /><br/>
-                Months Employed: <input type="text" name="monthsEmployed1" />
-                Annual Salary: <input type="text" name="annualSalary1" />
-
-
+                Current Employer</br>
+                Employer: <input type="text" name="employerName" />
+                Supervisor First Name: <input type="text" name="superVisorFName" /><br/>
+                Supervisor Last Name: <input type="text" name="superVisorLName" /><br/>
+                Supervisor Phone: <input type="text" name="superVisorPhone" />
+                Position Held: <input type="text" name="position" /><br/>
+                Months Employed: <input type="text" name="monthsEmployed" />
+                Annual Salary: <input type="text" name="annualSalary" />
             </div>
         </div>
         <font class="button" id="addEmployer">Add Employer</font>
         <font class="button"  id="removeEmployer">Remove Employer</font><br/><br/>
+        
         <div id="coAppEmployers">
             <div class="formElement" id="coAppEmployer1">
                 Co Applicant Employer #1</br>
                 Employer: <input type="text" name="coAppEmployerName1" />
-                Supervisor Name: <input type="text" name="coAppSuperVisorName1" /><br/>
+                Supervisor First Name: <input type="text" name="coAppSuperVisorFName1" /><br/>
+                Supervisor Last Name: <input type="text" name="coAppSuperVisorLName1" /><br/>
                 Supervisor Phone: <input type="text" name="coAppSuperVisorPhone1" />
                 Position Held: <input type="text" name="coAppPosition1" /><br/>
                 Months Employed: <input type="text" name="coAppMonthsEmployed1" />
@@ -76,8 +77,9 @@
 
             </div>
         </div>
-        <font class="button" id="addCoAppEmployer">Add Co Applicant Employer</font>
-        <font class="button"  id="removeCoAppEmployer">Remove Co Applicant Employer</font><br/><br/>
+        
+        <!--<font class="button" id="addCoAppEmployer">Add Co Applicant Employer</font>
+        <font class="button"  id="removeCoAppEmployer">Remove Co Applicant Employer</font><br/><br/>-->
         <button type="submit" class="button">Save and Continue</button>
         <button type="reset" class="button">Clear</button>
     </form>
@@ -90,13 +92,14 @@ include 'Footer.php';
 var val1 = 1;
 $(document).ready(function(){
   $("#addEmployer").click(function(){
-      if(val1 < 5)
+      if(val1 < 2)
           {
             val1 = val1 + 1;
             var employerContent = '<div class="formElement" id="employer' + val1 + '">\n\
                 Employer #'+(val1)+'<br />\n\
                 Employer: <input type="text" name="employerName' + val1 + '" />\n\
-                Supervisor Name: <input type="text" name="superVisorName' + val1 + '" /><br/>\n\
+                Supervisor Firt Name: <input type="text" name="superVisorFName' + val1 + '" /><br/>\n\
+                Supervisor Last Name: <input type="text" name="superVisorLName' + val1 + '" /><br/>\n\
                 Supervisor Phone: <input type="text" name="superVisorPhone' + val1 + '" />\n\
                 Position Held: <input type="text" name="position' + val1 + '" /><br/>\n\
                 Months Employed: <input type="text" name="monthsEmployed' + val1 + '" />\n\
@@ -123,13 +126,14 @@ $(document).ready(function(){
 var val2 = 1;
 $(document).ready(function(){
   $("#addCoAppEmployer").click(function(){
-      if(val2 < 4)
+      if(val2 < 2)
           {
             val2 = val2 + 1;
             var coAppEmployerContent = '<div class="formElement" id="coAppEmployer' + val2 + '">\n\
                 Co Applicant Employer #'+(val2)+'<br />\n\
                 Employer: <input type="text" name="employerName' + val2 + '" />\n\
-                Supervisor Name: <input type="text" name="superVisorName' + val2 + '" /><br/>\n\
+                Supervisor First Name: <input type="text" name="superVisorFName' + val2 + '" /><br/>\n\
+                Supervisor Last Name: <input type="text" name="superVisorLName' + val2 + '" /><br/>\n\
                 Supervisor Phone: <input type="text" name="superVisorPhone' + val2 + '" />\n\
                 Position Held: <input type="text" name="position' + val2 + '" /><br/>\n\
                 Months Employed: <input type="text" name="monthsEmployed' + val2 + '" />\n\
