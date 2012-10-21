@@ -172,24 +172,31 @@
 <script>
 var val1 = 1;
 $(document).ready(function(){
-    if(val1 != 4 || val1!= 1)
-        {
-            $('#addFormerHome').click(function(){
-                val1 = val1 + 1;
-                $('#formerHome' + val1).show();
-                alert(val1);
-            })
-        
-        
-            $('#removeFormerHome').click(function(){
-                $('#formerHome' + val1).hide();
-                val1 = val1 - 1;
-                alert(val1);
-            })
-        }
-    
-        
-    
+  $("#addFormerHome").click(function(){
+      if(val1 < 4)
+          {
+            val1 +=1 ;
+            $('#formerHome' + val1).show();
+          }
+      else{
+          alert("You have reached the maximum number of former homes");
+      }
+  });
+  $("#removeFormerHome").click(function(){
+      if(val1 > 1)
+          {
+            $('#formerHome' + val1).hide();
+            val1 -= 1;
+          }
+      else
+      {
+        alert("Must fill in at least one former Home");
+      }
+  });
+});
+
+
+$(document).ready(function(){
   $("#select").change(function(){
       var value = $("select").val();
       if(value == 'Owned')
