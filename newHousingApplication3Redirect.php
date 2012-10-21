@@ -73,5 +73,5 @@
 
     mysql_close();
     
-    //header( 'Location: /newHousingApplication4.php' );
+    header( 'Location: /newHousingApplication4.php' );
 ?>
