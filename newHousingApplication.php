@@ -20,13 +20,25 @@ include 'Header.php';
         Will you be smoking?
         Yes<input type="radio" name="smoking"  value="Y" />
         No<input type="radio" name="smoking"checked='checked'  value="N" /><br/>
+        Number of Occupants:
+        <select name="numbOccupants">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+        </select>
         
         <div id="residents">
             <div class="formElement" id="resident1">
                 Resident #1<br />
-                Name: <input type="text" name="Name1" />
-                Age: <input type="text" name="age1"/><br />
-                Relationship: <input type="text" name="relationship1"/>
+                First Name: <input type="text" name="fName" />
+                Last Name: <input type="text" name="lName" />
+                Age: <input type="text" name="age"/><br />
+                Relationship: <input type="text" name="relationship"/>
             </div>
 
 
@@ -41,16 +53,16 @@ include 'Header.php';
             <div id="pets">
                 <div class="formElement" id="pet1">
                     Pet #1<br/>
-                    Type:<select id="animalType1">
+                    Type:<select name="animalType">
                         <option>Dog</option>
                         <option>Cat</option>
                         <option>Bird</option>
                         <option>Other</option>
                     </select>
                     <br/>
-                    Weight:<input type="text" id="weight1" />
-                    Breed:<input type="text" id="breed1" />
-                    Age:<input type="text" id="age1" />
+                    Weight:<input type="text" name="animalWeight" />
+                    Breed:<input type="text" name="animalBreed" />
+                    Age:<input type="text" name="animalAge" />
                 </div>
 
             </div>
@@ -83,16 +95,21 @@ include 'Header.php';
 var val1 = 1;
 $(document).ready(function(){
   $("#addResident").click(function(){
-      if(val1 < 6)
+      if(val1 < 1)
           {
             val1 = val1 + 1;
             var residentContent = '<div class="formElement" id="resident' + val1 + '">\n\
                     Resident #'+(val1)+'<br /> \n\
-                    Name: <input type="text" name="Name' + val1 + '" />\n\
+                    Name: <input type="text" name="fName' + val1 + '" />\n\
+                    Last Name: <input type="text" name="lName' + val1 + '" /> \n\
                     Age: <input type="text" name="age' + val1 + '"/><br />\n\
                     Relationship: <input type="text" name"relationship' + val1 + '"/></div>';
             $("#residents").append(residentContent);
           }
+        else
+            {
+                alert("Only one secondary occupant can be listed");
+            }
   });
   $("#removeResident").click(function(){
       if(val1 > 1)
@@ -100,33 +117,45 @@ $(document).ready(function(){
             $("#resident" + val1).remove();
             val1 = val1 - 1;
           }
+       else
+           {
+               alert("If no other residents, Leave empty");
+           }
   });
 });
 
 var val2 = 1;
 $(document).ready(function(){
   $("#addPet").click(function(){
-      if(val2 < 4)
+      if(val2 < 3)
           {
             val2 = val2 + 1;
             var petContent = '<div class="formElement" id="pet' + val2 + '">Pet #' + val2 +
-                '<br/>Type:<select id="animalType1">\n\
+                '<br/>Type:<select name="animalType'+val2+'">\n\
                     <option>Dog</option>\n\
                     <option>Cat</option>\n\
                     <option>Bird\n\</option>\n\
                     <option>Other</option>\n\
                 </select><br/>\n\
-                Weight:<input type="text" id="weight1" />Breed:\n\
-                <input type="text" id="breed1" />Age:\n\
-                <input type="text" id="age1" /> </div>';
+                Weight:<input type="text" name="animalWeight' + val2 + '" />Breed:\n\
+                <input type="text" name="animalBreed' + val2 + '" />Age:\n\
+                <input type="text" name="animalAge' + val2 + '" /> </div>';
             $("#pets").append(petContent);
           }
+       else
+           {
+               alert("No more than 3 pets may be entered");
+           }
   });
   $("#removePet").click(function(){
       if(val2 > 1)
           {
             $("#pet" + val2).remove();
             val2 = val2 - 1;
+          }
+      else
+          {
+              alert("If no pets leave one field empty");
           }
   });
 });

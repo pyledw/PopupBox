@@ -4,10 +4,9 @@
     include "formElements.php";
     
 //echo $userType;
-    $server = "199.115.231.216";
-    $username = "scribe";
-    $password = "board his combination flat";
-    $con = mysql_connect($server,$username,$password );
+    require "config.inc.php";
+         
+    $con = mysql_connect($db_server,$db_user,$db_pass );
     if(!$con)
     {
         die('could not connect: ' .mysql_error());
@@ -16,7 +15,7 @@
     {
         //echo "connected to mySQL";
     }
-    $select = mysql_selectdb("leasehood", $con);
+    $select = mysql_selectdb($db_database, $con);
     if(!$select)
     {
         die('could not connect: ' .mysql_error());
@@ -27,16 +26,16 @@
     }
     
     
-    $sql="INSERT INTO APPLICATION (UserID, EarlyMoveIn, LateMoveIn, IsADA, IsSmokingRequired, SecondaryOccupantFName, SecondaryOccupantLName, SecondaryOccupantAge, SecondaryOccupantRelationship)
+     
+    $sql="INSERT INTO APPLICATION (NumOtherOccupants,SecondaryOccupantFName,UserID, EarlyMoveIn, LateMoveIn, IsADA, IsSmokingRequired, SecondaryOccupantLName, SecondaryOccupantAge, SecondaryOccupantRelationship,Pet1Type,Pet1Breed,Pet1Age,Pet1Weight,Pet2Type,Pet2Breed,Pet2Age,Pet2Weight,Pet3Type,Pet3Breed,Pet3Age,Pet3Weight)
     VALUES
-    ('$_SESSION[userID]','$_POST[earliestDate]','$_POST[latestDate]','$_POST[ADA]','$_POST[smoking]','$_POST[name1]','$_POST[name1]','$_POST[age1]','$_POST[relationship]')";
+    ('$_POST[numbOccupants]','$_POST[fName]','$_SESSION[userID]','$_POST[earliestDate]','$_POST[latestDate]','$_POST[ADA]','$_POST[smoking]','$_POST[lName]','$_POST[age]','$_POST[relationship]','$_POST[animalType]','$_POST[animalBreed]','$_POST[animalAge]','$_POST[animalWeight]','$_POST[animalType2]','$_POST[animalBreed2]','$_POST[animalAge2]','$_POST[animalWeight2]','$_POST[animalType3]','$_POST[animalBreed3]','$_POST[animalAge3]','$_POST[animalWeight3]')";
     
     if (!mysql_query($sql,$con))
     {
         die('Error: ' . mysql_error());
     }
-    echo "1 record added";
-    
+    mysql_close();
 
 
 
