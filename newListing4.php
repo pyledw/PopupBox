@@ -5,7 +5,7 @@
     <h1 class="Title">New House Listing - Applicant Screening Restrictions  </h1>
     <hr class="Title">
     <div id="mainContent">
-        <form class="formStyle" width="90%" height="90%" method="post" action="newListing5.php">
+        <form class="formStyle" width="90%" height="90%" method="post" action="newListing4Redirect.php">
           
             Will you allow a resident(s) with a criminal history?
             Yes<input type="radio" name="criminalHistory"  value="Y" />

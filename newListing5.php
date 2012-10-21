@@ -5,7 +5,7 @@
     <h1 class="Title">New House Listing - Certification</h1>
     <hr class="Title">
     <div id="mainContent">
-        <form class="formStyle" width="90%" height="90%" method="post" action="newListing6.php">
+        <form class="formStyle" width="90%" height="90%" method="post" action="newListing5Redirect.php">
 
             Your listing is now complete.  It will be submitted for verification 
             once your listing fee has been processed.  Please thoroughly review 

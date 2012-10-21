@@ -7,7 +7,7 @@
     <h1 class="Title">New House Listing - House Details</h1>
     <hr class="Title">
     <div id="mainContent">
-        <form class="formStyle" width="90%" height="90%" method="post" action="newListing2.php">
+        <form class="formStyle" width="90%" height="90%" method="post" action="newListing1Redirect.php">
                 Address:<input type="text" name="address">
                 City:<input type="text" name="city">
                 State:<input type="text" name="state">

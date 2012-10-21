@@ -5,7 +5,7 @@
     <h1 class="Title">New House Listing - Action Details</h1>
     <hr class="Title">
     <div id="mainContent">
-        <form class="formStyle" width="90%" height="90%" method="post" action="newListing4.php">
+        <form class="formStyle" width="90%" height="90%" method="post" action="newListing3Redirect.php">
           
             Date the property will first be available for occupancy:<input type="text" name="available" id="datepicker1" />
             Date you will begin accepting PFOs<input type="text" name="acceptingPFO" id="datepicker2" />
