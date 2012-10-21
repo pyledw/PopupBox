@@ -25,26 +25,42 @@ $title = "New Application #4";
         //echo "Selected Database";
     }
     
-    mysql_query("UPDATE APPLICATION SET ContactAddress='$_POST[address1]'
+    mysql_query("UPDATE APPLICATION SET HasCrimHist='$_POST[felony]'
     WHERE UserID = '$_SESSION[userID]'");
     
-    mysql_query("UPDATE APPLICATION SET ContactAddress='$_POST[city1]'
+    mysql_query("UPDATE APPLICATION SET HasEvictHist='$_POST[evicted]'
     WHERE UserID = '$_SESSION[userID]'");
     
-    mysql_query("UPDATE APPLICATION SET ContactAddress='$_POST[zipCode1]'
+    mysql_query("UPDATE APPLICATION SET HasBankruptHist='$_POST[bankruptcy]'
     WHERE UserID = '$_SESSION[userID]'");
     
-    mysql_query("UPDATE APPLICATION SET ContactAddress='$_POST[address1]'
+    mysql_query("UPDATE APPLICATION SET BankruptHistDesc='$_POST[ifYes]'
     WHERE UserID = '$_SESSION[userID]'");
+    
+    mysql_query("UPDATE APPLICATION SET TotalConsumerDebt='$_POST[devitCardDebt]'
+    WHERE UserID = '$_SESSION[userID]'");
+    
+    mysql_query("UPDATE APPLICATION SET MonthlyDebtPayment='$_POST[monthlyPayments]'
+    WHERE UserID = '$_SESSION[userID]'");
+    
+    mysql_query("UPDATE APPLICATION SET TotalLoanDebt='$_POST[loans]'
+    WHERE UserID = '$_SESSION[userID]'");
+    
+    mysql_query("UPDATE APPLICATION SET TotalAssets='$_POST[equity]'
+    WHERE UserID = '$_SESSION[userID]'");
+    
+    
 ?>
 <h1 class="Title">Other</h1>
 <hr class="Title" />
 <form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplication5.php">
     <h3>Emergency Contact</h3>
-    Name: <input type="text" name="name">
+    First Name: <input type="text" name="Fname">
+    Last Name: <input type="text" name="Lname">
     Address: <input type="text" name="address">
     City: <input type="text" name="city">
     State: <input type="text" name="state">
+    Sip: <input type="text" name="zip">
     Relation: <input type="text" name="relation">
     Home Phone:<input type="text" name="homePhone">
     Cell Phone: <input type="text" name="cellPhone">

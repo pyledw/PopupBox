@@ -119,7 +119,7 @@
                 City:<input type="text" name="city1">
                 State:<input type="text" name="state1">
                 Zip Code:<input  type="text" name="zipCode1">
-                <div id="renter" style="display: none;">
+                <div id="renter">
                 Landlords Name:<input type="text" name="landlordsName1">
                 Phone Number:<input type="text" name="phoneNumber1">
                 Reason For Leaving:<input type="text" name="reasonForLeaving1">
