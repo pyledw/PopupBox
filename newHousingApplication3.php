@@ -30,14 +30,110 @@
                 City:<input type="text" name="city1">
                 State:<input type="text" name="state1">
                 Zip Code:<input  type="text" name="zipCode1">
+                months lived there:<input  type="text" name="months1">
                 <div id="renter">
-                Landlords Name:<input type="text" name="landlordsName1">
+                Landlords First Name:<input type="text" name="landlordsFName1">
+                Landlords Last Name:<input type="text" name="landlordsLName1">
                 Phone Number:<input type="text" name="phoneNumber1">
                 Reason For Leaving:<input type="text" name="reasonForLeaving1">
                 Rent:<input type="text" name="rent1">
                 </div>
                 <div id="owner">
                 Mortgage:<input type="text" name="mortgage1">
+                </div>
+                <input id="number" value="1" type="text" name="number" style="display: block; visibility: hidden" />
+
+            </div>
+            <div class="formElement" id="formerHome2" style="display:none;">
+                
+                <h3>Former Residence #2</h3><br/>
+                Type Of Residence:<select id="select" name="type2">
+                    <option>
+                        Owned
+                    </option>
+                    <option>
+                        Rented
+                    </option>
+                    <option>
+                        Family Friend
+                    </option>
+                </select>
+                Address:<input title="THIS IS A TOOLTIP" type="text" name="address2">
+                City:<input type="text" name="city2">
+                State:<input type="text" name="state2">
+                Zip Code:<input  type="text" name="zipCode2">
+                months lived there:<input  type="text" name="months2">
+                <div id="renter2">
+                Landlords First Name:<input type="text" name="landlordsFName2">
+                Landlords Last Name:<input type="text" name="landlordsLName2">
+                Phone Number:<input type="text" name="phoneNumber2">
+                Reason For Leaving:<input type="text" name="reasonForLeaving2">
+                Rent:<input type="text" name="rent2">
+                </div>
+                <div id="owner2">
+                Mortgage:<input type="text" name="mortgage2">
+                </div>
+                
+            </div>
+            <div class="formElement" id="formerHome3" style="display:none;">
+                
+                <h3>Former Residence #3</h3><br/>
+                Type Of Residence:<select id="select" name="type3">
+                    <option>
+                        Owned
+                    </option>
+                    <option>
+                        Rented
+                    </option>
+                    <option>
+                        Family Friend
+                    </option>
+                </select>
+                Address:<input title="THIS IS A TOOLTIP" type="text" name="address3">
+                City:<input type="text" name="city3">
+                State:<input type="text" name="state3">
+                Zip Code:<input  type="text" name="zipCode3">
+                months lived there:<input  type="text" name="months3">
+                <div id="renter3">
+                Landlords First Name:<input type="text" name="landlordsFName3">
+                Landlords Last Name:<input type="text" name="landlordsLName3">
+                Phone Number:<input type="text" name="phoneNumber3">
+                Reason For Leaving:<input type="text" name="reasonForLeaving3">
+                Rent:<input type="text" name="rent3">
+                </div>
+                <div id="owner3">
+                Mortgage:<input type="text" name="mortgage3">
+                </div>
+
+            </div>
+            <div class="formElement" id="formerHome4" style="display:none;">
+                
+                <h3>Former Residence #4</h3><br/>
+                Type Of Residence:<select id="select" name="type4">
+                    <option>
+                        Owned
+                    </option>
+                    <option>
+                        Rented
+                    </option>
+                    <option>
+                        Family Friend
+                    </option>
+                </select>
+                Address:<input title="THIS IS A TOOLTIP" type="text" name="address4">
+                City:<input type="text" name="city4">
+                State:<input type="text" name="state4">
+                Zip Code:<input  type="text" name="zipCode4">
+                months lived there:<input  type="text" name="months4">
+                <div id="renter4">
+                Landlords First Name:<input type="text" name="landlordsFName4">
+                Landlords Last Name:<input type="text" name="landlordsLName4">
+                Phone Number:<input type="text" name="phoneNumber4">
+                Reason For Leaving:<input type="text" name="reasonForLeaving4">
+                Rent:<input type="text" name="rent4">
+                </div>
+                <div id="owner4">
+                Mortgage:<input type="text" name="mortgage4">
                 </div>
 
             </div>
@@ -76,46 +172,24 @@
 <script>
 var val1 = 1;
 $(document).ready(function(){
-  $("#addFormerHome").click(function(){
-      if(val1 < 3)
-          {
-            val1 = val1 + 1;
-            var formerHomeContent = '<div class="formElement" id="formerHome'+val1+'">\n\
-                         <h3>Former Residence #'+val1+'</h3><br/>\n\
-                        Type Of Residence:<select name="type' + val1 +'">\n\
-                            <option>Rented</option>\n\
-                            <option>Owned</option>\n\
-                            <option>Family Friend</option>\n\
-                        </select>\n\
-                        Address:<input type="text" name="address'+ val1 +'>\n\
-                        City:<input type="text" name="city'+val1+'">\n\
-                        State:<input type="text" name="state'+ val1 +'>\n\
-                        Zip Code:<input type="text" name="zipCode'+val1+'>\n\
-                        Landlords Name:<input type="text" name="landlordsName'+val1+'">\n\
-                        Phone Number:<input type="text" name="phoneNumber'+val1+'">\n\
-                        Reason For Leaving:<input type="text" name="reasonForLeaving'+val1+'">\n\
-                        Rent:<input type="text" name="rent'+val1+'">\n\
-                        Mortgage:<input type="text" name="mortgage'+val1+'"></div>';
-            $("#formerHomes").append(formerHomeContent);
-          }
-      else{
-          alert("Maximum number of homes met");
-      }
-  });
-  $("#removeFormerHome").click(function(){
-      if(val1 > 1)
-          {
-            $("#formerHome" + val1).remove();
-            val1 = val1 - 1;
-          }
-      else
-      {
-        alert("Must fill in at least one residence");
-      }
-  });
-});
-
-$(document).ready(function(){
+    if(val1 != 4 || val1!= 1)
+        {
+            $('#addFormerHome').click(function(){
+                val1 = val1 + 1;
+                $('#formerHome' + val1).show();
+                alert(val1);
+            })
+        
+        
+            $('#removeFormerHome').click(function(){
+                $('#formerHome' + val1).hide();
+                val1 = val1 - 1;
+                alert(val1);
+            })
+        }
+    
+        
+    
   $("#select").change(function(){
       var value = $("select").val();
       if(value == 'Owned')
