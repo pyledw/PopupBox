@@ -4,7 +4,7 @@
 ?>
 
 
-<?php echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';//This displayes all session variables?>
+<?php //echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';//This displayes all session variables?>
 
 <!--//Header to be displayed on all pages.  This will show deal with HTML head elements as well
 //as the Title, and CSS/Javascript References.  It also contains the navigation bar element.-->
