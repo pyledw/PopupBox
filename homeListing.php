@@ -1,13 +1,15 @@
 <?php
+    $listingID = $_GET[listingID];
     $title = 'Listing #HREDS2345'; //This will be retrieved from the element that was clicked on in the search
-    $listingID = '#HREDS2345'; //This will be populated from the data from the search screen
+    
     
     include 'Header.php';
+    echo $listingID;
 ?>
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
     <div id="mainContent">
         <!--Content will be retrieved via php.  This is just a template for user latter-->
-        <h1 class="Title">245 Brown Street - $HREDS2345</h1>
+        <h1 class="Title">This is the Title</h1>
         <hr class="Title" />
         <table id="houseListing">
             <tr>

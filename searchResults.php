@@ -8,11 +8,14 @@
         $searchTerm = $_COOKIE['search'];
 ?>
 <script>
+
+
 $(document).ready(function(){
-    $(".searchResult").click(function(){
-        $("#mainContent").append($(".idNumb").text());
+  $(".searchResult").click(function(){
+      var ID = "Default"
+      ID = $(".idNumb").val();
+      window.open("homeListing.php?listingID=" + ID,'_self');
   });
-     
 });
 
 
@@ -71,6 +74,7 @@ $(document).ready(function(){
             </tr>
         
             <tr class="searchResult">
+                
                 <td class="idNumb">
                     Test ID
                 </td>
@@ -110,7 +114,9 @@ $(document).ready(function(){
                 <td>
                     <font class="redTextArea">4Hrs</font>
                 </td>
+            
             </tr>
+   
             <tr class="searchResult">
                 
                 <td class="ID">
@@ -154,6 +160,8 @@ $(document).ready(function(){
                 </td>
             </tr>
     </table>
+        </button>
+    </form>
 </div>
 
 <?php

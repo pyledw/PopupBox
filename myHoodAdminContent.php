@@ -37,7 +37,7 @@
         while($row = mysql_fetch_array($result))
         {
             
-            echo $row[UserID] . " " . $row[UserName] .  " " . $row[FirstName] .  '<form method="post" action="approveUserAccount.php"><button type="submit">submit</button><input type="text" value="'. $row[UserID] .'" style="display:none;" name="accountID"/></form><br/>';
+            echo $row[UserID] . " " . $row[UserName] .  " " . $row[FirstName] .  '<form method="post" action="approveUserAccount.php"><button type="submit">Activate</button><input type="text" value="'. $row[UserID] .'" style="display:none;" name="accountID"/></form><br/>';
         }
     ?>
     <h1>
@@ -57,7 +57,7 @@
         while($row = mysql_fetch_array($result))
         {
             
-            echo $row[UserID] . " " . $row[ApplicationID] .  " " . $row[ContactFName] . '<form method="post" action="approveApplication.php"><button type="submit">submit</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form><br/>';
+            echo $row[UserID] . " " . $row[ApplicationID] .  " " . $row[ContactFName] . '<form method="post" action="approveApplication.php"><button type="submit">Activate</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form><br/>';
         }
 
     ?>
