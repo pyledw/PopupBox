@@ -6,7 +6,38 @@
     {
         header( 'Location: /loginRequired.php' ) ;
     }
-    
+    require "config.inc.php";
+         
+        $con = mysql_connect($db_server,$db_user,$db_pass );
+        if(!$con)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        else
+        {
+            //echo "connected to mySQL";
+        }
+        $select = mysql_selectdb($db_database, $con);
+        if(!$select)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        else
+        {
+            //echo "Selected Database";
+        }
+        $result = mysql_query("SELECT * FROM APPLICATION
+            WHERE UserID ='" . $_SESSION[userID] . "'");
+        
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        $row = mysql_fetch_array($result);
+        //Will eventually test to see if the applicaiton was compleate, and go back to the next needed page.
+        
+
 //echo $userType;
 ?>   
 <h1 class="Title" >New Housing Application Continued</h1>
@@ -16,56 +47,56 @@
         <div id="employers">
             <div class="formElement" id="employer1">
                 Current Employer</br>
-                Employer: <input type="text" name="employerName1" />
-                Supervisor First Name: <input type="text" name="superVisorFName1" /><br/>
-                Supervisor Last Name: <input type="text" name="superVisorLName1" /><br/>
-                Supervisor Phone: <input type="text" name="superVisorPhone1" />
-                Position Held: <input type="text" name="position1" /><br/>
-                Months Employed: <input type="text" name="monthsEmployed1" />
-                Annual Salary: <input type="text" name="annualSalary1" />
+                Employer: <input type="text" name="employerName1" value="<?php echo $row[CurrentEmployerName]?>" />
+                Supervisor First Name: <input type="text" name="superVisorFName1" value="<?php echo $row[CurrentSupFName]?>" /><br/>
+                Supervisor Last Name: <input type="text" name="superVisorLName1" value="<?php echo $row[CurentSupLName]?>"/><br/>
+                Supervisor Phone: <input type="text" name="superVisorPhone1" value="<?php echo $row[CurrentSupPhone]?>"/>
+                Position Held: <input type="text" name="position1" value="<?php echo $row[CurrentPositionName]?>"/><br/>
+                Months Employed: <input type="text" name="monthsEmployed1" value="<?php echo $row[CurrentMonthsEmployed]?>"/>
+                Annual Salary: <input type="text" name="annualSalary1" value="<?php echo $row[CurrentAnnualSalary]?>"/>
             </div>
             
-            <div class="formElement" id="employer2" style="display:none;">
+            <div class="formElement" id="employer2">
                 Employer #1</br>
-                Employer: <input type="text" name="employerName2" />
-                Supervisor First Name: <input type="text" name="superVisorFName2" /><br/>
-                Supervisor Last Name: <input type="text" name="superVisorLName2" /><br/>
-                Supervisor Phone: <input type="text" name="superVisorPhone2" />
-                Position Held: <input type="text" name="position2" /><br/>
-                Months Employed: <input type="text" name="monthsEmployed2" />
-                Annual Salary: <input type="text" name="annualSalary2" />
+                Employer: <input type="text" name="employerName2" value="<?php echo $row[PrevEmployerName]?>"/>
+                Supervisor First Name: <input type="text" name="superVisorFName2" value="<?php echo $row[PrevSupFName]?>"/><br/>
+                Supervisor Last Name: <input type="text" name="superVisorLName2" value="<?php echo $row[PrevSupLName]?>"/><br/>
+                Supervisor Phone: <input type="text" name="superVisorPhone2" value="<?php echo $row[PrevSupPhone]?>"/>
+                Position Held: <input type="text" name="position2" value="<?php echo $row[PrevPositionName]?>"/><br/>
+                Months Employed: <input type="text" name="monthsEmployed2" value="<?php echo $row[PrevMonthsEmployed]?>"/>
+                Annual Salary: <input type="text" name="annualSalary2" value="<?php echo $row[PrevAnnualSalary]?>"/>
             </div>
         </div>
-        <font class="button" id="addEmployer">Add Employer</font>
-        <font class="button"  id="removeEmployer">Remove Employer</font><br/><br/>
+        <!--<font class="button" id="addEmployer">Add Employer</font>
+        <font class="button"  id="removeEmployer">Remove Employer</font><br/><br/>-->
         
         <div id="coAppEmployers">
-            <div class="formElement" id="coAppEmployer1" style="display: none;">
+            <div class="formElement" id="coAppEmployer1">
                 Co Applicant Employer #1</br>
-                Employer: <input type="text" name="coAppEmployerName1" />
-                Supervisor First Name: <input type="text" name="coAppSuperVisorFName1" /><br/>
-                Supervisor Last Name: <input type="text" name="coAppSuperVisorLName1" /><br/>
-                Supervisor Phone: <input type="text" name="coAppSuperVisorPhone1" />
-                Position Held: <input type="text" name="coAppPosition1" /><br/>
-                Months Employed: <input type="text" name="coAppMonthsEmployed1" />
-                Annual Salary: <input type="text" name="coAppAnnualSalary1" />
+                Employer: <input type="text" name="coAppEmployerName1" value="<?php echo $row[CoAppEmployerName]?>"/>
+                Supervisor First Name: <input type="text" name="coAppSuperVisorFName1" value="<?php echo $row[CoAppSupFName]?>"/><br/>
+                Supervisor Last Name: <input type="text" name="coAppSuperVisorLName1" value="<?php echo $row[CoAppSupLName]?>"/><br/>
+                Supervisor Phone: <input type="text" name="coAppSuperVisorPhone1" value="<?php echo $row[CoAppSupPhone]?>"/>
+                Position Held: <input type="text" name="coAppPosition1" value="<?php echo $row[CoAppPositionName]?>"/><br/>
+                Months Employed: <input type="text" name="coAppMonthsEmployed1" value="<?php echo $row[CoAppMonthsEmployed]?>"/>
+                Annual Salary: <input type="text" name="coAppAnnualSalary1" value="<?php echo $row[CoAppAnnualSalary]?>"/>
 
             </div>
-            <div class="formElement" id="coAppEmployer2" style="display: none;">
+            <!--<div class="formElement" id="coAppEmployer2" style="display: none;">
                 Co Applicant Employer #2</br>
-                Employer: <input type="text" name="coAppEmployerName2" />
-                Supervisor First Name: <input type="text" name="coAppSuperVisorFName2" /><br/>
-                Supervisor Last Name: <input type="text" name="coAppSuperVisorLName2" /><br/>
-                Supervisor Phone: <input type="text" name="coAppSuperVisorPhone2" />
-                Position Held: <input type="text" name="coAppPosition2" /><br/>
-                Months Employed: <input type="text" name="coAppMonthsEmployed2" />
-                Annual Salary: <input type="text" name="coAppAnnualSalary2" />
+                Employer: <input type="text" name="coAppEmployerName2" value="<?php echo $row[EarlyMoveIn]?>"/>
+                Supervisor First Name: <input type="text" name="coAppSuperVisorFName2" value="<?php echo $row[EarlyMoveIn]?>"/><br/>
+                Supervisor Last Name: <input type="text" name="coAppSuperVisorLName2" value="<?php echo $row[EarlyMoveIn]?>"/><br/>
+                Supervisor Phone: <input type="text" name="coAppSuperVisorPhone2" value="<?php echo $row[EarlyMoveIn]?>"/>
+                Position Held: <input type="text" name="coAppPosition2" value="<?php echo $row[EarlyMoveIn]?>"/><br/>
+                Months Employed: <input type="text" name="coAppMonthsEmployed2" value="<?php echo $row[EarlyMoveIn]?>"/>
+                Annual Salary: <input type="text" name="coAppAnnualSalary2" value="<?php echo $row[EarlyMoveIn]?>"/>
 
-            </div>
+            </div>-->
         </div>
         
-        <font class="button" id="addCoAppEmployer">Add Co Applicant Employer</font>
-        <font class="button"  id="removeCoAppEmployer">Remove Co Applicant Employer</font><br/><br/>
+        <!--<font class="button" id="addCoAppEmployer">Add Co Applicant Employer</font>
+        <font class="button"  id="removeCoAppEmployer">Remove Co Applicant Employer</font><br/><br/>-->
         
         <!--<font class="button" id="addCoAppEmployer">Add Co Applicant Employer</font>
         <font class="button"  id="removeCoAppEmployer">Remove Co Applicant Employer</font><br/><br/>-->

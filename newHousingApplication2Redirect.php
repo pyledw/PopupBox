@@ -71,7 +71,7 @@ session_start();
         WHERE UserID = '$_SESSION[userID]'");
     }
     //Co Applicant Employers
-    if($_POST[coAppEmploterName1] != '')
+    if($_POST[coAppEmployerName1] != '')
     {
         mysql_query("UPDATE APPLICATION SET CoAppEmployerName='$_POST[coAppEmployerName1]'
         WHERE UserID = '$_SESSION[userID]'");
