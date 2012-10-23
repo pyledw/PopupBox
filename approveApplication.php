@@ -29,5 +29,6 @@ require "config.inc.php";
         mysql_query("UPDATE APPLICATION SET IsApproved='Y'
         WHERE ApplicationID = '$_POST[ApplicationID]'");
         
+        header( 'Location: /myHood.php' );
         
 ?>

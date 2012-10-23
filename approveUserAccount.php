@@ -29,5 +29,6 @@ require "config.inc.php";
         mysql_query("UPDATE USER SET IsApproved='Y'
         WHERE UserID = '$_POST[accountID]'");
         
+        header( 'Location: /myHood.php' );
         
 ?>

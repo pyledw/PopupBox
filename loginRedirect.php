@@ -41,6 +41,12 @@
             $userID = $row['UserID'];
             //Testing to make sure it is a valid name
             //This will be where we check to see if credentails are correct
+            if($row[IsApproved] == "N")
+            {
+                header( 'Location: /accountNotActive.php' );
+            }
+            else
+            {
             if($userPassword != $row['Password'])
             {
                 
@@ -56,6 +62,7 @@
                 $_SESSION['user'] = $myName;
                 $_SESSION['type'] = $userType;
                 header( 'Location: /myHood.php' );
+            }
             }
         }
         
