@@ -6,14 +6,41 @@
             header( 'Location: /searchHomes.php' );
         }
         $searchTerm = $_COOKIE['search'];
+        
+        
+        
 ?>
+
+<?php
+        //Connecting to the sql database
+        $con = mysql_connect($db_server,$db_user,$db_pass );
+        if(!$con)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        else
+        {
+        //echo "connected to mySQL";
+        }
+        
+        //Selecting the Database
+        $select = mysql_selectdb($db_database, $con);
+        if(!$select)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+
+    ?>
+
+
 <script>
 
 
 $(document).ready(function(){
   $(".searchResult").click(function(){
       var ID = "Default"
-      ID = $(".idNumb").val();
+      ID = $(this).attr("value");
       window.open("homeListing.php?listingID=" + ID,'_self');
   });
 });
@@ -29,6 +56,7 @@ $(document).ready(function(){
         echo "Searched by: ";
         echo $searchTerm;
     ?>
+    
     <table id="searchResults">
         
             <tr class="searchHeader">
@@ -73,92 +101,67 @@ $(document).ready(function(){
                 </th>
             </tr>
         
-            <tr class="searchResult">
+            <?php
+        //Query the database for only the row containing that users information
+        $result = mysql_query("SELECT * FROM PROPERTY
+            ");
+        
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        //fetching the array of query elements
+        while($row = mysql_fetch_array($result))
+        {
+            
+            echo '<tr class="searchResult" value="'.$row[PropertyID].'">
                 
                 <td class="idNumb">
-                    Test ID
+                    '.$row[PropertyID].'
                 </td>
                 <td>
-                    Media
+                    '.$row[Media].'
                 </td>
                 <td>
-                    105 riverchase dr
+                    '.$row[Address].'
                 </td>
                 <td>
-                    37221
+                    '.$row[Zip].'
                 </td>
                 <td>
-                    Nashville
+                    '.$row[City].'
                 </td>
                 <td>
-                    1,200
+                    '.$row[SQ].'
                 </td>
                 <td>
-                    4BR 3BA
+                    '.$row[Bedroom].' '.$row[Bath].'
                 </td>
                 <td>
-                    900
+                    '.$row[StartingBod].'
                 </td>
                 <td>
-                    1,400
+                    '.$row[RentNowRate].'
                 </td>
                 <td>
-                    Dogs
+                    '.$row[AllowDogs].'
                 </td>
                 <td>
-                    No
+                    '.$row[AllowSmoking].'
                 </td>
                 <td>
-                    09/16/2014
+                    '.$row[DateTimeOpenHouse1].' <br/>
+                    '.$row[DateTimeOpenHouse2].'    
                 </td>
                 <td>
-                    <font class="redTextArea">4Hrs</font>
+                    <font class="redTextArea">'. date("Y-m-d") . " <br/><br/> " . $row[DatePFOEndAccept].'</font>
                 </td>
             
             </tr>
-   
-            <tr class="searchResult">
-                
-                <td class="ID">
-                    Test ID
-                </td>
-                <td>
-                    MEdia
-                </td>
-                <td>
-                    105 riverchase dr
-                </td>
-                <td>
-                    37221
-                </td>
-                <td>
-                    Nashville
-                </td>
-                <td>
-                    1,200
-                </td>
-                <td>
-                    4BR 3BA
-                </td>
-                <td>
-                    900
-                </td>
-                <td>
-                    1,400
-                </td>
-                <td>
-                    Dogs
-                </td>
-                <td>
-                    No
-                </td>
-                <td>
-                    09/16/2014
-                </td>
-                <td>
-                    <font class="redTextArea">4Hrs</font>
-                </td>
-            </tr>
+   ';
+        }
+    ?>
     </table>
         </button>
     </form>

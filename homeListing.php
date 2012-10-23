@@ -4,17 +4,46 @@
     
     
     include 'Header.php';
-    echo $listingID;
+
+    
+
+        //Connecting to the sql database
+        $con = mysql_connect($db_server,$db_user,$db_pass );
+        if(!$con)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        else
+        {
+        //echo "connected to mySQL";
+        }
+        
+        //Selecting the Database
+        $select = mysql_selectdb($db_database, $con);
+        if(!$select)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        $result = mysql_query("SELECT * FROM PROPERTY
+           WHERE PropertyID = $listingID ");
+        
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        $row = mysql_fetch_array($result);
 ?>
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
     <div id="mainContent">
         <!--Content will be retrieved via php.  This is just a template for user latter-->
-        <h1 class="Title">This is the Title</h1>
+        <h1 class="Title"><?php echo $row[Address] . " - " . $row[PropertyID] ?></h1>
         <hr class="Title" />
         <table id="houseListing">
             <tr>
                 <td colspan="3" width="600px">
-                    245 Brown Street - HREDS2345  <a href="#">Map It</a> - Print Brochure
+                    <?php echo $row[Address] . " - " . $row[PropertyID] ?>  <a href="Http://www.google.com/maps?q=<?php echo $row[Address] . " " . $row[City] . " " . $row[State] ?>">Map It</a> - Print Brochure
                 </td>
                 <td colspan="1" class="greyBackground">
                     Current Rental Rate: $900
@@ -22,34 +51,32 @@
             </tr>
             <tr>
                 <td>
-                    <img class="mainPhoto" src="#" alt="Main Photo">
+                    <img class="mainPhoto" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo">
                 </td>
                     
                 <td>
-                    <img class="thumbs" src="#" alt="thumbnail">
-                    <img class="thumbs" src="#" alt="thumbnail">
-                    <img class="thumbs" src="#" alt="thumbnail"><br/>
-                    <img class="thumbs" src="#" alt="thumbnail">
-                    <img class="thumbs" src="#" alt="thumbnail">
-                    <img class="thumbs" src="#" alt="thumbnail"><br/>
-                    <img class="thumbs" src="#" alt="thumbnail">
-                    <img class="thumbs" src="#" alt="thumbnail">
+                    <img class="thumbs" src="<?php echo $row[ImagePathKitchenThumb]; ?>" alt="thumbnail">
+                    <img class="thumbs" src="<?php echo $row[ImagePathMainBathThumb]; ?>" alt="thumbnail">
+                    <img class="thumbs" src="<?php echo $row[ImagePath4Thumb]; ?>" alt="thumbnail"><br/>
+                    <img class="thumbs" src="<?php echo $row[ImagePath5Thumb]; ?>" alt="thumbnail">
+                    <img class="thumbs" src="<?php echo $row[ImagePath6Thumb]; ?>" alt="thumbnail">
+                    <img class="thumbs" src="<?php echo $row[ImagePath7Thumb]; ?>" alt="thumbnail"><br/>
                 </td>
                 <td class="alignCenter">
-                    <a class="button" href="#">Move in Now $850</a><br/><br/>
+                    <a class="button" href="#">Move in Now <?php echo "$" . $row[RentNowRate] ?></a><br/><br/>
                     <a class="button" href="#">Save this home</a><br/><br/>
                     <a class="button" href="#">Print Flyer</a><br/><br/>
                 </td>
                 <td>
-                    BR: 4 BA:3<br/>
-                    SQ: 1,500<br/>
-                    AC: Window Heat: Stove<br/>
-                    Pets: None
-                    Deposit: $740
-                    Open House 1: 09/24/3323
-                    Open House 2: 04/34/2425
-                    Listing End: 05/04/2345
-                    Date Available: 03/24/2012
+                    BR: <?php echo $row[Bedrooms] ?> BA: <?php echo $row[Bath] ?><br/>
+                    SQ: <?php echo $row[SQ] ?><br/>
+                    AC: <?php echo $row[AC] ?> Heat: <?php echo $row[Heat] ?><br/>
+                    Pets: <?php echo $row[AllowDog] ?><br/>
+                    Deposit: <?php echo "$".$row[RequiredDeposit] ?><br/>
+                    Open House 1: <?php echo $row[DateTimeOpenHouse1] ?><br/>
+                    Open House 2: <?php echo $row[DateTimeOpenHouse2] ?><br/>
+                    Listing End: <?php echo $row[DatePFOEndAccept] ?><br/>
+                    Date Available: <?php echo $row[DateAvailable] ?><br/>
                 </td>
             </tr>
             <tr>
