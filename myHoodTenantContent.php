@@ -2,7 +2,7 @@
     <h1>Application Status</h1>
     <?php
         //check for application status return color and information
-    
+        
         require "config.inc.php";
          
         $con = mysql_connect($db_server,$db_user,$db_pass );
@@ -23,16 +23,41 @@
         {
             //echo "Selected Database";
         }
+        $result = mysql_query("SELECT * FROM APPLICATION
+            WHERE UserID ='" . $_SESSION[userID] . "'");
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        $isapproved = false;
+        $row = mysql_fetch_array($result);
+        
+        //echo $row['IsApproved'];
+        //echo $row['UserID'];
+        
+        if($row['IsApproved'] == 'Y')
+        {
+            echo '
+        <div>
+            <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:green;height:20px;">
+
+            </div>
+            You are free to submit a Proposal for Occupancy.
+        </div>';
+        }
+        else
+        {
+            echo '
+            <div>
+                <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:red;height:20px;">
+
+                </div>
+                Your application has not yet been approved.  An administrator will review your application and approve it shortly.
+            </div>';
+        }
+            
         
     ?>
-    //Returned information based off of application status
-    <div>
-        <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:green;height:20px;">
-            
-        </div>
-        You are free to submit a Proposal for Occupancy or Your Proposal for Occupancy has been submitted.
-    </div>
-    <br/>
     <br/>
     Based on your application, you are most likely to be considered for the following maximum monthly rent :
     <font class="tanTextArea">Number would go here</font>

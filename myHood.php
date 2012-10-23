@@ -20,6 +20,10 @@
     {
         include 'myHoodLandlordContent.php';
     }
+    if($userType == "3")
+    {
+        include 'myHoodAdminContent.php';
+    }
 ?>
     
 
