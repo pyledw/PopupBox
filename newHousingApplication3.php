@@ -53,11 +53,43 @@
         <div id="formerHomes">
             
             <?php
-            if(mysql_num_fields($result) == 0)
+            if(mysql_num_rows($result) > 0)
             {
+                $intCount=1;
                 while($row = mysql_fetch_array($result))
                     {
-                       
+                       echo '<div class="formElement" id="formerHome1">              
+                    <h3>Former Residence</h3><br/>
+                    Type Of Residence:<select id="select" name="type1">
+                        <option>
+                            Owned
+                        </option>
+                        <option>
+                            Rented
+                        </option>
+                        <option>
+                            Family Friend
+                        </option>
+                    </select>
+                    Address:<input type="text" name="address1" value="'.$row[PrevStreetAddress].'"/>
+                    City:<input type="text" name="city1" value="'.$row[PrevCity].'" />
+                    State:<input type="text" name="state1" value="'.$row[PrevState].'"/>
+                    Zip Code:<input  type="text" name="zipCode1" value="'.$row[PrevZip].'"/>
+                    months lived there:<input  type="text" name="months1" value="'.$row[TotalMonths].'"/>
+                    <div id="renter">
+                    Landlords First Name:<input type="text" name="landlordsFName1" value="'.$row[PrevLandLordFName].'"/>
+                    Landlords Last Name:<input type="text" name="landlordsLName1" value="'.$row[PrevLandLordLName].'"/>
+                    Phone Number:<input type="text" name="phoneNumber1" value="'.$row[PrevPhone].'"/>
+                    Reason For Leaving:<input type="text" name="reasonForLeaving1" value="'.$row[ReasonForLeaving].'"/>
+                    Rent:<input type="text" name="rent1" value="'.$row[PrevMonthlyRent].'"/>
+                    </div>
+                    <div id="owner">
+                    Mortgage:<input type="text" name="mortgage1" value="'.$row[PrevStreetAddress].'"/>
+                    </div>
+                    <input id="number" value="1" type="text" name="number" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
+
+                </div>';
+                       $intCount += 1;
                     }
             }
             else
@@ -90,8 +122,6 @@
                 <div id="owner">
                 Mortgage:<input type="text" name="mortgage1"/>
                 </div>
-                <input id="number" value="1" type="text" name="number" style="display: block; visibility: hidden" />
-
             </div>
             <div class="formElement" id="formerHome2" style="display:none;">
                 
