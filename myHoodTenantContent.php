@@ -52,7 +52,8 @@
                 <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:red;height:20px;">
 
                 </div>
-                Your application has not yet been approved.  An administrator will review your application and approve it shortly.
+                Your application has not yet been approved.  An administrator will review your application and approve it shortly.<br />
+                <a href="editApplication.php">Edit Your Application</a>
             </div>';
         }
             
