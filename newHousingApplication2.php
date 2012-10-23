@@ -2,6 +2,10 @@
     $title = "New Housing Application";
     include 'Header.php';
     include "formElements.php";
+    if(!isset($_SESSION[userID]))
+    {
+        header( 'Location: /loginRequired.php' ) ;
+    }
     
 //echo $userType;
 ?>   

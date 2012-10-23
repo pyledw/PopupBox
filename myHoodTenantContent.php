@@ -2,6 +2,28 @@
     <h1>Application Status</h1>
     <?php
         //check for application status return color and information
+    
+        require "config.inc.php";
+         
+        $con = mysql_connect($db_server,$db_user,$db_pass );
+        if(!$con)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        else
+        {
+            //echo "connected to mySQL";
+        }
+        $select = mysql_selectdb($db_database, $con);
+        if(!$select)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        else
+        {
+            //echo "Selected Database";
+        }
+        
     ?>
     //Returned information based off of application status
     <div>

@@ -3,7 +3,10 @@
     include 'Header.php';
     include "formElements.php";
     
-    
+    if(!isset($_SESSION[userID]))
+    {
+        header( 'Location: /loginRequired.php' ) ;
+    }
     
     ?>
 <h1 class="Title">Application Page #3</h1>
