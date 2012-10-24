@@ -28,12 +28,30 @@
         {
             die('could not connect: ' .mysql_error());
         }
-        $isapproved = false;
+        
         $row = mysql_fetch_array($result);
+        
+        
         //Will eventually test to see if the applicaiton was compleate, and go back to the next needed page.
         
         
         
-        header( 'Location: /newHousingApplication.php' );
+        if($row[PageCompleted] == "1")
+        {
+            header( "Location: /newHousingApplication.php" );
+        }
+        else
+        {
+            echo $row[PageCompleted];
+            
+            if($row[PageCompleted] == "6")
+            {
+                header( "Location: /newHousingApplication.php" );
+            }
+            else
+            {
+               header( "Location: /newHousingApplication".$row[PageCompleted] .".php" );
+            }
+        }
 
 ?>

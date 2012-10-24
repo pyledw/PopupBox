@@ -21,6 +21,12 @@ session_start();
     {
         //echo "Selected Database";
     }
+    
+    $result = mysql_query("SELECT * FROM APPLICATION
+            WHERE UserID ='" . $_SESSION[userID] . "'");
+
+        
+    $row = mysql_fetch_array($result);
 
     if($_POST[employerName1] != '')
     {
@@ -119,6 +125,11 @@ session_start();
     WHERE UserID = '$_SESSION[userID]'");
      */
     
+    if($row[PageCompleated] != '6')
+    {
+        mysql_query("UPDATE APPLICATION SET PageCompleted='3'
+            WHERE UserID = '$_SESSION[userID]'");
+    }
     
     mysql_close();
     

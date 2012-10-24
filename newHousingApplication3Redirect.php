@@ -23,17 +23,24 @@
     }
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='$_SESSION[userID]'");
-        if(!$result)
-        {
-            die('could not connect: ' .mysql_error());
-        }
+    $row = mysql_fetch_array($result);
+    if($row[PageCompleate != "6"])
+    {
+        mysql_query("UPDATE APPLICATION SET PageCompleted='4'
+            WHERE UserID = '$_SESSION[userID]'");
+    }
+    
+    $result = mysql_query("SELECT * FROM APPLICATION
+            WHERE UserID ='$_SESSION[userID]'");
         
         //fetching the array of query elements
         while($row = mysql_fetch_array($result))
         {
             $appID = $row['ApplicationID'];
         }
-
+    
+    
+    
    
        
      if($_POST[address1] != "")
@@ -108,6 +115,8 @@
     
     mysql_query("UPDATE APPLICATION SET TotalAssets='$_POST[equity]'
     WHERE UserID = '$_SESSION[userID]'");
+    
+    
 
     mysql_close();
     

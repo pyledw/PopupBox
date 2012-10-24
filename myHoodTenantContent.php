@@ -42,19 +42,34 @@
             <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:green;height:20px;">
 
             </div>
-            You are free to submit a Proposal for Occupancy.
+            You are free to submit a Proposal for Occupancy.<br/>
+            <a href="editApplication.php">Edit Your Application</a>
         </div>';
         }
         else
         {
-            echo '
-            <div>
-                <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:red;height:20px;">
+            if($row[PageCompleted] == "6")
+            {
+                echo '
+                <div>
+                    <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:red;height:20px;">
 
-                </div>
-                Your application has not yet been approved.  An administrator will review your application and approve it shortly.<br />
-                <a href="editApplication.php">Edit Your Application</a>
-            </div>';
+                    </div>
+                    Your application has not yet been approved.  An administrator will review your application and approve it shortly.<br />
+                    <a href="editApplication.php">Edit Your Application</a>
+                </div>';
+            }
+            else
+            {
+                echo '
+                <div>
+                    <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:yellow;height:20px;">
+
+                    </div>
+                    Your application has not yet been compleated, please click to finish your application<br />
+                    <a href="editApplication.php">Edit Your Application</a>
+                </div>';
+            }
         }
             
         

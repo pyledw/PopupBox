@@ -22,7 +22,13 @@
         
     }
     
-    //Updating teh Emergency contacts
+    $result = mysql_query("SELECT * FROM APPLICATION
+            WHERE UserID ='" . $_SESSION[userID] . "'");
+
+        
+    $row = mysql_fetch_array($result);
+    
+    //Updating the Emergency contacts
     
     mysql_query("UPDATE APPLICATION SET ContactFName='$_POST[Fname]'
     WHERE UserID = '$_SESSION[userID]'");
@@ -140,6 +146,12 @@
     
     mysql_query("UPDATE APPLICATION SET Vehicle4LicenseState='$_POST[carPlateState4]'
     WHERE UserID = '$_SESSION[userID]'");
+    
+    if($row[PageCompleated] != '6')
+    {
+        mysql_query("UPDATE APPLICATION SET PageCompleted='5'
+            WHERE UserID = '$_SESSION[userID]'");
+    }
     
     mysql_close();
     

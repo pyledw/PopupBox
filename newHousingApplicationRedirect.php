@@ -24,6 +24,8 @@ session_start();
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='" . $_SESSION[userID] . "'");
 
+        
+    $row = mysql_fetch_array($result);
     
     if(mysql_num_rows($result) == 0)
     {
@@ -88,6 +90,12 @@ session_start();
         mysql_query("UPDATE APPLICATION SET Pet4Age='$_POST[animalAge4]'
             WHERE UserID = '$_SESSION[userID]'");
         mysql_query("UPDATE APPLICATION SET Pet4Weight='$_POST[animalWeight4]'
+            WHERE UserID = '$_SESSION[userID]'");
+    }
+    echo $row[PageCompleted];
+    if($row[PageCompleated] != "6")
+    {
+        mysql_query("UPDATE APPLICATION SET PageCompleted='2'
             WHERE UserID = '$_SESSION[userID]'");
     }
     
