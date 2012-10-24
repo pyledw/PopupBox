@@ -42,7 +42,7 @@
         }
         else
         {
-            echo $row[PageCompleted];
+            //echo $row[PageCompleted];
             
             if($row[PageCompleted] == "6")
             {
