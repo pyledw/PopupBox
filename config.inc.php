@@ -9,6 +9,12 @@ $db_database = 'leasehood';
 
 
 function get_dbconn() {
+    
+    $db_user = 'leasehood';
+    $db_pass = 'sunlight blanket floating change';
+    $db_server = '199.115.231.216';
+    $db_database = 'leasehood';
+
     $con = mysql_connect($db_server,$db_user,$db_pass );
     if(!$con)
     {
@@ -29,7 +35,8 @@ function get_dbconn() {
     {
         //echo "Selected Database";
     }
-    return $con;
+    $connectionInfo = array($con,$select);
+    return $connectionInfo;
 }
 
 
