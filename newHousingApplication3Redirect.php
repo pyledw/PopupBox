@@ -27,11 +27,13 @@
         }
     
     
-    
-   
-       
-     if($_POST[address1] != "")
+     
+     for($x = 0;$x < 4; ++$x)
      {
+         if($_POST[address.$x] != "")
+     {
+         if($_POST[number.$x] == '')
+         {
             $sql="INSERT INTO PREVIOUSRESIDENCE (ApplicationID,PrevStreetAddress,PrevCity,PrevState,PrevZip,PrevLandLordFName,PrevLandLordLName,PrevPhone,ReasonForLeaving,TypeOfResidence,PrevMonthlyRent,TotalMonths)
             VALUES
             ('$appID','$_POST[address1]','$_POST[city1]','$_POST[state1]','$_POST[zipCode1]','$_POST[landlordsFName1]','$_POST[landlordsLName1]','$_POST[phoneNumber1]','$_POST[reasonForLeaving1]','$_POST[type1]','$_POST[rent1]','$_POST[months1]')";
@@ -40,6 +42,95 @@
             {
                 die('Error: ' . mysql_error());
             }
+         }
+     
+         else
+         {
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevStreetAddress='$_POST[address1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevCity='$_POST[city1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevState='$_POST[state1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevZip='$_POST[zipCode1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevLandLordFName='$_POST[landlordsFName1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevLandLordLName='$_POST[landlordsLName1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevPhone='$_POST[phoneNumber1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET ReasonForLeaving='$_POST[reasonForLeaving1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET TypeOfResidence='$_POST[type1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevMonthlyRent='$_POST[rent1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET TotalMonths='$_POST[months1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+         }
+     }
+     }
+        
+     if($_POST[address1] != "")
+     {
+         if($_POST[number1 == ''])
+         {
+            $sql="INSERT INTO PREVIOUSRESIDENCE (ApplicationID,PrevStreetAddress,PrevCity,PrevState,PrevZip,PrevLandLordFName,PrevLandLordLName,PrevPhone,ReasonForLeaving,TypeOfResidence,PrevMonthlyRent,TotalMonths)
+            VALUES
+            ('$appID','$_POST[address1]','$_POST[city1]','$_POST[state1]','$_POST[zipCode1]','$_POST[landlordsFName1]','$_POST[landlordsLName1]','$_POST[phoneNumber1]','$_POST[reasonForLeaving1]','$_POST[type1]','$_POST[rent1]','$_POST[months1]')";
+
+            if (!mysql_query($sql,$con))
+            {
+                die('Error: ' . mysql_error());
+            }
+         }
+     
+         else
+         {
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevStreetAddress='$_POST[address1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevCity='$_POST[city1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevState='$_POST[state1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevZip='$_POST[zipCode1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevLandLordFName='$_POST[landlordsFName1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevLandLordLName='$_POST[landlordsLName1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevPhone='$_POST[phoneNumber1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET ReasonForLeaving='$_POST[reasonForLeaving1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET TypeOfResidence='$_POST[type1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevMonthlyRent='$_POST[rent1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+             
+             mysql_query("UPDATE PREVIOUSRESIDENCE SET TotalMonths='$_POST[months1]'
+                                    WHERE ApplicationID = '$_SESSION[number1]'");
+         }
      }
     
     if($_POST[address2] != "")
