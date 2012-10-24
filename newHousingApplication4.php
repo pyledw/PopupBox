@@ -13,6 +13,7 @@ $title = "New Application #4";
 ?>
 <h1 class="Title">Other</h1>
 <hr class="Title" />
+<div id="mainContent">
 <form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplication4Redirect.php">
     <h3>Emergency Contact</h3>
     First Name: <input type="text" name="Fname">
@@ -45,6 +46,7 @@ $title = "New Application #4";
     
     
 </form>
+</div>
 <?php
     include 'Footer.php';
 ?>
