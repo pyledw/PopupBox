@@ -37,58 +37,83 @@ session_start();
         {
             die('Error: ' . mysql_error());
         }
-    } 
+    }
+    
     else
     {
     
         mysql_query("UPDATE APPLICATION SET NumOtherOccupants='$_POST[numbOccupants]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET SecondaryOccupantFName='$_POST[fName]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET EarlyMoveIn='$_POST[earliestDate]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET LateMoveIn='$_POST[latestDate]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET IsADA='$_POST[ADA]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET IsSmokingRequired='$_POST[smoking]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET SecondaryOccupantLName='$_POST[lName]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET SecondaryOccupantAge='$_POST[age]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET SecondaryOccupantRelationship='$_POST[relationship]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet1Type='$_POST[animalType]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet1Breed='$_POST[animalBreed]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet1Age='$_POST[animalAge]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet1Weight='$_POST[animalWeight]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet2Type='$_POST[animalType2]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet2Breed='$_POST[animalBreed2]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet2Age='$_POST[animalAge2]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet2Weight='$_POST[animalWeight2]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet3Type='$_POST[animalType3]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet3Breed='$_POST[animalBreed3]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet3Age='$_POST[animalAge3]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet3Weight='$_POST[animalWeight3]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet4Type='$_POST[animalType4]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet4Breed='$_POST[animalBreed4]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet4Age='$_POST[animalAge4]'
             WHERE UserID = '$_SESSION[userID]'");
+        
         mysql_query("UPDATE APPLICATION SET Pet4Weight='$_POST[animalWeight4]'
             WHERE UserID = '$_SESSION[userID]'");
     }

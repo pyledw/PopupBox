@@ -4,11 +4,8 @@ include 'Header.php';
 if(!isset($_SESSION[userID]))
 {
     header( 'Location: /loginRequired.php' ) ;
-    
-    
-    
-    
 }
+
 require "config.inc.php";
          
         $con = mysql_connect($db_server,$db_user,$db_pass );
@@ -211,6 +208,7 @@ $(document).ready(function(){
                alert("No more than 4 pets may be entered");
            }
   });
+  
   $("#removePet").click(function(){
       if(val2 > 1)
           {
