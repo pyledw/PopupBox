@@ -10,15 +10,15 @@
         <table border="0" align="left" >
             <tr>
                 <td>First Name: </td>
-                <td><input type="text" name="fname" size="15" maxlength="25"></td>
+                <td><input type="text" name="fname" size="15" maxlength="25"/></td>
             </tr>
             <tr>
                 <td>Last Name: </td>
-                <td><input type="text" name="lname" size="15" maxlength="25"</td>
+                <td><input type="text" name="lname" size="15" maxlength="25"/></td>
             </tr>
             <tr>
                 <td>Comments: </td>
-                <td><textarea name="comments" rows="6" cols="30" wrap="virtual" /></textarea></td>
+                <td><textarea name="comments" rows="6" cols="30" wrap="virtual"></textarea></td>
             </tr>
             <tr>
                 <td><input type="submit" align="center" value="Submit" />
