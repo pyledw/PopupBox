@@ -198,7 +198,7 @@ require "config.inc.php";
 var val2 = 1;
 $(document).ready(function(){
   $("#addPet").click(function(){
-      if(val2 < 4)
+      if(val2 < 3)
           {
               val2 += 1;
               $('#pet' + val2).show();
