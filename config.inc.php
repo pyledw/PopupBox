@@ -8,7 +8,7 @@ $db_server = '199.115.231.216';
 $db_database = 'leasehood';
 
 
-/*function get_dbconn() {
+function get_dbconn() {
     $con = mysql_connect($db_server,$db_user,$db_pass );
     if(!$con)
     {
@@ -31,5 +31,7 @@ $db_database = 'leasehood';
     }
     return $con;
 }
-*/
+
+
+
 ?>

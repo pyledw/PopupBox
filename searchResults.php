@@ -12,6 +12,7 @@
 ?>
 
 <?php
+        include_once 'config.inc.php';
         //Connecting to the sql database
         $con = mysql_connect($db_server,$db_user,$db_pass );
         if(!$con)
