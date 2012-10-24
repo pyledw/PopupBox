@@ -52,8 +52,8 @@
 
             </ul>
         </div>
-<?php	
-if ($cfg['show_buildinfo'])  { ?>
+<?
+if ($cfg['show_buildinfo'] && file_exists('build-date.txt'))  { ?>
 	<br />
 	<span style='text-align: center; font-size: 60%;'>Built: 
 <?php	include 'build-date.txt'; ?>
