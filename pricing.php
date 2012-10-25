@@ -7,7 +7,7 @@
 <h1 class="Title">Pricing</h1>
 
     <hr class="Title" />
-    <div class="mainContent">
+    <div id="mainContent">
     
     <table>
         <tr>
