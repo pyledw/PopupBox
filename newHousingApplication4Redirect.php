@@ -53,16 +53,6 @@
     mysql_query("UPDATE APPLICATION SET Vehicle1Desc='$_POST[carMake]'
     WHERE UserID = '$_SESSION[userID]'");
     
-    /* Fields that are not in the database
-     * 
-    mysql_query("UPDATE APPLICATION SET Vehicle1Color='$_POST[carColor]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET Vehicle1Year='$_POST[carYear]'
-    WHERE UserID = '$_SESSION[userID]'");
-     * 
-     */
-    
     mysql_query("UPDATE APPLICATION SET Vehicle1LicenseNo='$_POST[carLicenseNumber]'
     WHERE UserID = '$_SESSION[userID]'");
     
@@ -73,16 +63,6 @@
     
     mysql_query("UPDATE APPLICATION SET Vehicle2Desc='$_POST[carMake2]'
     WHERE UserID = '$_SESSION[userID]'");
-    
-    /* Fields that are not in the database
-     * 
-    mysql_query("UPDATE APPLICATION SET Vehicle2Color='$_POST[carColor2]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET Vehicle2Year='$_POST[carYear2]'
-    WHERE UserID = '$_SESSION[userID]'");
-     * 
-     */
     
     mysql_query("UPDATE APPLICATION SET Vehicle2LicenseNo='$_POST[carLicenseNumber2]'
     WHERE UserID = '$_SESSION[userID]'");
@@ -95,16 +75,6 @@
     mysql_query("UPDATE APPLICATION SET Vehicle3Desc='$_POST[carMake3]'
     WHERE UserID = '$_SESSION[userID]'");
     
-    /* Fields that are not in the database
-     * 
-    mysql_query("UPDATE APPLICATION SET Vehicle3Color='$_POST[carColor3]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET Vehicle3Year='$_POST[carYear3]'
-    WHERE UserID = '$_SESSION[userID]'");
-     * 
-     */
-    
     mysql_query("UPDATE APPLICATION SET Vehicle3LicenseNo='$_POST[carLicenseNumber3]'
     WHERE UserID = '$_SESSION[userID]'");
     
@@ -116,15 +86,6 @@
     mysql_query("UPDATE APPLICATION SET Vehicle4Desc='$_POST[carMake4]'
     WHERE UserID = '$_SESSION[userID]'");
     
-    /* Fields that are not in the database
-     * 
-    mysql_query("UPDATE APPLICATION SET Vehicle4Color='$_POST[carColor4]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET Vehicle4Year='$_POST[carYear4]'
-    WHERE UserID = '$_SESSION[userID]'");
-     * 
-     */
     
     mysql_query("UPDATE APPLICATION SET Vehicle4LicenseNo='$_POST[carLicenseNumber4]'
     WHERE UserID = '$_SESSION[userID]'");
