@@ -72,18 +72,44 @@
 
 <script>
     $(function() {
-        $( "#datepicker1" ).datepicker();
+        $( "#datepicker1" ).datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+        
+        
     });
     $(function() {
-        $( "#datepicker2" ).datepicker();
+        $( "#datepicker2" ).datetimepicker({
+            timeFormat: 'hh:mm:ss',
+            dateFormat: 'yy-mm-dd',
+            showMinute: 'false'
+            
+            
+        });
+        
     });
     $(function() {
-        $( "#datepicker3" ).datepicker();
+        $( "#datepicker3" ).datetimepicker({
+            timeFormat: 'hh:mm:ss',
+            dateFormat: 'yy-mm-dd',
+            showMinute: 'false'
+        });
+        
     });
     $(function() {
-        $( "#datepicker4" ).datepicker();
+        $( "#datepicker4" ).datetimepicker({
+            timeFormat: 'hh:mm:ss',
+            dateFormat: 'yy-mm-dd',
+            showMinute: 'false'
+        });
+        
     });
     $(function() {
-        $( "#datepicker5" ).datepicker();
+        $( "#datepicker5" ).datetimepicker({
+            timeFormat: 'hh:mm:ss',
+            dateFormat: 'yy-mm-dd',
+            showMinute: 'false'
+        });
+        
     });
 </script>

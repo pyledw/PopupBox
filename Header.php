@@ -39,6 +39,9 @@
     <link rel="stylesheet" href="css/jquery-ui.css" />
     <script src="js/jquery-ui.js"></script>
     
+    <link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css" />
+    <script src="js/jquery-ui-timepicker-addon.js"></script>
+    
     <script src="js/charCount.js"></script>
     <script>
         $(function() {

@@ -11,9 +11,9 @@ session_start();
     
     if(!isset($_SESSION[propertyID]))
     {
-        mysql_query("INSERT INTO PROPERTY (Address)
+        mysql_query("INSERT INTO PROPERTY (UserID,Address)
         VALUES
-        ('$_POST[address]')");
+        ('$_SESSION[userID]','$_POST[address]')");
         
         $propertyID = mysql_insert_id();
         
@@ -44,7 +44,8 @@ session_start();
         mysql_query("UPDATE PROPERTY SET SF='$_POST[sqrFt]'
             WHERE PropertyID = '$propertyID'");
         
-        mysql_query("UPDATE PROPERTY SET Beedrooms='$_POST[bedRooms]'
+        
+        mysql_query("UPDATE PROPERTY SET Beedroom='$_POST[bedRooms]'
             WHERE PropertyID = '$propertyID'");
         
         mysql_query("UPDATE PROPERTY SET Bath='$_POST[bathRooms]'
