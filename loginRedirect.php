@@ -3,27 +3,12 @@
         //taking information from login page
         $myName = $_POST["userName"];
         $userPassword = $_POST['password'];
-        require "config.inc.php";
-        //SQL connection information
-
         
+        include_once 'config.inc.php';
         //Connecting to the sql database
-        $con = mysql_connect($db_server,$db_user,$db_pass );
-        if(!$con)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-        else
-        {
-        //echo "connected to mySQL";
-        }
-        
-        //Selecting the Database
-        $select = mysql_selectdb($db_database, $con);
-        if(!$select)
-        {
-            die('could not connect: ' .mysql_error());
-        }
+        $connectionInfo= get_dbconn();
+        $con = $connectionInfo[0];
+        $select = $connectionInfo[1];
         
         //Query the database for only the row containing that users information
         $result = mysql_query("SELECT * FROM USER
@@ -41,12 +26,7 @@
             $userID = $row['UserID'];
             //Testing to make sure it is a valid name
             //This will be where we check to see if credentails are correct
-            if($row[IsApproved] == "N")
-            {
-                header( 'Location: /accountNotActive.php' );
-            }
-            else
-            {
+            
             if($userPassword != $row['Password'])
             {
                 
@@ -62,7 +42,6 @@
                 $_SESSION['user'] = $myName;
                 $_SESSION['type'] = $userType;
                 header( 'Location: /myHood.php' );
-            }
             }
         }
         
