@@ -33,7 +33,21 @@
         New listings needing review
     </h1>
     <?php
-        //Will be added at a later time
+        //Query the database for only the row containing that users information
+        $result = mysql_query("SELECT * FROM PROPERTY
+            WHERE IsApproved ='0'");
+        
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        //fetching the array of query elements
+        while($row = mysql_fetch_array($result))
+        {
+            
+            echo $row[UserID] . " " . $row[PropertyID] .  " " . $row[Address] . '<form method="post" action="approveListing.php"><button type="submit">Activate</button><input type="text" value="'. $row[PropertyID] .'" style="display:none;" name="propertyID"/></form><br/>';
+        }
 
     ?>
 </div>

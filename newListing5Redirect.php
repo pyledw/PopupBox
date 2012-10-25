@@ -21,6 +21,8 @@ session_start();
     {
         //echo "Selected Database";
     }
+    $propertyID = $_SESSION[propertyID];
+    
     
     
 
