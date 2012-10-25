@@ -1,6 +1,43 @@
 <?php
     $title = "New Listing Part 2";
     include 'Header.php';
+    
+    //Test to check if user is logged in or not IF not they will be redirected to the login page
+    if(!isset($_SESSION[userID]))
+    {
+        header( 'Location: /loginRequired.php' ) ;
+    }
+    
+    if(isset($_SESSION[propertyID]))
+    {
+        $propertyID = $_SESSION[propertyID];
+    }
+    else if(isset ($_POST[propertyID]))
+    {
+        $propertyID = $_POST[propertyID];
+    }
+    else
+    {
+        header( 'Location: /myHood.php' );
+    }
+    
+    
+    //Creating conneciton to the Database
+    include_once 'config.inc.php';
+        //Connecting to the sql database
+    $connectionInfo = get_dbconn();
+    $con = $connectionInfo[0];
+    $select = $connectionInfo[1];
+    
+    //Query to select the user's application using their userID number
+    $result = mysql_query("SELECT * FROM PROPERTY
+        WHERE PropertyID ='$propertyID'");
+    if(!$result)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+    
+    
 ?>
     <h1 class="Title">New House Listing - Photos</h1>
     <hr class="Title">
