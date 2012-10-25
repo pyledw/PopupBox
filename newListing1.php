@@ -7,6 +7,7 @@
     {
         header( 'Location: /loginRequired.php' ) ;
     }
+    
     if(isset($_SESSION[propertyID]))
     {
         $propertyID = $_SESSION[propertyID];
