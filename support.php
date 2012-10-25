@@ -6,7 +6,7 @@
     <h1 class="Title">Contact LeaseHood</h1>
     <hr class="Title" />
     <div id="mainContent">
-        <form action="processComments.php" method="post" style="float: right;">
+        <form action="processComments.php" method="post">
         <table border="0" align="left" >
             <tr>
                 <td>First Name: </td>
