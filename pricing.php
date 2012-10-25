@@ -9,13 +9,27 @@
     <hr class="Title" />
     <div class="mainContent">
     
-    <p><u>For Landlords</u><br/>
-    Front-end property listing fee:&nbsp;&nbsp; $55/listing<br/>
-    Volume Listing:&nbsp;&nbsp; <a href="support.php">Click here to contact Leasehood</a></p>
-
-    <p><u>For Applicants</u><br/>
-    PFO Submittal:&nbsp;&nbsp; $6/PFO</p>
-    
+    <table>
+        <tr>
+            <td><u>For Landlords</u></td>
+        </tr>
+        <tr>
+            <td>Front-end property listing fee:</td>
+            <td>$55/listing</td>
+        </tr>
+        <tr>
+            <td>Volume Listing:</td>
+            <td><a href="support.php">Click here to contact Leasehood</a></td>
+        </tr>
+        <tr>
+            <td><u>For Applicants</u></td>
+        </tr>
+        <tr>
+            <td>PFO Submittal:</td>
+            <td>$6/PFO</td>
+        </tr>
+    </table>
+        
     <p><u>Discounts</u><br/>
     LeaseHood constantly offers special rates for those parties listing rental properties  
     in certain areas and zip codes.  If you list a property in the special area or zip code, 
