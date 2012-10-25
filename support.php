@@ -7,7 +7,7 @@
     <hr class="Title" />
     <div id="mainContent">
         <form action="processComments.php" method="post">
-        <table border="0" align="left" >
+        <table border="0" >
             <tr>
                 <td>First Name: </td>
                 <td><input type="text" name="fname" size="15" maxlength="25"/></td>
@@ -21,7 +21,7 @@
                 <td><textarea name="comments" rows="6" cols="30" wrap="virtual"></textarea></td>
             </tr>
             <tr>
-                <td><input type="submit" align="center" value="Submit" class="button" />
+                <td><input type="submit"  value="Submit" class="button" />
             </tr>
         </table>
         </form>
