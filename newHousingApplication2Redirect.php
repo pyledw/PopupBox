@@ -1,21 +1,25 @@
 <?php
 session_start();
     
-         
+    //Creates a connection to the database and stores the connection string in $con and the Selected database in $select
     include_once 'config.inc.php';
         //Connecting to the sql database
     $connectionInfo= get_dbconn();
     $con = $connectionInfo[0];
     $select = $connectionInfo[1];
     
+    //Query that is retrieving the data from the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='" . $_SESSION[userID] . "'");
 
-        
+    //Casting the query data onto a variable
     $row = mysql_fetch_array($result);
 
+    
+    //Check to see if the employer name has data in it
     if($_POST[employerName1] != '')
     {
+        //writing the employer data into the application
         mysql_query("UPDATE APPLICATION SET CurrentEmployerName='$_POST[employerName1]'
         WHERE UserID = '$_SESSION[userID]'");
 
@@ -37,8 +41,8 @@ session_start();
         mysql_query("UPDATE APPLICATION SET CurrentAnnualSalary='$_POST[annualSalary1]'
         WHERE UserID = '$_SESSION[userID]'");
     }
-    //Seconday Employer
     
+    //Seconday Employer
     if($_POST[employerName2] != '')
     {
         mysql_query("UPDATE APPLICATION SET PrevEmployerName='$_POST[employerName2]'
@@ -62,6 +66,7 @@ session_start();
         mysql_query("UPDATE APPLICATION SET PrevAnnualSalary='$_POST[annualSalary2]'
         WHERE UserID = '$_SESSION[userID]'");
     }
+    
     //Co Applicant Employers
     if($_POST[coAppEmployerName1] != '')
     {
@@ -111,6 +116,8 @@ session_start();
     WHERE UserID = '$_SESSION[userID]'");
      */
     
+    
+    //Setting which page has been compleated.  If the form has already been compleated it ignors this
     if($row[PageCompleated] != '6')
     {
         mysql_query("UPDATE APPLICATION SET PageCompleted='3'

@@ -2,44 +2,40 @@
     $title = "New Housing Application";
     include 'Header.php';
     include "formElements.php";
+    
+    //Test if user is logged in IF not they will be prompted to log in
     if(!isset($_SESSION[userID]))
     {
         header( 'Location: /loginRequired.php' ) ;
     }
-    require "config.inc.php";
-         
-        $con = mysql_connect($db_server,$db_user,$db_pass );
-        if(!$con)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-        else
-        {
-            //echo "connected to mySQL";
-        }
-        $select = mysql_selectdb($db_database, $con);
-        if(!$select)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-        else
-        {
-            //echo "Selected Database";
-        }
-        $result = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='" . $_SESSION[userID] . "'");
-        
-        if(!$result)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-        
-        $row = mysql_fetch_array($result);
-        //Will eventually test to see if the applicaiton was compleate, and go back to the next needed page.
+    
+    
+    //Creates a connection to the database and stores the connection string in $con and the Selected database in $select
+    include_once 'config.inc.php';
+        //Connecting to the sql database
+    $connectionInfo= get_dbconn();
+    $con = $connectionInfo[0];
+    $select = $connectionInfo[1];
+    
+    //Query that is retrieving the data from the application of the user
+    $result = mysql_query("SELECT * FROM APPLICATION
+            WHERE UserID ='" . $_SESSION[userID] . "'");   
+    if(!$result)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+
+    //setting the query data into a variable
+    $row = mysql_fetch_array($result);
         
 
 //echo $userType;
 ?>   
+
+<!-- Main content will load with exiting elements being pre filled into the form
+     Various testing methods are used to ensure that the display will be identical to the users 
+     previous input if the user has already completed this page-->
+
 <h1 class="Title" >New Housing Application Continued</h1>
 <hr class="Title">
 <div id="mainContent">
@@ -108,6 +104,7 @@
 include 'Footer.php';
 ?>
 
+//The script below manages the ability to have dynamic fields, and ensures that at least one employer is entered
 <script>
 var val1 = 1;
 $(document).ready(function(){

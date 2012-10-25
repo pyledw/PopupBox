@@ -1,46 +1,37 @@
 <?php
 $title = "New Application";
 include 'Header.php';
-if(!isset($_SESSION[userID]))
-{
-    header( 'Location: /loginRequired.php' ) ;
-}
 
-require "config.inc.php";
-         
-        $con = mysql_connect($db_server,$db_user,$db_pass );
-        if(!$con)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-        else
-        {
-            //echo "connected to mySQL";
-        }
-        $select = mysql_selectdb($db_database, $con);
-        if(!$select)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-        else
-        {
-            //echo "Selected Database";
-        }
-        $result = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='" . $_SESSION[userID] . "'");
-        
-        if(!$result)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-        
-        $row = mysql_fetch_array($result);
-        //Will eventually test to see if the applicaiton was compleate, and go back to the next needed page.
+    //Test to check if user is logged in or not IF not they will be redirected to the login page
+    if(!isset($_SESSION[userID]))
+    {
+        header( 'Location: /loginRequired.php' ) ;
+    }
+
+
+    //Creates a connection to the database and stores the connection string in $con and the Selected database in $select
+    include_once 'config.inc.php';
+    $connectionInfo= get_dbconn();
+    $con = $connectionInfo[0];
+    $select = $connectionInfo[1];
+    
+    //Query to select the user's application using their userID number
+    $result = mysql_query("SELECT * FROM APPLICATION
+        WHERE UserID ='" . $_SESSION[userID] . "'");
+    if(!$result)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+
+    //Setting the query results into a variable
+    $row = mysql_fetch_array($result);
         
 
 ?>
 
-
+<!-- Main content will load with exiting elements being pre filled into the form
+     Various testing methods are used to ensure that the display will be identical to the users 
+     previus input if the user has already compeleted this page-->
     <h1 class="Title">New Housing Application</h1>
     <hr class="Title">
     <div id="mainContent">
@@ -177,7 +168,8 @@ require "config.inc.php";
 <?php
     include 'Footer.php';
 ?>
-    
+
+<!-- The script below controls the date pickers, as well as the dynamic viewing of the pet fields -->
 <script>
     $(function() {
         $( "#datepicker" ).datepicker({

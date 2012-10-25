@@ -1,20 +1,21 @@
 <?php
 session_start();
     
-    require "config.inc.php";
-         
+    //Creating a conneciton to the Database and setting the variables needed
     include_once 'config.inc.php';
-        //Connecting to the sql database
     $connectionInfo= get_dbconn();
     $con = $connectionInfo[0];
     $select = $connectionInfo[1];
     
+    //Query getting the application data for this user
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='" . $_SESSION[userID] . "'");
 
-        
+    //setting the query data equal to a variable
     $row = mysql_fetch_array($result);
     
+    //check to see if any data already exist AND if not it will create a new record
+    //If the data alreeady exist, it will simply update thie fields
     if(mysql_num_rows($result) == 0)
     {
         $sql="INSERT INTO APPLICATION (NumOtherOccupants,SecondaryOccupantFName,UserID, EarlyMoveIn, LateMoveIn, IsADA, IsSmokingRequired, SecondaryOccupantLName, SecondaryOccupantAge, SecondaryOccupantRelationship,Pet1Type,Pet1Breed,Pet1Age,Pet1Weight,Pet2Type,Pet2Breed,Pet2Age,Pet2Weight,Pet3Type,Pet3Breed,Pet3Age,Pet3Weight)
@@ -26,7 +27,6 @@ session_start();
             die('Error: ' . mysql_error());
         }
     }
-    
     else
     {
     
@@ -105,7 +105,9 @@ session_start();
         mysql_query("UPDATE APPLICATION SET Pet4Weight='$_POST[animalWeight4]'
             WHERE UserID = '$_SESSION[userID]'");
     }
-    echo $row[PageCompleted];
+    //echo $row[PageCompleted];
+    
+    //Setting which page has been compleated.  If the form has already been compleated it ignors this
     if($row[PageCompleated] != "6")
     {
         mysql_query("UPDATE APPLICATION SET PageCompleted='2'
@@ -115,5 +117,6 @@ session_start();
      
     mysql_close();
     
+    //Rerouting to the next page
     header( 'Location: /newHousingApplication2.php' );
 ?>

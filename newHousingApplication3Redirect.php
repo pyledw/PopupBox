@@ -1,22 +1,28 @@
 <?php
     session_start();
     
-         
+    //Creating a conneciton to the database and returning the valuse needed
     include_once 'config.inc.php';
         //Connecting to the sql database
     $connectionInfo= get_dbconn();
     $con = $connectionInfo[0];
     $select = $connectionInfo[1];
     
+    //Query to retrieve the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='$_SESSION[userID]'");
+    
+    //Casting the query results on to $row
     $row = mysql_fetch_array($result);
+    
+    //setting the current page compleated
     if($row[PageCompleate != "6"])
     {
         mysql_query("UPDATE APPLICATION SET PageCompleted='4'
             WHERE UserID = '$_SESSION[userID]'");
     }
     
+    //Query to retrieve the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='$_SESSION[userID]'");
         
@@ -28,9 +34,10 @@
     
     
      
-
+     //IF the address has data in it
      if($_POST[address1] != "")
         {
+            //If the address did not exist before fields are created
             if($_POST[number1] == '')
             {
                $sql="INSERT INTO PREVIOUSRESIDENCE (ApplicationID,PrevStreetAddress,PrevCity,PrevState,PrevZip,PrevLandLordFName,PrevLandLordLName,PrevPhone,ReasonForLeaving,TypeOfResidence,PrevMonthlyRent,TotalMonths)
@@ -42,7 +49,8 @@
                    die('Error: ' . mysql_error());
                }
             }
-
+            
+            //If the address already existed - Fields are updated
             else
             {
                 //echo $_POST[number1];
@@ -82,8 +90,10 @@
      
      }
      
+     //IF the address has data in it
      if($_POST[address2] != "")
         {
+            //If the address did not exist before fields are created
             if($_POST[number2] == '')
             {
                $sql="INSERT INTO PREVIOUSRESIDENCE (ApplicationID,PrevStreetAddress,PrevCity,PrevState,PrevZip,PrevLandLordFName,PrevLandLordLName,PrevPhone,ReasonForLeaving,TypeOfResidence,PrevMonthlyRent,TotalMonths)
@@ -95,7 +105,7 @@
                    die('Error: ' . mysql_error());
                }
             }
-
+            //If the address already existed - Fields are updated
             else
             {
                 mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevStreetAddress='$_POST[address2]'
@@ -134,8 +144,10 @@
      
      }
      
+     //IF the address has data in it
      if($_POST[address3] != "")
         {
+            //If the address did not exist before fields are created
             if($_POST[number3] == '')
             {
                $sql="INSERT INTO PREVIOUSRESIDENCE (ApplicationID,PrevStreetAddress,PrevCity,PrevState,PrevZip,PrevLandLordFName,PrevLandLordLName,PrevPhone,ReasonForLeaving,TypeOfResidence,PrevMonthlyRent,TotalMonths)
@@ -147,7 +159,7 @@
                    die('Error: ' . mysql_error());
                }
             }
-
+            //If the address already existed - Fields are updated
             else
             {
                 mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevStreetAddress='$_POST[address3]'
@@ -186,8 +198,10 @@
      
      }
      
+     //IF the address has data in it
      if($_POST[address4] != "")
         {
+            //If the address did not exist before fields are created
             if($_POST[number4] == '')
             {
                $sql="INSERT INTO PREVIOUSRESIDENCE (ApplicationID,PrevStreetAddress,PrevCity,PrevState,PrevZip,PrevLandLordFName,PrevLandLordLName,PrevPhone,ReasonForLeaving,TypeOfResidence,PrevMonthlyRent,TotalMonths)
@@ -199,7 +213,7 @@
                    die('Error: ' . mysql_error());
                }
             }
-
+            //If the address already existed - Fields are updated
             else
             {
                 mysql_query("UPDATE PREVIOUSRESIDENCE SET PrevStreetAddress='$_POST[address4]'
@@ -241,7 +255,7 @@
     
 
 
-
+    //Setting other application elemnts
     mysql_query("UPDATE APPLICATION SET HasCrimHist='$_POST[felony]'
     WHERE UserID = '$_SESSION[userID]'");
     
@@ -270,5 +284,6 @@
 
     mysql_close();
     
+    //rerouting the user to the next application page
     header( 'Location: /newHousingApplication4.php' );
 ?>

@@ -8,20 +8,23 @@
         header( 'Location: /loginRequired.php' ) ;
     }
     
+    //Creating conneciton to the Database
     include_once 'config.inc.php';
         //Connecting to the sql database
     $connectionInfo= get_dbconn();
     $con = $connectionInfo[0];
     $select = $connectionInfo[1];
     
+        //Getting the users applicaiton data
         $result1 = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='" . $_SESSION[userID] . "'");
         
+        //casting the query data into a variable
         $row = mysql_fetch_array($result1);
         
+        //second query getting all the previous residences of the applicaiton
         $result = mysql_query("SELECT * FROM PREVIOUSRESIDENCE
             WHERE ApplicationID = $row[ApplicationID] ");
-        
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
@@ -29,9 +32,12 @@
         
         
         
-        //Will eventually test to see if the applicaiton was compleate, and go back to the next needed page.
     
     ?>
+
+<!-- Main content will load with exiting elements being pre filled into the form
+     Various testing methods are used to ensure that the display will be identical to the users 
+     previous input if the user has already completed this page-->
 <h1 class="Title">Application Page #3</h1>
 <hr class="Title">
 
@@ -242,9 +248,12 @@
         <font class="button" id="addFormerHome">Add another home</font>
         <font class="button"  id="removeFormerHome">Remove home</font><br/><br/>';
             }
+            
+        //Creating a new query in order to get the applicaiton data
         $result1 = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='" . $_SESSION[userID] . "'");
         
+        //Recasting the query data into $row
         $row = mysql_fetch_array($result1);
             ?>
 
@@ -279,6 +288,8 @@
 <?php
     include 'Footer.php';
 ?>
+
+<!--The script below manages the dynamic data on the page -->
 <script>
 var val1 = 1;
 $(document).ready(function(){
