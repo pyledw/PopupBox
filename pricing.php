@@ -11,22 +11,22 @@
     
     <table>
         <tr>
-            <td><u>For Landlords</u></td>
+            <td><p><u>For Landlords</u></p></td>
         </tr>
         <tr>
             <td>Front-end property listing fee:</td>
-            <td>$55/listing</td>
+            <td colspan="2">$55/listing</td>
         </tr>
         <tr>
             <td>Volume Listing:</td>
-            <td><a href="support.php">Click here to contact Leasehood</a></td>
+            <td colspan="2"><a href="support.php">Click here to contact Leasehood</a></td>
         </tr>
         <tr>
-            <td><u>For Applicants</u></td>
+            <td><p><u>For Applicants</u></p></td>
         </tr>
         <tr>
             <td>PFO Submittal:</td>
-            <td>$6/PFO</td>
+            <td colspan="2">$6/PFO</td>
         </tr>
     </table>
         
