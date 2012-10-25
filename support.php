@@ -5,8 +5,8 @@
 ?>
     <h1 class="Title">Contact LeaseHood</h1>
     <hr class="Title" />
-    <!--<div id="mainContent">-->
-        <form action="processComments.php" method="post" style="display: inline;">
+    <div id="mainContent">
+        <form action="processComments.php" method="post" style="float: right;">
         <table border="0" align="left" >
             <tr>
                 <td>First Name: </td>
@@ -25,8 +25,17 @@
             </tr>
         </table>
         </form>
+        
+        <p>LeaseHood, LLC<br/>
+        P.O. Box 158479<br/>
+        Nashville, Tennessee 37215</p>
+        
+        <p>P: (615) 202-0549 (M-F, 8 am to 5 pm, CST)<br/>
+        F: (866) 357-1018</p>
+        
+        <a href="faq.php" class="button">Frequently Asked Questions</a>
     
-    <!--</div>-->
+    </div>
 
 <?php
     include 'Footer.php';
