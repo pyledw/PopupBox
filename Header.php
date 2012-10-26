@@ -67,7 +67,7 @@
             <?php
                 if(isset($_SESSION["user"]))
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3> Not you <a href="#loginPopup" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3> Not you <a href="popupLogin.php" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
                 }
             ?>
             </div>
@@ -148,19 +148,9 @@
                                                         include 'myHoodNavigationBar.php';
 						}
 						else {
-							echo '<a href="#specialsPopup" rel="facebox"><img src="images/Special.jpg" class="special"></a>';
+							echo '<a href="popupSpecials.php" rel="facebox"><img src="images/Special.jpg" class="special"></a>';
 						}
                                 ?>
-            <div id="loginPopup" style="display: none;">
-                <?php
-                    include "popupLogin.php";
-                ?>
-            </div>
-            <div id="specialsPopup" style="display:none;">
-                <?php
-                    include 'popupSpecials.php';
-                ?>
-            </div>
             
             <script>
                 jQuery(document).ready(function($) {
