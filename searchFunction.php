@@ -22,11 +22,14 @@ function search($type,$term)
                 $minLat = $lat - .5;
                 $minLon = $lon - .5;
                 
-                echo 'Search Location:' . $lat ." ". $lon ." <br/>". $maxLat ." ". $maxLon ." <br/>". $minLat ." ". $minLon;
+                echo 'TYPE : '. $type . " " . $term . 'Search Location:' . $lat ." ". $lon ." <br/>". $maxLat ." ". $maxLon ." <br/>". $minLat ." ". $minLon;
                 
                 
                 $result = mysql_query("SELECT * FROM PROPERTY
+                    INNER JOIN AUCTION
+                    ON PROPERTY.PropertyID=AUCTION.PropertyID
                     WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' ");
+                
                 if(!$result)
                 {
                      die('could not connect: ' .mysql_error());
@@ -35,9 +38,12 @@ function search($type,$term)
             if($type == 'address')
             {
                 $trimmed = trim($term);
-                //echo 'Address ' . $term;
+               
                 $result = mysql_query("SELECT * FROM PROPERTY
-                    WHERE Address LIKE \"%$trimmed%\"");
+                    INNER JOIN AUCTION
+                    ON PROPERTY.PropertyID=AUCTION.PropertyID
+                    WHERE Address LIKE \"%$trimmed%\"
+                    ");
                 if(!$result)
                 {
                      die('could not connect: ' .mysql_error());
@@ -48,16 +54,11 @@ function search($type,$term)
                 $trimmed = trim($term);
                 //echo 'City ' . $term;
                 $result = mysql_query("SELECT * FROM PROPERTY
+                    INNER JOIN AUCTION
+                    ON PROPERTY.PropertyID=AUCTION.PropertyID
+
                     WHERE City LIKE \"%$trimmed%\"
-                    ");
-                if(!$result)
-                {
-                     die('could not connect: ' .mysql_error());
-                }
-            }
-            else
-            {
-                $result = mysql_query("SELECT * FROM PROPERTY
+                    
                     ");
                 if(!$result)
                 {
