@@ -12,7 +12,9 @@
         $select = $connectionInfo[1];
         
         $result = mysql_query("SELECT * FROM PROPERTY
-           WHERE PropertyID = $listingID ");
+           INNER JOIN AUCTION
+           ON PROPERTY.PropertyID=AUCTION.PropertyID
+           WHERE PROPERTY.PropertyID = $listingID ");
         
         if(!$result)
         {
@@ -26,6 +28,9 @@
         <!--Content will be retrieved via php.  This is just a template for user latter-->
         <h1 class="Title"><?php echo $row[Address] . " - " . $row[PropertyID] ?></h1>
         <hr class="Title" />
+        <?php
+            echo $row[AuctionID];
+        ?>
         <table id="houseListing">
             <tr>
                 <td colspan="3" width="600px">
@@ -83,8 +88,9 @@
                     <form method="post" action="placeBid.php">
                         <font class="greyBackground">My Proposal for occupancy</font><br/>
                         Bid Amount<input type="text" name="amt" /><br/>
-                        <input type="text" style="display: none;" name="propertyID" value="<?php echo $row[PropertyID] ?>" />
+                        <input type="text" style="display: none;" name="auctionID" value="<?php echo $row[AuctionID] ?>" />
                         <input type="text" style="display: none;" name="userID" value="<?php echo $_SESSION[userID] ?>" />
+                        <input type="text" style="display: none;" name="propertyID" value="<?php echo $row[PropertyID] ?>" />
                         Submit <button type="submit">Submit</button>
                     </form>
                    
