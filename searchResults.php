@@ -10,32 +10,6 @@
         
         
 ?>
-
-<?php
-        include_once 'config.inc.php';
-        //Connecting to the sql database
-        $select = get_dbconn();
-        
-
-    ?>
-
-
-<script>
-
-
-$(document).ready(function(){
-  $(".searchResult").click(function(){
-      var ID = "Default"
-      ID = $(this).attr("value");
-      window.open("homeListing.php?listingID=" + ID,'_self');
-  });
-});
-
-
-</script>
-
-
-
 <h1 class="Title">Home Search Results</h1>
 <hr class="Title" />
 <div id="mainContent">
@@ -116,53 +90,6 @@ $(document).ready(function(){
     }
         
     ?>
-       <div id="searchResult">
-        <div class="header">
-            <font class="greyTextArea" style="float:right;">Status:Show Period Closed</font>
-            <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
-            <font class="redTextArea" style="float:right;">Ends in: ' . $years . ' Years, ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
-        </div>
-        
-        <div class="content">
-        <image class="PFOimage" src="#" />
-        <div class="column1">
-           '.$row[Address].'<br/>
-           '.$row[City].'<br/>
-           '.$row[State].'<br/>
-           '.$row[Zip].'<br/>
-           '.$row[PropertyID].'
-        </div>
-        <div class="column2">
-            Bids<br/>
-            Bidder ID ---  Price of Bid --- Date
-            ' .//This will be where we pull from the bids table to show the bids on the property
-            '
-        </div>
-        <div class="column3">
-            '.$row[Description].'
-        </div>
-        <div class="column4">
-            Next Open House<br/>
-            '.$row[DateTimeOpenHouse1].'<br/>
-            '.$row[DateTimeOpenHouse2].'
-        </div>
-        
-        <div class="footer">
-        <form class="buttonForm" method="post" action="newListing1.php">
-            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
-            <button class="button">Edit Listing</button>
-        </form>
-        <form class="buttonForm" method="post" action="reviewPFOs.php">
-            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
-            <button class="button">Review PFOs</button>
-        </form>
-        <form class="buttonForm" method="post" action="printFlyer.php">
-            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
-            <button class="button">Print Flyer</button>
-        </form>
-        </div>
-        </div>
-    </div> 
 </div>
 
 <?php
