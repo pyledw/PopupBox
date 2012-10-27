@@ -33,7 +33,8 @@ $(document).ready(function(){
 
 
 </script>
-<link rel="stylesheet" type="text/css" href="css/searchResults.css" /><!--Link to Main css file -->
+
+
 
 <h1 class="Title">Home Search Results</h1>
 <hr class="Title" />
@@ -41,116 +42,127 @@ $(document).ready(function(){
     <?php
         echo "Searched by: ";
         echo $searchTerm;
-    ?>
+        
     
-    <table id="searchResults">
+    //Creates a connection to the database and stores the connection string in $con and the Selected database in $select
+    include_once 'config.inc.php';
+    $connectionInfo= get_dbconn();
+    $con = $connectionInfo[0];
+    $select = $connectionInfo[1];
+    
+    //Query to select the user's application using their userID number
+    $result = mysql_query("SELECT * FROM PROPERTY");
+    if(!$result)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+
+    //Setting the query results into a variable
+    while($row = mysql_fetch_array($result))
+    {
+        $ends = strtotime($row[DatePFOEndAccept]);
+        $now = strtotime(date("Y-m-d H:i:s"));
         
-            <tr class="searchHeader">
-                <th width="75px">
-                    ID#
-                </th>
-                <th width="75px">
-                    Media
-                </th>
-                <th width="150px">
-                    Street Address
-                </th>
-                <th width="50px">
-                    Zip Code
-                </th>
-                <th width="75px">
-                    City
-                </th>
-                <th width="50px">
-                    Square Footage
-                </th>
-                <th width="50px">
-                    BR/BA
-                </th>
-                <th width="75px">
-                    Current Price
-                </th>
-                <th width="75px">
-                    Move In Now Price
-                </th>
-                <th width="40px">
-                    Pets
-                </th>
-                <th width="50px">
-                    Smoking
-                </th>
-                <th width="75px">
-                    Open House
-                </th>
-                <th width="75px">
-                    Ending
-                </th>
-            </tr>
+
+        $difference = $ends - $now;
+        $years = abs(floor($difference / 31536000));
+        $days = abs(floor(($difference-($years * 31536000))/86400));
+        $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
+        $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
         
-            <?php
-        //Query the database for only the row containing that users information
-        $result = mysql_query("SELECT * FROM PROPERTY
-            ");
+        echo '    <div id="searchResult">
+        <div class="header">
+            <font class="greyTextArea" style="float:right;">Status:Show Period Closed</font>
+            <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
+            <font class="redTextArea" style="float:right;">Ends in: ' . $years . ' Years, ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
+        </div>
         
-        if(!$result)
-        {
-            die('could not connect: ' .mysql_error());
-        }
+        <div class="content">
+        <image class="PFOimage" src="#" />
+        <div class="column1">
+           '.$row[Address].'<br/>
+           '.$row[City].'<br/>
+           '.$row[State].'<br/>
+           '.$row[Zip].'<br/>
+           '.$row[PropertyID].'
+        </div>
+        <div class="column2">
+            Bids<br/>
+            Bidder ID ---  Price of Bid --- Date
+            ' .//This will be where we pull from the bids table to show the bids on the property
+            '
+        </div>
+        <div class="column3">
+            '.$row[Description].'
+        </div>
+        <div class="column4">
+            Next Open House<br/>
+            '.$row[DateTimeOpenHouse1].'<br/>
+            '.$row[DateTimeOpenHouse2].'
+        </div>
         
-        //fetching the array of query elements
-        while($row = mysql_fetch_array($result))
-        {
-            
-            echo '<tr class="searchResult" value="'.$row[PropertyID].'">
-                
-                <td class="idNumb">
-                    '.$row[PropertyID].'
-                </td>
-                <td>
-                    '.$row[Media].'
-                </td>
-                <td>
-                    '.$row[Address].'
-                </td>
-                <td>
-                    '.$row[Zip].'
-                </td>
-                <td>
-                    '.$row[City].'
-                </td>
-                <td>
-                    '.$row[SQ].'
-                </td>
-                <td>
-                    '.$row[Bedroom].' '.$row[Bath].'
-                </td>
-                <td>
-                    '.$row[StartingBod].'
-                </td>
-                <td>
-                    '.$row[RentNowRate].'
-                </td>
-                <td>
-                    '.$row[AllowDogs].'
-                </td>
-                <td>
-                    '.$row[AllowSmoking].'
-                </td>
-                <td>
-                    '.$row[DateTimeOpenHouse1].' <br/>
-                    '.$row[DateTimeOpenHouse2].'    
-                </td>
-                <td>
-                    <font class="redTextArea">'. date("Y-m-d") . " <br/><br/> " . $row[DatePFOEndAccept].'</font>
-                </td>
-            
-            </tr>
-   ';
-        }
+        <div class="footer">
+        <form class="buttonForm" method="get" action="homeListing.php">
+            <input type="text" name="listingID" style="Display:none" value="' . $row[PropertyID] . '" />
+            <button class="button">View Listing Page</button>
+        </form>
+        <form class="buttonForm" method="get" action="homeListing.php">
+            <input type="text" name="listingID" style="Display:none" value="' . $row[PropertyID] . '" />
+            <button class="button">View Listing</button>
+        </form>
+        </div>
+        </div>
+    </div>';
+    }
+        
     ?>
-    </table>
-        </button>
-    </form>
+       <div id="searchResult">
+        <div class="header">
+            <font class="greyTextArea" style="float:right;">Status:Show Period Closed</font>
+            <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
+            <font class="redTextArea" style="float:right;">Ends in: ' . $years . ' Years, ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
+        </div>
+        
+        <div class="content">
+        <image class="PFOimage" src="#" />
+        <div class="column1">
+           '.$row[Address].'<br/>
+           '.$row[City].'<br/>
+           '.$row[State].'<br/>
+           '.$row[Zip].'<br/>
+           '.$row[PropertyID].'
+        </div>
+        <div class="column2">
+            Bids<br/>
+            Bidder ID ---  Price of Bid --- Date
+            ' .//This will be where we pull from the bids table to show the bids on the property
+            '
+        </div>
+        <div class="column3">
+            '.$row[Description].'
+        </div>
+        <div class="column4">
+            Next Open House<br/>
+            '.$row[DateTimeOpenHouse1].'<br/>
+            '.$row[DateTimeOpenHouse2].'
+        </div>
+        
+        <div class="footer">
+        <form class="buttonForm" method="post" action="newListing1.php">
+            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
+            <button class="button">Edit Listing</button>
+        </form>
+        <form class="buttonForm" method="post" action="reviewPFOs.php">
+            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
+            <button class="button">Review PFOs</button>
+        </form>
+        <form class="buttonForm" method="post" action="printFlyer.php">
+            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
+            <button class="button">Print Flyer</button>
+        </form>
+        </div>
+        </div>
+    </div> 
 </div>
 
 <?php
