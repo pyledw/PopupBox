@@ -54,6 +54,15 @@ function search($type,$term)
                      die('could not connect: ' .mysql_error());
                 }
             }
+            else
+            {
+                $result = mysql_query("SELECT * FROM PROPERTY
+                    ");
+                if(!$result)
+                {
+                     die('could not connect: ' .mysql_error());
+                }
+            }
 
 
             

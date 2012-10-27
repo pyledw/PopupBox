@@ -8,7 +8,7 @@
 <h1 class="Title">Home Search</h1>
 <hr class="Title" />
 <div id="mainContent">
-    <form class="formStyle" width="90%" height="90%" method="post" action="searchResults.php">
+    <form class="formStyle" width="90%" height="90%" method="post" action="searchRedirect.php">
         Search: <input type="text" name="search">
         <select name="type">
             <option value="zip">Zip</option>

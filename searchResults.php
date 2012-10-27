@@ -1,7 +1,18 @@
 <?php
         $title = "Search Homes";
 	include 'Header.php';
+
         
+        
+        if(isset($_COOKIE['searchType']))
+        {
+            $type = $_COOKIE['searchType'];
+            $val = $_COOKIE['searchVal'];
+        }
+        else
+        {
+            header( 'Location: /searchHomes.php' );
+        }
         
         
 ?>
@@ -11,7 +22,7 @@
     <?php
         
     include_once 'searchFunction.php';
-    $result = search($_POST[type],$_POST[search]);
+    $result = search($type,$val);
     
     
     //Setting the query results into a variable
