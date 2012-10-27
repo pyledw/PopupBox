@@ -84,6 +84,10 @@
                 {
                     echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3> Not you <a href="popupLogin.php" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
                 }
+                else
+                {
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome</h3><a href="popupLogin.php" rel="facebox" >Login</a></div>';
+                }
             ?>
             </div>
             <div id="nav">
