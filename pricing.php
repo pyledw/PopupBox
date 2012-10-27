@@ -38,7 +38,10 @@
     <p><u>Promotional Codes</u><br/>
     If you have a promotional discount code, please make sure you enter it while listing 
     your property or tenancy or submitting your PFO.</p>
-
+    <?php
+    
+    
+    ?>
 </div>
 <?php
 	include 'Footer.php';

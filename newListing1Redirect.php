@@ -32,6 +32,22 @@ session_start();
         mysql_query("UPDATE PROPERTY SET Address='$_POST[address]'
             WHERE PropertyID = '$propertyID'");
     }
+    
+    
+    //This sction below will get the latitude and Longitude of the address and store it in the database
+        include_once 'locationLookup.php';
+        $location = getLatandLongAddress($_POST[address], $_POST[city], $_POST[state]);
+        $lat = $location[0];
+        $lon = $location[1];
+    
+    
+        mysql_query("UPDATE PROPERTY SET Lattitude='$lat'
+            WHERE PropertyID = '$propertyID'");
+        mysql_query("UPDATE PROPERTY SET Longitude='$lon'
+            WHERE PropertyID = '$propertyID'");
+    
+    
+       
         mysql_query("UPDATE PROPERTY SET Zip='$_POST[zipCode]'
             WHERE PropertyID = '$propertyID'");
         
