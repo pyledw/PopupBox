@@ -18,23 +18,40 @@ function search($type,$term)
                 $lon = $location[1];
                 
                 echo 'Search Location:' . $lat . $lon;
+                
+                $result = mysql_query("SELECT * FROM PROPERTY");
+                if(!$result)
+                {
+                     die('could not connect: ' .mysql_error());
+                }
             }
             if($type == 'address')
             {
-                echo 'Address' . $term;
+                $trimmed = trim($term);
+                //echo 'Address ' . $term;
+                $result = mysql_query("SELECT * FROM PROPERTY
+                    WHERE Address LIKE \"%$trimmed%\"");
+                if(!$result)
+                {
+                     die('could not connect: ' .mysql_error());
+                }
             }
             if($type == 'city')
             {
-                echo 'City' . $term;
+                $trimmed = trim($term);
+                //echo 'City ' . $term;
+                $result = mysql_query("SELECT * FROM PROPERTY
+                    WHERE City LIKE \"%$trimmed%\"
+                    ");
+                if(!$result)
+                {
+                     die('could not connect: ' .mysql_error());
+                }
             }
 
 
-            //Query to select the user's application using their userID number
-            $result = mysql_query("SELECT * FROM PROPERTY");
-            if(!$result)
-            {
-                 die('could not connect: ' .mysql_error());
-            }
+            
+            
 
 
            return $result;
