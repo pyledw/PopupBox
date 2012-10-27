@@ -79,8 +79,15 @@
                 <td class="redBackground" colspan="3">
                     Bid History
                 </td>
-                <td rowspan="6">
-                    Here will be the option to place a bid
+                <td rowspan="6" align="center">
+                    <form method="post" action="placeBid.php">
+                        <font class="greyBackground">My Proposal for occupancy</font><br/>
+                        Bid Amount<input type="text" name="amt" /><br/>
+                        <input type="text" style="display: none;" name="propertyID" value="<?php echo $row[PropertyID] ?>" />
+                        <input type="text" style="display: none;" name="userID" value="<?php echo $_SESSION[userID] ?>" />
+                        Submit <button type="submit">Submit</button>
+                    </form>
+                   
                     
                 </td>
             </tr>

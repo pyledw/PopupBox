@@ -2,7 +2,7 @@
 	//require 'config.inc.php';
 	session_start(); 
         
-        /* This displays all cookies and session data
+         //This displays all cookies and session data
          foreach ($_SESSION as $key=>$val)
          {
             echo $key." ".$val;
@@ -11,8 +11,7 @@
          {
             echo "<br>$key--> $val";
          }
-         * 
-         */
+
          
 ?>
 
