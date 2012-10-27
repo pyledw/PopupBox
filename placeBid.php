@@ -12,9 +12,9 @@
             $select = $connectionInfo[1];
         
         
-            mysql_query("INSERT INTO BID (UserID,Address)
-            VALUES
-            ('$_SESSION[userID]','$_POST[address]')");
+            //mysql_query("INSERT INTO BID (UserID,Address)
+            //VALUES
+            //('$_SESSION[userID]','$_POST[address]')");
             
             
             header( 'Location: /homeListing.php?listingID='.$propertyID );
