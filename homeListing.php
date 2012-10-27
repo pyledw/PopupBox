@@ -1,9 +1,6 @@
 <?php
     $listingID = $_GET[listingID];
-    $title = 'Listing #HREDS2345'; //This will be retrieved from the element that was clicked on in the search
-    
-    
-    
+    $title = 'Listing' .$listingID; //This will be retrieved from the element that was clicked on in the search
     include 'Header.php';
 
     
