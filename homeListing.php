@@ -105,34 +105,26 @@
                     Bid Amount
                 </td>
             </tr>
-            <tr>
-                <td  colspan="2">
-                    USERNAME
-                </td>
-                <td>
-                    BID AMOUNT
-                </td>
-            </tr>
+            <?php
+                    
+                    $result2 = mysql_query("SELECT * FROM BID
+                        WHERE AuctionID='$row[AuctionID]'");
+                    while($row2 = mysql_fetch_array($result2))
+                    {
+                        echo '<tr>
+                            <td  colspan="2">
+                                USERNAME
+                            </td>
+                            <td>
+                                '. $row2[MonthlyRate]. '
+                            </td>
+                        </tr>'; 
+                    }
+                    
+                    
+                    
+            ?>
             
-            <tr>
-                <td  colspan="2">
-                    USERNAME
-                </td>
-                <td>
-                    BID AMOUNT
-                </td>
-            </tr>
-            <tr>
-                
-            </tr>
-            <tr>
-                
-            </tr>
-            <tr>
-                <td colspan="4">
-                    MyHood Match
-                </td>
-            </tr>
         </table>
 
 

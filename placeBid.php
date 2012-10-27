@@ -4,6 +4,7 @@
         {
             $userID = $_POST[userID];
             $propertyID = $_POST[propertyID];
+            $auctionID = $_POST[auctionID];
             $amount = $_POST[amt];
             
             include_once 'config.inc.php';
@@ -21,7 +22,7 @@
             
             mysql_query("INSERT INTO BID (AuctionID,ApplicationID,MonthlyRate)
             VALUES
-            ('$_SESSION[userID]','$applicationID','$amount')");
+            ('$auctionID','$applicationID','$amount')");
             
             
             header( 'Location: /homeListing.php?listingID='.$propertyID );
