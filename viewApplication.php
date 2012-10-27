@@ -19,7 +19,12 @@
     <div id="header"><h1>Tenant Application</h1></div>
     <div class="content">
         <?php
-            
+        echo $row[ApplicationID];
+        echo $row[SecondaryOcupantFName];
+        echo $row[SecondaryOcupantLName];
+        echo $row[Vehicle1Desc];
+        echo $row[Vehicle1LicenseNo];
+        echo $row[Vehicle1LicenseState];
         ?>
     </div>
 </div>
