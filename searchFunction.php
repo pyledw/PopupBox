@@ -24,11 +24,17 @@ function search($type,$term)
                 
                 echo 'Search Location:' . $lat ." ". $lon ." <br/>". $maxLat ." ". $maxLon ." <br/>". $minLat ." ". $minLon;
                 
-                $result = mysql_query("SELECT * FROM PROPERTY
-                    WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' ");
-                if(!$result)
+                $result = mysql_query('SELECT * FROM AUCTION');
+                
+                while ($row = mysql_fetch_array($result))
                 {
-                     die('could not connect: ' .mysql_error());
+                    
+                    $result = mysql_query("SELECT * FROM PROPERTY
+                        WHERE PropertyID = '$row[PropertyID]' AND Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' ");
+                    if(!$result)
+                    {
+                         die('could not connect: ' .mysql_error());
+                    }
                 }
             }
             if($type == 'address')

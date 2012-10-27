@@ -28,6 +28,7 @@
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
     {
+        
         $ends = strtotime($row[DatePFOEndAccept]);
         $now = strtotime(date("Y-m-d H:i:s"));
         
