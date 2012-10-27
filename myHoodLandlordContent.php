@@ -62,16 +62,16 @@
         </div>
         
         <div class="footer">
-        <form class="buttonForm" method="post" action="editListing.php">
-            <input type="text" style="Display:none" value="' . $row[PropertyID] . '" />
+        <form class="buttonForm" method="post" action="newListing1.php">
+            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
             <button class="button">Edit Listing</button>
         </form>
         <form class="buttonForm" method="post" action="reviewPFOs.php">
-            <input type="text" style="Display:none" value="' . $row[PropertyID] . '" />
+            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
             <button class="button">Review PFOs</button>
         </form>
         <form class="buttonForm" method="post" action="printFlyer.php">
-            <input type="text" style="Display:none" value="' . $row[PropertyID] . '" />
+            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
             <button class="button">Print Flyer</button>
         </form>
         </div>

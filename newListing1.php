@@ -42,7 +42,6 @@
     <hr class="Title">
     <div id="mainContent">
         <form class="formStyle" width="90%" height="90%" method="post" action="newListing1Redirect.php">
-                <?php if(isset($_POST[propertyID])) {echo '<input type="text" name="propertyID" value="' . $_POST[propertyID] . '"/>';} ?>
                 Address:<input type="text" name="address" value="<?php echo $row[Address]?>">
                 City:<input type="text" name="city" value="<?php echo $row[City]?>">
                 State:<input type="text" name="state" value="<?php echo $row[State]?>">

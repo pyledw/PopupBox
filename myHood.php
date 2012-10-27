@@ -4,7 +4,12 @@
           //  header( 'Location: /login.php' );
         //}
         $title = "MyHood - Home";
-	include "Header.php"
+	include "Header.php";
+        
+        if(isset($_SESSION[propertyID]))
+        {
+            unset($_SESSION[propertyID]);
+        }
 ?>
 
 <?php
