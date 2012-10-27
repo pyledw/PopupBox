@@ -30,9 +30,9 @@
         $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
         $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
         
-        if($row[IsApproved] == 0)
+        if($row[IsApproved] == 0 && $row[IsPaid] == 1)
         {
-            echo '<font class="redTextArea">This listing has not yet been approved</font><br/><br/>';
+            echo '<font class="yellowTextArea">This listing has not yet been approved</font>';
         }
         if($row[IsPaid] == 0)
         {
