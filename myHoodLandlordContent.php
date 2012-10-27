@@ -62,10 +62,18 @@
         </div>
         
         <div class="footer">
-            <a class="button">Review Move-in-now PFOs</a>
-            <a class="button">Edit Listing</a>
-            <a class="button">Review PFOs</a>
-            <a class="button">Print Flyer</a>
+        <form class="buttonForm" method="post" action="editListing.php">
+            <input type="text" style="Display:none" value="' . $row[PropertyID] . '" />
+            <button class="button">Edit Listing</button>
+        </form>
+        <form class="buttonForm" method="post" action="reviewPFOs.php">
+            <input type="text" style="Display:none" value="' . $row[PropertyID] . '" />
+            <button class="button">Review PFOs</button>
+        </form>
+        <form class="buttonForm" method="post" action="printFlyer.php">
+            <input type="text" style="Display:none" value="' . $row[PropertyID] . '" />
+            <button class="button">Print Flyer</button>
+        </form>
         </div>
         </div>
     </div>';

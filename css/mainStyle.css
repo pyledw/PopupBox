@@ -355,4 +355,9 @@ form .exceeded{color:#e00;}
     background:#cccccc;
     margin:0 5px 0 5px;
 }
+.buttonForm{
+    padding:0 0 0 0;
+    margin:0 0 0 0;
+    display:inline;
+}
 
