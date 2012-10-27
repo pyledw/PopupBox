@@ -1,11 +1,6 @@
 <?php
         $title = "Search Homes";
 	include 'Header.php';
-        if(!isset($_COOKIE['search']))
-        {
-            header( 'Location: /searchHomes.php' );
-        }
-        $searchTerm = $_COOKIE['search'];
         
         
         
@@ -14,23 +9,11 @@
 <hr class="Title" />
 <div id="mainContent">
     <?php
-        echo "Searched by: ";
-        echo $searchTerm;
         
+    include_once 'searchFunction.php';
+    $result = search($_POST[type],$_POST[search]);
     
-    //Creates a connection to the database and stores the connection string in $con and the Selected database in $select
-    include_once 'config.inc.php';
-    $connectionInfo= get_dbconn();
-    $con = $connectionInfo[0];
-    $select = $connectionInfo[1];
     
-    //Query to select the user's application using their userID number
-    $result = mysql_query("SELECT * FROM PROPERTY");
-    if(!$result)
-    {
-        die('could not connect: ' .mysql_error());
-    }
-
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
     {
