@@ -17,9 +17,15 @@ function search($type,$term)
                 $lat = $location[0];
                 $lon = $location[1];
                 
-                echo 'Search Location:' . $lat . $lon;
+                $maxLat = $lat + .5;
+                $maxLon = $lon + .5;
+                $minLat = $lat - .5;
+                $minLon = $lon - .5;
                 
-                $result = mysql_query("SELECT * FROM PROPERTY");
+                echo 'Search Location:' . $lat ." ". $lon ." <br/>". $maxLat ." ". $maxLon ." <br/>". $minLat ." ". $minLon;
+                
+                $result = mysql_query("SELECT * FROM PROPERTY
+                    WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' ");
                 if(!$result)
                 {
                      die('could not connect: ' .mysql_error());
