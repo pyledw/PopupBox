@@ -45,7 +45,7 @@
     <script type="text/javascript" src="js/css_browser_selector.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="css/searchResults.css" />
-    <link rel="stylesheet" type="text/css" href="css/viewApplicationStyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/formStyle.css" />
     
     <!-- These reference the external files for popups -->
     <script type="text/javascript" src="js/facebox.js"></script>

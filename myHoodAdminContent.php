@@ -14,7 +14,9 @@
     <?php
         //Query the database for only the row containing that users information
         $result = mysql_query("SELECT * FROM APPLICATION
-            WHERE IsApproved ='N'");
+            INNER JOIN USER
+            ON USER.UserID=APPLICATION.UserID
+            WHERE APPLICATION.IsApproved ='N'");
         
         if(!$result)
         {
@@ -25,8 +27,8 @@
         while($row = mysql_fetch_array($result))
         {
             
-            echo $row[UserID] . " " . $row[ApplicationID] .  " " . $row[ContactFName] . '<form method="post" action="approveApplication.php"><button type="submit">Activate</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form>
-                                <a class="button" href="viewApplication.php?applicationID='.$row[ApplicationID].'" rel="facebox" >View Application</a><br/>';
+            echo '<div style="display:inline;width:500px;">'. $row[UserID] . " " . $row[LastName] .  ", " . $row[FirstName] . '
+                                <a class="button" href="viewApplication.php?applicationID='.$row[ApplicationID].'" rel="facebox" >View Application</a></div><br/>';
         }
 
     ?>
@@ -36,7 +38,9 @@
     <?php
         //Query the database for only the row containing that users information
         $result = mysql_query("SELECT * FROM PROPERTY
-            WHERE IsApproved ='0'");
+            INNER JOIN USER
+            ON USER.UserID=PROPERTY.UserID
+            WHERE PROPERTY.IsApproved ='0'");
         
         if(!$result)
         {
@@ -47,7 +51,7 @@
         while($row = mysql_fetch_array($result))
         {
             
-            echo $row[UserID] . " " . $row[PropertyID] .  " " . $row[Address] . '<form method="post" action="approveListing.php"><button type="submit">Activate</button><input type="text" value="'. $row[PropertyID] .'" style="display:none;" name="propertyID"/></form><br/>';
+            echo $row[UserID] . " " . $row[PropertyID] .  " " . $row[Address] . '<div style="display:inline;width:500px;"><a class="button" href="viewProperty.php?propertyID='.$row[PropertyID].'" rel="facebox" >View Property</a></div><br/><br/>';
         }
 
     ?>
