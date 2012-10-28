@@ -12,9 +12,12 @@ root {
 #Application
 {
     width:800px;
+    padding:5px 5px 0 5px;
+    margin:-32px -10px 0 -10px;
     
 }
-#header{
+#Applicationheader{
+    text-align: center;
     background: #4f6228;
     width:100%;
     height:60px;

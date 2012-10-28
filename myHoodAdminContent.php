@@ -25,7 +25,8 @@
         while($row = mysql_fetch_array($result))
         {
             
-            echo $row[UserID] . " " . $row[ApplicationID] .  " " . $row[ContactFName] . '<form method="post" action="approveApplication.php"><button type="submit">Activate</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form><br/>';
+            echo $row[UserID] . " " . $row[ApplicationID] .  " " . $row[ContactFName] . '<form method="post" action="approveApplication.php"><button type="submit">Activate</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form>
+                                <a class="button" href="viewApplication.php?applicationID='.$row[ApplicationID].'" rel="facebox" >View Application</a><br/>';
         }
 
     ?>

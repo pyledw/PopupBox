@@ -2,7 +2,7 @@
 	//require 'config.inc.php';
 	session_start(); 
         
-         /*This displays all cookies and session data
+         //This displays all cookies and session data
          foreach ($_SESSION as $key=>$val)
          {
             echo $key." ".$val;
@@ -11,8 +11,7 @@
          {
             echo "<br>$key--> $val";
          }
-          * 
-          */
+
 
          
 ?>
@@ -45,6 +44,7 @@
     <script type="text/javascript" src="js/css_browser_selector.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="css/searchResults.css" />
+    <link rel="stylesheet" type="text/css" href="css/viewApplicationStyle.css" />
     
     <!-- These reference the external files for popups -->
     <script type="text/javascript" src="js/facebox.js"></script>
