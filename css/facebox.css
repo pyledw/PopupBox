@@ -17,6 +17,10 @@
   -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
   box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
+.ie #facebox .popup{
+    top:100px;
+    left:250px;
+}
 
 #facebox .content {
   display:table;
@@ -36,7 +40,7 @@
 
 #facebox .close{
   position:absolute;
-  top:0px;
+  top:-10px;
   right:-10px;
   padding:0px;
 }
