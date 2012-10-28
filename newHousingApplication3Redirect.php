@@ -280,6 +280,13 @@
     mysql_query("UPDATE APPLICATION SET TotalAssets='$_POST[equity]'
     WHERE UserID = '$_SESSION[userID]'");
     
+    //Setting which page has been compleated.  If the form has already been compleated it ignors this
+    if($row[PageCompleted] != "6")
+    {
+        
+        mysql_query("UPDATE APPLICATION SET PageCompleted='4'
+        WHERE UserID = '$_SESSION[userID]'");
+    }
     
 
     mysql_close();

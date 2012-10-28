@@ -105,13 +105,14 @@ session_start();
         mysql_query("UPDATE APPLICATION SET Pet4Weight='$_POST[animalWeight4]'
             WHERE UserID = '$_SESSION[userID]'");
     }
-    //echo $row[PageCompleted];
+    
     
     //Setting which page has been compleated.  If the form has already been compleated it ignors this
-    if($row[PageCompleated] != "6")
+    if($row[PageCompleted] != "6")
     {
+        
         mysql_query("UPDATE APPLICATION SET PageCompleted='2'
-            WHERE UserID = '$_SESSION[userID]'");
+        WHERE UserID = '$_SESSION[userID]'");
     }
     
      
