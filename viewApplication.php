@@ -290,7 +290,7 @@
             </tr>
             
             <tr>
-                <td colspan="8">Vehicle</td>
+                <td colspan="8">Vehicles</td>
             </tr>
             
            <tr>
@@ -380,7 +380,9 @@
                 </td>
 
             </tr>
-            
+             <tr>
+                <td colspan="8">Pets</td>
+            </tr>
             <tr>
                 <td>
                    Pet Type:
@@ -467,7 +469,9 @@
                 </td>
 
             </tr>
-            
+            <tr>
+                <td colspan="8">History Details</td>
+            </tr>
             <tr>
                 <td>
                    Criminal History
@@ -576,7 +580,9 @@
                 </td>
 
             </tr>
-            
+             <tr>
+                <td colspan="8">Emergency Contact</td>
+            </tr>
             <tr>
                 <td>
                    Name:
