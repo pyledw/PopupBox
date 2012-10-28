@@ -50,6 +50,7 @@
     
     $_SESSION['userID'] = $userData['UserID'];
     $_SESSION['user'] = $_POST['username'];
+    $_SESSION['type'] = $classification;
     
     mysql_close($con);
     if($userType == "tenant")

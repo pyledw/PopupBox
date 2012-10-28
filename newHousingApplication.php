@@ -173,7 +173,7 @@ include 'Header.php';
 <script>
     $(function() {
         $( "#datepicker" ).datepicker({
-            numberOfMonths: 3,
+            
             showButtonPanel: true,
             dateFormat:"yy-mm-dd"
         });
@@ -181,7 +181,7 @@ include 'Header.php';
     $(function() {
         $( "#datepicker2" ).datepicker({
             
-            numberOfMonths: 3,
+            
             showButtonPanel: true,
             dateFormat: 'yy-mm-dd'
         });
