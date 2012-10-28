@@ -83,15 +83,18 @@
     <?php
         
     //pulling the data from the database and returning the PFO
-    $result2 = mysql_query("SELECT * FROM BID
+    $result2 = mysql_query("SELECT * FROM PROPERTY
             INNER JOIN AUCTION
-            ON AUCTION.AuctionID=BID.AuctionID
-            INNER JOIN PROPERTY
-            ON PROPERTY.PropertyID=AUCTION.PropertyID
+            ON AUCTION.PropertyID=PROPERTY.PropertyID
+            INNER JOIN BID
+            ON BID.AuctionID=AUCTION.AuctionID
             INNER JOIN APPLICATION
-            ON APPLICATION.ApplicationID=BID.ApplicationID
-            WHERE APPLICATION.UserID='" . $_SESSION[userID] . "'
+            ON BID.ApplicationID=APPLICATION.ApplicationID
+            INNER JOIN USER
+            ON APPLICATION.UserID=USER.UserID
+            WHERE USER.UserID = '$_SESSION[userID]'
             ");
+    
     
     While($row2 = mysql_fetch_array($result2))
     {
@@ -108,8 +111,8 @@
         
         echo '    <div id="myHoodListing">
         <div class="header">
-            <font class="greyTextArea" style="float:right;">Status:Show Period Closed</font>
-            <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
+            <font class="greyTextArea" style="float:right;">Status:Accepting Bids</font>
+            <font class="greyTextArea" style="float:right;">Current Rent:'. $row2[MonthlyRate] . '</font>
             <font class="redTextArea" style="float:right;">Ends in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
         </div>
         
@@ -174,6 +177,8 @@
         </div>
         </div>
     </div>';
+        //added a break to ensure that only one property will be displayed
+        break;
     }
     
     ?>
