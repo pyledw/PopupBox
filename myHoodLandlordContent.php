@@ -97,9 +97,9 @@
         </div>
         
         <div class="footer">
-        <form class="buttonForm" method="post" action="newListing1.php">
+        <form class="buttonForm" method="POST" action="newListing1.php">
             <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
-            <button class="button">Edit Listing</button>
+            <button type="submit" class="button">Edit Listing</button>
         </form>
         
         <a href="reviewPFOs.php?propertyID='. $row[PropertyID] . '" rel="facebox" class="button">Review PFOs</a>

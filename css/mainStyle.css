@@ -15,6 +15,10 @@ body
 
 }
 
+.ie body{
+    cursor: default;
+}
+
 
 /*Wrapper element to hold all content on the page*/
 #wrapper 
@@ -125,7 +129,7 @@ hr.Title{
 .button{
 	border:none;
 	text-shadow: #DDD 2px 2px 2px;
-	padding:5px 15px 5px 15px;
+	padding:5px 10px 5px 10px;
 	text-decoration:none;
 	color:black;
 	background: rgb(214,209,174); /* Old browsers */
@@ -154,7 +158,8 @@ hr.Title{
 }
 .ie .button{
         border:none;
-	padding:0 15px 0 15px;
+	padding:5px 10px 5px 10px;
+        margin:5px 5px 5px 5px;
 	text-decoration:none;
 	color:black;
         background: #DEDBC3;
@@ -331,6 +336,7 @@ form .exceeded{color:#e00;}
 .special{
     float:right;
     margin-top: -20px;
+    border:none;
 }
 .tanTextArea{
     padding:5px 5px 5px 5px;

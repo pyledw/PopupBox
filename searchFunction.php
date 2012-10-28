@@ -7,14 +7,6 @@ function search($type,$term)
             $con = $connectionInfo[0];
             $select = $connectionInfo[1];
             
-            if($term == "")
-            {
-                $result = mysql_query("SELECT * FROM AUCTION
-                    INNER JOIN PROPERTY
-                    ON PROPERTY.PropertyID=AUCTION.PropertyID
-                    ");
-            }
-            else{
                 if($type == 'zip')
                 {
                     //This will be used in order to allow searching via Zip code.  It will take the users inputed Zip
@@ -72,7 +64,6 @@ function search($type,$term)
                          die('could not connect: ' .mysql_error());
                     }
                 }
-            }
 
 
             

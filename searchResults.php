@@ -94,11 +94,11 @@
         <div class="footer">
         <form class="buttonForm" method="get" action="homeListing.php">
             <input type="text" name="listingID" style="Display:none" value="' . $row[PropertyID] . '" />
-            <button class="button">View Listing Page</button>
+            <button class="button" type="submit">View Listing Page</button>
         </form>
         <form class="buttonForm" method="get" action="homeListing.php">
             <input type="text" name="listingID" style="Display:none" value="' . $row[PropertyID] . '" />
-            <button class="button">View Listing</button>
+            <button class="button" type="submit">View Listing</button>
         </form>
         </div>
         </div>
