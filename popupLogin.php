@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    session_destroy();
+    session_start();
+?>
 <link rel="stylesheet" type="text/css" href="css/popupStyles.css" />
 <div id="popupContent" style="width:400px;">
 <h1 class="popupHeader">Login Please</h1>

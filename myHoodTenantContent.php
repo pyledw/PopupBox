@@ -110,7 +110,7 @@
         <div class="header">
             <font class="greyTextArea" style="float:right;">Status:Show Period Closed</font>
             <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
-            <font class="redTextArea" style="float:right;">Ends in: ' . $years . ' Years, ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
+            <font class="redTextArea" style="float:right;">Ends in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
         </div>
         
         <div class="content">
