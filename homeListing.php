@@ -105,12 +105,17 @@
             <?php
                     
                     $result2 = mysql_query("SELECT * FROM BID
+                        INNER JOIN APPLICATION
+                        ON APPLICATION.ApplicationID=BID.ApplicationID
+                        INNER JOIN USER
+                        ON APPLICATION.UserID=USER.UserID
                         WHERE AuctionID='$row[AuctionID]'");
+                    
                     while($row2 = mysql_fetch_array($result2))
                     {
                         echo '<tr>
                             <td  colspan="2">
-                                USERNAME
+                                '. $row2[UserName] .'
                             </td>
                             <td>
                                 '. $row2[MonthlyRate]. '
