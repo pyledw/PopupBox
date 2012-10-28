@@ -138,63 +138,17 @@
         </div>
         
         <div class="footer">
-        <form class="buttonForm" method="post" action="newListing1.php">
-            <input type="text" name="propertyID" style="Display:none" value="' . $row2[PropertyID] . '" />
-            <button class="button">Edit Listing</button>
-        </form>
-        <form class="buttonForm" method="post" action="reviewPFOs.php">
-            <input type="text" name="propertyID" style="Display:none" value="' . $row2[PropertyID] . '" />
-            <button class="button">Review PFOs</button>
-        </form>
-        <form class="buttonForm" method="post" action="printFlyer.php">
-            <input type="text" name="propertyID" style="Display:none" value="' . $row2[PropertyID] . '" />
-            <button class="button">Print Flyer</button>
-        </form>
-        </div>
-        </div>
-    </div>';
-    }
-    
-    ?>
-    <div id="myHoodListing">
-        <div class="header">
-            <font class="redTextArea" style="float:right;">Action Ends</font>
-            <font class="greenTextArea" style="float:right;">Current Bid</font>
-        </div>
-        
-        <div class="content">
-        <image class="PFOimage" src="#" />
-        <div class="column1">
-            This will contain street address but will run over<br/>
-            City<br/>
-            state<br/>
-            zip<br/>
-            ID CODE<br/>
-        </div>
-        <div class="column2">
-            My bid<br/>
-            time submitted</br>
-            <a>See old bids</a>
-        </div>
-        <div class="column3">
-            Some details<br/>
-            number of rooms<br/>
-            SQ footage<br/>
-            Bathrooms
-        </div>
-        <div class="column4">
-            Open House Details</br>
-            Next Date:
-        </div>
-        
         <div class="footer">
             <a class="button">Move in now at:$price</a>
             <a class="button">Change my PFO</a>
             <a class="button">Contact Landlord</a>
         </div>
         </div>
-        
-    </div>
+        </div>
+    </div>';
+    }
+    
+    ?>
     <h1>My Favorites</h1>
         <?php
     //pulling the data from the database and returning the PFO
