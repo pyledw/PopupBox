@@ -28,9 +28,6 @@
         <!--Content will be retrieved via php.  This is just a template for user latter-->
         <h1 class="Title"><?php echo $row[Address] . " - " . $row[PropertyID] ?></h1>
         <hr class="Title" />
-        <?php
-            echo $row[AuctionID];
-        ?>
         <table id="houseListing">
             <tr>
                 <td colspan="3" width="600px">

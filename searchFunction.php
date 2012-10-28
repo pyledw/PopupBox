@@ -22,7 +22,7 @@ function search($type,$term)
                 $minLat = $lat - .5;
                 $minLon = $lon - .5;
                 
-                echo 'TYPE : '. $type . " " . $term . 'Search Location:' . $lat ." ". $lon ." <br/>". $maxLat ." ". $maxLon ." <br/>". $minLat ." ". $minLon;
+                //echo 'TYPE : '. $type . " " . $term . 'Search Location:' . $lat ." ". $lon ." <br/>". $maxLat ." ". $maxLon ." <br/>". $minLat ." ". $minLon;
                 
                 
                 $result = mysql_query("SELECT * FROM PROPERTY
