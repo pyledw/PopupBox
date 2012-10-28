@@ -56,11 +56,32 @@
            '.$row[PropertyID].'
         </div>
         <div class="column2">
-            Bids<br/>
-            Bidder ID ---  Price of Bid --- Date
-            ' .//This will be where we pull from the bids table to show the bids on the property
-            '
-        </div>
+            Bidder ID ---  Price of Bid --- Date <br/>
+            ';
+        
+                    
+                    $result2 = mysql_query("SELECT * FROM BID
+                        INNER JOIN AUCTION
+                        ON AUCTION.AuctionID=BID.AuctionID
+                        INNER JOIN APPLICATION
+                        ON APPLICATION.ApplicationID=BID.ApplicationID
+                        INNER JOIN USER
+                        ON USER.UserID=APPLICATION.UserID
+                        WHERE PropertyID='$row[PropertyID]'
+                        ORDER BY MonthlyRate");
+                    $max = 0;
+                    while($row2 = mysql_fetch_array($result2))
+                    {
+                        echo  $row2[UserName] . " " . 
+                            $row2[MonthlyRate]. " " . $row2[TimeReceived] .'<br/> ';
+                        $max += 1;
+                        if($max > 3)
+                        {
+                            break;
+                        }
+                    }
+
+        echo '</div>
         <div class="column3">
             '.$row[Description].'
         </div>
