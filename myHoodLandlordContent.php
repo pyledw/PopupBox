@@ -43,7 +43,7 @@
         <div class="header">
             <font class="greyTextArea" style="float:right;">Status:Show Period Closed</font>
             <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
-            <font class="redTextArea" style="float:right;">Ends in: ' . $years . ' Years, ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
+            <font class="redTextArea" style="float:right;">Ends in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
         </div>
         
         <div class="content">
@@ -101,14 +101,10 @@
             <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
             <button class="button">Edit Listing</button>
         </form>
-        <form class="buttonForm" method="post" action="reviewPFOs.php">
-            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
-            <button class="button">Review PFOs</button>
-        </form>
-        <form class="buttonForm" method="post" action="printFlyer.php">
-            <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
-            <button class="button">Print Flyer</button>
-        </form>
+        
+        <a href="reviewPFOs.php?propertyID='. $row[PropertyID] . '" rel="facebox" class="button">Review PFOs</a>
+            
+        <a href="printFlyer.php?propertyID='. $row[PropertyID] . '" class="button">Print Flyer</a>
         </div>
         </div>
     </div>';
