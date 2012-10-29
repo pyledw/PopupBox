@@ -8,28 +8,43 @@ $db_server = '199.115.231.216';     // server name or IP address
 $db_database = 'leasehood';     // database to select
 
 
-function get_dbconn() {
+function get_dbconn($api) {
     global $db_user, $db_pass, $db_server, $db_database;
+    $con = NULL;
 
-    $con = mysql_connect($db_server,$db_user,$db_pass );
-    if(!$con)
+    if ($api == NULL || $api == "mysql")
     {
-        die('could not connect: ' .mysql_error());
-    }
-    else
-    {
-        //echo "connected to mySQL";
-    }
+	$con = mysql_connect($db_server,$db_user,$db_pass );
+        if(!$con)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        else
+        {
+            //echo "connected to mySQL";
+        }
 
-    $select = mysql_selectdb($db_database, $con);
+        $select = mysql_selectdb($db_database, $con);
 
-    if(!$select)
-    {
-        die('could not connect: ' .mysql_error());
+        if(!$select)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        else
+        {
+            //echo "Selected Database";
+        }
     }
-    else
-    {
-        //echo "Selected Database";
+    else if ($api == "PDO") {
+        $dsn = 'mysql:host=' . $db_server . ';dbname=' . $db_database;
+        $options =  array(PDO::ATTR_PERSISTENT => true);
+        try 
+	{
+            $con = new PDO($dsn, $db_user, $db_pass, $options);
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ 	} catch (PDOException $e) {
+            echo 'Connection failed. ' . $e->getMessage();
+	}
     }
     return $con;
 }
