@@ -53,7 +53,7 @@
             </div>
             
             <div class="formElement" id="employer2">
-                Employer #1</br>
+                Former Employer</br>
                 Employer: <input type="text" name="employerName2" value="<?php echo $row[PrevEmployerName]?>"/>
                 Supervisor First Name: <input type="text" name="superVisorFName2" value="<?php echo $row[PrevSupFName]?>"/><br/>
                 Supervisor Last Name: <input type="text" name="superVisorLName2" value="<?php echo $row[PrevSupLName]?>"/><br/>
