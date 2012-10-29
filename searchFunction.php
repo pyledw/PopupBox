@@ -1,4 +1,7 @@
 <?php
+
+//Search function gets the Type of search, and the Term to search by.  It then will return the approprite query result
+//based on what type and what term you selected.
 function search($type,$term)
     {
     

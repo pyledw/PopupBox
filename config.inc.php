@@ -8,6 +8,7 @@ $db_server = '199.115.231.216';     // server name or IP address
 $db_database = 'leasehood';     // database to select
 
 
+//This function creates a connection to the database and returns an array with the selected database.
 function get_dbconn() {
     
     $db_user = 'leasehood';
