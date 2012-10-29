@@ -3,9 +3,9 @@
 $cfg['show_buildinfo'] = true;
 
 $db_user = 'leasehood';
-$db_pass = 'sunlight blanket floating change';
-$db_server = '199.115.231.216';
-$db_database = 'leasehood';
+$db_pass = 'sunlight blanket floating change';  // db password
+$db_server = '199.115.231.216';     // server name or IP address
+$db_database = 'leasehood';     // database to select
 
 
 function get_dbconn() {
