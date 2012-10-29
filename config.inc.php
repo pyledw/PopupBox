@@ -1,3 +1,6 @@
+<!-- This file is for the database configuration, and host the Username and Password for database connections.
+     It also hold the function to be called for creating the connection to the database-->
+
 <?php
 
 $cfg['show_buildinfo'] = true;
@@ -11,7 +14,6 @@ $db_database = 'leasehood';     // database to select
 function get_dbconn($api) {
     global $db_user, $db_pass, $db_server, $db_database;
     $con = NULL;
-
     if ($api == NULL || $api == "mysql")
     {
 	$con = mysql_connect($db_server,$db_user,$db_pass );

@@ -1,4 +1,4 @@
-
+<!-- This was for allowing the administrator to approve an account.  Not nessicary anymore -->
 <?php
 
 echo "redirect";

@@ -1,4 +1,4 @@
-
+<!-- Simply a continuation of the getting started content -->
         <?php
         $title = "Getting Started Cont.";
 	include 'Header.php';

@@ -19,8 +19,6 @@
 ?>
 
 
-<?php //echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';//This displayes all session variables?>
-
 <!--//Header to be displayed on all pages.  This will show deal with HTML head elements as well
 //as the Title, and CSS/Javascript References.  It also contains the navigation bar element.-->
 
@@ -39,27 +37,27 @@
     </title>
     <link rel="shortcut icon" href="images/favicon.ico" /><!--Link to Favicon-->
     <link rel="stylesheet" type="text/css" href="css/mainStyle.css" /><!--Link to Main css file -->
-    <link rel="stylesheet" type="text/css" href="css/navigationBarStyle.css" /><!--Link to Main css file -->
+    <link rel="stylesheet" type="text/css" href="css/navigationBarStyle.css" /><!--Link to Navigation bar css file -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><!--Meta Data-->
-    <script type="text/javascript" src="js/mainJavaScript.js"></script><!--Javascript Reference-->
-    <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
-    <script type="text/javascript" src="js/css_browser_selector.js"></script>
-    <script type="text/javascript" src="js/jquery.cookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/searchResults.css" />
-    <link rel="stylesheet" type="text/css" href="css/formStyle.css" />
+    <script type="text/javascript" src="js/mainJavaScript.js"></script><!--Javascript Reference to main-->
+    <script type="text/javascript" src="js/jquery-1.8.2.js"></script><!--Javascript Reference to Jquery-->
+    <script type="text/javascript" src="js/css_browser_selector.js"></script><!--Javascript Reference to Browser Selector-->
+    <script type="text/javascript" src="js/jquery.cookie.js"></script><!--Javascript Reference to Cookie Extension-->
+    <link rel="stylesheet" type="text/css" href="css/searchResults.css" /><!--Javascript Reference to Search Result Style-->
+    <link rel="stylesheet" type="text/css" href="css/formStyle.css" /><!--Javascript Reference to Form Styles-->
     
     <!-- These reference the external files for popups -->
     <script type="text/javascript" src="js/facebox.js"></script>
     <link rel="stylesheet" type="text/css" href="css/facebox.css" />
     
-    <!-- These reference the needed external files for the date picker -->
+    <!-- These reference the needed external files for the date picker using Jquery UI -->
     <link rel="stylesheet" href="css/jquery-ui.css" />
     <script src="js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css" /><!--Javascript Reference to Add on for timepicker-->
+    <script src="js/jquery-ui-timepicker-addon.js"></script><!--Javascript Reference to Add on for timepicker-->
     
-    <link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css" />
-    <script src="js/jquery-ui-timepicker-addon.js"></script>
     
-    <script src="js/charCount.js"></script>
+    <script src="js/charCount.js"></script><!--Javascript Reference to Add on for counting the characters in a textbox-->
     <script>
         $(function() {
         $( document ).tooltip();
@@ -73,7 +71,7 @@
         
 <!-- This section creates the wrapper, and then 
     creates and aligns the wrapper
-     It then inserts the navigation bar.-->
+     It then inserts the navigation bar based on if the user is logged in, and what type of user it is.-->
 
 	<div id="wrapper">
             
@@ -94,13 +92,18 @@
             </div>
             <div id="nav">
                 <?php
+                                        //This retrieves the filename of the current window
 	       				$currentFile = $_SERVER["PHP_SELF"];
 						$parts = Explode('/', $currentFile);
 						$fileName = $parts[count($parts) - 1];
+                                                
+                                        //Testing to see if the current window corisponds to the tab on the navigation bar
 	       				if ($fileName == 'gettingStarted.php') {
+                                                        //If found, it will create an element with current Class
 							echo '<a href="gettingStarted.php" class="current">Getting Started</a>';
 						}
 						else {
+                                                        //Else it creates an element with a standard style for navigation link
 							echo '<a href="gettingStarted.php">Getting Started</a>';
 						}
 
@@ -117,6 +120,9 @@
 						else {
 							echo '<a href="listHome.php">List Home</a>';
 						}
+                                                
+                                                
+                                        //If the user is logged in, this will run to change based on user
                                         if(isset($_SESSION['user'])){
                                             if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
 							echo '<a href="login.php" class="current">My Hood</a>';
@@ -124,7 +130,8 @@
 						else {
 							echo '<a href="login.php">My Hood</a>';
 						}
-                                        }
+                                            }
+                                        //If the user is not logged in
                                         else{
                                             if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
                                                             echo '<a href="login.php" class="current">Login</a>';
@@ -132,8 +139,9 @@
                                                     else {
                                                             echo '<a href="login.php">Login</a>';
                                                     }
-                                        }
-	       			
+                                            }
+                                        
+                                        
 	       				if ($fileName == 'newUser.php') {
 							echo '<a href="newUser.php" class="current">New User</a>';
 						}
@@ -165,15 +173,18 @@
 	       			?>
             </div>
                                 <?php
+                                        //If the user is on the myhood page, setup for the secondary navigation bar
                                         if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
                                                         include 'myHoodNavigationBar.php';
 						}
 						else {
+                                                        //creating the popup for specials
 							echo '<a href="popupSpecials.php" rel="facebox"><img src="images/Special.jpg" class="special"></a>';
 						}
                                 ?>
             
             <script>
+                //This makes the facebox option available from all pages
                 jQuery(document).ready(function($) {
                     $('a[rel*=facebox]').facebox()
                     })

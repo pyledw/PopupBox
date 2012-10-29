@@ -31,19 +31,13 @@
                     Last Name:
                 </td>
                 <td>
-                    <?php echo $row[FirstName]; ?>
+                    <?php echo $row[LastName]; ?>
                 </td>
                 <td>
                     Email:
                 </td>
                 <td>
                     <?php echo $row[Email]; ?>
-                </td>
-                <td>
-                    Zip Code:
-                </td>
-                <td>
-                    <?php echo $row[ZipCode]; ?>
                 </td>
             </tr>
             <tr>

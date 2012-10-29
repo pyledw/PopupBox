@@ -79,7 +79,7 @@ include 'Header.php';
         
         <div id="residents">
             <div class="formElement" id="resident1">
-                SEcondary Resident<br />
+                Secondary Resident<br />
                 First Name: <input type="text" value="<?php echo $row[SecondaryOccupantFName]?>" name="fName" />
                 Last Name: <input type="text" value="<?php echo $row[SecondaryOccupantLName]?>" name="lName" />
                 Age: <input type="text" value="<?php echo $row[SecondaryOccupantAge]?>" name="age"/><br />
@@ -112,7 +112,7 @@ include 'Header.php';
                     Breed:<input type="text" value="<?php echo $row[Pet1Breed]?>" name="animalBreed" />
                     Age:<input type="text" value="<?php echo $row[Pet1Age]?>" name="animalAge" />
                 </div>
-                <div class="formElement" id="pet2" <?php if($row[Pet2Type] == ""){ echo 'style="display: none;"';}?>>
+                <div class="formElement" id="pet2" <?php if($row[Pet2Type] == "")?>>
                     Pet #2<br/>
                     Type:<select name="animalType2">
                         <option <?php if($row[Pet2Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
@@ -125,7 +125,7 @@ include 'Header.php';
                     Breed:<input type="text" value="<?php echo $row[Pet2Breed]?>" name="animalBreed2" />
                     Age:<input type="text" value="<?php echo $row[Pet2Age]?>" name="animalAge2" />
                 </div>
-                <div class="formElement" id="pet3" <?php if($row[Pet3Type] == ""){ echo 'style="display: none;"';}?>>
+                <div class="formElement" id="pet3" <?php if($row[Pet3Type] == "")?>>
                     Pet #3<br/>
                     Type:<select name="animalType3">
                         <option <?php if($row[Pet3Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
@@ -138,7 +138,7 @@ include 'Header.php';
                     Breed:<input type="text" value="<?php echo $row[Pet3Breed]?>" name="animalBreed3" />
                     Age:<input type="text" value="<?php echo $row[Pet3Age]?>" name="animalAge3" />
                 </div>
-                <div class="formElement" id="pet4" <?php if($row[Pet4Type] == ""){ echo 'style="display: none;"';}?>>
+                <div class="formElement" id="pet4" <?php if($row[Pet4Type] == "")?>>
                     Pet #4<br/>
                     Type:<select name="animalType4">
                         <option <?php if($row[Pet4Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
@@ -154,8 +154,8 @@ include 'Header.php';
 
             </div>
         <br/>
-        <font class="button" id="addPet">Add pet</font>
-        <font class="button"  id="removePet">Remove pet</font><br/><br/>
+        <!--<font class="button" id="addPet">Add pet</font>
+        <font class="button"  id="removePet">Remove pet</font><br/><br/>-->
         <button type="submit" class="button">Save and Continue</button>
         <button type="reset" class="button">Clear</button>
     </form>

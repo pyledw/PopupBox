@@ -1,4 +1,6 @@
-
+<!-- This page is for the approving of an application for the administrator.
+     it retrieves the applicationID in a post, and then changes the data 
+     in the database. -->
 <?php
 
 echo "redirect";

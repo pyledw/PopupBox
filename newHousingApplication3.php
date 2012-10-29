@@ -85,7 +85,7 @@
                     {
                         echo '
                 <div class="formElement" id="formerHome'.$intCount.'">              
-                        <h3> New Former Residence</h3><br/>
+                        <h3>Former Residence</h3><br/>
                         Type Of Residence:<select id="select" name="type'.$intCount.'">
                             <option>
                                 Owned
@@ -120,7 +120,7 @@
             else
             {
                 echo '<div class="formElement" id="formerHome1">              
-                <h3>New Former Residence</h3><br/>
+                <h3>Former Residence #1</h3><br/>
                 Type Of Residence:<select id="select" name="type1">
                     <option>
                         Owned
@@ -148,7 +148,7 @@
                 Mortgage:<input type="text" name="mortgage1"/>
                 </div>
             </div>
-            <div class="formElement" id="formerHome2" style="display:none;">
+            <div class="formElement" id="formerHome2">
                 
                 <h3>Former Residence #2</h3><br/>
                 Type Of Residence:<select id="select" name="type2">
@@ -210,7 +210,7 @@
                 </div>
 
             </div>
-            <div class="formElement" id="formerHome4" style="display:none;">
+            <div class="formElement" id="formerHome4">
                 
                 <h3>Former Residence #4</h3><br/>
                 Type Of Residence:<select id="select" name="type4">
@@ -241,9 +241,9 @@
                 </div>
 
             </div>
-        </div>
-        <font class="button" id="addFormerHome">Add another home</font>
-        <font class="button"  id="removeFormerHome">Remove home</font><br/><br/>';
+        </div>';
+        //<font class="button" id="addFormerHome">Add another home</font>
+        //<font class="button"  id="removeFormerHome">Remove home</font><br/><br/>';
             }
             
         //Creating a new query in order to get the applicaiton data

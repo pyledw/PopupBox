@@ -1,4 +1,4 @@
-
+<!-- This page will be deleted as it is not being used -->
 <?php
 
 //This function initiates and creates the form with the specified peramiters

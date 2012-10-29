@@ -1,4 +1,5 @@
-                 
+<!-- This is the index page, or Landing Page.  It displays the inital information and allows the user to search by zip code. -->
+
 <?php
         $title = "Welcome";
 	include 'Header.php';

@@ -1,3 +1,7 @@
+<!-- This is the logical process that manages when a user tries to edit their application
+     it will route them to the correct page where they left off, or if the application was
+     completed it will route to the first page.-->
+
 <?php
     session_start();
     
@@ -15,10 +19,7 @@
         $row = mysql_fetch_array($result);
         
         
-        //Will eventually test to see if the applicaiton was compleate, and go back to the next needed page.
-        
-        
-        
+        //Will test to see if the applicaiton was compleate, and go back to the next needed page.
         if($row[PageCompleted] == "1")
         {
             header( "Location: /newHousingApplication.php" );

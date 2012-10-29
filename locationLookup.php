@@ -1,4 +1,6 @@
 <?php
+
+//This function takes the mailing address and retrievs the LAT and LON of the address
 function getLatandLongAddress($addr,$city,$state)
 { 
 	global $lat;
@@ -26,6 +28,7 @@ function getLatandLongAddress($addr,$city,$state)
         return $location;
 }
 
+//This function takes teh zip code and returns the LAT and LON of the ZIP code
 function getLatandLongZip($Zip)
 { 
 	global $lat;
