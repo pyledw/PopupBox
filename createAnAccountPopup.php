@@ -1,3 +1,5 @@
+<!-- This popup is for prompting the user if they are not logged in, 
+     and need to either Log in or create an account               -->
 <link rel="stylesheet" type="text/css" href="css/popupStyles.css" />
 <div id="popupContent" style="width:400px;">
 <h1 class="popupHeader">Login Please</h1>

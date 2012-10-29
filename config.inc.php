@@ -1,3 +1,6 @@
+<!-- This file is for the database configuration, and host the Username and Password for database connections.
+     It also hold the function to be called for creating the connection to the database-->
+
 <?php
 
 $cfg['show_buildinfo'] = true;

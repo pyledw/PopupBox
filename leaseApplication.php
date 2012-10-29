@@ -1,3 +1,5 @@
+<!-- This file is not used and needs to be removed. -->
+
 <?php
    $title = "New Renter Application";
    include 'Header.php';

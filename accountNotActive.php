@@ -1,6 +1,9 @@
+<!--  This page is for if the user account is not active. It will display if the user account has been
+      suspended by the administrator                               -->
+
 
 <?php
-        $title = "Login";
+        $title = "Login - Not Active";
 	include 'Header.php';
         if(isset($_SESSION['user'])){
             header( 'Location: /myHood.php' ) ;

@@ -1,3 +1,6 @@
+<!-- This is the home listing page.  It uses the GET method in order to create a static address for each listing
+     It then retrieves the data from the database about the listing and displays it to the screen. -->
+
 <?php
     $listingID = $_GET[listingID];
     $title = 'Listing' .$listingID; //This will be retrieved from the element that was clicked on in the search
