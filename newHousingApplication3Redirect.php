@@ -4,10 +4,8 @@
     //Creating a conneciton to the database and returning the valuse needed
     include_once 'config.inc.php';
         //Connecting to the sql database
-    $connectionInfo= get_dbconn();
-    $con = $connectionInfo[0];
-    $select = $connectionInfo[1];
-    
+    $con= get_dbconn();
+
     //Query to retrieve the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='$_SESSION[userID]'");

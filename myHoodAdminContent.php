@@ -1,17 +1,12 @@
 <div id="mainContent">
-    <?php
-        include_once 'config.inc.php';
-        //Connecting to the sql database
-        $connectionInfo= get_dbconn();
-        $con = $connectionInfo[0];
-        $select = $connectionInfo[1];
-        
-
-    ?>
     <h1>
         New users applications needing review
     </h1>
     <?php
+        include_once 'config.inc.php';
+        //Connecting to the sql database
+        $con = get_dbconn();
+
         //Query the database for only the row containing that users information
         $result = mysql_query("SELECT * FROM APPLICATION
             INNER JOIN USER

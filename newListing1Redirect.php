@@ -5,9 +5,8 @@ session_start();
     //Creating conneciton to the Database
     include_once 'config.inc.php';
         //Connecting to the sql database
-    $connectionInfo = get_dbconn();
-    $con = $connectionInfo[0];
-    $select = $connectionInfo[1];
+    $con = get_dbconn();
+
     
     if(!isset($_SESSION[propertyID]))
     {

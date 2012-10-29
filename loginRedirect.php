@@ -6,10 +6,8 @@
         
         include_once 'config.inc.php';
         //Connecting to the sql database
-        $connectionInfo= get_dbconn();
-        $con = $connectionInfo[0];
-        $select = $connectionInfo[1];
-        
+        $con = get_dbconn();
+
         //Query the database for only the row containing that users information
         $result = mysql_query("SELECT * FROM USER
             WHERE UserName ='" . $myName . "'");

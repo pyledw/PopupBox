@@ -1,11 +1,8 @@
 <?php
 //echo $_GET[propertyID];
 
-//Creates a connection to the database and stores the connection string in $con and the Selected database in $select
     include_once 'config.inc.php';
-    $connectionInfo= get_dbconn();
-    $con = $connectionInfo[0];
-    $select = $connectionInfo[1];
+    $con = get_dbconn();
     
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM USER

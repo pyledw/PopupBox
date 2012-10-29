@@ -3,9 +3,7 @@ session_start();
     
     //Creating a conneciton to the Database and setting the variables needed
     include_once 'config.inc.php';
-    $connectionInfo= get_dbconn();
-    $con = $connectionInfo[0];
-    $select = $connectionInfo[1];
+    $con = get_dbconn();
     
     //Query getting the application data for this user
     $result = mysql_query("SELECT * FROM APPLICATION

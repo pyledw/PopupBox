@@ -3,9 +3,7 @@ function search($type,$term)
     {
     
             include_once 'config.inc.php';
-            $connectionInfo = get_dbconn();
-            $con = $connectionInfo[0];
-            $select = $connectionInfo[1];
+            $con = get_dbconn();
             
                 if($type == 'zip')
                 {

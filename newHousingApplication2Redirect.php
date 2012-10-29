@@ -1,13 +1,10 @@
 <?php
 session_start();
     
-    //Creates a connection to the database and stores the connection string in $con and the Selected database in $select
     include_once 'config.inc.php';
         //Connecting to the sql database
-    $connectionInfo= get_dbconn();
-    $con = $connectionInfo[0];
-    $select = $connectionInfo[1];
-    
+    $con= get_dbconn();
+
     //Query that is retrieving the data from the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='" . $_SESSION[userID] . "'");
