@@ -9,7 +9,7 @@ $db_user = 'leasehood';
 $db_pass = 'sunlight blanket floating change';  // db password
 $db_server = '199.115.231.216';     // server name or IP address
 $db_database = 'leasehood';     // database to select
-
+$pw_salt = '68f33ecb44592ddd476af4145a2eae9f';
 
 function get_dbconn($api) {
     global $db_user, $db_pass, $db_server, $db_database;
