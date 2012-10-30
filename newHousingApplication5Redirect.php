@@ -32,6 +32,6 @@ session_start();
     
     mysql_close();
     
-    header( 'Location: /myHood.php' );
+    header( 'Location: /payApplicationFee.php' );
     
 ?>

@@ -11,5 +11,5 @@ session_start();
 
     mysql_close();
     
-    header( 'Location: /myHood.php' );
+    header( 'Location: /payListingFee.php' );
 ?>

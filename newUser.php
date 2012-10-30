@@ -112,21 +112,17 @@
                              <input type="text" name="DOB">
                          </td>
                          <td>
-                           Last 4 digits in your Social Security Number
+                           Last 4 digits in your SSN:
                          </td>
                          <td>
                              <input type="text" name="SSN">
                          </td>
                     </tr>
                     <tr>
-                         <td>
-                           
-                         </td>
-                         <td>
-                          <button type="submit" class="button">Save and Continue</button>
-                         </td>
-                         <td>
-                           <button type="reset" class="button">Clear</button>
+                         <td colspan="6" align="left">
+                                <button type="submit" class="button">Save and Continue</button>
+                                 <button type="reset" class="button">Clear</button>
+                                
                          </td>
                     </tr>
                  
