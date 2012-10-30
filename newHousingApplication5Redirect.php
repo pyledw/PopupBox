@@ -21,6 +21,13 @@ session_start();
 	echo 'Connection failed. ' . $e->getMessage();
     }
     
+    $con = get_dbconn(""); 
+    //Query to retrieve the application of the user
+    $result = mysql_query("SELECT * FROM APPLICATION
+            WHERE UserID ='$_SESSION[userID]'");
+    
+    //Casting the query results on to $row
+    $row = mysql_fetch_array($result);
     
     //Setting which page has been compleated.  If the form has already been compleated it ignors this
     if($row[PageCompleted] != "6")
