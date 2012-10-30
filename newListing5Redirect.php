@@ -3,7 +3,7 @@ session_start();
     
     require_once "config.inc.php";
          
-    $con = get_dbconn();
+    $con = get_dbconn("");
     $propertyID = $_SESSION[propertyID];
     
     
@@ -11,5 +11,5 @@ session_start();
 
     mysql_close();
     
-    header( 'Location: /myHood.php' );
+    header( 'Location: /payListingFee.php' );
 ?>

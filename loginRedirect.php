@@ -7,7 +7,7 @@
         
         include_once 'config.inc.php';
         //Connecting to the sql database
-        $con = get_dbconn();
+        $con = get_dbconn("");
 
         //Query the database for only the row containing that users information
         $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . crypt($userPassword, $pw_salt) . "'");

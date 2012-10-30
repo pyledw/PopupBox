@@ -36,20 +36,24 @@
 	echo 'Connection failed. ' . $e->getMessage();
     }
 
-    $stmt = $con->prepare("SELECT UserID FROM USER WHERE UserName = :username");
-    $stmt->bindValue(":username", $_POST['username'], PDO::PARAM_STR);
-    $result = $sth->fetch(PDO::FETCH_ASSOC);
-    dump_var($result);
-//    $_SESSION['userID'] = $userData['UserID'];
-//    $_SESSION['user'] = $_POST['username'];
-//    $_SESSION['type'] = $classification;
+    echo "1 record added";
+
     
-//    if($userType == "tenant")
-//    {
-//        header( 'Location: /newHousingApplication.php' ) ;
-//    }
-//    else 
-//    {
-//        header( 'Location: /newListing1.php' );
-//    }
+    $con = get_dbconn("");
+    $result = mysql_query("SELECT * FROM USER
+            WHERE UserName ='" . $_POST[username] . "'");
+    $userData = mysql_fetch_array($result);
+    
+    $_SESSION['userID'] = $userData['UserID'];
+    $_SESSION['user'] = $_POST['username'];
+    $_SESSION['type'] = $classification;
+    
+    if($userType == "tenant")
+    {
+        header( 'Location: /newHousingApplication.php' ) ;
+    }
+    else 
+    {
+        header( 'Location: /newListing1.php' );
+    }
 ?>

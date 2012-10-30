@@ -5,7 +5,7 @@
     <?php
         include_once 'config.inc.php';
         //Connecting to the sql database
-        $con = get_dbconn();
+        $con = get_dbconn("");
 
         //Query the database for only the row containing that users information
         $result = mysql_query("SELECT * FROM APPLICATION
@@ -35,7 +35,7 @@
         $result = mysql_query("SELECT * FROM PROPERTY
             INNER JOIN USER
             ON USER.UserID=PROPERTY.UserID
-            WHERE PROPERTY.IsApproved ='0'");
+            WHERE PROPERTY.IsApproved ='0' AND PROPERTY.IsPaid = '1'");
         
         if(!$result)
         {

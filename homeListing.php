@@ -10,7 +10,7 @@
 
         include_once 'config.inc.php';
         //Connecting to the sql database
-        $con = get_dbconn();
+        $con = get_dbconn("");
 
         $result = mysql_query("SELECT * FROM PROPERTY
            INNER JOIN AUCTION

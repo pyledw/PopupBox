@@ -43,6 +43,7 @@
     <script type="text/javascript" src="js/jquery-1.8.2.js"></script><!--Javascript Reference to Jquery-->
     <script type="text/javascript" src="js/css_browser_selector.js"></script><!--Javascript Reference to Browser Selector-->
     <script type="text/javascript" src="js/jquery.cookie.js"></script><!--Javascript Reference to Cookie Extension-->
+    <script type="text/javascript" src="js/jquery.validate.js"></script><!--Javascript Reference to Cookie Extension-->
     <link rel="stylesheet" type="text/css" href="css/searchResults.css" /><!--Javascript Reference to Search Result Style-->
     <link rel="stylesheet" type="text/css" href="css/formStyle.css" /><!--Javascript Reference to Form Styles-->
     

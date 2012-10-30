@@ -4,8 +4,8 @@
         include_once 'config.inc.php';
         $con = get_dbconn("");
         
-        mysql_query("UPDATE PROPERTY SET IsPaid='1'
-            WHERE PropertyID = '$_POST[propertyID]'");
+        mysql_query("UPDATE USER SET IsPaid='1'
+            WHERE UserID = '$_POST[userID]'");
         
         header( 'Location: /myHood.php' );
 

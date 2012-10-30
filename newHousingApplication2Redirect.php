@@ -3,7 +3,7 @@ session_start();
     
     include_once 'config.inc.php';
         //Connecting to the sql database
-    $con= get_dbconn();
+    $con= get_dbconn("");
 
     //Query that is retrieving the data from the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
@@ -12,107 +12,48 @@ session_start();
     //Casting the query data onto a variable
     $row = mysql_fetch_array($result);
 
-    
-    //Check to see if the employer name has data in it
-    if($_POST[employerName1] != '')
-    {
-        //writing the employer data into the application
-        mysql_query("UPDATE APPLICATION SET CurrentEmployerName='$_POST[employerName1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CurrentSupFName='$_POST[superVisorFName1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CurentSupLName='$_POST[superVisorLName1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CurrentSupPhone='$_POST[superVisorPhone1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CurrentPositionName='$_POST[position1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CurrentMonthsEmployed='$_POST[monthsEmployed1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CurrentAnnualSalary='$_POST[annualSalary1]'
-        WHERE UserID = '$_SESSION[userID]'");
+    //Using the new method for inserting into the Database
+    $con = get_dbconn("PDO");
+    $stmt = $con->prepare("
+            UPDATE APPLICATION SET
+                CurrentEmployerName=:employerName1,             CurrentSupFName=:superVisorFName1,          CurentSupLName=:superVisorLName1,
+                CurrentSupPhone=:superVisorPhone1,              CurrentPositionName=:position1,             CurrentMonthsEmployed=:monthsEmployed1,
+                CurrentAnnualSalary=:annualSalary1,             PrevEmployerName=:employerName2,            PrevSupFName=:superVisorFName2,
+                PrevSupLName=:superVisorLName2,                 PrevSupPhone=:superVisorPhone2,             PrevPositionName=:position2,
+                PrevMonthsEmployed=:monthsEmployed2,            PrevAnnualSalary=:annualSalary2,            CoAppEmployerName=:coAppEmployerName1,
+                CoAppSupFName=:coAppSuperVisorFName1,           CoAppSupLName=:coAppSuperVisorLName1,       CoAppSupPhone=:coAppSuperVisorPhone1,
+                CoAppPositionName=:coAppPosition1,              CoAppMonthsEmployed=:coAppMonthsEmployed1,  CoAppAnnualSalary=:coAppAnnualSalary1
+                
+            WHERE UserID='$_SESSION[userID]'
+            ");
+    try {
+        $stmt->bindValue(':employerName1',          $_POST['employerName1'],                   PDO::PARAM_STR);
+        $stmt->bindValue(':superVisorFName1', 	    $_POST['superVisorFName1'],                PDO::PARAM_STR);
+        $stmt->bindValue(':superVisorLName1', 	    $_POST['superVisorLName1'],                PDO::PARAM_STR);
+        $stmt->bindValue(':superVisorPhone1', 	    $_POST['superVisorPhone1'],                PDO::PARAM_STR);
+        $stmt->bindValue(':position1',              $_POST['position1'],                       PDO::PARAM_STR);
+        $stmt->bindValue(':monthsEmployed1', 	    $_POST['monthsEmployed1'],                 PDO::PARAM_STR);
+        $stmt->bindValue(':annualSalary1', 	    $_POST['annualSalary1'],                   PDO::PARAM_INT);
+        $stmt->bindValue(':employerName2', 	    $_POST['employerName2'],                   PDO::PARAM_STR);
+        $stmt->bindValue(':superVisorFName2', 	    $_POST['superVisorFName2'],                PDO::PARAM_STR);
+        $stmt->bindValue(':superVisorLName2', 	    $_POST['superVisorLName2'],                PDO::PARAM_STR);
+        $stmt->bindValue(':superVisorPhone2', 	    $_POST['superVisorPhone2'],                PDO::PARAM_STR);
+        $stmt->bindValue(':position2',              $_POST['position2'],                       PDO::PARAM_STR);
+        $stmt->bindValue(':monthsEmployed2', 	    $_POST['monthsEmployed2'],                 PDO::PARAM_STR);
+        $stmt->bindValue(':annualSalary2', 	    $_POST['annualSalary2'],                   PDO::PARAM_INT);
+        $stmt->bindValue(':coAppEmployerName1',     $_POST['coAppEmployerName1'],              PDO::PARAM_STR);
+        $stmt->bindValue(':coAppSuperVisorFName1',  $_POST['coAppSuperVisorFName1'],           PDO::PARAM_STR);
+        $stmt->bindValue(':coAppSuperVisorLName1',  $_POST['coAppSuperVisorLName1'],           PDO::PARAM_STR);
+        $stmt->bindValue(':coAppSuperVisorPhone1',  $_POST['coAppSuperVisorPhone1'],           PDO::PARAM_STR);
+        $stmt->bindValue(':coAppPosition1', 	    $_POST['coAppPosition1'],                  PDO::PARAM_STR);
+        $stmt->bindValue(':coAppMonthsEmployed1',   $_POST['coAppMonthsEmployed1'],            PDO::PARAM_STR);
+        $stmt->bindValue(':coAppAnnualSalary1',     $_POST['coAppAnnualSalary1'],              PDO::PARAM_INT);
+        $stmt->execute();
+    } catch (Exception $e) {
+	echo 'Connection failed. ' . $e->getMessage();
     }
-    
-    //Seconday Employer
-    if($_POST[employerName2] != '')
-    {
-        mysql_query("UPDATE APPLICATION SET PrevEmployerName='$_POST[employerName2]'
-        WHERE UserID = '$_SESSION[userID]'");
 
-        mysql_query("UPDATE APPLICATION SET PrevSupFName='$_POST[superVisorFName2]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET PrevSupLName='$_POST[superVisorLName2]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET PrevSupPhone='$_POST[superVisorPhone2]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET PrevPositionName='$_POST[position2]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET PrevMonthsEmployed='$_POST[monthsEmployed2]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET PrevAnnualSalary='$_POST[annualSalary2]'
-        WHERE UserID = '$_SESSION[userID]'");
-    }
-    
-    //Co Applicant Employers
-    if($_POST[coAppEmployerName1] != '')
-    {
-        mysql_query("UPDATE APPLICATION SET CoAppEmployerName='$_POST[coAppEmployerName1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CoAppSupFName='$_POST[coAppSuperVisorFName1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CoAppSupLName='$_POST[coAppSuperVisorLName1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CoAppSupPhone='$_POST[coAppSuperVisorPhone1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CoAppPositionName='$_POST[coAppPosition1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CoAppMonthsEmployed='$_POST[coAppMonthsEmployed1]'
-        WHERE UserID = '$_SESSION[userID]'");
-
-        mysql_query("UPDATE APPLICATION SET CoAppAnnualSalary='$_POST[coAppAnnualSalary1]'
-        WHERE UserID = '$_SESSION[userID]'");
-    }
-    //co applicant 2
-    
-    /*
-    mysql_query("UPDATE APPLICATION SET CoAppEmployerName='$_POST[coAppEmployerName1]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET CoAppSupFName='$_POST[coAppSuperVisorFName1]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET CoAppSupLName='$_POST[coAppSuperVisorLName1]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET CoAppSupPhone='$_POST[coAppSuperVisorPhone1]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET CoAppPositionName='$_POST[coAppPosition1]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET CoAppMonthsEmployed='$_POST[coAppMonthsEmployed1]'
-    WHERE UserID = '$_SESSION[userID]'");
-    
-    mysql_query("UPDATE APPLICATION SET CoAppAnnualSalary='$_POST[coAppAnnualSalary1]'
-    WHERE UserID = '$_SESSION[userID]'");
-     */
-    
+    echo "1 record UPDATED";
     
     //Setting which page has been compleated.  If the form has already been compleated it ignors this
     if($row[PageCompleted] != "6")

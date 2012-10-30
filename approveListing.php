@@ -9,7 +9,7 @@ echo "redirect";
 require_once "config.inc.php";
         //SQL connection information
 
-	$con = get_dbconn();
+	$con = get_dbconn("");
 
         $result = mysql_query("SELECT * FROM PROPERTY
             WHERE PropertyID = '$_POST[propertyID]'");

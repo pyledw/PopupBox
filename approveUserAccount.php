@@ -7,7 +7,7 @@ echo $_POST[accountID];
 require_once "config.inc.php";
         //SQL connection information
 
-        $con = get_dbconn();
+        $con = get_dbconn("");
         
         mysql_query("UPDATE USER SET IsApproved='Y'
         WHERE UserID = '$_POST[accountID]'");

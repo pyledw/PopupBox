@@ -7,7 +7,7 @@
     
     require_once "config.inc.php";
          
-        $con = get_dbconn();
+        $con = get_dbconn("");
         $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='" . $_SESSION[userID] . "'");
         
