@@ -3,7 +3,7 @@ session_start();
     
     include_once 'config.inc.php';
         //Connecting to the sql database
-    $con= get_dbconn();
+    $con= get_dbconn("");
 
     //Query that is retrieving the data from the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
