@@ -153,8 +153,6 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
         password_again: {
         equalTo: "#password"}   
         }
-        
-        
     });
   });
   </script>
