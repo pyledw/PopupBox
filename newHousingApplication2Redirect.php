@@ -13,6 +13,8 @@ session_start();
     $row = mysql_fetch_array($result);
 
     
+    
+    
     //Check to see if the employer name has data in it
     if($_POST[employerName1] != '')
     {
