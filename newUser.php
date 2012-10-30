@@ -3,13 +3,12 @@
         $title = "New User";
 	include 'Header.php';
 ?>
-
 <!-- Page Content -->
 
     <h1 class="Title">Account Set Up</h1>
     <hr class="Title" />
     <div id="mainContent">
-             <form class="formStyle" method="post" action="newUserRedirect.php">
+             <form id="newUserForm" class="formStyle" method="post" action="newUserRedirect.php">
                  <table>
                      <tr>
                          <td>
@@ -29,19 +28,19 @@
                            Enter username:
                          </td>
                          <td>
-                            <input type="text" name="username">
+                             <input name="username" size="25" class="required" minlength="5" />
                          </td>
                          <td>
                            Password:
                          </td>
                          <td>
-                           <input id="password1" type="password" name="password1">
+                           <input id="password" type="password" class="required" name="password1">
                          </td>
                          <td>
                             Confirm Password:
                          </td>
                          <td>
-                           <input id="password2" type="password" name="password2">
+                           <input id="password_again" class="required" type="password" name="password_again">
                          </td>
                     </tr>
                     <tr>
@@ -49,13 +48,13 @@
                            First Name:
                          </td>
                          <td>
-                           <input type="text" name="fname">
+                           <input type="text" name="fname" class="required">
                          </td>
                          <td>
                            Last Name: 
                          </td>
                          <td>
-                           <input type="text" name="lname">
+                           <input type="text" name="lname" class="required">
                          </td>
                     </tr>
                     <tr>
@@ -63,19 +62,19 @@
                            Email: 
                          </td>
                          <td>
-                             <input type="text" name="email1">
+                             <input type="text" name="email1" class="required">
                          </td>
                          <td>
                            Confirm Email: 
                          </td>
                          <td>
-                             <input type="text" name="email2">
+                             <input type="text" name="email2" class="required">
                          </td>
                          <td>
                            Phone: 
                          </td>
                          <td>
-                             <input type="text" name="phone">
+                             <input type="text" name="phone" class="required">
                          </td>
                     </tr>
                      <tr>
@@ -83,19 +82,19 @@
                            Address: 
                          </td>
                          <td>
-                             <input type="text" name="address" width="400px">
+                             <input type="text" name="address" width="400px" class="required">
                          </td>
                          <td>
                           City: 
                          </td>
                          <td>
-                             <input type="text" name="city">
+                             <input type="text" name="city" class="required">
                          </td>
                          <td>
                            State: 
                          </td>
                          <td>
-                             <input type="text" name="state">
+                             <input type="text" name="state" class="required">
                          </td>
                     </tr>
                     <tr>
@@ -103,19 +102,19 @@
                            Zip Code: 
                          </td>
                          <td>
-                             <input type="text" name="zip">
+                             <input type="text" name="zip" class="required">
                          </td>
                          <td>
                           Date of birth: 
                          </td>
                          <td>
-                             <input type="text" name="DOB">
+                             <input type="text" name="DOB" class="required">
                          </td>
                          <td>
                            Last 4 digits in your SSN:
                          </td>
                          <td>
-                             <input type="text" name="SSN">
+                             <input type="text" name="SSN" class="required">
                          </td>
                     </tr>
                     <tr>
@@ -136,22 +135,26 @@
 <?
 	include 'Footer.php';
 ?>
-    <script>
-$(document).ready(function(){
-    $("#password2").blur(function(){
-        
-        var pw1 = $("#password2").val();
-        var pw2 = $("#password1").val();
-        
-        if(pw1 == pw2){
-            
+    
+<style type="text/css">
+* { font-family: Verdana; font-size: 96%; }
+label { width: 10em; float: left; }
+label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+p { clear: both; }
+.submit { margin-left: 12em; }
+em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+</style>
+
+  <script>
+  $(document).ready(function(){
+    $("#newUserForm").validate({
+        rules: {
+        password: "required",
+        password_again: {
+        equalTo: "#password"
         }
-        else{
-            $("#password2").val("");
-            $("#password1").val("");
-            alert("Passwords Must Match");
         }
-     
-});
+    });
   });
-    </script>
+  </script>
+  
