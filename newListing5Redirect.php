@@ -3,7 +3,7 @@ session_start();
     
     require_once "config.inc.php";
          
-    $con = get_dbconn();
+    $con = get_dbconn("");
     $propertyID = $_SESSION[propertyID];
     
     

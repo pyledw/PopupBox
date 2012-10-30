@@ -2,7 +2,7 @@
 //echo $_GET[propertyID];
 
     include_once 'config.inc.php';
-    $con = get_dbconn();
+    $con = get_dbconn("");
     
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM USER

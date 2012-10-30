@@ -26,7 +26,7 @@
     //Creating conneciton to the Database
     include_once 'config.inc.php';
         //Connecting to the sql database
-    $con = get_dbconn();
+    $con = get_dbconn("");
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM PROPERTY
         WHERE PropertyID ='$propertyID'");

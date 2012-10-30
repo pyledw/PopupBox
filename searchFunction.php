@@ -6,7 +6,7 @@ function search($type,$term)
     {
     
             include_once 'config.inc.php';
-            $con = get_dbconn();
+            $con = get_dbconn("");
             
                 if($type == 'zip')
                 {

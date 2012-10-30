@@ -39,7 +39,7 @@
     echo "1 record added";
 
     
-    $con = get_dbconn();
+    $con = get_dbconn("");
     $result = mysql_query("SELECT * FROM USER
             WHERE UserName ='" . $_POST[username] . "'");
     $userData = mysql_fetch_array($result);

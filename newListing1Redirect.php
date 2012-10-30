@@ -5,7 +5,7 @@ session_start();
     //Creating conneciton to the Database
     include_once 'config.inc.php';
         //Connecting to the sql database
-    $con = get_dbconn();
+    $con = get_dbconn("");
 
     
     if(!isset($_SESSION[propertyID]))
