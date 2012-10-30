@@ -8,8 +8,8 @@
     <h1 class="Title">Account Set Up</h1>
     <hr class="Title" />
     <div id="mainContent">
-             <form id="newUserForm" class="formStyle" method="post" action="newUserRedirect.php">
-                 <table>
+             <form id="newUserForm" class="form" method="post" action="newUserRedirect.php">
+                 <table class="formTable">
                      <tr>
                          <td>
                             You are a: 
@@ -44,6 +44,11 @@
                          </td>
                     </tr>
                     <tr>
+                        <td colspan="6">
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
                          <td>
                            First Name:
                          </td>
@@ -76,6 +81,11 @@
                          <td>
                              <input type="text" name="phone" class="required">
                          </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <hr />
+                        </td>
                     </tr>
                      <tr>
                          <td>
