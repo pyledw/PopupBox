@@ -32,6 +32,6 @@
             $_SESSION['type'] = $userType;
             header( 'Location: /myHood.php' );
         }
-endoftheline:
+//endoftheline:
         echo "Username does not exist";
 ?>

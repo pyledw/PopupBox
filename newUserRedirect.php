@@ -32,7 +32,8 @@
         $stmt->bindValue(':zip',            $_POST['zip'],              		PDO::PARAM_STR);
         $stmt->bindValue(':dob',            $_POST['DOB'],              		PDO::PARAM_STR);
         $stmt->execute();
-    } catch (Exception $e) {
+    } 
+    catch (Exception $e) {
 	echo 'Connection failed. ' . $e->getMessage();
     }
 
