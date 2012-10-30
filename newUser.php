@@ -62,13 +62,13 @@
                            Email: 
                          </td>
                          <td>
-                             <input type="text" name="email1" class="required">
+                             <input type="text" id="email" name="email1" class="required email">
                          </td>
                          <td>
                            Confirm Email: 
                          </td>
                          <td>
-                             <input type="text" name="email2" class="required">
+                             <input type="text" id="email_again" name="email_again" class="required email">
                          </td>
                          <td>
                            Phone: 
@@ -148,12 +148,13 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
   <script>
   $(document).ready(function(){
     $("#newUserForm").validate({
-        rules: {
+        rules: {        
         password: "required",
         password_again: {
-        equalTo: "#password"
+        equalTo: "#password"}   
         }
-        }
+        
+        
     });
   });
   </script>
