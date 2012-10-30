@@ -1,4 +1,5 @@
 <?php
+
         session_start();
         //taking information from login page
         $myName = $_POST["userName"];
@@ -9,21 +10,15 @@
         $con = get_dbconn("");
 
         //Query the database for only the row containing that users information
-        //$result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . crypt($userPassword) . "'");
-        
-        
-        //Changed to allow login for testing
-        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . $userPassword . "'");
-  
-        
+        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . crypt($userPassword, $pw_salt) . "'");
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
         }
-        
-        
+
         //fetching the array of query elements
-        if (($row = mysql_fetch_array($result)) != NULL)
+	$row = mysql_fetch_array($result);
+        if ($row != NULL)
         {
             $userType = $row['AccountType'];
             $userID = $row['UserID'];
@@ -37,6 +32,6 @@
             $_SESSION['type'] = $userType;
             header( 'Location: /myHood.php' );
         }
-
+endoftheline:
         echo "Username does not exist";
 ?>
