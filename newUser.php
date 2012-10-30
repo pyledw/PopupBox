@@ -7,11 +7,13 @@
 
     <h1 class="Title">Account Set Up</h1>
     <hr class="Title" />
-    <div id="mainContent">
-             <form id="newUserForm" class="form" method="post" action="newUserRedirect.php">
-                 <table class="formTable">
-                     <tr>
-                         <td>
+    
+        <div id="mainContent">
+            <form id="newUserForm" method="post" action="newUserRedirect.php">
+                
+                <table class="form" width="900px;">
+                      <tr>
+                         <td class="labels">
                             You are a: 
                             
                          </td>
@@ -24,22 +26,22 @@
                          </td>
                     </tr>
                     <tr>
-                         <td>
+                         <td class="labels">
                            Enter username:
                          </td>
-                         <td>
+                         <td class="field">
                              <input name="username" size="25" class="required" minlength="5" />
                          </td>
-                         <td>
+                         <td class="labels">
                            Password:
                          </td>
-                         <td>
+                         <td class="field">
                            <input id="password" type="password" class="required" name="password1">
                          </td>
-                         <td>
+                         <td class="labels">
                             Confirm Password:
                          </td>
-                         <td>
+                         <td class="field">
                            <input id="password_again" class="required" type="password" name="password_again">
                          </td>
                     </tr>
@@ -134,14 +136,12 @@
                                 
                          </td>
                     </tr>
-                 
-
-                 
-                 
-                 </table>
-                
-        </form>
-    </div>
+                      
+                </table>
+            
+            </form>
+             
+        </div>
 <?
 	include 'Footer.php';
 ?>

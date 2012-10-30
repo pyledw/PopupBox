@@ -380,6 +380,16 @@ form .exceeded{color:#e00;}
 }
 .form{
     border:#4F6228 2px solid;
-    padding:0px 0px 0px 0px;
+    padding:5px 5px 5px 5px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.form .labels{
+    text-align: right;
+    font-weight: bold;
+}
+.form .field{
+    text-align: left;
 }
 
