@@ -9,17 +9,18 @@
         $con = get_dbconn("");
 
         //Query the database for only the row containing that users information
-        //$result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . crypt($userPassword) . "'");
+        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . crypt($userPassword) . "'");
         
         
         //Changed to allow login for testing
-        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . $userPassword . "'");
+        //$result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . $userPassword . "'");
   
         
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
         }
+        
         
         //fetching the array of query elements
         if (($row = mysql_fetch_array($result)) != NULL)
