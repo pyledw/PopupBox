@@ -3,26 +3,32 @@
         $title = "New User";
 	include 'Header.php';
 ?>
+
+<script>
+$(document).ready(function(){
+  $("label").inFieldLabels();
+    });
+</script>
 <!-- Page Content -->
 
     <h1 class="Title">Account Set Up</h1>
     <hr class="Title" />
-    
+  
         <div id="mainContent">
             <form id="newUserForm" method="post" action="newUserRedirect.php">
-                
+                        <p>
+				<label for="name">Name</label><br />
+				<input type="text" name="name" value="" id="name">
+			</p>
                 <table class="form" width="900px;">
                       <tr>
                          <td class="labels">
                             You are a: 
                             
                          </td>
-                         <td>
+                         <td class="field">
                             Tenant<input type="radio" checked="checked" name="classification" value="tenant">
                             Landlord<input type="radio" name="classification" value="landlord">
-                         </td>
-                         <td>
-                            
                          </td>
                     </tr>
                     <tr>
@@ -30,7 +36,7 @@
                            Enter username:
                          </td>
                          <td class="field">
-                             <input name="username" size="25" class="required" minlength="5" />
+                             <input name="username" class="required" minlength="5" /><br/>
                          </td>
                          <td class="labels">
                            Password:
@@ -51,36 +57,36 @@
                         </td>
                     </tr>
                     <tr>
-                         <td>
+                         <td class="labels">
                            First Name:
                          </td>
-                         <td>
+                         <td class="field">
                            <input type="text" name="fname" class="required">
                          </td>
-                         <td>
+                         <td class="labels">
                            Last Name: 
                          </td>
-                         <td>
+                         <td class="field">
                            <input type="text" name="lname" class="required">
                          </td>
                     </tr>
                     <tr>
-                         <td>
+                         <td class="labels">
                            Email: 
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" id="email" name="email1" class="required email">
                          </td>
-                         <td>
+                         <td class="labels">
                            Confirm Email: 
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" id="email_again" name="email_again" class="required email">
                          </td>
-                         <td>
+                         <td class="labels">
                            Phone: 
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" name="phone" class="required">
                          </td>
                     </tr>
@@ -90,42 +96,42 @@
                         </td>
                     </tr>
                      <tr>
-                         <td>
+                         <td class="labels">
                            Address: 
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" name="address" width="400px" class="required">
                          </td>
-                         <td>
+                         <td class="labels">
                           City: 
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" name="city" class="required">
                          </td>
-                         <td>
+                         <td class="labels">
                            State: 
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" name="state" class="required">
                          </td>
                     </tr>
                     <tr>
-                         <td>
+                         <td class="labels">
                            Zip Code: 
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" name="zip" class="required">
                          </td>
-                         <td>
+                         <td class="labels">
                           Date of birth: 
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" name="DOB" class="required">
                          </td>
-                         <td>
+                         <td class="labels">
                            Last 4 digits in your SSN:
                          </td>
-                         <td>
+                         <td class="field">
                              <input type="text" name="SSN" class="required">
                          </td>
                     </tr>
@@ -165,5 +171,8 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
         }
     });
   });
+  $(document).ready(function(){
+  $("label").inFieldLabels();
+    });
   </script>
   

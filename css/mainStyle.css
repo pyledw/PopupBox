@@ -388,8 +388,18 @@ form .exceeded{color:#e00;}
 .form .labels{
     text-align: right;
     font-weight: bold;
+    vertical-align: top;
+    height:50px;
+    width:200px;
 }
 .form .field{
     text-align: left;
+    vertical-align: top;
+    height:50px;
+    width:200px;
+}
+.field input{
+    height:20px;
+    font-size: 19px;
 }
 

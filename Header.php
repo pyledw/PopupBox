@@ -47,6 +47,9 @@
     <link rel="stylesheet" type="text/css" href="css/searchResults.css" /><!--Javascript Reference to Search Result Style-->
     <link rel="stylesheet" type="text/css" href="css/formStyle.css" /><!--Javascript Reference to Form Styles-->
     
+    <script type="text/javascript" src="js/jquery.infieldlabel.js"></script><!--Javascript Reference to Jquery-->
+    <script type="text/javascript" src="js/jquery.infieldlabel.min.js"></script><!--Javascript Reference to Jquery-->
+    
     <!-- These reference the external files for popups -->
     <script type="text/javascript" src="js/facebox.js"></script>
     <link rel="stylesheet" type="text/css" href="css/facebox.css" />
