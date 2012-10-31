@@ -17,7 +17,7 @@ $(document).ready(function(){
         <div id="mainContent">
             <form id="newUserForm" method="post" action="newUserRedirect.php">
                         <p>
-				<label for="name">Name</label><br />
+				<label for="name" class="stuff">Name</label><br />
 				<input type="text" name="name" value="" id="name">
 			</p>
                 <table class="form" width="900px;">
@@ -153,12 +153,23 @@ $(document).ready(function(){
 ?>
     
 <style type="text/css">
-* { font-family: Verdana; font-size: 96%; }
-label { width: 10em; float: left; }
-label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
-p { clear: both; }
-.submit { margin-left: 12em; }
-em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+* { 
+    font-family: Verdana; font-size: 96%; }
+label { 
+    width: 10em; float: left; }
+label.error { 
+    float: none; color: red; padding-left: .5em; vertical-align: top; }
+p {
+    clear: both; }
+.submit { 
+    margin-left: 12em; }
+em {
+    font-weight: bold; padding-right: 1em; vertical-align: top; }
+.stuff{
+    position:relative;
+    top:20px;
+    left:5px;
+}
 </style>
 
   <script>
