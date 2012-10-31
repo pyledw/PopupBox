@@ -385,21 +385,17 @@ form .exceeded{color:#e00;}
     margin-right: auto;
     
 }
-.form .labels{
-    text-align: right;
-    font-weight: bold;
-    vertical-align: top;
-    height:50px;
-    width:200px;
-}
 .form .field{
     text-align: left;
     vertical-align: top;
     height:50px;
-    width:200px;
 }
 .field input{
-    height:20px;
-    font-size: 19px;
+    height:24px;
+    font-size: 22px;
 }
+.form .field2{
+        font-size: 22px;
+}
+
 

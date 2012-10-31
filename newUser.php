@@ -5,50 +5,38 @@
 ?>
 
 <script>
-$(document).ready(function(){
-  $("label").inFieldLabels();
-    });
+   $(function(){
+         $.fn.formLabels();
+   });
 </script>
 <!-- Page Content -->
 
+</textarea>
     <h1 class="Title">Account Set Up</h1>
     <hr class="Title" />
   
         <div id="mainContent">
             <form id="newUserForm" method="post" action="newUserRedirect.php">
-                        <p>
-				<label for="name" class="stuff">Name</label><br />
-				<input type="text" name="name" value="" id="name">
-			</p>
                 <table class="form" width="900px;">
                       <tr>
-                         <td class="labels">
-                            You are a: 
+                         <td class="field2" colspan="3">
+                            You are a:
                             
-                         </td>
-                         <td class="field">
+                         
                             Tenant<input type="radio" checked="checked" name="classification" value="tenant">
+                            Or
                             Landlord<input type="radio" name="classification" value="landlord">
                          </td>
                     </tr>
                     <tr>
-                         <td class="labels">
-                           Enter username:
+                         <td class="field">
+                             <input type="text" title="User Name" name="username" class="required" minlength="5" /><br/>
                          </td>
                          <td class="field">
-                             <input name="username" class="required" minlength="5" /><br/>
-                         </td>
-                         <td class="labels">
-                           Password:
+                           <input title="Password" type="password" id="password" class="required" name="password1">
                          </td>
                          <td class="field">
-                           <input id="password" type="password" class="required" name="password1">
-                         </td>
-                         <td class="labels">
-                            Confirm Password:
-                         </td>
-                         <td class="field">
-                           <input id="password_again" class="required" type="password" name="password_again">
+                           <input title="Confirm Password" id="password_again" class="required" type="password" name="password_again">
                          </td>
                     </tr>
                     <tr>
@@ -57,37 +45,24 @@ $(document).ready(function(){
                         </td>
                     </tr>
                     <tr>
-                         <td class="labels">
-                           First Name:
-                         </td>
+
                          <td class="field">
-                           <input type="text" name="fname" class="required">
+                           <input title="First name" type="text" name="fname" class="required">
                          </td>
-                         <td class="labels">
-                           Last Name: 
-                         </td>
+
                          <td class="field">
-                           <input type="text" name="lname" class="required">
+                           <input title="Last name" type="text" name="lname" class="required">
                          </td>
                     </tr>
                     <tr>
-                         <td class="labels">
-                           Email: 
+                         <td class="field">
+                             <input title="Email address" type="text" id="email" name="email1" class="required email">
                          </td>
                          <td class="field">
-                             <input type="text" id="email" name="email1" class="required email">
-                         </td>
-                         <td class="labels">
-                           Confirm Email: 
+                             <input title="Confirm email" type="text" id="email_again" name="email_again" class="required email">
                          </td>
                          <td class="field">
-                             <input type="text" id="email_again" name="email_again" class="required email">
-                         </td>
-                         <td class="labels">
-                           Phone: 
-                         </td>
-                         <td class="field">
-                             <input type="text" name="phone" class="required">
+                             <input title="Phone" type="text" name="phone" class="required">
                          </td>
                     </tr>
                     <tr>
@@ -96,43 +71,25 @@ $(document).ready(function(){
                         </td>
                     </tr>
                      <tr>
-                         <td class="labels">
-                           Address: 
+                         <td class="field">
+                             <input title="Address" type="text" name="address" width="400px" class="required">
                          </td>
                          <td class="field">
-                             <input type="text" name="address" width="400px" class="required">
-                         </td>
-                         <td class="labels">
-                          City: 
+                             <input title="City" type="text" name="city" class="required">
                          </td>
                          <td class="field">
-                             <input type="text" name="city" class="required">
-                         </td>
-                         <td class="labels">
-                           State: 
-                         </td>
-                         <td class="field">
-                             <input type="text" name="state" class="required">
+                             <input title="State" type="text" name="state" class="required">
                          </td>
                     </tr>
                     <tr>
-                         <td class="labels">
-                           Zip Code: 
+                         <td class="field">
+                             <input title="Zip code" type="text" name="zip" class="required">
                          </td>
                          <td class="field">
-                             <input type="text" name="zip" class="required">
-                         </td>
-                         <td class="labels">
-                          Date of birth: 
+                             <input title="Birth Date" type="text" name="DOB" class="required">
                          </td>
                          <td class="field">
-                             <input type="text" name="DOB" class="required">
-                         </td>
-                         <td class="labels">
-                           Last 4 digits in your SSN:
-                         </td>
-                         <td class="field">
-                             <input type="text" name="SSN" class="required">
+                             <input title="last 4 of SSN" type="text" name="SSN" class="required">
                          </td>
                     </tr>
                     <tr>
@@ -151,6 +108,11 @@ $(document).ready(function(){
 <?
 	include 'Footer.php';
 ?>
+
+    
+    
+    
+    
     
 <style type="text/css">
 * { 
@@ -175,15 +137,20 @@ em {
   <script>
   $(document).ready(function(){
     $("#newUserForm").validate({
+        ignoreTitle: true,
         rules: {        
         password: "required",
+        email: "required",
+        email_again:{
+        equalTo: "#email"    
+        },
         password_again: {
-        equalTo: "#password"}   
+        equalTo: "#password"}  
+
         }
+        
     });
   });
-  $(document).ready(function(){
-  $("label").inFieldLabels();
-    });
+
   </script>
   
