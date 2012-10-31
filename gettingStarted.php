@@ -49,59 +49,91 @@
             <h2>Quick Glance</h2>
             
                     <h3>For the LandLord</h3>
+		<table class="displayTable">
+			<tbody>
+				<tr style="background-color: #CFCAA6">
+					<td width="80%" style="text-align: center;">Feature</td>
+					<td width="10%" style="text-align: center;">Traditional Listing</td>
+					<td width="10%" style="text-align: center;">LeaseHood</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Landlord spends hours on phone calls, application review, 
+						placing multiple ads, background checks, individual property showings, etc.</td>
+						<td style="text-align: center;">X
+					</td>
+					<td style="text-align: center;"></td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Only PRE-QUALIFIED APPLICANTS can express interest in property, based on landlord's criteria </td>
+					<td style="text-align: center;"></td>
+					<td style="text-align: center;">X</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Landlord conducts one or two Open Houses instead of individual showings</td>
+					<td style="text-align: center;">not normally</td>
+					<td style="text-align: center;">X</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Property available for pre-marketing online</td>
+					<td style="text-align: center;"></td>
+					<td style="text-align: center;">X</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">LeaseHood listing creates advertising templates for common real estate websites</td>
+					<td style="text-align: center;"></td>
+					<td style="text-align: center;">X</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">LeaseHood listing can be advertised in local MLS</td>
+					<td style="text-align: center;">not normally</td>
+					<td style="text-align: center;">X</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">Landlord experiences true market value, regardless of 
+										market conditions, removing the rental rate guess-work</td>
+					<td style="text-align: center;"></td>
+					<td style="text-align: center;">X</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">As an option, landlord can select from a group 
+										of prospective residents who meet his rental criteria and are ready to rent his property</td>
+					<td style="text-align: center;"></td>
+					<td style="text-align: center;">X</td>
+				</tr>
+			</tbody>
+		</table>
+             <h3>For the Renter</h3>
+		<table class="displayTable">
+			<tbody>
+				<tr style="background-color: #CFCAA6">
+					<td width="80%" style="text-align: center;">Feature</td>
+					<td width="10%" style="text-align: center;">Traditional Renting</td>
+					<td width="10%" style="text-align: center;">LeaseHood</td>
+				</tr><tr>
+					<td style="text-align: left;">Complete multiple applications and pay multiple fees to find the right rental home</td>
+					<td style="text-align: center;"></td>
+					<td style="text-align: center;">X</td>
+				</tr><tr>
+					<td style="text-align: left;">YOU establish the market value for a rental home, not the landlord</td>
+					<td style="text-align: center;">X</td>
+					<td style="text-align: center;"></td>
+				</tr><tr>
+					<td style="text-align: left;">Complete ONE FREE APPLICATION for multiple properties</td>
+					<td style="text-align: center;">X</td>
+					<td style="text-align: center;"></td>
+				</tr><tr>
+					<td style="text-align: left;">Know which houses you qualify for BEFORE visiting the property</td>
+					<td style="text-align: center;">X</td>
+					<td style="text-align: center;"></td>
+				</tr><tr>
+					<td style="text-align: left;">View a comprehensive set of photos BEFORE visiting the property, always consisting of a front, kitchen, and main bathroom view</td>
+					<td style="text-align: center;">X</td>
+					<td style="text-align: center;"></td>
+				</tr>
+			</tbody>
+		</table>            
 
-            <?php
-
-                    require 'tableCreator.php';
-
-                    createTable("Feature","Traditional Listing","LeaseHood");
-
-                    addRow('Landlord spends hours on phone calls, application review, 
-                            placing multiple ads, background checks, individual property showings, etc.', '', "X");
-
-                    addRow('Only PRE-QUALIFIED APPLICANTS can express interest in property, based on landlord' . "'" . 's criteria ', 'X', '');
-
-                    addRow("Landlord conducts one or two Open Houses instead of individual showings", 'X', "not normally");
-
-                    addRow("Property available for pre-marketing online", "X", "");
-
-                    addRow("LeaseHood listing creates advertising templates for common real estate websites", "X", "");
-
-                    addRow("LeaseHood listing can be advertised in local MLS", "X", "not normally");
-
-                    addRow("Landlord experiences true market value, regardless of 
-                            market conditions, removing the rental rate guess-work", "X", "");
-
-                    addRow("As an option, landlord can select from a group 
-                            of prospective residents who meet his rental criteria and are ready to rent his property", "X", "");
-
-                    closeTable();
-            ?>
-
-            
-
-            
-
-                    <h3>For the Renter</h3>
-            <?php
-                    createTable('Feature', 'Traditional Renting', 'LeaseHood');
-
-                    addRow('Complete multiple applications and pay multiple fees to find the right rental home', "X", "");
-
-                    addRow("YOU establish the market value for a rental home, not the landlord", "", "X");
-
-                    addRow("Complete ONE FREE APPLICATION for multiple properties", "", "X");
-
-                    addRow('Know which houses you qualify for BEFORE visiting the property', "", "X");
-
-                    addRow("View a comprehensive set of photos BEFORE visiting the property, always consisting of a front, kitchen, and main bathroom view", "", "X");
-
-
-
-                    closeTable();
-            ?>
-
-            <p>
+<p>
             <a href="gettingStartedContinued.php" class="button">Continue</a>
             </p>
 </div>
