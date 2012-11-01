@@ -35,7 +35,7 @@ function upload_get_save_path()
 	global $upload_save_path;
 	$d = new DateTime();
 	$fn = $d->format("Ymd_H\hm\ms\s_") . strval(mt_rand());
-	return "/home/jasonD/seniorproject/" . $upload_save_path . $fn;
+	return $upload_save_path . $fn;
 }
 
 function get_dbconn($api) {

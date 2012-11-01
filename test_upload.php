@@ -1,6 +1,6 @@
 <html>
 	<body>
-		<form action="upload_a.php" method="post" enctype="multipart/form-data">
+		<form action="test_upload.php" method="post" enctype="multipart/form-data">
 			<label for="file">Filename:</label>
 			<input type="file" name="file" id="file" />
 			<br />
@@ -40,7 +40,10 @@ foreach ($_FILES as $f) {
 		$img->writeImage($name_thumb);
 		
 		// write database record with the above filenames
-
+?>
+		<img src="<?=$name_thumb?>"></img>
+		<img src="<?=$name_full?>"></img>
+<?
 	}
 }
 require 'dev.php'; 
