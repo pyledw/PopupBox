@@ -27,18 +27,7 @@
             die('could not connect: ' .mysql_error());
         }
         
-        $intCount = 0;
-        $row0;
-        $row1;
-        $row2;
-        While($row2 = mysql_fetch_array($result))
-        {
-            
-        }
         
-        
-        
-    
     ?>
 
 <!-- Main content will load with exiting elements being pre filled into the form
@@ -50,7 +39,171 @@
 <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplication3Redirect.php">
             <table class="form">
-                <tr>
+                <?php
+                if(mysql_num_rows($result) > 0)
+                {
+                    $intCount=1;
+                    while($row = mysql_fetch_array($result))
+                    {
+                        echo '<tr>
+                            <th colspan="3">
+                                 Former Residence
+                            </th>
+                                </tr>
+                                    <tr>
+                            <td>
+                                Type Of Residence:<select id="select" name="type'.$intCount.'">
+                            <option';
+                            
+                            if($row[TypeOfResidence] == "Owned")
+                            {
+                            echo ' selected="selected"'; 
+                            
+                            }
+                            echo '>
+                                Owned
+                            </option>
+                            <option ';
+                            
+                            if($row[TypeOfResidence] == "Rented")
+                            {
+                            echo ' selected="selected"'; 
+                            
+                            }
+                            echo '>
+                                Rented
+                            </option>
+                            <option ';
+                            
+                            if($row[TypeOfResidence] == "Family Friend")
+                            {
+                            echo ' selected="selected"'; 
+                            
+                            }
+                            echo '>
+                                Family Friend
+                            </option>
+                        </select>
+                            </td>
+                            <td>
+                               Address:<input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
+                            </td>
+                            <td>
+                                City:<input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                State:<input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
+                            </td>
+                            <td>
+                                Zip Code:<input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
+                            </td>
+                            <td>
+                                months lived there:<input  type="text" name="months2" value="'.$row[PrevLandLordFName].'"/>
+                            </td>     
+                        </tr>
+                        <tr>
+                            <td>
+                                Landlords First Name:<input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                            </td>
+                            <td>
+                                Landlords Last Name:<input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                            </td>
+                            <td>
+                                Phone Number:<input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Reason For Leaving:<input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
+                            </td>
+                            <td>
+                                Rent:<input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
+                            </td>
+                            <td>
+                                <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <hr/>
+                            </td>
+                        </tr>';
+                        $intCount += 1;
+                    }
+                    while($intCount < 4)
+                    {
+                        echo '<tr>
+                            <th colspan="3">
+                                 Former Residence
+                            </th>
+                                </tr>
+                                    <tr>
+                            <td>
+                                Type Of Residence:<select id="select" name="type'.$intCount.'">
+                            <option>
+                                Owned
+                            </option>
+                            <option>
+                                Rented
+                            </option>
+                            <option>
+                                Family Friend
+                            </option>
+                        </select>
+                            </td>
+                            <td>
+                               Address:<input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
+                            </td>
+                            <td>
+                                City:<input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                State:<input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
+                            </td>
+                            <td>
+                                Zip Code:<input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
+                            </td>
+                            <td>
+                                months lived there:<input  type="text" name="months2" value="'.$row[PrevLandLordFName].'"/>
+                            </td>     
+                        </tr>
+                        <tr>
+                            <td>
+                                Landlords First Name:<input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                            </td>
+                            <td>
+                                Landlords Last Name:<input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                            </td>
+                            <td>
+                                Phone Number:<input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Reason For Leaving:<input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
+                            </td>
+                            <td>
+                                Rent:<input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
+                            </td>
+                            <td>
+                                <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <hr/>
+                            </td>
+                        </tr>';
+                        $intCount += 1;
+                    }
+                }
+                else
+                {
+                   echo '<tr>
                     <th colspan="3">
                         Former Residence
                     </th>
@@ -109,9 +262,11 @@
                         <input id="number" type="text" name="number1" style="display: block; visibility: hidden" value="" />
                     </td>
                 </tr>
-                
-                </table>
-                <table class="form">
+                <tr>
+                    <td colspan="3">
+                        <hr/>
+                    </td>
+                </tr>
                 <tr>
                     <th colspan="3">
                         Former Residence 2
@@ -171,9 +326,11 @@
                         <input id="number" type="text" name="number2" style="display: block; visibility: hidden" value="" />
                     </td>
                 </tr>
-                </table>
-                
-                <table class="form">
+                <tr>
+                    <td colspan="3">
+                        <hr/>
+                    </td>
+                </tr>
                 <tr>
                     <th colspan="3">
                         Former Residence 3
@@ -232,250 +389,90 @@
                     <td>
                         <input id="number" type="text" name="number3" style="display: block; visibility: hidden" value="" />
                     </td>
+                </tr>'; 
+                }
+                
+                $result1 = mysql_query("SELECT * FROM APPLICATION
+                WHERE UserID ='" . $_SESSION[userID] . "'");
+        
+                //casting the query data into a variable
+                $row = mysql_fetch_array($result1);
+                ?>
+                
+                <tr>
+                    <td colspan="3">
+                        <h3>Personal History</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Have you ever been convicted of a felony?<br/>
+                        
+                        Yes<input type="radio" name="felony"  value="Y" <?php if($row[HasCrimHist] == 'Y'){echo "checked='checked'";} ?> />
+                        No<input type="radio" name="felony" value="N" <?php if($row[HasCrimHist] != 'Y'){echo "checked='checked'";}  ?><br/>
+                    </td>
+                    <td>
+                        Explain:
+                        <textarea cols="50" rows="4" name="ifYesFelony">
+                            <?php echo $row[CrimHistDesc] ?>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Have you ever been evicted?<br/>
+                        Yes<input type="radio" name="evicted" <?php if($row[HasEvictHist] == 'Y'){echo "checked='checked'";}?>  value="Y" />
+                        No<input type="radio" name="evicted" <?php if($row[HasEvictHist] != 'Y'){echo "checked='checked'";}?>  value="N" />
+                    </td>
+                    <td>
+                        Explain:
+                        <textarea cols="50" rows="4" name="ifYesEvicted">
+                            <?php echo $row[EvictHistDescription] ?>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Have you ever declared bankruptcy?<br/>
+                        Yes<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] == 'Y'){echo "checked='checked'";}?> value="Y" />
+                        No<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] != 'Y'){echo "checked='checked'";}?>  value="N" />
+                    </td>
+                    <td>
+                        Explain:
+                        <textarea cols="50" rows="4" name="ifYesBankruptcy">
+                            <?php echo $row[BankruptHistDesc] ?>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="3">
+                        <h3>Credit History</h3>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): <input type="text" name="devitCardDebt" <?php echo "value='" .$row[TotalConsumerDebt] . "'"?>/>
+                    </td>
+                    <td>
+                        Total monthly payment on all credit/loan accounts: <input type="text" name="monthlyPayments" <?php echo "value='" .$row[MonthlyDebtPayment] . "'"?>/><br/>
+                    </td>
+                    <td>
+                        Total outstanding balance on loans (auto, education, mortgage, etc.)<input type="text" name="loans" <?php echo "value='" .$row[TotalLoanDebt] . "'"?>/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Approximate total assets (cash, investments, property equity, etc.): <input type="text" name="equity" <?php echo "value='" .$row[TotalAssets] . "'"?>/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button type="submit" class="button">Save and Continue</button>
+                        <button type="reset" class="button">Clear</button>
+                    </td>        
                 </tr>
                 
             </table>
-            
-            <?php
-            /*
-            if(mysql_num_rows($result) > 0)
-            {
-                    $intCount=1;
-                    while($row = mysql_fetch_array($result))
-                        {
-                           echo '<div class="formElement" id="formerHome'.$intCount.'">              
-                        <h3>Former Residence</h3><br/>
-                        Type Of Residence:<select id="select" name="type'.$intCount.'">
-                            <option>
-                                Owned
-                            </option>
-                            <option>
-                                Rented
-                            </option>
-                            <option>
-                                Family Friend
-                            </option>
-                        </select>
-                        Address:<input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
-                        City:<input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'" />
-                        State:<input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
-                        Zip Code:<input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
-                        months lived there:<input  type="text" name="months'.$intCount.'" value="'.$row[TotalMonths].'"/>
-                        <div id="renter">
-                        Landlords First Name:<input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordFName].'"/>
-                        Landlords Last Name:<input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
-                        Phone Number:<input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
-                        Reason For Leaving:<input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
-                        Rent:<input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
-                        </div>
-                        <div id="owner">
-                        Mortgage:<input type="text" name="mortgage'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
-                        </div>
-                        <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
-
-                    </div>';
-                       $intCount += 1;
-                    }
-                    while($intCount <= 4)
-                    {
-                        echo '
-                    <div class="formElement" id="formerHome'.$intCount.'">              
-                        <h3>Former Residence</h3><br/>
-                        Type Of Residence:<select id="select" name="type'.$intCount.'">
-                            <option>
-                                Owned
-                            </option>
-                            <option>
-                                Rented
-                            </option>
-                            <option>
-                                Family Friend
-                            </option>
-                        </select>
-                        Address:<input type="text" name="address'.$intCount.'"/>
-                        City:<input type="text" name="city'.$intCount.'" />
-                        State:<input type="text" name="state'.$intCount.'"/>
-                        Zip Code:<input  type="text" name="zipCode'.$intCount.'"/>
-                        months lived there:<input  type="text" name="months'.$intCount.'"/>
-                    <div id="renter">
-                        Landlords First Name:<input type="text" name="landlordsFName'.$intCount.'" />
-                        Landlords Last Name:<input type="text" name="landlordsLName'.$intCount.'"/>
-                        Phone Number:<input type="text" name="phoneNumber'.$intCount.'"/>
-                        Reason For Leaving:<input type="text" name="reasonForLeaving'.$intCount.'"/>
-                        Rent:<input type="text" name="rent'.$intCount.'"/>
-                    </div>
-                    <div id="owner">
-                        Mortgage:<input type="text" name="mortgage'.$intCount.'"/>
-                    </div>
-                </div>
-                    <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="" />';
-                        $intCount += 1;
-                    }
-            }
-            else
-            {
-                echo '<div class="formElement" id="formerHome1">              
-                <h3>Former Residence #1</h3><br/>
-                Type Of Residence:<select id="select" name="type1">
-                    <option>
-                        Owned
-                    </option>
-                    <option>
-                        Rented
-                    </option>
-                    <option>
-                        Family Friend
-                    </option>
-                </select>
-                Address:<input type="text" name="address1"/>
-                City:<input type="text" name="city1" />
-                State:<input type="text" name="state1"/>
-                Zip Code:<input  type="text" name="zipCode1"/>
-                months lived there:<input  type="text" name="months1"/>
-                <div id="renter">
-                Landlords First Name:<input type="text" name="landlordsFName1" />
-                Landlords Last Name:<input type="text" name="landlordsLName1"/>
-                Phone Number:<input type="text" name="phoneNumber1"/>
-                Reason For Leaving:<input type="text" name="reasonForLeaving1"/>
-                Rent:<input type="text" name="rent1"/>
-                </div>
-                <div id="owner">
-                Mortgage:<input type="text" name="mortgage1"/>
-                </div>
-            </div>
-            <div class="formElement" id="formerHome2">
-                
-                <h3>Former Residence #2</h3><br/>
-                Type Of Residence:<select id="select" name="type2">
-                    <option>
-                        Owned
-                    </option>
-                    <option>
-                        Rented
-                    </option>
-                    <option>
-                        Family Friend
-                    </option>
-                </select>
-                Address:<input type="text" name="address2"/>
-                City:<input type="text" name="city2"/>
-                State:<input type="text" name="state2"/>
-                Zip Code:<input  type="text" name="zipCode2"/>
-                months lived there:<input  type="text" name="months2"/>
-                <div id="renter2">
-                Landlords First Name:<input type="text" name="landlordsFName2"/>
-                Landlords Last Name:<input type="text" name="landlordsLName2"/>
-                Phone Number:<input type="text" name="phoneNumber2"/>
-                Reason For Leaving:<input type="text" name="reasonForLeaving2"/>
-                Rent:<input type="text" name="rent2"/>
-                </div>
-                <div id="owner2">
-                Mortgage:<input type="text" name="mortgage2"/>
-                </div>
-                
-            </div>
-            <div class="formElement" id="formerHome3">
-                
-                <h3>Former Residence #3</h3><br/>
-                Type Of Residence:<select id="select" name="type3">
-                    <option>
-                        Owned
-                    </option>
-                    <option>
-                        Rented
-                    </option>
-                    <option>
-                        Family Friend
-                    </option>
-                </select>
-                Address:<input type="text" name="address3" />
-                City:<input type="text" name="city3" />
-                State:<input type="text" name="state3"/>
-                Zip Code:<input  type="text" name="zipCode3" />
-                months lived there:<input  type="text" name="months3" />
-                <div id="renter3">
-                Landlords First Name:<input type="text" name="landlordsFName3" />
-                Landlords Last Name:<input type="text" name="landlordsLName3" />
-                Phone Number:<input type="text" name="phoneNumber3" />
-                Reason For Leaving:<input type="text" name="reasonForLeaving3" />
-                Rent:<input type="text" name="rent3" />
-                </div>
-                <div id="owner3">
-                Mortgage:<input type="text" name="mortgage3" />
-                </div>
-
-            </div>
-            <div class="formElement" id="formerHome4">
-                
-                <h3>Former Residence #4</h3><br/>
-                Type Of Residence:<select id="select" name="type4">
-                    <option>
-                        Owned
-                    </option>
-                    <option>
-                        Rented
-                    </option>
-                    <option>
-                        Family Friend
-                    </option>
-                </select>
-                Address:<input type="text" name="address4" />
-                City:<input type="text" name="city4" />
-                State:<input type="text" name="state4" />
-                Zip Code:<input  type="text" name="zipCode4" />
-                months lived there:<input  type="text" name="months4" />
-                <div id="renter4">
-                Landlords First Name:<input type="text" name="landlordsFName4" />
-                Landlords Last Name:<input type="text" name="landlordsLName4" />
-                Phone Number:<input type="text" name="phoneNumber4" />
-                Reason For Leaving:<input type="text" name="reasonForLeaving4" />
-                Rent:<input type="text" name="rent4" />
-                </div>
-                <div id="owner4">
-                Mortgage:<input type="text" name="mortgage4" />
-                </div>
-
-            </div>
-        </div>';
-        //<font class="button" id="addFormerHome">Add another home</font>
-        //<font class="button"  id="removeFormerHome">Remove home</font><br/><br/>';
-            }
-            
-        //Creating a new query in order to get the applicaiton data
-        $result1 = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='" . $_SESSION[userID] . "'");
-        
-        //Recasting the query data into $row
-        $row = mysql_fetch_array($result1);
-             * 
-             */
-            ?>
-
-        
-        <h3>Personal History</h3>
-        
-        Have you ever been convicted of a felony?
-        Yes<input type="radio" name="felony"  value="Y" <?php if($row[HasCrimHist] == 'Y'){echo "checked='checked'";} ?>/>
-        No<input type="radio" name="felony" <?php if($row[HasCrimHist] == 'N'){echo "checked='checked'";}?>  value="N" /><br/>
-        Have you ever been evicted?
-        Yes<input type="radio" name="evicted" <?php if($row[HasEvictHist] == 'Y'){echo "checked='checked'";}?>  value="Y" />
-        No<input type="radio" name="evicted" <?php if($row[HasEvictHist] == 'N'){echo "checked='checked'";}?>  value="N" /><br/>
-        Have you ever declared bankruptcy?
-        Yes<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] == 'Y'){echo "checked='checked'";}?> value="Y" />
-        No<input type="radio" name="bankruptcy" <?php if($row[HadBankruptHist] == 'N'){echo "checked='checked'";}?>  value="N" /><br/>
-        
-        If yes, Explain: <textarea cols="50" rows="4" name="ifYes"></textarea>
-        
-
-        <h3>Credit History</h3>
-        Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): <input type="text" name="devitCardDebt" <?php echo "value='" .$row[TotalConsumerDebt] . "'"?>/><br/>
-        Total monthly payment on all credit/loan accounts: <input type="text" name="monthlyPayments" <?php echo "value='" .$row[MonthlyDebtPayment] . "'"?>/><br/>
-        Total outstanding balance on loans (auto, education, mortgage, etc.)<input type="text" name="loans" <?php echo "value='" .$row[TotalLoanDebt] . "'"?>/><br/>
-        Approximate total assets (cash, investments, property equity, etc.): <input type="text" name="equity" <?php echo "value='" .$row[TotalAssets] . "'"?>/><br/>
-        
-        <br/>
-        <button type="submit" class="button">Save and Continue</button>
-        <button type="reset" class="button">Clear</button>
     </form>
 </div>
 </div>

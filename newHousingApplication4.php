@@ -38,62 +38,126 @@ $title = "New Application #4";
 <h1 class="Title">Other</h1>
 <hr class="Title" />
 <div id="mainContent">
-<form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplication4Redirect.php">
-    <h3>Emergency Contact</h3>
-    First Name: <input type="text" name="Fname" <?php echo "value='" .$row[ContactFName] . "'"?>/>
-    Last Name: <input type="text" name="Lname" <?php echo "value='" .$row[ContactLName] . "'"?>/>
-    Address: <input type="text" name="address" <?php echo "value='" .$row[ContactAddress] . "'"?>/>
-    City: <input type="text" name="city" <?php echo "value='" .$row[ContactCity] . "'"?>/>
-    State: <input type="text" name="state" <?php echo "value='" .$row[ContactState] . "'"?>/>
-    Sip: <input type="text" name="zip" <?php echo "value='" .$row[ContactZip] . "'"?>/>
-    Relation: <input type="text" name="relation" <?php echo "value='" .$row[ContactZip] . "'"?>/>
-    Home Phone:<input type="text" name="homePhone" <?php echo "value='" .$row[ContactHomePhone] . "'"?>/>
-    Cell Phone: <input type="text" name="cellPhone" <?php echo "value='" .$row[ContactCellPhone] . "'"?>/>
-    Work Phone: <input type="text" name="workPhone" <?php echo "value='" .$row[ContactWorkPhone] . "'"?>/>
-    <h3>Vehicles</h3>
-    <div id="vehicles">
-        <div class="formElement" id="vehicle1">
-            Vehicle #1<br/>
-            
-            Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle1Desc] . "'"?>>
-            License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle1LicenseNo] . "'"?>>
-            State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle1LicenseState] . "'"?>>
-        </div>
-    </div>
-    <div id="vehicles">
-        <div class="formElement" id="vehicle2" style="display: none;">
-            Vehicle #2<br/>
-            
-            Make: <input type="text" name="carMake2" <?php echo "value='" .$row[Vehicle2Desc] . "'"?>>
-            
-            License Plate Number: <input type="text" name="carLicenseNumber2" <?php echo "value='" .$row[Vehicle2LicenseNo] . "'"?>>
-            State of plate:<input type="text" name="carPlateState2" <?php echo "value='" .$row[Vehicle2LicenseState] . "'"?>>
-        </div>
-    </div>
-    <div id="vehicles">
-        <div class="formElement" id="vehicle3" style="display: none;">
-            Vehicle #3<br/>
-            
-            Make: <input type="text" name="carMake3" <?php echo "value='" .$row[Vehicle3Desc] . "'"?>>
-            
-            License Plate Number: <input type="text" name="carLicenseNumber3" <?php echo "value='" .$row[Vehicle3LicenseNo] . "'"?>>
-            State of plate:<input type="text" name="carPlateState3" <?php echo "value='" .$row[Vehicle3LicenseState] . "'"?>>
-        </div>
-    </div>
-    <div id="vehicles">
-        <div class="formElement" id="vehicle4" style="display: none;">
-            Vehicle #4<br/>
-            
-            Make: <input type="text" name="carMake4" <?php echo "value='" .$row[Vehicle4Desc] . "'"?>>
-            
-            License Plate Number: <input type="text" name="carLicenseNumber4" <?php echo "value='" .$row[Vehicle4LicenseNo] . "'"?>>
-            State of plate:<input type="text" name="carPlateState4" <?php echo "value='" .$row[Vehicle4LicenseState] . "'"?>>
-        </div>
-    </div>
-    <font class="button" id="addVehicles">Add vehicle</font>
-    <font class="button"  id="removeVehicles">Remove vehicle</font><br/><br/>
-    <button type="submit" class="button">Save and Continue</button>
-    <button type="reset" class="button">Clear</button>
+<form id="newApplicationForm" method="post" action="newHousingApplication4Redirect.php">
+        <table class="form">
+            <tr>
+                <th colspan="3">
+                    <h3>Emergency Contact</h3>    
+                </th>
+                
+            </tr>
+            <tr>
+                <td>
+                    First Name: <input type="text" name="Fname" <?php echo "value='" .$row[ContactFName] . "'"?>/>
+                </td>
+                <td>
+                    Last Name: <input type="text" name="Lname" <?php echo "value='" .$row[ContactLName] . "'"?>/>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address: <input type="text" name="address" <?php echo "value='" .$row[ContactAddress] . "'"?>/>
+                </td>
+                <td>
+                    City: <input type="text" name="city" <?php echo "value='" .$row[ContactCity] . "'"?>/>
+                </td>
+                <td>
+                    State: <input type="text" name="state" <?php echo "value='" .$row[ContactState] . "'"?>/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Zip: <input type="text" name="zip" <?php echo "value='" .$row[ContactZip] . "'"?>/>
+                </td>
+                <td>
+                    Relation: <input type="text" name="relation" <?php echo "value='" .$row[ContactZip] . "'"?>/>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Home Phone:<input type="text" name="homePhone" <?php echo "value='" .$row[ContactHomePhone] . "'"?>/>
+                </td>
+                <td>
+                    Cell Phone: <input type="text" name="cellPhone" <?php echo "value='" .$row[ContactCellPhone] . "'"?>/>
+                </td>
+                <td>
+                    Work Phone: <input type="text" name="workPhone" <?php echo "value='" .$row[ContactWorkPhone] . "'"?>/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   <h3>Vehicles</h3> 
+                </th>
+            </tr>
+            <tr id="vehicle1">
+                <td>
+                    Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle1Desc] . "'"?>>
+                </td>
+                <td>
+                    License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle1LicenseNo] . "'"?>>
+                </td>
+                <td>
+                    State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle1LicenseState] . "'"?>>
+                </td>
+            </tr>
+            <tr id="vehicle2" style="display: none;">
+                <td>
+                    Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle2Desc] . "'"?>>
+                </td>
+                <td>
+                    License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle2LicenseNo] . "'"?>>
+                </td>
+                <td>
+                    State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle2LicenseState] . "'"?>>
+                </td>
+            </tr>
+            <tr id="vehicle3" style="display: none;">
+                <td>
+                    Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle3Desc] . "'"?>>
+                </td>
+                <td>
+                    License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle3LicenseNo] . "'"?>>
+                </td>
+                <td>
+                    State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle3LicenseState] . "'"?>>
+                </td>
+            </tr>
+            <tr id="vehicle4" style="display: none;">
+                <td>
+                    Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle4Desc] . "'"?>>
+                </td>
+                <td>
+                    License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle4LicenseNo] . "'"?>>
+                </td>
+                <td>
+                    State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle4LicenseState] . "'"?>>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <font class="button" id="addVehicles">Add vehicle</font>
+                    <font class="button"  id="removeVehicles">Remove vehicle</font>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button type="submit" class="button">Save and Continue</button>
+                    <button type="reset" class="button">Clear</button>
+                </td>
+            </tr>
+        </table>
+    
     
     
 </form>
@@ -128,4 +192,14 @@ $(document).ready(function(){
       }
   });
 });
+$(document).ready(function(){
+    $("#newApplicationForm").validate({
+        ignoreTitle: true
+        
+    });
+  });
+
+   $(function(){
+         $.fn.formLabels();
+   });
 </script>

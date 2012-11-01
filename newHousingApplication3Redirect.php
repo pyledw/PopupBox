@@ -355,25 +355,29 @@
     $con = get_dbconn("PDO");
     $stmt = $con->prepare("
             UPDATE APPLICATION SET
-                HasCrimHist=:felony,             HasEvictHist=:evicted,             HasBankruptHist=:bankruptcy,
-                BankruptHistDesc=:ifYes,         TotalConsumerDebt=:devitCardDebt,  MonthlyDebtPayment=:monthlyPayments,
-                TotalLoanDebt=:loans,            TotalAssets=:equity
+                HasCrimHist=:felony,               HasEvictHist=:evicted,             HasBankruptHist=:bankruptcy,
+                BankruptHistDesc=:ifYesBankruptcy, TotalConsumerDebt=:devitCardDebt,  MonthlyDebtPayment=:monthlyPayments,
+                TotalLoanDebt=:loans,              TotalAssets=:equity,               CrimHistDesc=:ifYesFelony,
+                EvictHistDescription=:ifYesEvicted
                 
             WHERE UserID='$_SESSION[userID]'
             ");
     try {
         $stmt->bindValue(':felony',             $_POST['felony'],                PDO::PARAM_STR);
         $stmt->bindValue(':evicted',            $_POST['evicted'],               PDO::PARAM_STR);
-        $stmt->bindValue(':ifYes',              $_POST['ifYes'],                 PDO::PARAM_STR);
+        $stmt->bindValue(':bankruptcy',         $_POST['bankruptcy'],            PDO::PARAM_STR);
         $stmt->bindValue(':devitCardDebt', 	$_POST['devitCardDebt'],         PDO::PARAM_STR);
         $stmt->bindValue(':monthlyPayments', 	$_POST['monthlyPayments'],       PDO::PARAM_STR);
         $stmt->bindValue(':loans',              $_POST['loans'],                 PDO::PARAM_STR);
         $stmt->bindValue(':equity',             $_POST['equity'],                PDO::PARAM_STR);
-        $stmt->bindValue(':bankruptcy', 	$_POST['bankruptcy'],            PDO::PARAM_STR);
+        $stmt->bindValue(':ifYesBankruptcy', 	$_POST['ifYesBankruptcy'],       PDO::PARAM_STR);
+        $stmt->bindValue(':ifYesFelony', 	$_POST['ifYesFelony'],           PDO::PARAM_STR);
+        $stmt->bindValue(':ifYesEvicted', 	$_POST['ifYesEvicted'],          PDO::PARAM_STR);
+        
 
         $stmt->execute();
     } catch (Exception $e) {
-	echo 'Connection failed. ' . $e->getMessage();
+	echo 'Connection failed at update. ' . $e->getMessage();
     }
         
     //Setting which page has been compleated.  If the form has already been compleated it ignors this
