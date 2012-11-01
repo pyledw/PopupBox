@@ -53,6 +53,7 @@
             </ul>
         </div>
 <?
+include_once 'config.inc.php';
 if ($cfg['show_buildinfo'] && file_exists('build-date.txt'))  { ?>
 	<br />
 	<span style='text-align: center; font-size: 60%;'>Built: 
