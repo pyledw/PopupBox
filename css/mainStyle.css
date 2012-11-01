@@ -41,9 +41,6 @@ body
     text-align:center;
     width:400px;
 }
-.ie #wrapper{
-    width:expression(document.body.clientWidth < 1000? "1000px": "90%" );
-}
 #header{
     width:100%;
     height:auto;
