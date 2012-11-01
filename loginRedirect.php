@@ -28,7 +28,7 @@
             //as it is more secure.
             //It then redirects the user to the myHood page.
             $_SESSION['userID'] = $userID;
-            $_SESSION['user'] = $myName;
+            $_SESSION['user'] = $row[UserName];
             $_SESSION['type'] = $userType;
             header( 'Location: /myHood.php' );
         }
