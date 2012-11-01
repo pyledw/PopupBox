@@ -12,7 +12,7 @@
         <h2 class="Title">"Putting the Best Residents in Rental Homes"</h2>
 
         <div id="mainContent">
-            <table width="800px">
+            <table width="1000px">
                 <tr style="height: 35px;">
                     <td>
                         <a href="#" class="button">How it Works</a><br/>
