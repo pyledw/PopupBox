@@ -25,139 +25,199 @@ include 'Header.php';
 
 ?>
 
+  
+
 <!-- Main content will load with exiting elements being pre filled into the form
      Various testing methods are used to ensure that the display will be identical to the users 
      previus input if the user has already compeleted this page-->
     <h1 class="Title">New Housing Application</h1>
     <hr class="Title">
     <div id="mainContent">
-    <form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplicationRedirect.php">
+    <form id="newApplicationForm" method="post" action="newHousingApplicationRedirect.php">
+         <table class="form" width="900px;">
+             <tr>
+                 <td>
+                     Earliest Move in Date: <input class="required" type="text" name="earliestDate" value="<?php echo $row[EarlyMoveIn]?>" id="datepicker" />
+                 </td>
+                 <td colspan="2">
+                     Latest Move in Date: <input class="required" type="text" name="latestDate" value="<?php echo $row[LateMoveIn]?>" id="datepicker2" />
+                 </td>
 
-        <?php echo $row[EarlyMoveIn] ?>
-        Earliest Move in Date: <input type="text" name="earliestDate" value="<?php echo $row[EarlyMoveIn]?>" id="datepicker" />
-        Latest Move in Date: <input type="text" name="latestDate"value="<?php echo $row[LateMoveIn]?>" id="datepicker2" />
-        <br/>
-        Do you need ADA (Americans with Disability Act) facilities?
-        <?php if ($row[IsADA] == "N")
-                {
-                    echo 'Yes<input type="radio" name="ADA" checked="checked"  value="Y" />
-                        No<input type="radio" name="ADA"  value="N" /><br/>';
-                }
-                    
-            else
-                {
-                    
-                    echo 'Yes<input type="radio" name="ADA"  value="Y" />No<input type="radio" checked="checked" name="ADA"  value="N" /><br/>';
-                }
+             </tr>
+             <tr>
+                 <td>
+                     Do you need ADA (Americans with Disability Act) facilities?<br/>
+                    <?php 
+                    //This goes through to ensure that if data already exist the previusly checked will apear checked
+                    if ($row[IsADA] == "N")
+                            {
+                                echo 'Yes<input type="radio" name="ADA" checked="checked"  value="Y" />
+                                    No<input type="radio" name="ADA"  value="N" /><br/>';
+                            }
 
-            ?>
-        Will you be smoking?
-         <?php if ($row[IsSmokingRequired] == "N")
-                {
-                     echo 'Yes<input type="radio" checked="checked" name="smoking"  value="Y" />
-                          No<input type="radio" name="smoking"  value="N" /><br/>';
-                }
-                    
-            else
-                {
-                   
-                    echo 'Yes<input type="radio" name="smoking"  value="Y" />
-                           No<input type="radio" name="smoking"checked="checked"  value="N" /><br/>';
-                }
-            ?>
-        Number of Occupants:
-        <select name="numbOccupants">
-            <option<?php if($row[NumOtherOccupants] == "1"){ echo ' selected="selected" ' ; };?>>1</option>
-            <option<?php if($row[NumOtherOccupants] == "2"){ echo ' selected="selected" ' ; };?>>2</option>
-            <option<?php if($row[NumOtherOccupants] == "3"){ echo ' selected="selected" ' ; };?>>3</option>
-            <option<?php if($row[NumOtherOccupants] == "4"){ echo ' selected="selected" ' ; };?>>4</option>
-            <option<?php if($row[NumOtherOccupants] == "5"){ echo ' selected="selected" ' ; };?>>5</option>
-            <option<?php if($row[NumOtherOccupants] == "6"){ echo ' selected="selected" ' ; };?>>6</option>
-            <option<?php if($row[NumOtherOccupants] == "7"){ echo ' selected="selected" ' ; };?>>7</option>
-            <option<?php if($row[NumOtherOccupants] == "8"){ echo ' selected="selected" ' ; };?>>8</option>
-        </select>
-        
-        <div id="residents">
-            <div class="formElement" id="resident1">
-                Secondary Resident<br />
-                First Name: <input type="text" value="<?php echo $row[SecondaryOccupantFName]?>" name="fName" />
-                Last Name: <input type="text" value="<?php echo $row[SecondaryOccupantLName]?>" name="lName" />
-                Age: <input type="text" value="<?php echo $row[SecondaryOccupantAge]?>" name="age"/><br />
-                Relationship: <input type="text" value="<?php echo $row[SecondaryOccupantRelationship]?>" name="relationship"/>
-            </div>
+                    else
+                            {
 
+                                echo 'Yes<input type="radio" name="ADA"  value="Y" />No<input type="radio" checked="checked" name="ADA"  value="N" /><br/>';
+                            }
 
+                    ?>
+                 </td>
+                 <td>
+                     Will you be smoking?<br/>
+                    <?php 
+                    //This goes through to ensure that if data already exist the previusly checked will apear checked
+                    if ($row[IsSmokingRequired] == "N")
+                        {
+                             echo 'Yes<input type="radio" checked="checked" name="smoking"  value="Y" />
+                                  No<input type="radio" name="smoking"  value="N" /><br/>';
+                        }
 
+                    else
+                        {
 
-        </div>
-        
-        <!--<font class="button" id="addResident">Add resident</font>
-        <font class="button"  id="removeResident">Remove resident</font> -->
-        
-        <br/>
-        <br/>
+                            echo 'Yes<input type="radio" name="smoking"  value="Y" />
+                                   No<input type="radio" name="smoking"checked="checked"  value="N" /><br/>';
+                        }
+                    ?>
+                 </td>
+                 <td>
+                     Number of Occupants:
+                <select name="numbOccupants">
+                    <option<?php if($row[NumOtherOccupants] == "1"){ echo ' selected="selected" ' ; };?>>1</option>
+                    <option<?php if($row[NumOtherOccupants] == "2"){ echo ' selected="selected" ' ; };?>>2</option>
+                    <option<?php if($row[NumOtherOccupants] == "3"){ echo ' selected="selected" ' ; };?>>3</option>
+                    <option<?php if($row[NumOtherOccupants] == "4"){ echo ' selected="selected" ' ; };?>>4</option>
+                    <option<?php if($row[NumOtherOccupants] == "5"){ echo ' selected="selected" ' ; };?>>5</option>
+                    <option<?php if($row[NumOtherOccupants] == "6"){ echo ' selected="selected" ' ; };?>>6</option>
+                    <option<?php if($row[NumOtherOccupants] == "7"){ echo ' selected="selected" ' ; };?>>7</option>
+                    <option<?php if($row[NumOtherOccupants] == "8"){ echo ' selected="selected" ' ; };?>>8</option>
+                </select>
+                 </td>
+             </tr>
+             <tr>
+                 <th colspan="3">
+                     Secondary Resident
+                 </th>
+             </tr>
+             <tr>
+                 <td>
+                     First Name: <input type="text" value="<?php echo $row[SecondaryOccupantFName]?>" name="fName" />
+                 </td>
+                 <td>
+                     Last Name: <input type="text" value="<?php echo $row[SecondaryOccupantLName]?>" name="lName" />
+                 </td>
+                 <td>
+                     Age: <input type="text" value="<?php echo $row[SecondaryOccupantAge]?>" name="age"/><br />
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     Relationship: <input type="text" value="<?php echo $row[SecondaryOccupantRelationship]?>" name="relationship"/>
+                 </td>
+                 <td>
+                     
+                 </td>
+                 <td>
+                     
+                 </td>
+             </tr>
+             <tr>
+                 <th colspan="3">
+                     Pet #1
+                 </th>
+             </tr>
+             <tr>
+                 <td>
+                     Type:<select name="animalType">
 
-            <div id="pets">
-                <div class="formElement" id="pet1">
-                    Pet #1<br/>
-                    Type:<select name="animalType">
-                        
-                        <option <?php if($row[Pet1Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
-                        <option <?php if($row[Pet1Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
-                        <option <?php if($row[Pet1Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
-                        <option <?php if($row[Pet1Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
-                    </select>
-                    <br/>
-                    Weight:<input type="text" value="<?php echo $row[Pet1Weight]?>" name="animalWeight" />
-                    Breed:<input type="text" value="<?php echo $row[Pet1Breed]?>" name="animalBreed" />
-                    Age:<input type="text" value="<?php echo $row[Pet1Age]?>" name="animalAge" />
-                </div>
-                <div class="formElement" id="pet2" <?php if($row[Pet2Type] == "")?>>
-                    Pet #2<br/>
-                    Type:<select name="animalType2">
-                        <option <?php if($row[Pet2Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
-                        <option <?php if($row[Pet2Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
-                        <option <?php if($row[Pet2Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
-                        <option <?php if($row[Pet2Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
-                    </select>
-                    <br/>
-                    Weight:<input type="text" value="<?php echo $row[Pet2Weight]?>" name="animalWeight2" />
-                    Breed:<input type="text" value="<?php echo $row[Pet2Breed]?>" name="animalBreed2" />
-                    Age:<input type="text" value="<?php echo $row[Pet2Age]?>" name="animalAge2" />
-                </div>
-                <div class="formElement" id="pet3" <?php if($row[Pet3Type] == "")?>>
-                    Pet #3<br/>
-                    Type:<select name="animalType3">
-                        <option <?php if($row[Pet3Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
-                        <option <?php if($row[Pet3Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
-                        <option <?php if($row[Pet3Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
-                        <option <?php if($row[Pet3Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
-                    </select>
-                    <br/>
-                    Weight:<input type="text" value="<?php echo $row[Pet3Weight]?>" name="animalWeight3" />
-                    Breed:<input type="text" value="<?php echo $row[Pet3Breed]?>" name="animalBreed3" />
-                    Age:<input type="text" value="<?php echo $row[Pet3Age]?>" name="animalAge3" />
-                </div>
-                <div class="formElement" id="pet4" <?php if($row[Pet4Type] == "")?>>
-                    Pet #4<br/>
-                    Type:<select name="animalType4">
-                        <option <?php if($row[Pet4Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
-                        <option <?php if($row[Pet4Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
-                        <option <?php if($row[Pet4Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
-                        <option <?php if($row[Pet4Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
-                    </select>
-                    <br/>
-                    Weight:<input type="text" value="<?php echo $row[Pet4Weight]?>" name="animalWeight4" />
-                    Breed:<input type="text" value="<?php echo $row[Pet4Breed]?>" name="animalBreed4" />
-                    Age:<input type="text" value="<?php echo $row[Pet4Age]?>" name="animalAge4" />
-                </div>
-
-            </div>
-        <br/>
-        <!--<font class="button" id="addPet">Add pet</font>
-        <font class="button"  id="removePet">Remove pet</font><br/><br/>-->
-        <button type="submit" class="button">Save and Continue</button>
-        <button type="reset" class="button">Clear</button>
+                                <option <?php if($row[Pet1Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
+                                <option <?php if($row[Pet1Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
+                                <option <?php if($row[Pet1Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
+                                <option <?php if($row[Pet1Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
+                          </select>
+                 </td>
+                 <td>
+                      Weight:<input type="text" value="<?php echo $row[Pet1Weight]?>" name="animalWeight" />
+                 </td>
+                 <td>
+                     Breed:<input type="text" value="<?php echo $row[Pet1Breed]?>" name="animalBreed" />
+                 </td>
+                 <td>
+                     Age:<input type="text" value="<?php echo $row[Pet2Age]?>" name="animalAge2" />
+                 </td>
+             </tr>
+             
+             <tr>
+                 <td>
+                     Type:<select name="animalType2">
+                                <option <?php if($row[Pet2Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
+                                <option <?php if($row[Pet2Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
+                                <option <?php if($row[Pet2Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
+                                <option <?php if($row[Pet2Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
+                            </select>
+                 </td>
+                 <td>
+                     Weight:<input type="text" value="<?php echo $row[Pet2Weight]?>" name="animalWeight2" />
+                 </td>
+                 <td>
+                     Breed:<input type="text" value="<?php echo $row[Pet2Breed]?>" name="animalBreed2" />
+                 </td>
+                 <td>
+                     Age:<input type="text" value="<?php echo $row[Pet2Age]?>" name="animalAge2" />
+                 </td>
+                     
+             </tr>
+             <tr>
+                 <td>
+                     Type:<select name="animalType3">
+                                <option <?php if($row[Pet3Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
+                                <option <?php if($row[Pet3Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
+                                <option <?php if($row[Pet3Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
+                                <option <?php if($row[Pet3Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
+                            </select>
+                 </td>
+                 <td>
+                     Weight:<input type="text" value="<?php echo $row[Pet3Weight]?>" name="animalWeight3" />
+                 </td>
+                 <td>
+                     Breed:<input type="text" value="<?php echo $row[Pet3Breed]?>" name="animalBreed3" />
+                 </td>
+                 <td>
+                     Age:<input type="text" value="<?php echo $row[Pet3Age]?>" name="animalAge3" />
+                 </td>
+                     
+             </tr>
+             <tr>
+                 <td>
+                     Type:<select name="animalType4">
+                                <option <?php if($row[Pet4Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
+                                <option <?php if($row[Pet4Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
+                                <option <?php if($row[Pet4Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
+                                <option <?php if($row[Pet4Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
+                            </select>
+                 </td>
+                 <td>
+                     Weight:<input type="text" value="<?php echo $row[Pet4Weight]?>" name="animalWeight4" />
+                 </td>
+                 <td>
+                     Breed:<input type="text" value="<?php echo $row[Pet4Breed]?>" name="animalBreed4" />
+                 </td>
+                 <td>
+                     Age:<input type="text" value="<?php echo $row[Pet4Age]?>" name="animalAge4" />
+                 </td>
+                     
+             </tr>
+             <tr>
+                 <td colspan="4">
+                    <button type="submit" class="button">Save and Continue</button>
+                    <button type="reset" class="button">Clear</button>
+                    <a class="button" href="myHood.php">Exit without saving</a>
+                <td>
+             </tr>
+             
+                
+         </table>
     </form>
 </div>
 
@@ -169,7 +229,7 @@ include 'Header.php';
 <script>
     $(function() {
         $( "#datepicker" ).datepicker({
-            
+            minDate: 0,
             showButtonPanel: true,
             dateFormat:"yy-mm-dd"
         });
@@ -177,7 +237,7 @@ include 'Header.php';
     $(function() {
         $( "#datepicker2" ).datepicker({
             
-            
+            minDate: 0,
             showButtonPanel: true,
             dateFormat: 'yy-mm-dd'
         });
@@ -210,4 +270,14 @@ $(document).ready(function(){
   });
 });
 
+  $(document).ready(function(){
+    $("#newApplicationForm").validate({
+        ignoreTitle: true
+        
+    });
+  });
+
+   $(function(){
+         $.fn.formLabels();
+   });
 </script>

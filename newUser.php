@@ -4,11 +4,7 @@
 	include 'Header.php';
 ?>
 
-<script>
-   $(function(){
-         $.fn.formLabels();
-   });
-</script>
+
 <!-- Page Content -->
 
 </textarea>
@@ -132,5 +128,8 @@
     });
   });
 
+   $(function(){
+         $.fn.formLabels();
+   });
   </script>
   

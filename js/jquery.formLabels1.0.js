@@ -117,7 +117,7 @@
                             'position'          : 'absolute',
                             'top'               : 0,
                             'left'              : 0,
-                            'color'             : $this.css("green"),
+                            'color'             : $this.css("color"),
                             '-moz-user-select'  : 'none',
                             '-webkit-user-select'  : 'none',
                             'cursor'            : 'text',
