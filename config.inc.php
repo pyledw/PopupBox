@@ -34,7 +34,7 @@ function upload_get_save_path()
 {
 	global $upload_save_path;
 	$d = new DateTime();
-	$fn = $d->format("Ymd_H\hm\ms\s_") . strval(mt_rand());
+	$fn = $d->format("YmdHms") . strval(mt_rand());
 	return $upload_save_path . $fn;
 }
 
