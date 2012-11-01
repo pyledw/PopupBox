@@ -13,14 +13,30 @@
 ?>
 <div id="wrapper">
     <div id="mainContent">
-        <form class="login" method="post" action="loginRedirect.php">
-            Username:<input id="userName" type="text" name="userName"><br/>
-            Password:<input type="password" name="password">
-            <br/>
-            Remember Me: <input type="checkbox" name="rememberMe">
-            <br/>
-            <button id="submit" type="submit" class="button">Save and Continue</button>
-            <button type="reset" class="button">Clear</button>
+        <form method="post" action="loginRedirect.php">
+            <table class="form">
+                <tr>
+                    <td>
+                        Username:<input id="userName" type="text" name="userName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:<input type="password" name="password">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Remember Me: <input type="checkbox" name="rememberMe">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="submit" type="submit" class="button">Save and Continue</button>
+                        <button type="reset" class="button">Clear</button>
+                    </td>
+                </tr>
+            </table>
 
         </form>
     </div>
