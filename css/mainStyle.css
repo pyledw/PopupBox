@@ -41,9 +41,6 @@ body
     text-align:center;
     width:400px;
 }
-.ie #wrapper{
-    width:expression(document.body.clientWidth < 1000? "1000px": "90%" );
-}
 #header{
     width:100%;
     height:auto;
@@ -375,31 +372,6 @@ form .exceeded{color:#e00;}
     display:inline;
 }
 
-.formTable{
-    
-}
-.form{
-    border:#4F6228 2px solid;
-    padding:5px 5px 5px 5px;
-    margin-left: auto;
-    margin-right: auto;
-    
-}
-.form .labels{
-    text-align: right;
-    font-weight: bold;
-    vertical-align: top;
-    height:50px;
-    width:200px;
-}
-.form .field{
-    text-align: left;
-    vertical-align: top;
-    height:50px;
-    width:200px;
-}
-.field input{
-    height:20px;
-    font-size: 19px;
-}
+
+
 

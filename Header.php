@@ -45,10 +45,9 @@
     <script type="text/javascript" src="js/jquery.cookie.js"></script><!--Javascript Reference to Cookie Extension-->
     <script type="text/javascript" src="js/jquery.validate.js"></script><!--Javascript Reference to Cookie Extension-->
     <link rel="stylesheet" type="text/css" href="css/searchResults.css" /><!--Javascript Reference to Search Result Style-->
-    <link rel="stylesheet" type="text/css" href="css/formStyle.css" /><!--Javascript Reference to Form Styles-->
+    <link rel="stylesheet" type="text/css" href="css/formStyle.css" /><!--CSS Reference to Form Styles-->
     
-    <script type="text/javascript" src="js/jquery.infieldlabel.js"></script><!--Javascript Reference to Jquery-->
-    <script type="text/javascript" src="js/jquery.infieldlabel.min.js"></script><!--Javascript Reference to Jquery-->
+    <script type="text/javascript" src="js/jquery.formLabels1.0.js"></script><!--Javascript Reference to Cookie Extension-->
     
     <!-- These reference the external files for popups -->
     <script type="text/javascript" src="js/facebox.js"></script>
@@ -62,11 +61,11 @@
     
     
     <script src="js/charCount.js"></script><!--Javascript Reference to Add on for counting the characters in a textbox-->
-    <script>
+    <!--<script>
         $(function() {
         $( document ).tooltip();
         });
-    </script>
+    </script>-->
     
     
 </head>
