@@ -27,14 +27,6 @@ $userType = $_SESSION["type"];
                     }
                 ?>
                 <?php
-                    if($fileName == "myHood_Mail.php")
-                    {
-                       echo '<a class="current" href="myHood_Mail.php">Mail</a>';
-                    }
-                    else
-                    {
-                        echo '<a href="myHood_Mail.php">Mail</a>';
-                    }
                     
 
                     
