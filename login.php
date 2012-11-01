@@ -13,16 +13,16 @@
 ?>
 <div id="wrapper">
     <div id="mainContent">
-        <form method="post" action="loginRedirect.php">
+        <form id="newApplicationForm" method="post" action="loginRedirect.php">
             <table class="form">
                 <tr>
                     <td>
-                        Username:<input id="userName" type="text" name="userName">
+                        <input title="Username" class="required" id="userName" type="text" name="userName">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Password:<input type="password" name="password">
+                        <input title="Password" class="required" type="password" name="password">
                     </td>
                 </tr>
                 <tr>
@@ -46,4 +46,17 @@
 	include 'Footer.php';
 
 ?>
+
+<script>
+$(document).ready(function(){
+    $("#newApplicationForm").validate({
+        ignoreTitle: true
+        
+    });
+  });
+
+   $(function(){
+         $.fn.formLabels();
+   });
+</script>
 

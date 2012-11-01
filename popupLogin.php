@@ -3,16 +3,16 @@
     session_destroy();
     session_start();
 ?>
-<form method="post" action="loginRedirect.php">
+<form id="newApplicationForm" method="post" action="loginRedirect.php">
             <table class="form">
                 <tr>
                     <td>
-                        Username:<input id="userName" type="text" name="userName">
+                       <input title="Username" class="required" id="userName" type="text" name="userName">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Password:<input type="password" name="password">
+                        <input title="Password" class="required" type="password" name="password">
                     </td>
                 </tr>
                 <tr>
@@ -26,5 +26,20 @@
                         <button type="reset" class="button">Clear</button>
                     </td>
                 </tr>
-            </table>
+</table>
+
 </form>
+
+
+<script>
+$(document).ready(function(){
+    $("#newApplicationForm").validate({
+        ignoreTitle: true
+        
+    });
+  });
+
+   $(function(){
+         $.fn.formLabels();
+   });
+</script>
