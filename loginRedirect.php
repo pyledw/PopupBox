@@ -33,6 +33,10 @@
             header( 'Location: /myHood.php' );
         }
 //endoftheline:
+        else{
+            
+        
         header( 'Location: /loginFailed.php' );
         echo "Username does not exist";
+        }
 ?>

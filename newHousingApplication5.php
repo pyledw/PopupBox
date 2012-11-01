@@ -16,6 +16,7 @@
 <br/>
 <form id="newApplicationForm" method="post" action="newHousingApplication5Redirect.php">
     <table class="form" style="text-align: center;">
+        <font class="formheader">Terms and Conditions</font>
         <tr>
             <td>
              Your application is now complete.  It will be submitted for verification  

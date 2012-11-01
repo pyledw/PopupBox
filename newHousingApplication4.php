@@ -35,11 +35,10 @@ $title = "New Application #4";
 <!-- Main content will load with exiting elements being pre filled into the form
      Various testing methods are used to ensure that the display will be identical to the users 
      previous input if the user has already completed this page-->
-<h1 class="Title">Other</h1>
-<hr class="Title" />
 <div id="mainContent">
 <form id="newApplicationForm" method="post" action="newHousingApplication4Redirect.php">
         <table class="form">
+            <font class="formheader">Other Information</font>
             <tr>
                 <th colspan="3">
                     <h3>Emergency Contact</h3>    

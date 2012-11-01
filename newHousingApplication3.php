@@ -33,12 +33,11 @@
 <!-- Main content will load with exiting elements being pre filled into the form
      Various testing methods are used to ensure that the display will be identical to the users 
      previous input if the user has already completed this page-->
-<h1 class="Title">Application Page #3</h1>
-<hr class="Title">
 
 <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplication3Redirect.php">
             <table class="form">
+                <font class="formheader">Residence History</font>
                 <?php
                 if(mysql_num_rows($result) > 0)
                 {

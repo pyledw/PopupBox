@@ -31,6 +31,7 @@ root {
     border:#000 2px solid;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 30px;
     background:#a7b093;
     padding:20px 20px 20px 20px;
     
@@ -61,9 +62,6 @@ root {
     height:35px;
     font-size:inherit;
 }
-
-* { 
-    font-family: Verdana; font-size: 96%; }
 label { 
     width: 10em; float: left; }
 label.error { 
@@ -76,4 +74,14 @@ em {
     font-weight: bold; padding-right: 1em; vertical-align: top; }
 .ie label{
     width:255px;
+}
+.formheader{
+    font-size: 24px;
+    font-weight: bold;
+    color:#4f6228;
+    position:relative;
+    left:150px;
+    top:25px;
+    background:#a7b093;
+    padding:5px 10px 5px 10px;
 }

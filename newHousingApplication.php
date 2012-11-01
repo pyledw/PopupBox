@@ -30,11 +30,10 @@ include 'Header.php';
 <!-- Main content will load with exiting elements being pre filled into the form
      Various testing methods are used to ensure that the display will be identical to the users 
      previus input if the user has already compeleted this page-->
-    <h1 class="Title">New Housing Application</h1>
-    <hr class="Title">
     <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplicationRedirect.php">
          <table class="form" width="900px;">
+             <font class="formheader">Personal Information</font>
              <tr>
                  <td>
                      Earliest Move in Date: <input class="required" type="text" name="earliestDate" value="<?php echo $row[EarlyMoveIn]?>" id="datepicker" />

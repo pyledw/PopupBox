@@ -32,11 +32,10 @@
      Various testing methods are used to ensure that the display will be identical to the users 
      previous input if the user has already completed this page-->
 
-<h1 class="Title" >New Housing Application Continued</h1>
-<hr class="Title">
 <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplication2Redirect.php">
         <table class="form">
+            <font class="formheader">Employment History</font>
             <tr>
                 <th colspan="2">
                     Current Employer
