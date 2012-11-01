@@ -27,6 +27,15 @@
             die('could not connect: ' .mysql_error());
         }
         
+        $intCount = 0;
+        $row0;
+        $row1;
+        $row2;
+        While($row2 = mysql_fetch_array($result))
+        {
+            
+        }
+        
         
         
     
@@ -39,52 +48,238 @@
 <hr class="Title">
 
 <div id="mainContent">
-    <form class="formStyle" width="90%" height="90%" method="post" action="newHousingApplication3Redirect.php">
-        <div id="formerHomes">
+    <form id="newApplicationForm" method="post" action="newHousingApplication3Redirect.php">
+            <table class="form">
+                <tr>
+                    <th colspan="3">
+                        Former Residence
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Type Of Residence:<select id="select" name="type1">
+                    <option>
+                        Owned
+                    </option>
+                    <option>
+                        Rented
+                    </option>
+                    <option>
+                        Family Friend
+                    </option>
+                </select>
+                    </td>
+                    <td>
+                       Address:<input type="text" name="address1"/>
+                    </td>
+                    <td>
+                        City:<input type="text" name="city1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State:<input type="text" name="state1"/>
+                    </td>
+                    <td>
+                        Zip Code:<input  type="text" name="zipCode1"/>
+                    </td>
+                    <td>
+                        months lived there:<input  type="text" name="months2"/>
+                    </td>     
+                </tr>
+                <tr>
+                    <td>
+                        Landlords First Name:<input type="text" name="landlordsFName1" />
+                    </td>
+                    <td>
+                        Landlords Last Name:<input type="text" name="landlordsLName1"/>
+                    </td>
+                    <td>
+                        Phone Number:<input type="text" name="phoneNumber1"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Reason For Leaving:<input type="text" name="reasonForLeaving1"/>
+                    </td>
+                    <td>
+                        Rent:<input type="text" name="rent1"/>
+                    </td>
+                    <td>
+                        <input id="number" type="text" name="number1" style="display: block; visibility: hidden" value="" />
+                    </td>
+                </tr>
+                
+                </table>
+                <table class="form">
+                <tr>
+                    <th colspan="3">
+                        Former Residence 2
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Type Of Residence:<select id="select" name="type2">
+                    <option>
+                        Owned
+                    </option>
+                    <option>
+                        Rented
+                    </option>
+                    <option>
+                        Family Friend
+                    </option>
+                </select>
+                    </td>
+                    <td>
+                       Address:<input type="text" name="address2"/>
+                    </td>
+                    <td>
+                        City:<input type="text" name="city2" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State:<input type="text" name="state2"/>
+                    </td>
+                    <td>
+                        Zip Code:<input  type="text" name="zipCode2"/>
+                    </td>
+                    <td>
+                        months lived there:<input  type="text" name="months2"/>
+                    </td>     
+                </tr>
+                <tr>
+                    <td>
+                        Landlords First Name:<input type="text" name="landlordsFName2" />
+                    </td>
+                    <td>
+                        Landlords Last Name:<input type="text" name="landlordsLName2"/>
+                    </td>
+                    <td>
+                        Phone Number:<input type="text" name="phoneNumber2"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Reason For Leaving:<input type="text" name="reasonForLeaving2"/>
+                    </td>
+                    <td>
+                        Rent:<input type="text" name="rent2"/>
+                    </td>
+                    <td>
+                        <input id="number" type="text" name="number2" style="display: block; visibility: hidden" value="" />
+                    </td>
+                </tr>
+                </table>
+                
+                <table class="form">
+                <tr>
+                    <th colspan="3">
+                        Former Residence 3
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Type Of Residence:<select id="select" name="type3">
+                    <option>
+                        Owned
+                    </option>
+                    <option>
+                        Rented
+                    </option>
+                    <option>
+                        Family Friend
+                    </option>
+                </select>
+                    </td>
+                    <td>
+                       Address:<input type="text" name="address3"/>
+                    </td>
+                    <td>
+                        City:<input type="text" name="city3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State:<input type="text" name="state3"/>
+                    </td>
+                    <td>
+                        Zip Code:<input  type="text" name="zipCode3"/>
+                    </td>
+                    <td>
+                        months lived there:<input  type="text" name="months2"/>
+                    </td>     
+                </tr>
+                <tr>
+                    <td>
+                        Landlords First Name:<input type="text" name="landlordsFName3" />
+                    </td>
+                    <td>
+                        Landlords Last Name:<input type="text" name="landlordsLName3"/>
+                    </td>
+                    <td>
+                        Phone Number:<input type="text" name="phoneNumber3"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Reason For Leaving:<input type="text" name="reasonForLeaving3"/>
+                    </td>
+                    <td>
+                        Rent:<input type="text" name="rent3"/>
+                    </td>
+                    <td>
+                        <input id="number" type="text" name="number3" style="display: block; visibility: hidden" value="" />
+                    </td>
+                </tr>
+                
+            </table>
             
             <?php
+            /*
             if(mysql_num_rows($result) > 0)
             {
-                $intCount=1;
-                while($row = mysql_fetch_array($result))
-                    {
-                       echo '<div class="formElement" id="formerHome'.$intCount.'">              
-                    <h3>Former Residence</h3><br/>
-                    Type Of Residence:<select id="select" name="type'.$intCount.'">
-                        <option>
-                            Owned
-                        </option>
-                        <option>
-                            Rented
-                        </option>
-                        <option>
-                            Family Friend
-                        </option>
-                    </select>
-                    Address:<input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
-                    City:<input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'" />
-                    State:<input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
-                    Zip Code:<input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
-                    months lived there:<input  type="text" name="months'.$intCount.'" value="'.$row[TotalMonths].'"/>
-                    <div id="renter">
-                    Landlords First Name:<input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordFName].'"/>
-                    Landlords Last Name:<input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
-                    Phone Number:<input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
-                    Reason For Leaving:<input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
-                    Rent:<input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
-                    </div>
-                    <div id="owner">
-                    Mortgage:<input type="text" name="mortgage'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
-                    </div>
-                    <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
+                    $intCount=1;
+                    while($row = mysql_fetch_array($result))
+                        {
+                           echo '<div class="formElement" id="formerHome'.$intCount.'">              
+                        <h3>Former Residence</h3><br/>
+                        Type Of Residence:<select id="select" name="type'.$intCount.'">
+                            <option>
+                                Owned
+                            </option>
+                            <option>
+                                Rented
+                            </option>
+                            <option>
+                                Family Friend
+                            </option>
+                        </select>
+                        Address:<input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
+                        City:<input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'" />
+                        State:<input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
+                        Zip Code:<input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
+                        months lived there:<input  type="text" name="months'.$intCount.'" value="'.$row[TotalMonths].'"/>
+                        <div id="renter">
+                        Landlords First Name:<input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordFName].'"/>
+                        Landlords Last Name:<input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                        Phone Number:<input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
+                        Reason For Leaving:<input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
+                        Rent:<input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
+                        </div>
+                        <div id="owner">
+                        Mortgage:<input type="text" name="mortgage'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
+                        </div>
+                        <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
 
-                </div>';
+                    </div>';
                        $intCount += 1;
                     }
                     while($intCount <= 4)
                     {
                         echo '
-                <div class="formElement" id="formerHome'.$intCount.'">              
+                    <div class="formElement" id="formerHome'.$intCount.'">              
                         <h3>Former Residence</h3><br/>
                         Type Of Residence:<select id="select" name="type'.$intCount.'">
                             <option>
@@ -252,6 +447,8 @@
         
         //Recasting the query data into $row
         $row = mysql_fetch_array($result1);
+             * 
+             */
             ?>
 
         
@@ -331,5 +528,15 @@ $(document).ready(function(){
      
 });
 
-</script>
+$(document).ready(function(){
+    $("#newApplicationForm").validate({
+        ignoreTitle: true
+        
+    });
+  });
 
+   $(function(){
+         $.fn.formLabels();
+   });
+   
+</script>
