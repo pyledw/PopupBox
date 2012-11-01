@@ -16,6 +16,7 @@ root {
     margin:-32px -10px 0 -10px;
     
 }
+
 #Applicationheader{
     text-align: center;
     background: #4f6228;
@@ -26,5 +27,34 @@ root {
     padding:5px 5px 5px 5px;
 }
 
-
+.form{
+    border:#000 2px solid;
+    margin-left: auto;
+    margin-right: auto;
+    background:#a7b093;
+    padding:20px 20px 20px 20px;
+    
+}
+.form .field{
+    text-align: left;
+    vertical-align: top;
+    height:50px;
+    width:300px;
+}
+.field input{
+    height:24px;
+    font-size: 22px;
+}
+.form .field2{
+        font-size: 22px;
+}
+.form tr .greenBackground {
+    background:#4f6220;
+}
+.form tr .greyBackground{
+    background: #DEDBC3;
+}
+.fomr tr .darkBackground{
+    background: #3f3f3f;
+}
 

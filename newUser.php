@@ -18,13 +18,14 @@
         <div id="mainContent">
             <form id="newUserForm" method="post" action="newUserRedirect.php">
                 <table class="form" width="900px;">
-                      <tr>
+                    
+                      <tr height="80px" style="vertical-align: top;">
                          <td class="field2" colspan="3">
                             You are a:
                             
                          
                             Tenant<input type="radio" checked="checked" name="classification" value="tenant">
-                            Or
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             Landlord<input type="radio" name="classification" value="landlord">
                          </td>
                     </tr>
@@ -40,7 +41,7 @@
                          </td>
                     </tr>
                     <tr>
-                        <td colspan="6">
+                        <td colspan="3">
                             <hr />
                         </td>
                     </tr>
@@ -50,7 +51,7 @@
                            <input title="First name" type="text" name="fname" class="required">
                          </td>
 
-                         <td class="field">
+                         <td colspan="2" class="field">
                            <input title="Last name" type="text" name="lname" class="required">
                          </td>
                     </tr>
@@ -66,7 +67,7 @@
                          </td>
                     </tr>
                     <tr>
-                        <td colspan="6">
+                        <td colspan="3">
                             <hr />
                         </td>
                     </tr>
@@ -93,7 +94,7 @@
                          </td>
                     </tr>
                     <tr>
-                         <td colspan="6" align="left">
+                         <td colspan="3" align="left">
                                 <button type="submit" class="button">Save and Continue</button>
                                  <button type="reset" class="button">Clear</button>
                                 
