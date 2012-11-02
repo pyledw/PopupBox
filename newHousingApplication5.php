@@ -13,7 +13,7 @@
 ?>
 <div id="mainContent">
 <form id="newApplicationForm" method="post" action="newHousingApplication5Redirect.php">
-    <table class="form" style="text-align: center;">
+    <table class="tableForm" style="text-align: center;">
         <font class="formheader">Terms and Conditions</font>
         <tr>
             <td>

@@ -4,7 +4,7 @@
     session_start();
 ?>
 <form id="newApplicationForm" method="post" action="loginRedirect.php">
-            <table class="form">
+            <table class="tableForm">
                 <tr>
                     <td>
                        <input title="Username" class="required" id="userName" type="text" name="userName">

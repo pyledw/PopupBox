@@ -36,7 +36,7 @@
 
 <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplication3Redirect.php">
-            <table class="form">
+            <table class="tableForm">
                 <font class="formheader">Residence History</font>
                 <?php
                 if(mysql_num_rows($result) > 0)

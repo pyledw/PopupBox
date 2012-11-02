@@ -34,7 +34,7 @@
 
 <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplication2Redirect.php">
-        <table class="form">
+        <table class="tableForm">
             <font class="formheader">Employment History</font>
             <tr>
                 <th colspan="2">

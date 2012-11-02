@@ -32,7 +32,7 @@ include 'Header.php';
      previus input if the user has already compeleted this page-->
     <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplicationRedirect.php">
-         <table class="form" width="900px;">
+         <table class="tableForm" width="900px;">
              <font class="formheader">Personal Information</font>
              <tr>
                  <td>

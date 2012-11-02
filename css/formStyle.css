@@ -27,7 +27,7 @@ root {
     padding:5px 5px 5px 5px;
 }
 
-.form{
+.tableForm{
     border:#000 2px solid;
     margin-left: auto;
     margin-right: auto;
@@ -36,7 +36,7 @@ root {
     padding:20px 20px 20px 20px;
     
 }
-.form .field{
+.tableForm .field{
     text-align: left;
     vertical-align: top;
     height:50px;
@@ -46,16 +46,16 @@ root {
     height:24px;
     font-size: 22px;
 }
-.form .field2{
+.tableForm .field2{
         font-size: 22px;
 }
-.form tr .greenBackground {
+.tableForm tr .greenBackground {
     background:#4f6220;
 }
-.form tr .greyBackground{
+.tableForm tr .greyBackground{
     background: #DEDBC3;
 }
-.form tr .darkBackground{
+.tableForm tr .darkBackground{
     background: #3f3f3f;
 }
 .ie input{

@@ -37,7 +37,7 @@ $title = "New Application #4";
      previous input if the user has already completed this page-->
 <div id="mainContent">
 <form id="newApplicationForm" method="post" action="newHousingApplication4Redirect.php">
-        <table class="form">
+        <table class="tableForm">
             <font class="formheader">Other Information</font>
             <tr>
                 <th colspan="3">

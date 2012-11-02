@@ -9,7 +9,7 @@
   
         <div id="mainContent">
             <form id="newUserForm" method="post" action="newUserRedirect.php">
-                <table class="form" width="900px;">
+                <table class="tableForm" width="900px;">
                     <font class="formheader">Create and Account</font>
                     
                       <tr height="80px" style="vertical-align: top;">
