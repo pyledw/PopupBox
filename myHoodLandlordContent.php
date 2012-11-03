@@ -21,7 +21,7 @@
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
     {
-        include 'listingFunctions.php';
+        include_once 'listingFunctions.php';
         
         //below is call to function that returns the timestring of time remaining or time till start
         $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);

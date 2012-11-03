@@ -10,124 +10,94 @@ session_start();
     
     if(!isset($_SESSION[propertyID]))
     {
-        mysql_query("INSERT INTO PROPERTY (UserID,Address)
-        VALUES
-        ('$_SESSION[userID]','$_POST[address]')");
         
-        $propertyID = mysql_insert_id();
-        
-        
-        //Query getting the application data for this user
-        $result = mysql_query("SELECT * FROM PROPERTY
-            WHERE address ='$_POST[address]'");
+            //Using the new method for inserting into the Database
+            $con = get_dbconn("PDO");
+            $stmt = $con->prepare("
+            INSERT INTO PROPERTY (UserID,Address
+                 )
+            VALUES (
+                :userID,:address )
+            ");
+            try {
+                $stmt->bindValue(':userID',  $_SESSION[userID],		PDO::PARAM_INT);
+                $stmt->bindValue(':address', $_POST['address'],		PDO::PARAM_STR);
+                $stmt->execute();
+            } 
+            catch (Exception $e) {
+                echo 'Connection failed. ' . $e->getMessage();
+            }
 
-        //setting the query data equal to a variable
-        $row = mysql_fetch_array($result);
-        
     }
-    else
-    {
-        $propertyID = $_SESSION[propertyID];
-        mysql_query("UPDATE PROPERTY SET Address='$_POST[address]'
-            WHERE PropertyID = '$propertyID'");
-    }
-    
     
     //This sction below will get the latitude and Longitude of the address and store it in the database
         include_once 'locationLookup.php';
         $location = getLatandLongAddress($_POST[address], $_POST[city], $_POST[state]);
         $lat = $location[0];
         $lon = $location[1];
-    
-    
-        mysql_query("UPDATE PROPERTY SET Lattitude='$lat'
-            WHERE PropertyID = '$propertyID'");
-        mysql_query("UPDATE PROPERTY SET Longitude='$lon'
-            WHERE PropertyID = '$propertyID'");
-    
-    
        
-        mysql_query("UPDATE PROPERTY SET Zip='$_POST[zipCode]'
-            WHERE PropertyID = '$propertyID'");
+    
+    //Using the new method for inserting into the Database
+    $con = get_dbconn("PDO");
+    $stmt = $con->prepare("
+            UPDATE PROPERTY SET
+                Address=:address,                   Lattitude=:lat,                 Longitude=:lon,
+                Zip=:zipCode,                       County=:county,
+                City=:city,                         State=:state,                   SF=:sqrFt,
+                Bedroom=:bedRooms,                  Bath=:bathRooms,                Garage=:garage,
+                Heating=:heating,                   AC=:airConditioning,            Media=:media,
+                IceMaker=:ice,                      DishWasher=:dishWasher,         Disposal=:disposal,
+                ClothesWasher=:clothesWasher,       ClothesDryer=:clothesDryer,     Microwave=:microwave,
+                SecurityAlarm=:security,            Deck=:deck,                     Pool=:pool,
+                Fenced=:fenced,                     Description=:description,       ClothesWasherHookup=:washerHookup,
+                ClothesDryerHookup=:dryerHookup,    ADACompliant=:ADA 
+            WHERE Address='$_POST[address]'
+            ");
+    try {
+        $stmt->bindValue(':address',            $_POST['address'],		PDO::PARAM_STR);
+        $stmt->bindValue(':lat',                $lat,                           PDO::PARAM_STR);
+        $stmt->bindValue(':lon',                $lon,                           PDO::PARAM_STR);
+        $stmt->bindValue(':zipCode',            $_POST['zipCode'],		PDO::PARAM_STR);
+        $stmt->bindValue(':county',             $_POST['county'],		PDO::PARAM_STR);
+        $stmt->bindValue(':city',               $_POST['city'],                 PDO::PARAM_STR);
+        $stmt->bindValue(':state',              $_POST['state'],		PDO::PARAM_STR);
+        $stmt->bindValue(':sqrFt',              $_POST['sqrFt'],		PDO::PARAM_STR);
         
-        mysql_query("UPDATE PROPERTY SET County='$_POST[county]'
-            WHERE PropertyID = '$propertyID'");
+        $stmt->bindValue(':bedRooms',           $_POST['bedRooms'],		PDO::PARAM_STR);
+        $stmt->bindValue(':bathRooms',          $_POST['bathRooms'],		PDO::PARAM_STR);
+        $stmt->bindValue(':garage',             $_POST['garage'],		PDO::PARAM_STR);
+        $stmt->bindValue(':heating',            $_POST['heating'],		PDO::PARAM_STR);
+        $stmt->bindValue(':airConditioning',    $_POST['airConditioning'],	PDO::PARAM_STR);
+        $stmt->bindValue(':media',              $_POST['media'],		PDO::PARAM_STR);
+        $stmt->bindValue(':ice',                $_POST['ice'],                  PDO::PARAM_STR);
         
+        $stmt->bindValue(':dishWasher',         $_POST['dishWasher'],		PDO::PARAM_STR);
+        $stmt->bindValue(':disposal',           $_POST['disposal'],		PDO::PARAM_STR);
+        $stmt->bindValue(':clothesWasher',      $_POST['clothesWasher'],	PDO::PARAM_STR);
+        $stmt->bindValue(':clothesDryer',       $_POST['clothesDryer'],		PDO::PARAM_STR);
+        $stmt->bindValue(':microwave',          $_POST['microwave'],		PDO::PARAM_STR);
+        $stmt->bindValue(':security',           $_POST['security'],		PDO::PARAM_STR);
+        $stmt->bindValue(':deck',               $_POST['deck'],                 PDO::PARAM_STR);
+        $stmt->bindValue(':pool',               $_POST['pool'],                 PDO::PARAM_STR);
+        $stmt->bindValue(':fenced',             $_POST['fenced'],		PDO::PARAM_STR);
+        $stmt->bindValue(':description',        $_POST['description'],		PDO::PARAM_STR);
+        $stmt->bindValue(':washerHookup',       $_POST['washerHookup'],		PDO::PARAM_STR);
+        $stmt->bindValue(':dryerHookup',        $_POST['dryerHookup'],		PDO::PARAM_STR);
+        $stmt->bindValue(':ADA',                $_POST['ADA'],                  PDO::PARAM_STR);
+
         
-        mysql_query("UPDATE PROPERTY SET City='$_POST[city]'
-            WHERE PropertyID = '$propertyID'");
+        $stmt->execute();
+    } catch (Exception $e) {
+	echo 'Connection failed. ' . $e->getMessage();
+    }
+
+    echo "1 record UPDATED";
+    
         
-        mysql_query("UPDATE PROPERTY SET State='$_POST[state]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET SF='$_POST[sqrFt]'
-            WHERE PropertyID = '$propertyID'");
-        
-        
-        mysql_query("UPDATE PROPERTY SET Bedroom='$_POST[bedRooms]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Bath='$_POST[bathRooms]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Garage='$_POST[garage]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Heating='$_POST[heating]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET AC='$_POST[airConditioning]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Media='$_POST[media]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET IceMaker='$_POST[ice]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET DishWasher='$_POST[dishWasher]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Disposal='$_POST[disposal]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET ClothesWasher='$_POST[clothesWasher]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET ClothesDryer='$_POST[clothesDryer]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Microwave='$_POST[microwave]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET SecurityAlarm='$_POST[security]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Deck='$_POST[deck]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Pool='$_POST[pool]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Fenced='$_POST[fenced]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET Description='$_POST[description]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET ClothesWasherHookup='$_POST[washerHookup]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET ClothesDryerHookup='$_POST[dryerHookup]'
-            WHERE PropertyID = '$propertyID'");
-        
-        mysql_query("UPDATE PROPERTY SET ADACompliant='$_POST[ADA]'
-            WHERE PropertyID = '$propertyID'");
-        
-        $_SESSION['propertyID'] = $propertyID;
+    $_SESSION['propertyID'] = $propertyID;
     
     
     mysql_close();
     
-    header( 'Location: /newListing2.php' );
+    //header( 'Location: /newListing2.php' );
 ?>
