@@ -46,18 +46,18 @@
                 <font class="formheader">Dates</font>
                 <tr>
                     <td>
-                        Date the property will first be available for occupancy:<input type="text" name="available" id="datepicker1" value="<?php echo $row[DateAvailable]?>" />
+                        Date the property will first be available for occupancy:<input type="text" name="available" class="required" id="datepicker1" value="<?php echo $row[DateAvailable]?>" />
                     </td>
                     <td>
-                        Date you will begin accepting PFOs<input type="text" name="acceptingPFO" id="datepicker2" value="<?php echo $row[DatePFOAccept]?>" />
+                        Date you will begin accepting PFOs<input type="text" name="acceptingPFO" id="datepicker2" class="required" value="<?php echo $row[DatePFOAccept]?>" />
                     </td>
                     <td>
-                        Date you will stop accepting PFOs<input type="text" name="stopAcceptingPFO" id="datepicker3" value="<?php echo $row[DatePFOEndAccept]?>" />
+                        Date you will stop accepting PFOs<input type="text" name="stopAcceptingPFO" id="datepicker3" class="required" value="<?php echo $row[DatePFOEndAccept]?>" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Date and times of 1st Open House<input type="text" name="openHouse1" id="datepicker4" value="<?php echo $row[DateTimeOpenHouse1]?>" />
+                        Date and times of 1st Open House<input type="text" name="openHouse1" id="datepicker4" class="required" value="<?php echo $row[DateTimeOpenHouse1]?>" />
                     </td>
                     <td>
                         Date and times of 2nd Open House<input type="text" name="openHouse2" id="datepicker5" value="<?php echo $row[DateTimeOpenHouse2]?>" />
@@ -69,13 +69,13 @@
                 </tr>
                 <tr>
                     <td>
-                        Starting Bid Monthly Rental Rate<input type="text" name="startingBid" value="<?php echo $row[StartingBid]?>"/>
+                        Starting Bid Monthly Rental Rate<input type="text" name="startingBid" class="required" value="<?php echo $row[StartingBid]?>"/>
                     </td>
                     <td>
-                        Minimum Bid Increment<input type="text" name="bidIncrement" value="<?php echo $row[MinBidIncrement]?>"/>
+                        Minimum Bid Increment<input type="text" name="bidIncrement" class="required" value="<?php echo $row[MinBidIncrement]?>"/>
                     </td>
                     <td>
-                        Required Deposit<input type="text" name="requiredDeposit" value="<?php echo $row[RequiredDeposit]?>"/>
+                        Required Deposit<input type="text" name="requiredDeposit" class="required" value="<?php echo $row[RequiredDeposit]?>"/>
                     </td>
                 </tr>
                 <tr>
@@ -83,7 +83,7 @@
                         Rent-it-Now Monthly Rental Rate<input type="text" name="rentItNowRate" value="<?php echo $row[RentNowRate]?>"/>
                     </td>
                     <td>
-                        Minimum rental term, months<input type="text" name="minTerm" value="<?php echo $row[MinimumTerm]?>"/>
+                        Minimum rental term, months<input type="text" name="minTerm" class="required" value="<?php echo $row[MinimumTerm]?>"/>
                     </td>
                     <td>
                         Do you want to market this property as “Coming Soon?”  You have 8 days until your listing will "go live."<br/>

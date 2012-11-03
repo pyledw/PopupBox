@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Enter Email<input type="text" name="email"/>
+                        Enter Email<input class="required" type="text" name="email"/>
                     </td>
                 </tr>
                 <tr>
@@ -48,3 +48,16 @@
 <?php
     include 'Footer.php';
 ?>
+
+    <script>
+        $(document).ready(function(){
+    $("#listingForm").validate({
+        ignoreTitle: true
+        
+    });
+  });
+
+   $(function(){
+         $.fn.formLabels();
+   });
+    </script>
