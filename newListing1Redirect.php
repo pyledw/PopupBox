@@ -27,7 +27,12 @@ session_start();
             catch (Exception $e) {
                 echo 'Connection failed. ' . $e->getMessage();
             }
+            $propertyID = $con->lastInsertId();
 
+    }
+    else
+    {
+        $propertyID = $_SESSION[propertyID];
     }
     
     //This sction below will get the latitude and Longitude of the address and store it in the database
@@ -51,7 +56,7 @@ session_start();
                 SecurityAlarm=:security,            Deck=:deck,                     Pool=:pool,
                 Fenced=:fenced,                     Description=:description,       ClothesWasherHookup=:washerHookup,
                 ClothesDryerHookup=:dryerHookup,    ADACompliant=:ADA 
-            WHERE Address='$_POST[address]'
+            WHERE PropertyID='$propertyID'
             ");
     try {
         $stmt->bindValue(':address',            $_POST['address'],		PDO::PARAM_STR);
@@ -99,5 +104,5 @@ session_start();
     
     mysql_close();
     
-    //header( 'Location: /newListing2.php' );
+    header( 'Location: /newListing2.php' );
 ?>
