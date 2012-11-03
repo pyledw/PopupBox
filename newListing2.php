@@ -41,6 +41,7 @@
     <div id="mainContent">
         <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
             <table class="tableForm">
+                <font class="formheader">Photo Upload</font>
                 <tr>
                     <td>
                          Photo Policy:

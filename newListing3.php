@@ -43,6 +43,7 @@
     <div id="mainContent">
         <form id="listingForm" method="post" action="newListing3Redirect.php">
             <table class="tableForm">
+                <font class="formheader">Dates</font>
                 <tr>
                     <td>
                         Date the property will first be available for occupancy:<input type="text" name="available" id="datepicker1" value="<?php echo $row[DateAvailable]?>" />
