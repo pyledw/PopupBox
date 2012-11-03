@@ -75,15 +75,17 @@
                         ORDER BY MonthlyRate");
         
         
-        $row = mysql_fetch_array($result3);
+        $row = mysql_fetch_array($result);
         
-        
-        $maxBid = 'High PFO:' . $row[MonthlyRate];
-        
-        if($maxBid == '')
+        if(isset($row[MonthlyRate]))
         {
-           $maxBid = 'No Bids' ;
+            $maxBid = 'High PFO:' . $row[MonthlyRate];
         }
+        else
+        {
+            $maxBid = 'No Bids' ;
+        }
+        
         
         return $maxBid;
     }
