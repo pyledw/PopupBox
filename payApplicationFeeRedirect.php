@@ -1,17 +1,13 @@
 <?php
-    if($_POST[result] == 'SUCCESS')
-    {
+        session_start();
+        $userID = $_SESSION['userID'];
         include_once 'config.inc.php';
         $con = get_dbconn("");
+        echo $userID;
+        mysql_query("UPDATE APPLICATION SET IsPaid='1'
+            WHERE UserID = '$userID'");
         
-        mysql_query("UPDATE USER SET IsPaid='1'
-            WHERE UserID = '$_POST[userID]'");
         
         header( 'Location: /myHood.php' );
 
-    }
-    else
-    {
-        
-    }
 ?>

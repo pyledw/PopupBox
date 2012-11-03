@@ -42,7 +42,7 @@
             </tr>
             <tr>
                 <td>
-                    Employer: <input type="text" name="employerName1" value="<?php echo $row[CurrentEmployerName]?>" />
+                    Employer: <input class="required" type="text" name="employerName1" value="<?php echo $row[CurrentEmployerName]?>" />
                 </td>
                 <td>
                     Supervisor First Name: <input type="text" name="superVisorFName1" value="<?php echo $row[CurrentSupFName]?>" />
@@ -56,15 +56,15 @@
                     Supervisor Phone: <input type="text" name="superVisorPhone1" value="<?php echo $row[CurrentSupPhone]?>"/>
                 </td>
                 <td>
-                    Position Held: <input type="text" name="position1" value="<?php echo $row[CurrentPositionName]?>"/><br/>
+                    Position Held: <input class="required" type="text" name="position1" value="<?php echo $row[CurrentPositionName]?>"/><br/>
                 </td>
                 <td>
-                    Months Employed: <input type="text" name="monthsEmployed1" value="<?php echo $row[CurrentMonthsEmployed]?>"/>
+                    Months Employed: <input class="required" type="text" name="monthsEmployed1" value="<?php echo $row[CurrentMonthsEmployed]?>"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                     Annual Salary: <input type="text" name="annualSalary1" value="<?php echo $row[CurrentAnnualSalary]?>"/>
+                     Annual Salary: <input class="required" type="text" name="annualSalary1" value="<?php echo $row[CurrentAnnualSalary]?>"/>
                 </td>
             </tr>
             <tr>

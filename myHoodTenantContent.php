@@ -17,12 +17,17 @@
         {
             die('could not connect: ' .mysql_error());
         }
-        $isapproved = false;
+        
         $row = mysql_fetch_array($result);
         
         //echo $row['IsApproved'];
         //echo $row['UserID'];
         
+        
+        
+        //The below if statments are testing to see what point the applicaiton is at.
+        //It checks to see if it has been approved, then if it has been paid, and finally
+        //it checks to see if it was compleated.
         if($row['IsApproved'] == 'Y')
         {
             echo '
@@ -38,14 +43,27 @@
         {
             if($row[PageCompleted] == "6")
             {
-                echo '
-                <div>
-                    <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:red;height:20px;">
+                if($row[IsPaid] == "0")
+                   {
+                    echo '<div>
+                               <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:orange;height:20px;">
+                               </div>
+                                Your Application has been compleated, but you must pay the applicaiton fee <br/> before
+                                your applicaiton will be reviewed by an administrator.  Please click <a href="payApplicationFee.php">HERE</a> to pay your fee.
+                          </div>';
+                   }
+                else
+                   {
+                     echo '
+                           <div>
+                               <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:red;height:20px;">
 
-                    </div>
-                    Your application has not yet been approved.  An administrator will review your application and approve it shortly.<br />
-                    <a href="editApplication.php">Edit Your Application</a>
-                </div>';
+                                    </div>
+                                    Your application has not yet been approved.  An administrator will review your application and approve it shortly.<br />
+                                    <a href="editApplication.php">Edit Your Application</a>
+                                </div>';
+                   }
+                        
             }
             else
             {
