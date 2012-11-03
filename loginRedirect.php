@@ -4,6 +4,8 @@
         //taking information from login page
         $myName = $_POST["userName"];
         $userPassword = $_POST['password'];
+        $lastPage = $_POST['URL'];
+        echo $lastPage;
         
         include_once 'config.inc.php';
         //Connecting to the sql database
@@ -30,7 +32,15 @@
             $_SESSION['userID'] = $userID;
             $_SESSION['user'] = $row[UserName];
             $_SESSION['type'] = $userType;
-            header( 'Location: /myHood.php' );
+            if(isset($lastPage))
+            {
+                header( 'Location: /'. $lastPage . '' ); 
+            }
+            else
+            {
+                header( 'Location: /myHood.php' );  
+            }
+            
         }
 //endoftheline:
         else{

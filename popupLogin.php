@@ -2,8 +2,11 @@
     session_start();
     session_destroy();
     session_start();
+    $currentPage = $_GET[URL];
+    echo $currentPage;
 ?>
 <form id="newApplicationForm" method="post" action="loginRedirect.php">
+    <input name="URL" value="<?php echo $currentPage; ?>" style="display: none;" />
             <table class="tableForm">
                 <tr>
                     <td>

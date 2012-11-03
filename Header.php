@@ -82,23 +82,25 @@
             
             <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
             <?php
+                //This retrieves the filename of the current window
+	       	$currentFile = $_SERVER["PHP_SELF"];
+		$parts = Explode('/', $currentFile);
+		$fileName = $parts[count($parts) - 1];
+                                                
                 //check to see if the user is already logged in.
                 if(isset($_SESSION["user"]))
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3> Not you <a href="popupLogin.php" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3> Not you <a href="popupLogin.php?URL='. $fileName . '" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
                 }
                 else
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome</h3><a href="popupLogin.php" rel="facebox" >Login</a></div>';
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome</h3><a href="popupLogin.php?URL='. $fileName . '" rel="facebox" >Login</a></div>';
                 }
             ?>
             </div>
             <div id="nav">
                 <?php
-                                        //This retrieves the filename of the current window
-	       				$currentFile = $_SERVER["PHP_SELF"];
-						$parts = Explode('/', $currentFile);
-						$fileName = $parts[count($parts) - 1];
+                                        
                                                 
                                         //Testing to see if the current window corisponds to the tab on the navigation bar
 	       				if ($fileName == 'gettingStarted.php') {
