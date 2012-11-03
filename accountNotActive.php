@@ -14,7 +14,8 @@
 
 ?>
 <div id="wrapper">
-    <p>We apologize, but it seems as though your account is not yet active.  Please give us some time to review your account.</p>
+    <p>We apologize, but it seems as though your account is not active.  Please give us some time to review your account, and if
+       you have any questions, please email us at admin@leasehood.com</p>
     <form class="formStyle" width="" height="" method="post" action="loginRedirect.php">
         Username:<input id="userName" type="text" name="userName">
         Password:<input type="password" name="password">

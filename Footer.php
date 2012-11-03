@@ -1,4 +1,5 @@
 <!-- This document contains all the footer information as well as the closing page elements. -->
+
 </div><!-- Tag for closing the wrapper -->
 
     <!-- This Portion contains the footer links. -->
@@ -53,6 +54,9 @@
             </ul>
         </div>
 <?
+
+
+
 include_once 'config.inc.php';
 if ($cfg['show_buildinfo'] && file_exists('build-date.txt'))  { ?>
 	<br />

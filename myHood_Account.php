@@ -1,3 +1,5 @@
+<!-- This page manages the accounts settings and passwords and emails -->
+
 
 <?php
         $title = "MyHood - Home";

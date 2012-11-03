@@ -1,7 +1,9 @@
 
 <?php
-        $title = "Login";
+        $title = "Login Failed";
 	include 'Header.php';
+        
+        
         if(isset($_SESSION['user'])){
             header( 'Location: /myHood.php' ) ;
         }

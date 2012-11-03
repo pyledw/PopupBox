@@ -1,7 +1,6 @@
 <?php
 $title = "New Application #4";
     include 'Header.php';
-    include 'formElements.php';
  if(!isset($_SESSION[userID]))
     {
         header( 'Location: /loginRequired.php' ) ;

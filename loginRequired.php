@@ -1,7 +1,8 @@
 
 <?php
-        $title = "Login";
+        $title = "Login Required";
 	include 'Header.php';
+        
         if(isset($_SESSION['user'])){
             header( 'Location: /myHood.php' ) ;
         }

@@ -1,3 +1,7 @@
+<!-- this content is showed if the user is determined to be a Landlord
+     This page then displays all of their listings, and their status' -->
+
+
 <div id="mainContent">
 <h1>My Homes</h1>
     <?php

@@ -72,8 +72,7 @@
 
     <body>
         
-<!-- This section creates the wrapper, and then 
-    creates and aligns the wrapper
+<!-- This section creates the wrapper, and then creates and aligns the wrapper
      It then inserts the navigation bar based on if the user is logged in, and what type of user it is.-->
 
 	<div id="wrapper">
@@ -83,6 +82,7 @@
             
             <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
             <?php
+                //check to see if the user is already logged in.
                 if(isset($_SESSION["user"]))
                 {
                     echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3> Not you <a href="popupLogin.php" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
@@ -117,24 +117,36 @@
 							echo '<a href="searchHomes.php">Search Homes</a>';
 						}
 
-	       				if ($fileName == 'listHome.php') {
-							echo '<a href="listHome.php" class="current">List Home</a>';
-						}
-						else {
-							echo '<a href="listHome.php">List Home</a>';
-						}
+	       				
                                                 
                                                 
                                         //If the user is logged in, this will run to change based on user
-                                        if(isset($_SESSION['user'])){
-                                            if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
-							echo '<a href="login.php" class="current">My Hood</a>';
-						}
-						else {
-							echo '<a href="login.php">My Hood</a>';
-						}
+                                        if(isset($_SESSION['user']))
+                                            {
+                                                if($_SESSION['type'] == 2)
+                                                    {
+                                                        if ($fileName == 'listHome.php') 
+                                                            {
+                                                            echo '<a href="listHome.php" class="current">List Home</a>';
+                                                            }
+                                                    else 
+                                                        {
+                                                                echo '<a href="listHome.php">List Home</a>';
+                                                        }
+                                                    }
+                                                if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') 
+                                                    {
+                                                            echo '<a href="login.php" class="current">My Hood</a>';
+                                                    }
+                                                else 
+                                                    {
+                                                            echo '<a href="login.php">My Hood</a>';
+                                                    }
+                                            
+
+                                                
                                             }
-                                        //If the user is not logged in
+                                        //If the user is not logged in MyHood will appear as "Login"
                                         else{
                                             if ($fileName == 'myHood.php' || $fileName == 'myHood_Account.php' || $fileName == 'myHood_Mail.php') {
                                                             echo '<a href="login.php" class="current">Login</a>';
@@ -143,8 +155,6 @@
                                                             echo '<a href="login.php">Login</a>';
                                                     }
                                             }
-                                        
-                                        
 	       				if ($fileName == 'newUser.php') {
 							echo '<a href="newUser.php" class="current">New User</a>';
 						}
@@ -187,7 +197,7 @@
                                 ?>
             
             <script>
-                //This makes the facebox option available from all pages
+                //This makes the facebox option available from all pages as it will be needed for confirmations
                 jQuery(document).ready(function($) {
                     $('a[rel*=facebox]').facebox()
                     })

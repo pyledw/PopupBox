@@ -1,3 +1,5 @@
+<!-- this page contains the navigation elements for MyHood.  These are displayed if the user is logged in and
+     at the myHood page.-->
 <?php                    
 //SETTING USER TYPE - Will be defined by database eventually set from the database
 $userType = $_SESSION["type"];

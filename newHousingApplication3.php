@@ -1,7 +1,6 @@
 <?php
     $title = "New Application #3";
     include 'Header.php';
-    include "formElements.php";
     
     if(!isset($_SESSION[userID]))
     {

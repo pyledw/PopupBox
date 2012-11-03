@@ -1,3 +1,8 @@
+<!--  This content is shown if the user is determined to be a Tenant. It will then 
+      show them all the active properties that they have bids on.  It also show the 
+      Status of their application, and if they still need to pay their fee.-->
+
+
 <div id="mainContent">
     <h1>Application Status</h1>
     <?php

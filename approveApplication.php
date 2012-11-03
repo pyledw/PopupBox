@@ -3,6 +3,10 @@
      in the database. -->
 <?php
 
+//This form will simply take the application ID and change the value of the coresponding
+//IsApproved feild to 1.  This will allow us to know that the applicaiton was approved
+//This proccess accurs after the administrator has clicked the approve button on the applicaiton
+
 echo "redirect";
 echo $_POST[ApplicationID];
 

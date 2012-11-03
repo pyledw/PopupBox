@@ -1,7 +1,6 @@
 <?php
     $title = "New Housing Application";
     include 'Header.php';
-    include "formElements.php";
     
     //Test if user is logged in IF not they will be prompted to log in
     if(!isset($_SESSION[userID]))

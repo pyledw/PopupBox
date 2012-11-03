@@ -12,6 +12,7 @@
         //Connecting to the sql database
         $con = get_dbconn("");
 
+        //Returning all the information on the property and the auction
         $result = mysql_query("SELECT * FROM PROPERTY
            INNER JOIN AUCTION
            ON PROPERTY.PropertyID=AUCTION.PropertyID
@@ -104,7 +105,7 @@
                 </td>
             </tr>
             <?php
-                    
+                    //This section is retrieving the bids and adding them to the page
                     $result2 = mysql_query("SELECT * FROM BID
                         INNER JOIN APPLICATION
                         ON APPLICATION.ApplicationID=BID.ApplicationID

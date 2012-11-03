@@ -2,6 +2,8 @@
 <?php
         $title = "Login";
 	include 'Header.php';
+        
+        //Checks to see if the user is already logged in, and rerouts them acordingly
         if(isset($_SESSION['user']))
         {
             header( 'Location: /myHood.php' ) ;
@@ -11,6 +13,9 @@
         
 
 ?>
+
+
+
 <div id="wrapper">
     <div id="mainContent">
         <form id="newApplicationForm" method="post" action="loginRedirect.php">
