@@ -46,7 +46,7 @@
         {
              echo '<font class="redTextArea">You have not yet paid your fee.  Please go<a href="payListingFee.php?propertyID='. $row[PropertyID] .'"> HERE</a> to pay your fee.</font>';
         }
-        if($row[IsPaid] == 1  && $row[IsApproved == 0])
+        if($row[IsPaid] == 1  && $row[IsApproved] == 0)
         {
             echo '<font class="yellowTextArea">Your property is awaiting approval from an administrator</font>';
         }

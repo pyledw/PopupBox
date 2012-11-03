@@ -71,12 +71,7 @@
             </tr>
             <tr>
                 <td colspan="4">
-                    The description about this listing will do here.  For now I will just show the blank data.
-                    The description about this listing will do here.  For now I will just show the blank data.
-                    The description about this listing will do here.  For now I will just show the blank data.
-                    The description about this listing will do here.  For now I will just show the blank data.
-                    The description about this listing will do here.  For now I will just show the blank data.
-                    The description about this listing will do here.  For now I will just show the blank data.
+                    <?php echo $row[Description] ?>
                 </td>
             </tr>
             <tr>
