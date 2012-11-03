@@ -60,9 +60,6 @@ $title = "New Application #4";
                     Address: <input type="text" name="address" <?php echo "value='" .$row[ContactAddress] . "'"?>/>
                 </td>
                 <td>
-                    City: <input type="text" name="city" <?php echo "value='" .$row[ContactCity] . "'"?>/>
-                </td>
-                <td>
                     State: <input type="text" name="state" <?php echo "value='" .$row[ContactState] . "'"?>/>
                 </td>
             </tr>

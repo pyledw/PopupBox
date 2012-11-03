@@ -406,40 +406,34 @@
                     <td>
                         Have you ever been convicted of a felony?<br/>
                         
-                        Yes<input type="radio" name="felony"  value="Y" <?php if($row[HasCrimHist] == 'Y'){echo "checked='checked'";} ?> />
-                        No<input type="radio" name="felony" value="N" <?php if($row[HasCrimHist] != 'Y'){echo "checked='checked'";}  ?><br/>
+                        Yes<input type="radio" name="felony"  value="1" <?php if($row[HasCrimHist] == '1'){echo "checked='checked'";} ?> />
+                        No<input type="radio" name="felony" value="0" <?php if($row[HasCrimHist] != '1'){echo "checked='checked'";}  ?><br/>
                     </td>
                     <td>
                         Explain:
-                        <textarea cols="50" rows="4" name="ifYesFelony">
-                            <?php echo $row[CrimHistDesc] ?>
-                        </textarea>
+                        <textarea cols="50" rows="4" name="ifYesFelony"><?php echo $row[CrimHistDesc] ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Have you ever been evicted?<br/>
-                        Yes<input type="radio" name="evicted" <?php if($row[HasEvictHist] == 'Y'){echo "checked='checked'";}?>  value="Y" />
-                        No<input type="radio" name="evicted" <?php if($row[HasEvictHist] != 'Y'){echo "checked='checked'";}?>  value="N" />
+                        Yes<input type="radio" name="evicted" <?php if($row[HasEvictHist] == '1'){echo "checked='checked'";}?>  value="1" />
+                        No<input type="radio" name="evicted" <?php if($row[HasEvictHist] != '1'){echo "checked='checked'";}?>  value="0" />
                     </td>
                     <td>
                         Explain:
-                        <textarea cols="50" rows="4" name="ifYesEvicted">
-                            <?php echo $row[EvictHistDescription] ?>
-                        </textarea>
+                        <textarea cols="50" rows="4" name="ifYesEvicted"><?php echo $row[EvictHistDescription] ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Have you ever declared bankruptcy?<br/>
-                        Yes<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] == 'Y'){echo "checked='checked'";}?> value="Y" />
-                        No<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] != 'Y'){echo "checked='checked'";}?>  value="N" />
+                        Yes<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] == '1'){echo "checked='checked'";}?> value="1" />
+                        No<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] != '1'){echo "checked='checked'";}?>  value="0" />
                     </td>
                     <td>
                         Explain:
-                        <textarea cols="50" rows="4" name="ifYesBankruptcy">
-                            <?php echo $row[BankruptHistDesc] ?>
-                        </textarea>
+                        <textarea cols="50" rows="4" name="ifYesBankruptcy"><?php echo $row[BankruptHistDesc] ?></textarea>
                     </td>
                 </tr>
                 <tr>

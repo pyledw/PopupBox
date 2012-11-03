@@ -48,16 +48,16 @@ include 'Header.php';
                      Do you need ADA (Americans with Disability Act) facilities?<br/>
                     <?php 
                     //This goes through to ensure that if data already exist the previusly checked will apear checked
-                    if ($row[IsADA] == "N")
+                    if ($row[IsADA] == "1")
                             {
-                                echo 'Yes<input type="radio" name="ADA" checked="checked"  value="Y" />
-                                    No<input type="radio" name="ADA"  value="N" /><br/>';
+                                echo 'Yes<input type="radio" name="ADA" checked="checked"  value="1" />
+                                    No<input type="radio" name="ADA"  value="0" /><br/>';
                             }
 
                     else
                             {
 
-                                echo 'Yes<input type="radio" name="ADA"  value="Y" />No<input type="radio" checked="checked" name="ADA"  value="N" /><br/>';
+                                echo 'Yes<input type="radio" name="ADA"  value="1" />No<input type="radio" checked="checked" name="ADA"  value="0" /><br/>';
                             }
 
                     ?>
@@ -66,17 +66,17 @@ include 'Header.php';
                      Will you be smoking?<br/>
                     <?php 
                     //This goes through to ensure that if data already exist the previusly checked will apear checked
-                    if ($row[IsSmokingRequired] == "N")
+                    if ($row[IsSmokingRequired] == "1")
                         {
-                             echo 'Yes<input type="radio" checked="checked" name="smoking"  value="Y" />
-                                  No<input type="radio" name="smoking"  value="N" /><br/>';
+                             echo 'Yes<input type="radio" checked="checked" name="smoking"  value="1" />
+                                  No<input type="radio" name="smoking"  value="0" /><br/>';
                         }
 
                     else
                         {
 
-                            echo 'Yes<input type="radio" name="smoking"  value="Y" />
-                                   No<input type="radio" name="smoking"checked="checked"  value="N" /><br/>';
+                            echo 'Yes<input type="radio" name="smoking"  value="1" />
+                                   No<input type="radio" name="smoking"checked="checked"  value="0" /><br/>';
                         }
                     ?>
                  </td>
