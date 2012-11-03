@@ -21,70 +21,25 @@
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
     {
-        $timeString = 'error';
-        if(date("Y-m-d H:i:s") < $row[DatePFOAccept])
-        {
-            //The code below will get the time to the auction begining.
-            $ends = strtotime($row[DatePFOAccept]);
-            $now = strtotime(date("Y-m-d H:i:s"));
-            $difference = $ends - $now;
-            $years = abs(floor($difference / 31536000));
-            $days = abs(floor(($difference-($years * 31536000))/86400));
-            $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
-            $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
-            $timeString = 'Begins in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes';
-        }
-        else
-        {
-            //The code below will get the time to the auction ending.
-            $ends = strtotime($row[DatePFOEndAccept]);
-            $now = strtotime(date("Y-m-d H:i:s"));
-            $difference = $ends - $now;
-            $years = abs(floor($difference / 31536000));
-            $days = abs(floor(($difference-($years * 31536000))/86400));
-            $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
-            $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
-            $timeString = 'Ends in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes';
-        }
+        include 'listingFunctions.php';
         
-        //The code below will return the listings status if
-        $status = 'error';//initialized if an error accurs
+        //below is call to function that returns the timestring of time remaining or time till start
+        $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
         
         
-        if(date("Y-m-d H:i:s") > $row[DatePFOAccept] && date("Y-m-d H:i:s") < $row[DatePFOEndAccept])
-        {
-            $status = "Open for Bids";
-        }
-        else if(date("Y-m-d H:i:s") < $row[DatePFOAccept])
-        {
-            $status = "Bidding has not yet started";
-        }
-        else
-        {
-            $status = "Bidding has Ended";
-        }
+        //The code below will return the listings status
+        $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+        
+        
+        
         
         //this code is retrieving the highest bid of the auction and returning it
-        $result3 = mysql_query("SELECT * FROM BID
-                        INNER JOIN AUCTION
-                        ON AUCTION.AuctionID=BID.AuctionID
-                        INNER JOIN APPLICATION
-                        ON APPLICATION.ApplicationID=BID.ApplicationID
-                        INNER JOIN USER
-                        ON USER.UserID=APPLICATION.UserID
-                        WHERE PropertyID='$row[PropertyID]'
-                        ORDER BY MonthlyRate");
         
         
-        $row3 = mysql_fetch_array($result3);
+        $maxBid = getHighBid($row[PropertyID]);
         
         
-        $maxBid = 'High PFO:' . $row3[MonthlyRate];
         
-        if($maxBid == '')
-        {
-           $maxBid = 'No Bids' ;
-        }
         
         
         if($row[IsPaid] == 0)
