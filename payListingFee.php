@@ -3,6 +3,10 @@
         $title = "Contact LeaseHood";
 	include 'Header.php';
         $propertyID = $_GET[propertyID];
+        if(isset($_SESSION['propertyID']))
+        {
+            $propertyID = $_SESSION['propertyID'];
+        }
         
     include_once 'config.inc.php';
     $con = get_dbconn("");
@@ -16,6 +20,9 @@
             die('could not connect: ' .mysql_error());
         }
     $row = mysql_fetch_array($result);
+    
+    
+    
     if($row[IsPaid] == 1)
     {
         header( 'Location: /myHood.php' );
@@ -23,10 +30,17 @@
 ?>
 
 
+
     <h1 class="Title">Pay for Listing</h1>
     <hr class="Title" />
     <div id="mainContent">
         PAY LISTING FEE HERE<br/><br/>
+        <?php 
+        if(!isset($propertyID))
+        {
+            echo 'There is no property specified with this pament.  DO NOT PAY FEE!<br/>';
+        }
+        ?>
         
         Form
         

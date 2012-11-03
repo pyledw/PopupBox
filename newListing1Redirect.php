@@ -64,7 +64,7 @@ session_start();
             WHERE PropertyID = '$propertyID'");
         
         
-        mysql_query("UPDATE PROPERTY SET Beedroom='$_POST[bedRooms]'
+        mysql_query("UPDATE PROPERTY SET Bedroom='$_POST[bedRooms]'
             WHERE PropertyID = '$propertyID'");
         
         mysql_query("UPDATE PROPERTY SET Bath='$_POST[bathRooms]'

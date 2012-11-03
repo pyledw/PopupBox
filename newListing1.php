@@ -199,75 +199,75 @@
                     <td>
                         Ice Maker<br/>
                         Yes<input type="radio" name="ice"  value="1" <?php if($row[IceMaker] == '1'){echo " checked='checked'";}?> />
-                        No<input type="radio" name="ice"   value="0" <?php if($row[IceMaker] == '0'){echo " checked='checked'";}?> />
+                        No<input type="radio" name="ice"   value="0" <?php if($row[IceMaker] != '1'){echo " checked='checked'";}?> />
                     </td>
                     <td>
                         Dish Washer <br/>
                         Yes<input type="radio" name="dishWasher"  value="1" <?php if($row[DishWasher] == '1'){echo " checked='checked'";}?> />
-                        No<input type="radio" name="dishWasher"   value="0" <?php if($row[DishWasher] == '0'){echo " checked='checked'";}?> />
+                        No<input type="radio" name="dishWasher"   value="0" <?php if($row[DishWasher] != '1'){echo " checked='checked'";}?> />
                     </td>
                     <td>
                         Disposal<br/>
                         Yes<input type="radio" name="disposal"  value="1" <?php if($row[Disposal] == '1'){echo " checked='checked'";}?>/>
-                        No<input type="radio" name="disposal"   value="0" <?php if($row[Disposal] == '0'){echo "checked='checked'";}?> />
+                        No<input type="radio" name="disposal"   value="0" <?php if($row[Disposal] != '1'){echo "checked='checked'";}?> />
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Clothes Washer<br/>
                         Yes<input type="radio" name="clothesWasher"  value="1" <?php if($row[ClothesWasher] == '1'){echo " checked='checked'";}?> />
-                        No<input type="radio" name="clothesWasher"   value="0" <?php if($row[ClothesWasher] == '0'){echo " checked='checked'";}?> />
+                        No<input type="radio" name="clothesWasher"   value="0" <?php if($row[ClothesWasher] != '1'){echo " checked='checked'";}?> />
                     </td>
                     <td>
                         Clothes Dryer<br/>
                         Yes<input type="radio" name="clothesDryer"  value="1" <?php if($row[ClothesDryer] == '1'){echo " checked='checked'";}?> />
-                        No<input type="radio" name="clothesDryer"   value="0" <?php if($row[ClothesDryer] == '0'){echo " checked='checked'";}?> />
+                        No<input type="radio" name="clothesDryer"   value="0" <?php if($row[ClothesDryer] != '1'){echo " checked='checked'";}?> />
                     </td>
                     <td>
                         Microwave<br/>
                         Yes<input type="radio" name="microwave"  value="1" <?php if($row[Microwave] == '1'){echo " checked='checked'";}?> />
-                        No<input type="radio" name="microwave"   value="0"  <?php if($row[Microwave] == '0'){echo " checked='checked'";}?>/>
+                        No<input type="radio" name="microwave"   value="0"  <?php if($row[Microwave] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Security System<br/>
                         Yes<input type="radio" name="security"  value="1" <?php if($row[SecurityAlarm] == '1'){echo " checked='checked'";}?> />
-                        No<input type="radio" name="security"   <?php if($row[SecurityAlarm] == '0'){echo " checked='checked'";}?> value="0" />
+                        No<input type="radio" name="security"   <?php if($row[SecurityAlarm] != '1'){echo " checked='checked'";}?> value="0" />
                     </td>
                     <td>
                         Deck<br/>
                         Yes<input type="radio" name="deck"  value="1" <?php if($row[Deck] == '1'){echo " checked='checked'";}?>/>
-                        No<input type="radio" name="deck"   value="0" <?php if($row[Deck] == '0'){echo " checked='checked'";}?>/>
+                        No<input type="radio" name="deck"   value="0" <?php if($row[Deck] != '1'){echo " checked='checked'";}?>/>
                     </td>
                     <td>
                         Pool<br/>
                         Yes<input type="radio" name="pool"  value="1" <?php if($row[Pool] == '1'){echo " checked='checked'";}?>/>
-                        No<input type="radio" name="pool"   value="0" <?php if($row[Pool] == '0'){echo " checked='checked'";}?>/>
+                        No<input type="radio" name="pool"   value="0" <?php if($row[Pool] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Fenced<br/>
                         Yes<input type="radio" name="fenced"  value="1" <?php if($row[Fenced] == '1'){echo " checked='checked'";}?>/>
-                        No<input type="radio" name="fenced"   value="0" <?php if($row[Fenced] == '0'){echo " checked='checked'";}?>/>
+                        No<input type="radio" name="fenced"   value="0" <?php if($row[Fenced] != '1'){echo " checked='checked'";}?>/>
                     </td>
                     <td colspan="2">
                         Are you advertising this house as ADA (Americans with Disability Act) compliant?<br/>
                         Yes<input type="radio" name="ADA"  value="1" <?php if($row[ADACompliant] == '1'){echo " checked='checked'";}?>/>
-                        No<input type="radio" name="ADA"   value="0" <?php if($row[ADACompliant] == '0'){echo " checked='checked'";}?>/>
+                        No<input type="radio" name="ADA"   value="0" <?php if($row[ADACompliant] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Clothes Dryer Hookups?<br/>
                         Yes<input type="radio" name="dryerHookup"  value="1" <?php if($row[ClothesDryerHookup] == '1'){echo " checked='checked'";}?>/>
-                        No<input type="radio" name="dryerHookup"   value="0" <?php if($row[ClothesDryerHookup] == '0'){echo " checked='checked'";}?>/>
+                        No<input type="radio" name="dryerHookup"   value="0" <?php if($row[ClothesDryerHookup] != '1'){echo " checked='checked'";}?>/>
                     </td>
                     <td>
                         Clothes Washer Hookups?<br/>
                         Yes<input type="radio" name="washerHookup"  value="1" <?php if($row[ClothesWasherHookup] == '1'){echo " checked='checked'";}?>/>
-                        No<input type="radio" name="washerHookup"   value="0" <?php if($row[ClothesWasherHookup] == '0'){echo " checked='checked'";}?>/>
+                        No<input type="radio" name="washerHookup"   value="0" <?php if($row[ClothesWasherHookup] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>

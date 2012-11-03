@@ -88,7 +88,7 @@
                     <td>
                         Do you want to market this property as “Coming Soon?”  You have 8 days until your listing will "go live."<br/>
                          Yes<input type="radio" name="comingSoon"  value="1" <?php if($row[PreMarket] == '1'){echo "checked='checked'";}?> />
-                         No<input type="radio" name="comingSoon"checked='checked'  value="0" <?php if($row[PreMarket] == '0'){echo "checked='checked'";}?> />
+                         No<input type="radio" name="comingSoon"checked='checked'  value="0" <?php if($row[PreMarket] != '1'){echo "checked='checked'";}?> />
                     </td>
                 </tr>
                 <tr>
