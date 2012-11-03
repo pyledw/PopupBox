@@ -38,26 +38,26 @@
     <h1 class="Title">New House Listing - House Details</h1>
     <hr class="Title">
     <div id="mainContent">
-        <form id="ListingForm" method="post" action="newListing1Redirect.php">
+        <form id="listingForm" method="post" action="newListing1Redirect.php">
             <table class="tableForm">
                 <font class="formheader">New Home Listing Basics</font>
                 <tr>
                     <td>
-                        Address:<input type="text" name="address" value="<?php echo $row[Address]?>">
+                        Address:<input class="required" type="text" name="address" value="<?php echo $row[Address]?>">
                     </td>
                     <td>
-                        City:<input type="text" name="city" value="<?php echo $row[City]?>">
+                        City:<input class="required" type="text" name="city" value="<?php echo $row[City]?>">
                     </td>
                     <td>
-                        State:<input type="text" name="state" value="<?php echo $row[State]?>">
+                        State:<input class="required" type="text" name="state" value="<?php echo $row[State]?>">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Zip Code:<input type="text" name="zipCode" value="<?php echo $row[Zip]?>">
+                        Zip Code:<input class="required" type="text" name="zipCode" value="<?php echo $row[Zip]?>">
                     </td>
                     <td colspan="2">
-                        Approximate square feet of heated living space<input type="text" name="sqrFt" value="<?php echo $row[SF]?>">
+                        Approximate square feet of heated living space<input class="required" type="text" name="sqrFt" value="<?php echo $row[SF]?>">
                     </td>
                 </tr>
                 <tr>
