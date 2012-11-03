@@ -27,13 +27,13 @@
         $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
         $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
         
-        if($row[IsApproved] == 0 && $row[IsPaid] == 1)
-        {
-            echo '<font class="yellowTextArea">This listing has not yet been approved</font>';
-        }
         if($row[IsPaid] == 0)
         {
-            echo '<font class="redTextArea">You have not yet paid your fee.  Please go<a href="payListingFee.php?propertyID='. $row[PropertyID] .'"> HERE</a> to pay your fee to activate your lisitng.</font>';
+             echo '<font class="redTextArea">You have not yet paid your fee.  Please go<a href="payListingFee.php?propertyID='. $row[PropertyID] .'"> HERE</a> to pay your fee.</font>';
+        }
+        if($row[IsPaid] == 1  && $row[IsApproved == 0])
+        {
+            echo '<font class="yellowTextArea">Your property is awaiting approval from an administrator</font>';
         }
         
         echo '    <div id="myHoodListing">
