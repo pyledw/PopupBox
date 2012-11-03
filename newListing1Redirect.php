@@ -50,6 +50,10 @@ session_start();
         mysql_query("UPDATE PROPERTY SET Zip='$_POST[zipCode]'
             WHERE PropertyID = '$propertyID'");
         
+        mysql_query("UPDATE PROPERTY SET County='$_POST[county]'
+            WHERE PropertyID = '$propertyID'");
+        
+        
         mysql_query("UPDATE PROPERTY SET City='$_POST[city]'
             WHERE PropertyID = '$propertyID'");
         

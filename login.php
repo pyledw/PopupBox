@@ -14,7 +14,7 @@
 <div id="wrapper">
     <div id="mainContent">
         <form id="newApplicationForm" method="post" action="loginRedirect.php">
-            <table class="form">
+            <table width="350px" class="tableForm">
                 <tr>
                     <td>
                         <input title="Username" class="required" id="userName" type="text" name="userName">

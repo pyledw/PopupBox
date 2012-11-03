@@ -8,7 +8,7 @@
 
 <div id="mainContent">
     <form method="post" action="searchRedirect.php">
-        <table width="750px" class="tableForm" style="text-align: center;">
+        <table width="775px" class="tableForm" style="text-align: center;">
         <font class="formheader">Home Search</font>
         <tr>
             <td>
