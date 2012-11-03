@@ -21,15 +21,51 @@
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
     {
-        $ends = strtotime($row[DatePFOEndAccept]);
-        $now = strtotime(date("Y-m-d H:i:s"));
+        $timeString = 'error';
+        if(date("Y-m-d H:i:s") < $row[DatePFOAccept])
+        {
+            //The code below will get the time to the auction begining.
+            $ends = strtotime($row[DatePFOAccept]);
+            $now = strtotime(date("Y-m-d H:i:s"));
+            $difference = $ends - $now;
+            $years = abs(floor($difference / 31536000));
+            $days = abs(floor(($difference-($years * 31536000))/86400));
+            $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
+            $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
+            $timeString = 'Begins in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes';
+        }
+        else
+        {
+            //The code below will get the time to the auction ending.
+            $ends = strtotime($row[DatePFOEndAccept]);
+            $now = strtotime(date("Y-m-d H:i:s"));
+            $difference = $ends - $now;
+            $years = abs(floor($difference / 31536000));
+            $days = abs(floor(($difference-($years * 31536000))/86400));
+            $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
+            $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
+            $timeString = 'Ends in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes';
+        }
         
-
-        $difference = $ends - $now;
-        $years = abs(floor($difference / 31536000));
-        $days = abs(floor(($difference-($years * 31536000))/86400));
-        $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
-        $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
+        //The code below will return the listings status if
+        $status = 'error';//initialized if an error accurs
+        
+        
+        if(date("Y-m-d H:i:s") > $row[DatePFOAccept] && date("Y-m-d H:i:s") < $row[DatePFOEndAccept])
+        {
+            $status = "Open for Bids";
+        }
+        else if(date("Y-m-d H:i:s") < $row[DatePFOAccept])
+        {
+            $status = "Bidding has not yet started";
+        }
+        else
+        {
+            $status = "Bidding has Ended";
+        }
+        
+        
+        
         
         if($row[IsPaid] == 0)
         {
@@ -42,9 +78,9 @@
         
         echo '    <div id="myHoodListing">
         <div class="header">
-            <font class="greyTextArea" style="float:right;">Status:Show Period Closed</font>
+            <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
             <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
-            <font class="redTextArea" style="float:right;">Ends in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
+            <font class="redTextArea" style="float:right;">' . $timeString . '</font>
         </div>
         
         <div class="content">
