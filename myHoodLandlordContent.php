@@ -64,7 +64,27 @@
             $status = "Bidding has Ended";
         }
         
+        //this code is retrieving the highest bid of the auction and returning it
+        $result3 = mysql_query("SELECT * FROM BID
+                        INNER JOIN AUCTION
+                        ON AUCTION.AuctionID=BID.AuctionID
+                        INNER JOIN APPLICATION
+                        ON APPLICATION.ApplicationID=BID.ApplicationID
+                        INNER JOIN USER
+                        ON USER.UserID=APPLICATION.UserID
+                        WHERE PropertyID='$row[PropertyID]'
+                        ORDER BY MonthlyRate");
         
+        
+        $row3 = mysql_fetch_array($result3);
+        
+        
+        $maxBid = 'High PFO:' . $row3[MonthlyRate];
+        
+        if($maxBid == '')
+        {
+           $maxBid = 'No Bids' ;
+        }
         
         
         if($row[IsPaid] == 0)
@@ -79,7 +99,7 @@
         echo '    <div id="myHoodListing">
         <div class="header">
             <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
-            <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
+            <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
             <font class="redTextArea" style="float:right;">' . $timeString . '</font>
         </div>
         
