@@ -11,7 +11,7 @@
     <hr class="Title" />
 <div id="mainContent">
 <form id="newApplicationForm"  method="post" action="updateAccount.php"> 
-    <table width="750px" class="form" style="text-align: center;">
+    <table width="750px" class="tableForm" style="text-align: center;">
         <font class="formheader">Account Information</font>
         <tr>
             <td>
