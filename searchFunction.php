@@ -6,7 +6,8 @@ include_once 'config.inc.php';
 function search($type,$term)
     {
             $con = get_dbconn("");
-            
+            if($term != NULL)
+            {
                 if($type == 'zip')
                 {
                     //This will be used in order to allow searching via Zip code.  It will take the users inputed Zip
@@ -64,6 +65,14 @@ function search($type,$term)
                          die('could not connect: ' .mysql_error());
                     }
                 }
+            }
+            else
+            {
+                $result = mysql_query("SELECT * FROM PROPERTY
+                        INNER JOIN AUCTION
+                        ON PROPERTY.PropertyID=AUCTION.PropertyID
+                        ");
+            }
 
 
             
