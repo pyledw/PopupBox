@@ -3,6 +3,29 @@
         $title = "Contact LeaseHood";
 	include 'Header.php';
         $userID = $_SESSION[userID];
+        
+        
+        include_once 'config.inc.php';
+        $con = get_dbconn("");
+
+        //Query to select the user's application using their userID number
+        $result = mysql_query("SELECT * FROM APPLICATION
+        WHERE UserID ='$userID'");
+
+        if(!$result)
+            {
+                die('could not connect: ' .mysql_error());
+            }
+        $row = mysql_fetch_array($result);
+
+
+
+        if($row[IsPaid] == 1)
+        {
+            header( 'Location: /myHood.php' );
+        }
+    
+    
 ?>
 
     <h1 class="Title">Contact LeaseHood</h1>
