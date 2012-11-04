@@ -63,9 +63,9 @@ root {
     font-size:inherit;
 }
 label { 
-    width:400px; float: left; }
+    font-size:14px; width:400px; float: left; }
 label.error { 
-     width:400px; position: absolute; color: red; }
+     padding-left: 10px; position: absolute; color: red; }
 .ie label{
     width:255px;
 }
