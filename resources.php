@@ -1,7 +1,12 @@
 <?php
         $title = "Resources";
 	include 'Header.php';
-        require 'config.inc.php';
+        
+        if(isset($_SESSION[propertyID]))
+        {
+            unset($_SESSION[propertyID]);
+        }
+        
 ?>
  <?php
  
@@ -14,7 +19,7 @@
     {
         include 'resourcesLandlordContent.php';
     }
-    else
+    if($userType == "0" || !$userType)
     {
         echo'
         <h1 class="Title">Resources</h1>
