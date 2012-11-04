@@ -122,12 +122,6 @@
         
         }
     });
-    
-    
-   
-        $("#newUserForm").change(function(){
-        $.fn.formLabels.refreshLabels()    
-    });
   });
   </script>
   
