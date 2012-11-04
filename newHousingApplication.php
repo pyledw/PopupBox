@@ -34,12 +34,12 @@ include 'Header.php';
     <form id="newApplicationForm" method="post" action="newHousingApplicationRedirect.php">
          <table class="tableForm" width="900px;">
              <font class="formheader">Personal Information</font>
-             <tr>
+             <tr style="height: 90px;">
                  <td>
-                     Earliest Move in Date: <input class="required" type="text" name="earliestDate" value="<?php echo $row[EarlyMoveIn]?>" id="datepicker" />
+                     Earliest Move in Date:<br/> <input class="required" type="text" name="earliestDate" value="<?php echo $row[EarlyMoveIn]?>" id="datepicker" />
                  </td>
                  <td colspan="2">
-                     Latest Move in Date: <input class="required" type="text" name="latestDate" value="<?php echo $row[LateMoveIn]?>" id="datepicker2" />
+                     Latest Move in Date:<br/> <input class="required" type="text" name="latestDate" value="<?php echo $row[LateMoveIn]?>" id="datepicker2" />
                  </td>
 
              </tr>

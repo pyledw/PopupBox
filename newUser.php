@@ -23,66 +23,66 @@
                          </td>
                     </tr>
                     <tr>
-                         <td class="field">
+                         <td>
                              <input type="text" title="User Name" name="username" class="required" minlength="5" /><br/>
                          </td>
-                         <td class="field">
+                         <td>
                            <input title="Password" type="password" id="password" class="required" name="password1">
                          </td>
-                         <td class="field">
+                         <td>
                            <input title="Confirm Password" id="password_again" class="required" type="password" name="password_again">
                          </td>
                     </tr>
-                    <tr>
+                    <tr class="hr">
                         <td colspan="3">
                             <hr />
                         </td>
                     </tr>
                     <tr>
 
-                         <td class="field">
+                         <td>
                            <input title="First name" type="text" name="fname" class="required">
                          </td>
 
-                         <td colspan="2" class="field">
+                         <td colspan="2">
                            <input title="Last name" type="text" name="lname" class="required">
                          </td>
                     </tr>
                     <tr>
-                         <td class="field">
+                         <td>
                              <input title="Email address" type="text" id="email" name="email1" class="required email">
                          </td>
-                         <td class="field">
+                         <td>
                              <input title="Confirm email" type="text" id="email_again" name="email_again" class="required email">
                          </td>
-                         <td class="field">
+                         <td>
                              <input title="Phone" type="text" name="phone" class="required">
                          </td>
                     </tr>
-                    <tr>
+                    <tr class="hr">
                         <td colspan="3">
                             <hr />
                         </td>
                     </tr>
                      <tr>
-                         <td class="field">
+                         <td>
                              <input title="Address" type="text" name="address" width="400px" class="required">
                          </td>
-                         <td class="field">
+                         <td>
                              <input title="City" type="text" name="city" class="required">
                          </td>
-                         <td class="field">
+                         <td>
                              <input title="State" type="text" name="state" class="required">
                          </td>
                     </tr>
                     <tr>
-                         <td class="field">
+                         <td>
                              <input title="Zip code" type="text" name="zip" class="required">
                          </td>
-                         <td class="field">
+                         <td  >
                              <input title="Birth Date" type="text" name="DOB" class="required">
                          </td>
-                         <td class="field">
+                         <td>
                              <input title="last 4 of SSN" type="text" name="SSN" class="required">
                          </td>
                     </tr>

@@ -36,18 +36,13 @@ root {
     padding:20px 20px 20px 20px;
     
 }
-.tableForm .field{
-    text-align: left;
-    vertical-align: top;
-    height:50px;
-    width:300px;
-}
-.field input{
+.tableForm input{
     height:24px;
     font-size: 22px;
 }
-.tableForm .field2{
-        font-size: 22px;
+.tableForm tr {
+    text-align: left;
+    vertical-align: top;
 }
 .tableForm tr .greenBackground {
     background:#4f6220;
@@ -58,14 +53,20 @@ root {
 .tableForm tr .darkBackground{
     background: #3f3f3f;
 }
+.tableForm .hr{
+    text-align: left;
+    vertical-align: top;
+    height:1px;
+}
 .ie input{
     height:35px;
     font-size:inherit;
 }
+
 label { 
-    font-size:14px; width:400px; float: left; }
+    }
 label.error { 
-     padding-left: 10px; position: absolute; color: red; }
+     color: red; }
 .ie label{
     width:255px;
 }
