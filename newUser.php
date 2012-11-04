@@ -119,14 +119,20 @@
         },
         password_again: {
         equalTo: "#password"}  
-
-        }
         
+        }
+    });
+    
+    
+   
+        $("#newUserForm").change(function(){
+        $.fn.formLabels.refreshLabels()    
     });
   });
 
    $(function(){
-         $.fn.formLabels();
+         $.fn.formLabels({
+         });
    });
   </script>
   

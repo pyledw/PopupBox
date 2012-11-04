@@ -63,10 +63,12 @@ root {
     font-size:inherit;
 }
 
-label { 
+label {
     }
 label.error { 
-     color: red; }
+     color: red;
+     font-size: 20px;
+    }
 .ie label{
     width:255px;
 }
