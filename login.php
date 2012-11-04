@@ -28,12 +28,12 @@
             <table width="350px" class="tableForm">
                 <tr>
                     <td>
-                        <input title="Username" class="required" id="userName" type="text" name="userName">
+                        <lable>Username:</label><input title="Username" class="required" id="userName" type="text" name="userName">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input title="Password" class="required" type="password" name="password">
+                       <lable>Password:</label> <input title="Password" class="required" type="password" name="password">
                     </td>
                 </tr>
                 <tr>

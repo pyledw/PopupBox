@@ -9,12 +9,12 @@
             <table class="tableForm">
                 <tr>
                     <td>
-                       <input title="Username" class="required" id="userName" type="text" name="userName">
+                <lable>Username:</label><input class="required" id="userName" type="text" name="userName">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input title="Password" class="required" type="password" name="password">
+                <lable>Password:</label><input class="required" type="password" name="password">
                     </td>
                 </tr>
                 <tr>

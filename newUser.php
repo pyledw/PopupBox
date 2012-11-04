@@ -24,13 +24,13 @@
                     </tr>
                     <tr>
                          <td>
-                             <input type="text" title="User Name" name="username" class="required" minlength="5" /><br/>
+                             <lable>Username:</label><input type="text" title="User Name" name="username" class="required" minlength="5" /><br/>
                          </td>
                          <td>
-                           <input title="Password" type="password" id="password" class="required" name="password1">
+                           <lable>Password:</label><input title="Password" type="password" id="password" class="required" name="password1">
                          </td>
                          <td>
-                           <input title="Confirm Password" id="password_again" class="required" type="password" name="password_again">
+                           <lable>Confirm Password</label><input title="Confirm Password" id="password_again" class="required" type="password" name="password_again">
                          </td>
                     </tr>
                     <tr class="hr">
@@ -41,22 +41,22 @@
                     <tr>
 
                          <td>
-                           <input title="First name" type="text" name="fname" class="required">
+                           <lable>First Name:</label><input title="First name" type="text" name="fname" class="required">
                          </td>
 
                          <td colspan="2">
-                           <input title="Last name" type="text" name="lname" class="required">
+                           <lable>Last Name:</label><input title="Last name" type="text" name="lname" class="required">
                          </td>
                     </tr>
                     <tr>
                          <td>
-                             <input title="Email address" type="text" id="email" name="email1" class="required email">
+                             <lable>Email:</label><input title="Email address" type="text" id="email" name="email1" class="required email">
                          </td>
                          <td>
-                             <input title="Confirm email" type="text" id="email_again" name="email_again" class="required email">
+                             <lable>Confirm Email:</label><input title="Confirm email" type="text" id="email_again" name="email_again" class="required email">
                          </td>
                          <td>
-                             <input title="Phone" type="text" name="phone" class="required">
+                             <lable>Phone:</label><input title="Phone" type="text" name="phone" class="required">
                          </td>
                     </tr>
                     <tr class="hr">
@@ -66,24 +66,24 @@
                     </tr>
                      <tr>
                          <td>
-                             <input title="Address" type="text" name="address" width="400px" class="required">
+                             <lable>Address</label><input title="Address" type="text" name="address" width="400px" class="required">
                          </td>
                          <td>
-                             <input title="City" type="text" name="city" class="required">
+                             <lable>City</label><input title="City" type="text" name="city" class="required">
                          </td>
                          <td>
-                             <input title="State" type="text" name="state" class="required">
+                             <lable>State</label><input title="State" type="text" name="state" class="required">
                          </td>
                     </tr>
                     <tr>
                          <td>
-                             <input title="Zip code" type="text" name="zip" class="required">
+                             <lable>Zip</label><input title="Zip code" type="text" name="zip" class="required">
                          </td>
                          <td  >
-                             <input title="Birth Date" type="text" name="DOB" class="required">
+                             <lable>BirthDay</label><input title="Birth Date" type="text" name="DOB" class="required">
                          </td>
                          <td>
-                             <input title="last 4 of SSN" type="text" name="SSN" class="required">
+                             <lable>SSN:</label><input title="last 4 of SSN" type="text" name="SSN" class="required">
                          </td>
                     </tr>
                     <tr>
@@ -129,10 +129,5 @@
         $.fn.formLabels.refreshLabels()    
     });
   });
-
-   $(function(){
-         $.fn.formLabels({
-         });
-   });
   </script>
   
