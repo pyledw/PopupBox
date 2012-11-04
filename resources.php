@@ -1,7 +1,12 @@
 <?php
         $title = "Resources";
 	include 'Header.php';
-        require 'config.inc.php';
+        
+        if(isset($_SESSION[propertyID]))
+        {
+            unset($_SESSION[propertyID]);
+        }
+        
 ?>
  <?php
  
