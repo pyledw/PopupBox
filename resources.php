@@ -19,7 +19,7 @@
     {
         include 'resourcesLandlordContent.php';
     }
-    else
+    if($userType == "0" || !$userType)
     {
         echo'
         <h1 class="Title">Resources</h1>
