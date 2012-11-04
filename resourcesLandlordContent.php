@@ -8,14 +8,8 @@
     <hr class="Title" />
     <div id="mainContent">
 
-<?php
-    //pulling the data from the database
-    
-    include_once 'config.inc.php';
-    $connectionInfo= get_dbconn();
-    $con = $connectionInfo[0];
-    $select = $connectionInfo[1];
-    
+<?php  
+    include_once 'config.inc.php';  
 ?>
         <h3><a id="top">LeaseHood offers the following resources to maximize your position as a landlord:</a></h3><br />
         
@@ -51,6 +45,8 @@
         every important aspect of your property looks, without the need to visit your property to find out. 
         Many consumers like kitchens and the exterior of their home; it identifies them.  If you have a substandard 
         property, it should be reflected in your rental price.</p>
+        
+    <a href="#top">Back to Top</a>
         
         <p><u>Pricing:</u><br/>
         Consider the economy and the supply and demand principle.  Typically, when the economy is down, foreclosures 
@@ -121,11 +117,15 @@
         In general, the provisions of the act apply only to dwelling units residing in counties with a population  of more 
         than 68,000, according to the most recent census.  The full act can be accessed<a href="http://tn.gov/consumer/documents/UniformResidentialLandlordandTenantAct7.12.12.pdf">here</a></p>
         
+        <a href="#top">Back to top</a>
+        
         <p><a id="laws"><h4><font color="#78923B"><u>Fair Housing Laws</u></font></h4></a><br />
         The Fair Housing Act makes it illegal to discriminate in the buying, selling or renting of a home because of a
         person’s race, color, national origin, religion, sex, familial status and disability. Amendments to the Fair 
         Housing Act added sex as a protected class in 1974 and familial status and disability as protected classes 
         in 1988. </p>
+        
+        <a href="#top">Back to top</a>
         
         <p>Familial status includes children under the age of 18 living with parents or legal custodians, pregnant 
         women and people securing custody of children under the age of 18. To read the Fair Housing Act,<a hre="http://www.usccr.gov/pubs/TNFairHousingReport.pdf">click here</a></p>
@@ -133,9 +133,11 @@
         <p>States or local governments may enact fair housing laws that extend protections to other groups. 
         Tennessee has included creed as a protected class in the Tennessee Human Rights Act (4-21-600.)</p>
         
-        <p><a id="statutes">Brokerage Statutes</a><br />
+        <p><a id="statutes"><h4><font color="#78923B"><u>Brokerage Statutes</u></h4></a><br />
             Please <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0CCcQFjAB&url=http%3A%2F%2Fwww.tnaptassoc.org%2FLandlord%2520Tenant%2520Act.doc&ei=075ZUN-NL4Wm9ASXoIHwAw&usg=AFQjCNGGkb4K0aowfioprBVdJw8juhSd6w">click here</a>
         for a link to the statutes regulating the sale and rental of real estate in Tennessee.</p>
+        
+        <a href="#top">Back to top</a>
         
 </div>
 <?php
