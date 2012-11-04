@@ -118,7 +118,7 @@
         echo '    <div id="myHoodListing">
         <div class="header">
             <font class="greyTextArea" style="float:right;">Status:Accepting Bids</font>
-            <font class="greyTextArea" style="float:right;">Current Rent:'. $row2[MonthlyRate] . '</font>
+            <font class="greyTextArea" style="float:right;">Current Rent: $'. $row2[MonthlyRate] . '</font>
             <font class="redTextArea" style="float:right;">Ends in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
         </div>
         
@@ -144,7 +144,7 @@
                         INNER JOIN USER
                         ON USER.UserID=APPLICATION.UserID
                         WHERE PropertyID='$row2[PropertyID]'
-                        ORDER BY MonthlyRate");
+                        ORDER BY MonthlyRate DESC");
                     
                     $max = 0;
                     while($row3 = mysql_fetch_array($result3))

@@ -27,7 +27,7 @@ $row = mysql_fetch_array($result);
         <table class="tableForm" style="margin-top: 0;">
             <tr>
                 <th colspan="3">
-                    <h1>Change You PFO</h1> 
+                    <h1>Change You PFO <?php echo $BidID ?></h1> 
                 </th>
             </tr>
             <tr>
