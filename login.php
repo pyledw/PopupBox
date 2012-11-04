@@ -8,7 +8,7 @@
         if(isset($_SESSION['type']))
         {
             echo "TYPE IS SET";
-            header( 'Location: /myHood.php' ) ;
+            header( 'Location: /myHood.php' );
         }
         
         
