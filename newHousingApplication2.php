@@ -148,9 +148,12 @@
                     <a class="button" href="myHood.php">Exit without saving</a>
                 </td>
             </tr>
+            <tr>
+                <td style="text-align: center;" colspan="3">
+                    Page 2 of 5
+                </td>
+            </tr>
         </table>
-  
-        
     </form>
 </div>
 <?php

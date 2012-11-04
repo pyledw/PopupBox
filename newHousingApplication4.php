@@ -151,6 +151,11 @@ $title = "New Application #4";
                     <button type="reset" class="button">Clear</button>
                 </td>
             </tr>
+            <tr>
+                <td style="text-align: center;" colspan="3">
+                    Page 4 of 5
+                </td>
+             </tr>
         </table>
     
     
