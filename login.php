@@ -5,7 +5,7 @@
         
         echo $_SESSION['user'];
         //Checks to see if the user is already logged in, and rerouts them acordingly
-        if(($_SESSION['user']) != "")
+        if(4==4)
         {
             header( 'Location: /myHood.php' ) ;
         }
