@@ -1,8 +1,6 @@
 
 <?php
-        $title = "Login";
-	include 'Header.php';
-        
+
         echo $_SESSION['user'];
         //Checks to see if the user is already logged in, and rerouts them acordingly
         if(isset($_SESSION['type']))
@@ -10,6 +8,11 @@
             echo "TYPE IS SET";
             header( 'Location: /myHood.php' );
         }
+        
+        $title = "Login";
+	include 'Header.php';
+        
+        
         
         
 
