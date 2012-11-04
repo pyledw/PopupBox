@@ -177,7 +177,7 @@
         <div class="footer">
         <div class="footer">
             <a class="button">Move in now at:$price</a>
-            <a class="button">Change my PFO</a>
+            <a href="changeMyPFO.php?bidID='. $row2[BidID] . '" class="button" rel="facebox">Change my PFO</a>
             <a class="button">Contact Landlord</a>
         </div>
         </div>
