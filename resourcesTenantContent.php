@@ -1,6 +1,17 @@
 <?php
         $title = "Resources - Tenant";
 	include 'Header.php';
+        
+        include_once 'config.inc.php';
+        $con = get_dbconn("");
+
+        //Query to select the user's application using their userID number
+        $result = mysql_query("SELECT * FROM PROPERTY
+        WHERE UserID ='" . $_SESSION[userID] . "'");
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
 
 ?>
 
@@ -91,7 +102,7 @@
         for a link to the statutes regulating the sale and rental of real estate in Tennessee.</p>
         
         <a href="#top">Back to top</a>
-        
+</div>  
  <?php
     include "Footer.php";
  ?>
