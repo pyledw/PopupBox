@@ -1,6 +1,7 @@
 <?php
         $title = "Resources";
 	include 'Header.php';
+        require 'config.inc.php';
 ?>
  <?php
  
