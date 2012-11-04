@@ -1,11 +1,6 @@
 <?php
         $title = "Resources";
 	include 'Header.php';
-        
-    if(isset($_SESSION[propertyID]))
-        {
-            unset($_SESSION[propertyID]);
-        }
 ?>
  <?php
  
