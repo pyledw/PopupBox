@@ -23,7 +23,7 @@ $row = mysql_fetch_array($result);
 
 ?>
 <div>
-    <form method="post" action="changeMyPFORedirect.php">
+    <form id="updatePFO" method="post" action="changeMyPFORedirect.php">
         <table class="tableForm" style="margin-top: 0;">
             <tr>
                 <th colspan="3">
@@ -52,3 +52,16 @@ $row = mysql_fetch_array($result);
         
     </form>
 </div>
+
+<script>
+    $(document).ready(function(){
+    $("#updatePFO").validate({
+        ignoreTitle: true
+        
+    });
+  });
+
+   $(function(){
+         $.fn.formLabels();
+   });
+</script>
