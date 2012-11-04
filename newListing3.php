@@ -153,8 +153,4 @@
         
     });
   });
-
-   $(function(){
-         $.fn.formLabels();
-   });
 </script>

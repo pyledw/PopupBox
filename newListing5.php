@@ -56,8 +56,4 @@
         
     });
   });
-
-   $(function(){
-         $.fn.formLabels();
-   });
     </script>

@@ -275,8 +275,4 @@ $(document).ready(function(){
         
     });
   });
-
-   $(function(){
-         $.fn.formLabels();
-   });
 </script>

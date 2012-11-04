@@ -60,8 +60,4 @@ $row = mysql_fetch_array($result);
         
     });
   });
-
-   $(function(){
-         $.fn.formLabels();
-   });
 </script>
