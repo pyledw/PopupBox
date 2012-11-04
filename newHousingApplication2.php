@@ -42,29 +42,29 @@
             </tr>
             <tr>
                 <td>
-                    Employer: <input class="required" type="text" name="employerName1" value="<?php echo $row[CurrentEmployerName]?>" />
+                    <label class="label">Employer: </label><br/> <input class="required" type="text" name="employerName1" value="<?php echo $row[CurrentEmployerName]?>" />
                 </td>
                 <td>
-                    Supervisor First Name: <input type="text" name="superVisorFName1" value="<?php echo $row[CurrentSupFName]?>" />
+                    <label class="label">Supervisor First Name: </label><br/><input type="text" name="superVisorFName1" value="<?php echo $row[CurrentSupFName]?>" />
                 </td>
                 <td>
-                    Supervisor Last Name: <input type="text" name="superVisorLName1" value="<?php echo $row[CurentSupLName]?>"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Supervisor Phone: <input type="text" name="superVisorPhone1" value="<?php echo $row[CurrentSupPhone]?>"/>
-                </td>
-                <td>
-                    Position Held: <input class="required" type="text" name="position1" value="<?php echo $row[CurrentPositionName]?>"/><br/>
-                </td>
-                <td>
-                    Months Employed: <input class="required" type="text" name="monthsEmployed1" value="<?php echo $row[CurrentMonthsEmployed]?>"/>
+                    <label class="label">Supervisor Last Name: </label><br/><input type="text" name="superVisorLName1" value="<?php echo $row[CurentSupLName]?>"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                     Annual Salary: <input class="required" type="text" name="annualSalary1" value="<?php echo $row[CurrentAnnualSalary]?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input type="text" name="superVisorPhone1" value="<?php echo $row[CurrentSupPhone]?>"/>
+                </td>
+                <td>
+                    <label class="label">Position Held: </label><br/><input class="required" type="text" name="position1" value="<?php echo $row[CurrentPositionName]?>"/><br/>
+                </td>
+                <td>
+                    <label class="label">Months Employed: </label><br/><input class="required" type="text" name="monthsEmployed1" value="<?php echo $row[CurrentMonthsEmployed]?>"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     <label class="label">Annual Salary: </label><br/><input class="required" type="text" name="annualSalary1" value="<?php echo $row[CurrentAnnualSalary]?>"/>
                 </td>
             </tr>
             <tr>
@@ -79,29 +79,29 @@
             </tr>
             <tr>
                 <td>
-                    Employer: <input type="text" name="employerName2" value="<?php echo $row[PrevEmployerName]?>"/>
+                    <label class="label">Employer: </label><br/><input type="text" name="employerName2" value="<?php echo $row[PrevEmployerName]?>"/>
                 </td>
                 <td>
-                    Supervisor First Name: <input type="text" name="superVisorFName2" value="<?php echo $row[PrevSupFName]?>"/><br/>
+                    <label class="label">Supervisor First Name: </label><br/><input type="text" name="superVisorFName2" value="<?php echo $row[PrevSupFName]?>"/><br/>
                 </td>
                 <td>
-                    Supervisor Last Name: <input type="text" name="superVisorLName2" value="<?php echo $row[PrevSupLName]?>"/><br/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Supervisor Phone: <input type="text" name="superVisorPhone2" value="<?php echo $row[PrevSupPhone]?>"/>
-                </td>
-                <td>
-                    Position Held: <input type="text" name="position2" value="<?php echo $row[PrevPositionName]?>"/><br/>
-                </td>
-                <td>
-                    Months Employed: <input type="text" name="monthsEmployed2" value="<?php echo $row[PrevMonthsEmployed]?>"/>
+                    <label class="label">Supervisor Last Name: </label><br/><input type="text" name="superVisorLName2" value="<?php echo $row[PrevSupLName]?>"/><br/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Annual Salary: <input type="text" name="annualSalary2" value="<?php echo $row[PrevAnnualSalary]?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input type="text" name="superVisorPhone2" value="<?php echo $row[PrevSupPhone]?>"/>
+                </td>
+                <td>
+                    <label class="label">Position Held: </label><br/><input type="text" name="position2" value="<?php echo $row[PrevPositionName]?>"/><br/>
+                </td>
+                <td>
+                    <label class="label">Months Employed: </label><br/><input type="text" name="monthsEmployed2" value="<?php echo $row[PrevMonthsEmployed]?>"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="label">Annual Salary: </label><br/><input type="text" name="annualSalary2" value="<?php echo $row[PrevAnnualSalary]?>"/>
                 </td>
             </tr>
             <tr>
@@ -111,34 +111,34 @@
             </tr>
             <tr>
                 <th>
-                    Co Applicant Employer
+                    <label class="label">Co Applicant Employer
                 </th>
             </tr>
             <tr>
                 <td>
-                    Employer: <input type="text" name="coAppEmployerName1" value="<?php echo $row[CoAppEmployerName]?>"/>
+                    <label class="label">Employer: </label><br/><input type="text" name="coAppEmployerName1" value="<?php echo $row[CoAppEmployerName]?>"/>
                 </td>
                 <td>
-                    Supervisor First Name: <input type="text" name="coAppSuperVisorFName1" value="<?php echo $row[CoAppSupFName]?>"/><br/>
+                    <label class="label">Supervisor First Name: </label><br/><input type="text" name="coAppSuperVisorFName1" value="<?php echo $row[CoAppSupFName]?>"/><br/>
                 </td>
                 <td>
-                    Supervisor Last Name: <input type="text" name="coAppSuperVisorLName1" value="<?php echo $row[CoAppSupLName]?>"/><br/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Supervisor Phone: <input type="text" name="coAppSuperVisorPhone1" value="<?php echo $row[CoAppSupPhone]?>"/>
-                </td>
-                <td>
-                    Position Held: <input type="text" name="coAppPosition1" value="<?php echo $row[CoAppPositionName]?>"/><br/>
-                </td>
-                <td>
-                    Months Employed: <input type="text" name="coAppMonthsEmployed1" value="<?php echo $row[CoAppMonthsEmployed]?>"/>
+                    <label class="label">Supervisor Last Name: </label><br/><input type="text" name="coAppSuperVisorLName1" value="<?php echo $row[CoAppSupLName]?>"/><br/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Annual Salary: <input type="text" name="coAppAnnualSalary1" value="<?php echo $row[CoAppAnnualSalary]?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input type="text" name="coAppSuperVisorPhone1" value="<?php echo $row[CoAppSupPhone]?>"/>
+                </td>
+                <td>
+                    <label class="label">Position Held: </label><br/><input type="text" name="coAppPosition1" value="<?php echo $row[CoAppPositionName]?>"/><br/>
+                </td>
+                <td>
+                    <label class="label">Months Employed: </label><br/><input type="text" name="coAppMonthsEmployed1" value="<?php echo $row[CoAppMonthsEmployed]?>"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="label">Annual Salary: </label><br/><input type="text" name="coAppAnnualSalary1" value="<?php echo $row[CoAppAnnualSalary]?>"/>
                 </td>
             </tr>
             <tr>

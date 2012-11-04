@@ -50,7 +50,7 @@
                                 </tr>
                                     <tr>
                             <td>
-                                Type Of Residence:<select id="select" name="type'.$intCount.'">
+                                <label class="label">Type Of Residence: </label><br/><select id="select" name="type'.$intCount.'">
                             <option';
                             
                             if($row[TypeOfResidence] == "Owned")
@@ -84,40 +84,40 @@
                         </select>
                             </td>
                             <td>
-                               Address:<input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
+                               <label class="label">Address: </label><br/><input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
                             </td>
                             <td>
-                                City:<input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'"/>
+                                <label class="label">City: </label><br/><input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                State:<input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
+                                <label class="label">State: </label><br/><input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
                             </td>
                             <td>
-                                Zip Code:<input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
+                                <label class="label">Zip Code: </label><br/><input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
                             </td>
                             <td>
-                                months lived there:<input  type="text" name="months2" value="'.$row[PrevLandLordFName].'"/>
+                                <label class="label">months lived there:</label><br/><input  type="text" name="months2" value="'.$row[PrevLandLordFName].'"/>
                             </td>     
                         </tr>
                         <tr>
                             <td>
-                                Landlords First Name:<input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
                             </td>
                             <td>
-                                Landlords Last Name:<input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                                <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
                             </td>
                             <td>
-                                Phone Number:<input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
+                                <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Reason For Leaving:<input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
+                               <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
                             </td>
                             <td>
-                                Rent:<input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
+                                <label class="label">Rent:</label><br/><input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
                             </td>
                             <td>
                                 <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
@@ -139,7 +139,7 @@
                                 </tr>
                                     <tr>
                             <td>
-                                Type Of Residence:<select id="select" name="type'.$intCount.'">
+                                <label class="label">Type Of Residence:</label><br/><select id="select" name="type'.$intCount.'">
                             <option>
                                 Owned
                             </option>
@@ -152,40 +152,40 @@
                         </select>
                             </td>
                             <td>
-                               Address:<input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
+                               <label class="label">Address:</label><br/><input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
                             </td>
                             <td>
-                                City:<input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'"/>
+                                <label class="label">City:</label><br/><input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                State:<input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
+                                <label class="label">State:</label><br/><input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
                             </td>
                             <td>
-                                Zip Code:<input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
+                                <label class="label">Zip Code:</label><br/><input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
                             </td>
                             <td>
-                                months lived there:<input  type="text" name="months2" value="'.$row[PrevLandLordFName].'"/>
+                                <label class="label">months lived there:</label><br/><input  type="text" name="months2" value="'.$row[PrevLandLordFName].'"/>
                             </td>     
                         </tr>
                         <tr>
                             <td>
-                                Landlords First Name:<input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
                             </td>
                             <td>
-                                Landlords Last Name:<input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                                <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
                             </td>
                             <td>
-                                Phone Number:<input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
+                                <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Reason For Leaving:<input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
+                                <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
                             </td>
                             <td>
-                                Rent:<input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
+                                <label class="label">Rent:</label><br/><input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
                             </td>
                             <td>
                                 <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
@@ -208,7 +208,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Type Of Residence:<select id="select" name="type1">
+                        <label class="label">Type Of Residence:</label><br/><select id="select" name="type1">
                     <option>
                         Owned
                     </option>
@@ -221,40 +221,40 @@
                 </select>
                     </td>
                     <td>
-                       Address:<input type="text" name="address1"/>
+                       <label class="label">Address:</label><br/><input type="text" name="address1"/>
                     </td>
                     <td>
-                        City:<input type="text" name="city1" />
+                        <label class="label">City:</label><br/><input type="text" name="city1" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        State:<input type="text" name="state1"/>
+                        <label class="label">State:</label><br/><input type="text" name="state1"/>
                     </td>
                     <td>
-                        Zip Code:<input  type="text" name="zipCode1"/>
+                        <label class="label">Zip Code:</label><br/><input  type="text" name="zipCode1"/>
                     </td>
                     <td>
-                        months lived there:<input  type="text" name="months2"/>
+                        <label class="label">months lived there:</label><br/><input  type="text" name="months2"/>
                     </td>     
                 </tr>
                 <tr>
                     <td>
-                        Landlords First Name:<input type="text" name="landlordsFName1" />
+                        <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName1" />
                     </td>
                     <td>
-                        Landlords Last Name:<input type="text" name="landlordsLName1"/>
+                        <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName1"/>
                     </td>
                     <td>
-                        Phone Number:<input type="text" name="phoneNumber1"/>
+                        <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber1"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Reason For Leaving:<input type="text" name="reasonForLeaving1"/>
+                        <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving1"/>
                     </td>
                     <td>
-                        Rent:<input type="text" name="rent1"/>
+                        <label class="label">Rent:</label><br/><input type="text" name="rent1"/>
                     </td>
                     <td>
                         <input id="number" type="text" name="number1" style="display: block; visibility: hidden" value="" />
@@ -272,7 +272,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Type Of Residence:<select id="select" name="type2">
+                        <label class="label">Type Of Residence:</label><br/><select id="select" name="type2">
                     <option>
                         Owned
                     </option>
@@ -285,40 +285,40 @@
                 </select>
                     </td>
                     <td>
-                       Address:<input type="text" name="address2"/>
+                       <label class="label">Address:</label><br/><input type="text" name="address2"/>
                     </td>
                     <td>
-                        City:<input type="text" name="city2" />
+                       <label class="label">City:</label><br/><input type="text" name="city2" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        State:<input type="text" name="state2"/>
+                       <label class="label">State:</label><br/><input type="text" name="state2"/>
                     </td>
                     <td>
-                        Zip Code:<input  type="text" name="zipCode2"/>
+                       <label class="label">Zip Code:</label><br/><input  type="text" name="zipCode2"/>
                     </td>
                     <td>
-                        months lived there:<input  type="text" name="months2"/>
+                       <label class="label">months lived there:</label><br/><input  type="text" name="months2"/>
                     </td>     
                 </tr>
                 <tr>
                     <td>
-                        Landlords First Name:<input type="text" name="landlordsFName2" />
+                        <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName2" />
                     </td>
                     <td>
-                        Landlords Last Name:<input type="text" name="landlordsLName2"/>
+                        <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName2"/>
                     </td>
                     <td>
-                        Phone Number:<input type="text" name="phoneNumber2"/>
+                        <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber2"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Reason For Leaving:<input type="text" name="reasonForLeaving2"/>
+                        <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving2"/>
                     </td>
                     <td>
-                        Rent:<input type="text" name="rent2"/>
+                        <label class="label">Rent:</label><br/><input type="text" name="rent2"/>
                     </td>
                     <td>
                         <input id="number" type="text" name="number2" style="display: block; visibility: hidden" value="" />
@@ -336,7 +336,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Type Of Residence:<select id="select" name="type3">
+                        <label class="label">Type Of Residence:</label><br/><select id="select" name="type3">
                     <option>
                         Owned
                     </option>
@@ -349,40 +349,40 @@
                 </select>
                     </td>
                     <td>
-                       Address:<input type="text" name="address3"/>
+                       <label class="label">Address:</label><br/><input type="text" name="address3"/>
                     </td>
                     <td>
-                        City:<input type="text" name="city3" />
+                        <label class="label">City:</label><br/><input type="text" name="city3" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        State:<input type="text" name="state3"/>
+                        <label class="label">State:</label><br/><input type="text" name="state3"/>
                     </td>
                     <td>
-                        Zip Code:<input  type="text" name="zipCode3"/>
+                        <label class="label">Zip Code:</label><br/><input  type="text" name="zipCode3"/>
                     </td>
                     <td>
-                        months lived there:<input  type="text" name="months2"/>
+                        <label class="label">months lived there:</label><br/><input  type="text" name="months2"/>
                     </td>     
                 </tr>
                 <tr>
                     <td>
-                        Landlords First Name:<input type="text" name="landlordsFName3" />
+                        <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName3" />
                     </td>
                     <td>
-                        Landlords Last Name:<input type="text" name="landlordsLName3"/>
+                        <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName3"/>
                     </td>
                     <td>
-                        Phone Number:<input type="text" name="phoneNumber3"/>
+                        <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber3"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Reason For Leaving:<input type="text" name="reasonForLeaving3"/>
+                        <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving3"/>
                     </td>
                     <td>
-                        Rent:<input type="text" name="rent3"/>
+                        <label class="label">Rent:</label><br/><input type="text" name="rent3"/>
                     </td>
                     <td>
                         <input id="number" type="text" name="number3" style="display: block; visibility: hidden" value="" />
@@ -404,35 +404,35 @@
                 </tr>
                 <tr>
                     <td>
-                        Have you ever been convicted of a felony?<br/>
+                        <label class="label">Have you ever been convicted of a felony?</label><br/>
                         
                         Yes<input type="radio" name="felony"  value="1" <?php if($row[HasCrimHist] == '1'){echo "checked='checked'";} ?> />
                         No<input type="radio" name="felony" value="0" <?php if($row[HasCrimHist] != '1'){echo "checked='checked'";}  ?><br/>
                     </td>
                     <td>
-                        Explain:
+                        <label class="label">Explain:</label><br/>
                         <textarea cols="50" rows="4" name="ifYesFelony"><?php echo $row[CrimHistDesc] ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Have you ever been evicted?<br/>
+                        <label class="label">Have you ever been evicted?</label><br/>
                         Yes<input type="radio" name="evicted" <?php if($row[HasEvictHist] == '1'){echo "checked='checked'";}?>  value="1" />
                         No<input type="radio" name="evicted" <?php if($row[HasEvictHist] != '1'){echo "checked='checked'";}?>  value="0" />
                     </td>
                     <td>
-                        Explain:
+                        <label class="label">Explain:</label><br/>
                         <textarea cols="50" rows="4" name="ifYesEvicted"><?php echo $row[EvictHistDescription] ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Have you ever declared bankruptcy?<br/>
+                        <label class="label">Have you ever declared bankruptcy?</label><br/>
                         Yes<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] == '1'){echo "checked='checked'";}?> value="1" />
                         No<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] != '1'){echo "checked='checked'";}?>  value="0" />
                     </td>
                     <td>
-                        Explain:
+                        <label class="label">Explain:</label><br/>
                         <textarea cols="50" rows="4" name="ifYesBankruptcy"><?php echo $row[BankruptHistDesc] ?></textarea>
                     </td>
                 </tr>
@@ -443,18 +443,18 @@
                 </tr>
                 <tr>
                     <td>
-                        Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): <input type="text" name="devitCardDebt" <?php echo "value='" .$row[TotalConsumerDebt] . "'"?>/>
+                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input type="text" name="devitCardDebt" <?php echo "value='" .$row[TotalConsumerDebt] . "'"?>/>
                     </td>
                     <td>
-                        Total monthly payment on all credit/loan accounts: <input type="text" name="monthlyPayments" <?php echo "value='" .$row[MonthlyDebtPayment] . "'"?>/><br/>
+                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input type="text" name="monthlyPayments" <?php echo "value='" .$row[MonthlyDebtPayment] . "'"?>/><br/>
                     </td>
                     <td>
-                        Total outstanding balance on loans (auto, education, mortgage, etc.)<input type="text" name="loans" <?php echo "value='" .$row[TotalLoanDebt] . "'"?>/><br/>
+                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input type="text" name="loans" <?php echo "value='" .$row[TotalLoanDebt] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Approximate total assets (cash, investments, property equity, etc.): <input type="text" name="equity" <?php echo "value='" .$row[TotalAssets] . "'"?>/><br/>
+                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input type="text" name="equity" <?php echo "value='" .$row[TotalAssets] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>

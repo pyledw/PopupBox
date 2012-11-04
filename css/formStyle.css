@@ -26,7 +26,11 @@ root {
 #Application .content{
     padding:5px 5px 5px 5px;
 }
-
+.label{
+    font-size: 12px;
+    font-weight: bold;
+    position:relative;
+}
 .tableForm{
     border:#000 2px solid;
     margin-left: auto;
@@ -42,7 +46,7 @@ root {
 }
 .tableForm tr {
     text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
 }
 .tableForm tr .greenBackground {
     background:#4f6220;
@@ -55,7 +59,7 @@ root {
 }
 .tableForm .hr{
     text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
     height:1px;
 }
 .ie input{
@@ -64,10 +68,11 @@ root {
 }
 
 label {
+    font-size: 15px;
     }
 label.error { 
      color: red;
-     font-size: 20px;
+     font-size: 12px;
     }
 .ie label{
     width:255px;
