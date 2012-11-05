@@ -20,8 +20,8 @@
                     <li>Landlords/Managers</li>
                     <li>
                             <ul>
-                                    <li><a href="#">List a Property</a></li>
-                                    <li><a href="#">My Properties</a></li>
+                                    <li><a href="newListing1.php">List a Property</a></li>
+                                    <li><a href="myHood.php">My Properties</a></li>
                                     <li><a href="#">Transaction Tools</a></li>
                                     <li><a href="#">Tips for Success</a></li>
                             </ul>
@@ -31,10 +31,10 @@
                     <li>Applicants and Renters</li>
                     <li>
                             <ul>
-                                    <li><a href="#">Find a Property</a></li>
-                                    <li><a href="#">List Tenancy</a></li>
+                                    <li><a href="searchHomes.php">Find a Property</a></li>
+                                    <li><a href="newHousingApplication.php">List Tenancy</a></li>
                                     <li><a href="#">Tips for Success</a></li>
-                                    <li><a href="#">My Hood/Pay Rent</a></li>
+                                    <li><a href="myHood.php">My Hood/Pay Rent</a></li>
                             </ul>
                     </li>
 
