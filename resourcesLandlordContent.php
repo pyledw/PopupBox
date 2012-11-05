@@ -1,6 +1,4 @@
 <?php
-        $title = "Resources - Landlord";
-	include 'Header.php';
         
         include_once 'config.inc.php';
         $con = get_dbconn("");
