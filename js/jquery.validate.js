@@ -272,7 +272,7 @@ $.extend($.validator, {
 	},
 
 	messages: {
-		required: "*",
+		required: "Required Field.",
 		remote: "Please fix this field.",
 		email: "Please enter a valid email address.",
 		url: "Please enter a valid URL.",
@@ -688,7 +688,7 @@ $.extend($.validator, {
 				}
 			} else {
 				// create label
-				label = $("<" + this.settings.errorElement + "/>")
+				label = $("<br/><" + this.settings.errorElement + "/>")
 					.attr({"for":  this.idOrName(element), generated: true})
 					.addClass(this.settings.errorClass)
 					.html(message || "");

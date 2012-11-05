@@ -46,29 +46,10 @@ $title = "New Application #4";
             </tr>
             <tr>
                 <td>
-                    First Name: <input type="text" name="Fname" <?php echo "value='" .$row[ContactFName] . "'"?>/>
+                    <label class="label">First Name: </label><br/><input type="text" name="Fname" <?php echo "value='" .$row[ContactFName] . "'"?>/>
                 </td>
                 <td>
-                    Last Name: <input type="text" name="Lname" <?php echo "value='" .$row[ContactLName] . "'"?>/>
-                </td>
-                <td>
-                    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Address: <input type="text" name="address" <?php echo "value='" .$row[ContactAddress] . "'"?>/>
-                </td>
-                <td>
-                    State: <input type="text" name="state" <?php echo "value='" .$row[ContactState] . "'"?>/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Zip: <input type="text" name="zip" <?php echo "value='" .$row[ContactZip] . "'"?>/>
-                </td>
-                <td>
-                    Relation: <input type="text" name="relation" <?php echo "value='" .$row[ContactZip] . "'"?>/>
+                    <label class="label">Last Name: </label><br/><input type="text" name="Lname" <?php echo "value='" .$row[ContactLName] . "'"?>/>
                 </td>
                 <td>
                     
@@ -76,13 +57,32 @@ $title = "New Application #4";
             </tr>
             <tr>
                 <td>
-                    Home Phone:<input type="text" name="homePhone" <?php echo "value='" .$row[ContactHomePhone] . "'"?>/>
+                    <label class="label">Address: </label><br/><input type="text" name="address" <?php echo "value='" .$row[ContactAddress] . "'"?>/>
                 </td>
                 <td>
-                    Cell Phone: <input type="text" name="cellPhone" <?php echo "value='" .$row[ContactCellPhone] . "'"?>/>
+                    <label class="label">State: </label><br/><input type="text" name="state" <?php echo "value='" .$row[ContactState] . "'"?>/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="label">Zip: </label><br/><input type="text" name="zip" <?php echo "value='" .$row[ContactZip] . "'"?>/>
                 </td>
                 <td>
-                    Work Phone: <input type="text" name="workPhone" <?php echo "value='" .$row[ContactWorkPhone] . "'"?>/>
+                    <label class="label">Relation: </label><br/><input type="text" name="relation" <?php echo "value='" .$row[ContactZip] . "'"?>/>
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="label">Home Phone:</label><br/><input type="text" name="homePhone" <?php echo "value='" .$row[ContactHomePhone] . "'"?>/>
+                </td>
+                <td>
+                    <label class="label">Cell Phone: </label><br/><input type="text" name="cellPhone" <?php echo "value='" .$row[ContactCellPhone] . "'"?>/>
+                </td>
+                <td>
+                    <label class="label">Work Phone: </label><br/><input type="text" name="workPhone" <?php echo "value='" .$row[ContactWorkPhone] . "'"?>/>
                 </td>
             </tr>
             <tr>
@@ -92,46 +92,46 @@ $title = "New Application #4";
             </tr>
             <tr id="vehicle1">
                 <td>
-                    Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle1Desc] . "'"?>>
+                    <label class="label">Make: </label><br/><input type="text" name="carMake" <?php echo "value='" .$row[Vehicle1Desc] . "'"?>>
+                </td>
+                <td><label class="label">
+                    License Plate Number: </label><br/><input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle1LicenseNo] . "'"?>>
                 </td>
                 <td>
-                    License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle1LicenseNo] . "'"?>>
-                </td>
-                <td>
-                    State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle1LicenseState] . "'"?>>
+                    <label class="label">State of plate:</label><br/><input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle1LicenseState] . "'"?>>
                 </td>
             </tr>
             <tr id="vehicle2" style="display: none;">
                 <td>
-                    Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle2Desc] . "'"?>>
+                    <label class="label">Make:</label><br/> <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle2Desc] . "'"?>>
                 </td>
                 <td>
-                    License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle2LicenseNo] . "'"?>>
+                    <label class="label">License Plate Number: </label><br/><input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle2LicenseNo] . "'"?>>
                 </td>
                 <td>
-                    State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle2LicenseState] . "'"?>>
+                    <label class="label">State of plate:</label><br/><input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle2LicenseState] . "'"?>>
                 </td>
             </tr>
             <tr id="vehicle3" style="display: none;">
                 <td>
-                    Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle3Desc] . "'"?>>
+                    <label class="label">Make: </label><br/><input type="text" name="carMake" <?php echo "value='" .$row[Vehicle3Desc] . "'"?>>
                 </td>
                 <td>
-                    License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle3LicenseNo] . "'"?>>
+                    <label class="label">License Plate Number: </label><br/><input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle3LicenseNo] . "'"?>>
                 </td>
                 <td>
-                    State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle3LicenseState] . "'"?>>
+                    <label class="label">State of plate:</label><br/><input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle3LicenseState] . "'"?>>
                 </td>
             </tr>
             <tr id="vehicle4" style="display: none;">
                 <td>
-                    Make: <input type="text" name="carMake" <?php echo "value='" .$row[Vehicle4Desc] . "'"?>>
+                    <label class="label">Make: </label><br/><input type="text" name="carMake" <?php echo "value='" .$row[Vehicle4Desc] . "'"?>>
                 </td>
                 <td>
-                    License Plate Number: <input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle4LicenseNo] . "'"?>>
+                    <label class="label">License Plate Number: </label><br/><input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle4LicenseNo] . "'"?>>
                 </td>
                 <td>
-                    State of plate:<input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle4LicenseState] . "'"?>>
+                    <label class="label">State of plate:</label><br/><input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle4LicenseState] . "'"?>>
                 </td>
             </tr>
             <tr>

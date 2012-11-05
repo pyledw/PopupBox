@@ -36,7 +36,7 @@
         </tr>
         <tr>
             <td>
-                Please enter your email<input class="required email" type="text" name="email"/>
+                <label class="label">Email verification</label><br/><input class="required email" type="text" name="email"/>
             </td>
         </tr>
         <tr>
