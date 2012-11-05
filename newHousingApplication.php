@@ -214,6 +214,11 @@ include 'Header.php';
                     <a class="button" href="myHood.php">Exit without saving</a>
                 <td>
              </tr>
+             <tr>
+                <td style="text-align: center;" colspan="4">
+                    Page 1 of 5
+                </td>
+             </tr>
              
                 
          </table>

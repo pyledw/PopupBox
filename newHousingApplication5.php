@@ -45,6 +45,11 @@
                 <button type="reset" class="button">Clear</button>
             </td>
         </tr>
+        <tr>
+             <td style="text-align: center;" colspan="2">
+                    Page 5 of 5
+             </td>
+        </tr>
     </table>
 
 </form>

@@ -7,6 +7,8 @@
             unset($_SESSION[propertyID]);
         }
         
+        $userType = $_SESSION['type'];
+        
 ?>
  <?php
  //
