@@ -275,7 +275,7 @@
                         <label class="label">Comments about the home:</label><br/>
                     </td>
                     <td colspan="2">
-                        <textarea id="message" name="description" rows="4" cols="50" value="<?php echo $row[Description]?>"></textarea>
+                        <textarea id="message" name="description" rows="4" cols="50"><?php echo $row[Description]?></textarea>
                     </td>
                 </tr>
                 <tr>

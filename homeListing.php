@@ -81,7 +81,7 @@
                 <td rowspan="6" align="center">
                     <form method="post" action="placeBid.php">
                         <font class="greyBackground">My Proposal for occupancy</font><br/>
-                        Bid Amount<input type="text" name="amt" /><br/>
+                        <label class="label">Bid Amount:</label><input type="text" name="amt" /><br/>
                         <input type="text" style="display: none;" name="auctionID" value="<?php echo $row[AuctionID] ?>" />
                         <input type="text" style="display: none;" name="userID" value="<?php echo $_SESSION[userID] ?>" />
                         <input type="text" style="display: none;" name="propertyID" value="<?php echo $row[PropertyID] ?>" />
