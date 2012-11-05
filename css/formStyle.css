@@ -27,9 +27,11 @@ root {
     padding:5px 5px 5px 5px;
 }
 .label{
-    font-size: 12px;
+    font-size: 18px;
     font-weight: bold;
     position:relative;
+    padding-left: 5px;
+    
 }
 .tableForm{
     border:#000 2px solid;
@@ -43,6 +45,7 @@ root {
 .tableForm input{
     height:24px;
     font-size: 22px;
+    margin-top: -4px;
 }
 .tableForm tr {
     text-align: left;

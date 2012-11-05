@@ -3,18 +3,19 @@
     session_destroy();
     session_start();
     $currentPage = $_GET[URL];
+    echo $currentPage;
 ?>
 <form id="newApplicationForm" method="post" action="loginRedirect.php">
     <input name="URL" value="<?php echo $currentPage; ?>" style="display: none;" />
-            <table class="tableForm">
+            <table class="tableForm" style="margin-top: 0px;">
                 <tr>
                     <td>
-                <lable>Username:</label><input class="required" id="userName" type="text" name="userName">
+                        <lable class="label">Username:</label></br><input class="required" id="userName" type="text" name="userName">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                <lable>Password:</label><input class="required" type="password" name="password">
+                        <lable class="label">Password:</label></br><input class="required" type="password" name="password">
                     </td>
                 </tr>
                 <tr>

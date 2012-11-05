@@ -30,7 +30,7 @@
                            <lable class="label">Password:</label><br/><input title="Password" type="password" id="password" class="required" name="password1">
                          </td>
                          <td>
-                           <lable class="label">Confirm Password</label><br/><input title="Confirm Password" id="password_again" class="required" type="password" name="password_again">
+                           <lable class="label">Confirm Password:</label><br/><input title="Confirm Password" id="password_again" class="required" type="password" name="password_again">
                          </td>
                     </tr>
                     <tr class="hr">
