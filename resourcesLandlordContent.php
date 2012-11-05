@@ -11,7 +11,7 @@
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
-        }
+        }//
 
 ?>
 
