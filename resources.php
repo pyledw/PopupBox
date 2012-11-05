@@ -9,7 +9,7 @@
         
 ?>
  <?php
- 
+ //
     if($userType == "1")
     {
         include 'resourcesTenantContent.php';
