@@ -43,26 +43,26 @@
                 <font class="formheader">New Home Listing Basics</font>
                 <tr>
                     <td>
-                        Address:<input class="required" type="text" name="address" value="<?php echo $row[Address]?>">
+                        <label class="label">Address:</label><br/><input class="required" type="text" name="address" value="<?php echo $row[Address]?>">
                     </td>
                     <td>
-                        City:<input class="required" type="text" name="city" value="<?php echo $row[City]?>">
+                        <label class="label">City:</label><br/><input class="required" type="text" name="city" value="<?php echo $row[City]?>">
                     </td>
                     <td>
-                        State:<input class="required" type="text" name="state" value="<?php echo $row[State]?>">
+                        <label class="label">State:</label><br/><input class="required" type="text" name="state" value="<?php echo $row[State]?>">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Zip Code:<input class="required" type="text" name="zipCode" value="<?php echo $row[Zip]?>">
+                        <label class="label">Zip Code:</label><br/><input class="required" type="text" name="zipCode" value="<?php echo $row[Zip]?>">
                     </td>
                     <td colspan="2">
-                        Approximate square feet of heated living space<input class="required" type="text" name="sqrFt" value="<?php echo $row[SF]?>">
+                        <label class="label">Square feet:</label><br/><input class="required" type="text" name="sqrFt" value="<?php echo $row[SF]?>">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        County:<input type="text" name="county" value="<?php echo $row[County]?>">
+                        <label class="label">County:</label><br/><input type="text" name="county" value="<?php echo $row[County]?>">
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +72,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Number of bedrooms:
+                        <label class="label">Number of bedrooms:</label><br/>
                         <select name="bedRooms">
 
                             <option <?php if($row[BedRoom] == '1'){echo '  selected=" selected" ' ;} ?>>
@@ -93,7 +93,7 @@
                         </select>
                     </td>
                     <td>
-                         Number of bathrooms:
+                         <label class="label">Number of bathrooms:</label><br/>
                          <select name="bathRooms">
                             <option <?php if($row[Bath] == '1'){echo "  selected=' selected'";}?>>
                                 1
@@ -116,7 +116,7 @@
                         </select>
                     </td>
                     <td>
-                        Garage:
+                        <label class="label">Garage:</label><br/>
                         <select name="garage">
                             <option <?php if($row[Garage] == '1-car garage'){echo "  selected=' selected'";}?>>
                                 1-car garage
@@ -138,7 +138,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Type of heating:
+                        <label class="label">Type of heating:</label><br/>
                         <select name="heating">
                             <option <?php if($row[Heating] == 'Central'){echo "  selected=' selected'";}?>>
                                 Central
@@ -161,7 +161,7 @@
                         </select>
                     </td>
                     <td>
-                        Type of air conditioning:
+                        <label class="label">Type of air conditioning:</label><br/>
                         <select name="airConditioning">
                             <option <?php if($row[AC] == 'Central'){echo "  selected=' selected'";}?>>
                                 Central
@@ -178,7 +178,7 @@
                         </select>
                     </td>
                     <td>
-                        Media (cable, satellite, etc.)
+                        <label class="label">Media (cable, satellite, etc.):</label><br/>
                         <select name="media">
                             <option <?php if($row[Media] == 'Cable'){echo " selected=' selected'";}?>>
                                 Cable
@@ -197,82 +197,82 @@
                 </tr>
                 <tr>
                     <td>
-                        Ice Maker<br/>
+                       <label class="label"> Ice Maker:</label><br/>
                         Yes<input type="radio" name="ice"  value="1" <?php if($row[IceMaker] == '1'){echo " checked='checked'";}?> />
                         No<input type="radio" name="ice"   value="0" <?php if($row[IceMaker] != '1'){echo " checked='checked'";}?> />
                     </td>
                     <td>
-                        Dish Washer <br/>
+                        <label class="label">Dish Washer:</label><br/>
                         Yes<input type="radio" name="dishWasher"  value="1" <?php if($row[DishWasher] == '1'){echo " checked='checked'";}?> />
                         No<input type="radio" name="dishWasher"   value="0" <?php if($row[DishWasher] != '1'){echo " checked='checked'";}?> />
                     </td>
                     <td>
-                        Disposal<br/>
+                        <label class="label">Disposal:</label><br/>
                         Yes<input type="radio" name="disposal"  value="1" <?php if($row[Disposal] == '1'){echo " checked='checked'";}?>/>
                         No<input type="radio" name="disposal"   value="0" <?php if($row[Disposal] != '1'){echo "checked='checked'";}?> />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Clothes Washer<br/>
+                        <label class="label">Clothes Washer:</label><br/>
                         Yes<input type="radio" name="clothesWasher"  value="1" <?php if($row[ClothesWasher] == '1'){echo " checked='checked'";}?> />
                         No<input type="radio" name="clothesWasher"   value="0" <?php if($row[ClothesWasher] != '1'){echo " checked='checked'";}?> />
                     </td>
                     <td>
-                        Clothes Dryer<br/>
+                        <label class="label">Clothes Dryer:</label><br/>
                         Yes<input type="radio" name="clothesDryer"  value="1" <?php if($row[ClothesDryer] == '1'){echo " checked='checked'";}?> />
                         No<input type="radio" name="clothesDryer"   value="0" <?php if($row[ClothesDryer] != '1'){echo " checked='checked'";}?> />
                     </td>
                     <td>
-                        Microwave<br/>
+                        <label class="label">Microwave:</label><br/>
                         Yes<input type="radio" name="microwave"  value="1" <?php if($row[Microwave] == '1'){echo " checked='checked'";}?> />
                         No<input type="radio" name="microwave"   value="0"  <?php if($row[Microwave] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Security System<br/>
+                        <label class="label">Security System:</label><br/>
                         Yes<input type="radio" name="security"  value="1" <?php if($row[SecurityAlarm] == '1'){echo " checked='checked'";}?> />
                         No<input type="radio" name="security"   <?php if($row[SecurityAlarm] != '1'){echo " checked='checked'";}?> value="0" />
                     </td>
                     <td>
-                        Deck<br/>
+                        <label class="label">Deck:</label><br/>
                         Yes<input type="radio" name="deck"  value="1" <?php if($row[Deck] == '1'){echo " checked='checked'";}?>/>
                         No<input type="radio" name="deck"   value="0" <?php if($row[Deck] != '1'){echo " checked='checked'";}?>/>
                     </td>
                     <td>
-                        Pool<br/>
+                        <label class="label">Pool:</label><br/>
                         Yes<input type="radio" name="pool"  value="1" <?php if($row[Pool] == '1'){echo " checked='checked'";}?>/>
                         No<input type="radio" name="pool"   value="0" <?php if($row[Pool] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Fenced<br/>
+                        <label class="label">Fenced:</label><br/>
                         Yes<input type="radio" name="fenced"  value="1" <?php if($row[Fenced] == '1'){echo " checked='checked'";}?>/>
                         No<input type="radio" name="fenced"   value="0" <?php if($row[Fenced] != '1'){echo " checked='checked'";}?>/>
                     </td>
                     <td colspan="2">
-                        Are you advertising this house as ADA (Americans with Disability Act) compliant?<br/>
+                        <label class="label">ADA (Americans with Disability Act) compliant?</label><br/>
                         Yes<input type="radio" name="ADA"  value="1" <?php if($row[ADACompliant] == '1'){echo " checked='checked'";}?>/>
                         No<input type="radio" name="ADA"   value="0" <?php if($row[ADACompliant] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Clothes Dryer Hookups?<br/>
+                        <label class="label">Clothes Dryer Hookups?</label><br/>
                         Yes<input type="radio" name="dryerHookup"  value="1" <?php if($row[ClothesDryerHookup] == '1'){echo " checked='checked'";}?>/>
                         No<input type="radio" name="dryerHookup"   value="0" <?php if($row[ClothesDryerHookup] != '1'){echo " checked='checked'";}?>/>
                     </td>
                     <td>
-                        Clothes Washer Hookups?<br/>
+                        <label class="label">Clothes Washer Hookups?</label><br/>
                         Yes<input type="radio" name="washerHookup"  value="1" <?php if($row[ClothesWasherHookup] == '1'){echo " checked='checked'";}?>/>
                         No<input type="radio" name="washerHookup"   value="0" <?php if($row[ClothesWasherHookup] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="1" style="vertical-align: central;">
-                        Comments about the home:
+                        <label class="label">Comments about the home:</label><br/>
                     </td>
                     <td colspan="2">
                         <textarea id="message" name="description" rows="4" cols="50" value="<?php echo $row[Description]?>"></textarea>

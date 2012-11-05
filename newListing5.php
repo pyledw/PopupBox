@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Enter Email<input class="required" type="text" name="email"/>
+                        <label class="label">Enter Email:</label><input class="required" type="text" name="email"/></br>
                     </td>
                 </tr>
                 <tr>
