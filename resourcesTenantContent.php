@@ -95,7 +95,7 @@
         
         <a href="#top">Back to top</a>
         
-        <p><a id="statutes"><h4><font color="#78923B"><u>Brokerage Statutes</u></h4></a><br />
+        <p><a id="statutes"><h4><font color="#78923B"><u>Brokerage Statutes</u></font></h4></a><br />
             Please <a href="http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0CCcQFjAB&url=http%3A%2F%2Fwww.tnaptassoc.org%2FLandlord%2520Tenant%2520Act.doc&ei=075ZUN-NL4Wm9ASXoIHwAw&usg=AFQjCNGGkb4K0aowfioprBVdJw8juhSd6w">click here</a>
         for a link to the statutes regulating the sale and rental of real estate in Tennessee.</p>
         
