@@ -30,9 +30,9 @@
         </tr>
         <tr>
             <td>
-                Enter old Password<input type="text" name="currentPassword" /><br/>
-                Enter New Password<input type="text" name="newPassword1" /><br/>
-                Confirm New Password<input type="text" name="newPassword2" />
+                <label class="label">Enter old Password:</label><br/><input type="text" name="currentPassword" /><br/>
+                <label class="label">Enter New Password:</label><br/><input type="text" name="newPassword1" /><br/>
+                <label class="label">Confirm New Password:</label><br/><input type="text" name="newPassword2" />
             </td>
         </tr>
         <tr>
@@ -42,9 +42,9 @@
         </tr>
         <tr>
             <td>
-                Enter old Email<input type="text" name="currentEmail" /><br/>
-                Enter New Email<input type="text" name="newEmail1" /><br/>
-                Confirm New Email<input type="text" name="newEmail2" />
+                <label class="label">Enter old Email:</label><br/><input type="text" name="currentEmail" /><br/>
+                <label class="label">Enter New Email:</label><br/><input type="text" name="newEmail1" /><br/>
+                <label class="label">Confirm New Email:</label><br/><input type="text" name="newEmail2" />
             </td>
         </tr>
         <tr>
