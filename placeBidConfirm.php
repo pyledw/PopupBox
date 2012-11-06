@@ -26,6 +26,10 @@ $result = mysql_query("SELECT * FROM BID
 $accept = TRUE;
 while($row = mysql_fetch_array($result))
 {
+    if($row[DatePFOEndAccept] > date())
+    {
+        header( 'Location: /homeListing.php?listingID='.$propertyID );
+    }
     if($row[UserID] == $userID)
     {
        if($row[MonthlyRate] > $bidAmount)
