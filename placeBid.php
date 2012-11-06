@@ -20,25 +20,44 @@
                 $row = mysql_fetch_array($result);
 
                 $applicationID = $row[ApplicationID];
-                echo $auctionID . " " . $applicationID;
-                $result = mysql_query("SELECT * FROM BID
+                echo $auctionID . " " . $applicationID . " " . $amount;
+               $result2 = mysql_query("SELECT * FROM BID
                     WHERE AuctionID='$auctionID' AND ApplicationID='$applicationID'");
                 
-               echo mysql_num_rows($result);
-               while($row = mysql_fetch_array($result))
+               echo $numRows = mysql_num_rows($result2);
+               
+               while($row2 = mysql_fetch_array($result2))
                {
-                   echo $row[MonthlyAmount];
+                   
 
                }
                
-               if(mysql_num_rows($result) == 0)
+               if($numRows == 0)
                {
                     mysql_query("INSERT INTO BID (AuctionID,ApplicationID,MonthlyRate)
                     VALUES
                     ('$auctionID','$applicationID','$amount')");
 
 
-                    //header( 'Location: /homeListing.php?listingID='.$propertyID );
+                    header( 'Location: /homeListing.php?listingID='.$propertyID );
+                }
+                else
+                {
+                    //Using the new method for inserting into the Database
+                    $con = get_dbconn("PDO");
+                    $stmt = $con->prepare("
+                            UPDATE BID SET
+                                MonthlyRate=:bidAmount
+
+                            WHERE AuctionID='$auctionID' AND ApplicationID='$applicationID'
+                            ");
+                    try {
+                        $stmt->bindValue(':bidAmount',          $amount,                   PDO::PARAM_STR);
+                        $stmt->execute();
+                    } catch (Exception $e) {
+                        echo 'Connection failed. ' . $e->getMessage();
+                    }
+                    header( 'Location: /homeListing.php?listingID='.$propertyID );
                 }
             }
         }
