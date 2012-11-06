@@ -20,7 +20,7 @@
                      <td>
                         How it works
                     </td>
-                     <td rowspan="4">
+                     <td colspan="2" rowspan="4">
                         <img src="images/House.jpg" alt="House" style="float:right" />
                          <?php
                             /*$pictureArray = array('images/keys.jpg','images/keys2.jpg','images/House.jpg');
