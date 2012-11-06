@@ -12,7 +12,7 @@
         <font class="formheader">Home Search</font>
         <tr>
             <td>
-                 Search: <input type="text" name="search"><select name="type">
+                <label class="label">Search: </label><br/><input type="text" name="search"><select name="type">
                 <option value="zip">Zip</option>
                 <option value="address">Address</option>
                 <option value="city">City</option>
