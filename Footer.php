@@ -40,12 +40,12 @@
 
             </ul>
             <ul>
-                    <li>About LeaseHoffffod</li>
+                    <li>About LeaseHood</li>
                     <li>
                             <ul>
                                     <li><a href="#">Philosophy/Mission</a></li>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Affiliations/Licensing</a></li>
+                                    <li><a href="testimonials.php">Testimonials</a></li>
+                                    <li><a href="affiliations.php">Affiliations/Licensing</a></li>
                                     <li><a href="#">Privacy</a></li>
                                     <li><a href="#">Terms of Use</a></li>
                             </ul>

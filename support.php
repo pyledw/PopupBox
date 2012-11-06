@@ -17,6 +17,10 @@
                 <td><input type="text" name="lname" size="15" maxlength="25"/></td>
             </tr>
             <tr>
+                <td>Email: </td>
+                <td><input type="text" name="email" size="25" maxlength="60"/></td>
+            </tr>
+            <tr>
                 <td>Comments: </td>
                 <td><textarea name="comments" rows="6" cols="30" wrap="virtual"></textarea></td>
             </tr>
