@@ -79,7 +79,7 @@
                     Bid History
                 </td>
                 <td rowspan="6" align="center">
-                    <form method="post" action="placeBid.php">
+                    <form id="placebid" method="post">
                         <font class="greyBackground">My Proposal for occupancy</font><br/>
                         <label class="label">Bid Amount:</label><input type="text" name="amt" /><br/>
                         <input type="text" style="display: none;" name="auctionID" value="<?php echo $row[AuctionID] ?>" />
@@ -132,3 +132,17 @@
 <?php
     include 'Footer.php';
 ?>
+
+    <script>
+        $("#placebid").submit(function(e){
+            e.preventDefault();
+            
+            var url = "placeBidConfirm.php?";
+            url += "amt=" + $('[name=amt]').val();
+            url += "&auctionID=" + $('[name=auctionID]').val();
+            url += "&propertyID=" + $('[name=propertyID]').val();
+            jQuery.facebox({ ajax: url });
+        })
+    </script>
+        
+
