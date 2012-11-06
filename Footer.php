@@ -8,7 +8,7 @@
                     <li>About LeaseHood</li>
                     <li>
                             <ul>
-                                    <li><a href="contact.php">Contact LeaseHood</a></li>
+                                    <li><a href="support.php">Contact LeaseHood</a></li>
                                     <li><a href="#">‘Hood in the ‘Hood</a></li>
                                     <li><a href="#">Facebook</a></li>
                                     <li><a href="#">Endorsed Providers</a></li>
