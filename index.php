@@ -21,7 +21,17 @@
                         How it works
                     </td>
                      <td rowspan="4">
-                        <img src="images/House.jpg" alt="House" style="float:right" />
+                        <!--<img src="images/House.jpg" alt="House" style="float:right" />-->
+                         <?php
+                            $pictureArray = array('images/keys.jpg','images/keys2.jpg','images/House.jpg');
+                            shuffle($pictureArray);
+                            for($picturesLoop = 0; $picturesLoop < 1; $picturesLoop++)
+                            {
+                                echo "<td align=\"right\"><img src=\"";
+                                echo $picturesArray[$picturesLoop];
+				echo "\"/></td>";   
+                            }
+                         ?>
                     </td>
                 </tr>
                 <tr style="height: 35px;">
