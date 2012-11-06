@@ -28,7 +28,7 @@
                             for($picturesLoop = 0; $picturesLoop < 1; $picturesLoop++)
                             {
                                 echo "<td align=\"right\"><img src=\"";
-                                echo $picturesArray[$picturesLoop];
+                                echo $pictureArray[$picturesLoop];
 				echo "\"/></td>";   
                             }
                          ?>
