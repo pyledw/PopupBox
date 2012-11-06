@@ -20,16 +20,16 @@
                      <td>
                         How it works
                     </td>
-                     <td colspan="2" rowspan="4">
+                     <td colspan="2" rowspan="4" align="right">
                         <!--<img src="images/House.jpg" alt="House" style="float:right" />-->
                          <?php
                             $pictureArray = array('images/keys.jpg','images/keys2.jpg','images/House.jpg');
                             shuffle($pictureArray);
                             for($picturesLoop = 0; $picturesLoop < 1; $picturesLoop++)
                             {
-                                echo "<td align=\"right\"><img src=\"";
+                                echo "<img src=\"";
                                 echo $pictureArray[$picturesLoop];
-				echo "\"/></td>";   
+				echo "\"/>";   
                             }
                          ?>
                     </td>
