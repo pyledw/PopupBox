@@ -44,7 +44,7 @@
         These tips will help you maintain a positive relationship with your Landlord during your tenancy.</p>
         <hr />
         
-        <p><a id="tips"><h4><font color="#78923B"><u>Tips for Submitting a Proposal for Occupancy (PFO):</u></font></h4></a><br />
+        <p><a id="tips"><h3><font color="#78923B"><u>Tips for Submitting a Proposal for Occupancy (PFO):</u></font></h3></a><br />
         <ol>
             <li>Be completely honest when you submit your application.  Most landlords have experienced 
                 the struggles of finding great residents.  Chances are, you will be subject to an application 
@@ -70,7 +70,7 @@
         
         <a href="#top">Back to top</a>
         
-        <p><a id="act"><h4><font color="#78923B"><u>Tennessee Landlord and Tenant Act:</u></font></a><br />
+        <p><a id="act"><h3><font color="#78923B"><u>Tennessee Landlord and Tenant Act:</u></font></h3></a><br />
         According to the Tennessee Consumer Affairs Division, the Tennessee Uniform Residential Landlord 
         and Tenant Act was enacted in 1975 to establish the rights and obligations of landlords and 
         tenants involved in rental properties.  In general, the provisions of the act apply only to 
@@ -80,7 +80,7 @@
         
         <a href="#top">Back to top</a>
         
-        <p><a id="laws"><h4><font color="#78923B"><u>Fair Housing Laws:</u></font></h4></a><br />
+        <p><a id="laws"><h3><font color="#78923B"><u>Fair Housing Laws:</u></font></h3></a><br />
         The Fair Housing Act makes it illegal to discriminate in the buying, selling or renting of a 
         home because of a person’s race, color, national origin, religion, sex, familial status and 
         disability. Amendments to the Fair Housing Act added sex as a protected class in 1974 and 
@@ -101,6 +101,3 @@
         
         <a href="#top">Back to top</a>
 </div>  
- <?php
-    include "Footer.php";
- ?>
