@@ -114,9 +114,9 @@
             in a metropolitan area of 1 million or more.  So, it is important to expose your property to the most people 
             for the longest duration.  Please use the following  table to assist in selecting your pre-marketing, show 
             window duration and open house parameters:
-        <table border="1">
+        <table align="center" border="1">
             <tr>
-                <td>Table goes here.</td>
+                <td><img src="images/days_table.jpg" /></td>
             </tr>
         </table></p>
         
