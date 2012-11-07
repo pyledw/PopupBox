@@ -45,7 +45,7 @@
         maintain a positive experience with your resident.</p>
         <hr />
         
-        <p><a id="tips"><h4><font color="#78923B"><u>Tips for Listing a Property</u></font></h4></a><br />
+        <p><a id="tips"><h3><font color="#78923B"><u>Tips for Listing a Property</u></font></h3></a><br />
         <u>Be completely honest:</u><br />
         This applies to your downloaded photos, property descriptions, and rental 
         expectations.  Consumers are savvy and will be able to clearly identify alternative agendas.  Consumers 
@@ -120,7 +120,7 @@
             </tr>
         </table></p>
         
-        <p><a id="rights"><h4><font color="#78923B"><u>Tennessee Landlord Tenant Act</u></font></h4></a><br />
+        <p><a id="rights"><h3><font color="#78923B"><u>Tennessee Landlord Tenant Act</u></font></h3></a><br />
         According to the Tennessee Consumer Affairs Division, the Tennessee Uniform Residential Landlord and Tenant Act
         was enacted in 1975 to establish the rights and obligations of landlords and tenants involved in rental properties.  
         In general, the provisions of the act apply only to dwelling units residing in counties with a population  of more 
@@ -128,7 +128,7 @@
         
         <a href="#top">Back to top</a>
         
-        <p><a id="laws"><h4><font color="#78923B"><u>Fair Housing Laws</u></font></h4></a><br />
+        <p><a id="laws"><h3><font color="#78923B"><u>Fair Housing Laws</u></font></h3></a><br />
         The Fair Housing Act makes it illegal to discriminate in the buying, selling or renting of a home because of a
         person’s race, color, national origin, religion, sex, familial status and disability. Amendments to the Fair 
         Housing Act added sex as a protected class in 1974 and familial status and disability as protected classes 
@@ -142,7 +142,7 @@
         <p>States or local governments may enact fair housing laws that extend protections to other groups. 
         Tennessee has included creed as a protected class in the Tennessee Human Rights Act (4-21-600.)</p>
         
-        <p><a id="statutes"><h4><font color="#78923B"><u>Brokerage Statutes</u></font></h4></a><br />
+        <p><a id="statutes"><h3><font color="#78923B"><u>Brokerage Statutes</u></font></h3></a><br />
             Please <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0CCcQFjAB&url=http%3A%2F%2Fwww.tnaptassoc.org%2FLandlord%2520Tenant%2520Act.doc&ei=075ZUN-NL4Wm9ASXoIHwAw&usg=AFQjCNGGkb4K0aowfioprBVdJw8juhSd6w">click here</a>
         for a link to the statutes regulating the sale and rental of real estate in Tennessee.</p>
         
