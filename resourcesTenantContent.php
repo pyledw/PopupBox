@@ -101,6 +101,3 @@
         
         <a href="#top">Back to top</a>
 </div>  
- <?php
-    include "Footer.php";
- ?>
