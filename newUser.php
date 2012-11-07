@@ -80,7 +80,7 @@
                              <lable class="label">Zip:</label><br/><input title="Zip code" type="text" name="zip" class="required">
                          </td>
                          <td  >
-                             <lable class="label">BirthDay:</label><br/><input title="Birth Date" type="text" name="DOB" class="required">
+                             <lable class="label">Birthday:</label><br/><input title="Birth Date" type="text" name="DOB" class="required">
                          </td>
                          <td>
                              <lable class="label">SSN:</label><br/><input title="last 4 of SSN" type="text" name="SSN" class="required">
