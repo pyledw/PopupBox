@@ -124,7 +124,7 @@
         According to the Tennessee Consumer Affairs Division, the Tennessee Uniform Residential Landlord and Tenant Act
         was enacted in 1975 to establish the rights and obligations of landlords and tenants involved in rental properties.  
         In general, the provisions of the act apply only to dwelling units residing in counties with a population  of more 
-        than 68,000, according to the most recent census.  The full act can be accessed<a href="http://tn.gov/consumer/documents/UniformResidentialLandlordandTenantAct7.12.12.pdf">here</a></p>
+        than 68,000, according to the most recent census.  The full act can be accessed <a href="http://tn.gov/consumer/documents/UniformResidentialLandlordandTenantAct7.12.12.pdf">here</a></p>
         
         <a href="#top">Back to top</a>
         
