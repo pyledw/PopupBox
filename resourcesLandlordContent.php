@@ -134,13 +134,13 @@
         Housing Act added sex as a protected class in 1974 and familial status and disability as protected classes 
         in 1988. </p>
         
-        <a href="#top">Back to top</a>
-        
         <p>Familial status includes children under the age of 18 living with parents or legal custodians, pregnant 
         women and people securing custody of children under the age of 18. To read the Fair Housing Act,<a hre="http://www.usccr.gov/pubs/TNFairHousingReport.pdf">click here</a></p>
       
         <p>States or local governments may enact fair housing laws that extend protections to other groups. 
         Tennessee has included creed as a protected class in the Tennessee Human Rights Act (4-21-600.)</p>
+        
+        <a href="#top">Back to top</a>
         
         <p><a id="statutes"><h3><font color="#78923B"><u>Brokerage Statutes</u></font></h3></a><br />
             Please <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0CCcQFjAB&url=http%3A%2F%2Fwww.tnaptassoc.org%2FLandlord%2520Tenant%2520Act.doc&ei=075ZUN-NL4Wm9ASXoIHwAw&usg=AFQjCNGGkb4K0aowfioprBVdJw8juhSd6w">click here</a>
