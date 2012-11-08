@@ -20,6 +20,14 @@ $upload_allowed_file_types 	= array(		// all entries must be MIME types and lowe
 	"image/png",
 	"image/tiff");
 
+/*
+ * These settings control Paypal.
+ */
+$paypal_SandboxFlag = true;
+$paypal_API_UserName="jcdick_1350762445_biz_api1.mail.lipscomb.edu";
+$paypal_API_Password="1350762468";
+$paypal_API_Signature="APVEl-I7DVPD6FsgN8j9i9uRbqBwAvuRR9R-HmcBImCL3vso7E2pCm6- ";
+
 
 
 

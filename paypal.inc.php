@@ -8,13 +8,10 @@
 	 
 	Defines all the global variables and the wrapper functions 
 	********************************************/
+	include_once 'config.inc.php';
+
 	$PROXY_HOST = '127.0.0.1';
 	$PROXY_PORT = '808';
-
-	$SandboxFlag = true;
-	$API_UserName="jcdick_1350762445_biz_api1.mail.lipscomb.edu";
-	$API_Password="1350762468";
-	$API_Signature="APVEl-I7DVPD6FsgN8j9i9uRbqBwAvuRR9R-HmcBImCL3vso7E2pCm6- ";
 
 	// BN Code 	is only applicable for partners
 	$sBNCode = "PP-ECWizard";
@@ -29,7 +26,7 @@
 	' For the live site, the URL is        https://www.paypal.com/webscr&cmd=_express-checkout&token=
 	*/
 	
-	if ($SandboxFlag == true) 
+	if ($paypal_SandboxFlag == true) 
 	{
 		$API_Endpoint = "https://api-3t.sandbox.paypal.com/nvp";
 		$PAYPAL_URL = "https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=";
@@ -193,7 +190,7 @@
 	function hash_call($methodName,$nvpStr)
 	{
 		//declaring of global variables
-		global $API_Endpoint, $version, $API_UserName, $API_Password, $API_Signature;
+		global $API_Endpoint, $version, $paypal_API_UserName, $paypal_API_Password, $paypal_API_Signature;
 		global $USE_PROXY, $PROXY_HOST, $PROXY_PORT;
 		global $gv_ApiErrorURL;
 		global $sBNCode;
@@ -216,7 +213,7 @@
 			curl_setopt ($ch, CURLOPT_PROXY, $PROXY_HOST. ":" . $PROXY_PORT); 
 
 		//NVPRequest for submitting to server
-		$nvpreq="METHOD=" . urlencode($methodName) . "&VERSION=" . urlencode($version) . "&PWD=" . urlencode($API_Password) . "&USER=" . urlencode($API_UserName) . "&SIGNATURE=" . urlencode($API_Signature) . $nvpStr . "&BUTTONSOURCE=" . urlencode($sBNCode);
+		$nvpreq="METHOD=" . urlencode($methodName) . "&VERSION=" . urlencode($version) . "&PWD=" . urlencode($paypal_API_Password) . "&USER=" . urlencode($paypal_API_UserName) . "&SIGNATURE=" . urlencode($paypal_API_Signature) . $nvpStr . "&BUTTONSOURCE=" . urlencode($sBNCode);
 
 		//setting the nvpreq as POST FIELD to curl
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $nvpreq);
