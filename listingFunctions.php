@@ -4,34 +4,55 @@
     //currently running.  It will then return the correct string for the result
     function getTime($DateAcceptPFO,$DateEndAcceptPFO)
     {
+        $start = strtotime($DateAcceptPFO);
+        $now = strtotime(date("Y-m-d H:i:s"));
+        $ends = strtotime($DateEndAcceptPFO);
         $timeString = 'error';
-        if(date("Y-m-d H:i:s") < $DateAcceptPFO)
+        if($now < $start)
         {
             //The code below will get the time to the auction begining.
-            $ends = strtotime($row[DatePFOAccept]);
-            $now = strtotime(date("Y-m-d H:i:s"));
-            $difference = $now - $ends;
+            $difference = $start - $now;
             $years = abs(floor($difference / 31536000));
             $days = abs(floor(($difference-($years * 31536000))/86400));
             $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
             $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
-            $timeString = 'Begins in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes';
+            
+            $timeString = 'Begins in:
+                ';
+            if($days != 0)
+            {
+            $timeString = $timeString . $days . ' Days, ';
+            }
+            if($hours != 0)
+            {
+            $timeString = $timeString . $hours . ' Hours, ';
+            }
+            $timeString = $timeString . $mins . ' Minutes';
         }
-        elseif(date("Y-m-d H:i:s") > $DateEndAcceptPFO)
+        elseif($now > $DateEndAcceptPFO)
         {
             $timeString = "Auction has ended";
         }
         else
         {
             //The code below will get the time to the auction ending.
-            $ends = strtotime($DateEndAcceptPFO);
-            $now = strtotime(date("Y-m-d H:i:s"));
             $difference = $ends - $now;
             $years = abs(floor($difference / 31536000));
             $days = abs(floor(($difference-($years * 31536000))/86400));
             $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
             $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
-            $timeString = 'Ends in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes';
+            
+            $timeString = 'Begins in:
+                ';
+            if($days != 0)
+            {
+            $timeString += $days . ' Days, ';
+            }
+            if($hours != 0)
+            {
+            $timeString += $hours . ' Hours, ';
+            }
+            $timeString += $mins . ' Minutes';
         }
         
         return $timeString;
@@ -42,11 +63,14 @@
     //and returns this back
     function getStatus($DateAcceptPFO,$DateEndAcceptPFO)
     {
-        if(date("Y-m-d H:i:s") < $DateAcceptPFO && date("Y-m-d H:i:s") < $DateEndAcceptPFO)
+        $start = strtotime($DateAcceptPFO);
+        $now = strtotime(date("Y-m-d H:i:s"));
+        $ends = strtotime($DateEndAcceptPFO);
+        if($now > $start && $now < $ends)
         {
             $status = "Open for Bids";
         }
-        elseif(date("Y-m-d H:i:s") < $DateAcceptPFO)
+        elseif($now < $start)
         {
             $status = "Bidding has not yet started";
         }
@@ -62,13 +86,16 @@
     //1=open 2=Not Started 3=Ended
     function getStatusInt($DateAcceptPFO,$DateEndAcceptPFO)
     {
-        if(date("Y-m-d H:i:s") < $DateAcceptPFO && date("Y-m-d H:i:s") < $DateEndAcceptPFO)
-        {
-            $status = 0;
-        }
-        elseif(date("Y-m-d H:i:s") < $DateAcceptPFO)
+        $start = strtotime($DateAcceptPFO);
+        $now = strtotime(date("Y-m-d H:i:s"));
+        $ends = strtotime($DateEndAcceptPFO);
+        if($now > $start && $now < $ends)
         {
             $status = 1;
+        }
+        elseif($now < $start)
+        {
+            $status = 0;
         }
         else
         {

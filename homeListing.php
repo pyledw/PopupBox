@@ -104,8 +104,9 @@
                     
                     $row4 = mysql_fetch_array($result4);
                     
-                    $statusOfListing = getStatusInt($row[DateAcceptPFO], $row[DateEndAcceptPFO]);
-                    echo $statusOfListing;
+                    
+                    $statusOfListing = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
+                    
                     if($statusOfListing == 0)
                     {
                         echo 'Listing has not yet started.';
