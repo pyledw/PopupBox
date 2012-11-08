@@ -64,13 +64,9 @@
                 <div id="layoutBottom">
 
                     <p>
-
-                        <img src="images/Fox.png" alt="Fox" style="float:left" />
-                        <img src="images/NetQuote.png" alt="Net Quote" style="float: left" />
-                        <img src="images/FirstTN.png" alt="FirstTN" style="float: left" />
-                        <img src="images/BBB.png" alt="BBB" style="float:left" />
-                        <img src="images/Flame.png" alt="Flame" style="float:left" />
-                        <img src="images/homes.png" alt="Homes" style="float:left" />
+                        <img src="images/BBB.png" alt="BBB" style="float:right" />
+                        <img src="images/Flame.png" alt="Flame" style="float:right" />
+                        <img src="images/homes.png" alt="Homes" style="float:right" />
                     </p>
                 </div>
         </div>

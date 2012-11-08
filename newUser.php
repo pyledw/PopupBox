@@ -79,17 +79,15 @@
                          <td>
                              <lable class="label">Zip:</label><br/><input title="Zip code" type="text" name="zip" class="required">
                          </td>
-                         <td  >
-                             <lable class="label">Birthday:</label><br/><input title="Birth Date" type="text" name="DOB" class="required">
-                         </td>
                          <td>
-                             <lable class="label">SSN:</label><br/><input title="last 4 of SSN" type="text" name="SSN" class="required">
+                             <lable class="label">Age:</label><br/><input title="Must be over 18 years of age" type="text" name="age" class="required number" min="18">
                          </td>
+                          
                     </tr>
                     <tr>
                          <td colspan="3" align="left">
                                 <button type="submit" class="button">Save and Continue</button>
-                                 <button type="reset" class="button">Clear</button>
+                                 <button type="reset" class="button">Reset</button>
                                 
                          </td>
                     </tr>

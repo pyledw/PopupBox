@@ -9,10 +9,9 @@
                     <li>
                             <ul>
                                     <li><a href="support.php">Contact LeaseHood</a></li>
-                                    <li><a href="#">‘Hood in the ‘Hood</a></li>
+                                    <li><a href="#">LeaseHood in Your Hood</a></li>
                                     <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Endorsed Providers</a></li>
-                                    <li><a href="#">Advertise/Be Endorsed</a></li>
+                                    <li><a href="#">Linkedin</a></li>
                             </ul>
                     </li>
             </ul>
@@ -32,9 +31,9 @@
                     <li>
                             <ul>
                                     <li><a href="searchHomes.php">Find a Property</a></li>
-                                    <li><a href="newHousingApplication.php">List Tenancy</a></li>
+                                    <li><a href="myHood.php.php">My Account</a></li>
                                     <li><a href="#">Tips for Success</a></li>
-                                    <li><a href="myHood.php">My Hood/Pay Rent</a></li>
+                                    
                             </ul>
                     </li>
 
@@ -46,7 +45,7 @@
                                     <li><a href="#">Philosophy/Mission</a></li>
                                     <li><a href="testimonials.php">Testimonials</a></li>
                                     <li><a href="affiliations.php">Affiliations/Licensing</a></li>
-                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">Terms of Use</a></li>
                             </ul>
                     </li>

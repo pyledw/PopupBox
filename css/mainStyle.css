@@ -2,6 +2,7 @@
 /*Gradient Fill for the background of the body*/
 body 
 {
+        font-family: calibri;
 	min-height: 1000px;
 	background: rgb(255,255,255); /* Old browsers */
 	background: -moz-linear-gradient(-45deg,  rgba(255,255,255,1) 0%, rgba(204,201,146,1) 32%, rgba(204,201,146,1) 95%, rgba(166,158,100,1) 100%); /* FF3.6+ */
@@ -12,7 +13,7 @@ body
 	background: linear-gradient(135deg,  rgba(255,255,255,1) 0%,rgba(204,201,146,1) 32%,rgba(204,201,146,1) 95%,rgba(166,158,100,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#a69e64',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
         text-align: center;
-
+        
 }
 
 .ie body{
@@ -69,14 +70,12 @@ h2.subHeader{
 */
 h1.Title{
 	color:#4F6228;
-	font:Times;
 	font-weight: bold;
 	padding:0px 0px 0px 20px;
 
 }
 h2.Title{
 	color:#000000;
-	font:Times;
 	font-size: .9em;
 	padding:0 0 0 60px;
 }

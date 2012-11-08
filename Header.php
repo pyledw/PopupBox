@@ -82,9 +82,9 @@
 	<div id="wrapper">
             
             <div id="header">
-            <a href="index.php"><img class="logo" src="images/leasehoodlogo.jpg" alt="LeaseHood Logo" /></a>
+            <a href="index.php"><img class="logo" src="images/logo.jpg" alt="LeaseHood Logo" /></a>
             
-            <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
+            <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Rental Homes"</h2>
             <?php
                 //This retrieves the filename of the current window
 	       	$currentFile = $_SERVER["REQUEST_URI"];;
