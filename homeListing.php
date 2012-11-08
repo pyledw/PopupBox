@@ -30,6 +30,7 @@
         <!--Content will be retrieved via php.  This is just a template for user latter-->
         <h1 class="Title"><?php echo $row[Address] . " - " . $row[PropertyID] ?></h1>
         <hr class="Title" />
+        
         <table id="houseListing">
             <tr>
                 <td colspan="3" width="600px">
@@ -80,21 +81,42 @@
                 </td>
                 <td rowspan="6" align="center">
                     <?php 
-                    if($_SESSION[type] == "1")
+                    
+                    //This section is retrieving the bids and adding them to the page
+                    $result4 = mysql_query("SELECT * FROM APPLICATION
+                        INNER JOIN USER
+                        ON APPLICATION.UserID=USER.UserID
+                        WHERE USER.UserID='$_SESSION[userID]'");
+                    
+                    $row4 = mysql_fetch_array($result4);
+                    
+                    
+                    if($row4[IsPaid])
+                    {
+                        if($row4[IsApproved])
                         {
-                            echo '<form id="placebid" method="post">
-                        <font class="greyBackground">My Proposal for occupancy</font><br/>
-                        <label class="label">Bid Amount:</label><input type="text" name="amt" /><br/>
-                        <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                        <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                        <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
-                        <button class="button" type="submit">Submit</button>
-                        </form>';
-                        } 
-                    else
-                        {
-                            echo 'You must be a Tennant to bid';
+                            if($_SESSION[type] == "1")
+                                {
+                                    echo '<form id="placebid" method="post">
+                                          <font class="greyBackground">My Proposal for occupancy</font><br/>
+                                          <label class="label">Bid Amount:</label><input type="text" name="amt" /><br/>
+                                          <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
+                                          <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
+                                          <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                          <button class="button" type="submit">Submit</button>
+                                          </form>';
+                                } 
                         }
+                        else
+                        {
+                            echo 'Your Applciation is yet to be approved.';
+                        }
+                    }
+                    else
+                    {
+                        echo 'Your application must be paid and approved before you can bid';
+                    }
+                    
                     ?>
                     
                    

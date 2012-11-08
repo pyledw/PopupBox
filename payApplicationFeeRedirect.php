@@ -4,10 +4,10 @@
         include_once 'config.inc.php';
         $con = get_dbconn("");
         echo $userID;
+        
         mysql_query("UPDATE APPLICATION SET IsPaid='1'
             WHERE UserID = '$userID'");
         
         
         header( 'Location: /myHood.php' );
-
 ?>

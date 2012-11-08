@@ -26,9 +26,11 @@ $result = mysql_query("SELECT * FROM BID
 $accept = TRUE;
 while($row = mysql_fetch_array($result))
 {
-    if($row[DatePFOEndAccept] > date())
+    
+    if($row[DatePFOEndAccept] > date('Y-m-d h:i:s'))
     {
-        header( 'Location: /homeListing.php?listingID='.$propertyID );
+        echo 'LISTING HAS EXPIRED';
+        
     }
     if($row[UserID] == $userID)
     {

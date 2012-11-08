@@ -83,7 +83,7 @@
             <h1 class="header">Lease<font color="#000000">Hood...</font></h1> <h2 class="subHeader">"Putting the Best Residents in Homes"</h2>
             <?php
                 //This retrieves the filename of the current window
-	       	$currentFile = $_SERVER["PHP_SELF"];
+	       	$currentFile = $_SERVER["REQUEST_URI"];;
 		$parts = Explode('/', $currentFile);
 		$fileName = $parts[count($parts) - 1];
                                                 
