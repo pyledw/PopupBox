@@ -26,6 +26,7 @@ $result = mysql_query("SELECT * FROM BID
 $accept = TRUE;
 $active = TRUE;
 $more = TRUE;
+$highestAmount = 0;
 
 while($row = mysql_fetch_array($result))
 {
@@ -47,50 +48,98 @@ while($row = mysql_fetch_array($result))
     if($row[MonthlyRate] > $bidAmount)
     {
            $more = FALSE;
+           if(!$more)
+           {
+               $highestAmount = $row[MonthlyRate];
+           }
     }
 }
+?>
+<form id="placebid" method="post" action="placeBid.php">
 
+<table style="margin-top: -5px;" class="tableForm">
+    <tr>
+        <td>
+            My Proposal for occupancy
+        </td>
+    </tr>
+<?php
 
 if($accept && $active)
 {
-
-    echo '<form id="placebid" method="post" action="placeBid.php">
-    <font class="greyBackground">My Proposal for occupancy</font><br/>';
     if(!$more)
         {
-            echo 'You may continue, but there is a bid that is higher than yours.  Consider increasing your bid';
+            echo '<tr>
+                    <td>
+                        You may continue, The highest bid is:
+                        $'.$highestAmount .' 
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        Consider increasing your bid.
+';
         }
     echo'
-    <label class="label">Your Bid: '.$_GET["amt"].'</label><br/>
-    <p>Are you sure you want to submit your bid?</p>
-    <input type="text" style="display: none;" name="amt" value="'.$bidAmount.'" />
-    <input type="text" style="display: none;" name="auctionID" value="'.$aucitonID.'" />
-    <input type="text" style="display: none;" name="userID" value="'.$userID.'" />
-    <input type="text" style="display: none;" name="propertyID" value="'.$propertyID.'" />
-    <button class="button" type="submit">Submit</button>
-    </form>';
+    <tr>
+        <td>
+            Your Bid: '.$_GET["amt"].'
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Are you sure you want to submit your bid?
+        </td>
+    </tr> 
+    <tr>
+        <td>
+            <input type="text" style="display: none;" name="amt" value="'.$bidAmount.'" />
+            <input type="text" style="display: none;" name="auctionID" value="'.$aucitonID.'" />
+            <input type="text" style="display: none;" name="userID" value="'.$userID.'" />
+            <input type="text" style="display: none;" name="propertyID" value="'.$propertyID.'" />
+        </td>
+    </tr> 
+    <tr>
+        <td>
+            <button class="button" type="submit">Submit</button>
+        </td>
+    </tr>';
 }
 else
 {
-    echo '<form id="placebid" method="post" action="placeBid.php">
-    <font class="greyBackground">My Proposal for occupancy</font><br/>
-    There is an error with your bid.<br/>
+    echo '
+        <tr>
+            <td>
+                There is an error with your bid.
+            </td>
+        </tr> 
     ';
     if(!$accept)
-    {
-        
-        echo 'Your Previus Bid was higher than your current offer<br/>
-       <label class="label">Your Bid: '.$_GET["amt"].'</label><br/>
-        <label class="label">Your Highest Bid: '.$lastBid.'</label><br/>';
-    }
-    if(!$active)
-    {
-        echo 'The Listing is no longer accepting PFOs';
-    }
-    
-    
-    echo '
-    </form>';
-}
+        {
 
+            echo '
+                <tr>
+                    <td>
+                        Your Previus Bid was higher than your current offer
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <label class="label">Your Bid: '.$_GET["amt"].'</label><br/>
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <label class="label">Your Highest Bid: '.$lastBid.'</label>
+                    </td>
+                </tr>
+            ';
+        }
+        if(!$active)
+        {
+            echo 'The Listing is no longer accepting PFOs';
+        }
+}
 ?>
+    </form>
+</table>

@@ -37,7 +37,11 @@
                     <?php echo $row[Address] . " - " . $row[PropertyID] ?>  <a href="Http://www.google.com/maps?q=<?php echo $row[Address] . " " . $row[City] . " " . $row[State] ?>">Map It</a> - Print Brochure
                 </td>
                 <td colspan="1" class="greyBackground">
-                    Current Rental Rate: $900
+                    Current Rental Rate:
+                    <?php $result5 = mysql_query("SELECT max(MonthlyRate) FROM BID");
+                            $row5 = mysql_fetch_array($result5);
+                            echo "$" . $row5[0];?> 
+                    
                 </td>
             </tr>
             <tr>
@@ -59,9 +63,9 @@
                     <a class="button" href="#">Print Flyer</a><br/><br/>
                 </td>
                 <td>
-                    BR: <?php echo $row[Bedrooms] ?> BA: <?php echo $row[Bath] ?><br/>
-                    SQ: <?php echo $row[SQ] ?><br/>
-                    AC: <?php echo $row[AC] ?> Heat: <?php echo $row[Heat] ?><br/>
+                    BR: <?php echo $row[Bedroom] ?> BA: <?php echo $row[Bath] ?><br/>
+                    SQ: <?php echo $row[SF] ?><br/>
+                    AC: <?php echo $row[AC] ?> Heat: <?php echo $row[Heating] ?><br/>
                     Pets: <?php echo $row[AllowDog] ?><br/>
                     Deposit: <?php echo "$".$row[RequiredDeposit] ?><br/>
                     Open House 1: <?php echo $row[DateTimeOpenHouse1] ?><br/>
@@ -146,7 +150,8 @@
                         ON APPLICATION.ApplicationID=BID.ApplicationID
                         INNER JOIN USER
                         ON APPLICATION.UserID=USER.UserID
-                        WHERE AuctionID='$row[AuctionID]'");
+                        WHERE AuctionID='$row[AuctionID]'
+                        ORDER BY MonthlyRate DESC");
                     
                     while($row2 = mysql_fetch_array($result2))
                     {
