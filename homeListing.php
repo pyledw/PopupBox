@@ -84,44 +84,46 @@
                     
                     //This section is retrieving the bids and adding them to the page
                     $result4 = mysql_query("SELECT * FROM APPLICATION
-                        INNER JOIN USER
-                        ON APPLICATION.UserID=USER.UserID
-                        WHERE USER.UserID='$_SESSION[userID]'");
+                        WHERE UserID='$_SESSION[userID]'");
                     
                     $row4 = mysql_fetch_array($result4);
                     
-                    if(isset($row4[IsPaid]))
+                    if($_SESSION[type] == "1")
                     {
-                        if($row4[IsPaid])
+                        if(isset($row4[IsPaid]))
                         {
-                            if($row4[IsApproved])
+                            if($row4[IsPaid] == "1")
                             {
-                                if($_SESSION[type] == "1")
-                                    {
-                                        echo '<form id="placebid" method="post">
-                                              <font class="greyBackground">My Proposal for occupancy</font><br/>
-                                              <label class="label">Bid Amount:</label><input type="text" name="amt" /><br/>
-                                              <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                                              <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                                              <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
-                                              <button class="button" type="submit">Submit</button>
-                                              </form>';
-                                    } 
+                                
+                                if($row4[IsApproved] == "1")
+                                {
+
+                                            echo '<form id="placebid" method="post">
+                                                  <font class="greyBackground">My Proposal for occupancy</font><br/>
+                                                  <label class="label">Bid Amount:</label><input class="required number" type="text" name="amt" /><br/>
+                                                  <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
+                                                  <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
+                                                  <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                                  <button class="button" type="submit">Submit</button>
+                                                  </form>';
+
+                                }
+                                else
+                                {
+                                    echo 'Your Applciation is yet to be approved.';
+                                }
                             }
                             else
                             {
-                                echo 'Your Applciation is yet to be approved.';
+                                echo 'Your application must be paid and approved before you can bid';
                             }
                         }
-                        else
+                        else 
                         {
-                            echo 'Your application must be paid and approved before you can bid';
+                            echo 'no applicaiton on file';
                         }
                     }
-                    else 
-                    {
-                        echo 'no applicaiton on file';
-                    }
+                    
                     
                     ?>
                     
@@ -181,6 +183,13 @@
             url += "&propertyID=" + $('[name=propertyID]').val();
             jQuery.facebox({ ajax: url });
         })
+        $(document).ready(function(){
+            $("#placebid").validate({
+                onkeyup: false,
+                onclick: false
+            });
+        });
+    
     </script>
         
 

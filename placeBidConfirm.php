@@ -24,19 +24,21 @@ $result = mysql_query("SELECT * FROM BID
         }
 
 $accept = TRUE;
+$active = TRUE;
+$more = TRUE;
+
 while($row = mysql_fetch_array($result))
 {
     
     if($row[DatePFOEndAccept] > date('Y-m-d h:i:s'))
     {
-        echo 'LISTING HAS EXPIRED';
+        $active = FALSE;
         
     }
     if($row[UserID] == $userID)
     {
        if($row[MonthlyRate] > $bidAmount)
        {
-           echo 'Your last bid was more';
            $lastBid = $row[MonthlyRate];
            $accept = FALSE;
            break;
@@ -44,14 +46,21 @@ while($row = mysql_fetch_array($result))
     }
     if($row[MonthlyRate] > $bidAmount)
     {
-        Echo "Your offer is lower than the highest rate.  You may continue, but consider increasing your bid";
+           $more = FALSE;
     }
-    
 }
-if($accept)
+
+
+if($accept && $active)
 {
+
     echo '<form id="placebid" method="post" action="placeBid.php">
-    <font class="greyBackground">My Proposal for occupancy</font><br/>
+    <font class="greyBackground">My Proposal for occupancy</font><br/>';
+    if(!$more)
+        {
+            echo 'You may continue, but there is a bid that is higher than yours.  Consider increasing your bid';
+        }
+    echo'
     <label class="label">Your Bid: '.$_GET["amt"].'</label><br/>
     <p>Are you sure you want to submit your bid?</p>
     <input type="text" style="display: none;" name="amt" value="'.$bidAmount.'" />
@@ -65,10 +74,22 @@ else
 {
     echo '<form id="placebid" method="post" action="placeBid.php">
     <font class="greyBackground">My Proposal for occupancy</font><br/>
-    <label class="label">Your Bid: '.$_GET["amt"].'</label><br/>
-    <label class="label">Your Highest Bid: '.$lastBid.'</label><br/>
+    There is an error with your bid.<br/>
+    ';
+    if(!$accept)
+    {
+        
+        echo 'Your Previus Bid was higher than your current offer<br/>
+       <label class="label">Your Bid: '.$_GET["amt"].'</label><br/>
+        <label class="label">Your Highest Bid: '.$lastBid.'</label><br/>';
+    }
+    if(!$active)
+    {
+        echo 'The Listing is no longer accepting PFOs';
+    }
     
-
+    
+    echo '
     </form>';
 }
 
