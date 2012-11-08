@@ -57,6 +57,7 @@
         return $status;
     }
     
+    //This funciton retrieves the highest bid on the property that corisponds to the given property ID
     function getHighBid($propertyID)
     {
         include_once 'config.inc.php';
@@ -85,7 +86,7 @@
         return $maxBid;
     }
     
-    function displayMyProperty($row)
+    function displayMyProperty()
     {
         
     }
