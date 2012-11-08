@@ -29,21 +29,27 @@
     while($row = mysql_fetch_array($result))
     {
         
-        $ends = strtotime($row[DatePFOEndAccept]);
-        $now = strtotime(date("Y-m-d H:i:s"));
+        
+        include_once 'listingFunctions.php';
+        
+        //below is call to function that returns the timestring of time remaining or time till start
+        $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+        
+        
+        //The code below will return the listings status
+        $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
         
 
-        $difference = $ends - $now;
-        $years = abs(floor($difference / 31536000));
-        $days = abs(floor(($difference-($years * 31536000))/86400));
-        $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
-        $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
+        //this code is retrieving the highest bid of the auction and returning it
+        
+        $maxBid = getHighBid($row[PropertyID]);
+        
         
         echo '    <div id="searchResult">
         <div class="header">
-            <font class="greyTextArea" style="float:right;">Status:Show Period Closed</font>
-            <font class="greyTextArea" style="float:right;">Current Rent:$1,500</font>
-            <font class="redTextArea" style="float:right;">Ends in: ' . $years . ' Years, ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes</font>
+            <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
+            <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
+            <font class="redTextArea" style="float:right;">' . $timeString . '</font>
         </div>
         
         <div class="content">

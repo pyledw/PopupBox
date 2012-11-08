@@ -64,26 +64,21 @@
         $con = get_dbconn("");
         
         //this code is retrieving the highest bid of the auction and returning it
-        $result = mysql_query("SELECT * FROM BID
+        $result = mysql_query("SELECT max(MonthlyRate) FROM BID
                         INNER JOIN AUCTION
                         ON AUCTION.AuctionID=BID.AuctionID
-                        INNER JOIN APPLICATION
-                        ON APPLICATION.ApplicationID=BID.ApplicationID
-                        INNER JOIN USER
-                        ON USER.UserID=APPLICATION.UserID
-                        WHERE PropertyID='$propertyID'
-                        ORDER BY MonthlyRate");
+                        WHERE PropertyID='$propertyID'");
         
         
         $row = mysql_fetch_array($result);
         
-        if(isset($row[MonthlyRate]))
+        if(isset($row[0]))
         {
-            $maxBid = 'High PFO:' . $row[MonthlyRate];
+            $maxBid = $row[0];
         }
         else
         {
-            $maxBid = 'No Bids' ;
+            $maxBid = '0.00' ;
         }
         
         

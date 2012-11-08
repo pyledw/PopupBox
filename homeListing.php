@@ -24,6 +24,20 @@
         }
         
         $row = mysql_fetch_array($result);
+        include_once 'listingFunctions.php';
+        
+        //below is call to function that returns the timestring of time remaining or time till start
+        $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+        
+        
+        //The code below will return the listings status
+        $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+        
+
+        //this code is retrieving the highest bid of the auction and returning it
+        
+        $maxBid = getHighBid($row[PropertyID]);
+        
 ?>
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
     <div id="mainContent">
@@ -38,9 +52,7 @@
                 </td>
                 <td colspan="1" class="greyBackground">
                     Current Rental Rate:
-                    <?php $result5 = mysql_query("SELECT max(MonthlyRate) FROM BID");
-                            $row5 = mysql_fetch_array($result5);
-                            echo "$" . $row5[0];?> 
+                    <?php echo "$" . $maxBid;?> 
                     
                 </td>
             </tr>
@@ -92,39 +104,49 @@
                     
                     $row4 = mysql_fetch_array($result4);
                     
-                    if($_SESSION[type] == "1")
+                    $dateEnd = strtotime($row[DatePFOEndAccept]);
+                    $dateNow = time() - 24 * 60 * 60;
+                    
+                    if($dateEnd < $dateNow)
                     {
-                        if(isset($row4[IsPaid]))
+                        echo 'Listing has ended.';
+                    }
+                    else
+                    {
+                    if($_SESSION[type] == "1")
                         {
-                            if($row4[IsPaid] == "1")
+                            if(isset($row4[IsPaid]))
                             {
-                                
-                                if($row4[IsApproved] == "1")
+                                if($row4[IsPaid] == "1")
                                 {
 
-                                            echo '<form id="placebid" method="post">
-                                                  <font class="greyBackground">My Proposal for occupancy</font><br/>
-                                                  <label class="label">Bid Amount:</label><input class="required number" type="text" name="amt" /><br/>
-                                                  <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                                                  <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                                                  <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
-                                                  <button class="button" type="submit">Submit</button>
-                                                  </form>';
+                                    if($row4[IsApproved] == "1")
+                                    {
 
+                                                echo '<form id="placebid" method="post">
+                                                      <font class="greyBackground">My Proposal for occupancy</font><br/>
+                                                      <label class="label">Bid Amount:</label><input class="required number" type="text" name="amt" /><br/>
+                                                      <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
+                                                      <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
+                                                      <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                                      <button class="button" type="submit">Submit</button>
+                                                      </form>';
+
+                                    }
+                                    else
+                                    {
+                                        echo 'Your Applciation is yet to be approved.';
+                                    }
                                 }
                                 else
                                 {
-                                    echo 'Your Applciation is yet to be approved.';
+                                    echo 'Your application must be paid and approved before you can bid';
                                 }
                             }
-                            else
+                            else 
                             {
-                                echo 'Your application must be paid and approved before you can bid';
+                                echo 'no applicaiton on file';
                             }
-                        }
-                        else 
-                        {
-                            echo 'no applicaiton on file';
                         }
                     }
                     
