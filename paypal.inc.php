@@ -55,31 +55,29 @@
 	'-------------------------------------------------------------------------------------------------------------------------------------------
 	' Purpose: 	Prepares the parameters for the SetExpressCheckout API Call for a Digital Goods payment.
 	' Inputs:  
-	'		paymentAmount:  	Total value of the shopping cart
-	'		returnURL:			the page where buyers return to after they are done with the payment review on PayPal
-	'		cancelURL:			the page where buyers return to when they cancel the payment review on PayPal
+	'		item_description:  	A description of the item being paid for
+	'		amount:			The amount, in dollars.
 	'--------------------------------------------------------------------------------------------------------------------------------------------	
 	*/
-	function SetExpressCheckoutDG( $paymentAmount, $returnURL, $cancelURL, $items) 
+	function SetExpressCheckoutDG($item_description, $amount) 
 	{
+		global $paypal_returnURL;
+		global $paypal_cancelURL;
 		//------------------------------------------------------------------------------------------------------------------------------------
 		// Construct the parameter string that describes the SetExpressCheckout API call in the shortcut implementation
 		
-		$nvpstr = "&PAYMENTREQUEST_0_AMT=". $paymentAmount;
+		$nvpstr = "&PAYMENTREQUEST_0_AMT=". $amount;
 		$nvpstr .= "&PAYMENTREQUEST_0_PAYMENTACTION=Sale";
-		$nvpstr .= "&RETURNURL=" . $returnURL;
-		$nvpstr .= "&CANCELURL=" . $cancelURL;
+		$nvpstr .= "&RETURNURL=" . $paypal_returnURL;
+		$nvpstr .= "&CANCELURL=" . $paypal_cancelURL;
 		$nvpstr .= "&PAYMENTREQUEST_0_CURRENCYCODE=USD";
 		$nvpstr .= "&REQCONFIRMSHIPPING=0";
 		$nvpstr .= "&NOSHIPPING=1";
 
-		foreach($items as $index => $item) {
-		
-			$nvpstr .= "&L_PAYMENTREQUEST_0_NAME" . $index . "=" . urlencode($item["name"]);
-			$nvpstr .= "&L_PAYMENTREQUEST_0_AMT" . $index . "=" . urlencode($item["amt"]);
-			$nvpstr .= "&L_PAYMENTREQUEST_0_QTY" . $index . "=" . urlencode($item["qty"]);
-			$nvpstr .= "&L_PAYMENTREQUEST_0_ITEMCATEGORY" . $index . "=Digital";
-		}
+		$nvpstr .= "&L_PAYMENTREQUEST_0_NAME0=" . urlencode($item_description);
+		$nvpstr .= "&L_PAYMENTREQUEST_0_AMT0=" . urlencode($amount);
+		$nvpstr .= "&L_PAYMENTREQUEST_0_QTY0=" . urlencode(1);
+		$nvpstr .= "&L_PAYMENTREQUEST_0_ITEMCATEGORY0=Digital";
 		
 		
 		//'--------------------------------------------------------------------------------------------------------------- 
