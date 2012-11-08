@@ -1,7 +1,13 @@
 <?php 
 	//require 'config.inc.php';
-	session_start(); 
-        
+        session_start();
+        if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60*5)) 
+            {
+                // last request was more than 30 minates ago
+                session_unset();     // unset $_SESSION variable for the runtime 
+                session_destroy();   // destroy session data in storage
+            }
+        $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
          /*This displays all cookies and session data
          foreach ($_SESSION as $key=>$val)
          {
