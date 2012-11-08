@@ -1,6 +1,14 @@
 <?php 
 	//require 'config.inc.php';
         session_start();
+        if(isset($_COOKIE['userID']))
+        {
+            $_SESSION['userID'] = $_COOKIE['userID'];
+            $_SESSION['user'] = $_COOKIE['user'];
+            $_SESSION['type'] = $_COOKIE['type'];
+            $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+        }
+        
         if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60*5)) 
             {
                 // last request was more than 30 minates ago
@@ -8,16 +16,6 @@
                 session_destroy();   // destroy session data in storage
             }
         $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
-         /*This displays all cookies and session data
-         foreach ($_SESSION as $key=>$val)
-         {
-            echo $key." ".$val;
-         }
-         foreach ($_COOKIE as $key=>$val)
-         {
-            echo "<br>$key--> $val";
-         }
-          */
          
 
 

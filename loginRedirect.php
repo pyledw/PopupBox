@@ -5,6 +5,8 @@
         $myName = $_POST["userName"];
         $userPassword = $_POST['password'];
         $lastPage = $_POST['URL'];
+        $loggedIn = $_POST['rememberMe'];
+        
         echo $lastPage;
         
         include_once 'config.inc.php';
@@ -32,6 +34,14 @@
             $_SESSION['userID'] = $userID;
             $_SESSION['user'] = $row[UserName];
             $_SESSION['type'] = $userType;
+            if($loggedIn)
+            {
+                setcookie('userID', $userID);
+                setcookie('user', $row[UserName]);
+                setcookie('type', $userType);
+                
+            }
+            
             if(isset($lastPage))
             {
                 header( 'Location: /'. $lastPage . '' ); 
