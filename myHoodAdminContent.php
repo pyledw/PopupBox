@@ -23,7 +23,7 @@
         {
             
             echo '<div style="display:inline;width:500px;">'. $row[UserID] . " " . $row[LastName] .  ", " . $row[FirstName] . '
-                                <a class="button" href="viewApplication.php?applicationID='.$row[ApplicationID].'" rel="facebox" >View Application</a></div><br/>';
+                                <a class="button" href="viewApplication.php?applicationID='.$row[ApplicationID].'" rel="facebox" >View Application</a></div><br/><br/><br/>';
         }
 
     ?>

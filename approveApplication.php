@@ -10,12 +10,13 @@
 echo "redirect";
 echo $_POST[ApplicationID];
 
-require_once "config.inc.php";
+        require_once "config.inc.php";
         //Connecting to the sql database
         $con = get_dbconn("");
         
-        mysql_query("UPDATE APPLICATION SET IsApproved='Y'
+        $result = mysql_query("UPDATE APPLICATION SET IsApproved='1'
         WHERE ApplicationID = '$_POST[ApplicationID]'");
+
         
         header( 'Location: /myHood.php' );
         

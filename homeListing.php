@@ -90,31 +90,37 @@
                     
                     $row4 = mysql_fetch_array($result4);
                     
-                    
-                    if($row4[IsPaid])
+                    if(isset($row4[IsPaid]))
                     {
-                        if($row4[IsApproved])
+                        if($row4[IsPaid])
                         {
-                            if($_SESSION[type] == "1")
-                                {
-                                    echo '<form id="placebid" method="post">
-                                          <font class="greyBackground">My Proposal for occupancy</font><br/>
-                                          <label class="label">Bid Amount:</label><input type="text" name="amt" /><br/>
-                                          <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                                          <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                                          <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
-                                          <button class="button" type="submit">Submit</button>
-                                          </form>';
-                                } 
+                            if($row4[IsApproved])
+                            {
+                                if($_SESSION[type] == "1")
+                                    {
+                                        echo '<form id="placebid" method="post">
+                                              <font class="greyBackground">My Proposal for occupancy</font><br/>
+                                              <label class="label">Bid Amount:</label><input type="text" name="amt" /><br/>
+                                              <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
+                                              <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
+                                              <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                              <button class="button" type="submit">Submit</button>
+                                              </form>';
+                                    } 
+                            }
+                            else
+                            {
+                                echo 'Your Applciation is yet to be approved.';
+                            }
                         }
                         else
                         {
-                            echo 'Your Applciation is yet to be approved.';
+                            echo 'Your application must be paid and approved before you can bid';
                         }
                     }
-                    else
+                    else 
                     {
-                        echo 'Your application must be paid and approved before you can bid';
+                        echo 'no applicaiton on file';
                     }
                     
                     ?>

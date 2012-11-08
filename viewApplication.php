@@ -626,6 +626,7 @@
         <?php
             if($_SESSION[type] == 3)
             {
+                
                 echo '<br/>
                  <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form>';
             }
