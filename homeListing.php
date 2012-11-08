@@ -104,14 +104,13 @@
                     
                     $row4 = mysql_fetch_array($result4);
                     
-                    $dateEnd = strtotime($row[DatePFOEndAccept]);
-                    $dateNow = time() - 24 * 60 * 60;
-                    
-                    if($dateEnd < $dateNow)
+                    $statusOfListing = getStatusInt($row[DateAcceptPFO], $row[DateEndAcceptPFO]);
+                    echo $statusOfListing;
+                    if($statusOfListing == 0)
                     {
-                        echo 'Listing has ended.';
+                        echo 'Listing has not yet started.';
                     }
-                    else
+                    elseif($statusOfListing == 1)
                     {
                     if($_SESSION[type] == "1")
                         {
@@ -148,6 +147,14 @@
                                 echo 'no applicaiton on file';
                             }
                         }
+                    }
+                    elseif ($statusOfListing == 2) 
+                    {
+                        echo 'The listing has ended';
+                    }
+                    else
+                    {
+                        echo 'Listing Error';
                     }
                     
                     

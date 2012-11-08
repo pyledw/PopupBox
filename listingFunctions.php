@@ -10,14 +10,14 @@
             //The code below will get the time to the auction begining.
             $ends = strtotime($row[DatePFOAccept]);
             $now = strtotime(date("Y-m-d H:i:s"));
-            $difference = $ends - $now;
+            $difference = $now - $ends;
             $years = abs(floor($difference / 31536000));
             $days = abs(floor(($difference-($years * 31536000))/86400));
             $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
             $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
             $timeString = 'Begins in: ' . $days . ' Days, ' . $hours . ' Hours, ' . $mins . ' Minutes';
         }
-        else if(date("Y-m-d H:i:s") > $DateEndAcceptPFO)
+        elseif(date("Y-m-d H:i:s") > $DateEndAcceptPFO)
         {
             $timeString = "Auction has ended";
         }
@@ -42,17 +42,37 @@
     //and returns this back
     function getStatus($DateAcceptPFO,$DateEndAcceptPFO)
     {
-        if(date("Y-m-d H:i:s") > $DateAcceptPFO && date("Y-m-d H:i:s") < $DateEndAcceptPFO)
+        if(date("Y-m-d H:i:s") < $DateAcceptPFO && date("Y-m-d H:i:s") < $DateEndAcceptPFO)
         {
             $status = "Open for Bids";
         }
-        else if(date("Y-m-d H:i:s") < $DateAcceptPFO)
+        elseif(date("Y-m-d H:i:s") < $DateAcceptPFO)
         {
             $status = "Bidding has not yet started";
         }
         else
         {
             $status = "Bidding has Ended";
+        }
+        return $status;
+    }
+    
+    //Function gets the two times, and compares them to get the status.
+    //It then returns and int to designate the status of the auction.
+    //1=open 2=Not Started 3=Ended
+    function getStatusInt($DateAcceptPFO,$DateEndAcceptPFO)
+    {
+        if(date("Y-m-d H:i:s") < $DateAcceptPFO && date("Y-m-d H:i:s") < $DateEndAcceptPFO)
+        {
+            $status = 0;
+        }
+        elseif(date("Y-m-d H:i:s") < $DateAcceptPFO)
+        {
+            $status = 1;
+        }
+        else
+        {
+            $status = 2;
         }
         return $status;
     }
