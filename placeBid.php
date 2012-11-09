@@ -37,7 +37,7 @@
                     ('$auctionID','$applicationID','$amount')");
 
 
-                    //header( 'Location: /homeListing.php?listingID='.$propertyID );
+                    header( 'Location: /homeListing.php?listingID='.$propertyID );
                 }
                 else
                 {
@@ -55,7 +55,7 @@
                     } catch (Exception $e) {
                         echo 'Connection failed. ' . $e->getMessage();
                     }
-                    //header( 'Location: /homeListing.php?listingID='.$propertyID );
+                    header( 'Location: /homeListing.php?listingID='.$propertyID );
                 }
         }
             
