@@ -28,7 +28,7 @@
         //The below if statments are testing to see what point the applicaiton is at.
         //It checks to see if it has been approved, then if it has been paid, and finally
         //it checks to see if it was compleated.
-        if($row['IsApproved'] == 'Y')
+        if($row['IsApproved'] == '1')
         {
             echo '
         <div>
@@ -80,11 +80,7 @@
             
         
     ?>
-    <br/>
-    Based on your application, you are most likely to be considered for the following maximum monthly rent :
-    <font class="tanTextArea">Number would go here</font>
 
-    
     <h1>My PFOs</h1>
     <?php
         
@@ -168,7 +164,7 @@
             
         echo '</div>
             <div class="column3">
-            DESCRIPTION<br/>
+            '. $row2[Description] .'
             
         </div>
         <div class="column4">

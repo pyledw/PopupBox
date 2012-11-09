@@ -3,7 +3,7 @@
 <?php
 session_start();
 $propertyID = $_GET["propertyID"];
-$aucitonID = $_GET["auctionID"];
+$auctionID = $_GET["auctionID"];
 $bidAmount = $_GET["amt"];
 $userID = $_SESSION[userID];
 
@@ -11,12 +11,13 @@ include_once 'config.inc.php';
 
 $con = get_dbconn("");
 
+    
 $result = mysql_query("SELECT * FROM BID
            INNER JOIN APPLICATION
            ON BID.ApplicationID=APPLICATION.ApplicationID
            INNER JOIN USER
            ON APPLICATION.UserID=USER.UserID
-           WHERE AuctionID='$aucitonID'");
+           WHERE AuctionID='$auctionID'");
 
  if(!$result)
         {

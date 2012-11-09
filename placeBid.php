@@ -2,8 +2,6 @@
     session_start();
     if(isset($_SESSION[userID]))
         {
-            if($_SESSION[type] == "1")
-            {
                 $userID = $_POST[userID];
                 $propertyID = $_POST[propertyID];
                 $auctionID = $_POST[auctionID];
@@ -59,7 +57,6 @@
                     }
                     header( 'Location: /homeListing.php?listingID='.$propertyID );
                 }
-            }
         }
             
 ?>
