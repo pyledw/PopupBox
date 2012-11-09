@@ -4,8 +4,9 @@
         $title = "LeaseHood in Your 'Hood";
 	include 'Header.php';
 ?>
-<div id="maincontent">
+
 <h1 class="Title">LeaseHood in Your 'Hood</h1>
+<div id="maincontent">
 <p>
     LeaseHood recognizes that if you are reading this, you are very likely among
     the top 10% most affluent individuals of the world.  The remaining 90%, 
