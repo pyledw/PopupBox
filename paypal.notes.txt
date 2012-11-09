@@ -3,7 +3,8 @@ ADD THIS BUTTON TO OUR CHECKOUT PAGE.  ITS THE BUTTON THAT SAYS 'PAY WITH PAYPAL
 <!-- INFO: The post URL "checkout.php" is invoked when clicked on "Pay with PayPal" button.-->
 
 <form action='checkout.php' METHOD='POST'>
-	<input type='image' name='paypal_submit' id='paypal_submit'  src='https://www.paypal.com/en_US/i/btn/btn_dg_pay_w_paypal.gif' border='0' align='top' alt='Pay with PayPal'/>
+	<input type='image' name='paypal_submit' id='paypal_submit'  
+		src='https://www.paypal.com/en_US/i/btn/btn_dg_pay_w_paypal.gif' border='0' align='top' alt='Pay with PayPal'/>
 </form>
 
 

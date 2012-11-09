@@ -9,6 +9,7 @@
 	Defines all the global variables and the wrapper functions 
 	********************************************/
 	include_once 'config.inc.php';
+	include_once 'log.inc.php';
 
 	$PROXY_HOST = '127.0.0.1';
 	$PROXY_PORT = '808';
@@ -63,6 +64,7 @@
 	{
 		global $paypal_returnURL;
 		global $paypal_cancelURL;
+
 		//------------------------------------------------------------------------------------------------------------------------------------
 		// Construct the parameter string that describes the SetExpressCheckout API call in the shortcut implementation
 		
