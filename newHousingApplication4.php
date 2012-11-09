@@ -36,8 +36,8 @@ $title = "New Application #4";
      previous input if the user has already completed this page-->
 <div id="mainContent">
 <form id="newApplicationForm" method="post" action="newHousingApplication4Redirect.php">
-        <table class="tableForm">
-            <font class="formheader">Other Information</font>
+        <table class="tableForm" width="1000px">
+            <font class="formheader" style="left:600px;">Other Information</font>
             <tr>
                 <th colspan="3">
                     <h3>Emergency Contact</h3>    
@@ -147,8 +147,9 @@ $title = "New Application #4";
             </tr>
             <tr>
                 <td colspan="3">
+                    <a class="button" href="newHousingApplication3.php">Back</a>
                     <button type="submit" class="button">Save and Continue</button>
-                    <button type="reset" class="button">Clear</button>
+                    <a class="button" href="myHood.php">Exit without saving</a>
                 </td>
             </tr>
             <tr>

@@ -13,13 +13,6 @@
     //Casting the query results on to $row
     $row = mysql_fetch_array($result);
     
-    //setting the current page compleated
-    if($row[PageCompleate != "6"])
-    {
-        mysql_query("UPDATE APPLICATION SET PageCompleted='4'
-            WHERE UserID = '$_SESSION[userID]'");
-    }
-    
     //Query to retrieve the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='$_SESSION[userID]'");

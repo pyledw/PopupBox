@@ -35,8 +35,8 @@
 
 <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplication3Redirect.php">
-            <table class="tableForm">
-                <font class="formheader">Residence History</font>
+            <table class="tableForm" width="1000px">
+                <font class="formheader" style="left:400px;">Residence History</font>
                 <?php
                 if(mysql_num_rows($result) > 0)
                 {
@@ -459,8 +459,9 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <button type="submit" class="button">Save and Continue</button>
-                        <button type="reset" class="button">Clear</button>
+                        <a class="button" href="newHousingApplication2.php">Back</a>
+                    <button type="submit" class="button">Save and Continue</button>
+                    <a class="button" href="myHood.php">Exit without saving</a>
                     </td>        
                 </tr>
              <tr>

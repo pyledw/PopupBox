@@ -32,8 +32,8 @@ include 'Header.php';
      previus input if the user has already compeleted this page-->
     <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplicationRedirect.php">
-         <table class="tableForm" width="900px;">
-             <font class="formheader">Personal Information</font>
+         <table class="tableForm" width="1000px">
+             <font class="formheader" style="left:20px;">Rental Needs</font>
              <tr style="height: 90px;">
                  <td>
                      <label class="label">Earliest Move in Date:</label><br/><input class="required" type="text" name="earliestDate" value="<?php echo $row[EarlyMoveIn]?>" id="datepicker" />
@@ -63,7 +63,7 @@ include 'Header.php';
                     ?>
                  </td>
                  <td>
-                     <label class="label">Will you be smoking?</label><br/>
+                     <label class="label">Are you a smoker?</label><br/>
                     <?php 
                     //This goes through to ensure that if data already exist the previusly checked will apear checked
                     if ($row[IsSmokingRequired] == "1")
@@ -95,7 +95,7 @@ include 'Header.php';
                  </td>
              </tr>
              <tr>
-                 <th colspan="4" style="background:#999900;">
+                 <th colspan="4" style="background:#9d9d9d; padding: 10px 10px 10px 10px;">
                      <b>Secondary Resident</b>
                  </th>
              </tr>
@@ -122,7 +122,7 @@ include 'Header.php';
                  </td>
              </tr>
              <tr>
-                 <th colspan="4" style="background:#999900;">
+                 <th colspan="4" style="background:#9d9d9d; padding: 10px 10px 10px 10px;">
                      <b>Pet(s)</b>
                  </th>
              </tr>
@@ -210,7 +210,6 @@ include 'Header.php';
              <tr>
                  <td colspan="4">
                     <button type="submit" class="button">Save and Continue</button>
-                    <button type="reset" class="button">Clear</button>
                     <a class="button" href="myHood.php">Exit without saving</a>
                 <td>
              </tr>

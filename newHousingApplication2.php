@@ -33,8 +33,8 @@
 
 <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplication2Redirect.php">
-        <table class="tableForm">
-            <font class="formheader">Employment History</font>
+        <table class="tableForm" width="1000px">
+            <font class="formheader" style="left:200px">Employment History</font>
             <tr>
                 <th colspan="2">
                     Current Employer
@@ -143,8 +143,8 @@
             </tr>
             <tr>
                 <td colspan="3">
+                    <a class="button" href="newHousingApplication.php">Back</a>
                     <button type="submit" class="button">Save and Continue</button>
-                    <button type="reset" class="button">Clear</button>
                     <a class="button" href="myHood.php">Exit without saving</a>
                 </td>
             </tr>

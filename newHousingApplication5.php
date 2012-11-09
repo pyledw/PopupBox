@@ -13,8 +13,8 @@
 ?>
 <div id="mainContent">
 <form id="newApplicationForm" method="post" action="newHousingApplication5Redirect.php">
-    <table class="tableForm" style="text-align: center;">
-        <font class="formheader">Terms and Conditions</font>
+    <table class="tableForm" style="text-align: center;" width="1000px">
+        <font class="formheader" style="left:700px;">Terms and Conditions</font>
         <tr>
             <td>
              Your application is now complete.  It will be submitted for verification  
@@ -41,8 +41,9 @@
         </tr>
         <tr>
             <td>
-                <button type="submit" class="button">Save and Continue</button>
-                <button type="reset" class="button">Clear</button>
+                <a class="button" href="newHousingApplication4.php">Back</a>
+                    <button type="submit" class="button">Submit Application</button>
+                    <a class="button" href="myHood.php">Exit without saving</a>
             </td>
         </tr>
         <tr>
