@@ -4,6 +4,7 @@
         $title = "LeaseHood in Your 'Hood";
 	include 'Header.php';
 ?>
+<div id="maincontent">
 <h1 class="Title">LeaseHood in Your 'Hood</h1>
 <p>
     LeaseHood recognizes that if you are reading this, you are very likely among
@@ -25,6 +26,7 @@
     LeaseHood thanks you for supporting these honorable organizations!
 
 </p>
+</div>
 
 
 <?php
