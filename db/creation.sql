@@ -207,7 +207,7 @@ CREATE TABLE AUCTION (
 CREATE TABLE BID (
     BidID                           int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
     AuctionID                       int(8)            NOT NULL,
-    ApplicationId                   int(8)            NOT NULL,
+    ApplicationID                   int(8)            NOT NULL,
     MonthlyRate                     decimal(9,2)      NOT NULL     DEFAULT '0.00',
     TimeReceived                    timestamp         NOT NULL     DEFAULT CURRENT_TIMESTAMP,
     IsActive                        tinyint(1)                     DEFAULT '1',
