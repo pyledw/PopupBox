@@ -42,8 +42,8 @@
         <tr>
             <td>
                 <a class="button" href="newHousingApplication4.php">Back</a>
-                    <button type="submit" class="button">Submit Application</button>
-                    <a class="button" href="myHood.php">Exit without saving</a>
+                <a class="button" href="myHood.php">Exit without saving</a>
+                <button type="submit" class="button">Submit Application</button>
             </td>
         </tr>
         <tr>

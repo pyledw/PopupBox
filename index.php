@@ -55,9 +55,9 @@
 
                     <form action="searchRedirect.php" method="post">
                         <input name="type" value="zip" style="display:none;" />
-                        <input type="text" style="color:grey;'" name="search" value="Zip" onfocus='this.value = changeTextInBox(this.value,this.defaultValue), this.style.color = changeColorInBox(this.value,this.defaultValue);' 
+                        <input type="text" style="color:grey;'" name="search" value="Zip Code" onfocus='this.value = changeTextInBox(this.value,this.defaultValue), this.style.color = changeColorInBox(this.value,this.defaultValue);' 
                                     onblur="this.value = textBoxExit(this.value, this.defaultValue), this.style.color = textBoxExitColor(this.value,this.defaultValue);"/>
-                        <input type="submit" class="button" name="homeSearch" value="Quick Home Search" style="padding:5px 15px 5px 15px; margin:0 20px 0 20px;" />
+                        <button class="button" type="submit" name="homeSearch" value="Quick Home Search" style="margin:0 20px 0 20px;">Quick Home Search</button>
 
                     </form>
 

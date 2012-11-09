@@ -144,8 +144,10 @@
             <tr>
                 <td colspan="3">
                     <a class="button" href="newHousingApplication.php">Back</a>
-                    <button type="submit" class="button">Save and Continue</button>
+                    
                     <a class="button" href="myHood.php">Exit without saving</a>
+                    
+                    <button type="submit" class="button">Save and Continue</button>
                 </td>
             </tr>
             <tr>
