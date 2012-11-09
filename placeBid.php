@@ -18,7 +18,7 @@
                 $row = mysql_fetch_array($result);
 
                 $applicationID = $row[ApplicationID];
-                echo $auctionID . " " . $applicationID . " " . $amount;
+                echo $auctionID . "+" . $applicationID . "+" . $amount;
                $result2 = mysql_query("SELECT * FROM BID
                     WHERE AuctionID='$auctionID' AND ApplicationID='$applicationID'");
                 
@@ -29,7 +29,7 @@
                    
 
                }
-               
+               echo $applicationID;
                if($numRows == 0)
                {
                     mysql_query("INSERT INTO BID (AuctionID,ApplicationID,MonthlyRate)
@@ -37,7 +37,7 @@
                     ('$auctionID','$applicationID','$amount')");
 
 
-                    header( 'Location: /homeListing.php?listingID='.$propertyID );
+                    //header( 'Location: /homeListing.php?listingID='.$propertyID );
                 }
                 else
                 {
@@ -55,7 +55,7 @@
                     } catch (Exception $e) {
                         echo 'Connection failed. ' . $e->getMessage();
                     }
-                    header( 'Location: /homeListing.php?listingID='.$propertyID );
+                    //header( 'Location: /homeListing.php?listingID='.$propertyID );
                 }
         }
             

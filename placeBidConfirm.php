@@ -95,7 +95,7 @@ if($accept && $active)
     <tr>
         <td>
             <input type="text" style="display: none;" name="amt" value="'.$bidAmount.'" />
-            <input type="text" style="display: none;" name="auctionID" value="'.$aucitonID.'" />
+            <input type="text" style="display: none;" name="auctionID" value="'.$auctionID.'" />
             <input type="text" style="display: none;" name="userID" value="'.$userID.'" />
             <input type="text" style="display: none;" name="propertyID" value="'.$propertyID.'" />
         </td>

@@ -98,48 +98,7 @@
                 <td rowspan="6" align="center">
                     <?php 
                     
-                    $isAble = true;
-                    $result6 = mysql_query("SELECT * FROM BID
-                    INNER JOIN APPLICATION
-                    ON BID.ApplicationID=APPLICATION.ApplicationID
-                    WHERE APPLICATION.UserID = '$_SESSION[userID]'
-                    ");
-                    while($row6 = mysql_fetch_array($result6))
-                    {
-                        if($row6[AuctionID] != $row[AuctionID])
-                        {
-                            if($row6[IsActive] == "1")
-                            {
-                                $isAble = false;
-                            }
-                        }
-                    }
                     
-                    //This section is retrieving the bids and adding them to the page
-                    $result4 = mysql_query("SELECT * FROM APPLICATION
-                        WHERE UserID='$_SESSION[userID]'");
-                    
-                    $row4 = mysql_fetch_array($result4);
-                    
-                    
-                    $statusOfListing = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
-                    if($isable)
-                    {
-                        if($statusOfListing == 0)
-                        {
-                            echo 'Listing has not yet started.';
-                        }
-                        elseif($statusOfListing == 1)
-                        {
-                        if($_SESSION[type] == "1")
-                            {
-                                if(isset($row4[IsPaid]))
-                                {
-                                    if($row4[IsPaid] == "1")
-                                    {
-
-                                        if($row4[IsApproved] == "1")
-                                        {
 
                                                     echo '<form id="placebid" method="post">
                                                           <font class="greyBackground">My Proposal for occupancy</font><br/>
@@ -150,36 +109,6 @@
                                                           <button class="button" type="submit">Submit</button>
                                                           </form>';
 
-                                        }
-                                        else
-                                        {
-                                            echo 'Your Applciation is yet to be approved.';
-                                        }
-                                    }
-                                    else
-                                    {
-                                        echo 'Your application must be paid and approved before you can bid';
-                                    }
-                                }
-                                else 
-                                {
-                                    echo 'no applicaiton on file';
-                                }
-                            }
-                        }
-                        elseif ($statusOfListing == 2) 
-                        {
-                            echo 'The listing has ended';
-                        }
-                        else
-                        {
-                            echo 'Listing Error';
-                        }
-                    }
-                    else
-                    {
-                        echo 'You have an active bid on another listing.';
-                    }
                     
                     
                     ?>

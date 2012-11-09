@@ -138,5 +138,48 @@
         
     }
     
+    //This funciton will test the user using the given UserID and PropertyID
+    //It will determin the users ability to bid and return an integer to represent thier status
+    //0 - Okay to bid, no other active bids
+    //1 - Application not compleate
+    //2 - Applicaiton not authorized
+    //3 - Bid fee not paid
+    //4 - Another bid is active on a differant auction
+    
+    function getUsersBidStatus($userID,$propertyID)
+    {
+        
+        include_once 'config.inc.php';
+        $status = "0";
+        
+        $con = get_dbconn("");
+        
+        $result = mysql_query("SELECT * FROM BID
+        INNER JOIN APPLICATION
+        ON BID.ApplicationId=APPLICATION.ApplicationID
+        WHERE APPLICATION.UserID = '$_SESSION[userID]'
+        ");
+        
+        if(!$result)
+             {
+                 die('could not connect: ' .mysql_error());
+             }
+             
+        while($row = mysql_fetch_array($result))
+            {
+                echo $row[UserID];
+                echo $row[AppicationID];
+                echo $row[AuctionID];
+                echo $row[BidId];
+                echo $row[PropertyID];
+            }
+                  
+                    
+        
+        return $status;
+        
+        
+    }
+    
     
 ?>
