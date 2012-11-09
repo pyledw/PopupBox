@@ -30,6 +30,7 @@ CREATE TABLE APPLICATION (
     ApplicationID                   int(8)            NOT NULL                     AUTO_INCREMENT    PRIMARY KEY,
     UserID                          int(8)            NOT NULL,
     IsApproved                      tinyint(1)                     DEFAULT '0',
+    IsPaid                          tinyint(1)                     DEFAULT '0',
     EarlyMoveIn                     date                           DEFAULT NULL,
     LateMoveIn                      date                           DEFAULT NULL,
     IsADA                           tinyint(1)                     DEFAULT '0',
@@ -100,6 +101,7 @@ CREATE TABLE APPLICATION (
     ContactAddress                  varchar(60)                    DEFAULT NULL,
     ContactState                    varchar(2)                     DEFAULT NULL,
     ContactZip                      char(5)                        DEFAULT NULL,
+    ContactCity                     varchar(40)                    DEFAULT NULL,
     ContactRelation                 varchar(20)                    DEFAULT NULL,
     ContactHomePhone                varchar(15)                    DEFAULT NULL,
     ContactWorkPhone                varchar(15)                    DEFAULT NULL,
@@ -205,11 +207,12 @@ CREATE TABLE AUCTION (
 CREATE TABLE BID (
     BidID                           int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
     AuctionID                       int(8)            NOT NULL,
-    UserId                          int(8)            NOT NULL,
+    ApplicationId                   int(8)            NOT NULL,
     MonthlyRate                     decimal(9,2)      NOT NULL     DEFAULT '0.00',
     TimeReceived                    timestamp         NOT NULL     DEFAULT CURRENT_TIMESTAMP,
-    
-    FOREIGN KEY (UserId)            REFERENCES USER            (UserId),
+    IsActive                        tinyint(1)                     DEFAULT '1',
+
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId),
     FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId)
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
@@ -265,4 +268,27 @@ CREATE TABLE PREVIOUSRESIDENCE (
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
 
+
+
+-- ---------------------------------------------------------------------
+--
+-- THE REMAINDER OF THIS SCRIPT IS USED FOR MIGRATING DATA FROM OLD TABLES TO NEW TABLES
+-- THE MIGRATION PROCESS WORKS AS FOLLOWS:
+--    1.  RUN THIS SCRIPT AGAINST A SECOND DATABASE (TEST)
+--    2.  IF ALL DATA COPIED CORRECTLY, PROCEED.  OTHERWISE, FIX DATA ERRORS
+--    3.  MODIFY THE SCRIPT BELOW, REPLACING 'TEST' WITH 'LEASEHOOD'.
+--    4.  DROP ORIGINAL LEASEHOOD TABLES
+--    5.  RUN SCRIPT AGAINST LEASEHOOD DATABASE.  THIS CREATES THE TABLES AND COPIES THE DATA BACK IN.
+--
+-- ---------------------------------------------------------------------
+
+-- insert into USER select * from test.USER;
+-- insert into PROPERTY select * from test.PROPERTY;
+-- insert into APPLICATION select * from test.APPLICATION;
+-- insert into IMAGE select * from test.IMAGE;
+-- insert into AUCTION select * from test.AUCTION;
+-- insert into BID select * from test.BID;
+-- insert into DENIEDBREED select * from test.DENIEDBREED;
+-- insert into FEE select * from test.FEE;
+-- insert into PREVIOUSRESIDENCE select * from test.PREVIOUSRESIDENCE;
 
