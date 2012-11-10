@@ -1,7 +1,7 @@
 <!-- This is the philosophy and missions page. -->
 
 <?php
-        $title = "Philosophy and Missions";
+        $title = "Philosophy and Mission";
 	include 'Header.php';
 ?>
 
