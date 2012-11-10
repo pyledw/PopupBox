@@ -29,7 +29,7 @@
             }
             $timeString = $timeString . $mins . ' Minutes';
         }
-        elseif($now > $DateEndAcceptPFO)
+        elseif($now > $ends)
         {
             $timeString = "Auction has ended";
         }
@@ -42,18 +42,20 @@
             $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
             $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
             
-            $timeString = 'Begins in:
+            $timeString = 'Ends in:
                 ';
             if($days != 0)
             {
-            $timeString += $days . ' Days, ';
+            $timeString = $timeString . $days . ' Days, ';
             }
             if($hours != 0)
             {
-            $timeString += $hours . ' Hours, ';
+            $timeString = $timeString . $hours . ' Hours, ';
             }
-            $timeString += $mins . ' Minutes';
+            $timeString = $timeString . $mins . ' Minutes';
+            
         }
+        
         
         return $timeString;
     }
@@ -74,9 +76,13 @@
         {
             $status = "Bidding has not yet started";
         }
-        else
+        elseif($now > $ends)
         {
             $status = "Bidding has Ended";
+        }
+        else
+        {
+            $status = "error";
         }
         return $status;
     }
@@ -86,20 +92,29 @@
     //1=open 2=Not Started 3=Ended
     function getStatusInt($DateAcceptPFO,$DateEndAcceptPFO)
     {
+        $status = "error";
         $start = strtotime($DateAcceptPFO);
         $now = strtotime(date("Y-m-d H:i:s"));
         $ends = strtotime($DateEndAcceptPFO);
+        //echo $start ."<br/>";
+        //echo $now ."<br/>";
+        //echo $ends ."<br/>";
+        
         if($now > $start && $now < $ends)
         {
-            $status = 1;
+            $status = "1";
+        }
+        elseif($now > $ends)
+        {
+            $status = "3";
         }
         elseif($now < $start)
         {
-            $status = 0;
+            $status = "2";
         }
         else
         {
-            $status = 2;
+            $status = "error";
         }
         return $status;
     }
@@ -145,41 +160,73 @@
     //2 - Applicaiton not authorized
     //3 - Bid fee not paid
     //4 - Another bid is active on a differant auction
-    
     function getUsersBidStatus($userID,$propertyID)
     {
         
         include_once 'config.inc.php';
-        $status = "0";
+        $status = "1";
+        $ActiveBids = false;
         
         $con = get_dbconn("");
         
         $result = mysql_query("SELECT * FROM BID
         INNER JOIN APPLICATION
-        ON BID.ApplicationId=APPLICATION.ApplicationID
-        WHERE APPLICATION.UserID = '$_SESSION[userID]'
+        ON BID.ApplicationID=APPLICATION.ApplicationID
+        INNER JOIN AUCTION
+        ON BID.AuctionID=AUCTION.AuctionID
+        WHERE APPLICATION.UserID = '$userID'
         ");
+        
+        
         
         if(!$result)
              {
                  die('could not connect: ' .mysql_error());
              }
-             
+            
         while($row = mysql_fetch_array($result))
             {
-                echo $row[UserID];
-                echo $row[AppicationID];
-                echo $row[AuctionID];
-                echo $row[BidId];
-                echo $row[PropertyID];
+            
+            
+                //echo $row[PageCompleted];
+                //echo $row[IsPaid];
+                //echo $row[IsApproved];
+                //echo $row[PropertyID];
+                //echo '<br/>';
+                //echo $propertyID;
+                if($row[PageCompleted] != "6")
+                {
+                    $status = "1";
+                }
+                elseif($row[IsPaid] == "0")
+                {
+                    $status = "3";
+                }
+                elseif($row[IsApproved] == "0")
+                {
+                    $status = "2";
+                }
+                elseif($row[PropertyID] != $propertyID && $row[IsActive] == "1")
+                {
+                    $ActiveBids = true;
+                }
+                else
+                {
+                    $status = "0";
+                }
             }
                   
-                    
+        if($ActiveBids)
+        {
+            $status = "4";
+        }
         
         return $status;
         
         
     }
+    
+    
     
     
 ?>

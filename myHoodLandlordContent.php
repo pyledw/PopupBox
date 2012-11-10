@@ -12,6 +12,8 @@
 
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM PROPERTY
+        INNER JOIN AUCTION
+        ON PROPERTY.PropertyID=AUCTION.PropertyID
         WHERE UserID ='" . $_SESSION[userID] . "'");
     if(!$result)
     {
@@ -80,7 +82,7 @@
                         INNER JOIN USER
                         ON USER.UserID=APPLICATION.UserID
                         WHERE PropertyID='$row[PropertyID]'
-                        ORDER BY MonthlyRate");
+                        ORDER BY MonthlyRate DESC");
                     $max = 0;
                     while($row2 = mysql_fetch_array($result2))
                     {
@@ -114,7 +116,7 @@
             <button type="submit" class="button">Edit Listing</button>
         </form>
         
-        <a href="reviewPFOs.php?propertyID='. $row[PropertyID] . '" rel="facebox" class="button">Review PFOs</a>
+        <a href="reviewPFOs.php?propertyID='. $row[PropertyID] . '&auctionID='.$row[AuctionID].'" rel="facebox" class="button">Review PFOs</a>
             
         <a href="printFlyer.php?propertyID='. $row[PropertyID] . '" class="button">Print Flyer</a>
         </div>

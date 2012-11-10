@@ -21,7 +21,7 @@
                             <ul>
                                     <li><a href="newListing1.php">List a Property</a></li>
                                     <li><a href="myHood.php">My Properties</a></li>
-                                    <li><a href="#">Tips for Success</a></li>
+                                    <li><a href="tipsForSuccess.php">Tips for Success</a></li>
                             </ul>
                     </li>
             </ul>
@@ -30,8 +30,8 @@
                     <li>
                             <ul>
                                     <li><a href="searchHomes.php">Find a Property</a></li>
-                                    <li><a href="myHood.php.php">My Account</a></li>
-                                    <li><a href="#">Tips for Success</a></li>
+                                    <li><a href="myHood.php">My Account</a></li>
+                                    <li><a href="tipsForSuccessApplicants.php">Tips for Success</a></li>
                                     
                             </ul>
                     </li>
@@ -41,10 +41,10 @@
                     <li>About LeaseHood</li>
                     <li>
                             <ul>
-                                    <li><a href="#">Philosophy/Mission</a></li>
-                                    <li><a href="affiliations.php">Licensing & Affiliations</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms of Use</a></li>
+                                    <li><a href="philosophy.php">Philosophy and Mission</a></li>
+                                    <li><a href="affiliations.php">Affiliations and Licensing</a></li>
+                                    <li><a href="privacyPolicy.php">Privacy Policy</a></li>
+                                    <li><a href="termsOfUse.php">Terms of Use</a></li>
                             </ul>
                     </li>
 
