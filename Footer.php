@@ -42,7 +42,7 @@
                     <li>
                             <ul>
                                     <li><a href="#">Philosophy/Mission</a></li>
-                                    <li><a href="affiliations.php">Licensing & Affiliations</a></li>
+                                    <li><a href="affiliations.php">Affiliations and Licensing</a></li>
                                     <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">Terms of Use</a></li>
                             </ul>
