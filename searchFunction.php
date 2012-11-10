@@ -27,7 +27,9 @@ function search($type,$term)
 
                     $result = mysql_query("SELECT * FROM PROPERTY
                         INNER JOIN AUCTION
-                        ON PROPERTY.PropertyID=AUCTION.PropertyID
+                        ON AUCTION.PropertyID=PROPERTY.PropertyID
+                        INNER JOIN BID
+                        ON BID.AuctionID=AUCTION.AuctionID
                         WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' ");
 
                     if(!$result)
@@ -41,7 +43,9 @@ function search($type,$term)
 
                     $result = mysql_query("SELECT * FROM PROPERTY
                         INNER JOIN AUCTION
-                        ON PROPERTY.PropertyID=AUCTION.PropertyID
+                        ON AUCTION.PropertyID=PROPERTY.PropertyID
+                        INNER JOIN BID
+                        ON BID.AuctionID=AUCTION.AuctionID
                         WHERE Address LIKE \"%$trimmed%\"
                         ");
                     if(!$result)
@@ -55,7 +59,9 @@ function search($type,$term)
                     //echo 'City ' . $term;
                     $result = mysql_query("SELECT * FROM PROPERTY
                         INNER JOIN AUCTION
-                        ON PROPERTY.PropertyID=AUCTION.PropertyID
+                        ON AUCTION.PropertyID=PROPERTY.PropertyID
+                        INNER JOIN BID
+                        ON BID.AuctionID=AUCTION.AuctionID
 
                         WHERE City LIKE \"%$trimmed%\"
 
@@ -69,8 +75,10 @@ function search($type,$term)
             else
             {
                 $result = mysql_query("SELECT * FROM PROPERTY
-                        INNER JOIN AUCTION
-                        ON PROPERTY.PropertyID=AUCTION.PropertyID
+                            INNER JOIN AUCTION
+                            ON AUCTION.PropertyID=PROPERTY.PropertyID
+                            INNER JOIN BID
+                            ON BID.AuctionID=AUCTION.AuctionID
                         ");
             }
 

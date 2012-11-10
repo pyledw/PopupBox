@@ -14,9 +14,15 @@
 
         //Returning all the information on the property and the auction
         $result = mysql_query("SELECT * FROM PROPERTY
-           INNER JOIN AUCTION
-           ON PROPERTY.PropertyID=AUCTION.PropertyID
-           WHERE PROPERTY.PropertyID = $listingID ");
+            INNER JOIN AUCTION
+            ON AUCTION.PropertyID=PROPERTY.PropertyID
+            INNER JOIN BID
+            ON BID.AuctionID=AUCTION.AuctionID
+            INNER JOIN APPLICATION
+            ON BID.ApplicationID=APPLICATION.ApplicationID
+            INNER JOIN USER
+            ON APPLICATION.UserID=USER.UserID
+            WHERE PROPERTY.PropertyID = $listingID ");
         
         if(!$result)
         {
@@ -100,15 +106,48 @@
                     
                     
 
-                                                    echo '<form id="placebid" method="post">
-                                                          <font class="greyBackground">My Proposal for occupancy</font><br/>
-                                                          <label class="label">Bid Amount:</label><input class="required number" type="text" name="amt" /><br/>
-                                                          <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                                                          <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                                                          <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
-                                                          <button class="button" type="submit">Submit</button>
-                                                          </form>';
-
+                            
+                             $auctionStatus = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
+                             
+                             if($auctionStatus == "1")
+                             {
+                                 $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
+                                    if($bidStatus == "0")
+                                    {
+                                        echo '<form id="placebid" method="post">
+                                         <font class="greyBackground">My Proposal for occupancy</font><br/>
+                                         <label class="label">Bid Amount:</label><input class="required number" type="text" name="amt" /><br/>
+                                         <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
+                                         <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
+                                         <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                         <button class="button" type="submit">Submit</button>
+                                         </form>';
+                                    }
+                                    elseif($bidStatus == "1")
+                                    {
+                                        echo 'Application has not been compleated';
+                                    }
+                                    elseif($bidStatus == "2")
+                                    {
+                                        echo 'Application has not been authorized';
+                                    }
+                                    elseif($bidStatus == "3")
+                                    {
+                                        echo 'Bid Fee has not been paid';
+                                    }
+                                    elseif($bidStatus == "4")
+                                    {
+                                        echo 'You have another active bid';
+                                    }
+                             }
+                             elseif($auctionStatus == "2")
+                             {
+                                 echo 'Auciton Has not Started Yet';
+                             }
+                             else
+                             {
+                                 echo "Auciton has Ended";
+                             }
                     
                     
                     ?>

@@ -45,7 +45,8 @@
         $maxBid = getHighBid($row[PropertyID]);
         
         
-        echo '    <div id="searchResult">
+        echo '    
+        <div id="searchResult">
         <div class="header">
             <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
             <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
