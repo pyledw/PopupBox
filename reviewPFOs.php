@@ -44,7 +44,11 @@
                     ".$row[MonthlyRate]."
                 </td>
                 <td colspan='2'>
-                    <a class='button' href='viewApplicationPage.php?applicationID=".$row[ApplicationID]."' >View Application</a><br/><br/>
+                   <form method='POST' action='viewApplicationPage.php'>
+                        <input name='applicationID' style='display:none;' value='".$row[ApplicationID]."'>
+                        <input name='auctionID' style='display:none;' value='".$row[AuctionID]."'>
+                        <button class='button' type='submit'>View Application</button>
+                    </form>
                 </td>
              </tr>
                 ";

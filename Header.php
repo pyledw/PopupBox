@@ -1,6 +1,10 @@
 <?php 
 	//require 'config.inc.php';
         session_start();
+        
+        
+        //This allow for the user to stay logged in even after the session has expired
+        //checks to see if cookies were saved with login info
         if(isset($_COOKIE['userID']))
         {
             $_SESSION['userID'] = $_COOKIE['userID'];
@@ -9,9 +13,10 @@
             $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
         }
         
-        if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60*5)) 
+        //This ensures that the session will expire after 10 minutes of inactivity.
+        if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60*10)) 
             {
-                // last request was more than 30 minates ago
+                // last request was more than 10 minates ago
                 session_unset();     // unset $_SESSION variable for the runtime 
                 session_destroy();   // destroy session data in storage
             }

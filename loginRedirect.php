@@ -34,6 +34,7 @@
             $_SESSION['userID'] = $userID;
             $_SESSION['user'] = $row[UserName];
             $_SESSION['type'] = $userType;
+            
             if($loggedIn)
             {
                 setcookie('userID', $userID);

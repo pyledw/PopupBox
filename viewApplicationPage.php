@@ -1,7 +1,10 @@
 
 <?php
     include 'Header.php';
-    $applicationID = $_GET[applicationID];
+    
+    
+    $applicationID = $_POST[applicationID];
+    $auctionID = $_POST[auctionID];
     
     include_once 'config.inc.php';
             //Connecting to the sql database
@@ -623,20 +626,24 @@
                    <?php echo $row[ContactCellPhone]; ?>
                 </td>
             </tr>
+            <tr>
+                <td colspan="8">
+                    
+                    <?php
+                        if($_SESSION[type] == 3)
+                        {
+                            echo '<br/>
+                             <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form>';
+                        }
+                        if(isset($auctionID))
+                        {
+                            echo '<a class="button" rel="facebox" href="confirmPFOSelection.php?auctionID='.$auctionID.'&applicationID='.$applicationID.'">Select as winning Bid</a>';
+                        }
+                    ?>
+                </td>
+            </tr>
         </table>
-        
-        
-        
-        
-        <?php
-            if($_SESSION[type] == 3)
-            {
-                echo '<br/>
-                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form>';
-            }
-        ?>
     </div>
-</div>
 <?php
 
     include 'Footer.php';
