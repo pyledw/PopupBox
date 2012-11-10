@@ -43,8 +43,8 @@
                             <ul>
                                     <li><a href="philosophy.php">Philosophy and Mission</a></li>
                                     <li><a href="affiliations.php">Affiliations and Licensing</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms of Use</a></li>
+                                    <li><a href="privacyPolicy.php">Privacy Policy</a></li>
+                                    <li><a href="termsOfUse.php">Terms of Use</a></li>
                             </ul>
                     </li>
 
