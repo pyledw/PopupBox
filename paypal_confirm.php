@@ -1,10 +1,8 @@
-<?php
-/* =====================================
- *	 PayPal Express Checkout Call
- * =====================================
- */
-require_once ("paypal.inc.php");
+<html>
+<body>
 
+<?php
+require_once ("paypal.inc.php");
 /*
  '------------------------------------
  ' this  step is required to get parameters to make DoExpressCheckout API call, 
@@ -14,13 +12,72 @@ require_once ("paypal.inc.php");
 $res = GetExpressCheckoutDetails( $_REQUEST['token'] );
 
 /*
+	This is what $res looks like:
+Array
+(
+    [TOKEN] => EC-1P340842TC720374S
+    [CHECKOUTSTATUS] => PaymentActionNotInitiated
+    [TIMESTAMP] => 2012-11-10T03:20:07Z
+    [CORRELATIONID] => ff19b35eaf924
+    [ACK] => Success
+    [VERSION] => 84
+    [BUILD] => 4181146
+    [EMAIL] => jcdick_1350762354_per@mail.lipscomb.edu
+    [PAYERID] => X66UYGRDF5BUW
+    [PAYERSTATUS] => verified
+    [FIRSTNAME] => Jason
+    [LASTNAME] => Dickinson
+    [COUNTRYCODE] => US
+    [CURRENCYCODE] => USD
+    [AMT] => 15.00
+    [ITEMAMT] => 15.00
+    [SHIPPINGAMT] => 0.00
+    [HANDLINGAMT] => 0.00
+    [TAXAMT] => 0.00
+    [INSURANCEAMT] => 0.00
+    [SHIPDISCAMT] => 0.00
+    [L_NAME0] => My Little Pony
+    [L_QTY0] => 1
+    [L_TAXAMT0] => 0.00
+    [L_AMT0] => 15.00
+    [L_ITEMWEIGHTVALUE0] =>    0.00000
+    [L_ITEMLENGTHVALUE0] =>    0.00000
+    [L_ITEMWIDTHVALUE0] =>    0.00000
+    [L_ITEMHEIGHTVALUE0] =>    0.00000
+    [L_ITEMCATEGORY0] => Digital
+    [PAYMENTREQUEST_0_CURRENCYCODE] => USD
+    [PAYMENTREQUEST_0_AMT] => 15.00
+    [PAYMENTREQUEST_0_ITEMAMT] => 15.00
+    [PAYMENTREQUEST_0_SHIPPINGAMT] => 0.00
+    [PAYMENTREQUEST_0_HANDLINGAMT] => 0.00
+    [PAYMENTREQUEST_0_TAXAMT] => 0.00
+    [PAYMENTREQUEST_0_INSURANCEAMT] => 0.00
+    [PAYMENTREQUEST_0_SHIPDISCAMT] => 0.00
+    [PAYMENTREQUEST_0_INSURANCEOPTIONOFFERED] => false
+    [L_PAYMENTREQUEST_0_NAME0] => My Little Pony
+    [L_PAYMENTREQUEST_0_QTY0] => 1
+    [L_PAYMENTREQUEST_0_TAXAMT0] => 0.00
+    [L_PAYMENTREQUEST_0_AMT0] => 15.00
+    [L_PAYMENTREQUEST_0_ITEMWEIGHTVALUE0] =>    0.00000
+    [L_PAYMENTREQUEST_0_ITEMLENGTHVALUE0] =>    0.00000
+    [L_PAYMENTREQUEST_0_ITEMWIDTHVALUE0] =>    0.00000
+    [L_PAYMENTREQUEST_0_ITEMHEIGHTVALUE0] =>    0.00000
+    [L_PAYMENTREQUEST_0_ITEMCATEGORY0] => Digital
+    [PAYMENTREQUESTINFO_0_ERRORCODE] => 0
+)
+*/
+
+
+
+/*
  '------------------------------------
  ' The paymentAmount is the total value of
  ' the purchase. 
  '------------------------------------
  */
-	$finalPaymentAmount =  $res["AMT"];
-	/*
+$finalPaymentAmount =  $res["AMT"];
+
+/*
  '------------------------------------
  ' Calls the DoExpressCheckoutPayment API call
  '
@@ -34,7 +91,8 @@ $payerID 			= $_REQUEST['PayerID'];
 $paymentType 		= 'Sale';
 $currencyCodeType 	= $res['CURRENCYCODE'];
 
-$resArray = ConfirmPayment ( $token, $paymentType, $currencyCodeType, $payerID, $finalPaymentAmount );
+$resArray = ConfirmPayment ( $token, $payerID, $finalPaymentAmount );
+
 $ack = strtoupper($resArray["ACK"]);
 if( $ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING" )
 {
@@ -91,7 +149,7 @@ if( $ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING" )
 	// Add javascript to close Digital Goods frame. You may want to add more javascript code to
 	// display some info message indicating status of purchase in the parent window
 ?>
-<html>
+
 <script>
 alert("Payment Successful");
 // add relevant message above or remove the line if not required
@@ -108,7 +166,7 @@ window.onload = function(){
 };
                                 
 </script>
-</html>
+
 <?php
 	}
 	else
@@ -126,7 +184,6 @@ window.onload = function(){
 		echo "Error Severity Code: " . $ErrorSeverityCode;
 ?>
 
-<html>
 <script>
 alert("Payment failed");
 // add relevant message above or remove the line if not required
@@ -143,5 +200,8 @@ window.onload = function(){
 };
                                 
 </script>
+
+<?	}   ?>
+
+</body>
 </html>
-<?	}  ?>
