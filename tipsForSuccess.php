@@ -1,7 +1,7 @@
 <!-- This is the LeaseHood in your hood page; it discusses how Leasehood gives back to its community. -->
 
 <?php
-        $title = "Tips For Success";
+        $title = "Tips For Success - Landlords";
 	include 'Header.php';
 ?>
 
