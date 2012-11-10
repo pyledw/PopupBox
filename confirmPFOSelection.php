@@ -8,8 +8,8 @@
         <td>
             <?php
             echo "<form method='POST' action='confirmPFOSelectionRedirect.php'>
-                        <input name='applicationID' style='display:none;' value='".$_POST[applicationID]."'>
-                        <input name='auctionID' style='display:none;' value='".$_POST[auctionID]."'>
+                        <input name='applicationID' style='display:none;' value='".$_GET[applicationID]."'>
+                        <input name='auctionID' style='display:none;' value='".$_GET[auctionID]."'>
                         <button class='button' type='submit'>Yes</button>
                     </form>";
             ?>
