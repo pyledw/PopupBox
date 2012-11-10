@@ -6,6 +6,7 @@
 ?>
 
 <h1 class="Title">LeaseHood in Your 'Hood</h1>
+<hr class="title" />
 <div id="maincontent">
 <p>
     LeaseHood recognizes that if you are reading this, you are very likely among
