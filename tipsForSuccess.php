@@ -1,4 +1,4 @@
-<!-- This is the LeaseHood in your hood page; it discusses how Leasehood gives back to its community. -->
+<!-- This is the tips for success for landlords page. -->
 
 <?php
         $title = "Tips For Success - Landlords";
