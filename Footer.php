@@ -41,7 +41,7 @@
                     <li>About LeaseHood</li>
                     <li>
                             <ul>
-                                    <li><a href="philosophy.php">Philosophy/Mission</a></li>
+                                    <li><a href="philosophy.php">Philosophy and Mission</a></li>
                                     <li><a href="affiliations.php">Affiliations and Licensing</a></li>
                                     <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">Terms of Use</a></li>
