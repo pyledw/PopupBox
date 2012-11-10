@@ -29,7 +29,7 @@ session_start();
     //Casting the query results on to $row
     $row = mysql_fetch_array($result);
     
-    //Setting which page has been compleated.  If the form has already been compleated it ignors this
+    //Setting which page has been completed.  If the form has already been completed it ignores this
     if($row[PageCompleted] != "6")
     {
         
