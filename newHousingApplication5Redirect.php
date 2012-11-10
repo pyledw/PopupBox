@@ -52,7 +52,12 @@ session_start();
         $row = $getEmail->fetch_object();
         $email = $row->Email;
         $from = "From: info@leasehood.com \r\n";
-        $mesg = 
+        $subject = "Welcome To LeaseHood.com";
+        $mesg = "Test email. This is sent from the tester at Leasehood.com".
+                "Please ignore if you do not know this site.";
+        mail($email, $subject, $mesg, $from);
+        echo "A confirmation email has been sent to your acount."
+        ."Please check your junk mail if you do not see it in your inbox.";
     }
     
     mysql_close();
