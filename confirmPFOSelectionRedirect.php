@@ -1,5 +1,5 @@
 <?php
-    $applicationID = $_POST[applicaitonID];
+    $applicationID = $_POST[applicationID];
     $auctionID = $_POST[auctionID];
     
     include_once 'config.inc.php';
@@ -22,6 +22,9 @@
     
     while($row = mysql_fetch_array($result))
     {
+        echo $row[ApplicationID] . ' <-Application ID from row';
+        echo $applicationID . ' <-Application ID from Variable';
+        
         if($row[ApplicationID] == $applicationID)
         {
             
@@ -32,7 +35,7 @@
                     $con = get_dbconn("PDO");
                     $stmt = $con->prepare("
                     UPDATE BID SET
-                        ActiveBid=:activeBid
+                        IsActive=:activeBid
                         WHERE BidID='$row[BidID]'
                     ");
                 try {
@@ -45,7 +48,7 @@
             }
         }
     }
-    echo $auctionID;
-    echo '<br/>';
-    echo $applicationID;
+    
+    
+    header( 'Location: /myHood.php' );
 ?>

@@ -15,6 +15,7 @@
         INNER JOIN PROPERTY
         ON AUCTION.PropertyID=PROPERTY.PropertyID
         WHERE PROPERTY.PropertyID='$_GET[propertyID]'
+        ORDER BY BID.MonthlyRate DESC
         ");
     
     

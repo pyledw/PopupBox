@@ -82,7 +82,7 @@
                         INNER JOIN USER
                         ON USER.UserID=APPLICATION.UserID
                         WHERE PropertyID='$row[PropertyID]'
-                        ORDER BY MonthlyRate");
+                        ORDER BY MonthlyRate DESC");
                     $max = 0;
                     while($row2 = mysql_fetch_array($result2))
                     {
