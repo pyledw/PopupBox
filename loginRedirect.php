@@ -41,6 +41,12 @@
                 setcookie('type', $userType);
                 
             }
+            else
+            {
+                setcookie('userID', "", time()-3600);
+                setcookie('user', "", time()-3600);
+                setcookie('type', "", time()-3600);
+            }
             
             if(isset($lastPage))
             {
