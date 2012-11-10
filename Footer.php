@@ -31,7 +31,7 @@
                             <ul>
                                     <li><a href="searchHomes.php">Find a Property</a></li>
                                     <li><a href="myHood.php">My Account</a></li>
-                                    <li><a href="#">Tips for Success</a></li>
+                                    <li><a href="tipsForSuccess.php">Tips for Success</a></li>
                                     
                             </ul>
                     </li>
