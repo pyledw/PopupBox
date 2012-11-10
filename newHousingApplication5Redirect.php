@@ -37,6 +37,24 @@ session_start();
         WHERE UserID = '$_SESSION[userID]'");
     }
     
+    //if this doesnt work or causes errors, change UserID to Username
+    $getEmail = $con->query("select Email from USER where UserID ='$_SESSION[userID]'");
+    if (!getEmail)
+    {
+        echo 'Could not find email';
+    }
+    else if($getEmail->num_rows == 0) 
+    {
+        echo 'UserID not in db';
+    }
+    else
+    {
+        $row = $getEmail->fetch_object();
+        $email = $row->Email;
+        $from = "From: info@leasehood.com \r\n";
+        $mesg = 
+    }
+    
     mysql_close();
     
     header( 'Location: /payApplicationFee.php' );
