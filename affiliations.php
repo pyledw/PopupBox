@@ -4,7 +4,7 @@
 ?>
 <h1 class="Title">Affiliations & Licensing</h1>
         <hr class="Title" />
-        
+        <div id="mainContent">
         <p><u>Affiliations</u><br/>
         LeaseHood is honored to be members of several organizations that help integrate itself with the real estate industry and local business development; we believe involvement helps foster our desire to cooperate with other liked-minded parties.</p>
 
@@ -17,7 +17,7 @@ LeaseHood maintains a Real Estate Broker license within the state of Tennessee. 
 
         
         <br/>
-        
+</div>
 <?php
 	include 'Footer.php';
 ?>
