@@ -21,7 +21,7 @@
                             <ul>
                                     <li><a href="newListing1.php">List a Property</a></li>
                                     <li><a href="myHood.php">My Properties</a></li>
-                                    <li><a href="#">Tips for Success</a></li>
+                                    <li><a href="tipsForSuccess.php">Tips for Success</a></li>
                             </ul>
                     </li>
             </ul>
