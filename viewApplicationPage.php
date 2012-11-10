@@ -16,10 +16,9 @@
            
 ?>
 
-<div id="Application">
-    <div id="Applicationheader"><h1>Tenant Application</h1></div>
-    <div class="content">
-        <table>
+<div id="mainContent">    
+        <table class="tableForm">
+            <font class="formheader" style="left:200px;">Resident Application</font>
             <tr>
                 <td>
                    First Name: 

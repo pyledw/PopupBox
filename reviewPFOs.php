@@ -1,6 +1,6 @@
 <?php
 //echo $_GET[propertyID];
-
+    session_start();
     include_once 'config.inc.php';
     $con = get_dbconn("");
     
@@ -23,14 +23,34 @@
         die('could not connect: ' .mysql_error());
     }
     
+    ?>
+
+    <table class="tableForm" style="margin-top: -10px;">
+        <tr>
+            <th colspan="6" style="padding-bottom: 10px; vertical-align: middle;">
+                PFOs on Property #<?php echo $_GET[propertyID]; ?>
+            </th>
+        </tr>
+    <?php
+
     While($row = mysql_fetch_array($result))
     {
-        echo $row[UserName] . ' ';
-        echo $row[MonthlyRate] . '
-            <a class="button" href="viewApplicationPage.php?applicationID='.$row[ApplicationID].'" >View Application</a><br/><br/>';
+        
+        echo "<tr>
+                <td>
+                    ".$row[UserName]."
+                </td>
+                <td>
+                    ".$row[MonthlyRate]."
+                </td>
+                <td colspan='2'>
+                    <a class='button' href='viewApplicationPage.php?applicationID=".$row[ApplicationID]."' >View Application</a><br/><br/>
+                </td>
+             </tr>
+                ";
     }
     
     
     
 ?>
-THIS SHOULD DISPLAY ONCE I CLICK
+    </table>
