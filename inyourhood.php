@@ -7,7 +7,7 @@
 
 <h1 class="Title">LeaseHood in Your 'Hood</h1>
 <hr class="Title" />
-<div id="maincontent">
+<div id="mainContent">
 <p>
     LeaseHood recognizes that if you are reading this, you are very likely among
     the top 10% most affluent individuals of the world.  The remaining 90%, 
