@@ -15,10 +15,10 @@
             <table width="1000px">
                 <tr style="height: 35px;">
                     <td>
-                        <a href="#" class="button">How it Works</a><br/>
+                        <a href="howItWorks.php" class="button">How it Works</a><br/>
                     </td>
                      <td>
-                        How it works
+                        Learn more about LeaseHood
                     </td>
                      <td colspan="2" rowspan="4" align="right">
                         <!--<img src="images/House.jpg" alt="House" style="float:right" />-->
@@ -39,7 +39,7 @@
                        <a href="#" class="button">I am a Renter</a><br/>
                     </td>
                      <td>
-                        Rent a property
+                        Find your next home
                     </td>
                 </tr>
                 <tr style="height: 35px;">
@@ -47,7 +47,7 @@
                         <a href="#" class="button">I am a Landlord</a><br/>
                     </td>
                      <td>
-                        List a home
+                        Find your next resident
                     </td>
                 </tr>
             </table>
