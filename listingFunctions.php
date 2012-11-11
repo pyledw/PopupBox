@@ -94,10 +94,10 @@
             return $status;
         }
 
-        //Function gets the two times, and compares them to get the status.
-        //It then returns and int to designate the status of the auction.
-        //1=open 2=Not Started 3=Ended
-        function getStatusInt($DateAcceptPFO,$DateEndAcceptPFO)
+    //Function gets the two times, and compares them to get the status.
+    //It then returns and int to designate the status of the auction.
+    //1=open 2=Not Started 3=Ended
+    function getStatusInt($DateAcceptPFO,$DateEndAcceptPFO)
         {
             $status = "error";
             $start = strtotime($DateAcceptPFO);
@@ -126,8 +126,8 @@
             return $status;
         }
 
-        //This funciton retrieves the highest bid on the property that corisponds to the given property ID
-        function getHighBid($propertyID)
+    //This funciton retrieves the highest bid on the property that corisponds to the given property ID
+    function getHighBid($propertyID)
         {
             include_once 'config.inc.php';
 
@@ -144,11 +144,11 @@
 
             if(isset($row[0]))
             {
-                $maxBid = $row[0];
+                $maxBid = "<font class='greyTextArea' style='float:right;'>$" .$row[0] . "</font>";
             }
             else
             {
-                $maxBid = '0.00' ;
+                $maxBid = "" ;
             }
 
 
@@ -194,7 +194,7 @@
             <div id="searchResult">
             <div class="header">
                 '. $status . '
-                <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
+                ' . $maxBid . '
                 ' . $timeString . '
             </div>
 
