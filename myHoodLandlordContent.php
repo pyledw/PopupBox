@@ -14,15 +14,15 @@
     $result = mysql_query("SELECT * FROM PROPERTY
         WHERE UserID ='" . $_SESSION[userID] . "'");
     if(!$result)
-    {
-        die('could not connect: ' .mysql_error());
-    }
+        {
+            die('could not connect: ' .mysql_error());
+        }
     include_once 'listingFunctions.php';
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
-    {
-        displayMyListings($row[PropertyID]);
-    
-    }
+        {
+            displayMyListings($row[PropertyID]);
+
+        }
     ?>
 </div>

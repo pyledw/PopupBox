@@ -85,11 +85,11 @@
     <?php
         
     //pulling the data from the database and returning the PFO
-    $result2 = mysql_query("SELECT * FROM PROPERTY
+    $result2 = mysql_query("SELECT * FROM BID
             INNER JOIN AUCTION
-            ON AUCTION.PropertyID=PROPERTY.PropertyID
-            INNER JOIN BID
             ON BID.AuctionID=AUCTION.AuctionID
+            INNER JOIN PROPERTY
+            ON AUCTION.PropertyID=PROPERTY.PropertyID
             INNER JOIN APPLICATION
             ON BID.ApplicationID=APPLICATION.ApplicationID
             INNER JOIN USER
@@ -98,9 +98,18 @@
             ");
     
     
+    
+    
+    
+    
+    
+    
     While($row2 = mysql_fetch_array($result2))
     {
-       
+       if($row2[IsWinningBid] == "1")
+        {
+            Echo 'You have been selected as the winner for this auciton!  Please click <a href="#">here</a> to see the landlords contact info.';
+        }
         include_once 'listingFunctions.php';
         
         //below is call to function that returns the timestring of time remaining or time till start
