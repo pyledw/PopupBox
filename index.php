@@ -39,7 +39,7 @@
                        <a href="howItWorksRenters.php" class="button">I am a Renter</a><br/>
                     </td>
                      <td>
-                        Learn how LeaseHood can help you find your next home. 
+                        Learn how LeaseHood can help you find your next home
                     </td>
                 </tr>
                 <tr style="height: 35px;">
