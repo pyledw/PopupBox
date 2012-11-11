@@ -26,27 +26,42 @@
         echo $applicationID . ' <-Application ID from Variable';
         
         if($row[ApplicationID] == $applicationID)
-        {
-            
-        }
+            {
+                //Using the new method for inserting into the Database
+                    $con = get_dbconn("PDO");
+                    $stmt = $con->prepare("
+                        UPDATE BID SET
+                            IsActive=:activeBid, IsWinningBid=:winning
+                            WHERE BidID='$row[BidID]'
+                        ");
+                    try {
+                    $stmt->bindValue(':activeBid',     0,              PDO::PARAM_INT);
+                    $stmt->bindValue(':winning',     1,              PDO::PARAM_INT);
+                    $stmt->execute();
+                } 
+                catch (Exception $e) 
+                {
+                    echo 'Connection failed. ' . $e->getMessage();
+                }
+            }
         else
             {
                     //Using the new method for inserting into the Database
                     $con = get_dbconn("PDO");
                     $stmt = $con->prepare("
-                    UPDATE BID SET
-                        IsActive=:activeBid
-                        WHERE BidID='$row[BidID]'
-                    ");
-                try {
-                $stmt->bindValue(':activeBid',     0,              PDO::PARAM_INT);
-                $stmt->execute();
-            } 
-            catch (Exception $e) 
-            {
-                echo 'Connection failed. ' . $e->getMessage();
+                        UPDATE BID SET
+                            IsActive=:activeBid
+                            WHERE BidID='$row[BidID]'
+                        ");
+                    try {
+                    $stmt->bindValue(':activeBid',     0,              PDO::PARAM_INT);
+                    $stmt->execute();
+                } 
+                catch (Exception $e) 
+                {
+                    echo 'Connection failed. ' . $e->getMessage();
+                }
             }
-        }
     }
     
     

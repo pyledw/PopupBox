@@ -25,9 +25,9 @@ function search($type,$term)
                     //echo 'TYPE : '. $type . " " . $term . 'Search Location:' . $lat ." ". $lon ." <br/>". $maxLat ." ". $maxLon ." <br/>". $minLat ." ". $minLon;
 
 
-                    $result = mysql_query("SELECT * FROM PROPERTY
-                        INNER JOIN AUCTION
-                        ON AUCTION.PropertyID=PROPERTY.PropertyID
+                    $result = mysql_query("SELECT * FROM AUCTION
+                        INNER JOIN PROPERTY
+                        ON PROPERTY.PropertyID=AUCTION.PropertyID
                         WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' ");
 
                     if(!$result)
@@ -39,9 +39,9 @@ function search($type,$term)
                 {
                     $trimmed = trim($term);
 
-                    $result = mysql_query("SELECT * FROM PROPERTY
-                        INNER JOIN AUCTION
-                        ON AUCTION.PropertyID=PROPERTY.PropertyID
+                    $result = mysql_query("SELECT * FROM AUCTION
+                        INNER JOIN PROPERTY
+                        ON PROPERTY.PropertyID=AUCTION.PropertyID
                         WHERE Address LIKE \"%$trimmed%\"
                         ");
                     if(!$result)
@@ -53,9 +53,9 @@ function search($type,$term)
                 {
                     $trimmed = trim($term);
                     //echo 'City ' . $term;
-                    $result = mysql_query("SELECT * FROM PROPERTY
-                        INNER JOIN AUCTION
-                        ON AUCTION.PropertyID=PROPERTY.PropertyID
+                    $result = mysql_query("SELECT * FROM AUCTION
+                        INNER JOIN PROPERTY
+                        ON PROPERTY.PropertyID=AUCTION.PropertyID
                         WHERE City LIKE \"%$trimmed%\"
 
                         ");
@@ -67,9 +67,9 @@ function search($type,$term)
             }
             else
             {
-                $result = mysql_query("SELECT * FROM PROPERTY
-                            INNER JOIN AUCTION
-                            ON AUCTION.PropertyID=PROPERTY.PropertyID
+                $result = mysql_query("SELECT * FROM AUCTION
+                            INNER JOIN PROPERTY
+                            ON PROPERTY.PropertyID=AUCTION.PropertyID
                         ");
             }
 

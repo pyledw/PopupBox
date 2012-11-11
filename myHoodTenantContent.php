@@ -85,11 +85,11 @@
     <?php
         
     //pulling the data from the database and returning the PFO
-    $result2 = mysql_query("SELECT * FROM PROPERTY
+    $result2 = mysql_query("SELECT * FROM BID
             INNER JOIN AUCTION
-            ON AUCTION.PropertyID=PROPERTY.PropertyID
-            INNER JOIN BID
             ON BID.AuctionID=AUCTION.AuctionID
+            INNER JOIN PROPERTY
+            ON AUCTION.PropertyID=PROPERTY.PropertyID
             INNER JOIN APPLICATION
             ON BID.ApplicationID=APPLICATION.ApplicationID
             INNER JOIN USER
@@ -98,9 +98,18 @@
             ");
     
     
+    
+    
+    
+    
+    
+    
     While($row2 = mysql_fetch_array($result2))
     {
-       
+       if($row2[IsWinningBid] == "1")
+        {
+            Echo 'You have been selected as the winner for this auciton!  Please click <a href="#">here</a> to see the landlords contact info.';
+        }
         include_once 'listingFunctions.php';
         
         //below is call to function that returns the timestring of time remaining or time till start
@@ -116,9 +125,9 @@
         
         echo '    <div id="myHoodListing">
         <div class="header">
-            <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
-            <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
-            <font class="redTextArea" style="float:right;">' . $timeString . '</font>
+            '. $status . '
+            ' . $maxBid . '
+            ' . $timeString . '
         </div>
         
         <div class="content">
@@ -187,96 +196,5 @@
     }
     
     ?>
-    <h1>My Favorites</h1>
-        <?php
-    //pulling the data from the database and returning the PFO
-    ?>
-    <div id="myHoodListing">
-        <div class="header">
-            <font class="auctionEnding">Action Ends</font>
-            <font class="currentBid">Current Bid</font>
-        </div>
-        
-        <div class="content">
-        <image class="PFOimage" src="#" />
-        <div class="column1">
-            This will contain street address but will run over<br/>
-            City<br/>
-            state<br/>
-            zip<br/>
-            ID CODE<br/>
-        </div>
-        <div class="column2">
-            My bid<br/>
-            time submitted</br>
-            <a>See old bids</a>
-        </div>
-        <div class="column3">
-            Some details<br/>
-            number of rooms<br/>
-            SQ footage<br/>
-            Bathrooms
-        </div>
-        <div class="column4">
-            Open House Details</br>
-            Next Date:
-        </div>
-        
-        <div class="footer">
-            <a class="button">Submit a PFO</a>
-            <a class="button">MOVE IN NOW</a>
-            <a class="button">Contact Landlord</a>
-        </div>
-        </div>
-        
-    </div>
-
-    
-    <div id="myHoodListing">
-        <div class="header">
-            <font class="auctionEnding">Action Ends</font>
-            <font class="currentBid">Current Bid</font>
-        </div>
-        
-        <div class="content">
-        <image class="PFOimage" src="#" />
-        <div class="column1">
-            This will contain street address but will run over<br/>
-            City<br/>
-            state<br/>
-            zip<br/>
-            ID CODE<br/>
-        </div>
-        <div class="column2">
-            My bid<br/>
-            time submitted</br>
-            <a>See old bids</a>
-        </div>
-        <div class="column3">
-            Some details<br/>
-            number of rooms<br/>
-            SQ footage<br/>
-            Bathrooms
-        </div>
-        <div class="column4">
-            Open House Details</br>
-            Next Date:
-        </div>
-        
-        <div class="footer">
-            <a class="button">Submit a PFO</a>
-            <a class="button">MOVE IN NOW</a>
-            <a class="button">Contact Landlord</a>
-        </div>
-        </div>
-        
-    </div>
-    
-    <h1>My Saved Searches</h1>
-    <?php
-    //Populated by PHP the recent searches made by the tenant
-    ?>
-    
-    
     
 </div>
