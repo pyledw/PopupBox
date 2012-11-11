@@ -18,15 +18,15 @@
         <tr>
             <td>
              Your application is now complete.  It will be submitted for verification  
-    once you certify and click "Continue" below and after your $6 application 
-    fee has been processed.  Please thoroughly review the terms and conditions
-    below and continue with your application.  After submission, you will 
-    notified within approximately two (2) business days as to the status of 
-    your application with LeaseHood.com, confirming your status to submit a 
-    Proposal for Occupancy.  Until such time you will have provisional 
-    capabilities.  Your application will be valid for 90 days after verified,
-    allowing you to submit multiple PFOs at separate times (you will not be able
-    to submit multiple PFOs simultaneously) without additional application fees.
+                once you certify and click "Continue" below and after your $6 application 
+                fee has been processed.  Please thoroughly review the terms and conditions
+                below and continue with your application.  After submission, you will 
+                notified within approximately two (2) business days as to the status of 
+                your application with LeaseHood.com, confirming your status to submit a 
+                Proposal for Occupancy.  Until such time you will have provisional 
+                capabilities.  Your application will be valid for 90 days after verified,
+                allowing you to submit multiple PFOs at separate times (you will not be able
+                to submit multiple PFOs simultaneously) without additional application fees.
             </td>
         </tr>
         <tr>

@@ -16,12 +16,6 @@
         $result = mysql_query("SELECT * FROM PROPERTY
             INNER JOIN AUCTION
             ON AUCTION.PropertyID=PROPERTY.PropertyID
-            INNER JOIN BID
-            ON BID.AuctionID=AUCTION.AuctionID
-            INNER JOIN APPLICATION
-            ON BID.ApplicationID=APPLICATION.ApplicationID
-            INNER JOIN USER
-            ON APPLICATION.UserID=USER.UserID
             WHERE PROPERTY.PropertyID = $listingID ");
         
         if(!$result)
