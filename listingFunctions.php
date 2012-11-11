@@ -176,7 +176,7 @@
             $row = mysql_fetch_array($result);
 
             include_once 'listingFunctions.php';
-
+            
             //below is call to function that returns the timestring of time remaining or time till start
             $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
 
@@ -196,6 +196,7 @@
                 '. $status . '
                 ' . $maxBid . '
                 ' . $timeString . '
+                '. $row[DatePFOAccept] .'
             </div>
 
             <div class="content">
@@ -253,7 +254,9 @@
             </form>
             </div>
             </div>
-        </div>';   
+        </div>'; 
+            
+            mysql_close();
         }
     
     function displayMyListings($propertyID)
