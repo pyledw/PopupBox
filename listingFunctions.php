@@ -324,15 +324,23 @@
                                 WHERE PropertyID='$row[PropertyID]'
                                 ORDER BY MonthlyRate DESC");
                             $max = 0;
+                            $won = false;
+                            $winnerID = '';
                             while($row2 = mysql_fetch_array($result2))
                             {
-                                echo  $row2[UserName] . " " . 
-                                    $row2[MonthlyRate]. " " . $row2[TimeReceived] .'<br/> ';
+                                
+                                if($max < 3)
+                                    {
+                                        echo  $row2[UserName] . " " . 
+                                        $row2[MonthlyRate]. " " . $row2[TimeReceived] .'<br/> ';
+                                    }
                                 $max += 1;
-                                if($max > 3)
+                                if($row2[IsWinningBid] == "1")
                                 {
-                                    break;
+                                    $won = true;
+                                    $winnerID = $row2[ApplicationID];
                                 }
+
                             }
 
 
@@ -355,13 +363,25 @@
                     <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
                     <button type="submit" class="button">Edit Listing</button>
                 </form>
-
-                <a href="reviewPFOs.php?propertyID='. $row[PropertyID] . '&auctionID='.$row[AuctionID].'" rel="facebox" class="button">Review PFOs</a>
-
+                ';
+                if($won)
+                {
+                    echo'
+                    <a href="viewApplication.php?applicationID='.$winnerID.'" rel="facebox" class="button">Review Choosen Application</a>
+                    ';
+                }
+                else
+                {
+                    echo'
+                    <a href="reviewPFOs.php?propertyID='. $row[PropertyID] . '&auctionID='.$row[AuctionID].'" rel="facebox" class="button">Review PFOs</a>
+                    ';
+                }
+                
+                echo'
                 <a href="printFlyer.php?propertyID='. $row[PropertyID] . '" class="button">Print Flyer</a>
                 </div>
                 </div>
-            </div>';
+                </div>';
         }
     
     
