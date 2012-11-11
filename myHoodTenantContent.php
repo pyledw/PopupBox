@@ -116,9 +116,9 @@
         
         echo '    <div id="myHoodListing">
         <div class="header">
-            <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
-            <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
-            <font class="redTextArea" style="float:right;">' . $timeString . '</font>
+            '. $status . '
+            ' . $maxBid . '
+            ' . $timeString . '
         </div>
         
         <div class="content">

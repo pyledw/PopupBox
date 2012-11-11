@@ -29,7 +29,7 @@
     while($row = mysql_fetch_array($result))
     {
         include_once 'listingFunctions.php';
-        displayMyProperty($row[AuctionID]);
+        displaySearchResults($row[AuctionID]);
     }
     ?>
 </div>
