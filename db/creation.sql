@@ -108,7 +108,7 @@ CREATE TABLE APPLICATION (
     ContactCellPhone                varchar(15)                    DEFAULT NULL,
     PageCompleted                   int(1)            NOT NULL     DEFAULT '1',
     
-    FOREIGN KEY (UserId) REFERENCES USER(UserID)
+    FOREIGN KEY (UserId) REFERENCES USER(UserID) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -166,7 +166,7 @@ CREATE TABLE PROPERTY (
     MinimumTerm                     int(3)                         DEFAULT NULL,
     PreMarket                       tinyint(1)                     DEFAULT '0',
     
-    FOREIGN KEY (UserID) REFERENCES USER(UserId)
+    FOREIGN KEY (UserID) REFERENCES USER(UserId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -177,7 +177,7 @@ CREATE TABLE IMAGE (
 	PropertyId                  int(8)            NOT NULL,
 	ImagePathOriginal           char(50),
 	ImagePathThumb              char(50),
-	FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId)
+	FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -198,7 +198,7 @@ CREATE TABLE AUCTION (
     MinimumTerm                     int(3)                         DEFAULT NULL,
     PreMarket                       tinyint(1)                     DEFAULT '0',
     
-    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId)
+    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -212,8 +212,8 @@ CREATE TABLE BID (
     TimeReceived                    timestamp         NOT NULL     DEFAULT CURRENT_TIMESTAMP,
     IsActive                        tinyint(1)                     DEFAULT '1',
 
-    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId),
-    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId)
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE,
+    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -223,7 +223,7 @@ CREATE TABLE DENIEDBREED (
     BreedID                         int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
     PropertyID                      int(8)            NOT NULL,
     BreedName                       char(40)                       DEFAULT NULL,
-    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId)
+    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB DEFAULT 
     CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -241,9 +241,9 @@ CREATE TABLE FEE (
     PaymentToken                    char(40)                       DEFAULT NULL,
     TransactionStatusID             int(1)                         DEFAULT NULL,
     
-    FOREIGN KEY (UserId)            REFERENCES USER            (UserId),
-    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId),
-    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId)
+    FOREIGN KEY (UserId)            REFERENCES USER            (UserId) ON DELETE CASCADE,
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE,
+    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -263,7 +263,7 @@ CREATE TABLE PREVIOUSRESIDENCE (
     TypeOfResidence                 varchar(20)                    DEFAULT NULL,
     PrevMonthlyRent                 int(5)                         DEFAULT NULL,
     TotalMonths                     int(3)                         DEFAULT NULL,
-    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId)
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
