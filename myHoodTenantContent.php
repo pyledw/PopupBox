@@ -106,9 +106,11 @@
     
     While($row2 = mysql_fetch_array($result2))
     {
+        
        if($row2[IsWinningBid] == "1")
         {
-            Echo 'You have been selected as the winner for this auciton!  Please click <a href="#">here</a> to see the landlords contact info.';
+           
+            Echo 'You have been selected as the winner for this auciton!  Please click <a rel="facebox" href="viewLandlordContactInfo.php?propertyID='.$row2[PropertyID].'">here</a> to see the landlords contact info.';
         }
         include_once 'listingFunctions.php';
         
