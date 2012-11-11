@@ -144,7 +144,7 @@
 
             if(isset($row[0]))
             {
-                $maxBid = "<font class='greyTextArea' style='float:right;'>$" .$row[0] . "</font>";
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[0] .'</font>';
             }
             else
             {
@@ -297,7 +297,7 @@
                 echo '    <div id="myHoodListing">
                 <div class="header">
                     '. $status . '
-                    <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
+                    ' . $maxBid . '
                     ' . $timeString . '
                 </div>
 
