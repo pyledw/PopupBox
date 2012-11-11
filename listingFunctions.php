@@ -17,21 +17,26 @@
             $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
             $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
             
-            $timeString = 'Begins in:
-                ';
+            
+            
             if($days != 0)
             {
-            $timeString = $timeString . $days . ' Days, ';
+            $timeString = '<font class="greyTextArea" style="float:right;">Begins in: '.$days .'  Days, '. $hours . ' Hours, '. $mins .' Minutes </font>';
             }
             if($hours != 0)
             {
-            $timeString = $timeString . $hours . ' Hours, ';
+            $timeString = '<font class="yellowTextArea" style="float:right;">Begins in: '. $hours . ' Hours, '. $mins .' Minutes </font>';
             }
-            $timeString = $timeString . $mins . ' Minutes';
+            if($hours == 0)
+            {
+                $timeString = '<font class="redTextArea" style="float:right;">Begins in: '. $mins .' Minutes </font>';
+            }
+            
+            
         }
         elseif($now > $ends)
         {
-            $timeString = "Auction has ended";
+            $timeString = '<font class="greyTextArea" style="float:right;">Bidding has ended</font>';
         }
         else
         {
@@ -42,17 +47,19 @@
             $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
             $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
             
-            $timeString = 'Ends in:
-                ';
+            
             if($days != 0)
             {
-            $timeString = $timeString . $days . ' Days, ';
+            $timeString = '<font class="greyTextArea" style="float:right;">Ends in: '.$days .'  Days, '. $hours . ' Hours, '. $mins .' Minutes </font>';
             }
             if($hours != 0)
             {
-            $timeString = $timeString . $hours . ' Hours, ';
+            $timeString = '<font class="yellowTextArea" style="float:right;">Ends in: '. $hours . ' Hours, '. $mins .' Minutes </font>';
             }
-            $timeString = $timeString . $mins . ' Minutes';
+            if($hours == 0)
+            {
+                $timeString = '<font class="redTextArea" style="float:right;">Ends in: '. $mins .' Minutes </font>';
+            }
             
         }
         
@@ -70,19 +77,19 @@
         $ends = strtotime($DateEndAcceptPFO);
         if($now > $start && $now < $ends)
         {
-            $status = "Open for Bids";
+           $status = '<font class="greenTextArea" style="float:right;">Satus:Open for PFOs</font>';
         }
         elseif($now < $start)
         {
-            $status = "Bidding has not yet started";
+            $status = '<font class="yellowTextArea" style="float:right;">Satus:Bidding has not yet started</font>';
         }
         elseif($now > $ends)
         {
-            $status = "Bidding has Ended";
+            $status = '<font class="greyTextArea" style="float:right;">Satus:Bidding Has Ended</font>';
         }
         else
         {
-            $status = "error";
+            $status = "";
         }
         return $status;
     }

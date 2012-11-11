@@ -48,9 +48,9 @@
         echo '    
         <div id="searchResult">
         <div class="header">
-            <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
+            '. $status . '
             <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
-            <font class="redTextArea" style="float:right;">' . $timeString . '</font>
+            ' . $timeString . '
         </div>
         
         <div class="content">

@@ -12,8 +12,6 @@
 
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM PROPERTY
-        INNER JOIN AUCTION
-        ON PROPERTY.PropertyID=AUCTION.PropertyID
         WHERE UserID ='" . $_SESSION[userID] . "'");
     if(!$result)
     {
@@ -24,6 +22,9 @@
     while($row = mysql_fetch_array($result))
     {
         include_once 'listingFunctions.php';
+        
+        
+        
         
         //below is call to function that returns the timestring of time remaining or time till start
         $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
@@ -55,9 +56,9 @@
         
         echo '    <div id="myHoodListing">
         <div class="header">
-            <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
+            '. $status . '
             <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
-            <font class="redTextArea" style="float:right;">' . $timeString . '</font>
+            ' . $timeString . '
         </div>
         
         <div class="content">
@@ -102,7 +103,7 @@
             
         echo '</div>
         <div class="column3">
-            '.$row[Description].'
+            '.substr($row[Description], 0, 200).'
         </div>
         <div class="column4">
             Next Open House<br/>
