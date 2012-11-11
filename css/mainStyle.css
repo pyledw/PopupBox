@@ -371,5 +371,31 @@ form .exceeded{color:#e00;}
     display:inline;
 }
 
+#listingTable{
+    margin: 10px auto 10px auto;
+    padding:0px 0px 0px 0px;
+    border:1px black solid;
+    display: block;
+}
+#listingTable tr{
+    padding:0px 0px 0px 0px;
+    margin:0px 0px 0px 0px;
+    border:1px black solid;
+}
+#listingTable td{
+    padding:0px 0px 0px 0px;
+    margin:0px 0px 0px 0px;
+    border:1px black solid;
+}
+#listingTable .PFOimage{
+    width:150px;
+    height:150px;
+    float:left;
+    border:1px solid #000000;
+    position:relative;
+    left:-20px;
+    top:-20px;
+}
+
 
 
