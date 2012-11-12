@@ -361,25 +361,33 @@
             </tr>
             <?php
                     //This section is retrieving the bids and adding them to the page
-                    $result2 = mysql_query("SELECT * FROM BID
-                        INNER JOIN APPLICATION
-                        ON APPLICATION.ApplicationID=BID.ApplicationID
-                        INNER JOIN USER
-                        ON APPLICATION.UserID=USER.UserID
-                        WHERE AuctionID='$row[AuctionID]'
-                        ORDER BY MonthlyRate DESC");
-                    
-                    while($row2 = mysql_fetch_array($result2))
-                    {
-                        echo '<tr>
-                            <td  colspan="1">
-                                '. $row2[UserName] .'
-                            </td>
-                            <td>
-                                '. $row2[MonthlyRate]. '
-                            </td>
-                        </tr>'; 
-                    }
+                    $bids = mysql_query("SELECT * FROM BID
+                            INNER JOIN AUCTION
+                            ON AUCTION.AuctionID=BID.AuctionID
+                            INNER JOIN APPLICATION
+                            ON APPLICATION.ApplicationID=BID.ApplicationID
+                            INNER JOIN USER
+                            ON USER.UserID=APPLICATION.UserID
+                            WHERE PropertyID='$row[PropertyID]'
+                            ORDER BY MonthlyRate DESC");
+                        $max = 0;
+                        while($bid = mysql_fetch_array($bids))
+                        {
+                            echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            $max += 1;
+                            if($max > 3)
+                            {
+                                echo '<tr><td><a rel="facebox" href="seeAllBids.php?auctionID='.$row[AuctionID].'">See all</a></td><td></td></tr>';
+                                $max += 1;
+                                break;
+                            }
+                        }
+                        while($max <= 3)
+                        {
+                            echo '<tr><td height="19px" ></td><td></td></tr>';
+                            $max += 1;
+                        }
                     
                     
                     
