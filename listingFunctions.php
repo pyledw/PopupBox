@@ -224,7 +224,7 @@
                 
                 
                 <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
-                    '.substr($row[Description], 0, 200).'<br/><br/><a href="homeListing.php?listingID='.$row[PropertyID].'" class="button">View Listing</a>
+                    '.substr($row[Description], 0, 150).'<br/><br/><a href="homeListing.php?listingID='.$row[PropertyID].'" class="button">View Listing</a>
                 </td>
                 <td style="text-align: center;" class="greyBackground">
                     Features
@@ -378,7 +378,7 @@
                 
                 
                 <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
-                    '.substr($row[Description], 0, 200).'<br/><br/>
+                    '.substr($row[Description], 0, 150).'<br/><br/>
                      <form class="buttonForm" method="POST" action="newListing1.php">
                     <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
                     <button type="submit" class="button">Edit Listing</button>
@@ -478,7 +478,7 @@
                             echo  '<tr><td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
                             $max += 1;
-                            if($max > 3)
+                            if($max > 2)
                             {
                                 break;
                             }
@@ -549,7 +549,7 @@
                 
                 
                 <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
-                    '.substr($row[Description], 0, 200).'<br/><br/>
+                    '.substr($row[Description], 0, 150).'<br/><br/>
                      <a class="button">Move in now at: $'. $row[RentNowRate] .'</a>
                      <a href="homeListing.php?listingID='. $row[PropertyID] . '" class="button">View Listing</a>
                      ';
@@ -634,7 +634,7 @@
                             echo  '<tr><td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
                             $max += 1;
-                            if($max > 3)
+                            if($max > 2)
                             {
                                 break;
                             }
