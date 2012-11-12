@@ -32,7 +32,6 @@
                 {
                     $timeString = '<font class="redTextArea" style="float:right;">Begins in: '. $mins .' Minutes </font>';
                 }
-                echo $timeString;
 
             }
             elseif($now > $ends)
