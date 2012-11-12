@@ -10,7 +10,7 @@
     width:1000px;
     border-collapse: collapse;
     border:1px solid #000000;
-    margin:0px auto 0px auto;
+    margin:0px auto 10px auto;
 }
 #houseListing tr{
     padding:0 10px 0 10px;
@@ -40,4 +40,22 @@
 .alignCenter{
     vertical-align: middle;
     text-align: center;
+}
+#innerTable{
+    border:none;
+    margin:0px 0px 0px 0px;
+    height:100%;
+    width:100%;
+}
+#innerTable tr{
+    border:none;
+    height:19px;
+    padding:4px 0px 4px 0px;
+    margin:0px 0px 0px 0px;
+}
+#innerTable td{
+    height:19px;
+    border:none;
+    padding:4px 0px 4px 0px;
+    margin:0px 0px 0px 0px;
 }

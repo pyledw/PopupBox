@@ -200,31 +200,96 @@
             //this code is retrieving the highest bid of the auction and returning it
 
             $maxBid = getHighBid($row[PropertyID]);
-
-
-            echo '    
-            <div id="searchResult">
-            <div class="header">
-                '. $status . '
-                ' . $maxBid . '
-                ' . $timeString . '
-                '.$row[Address] .', '.$row[City].' '.$row[State].' '.$row[Zip].'
-            </div>
-
-            <div class="content">
-            <image class="PFOimage" src="#" />
-            <div class="column1">
-               '.$row[Address].'<br/>
-               '.$row[City].'<br/>
-               '.$row[State].'<br/>
-               '.$row[Zip].'<br/>
-            </div>
-            <div class="column2">
-                Bidder ID ---  Price of Bid --- Date <br/>
-                ';
-
-
-                        $result2 = mysql_query("SELECT * FROM BID
+            
+            echo '<font style="float:right; position:relative; right:20px;">
+                    '
+                   .$timeString
+                   .$status
+                   .$maxBid.
+                '</font><br/>
+        <table id="houseListing">
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+            <tr>
+                <td width="102px;" rowspan="6">
+                    
+                </td>
+                <td colspan="2" width="600px">
+                    <b>'. $row[Address] . " - " . $row[PropertyID] . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                </td>
+                <td align="center" class="redBackground" colspan="2">
+                    Current Bids
+                </td>
+            </tr>
+            <tr>
+                
+                
+                <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
+                    '.substr($row[Description], 0, 200).'<br/><br/><a href="homeListing.php?listingID='.$row[PropertyID].'" class="button">View Listing</a>
+                </td>
+                <td style="text-align: center;" class="greyBackground">
+                    Features
+                </td>
+                <td>
+                    Username
+                </td>
+                <td>
+                    Bid Amount
+                </td>
+            </tr>';
+            
+            
+            
+            echo '<tr>
+   
+                <td rowspan="5" width="275px" style="padding:0 0 0 0; vertical-align:top;">
+                    <table id="innerTable">
+                        <tr>
+                            <td align="right">
+                                <b>Bedrooms:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[Bedroom] .'
+                            </td>
+                            <td align="right">
+                                <b>Bathrooms:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Bath] .'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <b>Square Feet:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[SF] .'
+                            </td>
+                            <td align="right">
+                                <b>Heat:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Heating] .'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <b>Air:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[AC] .'
+                            </td>
+                            <td align="right">
+                                <b>Media:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Media] .'
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                    </tr>';
+            
+            $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
                             INNER JOIN APPLICATION
@@ -232,41 +297,29 @@
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
                             WHERE PropertyID='$row[PropertyID]'
-                            ORDER BY MonthlyRate");
+                            ORDER BY MonthlyRate DESC");
                         $max = 0;
-                        while($row2 = mysql_fetch_array($result2))
+                        while($bid = mysql_fetch_array($bids))
                         {
-                            echo  $row2[UserName] . " " . 
-                                $row2[MonthlyRate]. " " . $row2[TimeReceived] .'<br/> ';
+                            echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
                             $max += 1;
                             if($max > 3)
                             {
                                 break;
                             }
                         }
+                        while($max <= 2)
+                        {
+                            echo '<tr><td height="19px" ></td><td></td></tr>';
+                            $max += 1;
+                        }
 
-            echo '</div>
-            <div class="column3">
-                '.substr($row[Description], 0, 175).'
-            </div>
-            <div class="column4">
-                Next Open House<br/>
-                '.$row[DateTimeOpenHouse1].'<br/>
-                '.$row[DateTimeOpenHouse2].'
-            </div>
 
-            <div class="footer">
-            <form class="buttonForm" method="get" action="homeListing.php">
-                <input type="text" name="listingID" style="Display:none" value="' . $row[PropertyID] . '" />
-                <button class="button" type="submit">View Listing Page</button>
-            </form>
-            <form class="buttonForm" method="get" action="homeListing.php">
-                <input type="text" name="listingID" style="Display:none" value="' . $row[PropertyID] . '" />
-                <button class="button" type="submit">View Listing</button>
-            </form>
-            </div>
-            </div>
-        </div>'; 
+
+            echo '
+        </table>';
+
             
             mysql_close();
         }
