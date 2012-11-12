@@ -108,7 +108,10 @@
   <script>
   $(document).ready(function(){
     $("#newUserForm").validate({
+        onkeyup: false,
+        onclick: false,
         ignoreTitle: true,
+        
         rules: {        
         password: "required",
         email: "required",
