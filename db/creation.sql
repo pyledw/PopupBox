@@ -165,7 +165,8 @@ CREATE TABLE PROPERTY (
     RentNowRate                     decimal(9,2)                   DEFAULT NULL,
     MinimumTerm                     int(3)                         DEFAULT NULL,
     PreMarket                       tinyint(1)                     DEFAULT '0',
-    
+   	PageCompleted			        int(1)                         DEFAULT '1',
+ 
     FOREIGN KEY (UserID) REFERENCES USER(UserId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
@@ -177,6 +178,8 @@ CREATE TABLE IMAGE (
 	PropertyId                  int(8)            NOT NULL,
 	ImagePathOriginal           char(50),
 	ImagePathThumb              char(50),
+	ImageType                   tinyint(1),
+ 
 	FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
