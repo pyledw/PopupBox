@@ -39,7 +39,7 @@
         $maxBid = getHighBid($row[PropertyID]);
         
 ?>
-    <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
+    
     <div id="mainContent">
             <font style="float:right; position:relative; right:20px;">
                 <?php

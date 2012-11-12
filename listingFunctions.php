@@ -176,7 +176,7 @@
     function displaySearchResults($auctionID)
         {
         
-        
+            echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';
             include_once 'config.inc.php';
 
             $con = get_dbconn("");
@@ -318,7 +318,8 @@
 
 
             echo '
-        </table>';
+        </table>
+        ';
 
             
             mysql_close();
@@ -327,104 +328,58 @@
     function displayMyListings($propertyID)
         {
 
-                include_once 'config.inc.php';
-                $con = get_dbconn("");
+        
+        
+        echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';
+        include_once 'config.inc.php';
 
-                $result = mysql_query("SELECT * FROM PROPERTY
-                WHERE PROPERTY.PropertyID ='$propertyID'");
+            $con = get_dbconn("");
 
-                $row = mysql_fetch_array($result);
-                include_once 'listingFunctions.php';
+            //this code is retrieving the highest bid of the auction and returning it
+            $result = mysql_query("SELECT * FROM AUCTION
+                INNER JOIN PROPERTY
+                ON AUCTION.PropertyID=PROPERTY.PropertyID
+                WHERE PROPERTY.PropertyID='$propertyID'");
 
-                //below is call to function that returns the timestring of time remaining or time till start
-                $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+            $row = mysql_fetch_array($result);
 
+            include_once 'listingFunctions.php';
+            
+            //below is call to function that returns the timestring of time remaining or time till start
+            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
 
-                //The code below will return the listings status
-                $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+            //The code below will return the listings status
+            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
 
-                //this code is retrieving the highest bid of the auction and returning it
-                $maxBid = getHighBid($row[PropertyID]);
+            //this code is retrieving the highest bid of the auction and returning it
 
-
-
-
-
-                if($row[IsPaid] == 0)
-                {
-                     echo '<font class="redTextArea">You have not yet paid your fee. The Property below will not be sent to an administrator for approval until your fee is paid.  Please go<a href="payListingFee.php?propertyID='. $row[PropertyID] .'"> HERE</a> to pay your fee.</font>';
-                }
-                if($row[IsPaid] == 1  && $row[IsApproved] == 0)
-                {
-                    echo '<font class="yellowTextArea">The Property below is awaiting approval from an administrator. </font>';
-                }
-
-                echo '    <div id="myHoodListing">
-                <div class="header">
-                    '. $status . '
-                    ' . $maxBid . '
-                    ' . $timeString . '
-                </div>
-
-                <div class="content">
-                <image class="PFOimage" src="#" />
-                <div class="column1">
-                   '.$row[Address].'<br/>
-                   '.$row[City].'<br/>
-                   '.$row[State].'<br/>
-                   '.$row[Zip].'<br/>
-                </div>
-                <div class="column2">
-                    Bidder ID ---  Price of Bid --- Date <br/>
-                    ';
-
-
-                            $result2 = mysql_query("SELECT * FROM BID
-                                INNER JOIN AUCTION
-                                ON AUCTION.AuctionID=BID.AuctionID
-                                INNER JOIN APPLICATION
-                                ON APPLICATION.ApplicationID=BID.ApplicationID
-                                INNER JOIN USER
-                                ON USER.UserID=APPLICATION.UserID
-                                WHERE PropertyID='$row[PropertyID]'
-                                ORDER BY MonthlyRate DESC");
-                            $max = 0;
-                            $won = false;
-                            $winnerID = '';
-                            while($row2 = mysql_fetch_array($result2))
-                            {
-                                
-                                if($max < 3)
-                                    {
-                                        echo  $row2[UserName] . " " . 
-                                        $row2[MonthlyRate]. " " . $row2[TimeReceived] .'<br/> ';
-                                    }
-                                $max += 1;
-                                if($row2[IsWinningBid] == "1")
-                                {
-                                    $won = true;
-                                    $winnerID = $row2[ApplicationID];
-                                }
-
-                            }
-
-
-
-
-
-
-                echo '</div>
-                <div class="column3">
-                    '.substr($row[Description], 0, 175).'
-                </div>
-                <div class="column4">
-                    Next Open House<br/>
-                    '.$row[DateTimeOpenHouse1].'<br/>
-                    '.$row[DateTimeOpenHouse2].'
-                </div>
-
-                <div class="footer">
-                <form class="buttonForm" method="POST" action="newListing1.php">
+            $maxBid = getHighBid($row[PropertyID]);
+            
+            echo '<font style="float:right; position:relative; right:20px;">
+                    '
+                   .$timeString
+                   .$status
+                   .$maxBid.
+                '</font><br/>
+        <table id="houseListing">
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+            <tr>
+                <td width="102px;" rowspan="6">
+                    
+                </td>
+                <td colspan="2" width="600px">
+                    <b>'. $row[Address] . " - " . $row[PropertyID] . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                </td>
+                <td align="center" class="redBackground" colspan="2">
+                    Current Bids
+                </td>
+            </tr>
+            <tr>
+                
+                
+                <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
+                    '.substr($row[Description], 0, 200).'<br/><br/>
+                     <form class="buttonForm" method="POST" action="newListing1.php">
                     <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
                     <button type="submit" class="button">Edit Listing</button>
                 </form>
@@ -444,10 +399,258 @@
                 
                 echo'
                 <a href="printFlyer.php?propertyID='. $row[PropertyID] . '" class="button">Print Flyer</a>
-                </div>
-                </div>
-                </div>';
+                </td>
+                <td style="text-align: center;" class="greyBackground">
+                    Features
+                </td>
+                <td>
+                    Username
+                </td>
+                <td>
+                    Bid Amount
+                </td>
+            </tr>';
+            
+            
+            
+            echo '<tr>
+   
+                <td rowspan="5" width="275px" style="padding:0 0 0 0; vertical-align:top;">
+                    <table id="innerTable">
+                        <tr>
+                            <td align="right">
+                                <b>Bedrooms:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[Bedroom] .'
+                            </td>
+                            <td align="right">
+                                <b>Bathrooms:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Bath] .'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <b>Square Feet:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[SF] .'
+                            </td>
+                            <td align="right">
+                                <b>Heat:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Heating] .'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <b>Air:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[AC] .'
+                            </td>
+                            <td align="right">
+                                <b>Media:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Media] .'
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                    </tr>';
+            
+            $bids = mysql_query("SELECT * FROM BID
+                            INNER JOIN AUCTION
+                            ON AUCTION.AuctionID=BID.AuctionID
+                            INNER JOIN APPLICATION
+                            ON APPLICATION.ApplicationID=BID.ApplicationID
+                            INNER JOIN USER
+                            ON USER.UserID=APPLICATION.UserID
+                            WHERE PropertyID='$row[PropertyID]'
+                            ORDER BY MonthlyRate DESC");
+                        $max = 0;
+                        while($bid = mysql_fetch_array($bids))
+                        {
+                            echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            $max += 1;
+                            if($max > 3)
+                            {
+                                break;
+                            }
+                        }
+                        while($max <= 2)
+                        {
+                            echo '<tr><td height="19px" ></td><td></td></tr>';
+                            $max += 1;
+                        }
+
+
+
+            echo '
+        </table>
+        ';
+            
         }
+        
+    //This function retrieves the PropertyIDs of the listing the user has an active bid on
+    //it then displays the listing with the active bid.
+    function displayMyPFOs($propertyID)
+    {
+        echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';
+        include_once 'config.inc.php';
+
+            $con = get_dbconn("");
+
+            //this code is retrieving the highest bid of the auction and returning it
+            $result = mysql_query("SELECT * FROM AUCTION
+                INNER JOIN PROPERTY
+                ON AUCTION.PropertyID=PROPERTY.PropertyID
+                WHERE PROPERTY.PropertyID='$propertyID'");
+
+            $row = mysql_fetch_array($result);
+
+            include_once 'listingFunctions.php';
+            
+            //below is call to function that returns the timestring of time remaining or time till start
+            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+
+            //The code below will return the listings status
+            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+
+            //this code is retrieving the highest bid of the auction and returning it
+
+            $maxBid = getHighBid($row[PropertyID]);
+            
+            echo '<font style="float:right; position:relative; right:20px;">
+                    '
+                   .$timeString
+                   .$status
+                   .$maxBid.
+                '</font><br/>
+        <table id="houseListing">
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+            <tr>
+                <td width="102px;" rowspan="6">
+                    
+                </td>
+                <td colspan="2" width="600px">
+                    <b>'. $row[Address] . " - " . $row[PropertyID] . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                </td>
+                <td align="center" class="redBackground" colspan="2">
+                    Current Bids
+                </td>
+            </tr>
+            <tr>
+                
+                
+                <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
+                    '.substr($row[Description], 0, 200).'<br/><br/>
+                     <a class="button">Move in now at: $'. $row[RentNowRate] .'</a>
+                     <a href="changeMyPFO.php?bidID='. $row[BidID] . '" class="button" rel="facebox">Change my PFO</a>
+                     ';
+                
+                echo'
+                </td>
+                <td style="text-align: center;" class="greyBackground">
+                    Features
+                </td>
+                <td>
+                    Username
+                </td>
+                <td>
+                    Bid Amount
+                </td>
+            </tr>';
+            
+            
+            
+            echo '<tr>
+   
+                <td rowspan="5" width="275px" style="padding:0 0 0 0; vertical-align:top;">
+                    <table id="innerTable">
+                        <tr>
+                            <td align="right">
+                                <b>Bedrooms:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[Bedroom] .'
+                            </td>
+                            <td align="right">
+                                <b>Bathrooms:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Bath] .'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <b>Square Feet:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[SF] .'
+                            </td>
+                            <td align="right">
+                                <b>Heat:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Heating] .'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <b>Air:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[AC] .'
+                            </td>
+                            <td align="right">
+                                <b>Media:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Media] .'
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                    </tr>';
+            
+            $bids = mysql_query("SELECT * FROM BID
+                            INNER JOIN AUCTION
+                            ON AUCTION.AuctionID=BID.AuctionID
+                            INNER JOIN APPLICATION
+                            ON APPLICATION.ApplicationID=BID.ApplicationID
+                            INNER JOIN USER
+                            ON USER.UserID=APPLICATION.UserID
+                            WHERE PropertyID='$row[PropertyID]'
+                            ORDER BY MonthlyRate DESC");
+                        $max = 0;
+                        while($bid = mysql_fetch_array($bids))
+                        {
+                            echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            $max += 1;
+                            if($max > 3)
+                            {
+                                break;
+                            }
+                        }
+                        while($max <= 2)
+                        {
+                            echo '<tr><td height="19px" ></td><td></td></tr>';
+                            $max += 1;
+                        }
+
+
+
+            echo '
+        </table>
+        ';
+    }
     
     
     //This funciton will test the user using the given UserID and PropertyID

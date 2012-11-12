@@ -114,89 +114,9 @@
         }
         include_once 'listingFunctions.php';
         
-        //below is call to function that returns the timestring of time remaining or time till start
-        $timeString = getTime($row2[DatePFOAccept], $row2[DatePFOEndAccept]);
+        displayMyPFOs($row2[PropertyID]);
         
-        
-        //The code below will return the listings status
-        $status = getStatus($row2[DatePFOAccept], $row2[DatePFOEndAccept]);
-
-        //this code is retrieving the highest bid of the auction and returning it
-        $maxBid = getHighBid($row2[PropertyID]);
-        
-        
-        echo '    <div id="myHoodListing">
-        <div class="header">
-            '. $status . '
-            ' . $maxBid . '
-            ' . $timeString . '
-        </div>
-        
-        <div class="content">
-        <image class="PFOimage" src="#" />
-        <div class="column1">
-           '.$row2[Address].'<br/>
-           '.$row2[City].'<br/>
-           '.$row2[State].'<br/>
-           '.$row2[Zip].'<br/>
-           '.$row2[PropertyID].'
-        </div>
-        <div class="column2">
-            Bidder ID ---  Price of Bid --- Date <br/>
-            ';
-        
-                    
-                    $result3 = mysql_query("SELECT * FROM BID
-                        INNER JOIN AUCTION
-                        ON AUCTION.AuctionID=BID.AuctionID
-                        INNER JOIN APPLICATION
-                        ON APPLICATION.ApplicationID=BID.ApplicationID
-                        INNER JOIN USER
-                        ON USER.UserID=APPLICATION.UserID
-                        WHERE PropertyID='$row2[PropertyID]'
-                        ORDER BY MonthlyRate DESC");
-                    
-                    $max = 0;
-                    while($row3 = mysql_fetch_array($result3))
-                    {
-                        echo  $row3[UserName] . " " . 
-                            $row3[MonthlyRate]. " " . $row3[TimeReceived] .'<br/> ';
-                        $max += 1;
-                        if($max > 3)
-                        {
-                            break;
-                        }
-                    }
-                    
-                    
-                    
-         
-                
-            
-        echo '</div>
-            <div class="column3">
-            '. $row2[Description] .'
-            
-        </div>
-        <div class="column4">
-            Next Open House<br/>
-            '.$row2[DateTimeOpenHouse1].'<br/>
-            '.$row2[DateTimeOpenHouse2].'
-        </div>
-        
-        <div class="footer">
-        <div class="footer">
-            <a class="button">Move in now at:$price</a>
-            <a href="changeMyPFO.php?bidID='. $row2[BidID] . '" class="button" rel="facebox">Change my PFO</a>
-            <a class="button">Contact Landlord</a>
-        </div>
-        </div>
-        </div>
-    </div>';
-        //added a break to ensure that only one property will be displayed
-        break;
     }
-    
     ?>
     
 </div>
