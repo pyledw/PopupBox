@@ -120,7 +120,7 @@
                                     {
                                         echo '<form id="placebid" method="post">
                                          <font>My Proposal for occupancy</font><br/><br/>
-                                         <label class="label">Bid Amount:</label><input class="required number" type="text" name="amt" /><br/>
+                                         <label class="label">PFO Amount:</label><input class="required number" type="text" name="amt" /><br/>
                                          <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
                                          <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
                                          <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
@@ -397,12 +397,16 @@
     <script>
         $("#placebid").submit(function(e){
             e.preventDefault();
+            var isValid = $("#placebid").valid();
             
-            var url = "placeBidConfirm.php?";
-            url += "amt=" + $('[name=amt]').val();
-            url += "&auctionID=" + $('[name=auctionID]').val();
-            url += "&propertyID=" + $('[name=propertyID]').val();
-            jQuery.facebox({ ajax: url });
+            if(isValid)
+                {
+                    var url = "placeBidConfirm.php?";
+                    url += "amt=" + $('[name=amt]').val();
+                    url += "&auctionID=" + $('[name=auctionID]').val();
+                    url += "&propertyID=" + $('[name=propertyID]').val();
+                    jQuery.facebox({ ajax: url });
+                }
         })
         $(document).ready(function(){
             $("#placebid").validate({
