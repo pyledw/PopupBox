@@ -11,7 +11,7 @@ CREATE TABLE USER (
     UserName                        varchar(100)      NOT NULL                     UNIQUE,
     IsSuspended                     tinyint(1)        NOT NULL     DEFAULT '0',
     Password                        char(34)                       DEFAULT NULL,
-    Email                           varchar(120)                   DEFAULT NULL,
+    Email                           varchar(120)      NOT NULL                     UNIQUE,
     SSN                             char(9)                        DEFAULT NULL,
     FirstName                       varchar(100)                   DEFAULT NULL,
     LastName                        varchar(100)                   DEFAULT NULL,
@@ -285,13 +285,13 @@ CREATE TABLE PREVIOUSRESIDENCE (
 --
 -- ---------------------------------------------------------------------
 
--- insert into USER select * from test.USER;
--- insert into PROPERTY select * from test.PROPERTY;
--- insert into APPLICATION select * from test.APPLICATION;
--- insert into IMAGE select * from test.IMAGE;
--- insert into AUCTION select * from test.AUCTION;
--- insert into BID select * from test.BID;
--- insert into DENIEDBREED select * from test.DENIEDBREED;
--- insert into FEE select * from test.FEE;
--- insert into PREVIOUSRESIDENCE select * from test.PREVIOUSRESIDENCE;
+insert into USER 				select * from leasehood.USER;
+insert into PROPERTY 			select * from leasehood.PROPERTY;
+insert into APPLICATION 		select * from leasehood.APPLICATION;
+insert into IMAGE 				select * from leasehood.IMAGE;
+insert into AUCTION 			select * from leasehood.AUCTION;
+insert into BID 				select * from leasehood.BID;
+insert into DENIEDBREED 		select * from leasehood.DENIEDBREED;
+insert into FEE 				select * from leasehood.FEE;
+insert into PREVIOUSRESIDENCE 	select * from leasehood.PREVIOUSRESIDENCE;
 
