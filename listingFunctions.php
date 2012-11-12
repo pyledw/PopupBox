@@ -208,6 +208,7 @@
                 '. $status . '
                 ' . $maxBid . '
                 ' . $timeString . '
+                '.$row[Address] .', '.$row[City].' '.$row[State].' '.$row[Zip].'
             </div>
 
             <div class="content">

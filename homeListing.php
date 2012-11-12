@@ -61,7 +61,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td width="150px">
                     <img class="mainPhoto" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
                 </td>
                     
