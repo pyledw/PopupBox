@@ -376,14 +376,20 @@
                             WHERE PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
+                        $numRows = mysql_num_fields($bids);
                         while($bid = mysql_fetch_array($bids))
                         {
+                         
                             echo  '<tr><td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
                             $max += 1;
-                            if($max > 3)
+                            
+                            if($max > 2)
                             {
-                                echo '<tr><td><a rel="facebox" href="seeAllBids.php?auctionID='.$row[AuctionID].'">See all</a></td><td></td></tr>';
+                                if($numRows > 3)
+                                {
+                                    echo '<tr><td><a rel="facebox" href="seeAllBids.php?auctionID='.$row[AuctionID].'">See all</a></td><td></td></tr>';
+                                }
                                 $max += 1;
                                 break;
                             }
