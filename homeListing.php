@@ -41,14 +41,14 @@
 ?>
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
     <div id="mainContent">
-            <font style="float:right; position:relative; right:20px; top:20px;">
+            <font style="float:right; position:relative; right:20px;">
                 <?php
                     echo $timeString;
                     echo $status;
 
                 ?>
             </font><br/>
-        <table id="houseListing" class="tableForm">
+        <table id="houseListing">
 
             <tr>
                 <td colspan="3" width="600px">
