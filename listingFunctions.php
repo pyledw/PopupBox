@@ -4,10 +4,11 @@
     //currently running.  It will then return the correct string for the result
     function getTime($DateAcceptPFO,$DateEndAcceptPFO)
         {
+        
+
             $start = strtotime($DateAcceptPFO);
             $now = strtotime(date("Y-m-d H:i:s"));
             $ends = strtotime($DateEndAcceptPFO);
-            $timeString = 'error';
             if($now < $start)
             {
                 //The code below will get the time to the auction begining.
@@ -18,20 +19,20 @@
                 $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
 
 
-
+                
                 if($days != 0)
                 {
                 $timeString = '<font class="greyTextArea" style="float:right;">Begins in: '.$days .'  Days, '. $hours . ' Hours, '. $mins .' Minutes </font>';
                 }
-                if($hours != 0)
+                elseif($hours != 0)
                 {
                 $timeString = '<font class="yellowTextArea" style="float:right;">Begins in: '. $hours . ' Hours, '. $mins .' Minutes </font>';
                 }
-                if($hours == 0)
+                elseif($hours == 0)
                 {
                     $timeString = '<font class="redTextArea" style="float:right;">Begins in: '. $mins .' Minutes </font>';
                 }
-
+                echo $timeString;
 
             }
             elseif($now > $ends)
@@ -52,18 +53,23 @@
                 {
                 $timeString = '<font class="greyTextArea" style="float:right;">Ends in: '.$days .'  Days, '. $hours . ' Hours, '. $mins .' Minutes </font>';
                 }
-                if($hours != 0)
+                elseif($hours != 0)
                 {
                 $timeString = '<font class="yellowTextArea" style="float:right;">Ends in: '. $hours . ' Hours, '. $mins .' Minutes </font>';
                 }
-                if($hours == 0)
+                elseif($hours == 0)
                 {
                     $timeString = '<font class="redTextArea" style="float:right;">Ends in: '. $mins .' Minutes </font>';
                 }
+                else 
+                {
+
+                }
+                echo $timeString;
 
             }
-
-
+            
+                
             return $timeString;
         }
     
@@ -91,6 +97,9 @@
             {
                 $status = "";
             }
+            unset($start);
+            unset($now);
+            unset($ends);
             return $status;
         }
 
@@ -123,6 +132,10 @@
             {
                 $status = "error";
             }
+            
+            unset($start);
+            unset($now);
+            unset($ends);
             return $status;
         }
 
@@ -163,6 +176,8 @@
     //This function retrieves the Auction ID and displays the property and infromation based off that ID.
     function displaySearchResults($auctionID)
         {
+        
+        
             include_once 'config.inc.php';
 
             $con = get_dbconn("");
@@ -180,10 +195,8 @@
             //below is call to function that returns the timestring of time remaining or time till start
             $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
 
-
             //The code below will return the listings status
             $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
-
 
             //this code is retrieving the highest bid of the auction and returning it
 
@@ -196,7 +209,6 @@
                 '. $status . '
                 ' . $maxBid . '
                 ' . $timeString . '
-                '. $row[DatePFOAccept] .'
             </div>
 
             <div class="content">
