@@ -14,11 +14,22 @@
             header( 'Location: /searchHomes.php' );
         }
         
+        include_once 'listingFunctions.php';
+            
+        
         
 ?>
 <h1 class="Title">Home Search Results</h1>
 <hr class="Title" />
 <div id="mainContent">
+    
+ <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
+    <div id="mainContent" >
+            
+   </div>
+    
+    
+    
     <?php
         
     include_once 'searchFunction.php';
