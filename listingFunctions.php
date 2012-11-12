@@ -551,7 +551,7 @@
                 <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
                     '.substr($row[Description], 0, 200).'<br/><br/>
                      <a class="button">Move in now at: $'. $row[RentNowRate] .'</a>
-                     <a href="changeMyPFO.php?bidID='. $row[BidID] . '" class="button" rel="facebox">Change my PFO</a>
+                     <a href="homeListing.php?listingID='. $row[PropertyID] . '" class="button">View Listing</a>
                      ';
                 
                 echo'
@@ -724,6 +724,30 @@
             return $status;
 
 
+        }
+        
+        
+        //This function returns the date and time of the date from the database so that it looks better.
+        function convertDate($date,$hasTime)
+        {
+       
+
+        $middle = strtotime($date);             // returns bool(false)
+
+        
+        
+        if($hasTime == 0)
+        {
+            $new_date = date('D M d, Y ', $middle);   // returns Day Month date, Year
+        }
+        else 
+        {
+            $new_date = date('D M d, Y H:ia ', $middle);   // returns Day Month date, Year 00:00pm
+        }
+        
+        
+            
+         return $new_date;   
         }
     
     
