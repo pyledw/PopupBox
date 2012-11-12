@@ -64,7 +64,7 @@
                 {
 
                 }
-                echo $timeString;
+                
 
             }
             

@@ -41,18 +41,22 @@
 ?>
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
     <div id="mainContent">
-        <!--Content will be retrieved via php.  This is just a template for user latter-->
-        <h1 class="Title"><?php echo $row[Address] . " - " . $row[PropertyID] ?></h1>
-        <hr class="Title" />
-        
-        <table id="houseListing">
+            <font style="float:right; position:relative; right:20px; top:20px;">
+                <?php
+                    echo $timeString;
+                    echo $status;
+
+                ?>
+            </font><br/>
+        <table id="houseListing" class="tableForm">
+
             <tr>
                 <td colspan="3" width="600px">
-                    <?php echo $row[Address] . " - " . $row[PropertyID] ?>  <a href="Http://www.google.com/maps?q=<?php echo $row[Address] . " " . $row[City] . " " . $row[State] ?>">Map It</a> - Print Brochure
+                    <b><?php echo $row[Address] . " - " . $row[PropertyID] . " - " ?>  <a href="Http://www.google.com/maps?q=<?php echo $row[Address] . " " . $row[City] . " " . $row[State] ?>">Map It</a> - Print Brochure</b>
                 </td>
-                <td colspan="1" class="greyBackground">
+                <td Style="background: grey;">
                     Current Rental Rate:
-                    <?php echo "$" . $maxBid;?> 
+                    <?php echo $maxBid;?> 
                     
                 </td>
             </tr>
@@ -74,33 +78,9 @@
                     <a class="button" href="#">Save this home</a><br/><br/>
                     <a class="button" href="#">Print Flyer</a><br/><br/>
                 </td>
-                <td>
-                    BR: <?php echo $row[Bedroom] ?> BA: <?php echo $row[Bath] ?><br/>
-                    SQ: <?php echo $row[SF] ?><br/>
-                    AC: <?php echo $row[AC] ?> Heat: <?php echo $row[Heating] ?><br/>
-                    Pets: <?php echo $row[AllowDog] ?><br/>
-                    Deposit: <?php echo "$".$row[RequiredDeposit] ?><br/>
-                    Open House 1: <?php echo $row[DateTimeOpenHouse1] ?><br/>
-                    Open House 2: <?php echo $row[DateTimeOpenHouse2] ?><br/>
-                    Listing End: <?php echo $row[DatePFOEndAccept] ?><br/>
-                    Date Available: <?php echo $row[DateAvailable] ?><br/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <?php echo $row[Description] ?>
-                </td>
-            </tr>
-            <tr>
-                <td class="redBackground" colspan="3">
-                    Bid History
-                </td>
-                <td rowspan="6" align="center">
-                    <?php 
-                    
-                    
-
-                            
+                <td align="center">
+                <?php 
+                             
                              $auctionStatus = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
                              
                              if($auctionStatus == "1")
@@ -109,7 +89,7 @@
                                     if($bidStatus == "0")
                                     {
                                         echo '<form id="placebid" method="post">
-                                         <font class="greyBackground">My Proposal for occupancy</font><br/>
+                                         <font>My Proposal for occupancy</font><br/><br/>
                                          <label class="label">Bid Amount:</label><input class="required number" type="text" name="amt" /><br/>
                                          <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
                                          <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
@@ -142,16 +122,51 @@
                              {
                                  echo "Auciton has Ended";
                              }
-                    
-                    
+
                     ?>
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="4">
+                    <?php echo $row[Description] ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="redBackground" colspan="2">
+                    Bid History
+                </td>
+                <td rowspan="10" colspan="1" align="center">
+
+                    BR: <?php echo $row[Bedroom] ?> BA: <?php echo $row[Bath] ?><br/>
+                    SQ: <?php echo $row[SF] ?><br/>
+                    AC: <?php echo $row[AC] ?> Heat: <?php echo $row[Heating] ?><br/>
+                    Pets: <?php echo $row[AllowDog] ?><br/>
+                    Deposit: <?php echo "$".$row[RequiredDeposit] ?><br/>
+                    Open House 1: <?php echo $row[DateTimeOpenHouse1] ?><br/>
+                    Open House 2: <?php echo $row[DateTimeOpenHouse2] ?><br/>
+                    Listing End: <?php echo $row[DatePFOEndAccept] ?><br/>
+                    Date Available: <?php echo $row[DateAvailable] ?><br/>
+                   
                     
+                </td>
+                <td rowspan="10" colspan="1" align="center">
+
+                    BR: <?php echo $row[Bedroom] ?> BA: <?php echo $row[Bath] ?><br/>
+                    SQ: <?php echo $row[SF] ?><br/>
+                    AC: <?php echo $row[AC] ?> Heat: <?php echo $row[Heating] ?><br/>
+                    Pets: <?php echo $row[AllowDog] ?><br/>
+                    Deposit: <?php echo "$".$row[RequiredDeposit] ?><br/>
+                    Open House 1: <?php echo $row[DateTimeOpenHouse1] ?><br/>
+                    Open House 2: <?php echo $row[DateTimeOpenHouse2] ?><br/>
+                    Listing End: <?php echo $row[DatePFOEndAccept] ?><br/>
+                    Date Available: <?php echo $row[DateAvailable] ?><br/>
                    
                     
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="1">
                     Username
                 </td>
                 <td>
@@ -171,7 +186,7 @@
                     while($row2 = mysql_fetch_array($result2))
                     {
                         echo '<tr>
-                            <td  colspan="2">
+                            <td  colspan="1">
                                 '. $row2[UserName] .'
                             </td>
                             <td>
