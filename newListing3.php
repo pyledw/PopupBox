@@ -149,7 +149,9 @@
     
     $(document).ready(function(){
     $("#listingForm").validate({
-        ignoreTitle: true
+        ignoreTitle: true,
+        onkeyup: false,
+        onclick: false
         
     });
   });

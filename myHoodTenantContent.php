@@ -85,11 +85,11 @@
     <?php
         
     //pulling the data from the database and returning the PFO
-    $result2 = mysql_query("SELECT * FROM PROPERTY
+    $result2 = mysql_query("SELECT * FROM BID
             INNER JOIN AUCTION
-            ON AUCTION.PropertyID=PROPERTY.PropertyID
-            INNER JOIN BID
             ON BID.AuctionID=AUCTION.AuctionID
+            INNER JOIN PROPERTY
+            ON AUCTION.PropertyID=PROPERTY.PropertyID
             INNER JOIN APPLICATION
             ON BID.ApplicationID=APPLICATION.ApplicationID
             INNER JOIN USER
@@ -98,185 +98,25 @@
             ");
     
     
+    
+    
+    
+    
+    
+    
     While($row2 = mysql_fetch_array($result2))
     {
-       
+        
+       if($row2[IsWinningBid] == "1")
+        {
+           
+            Echo 'You have been selected as the winner for this auciton!  Please click <a rel="facebox" href="viewLandlordContactInfo.php?propertyID='.$row2[PropertyID].'">here</a> to see the landlords contact info.';
+        }
         include_once 'listingFunctions.php';
         
-        //below is call to function that returns the timestring of time remaining or time till start
-        $timeString = getTime($row2[DatePFOAccept], $row2[DatePFOEndAccept]);
+        displayMyPFOs($row2[PropertyID]);
         
-        
-        //The code below will return the listings status
-        $status = getStatus($row2[DatePFOAccept], $row2[DatePFOEndAccept]);
-
-        //this code is retrieving the highest bid of the auction and returning it
-        $maxBid = getHighBid($row2[PropertyID]);
-        
-        
-        echo '    <div id="myHoodListing">
-        <div class="header">
-            <font class="greyTextArea" style="float:right;">Satus:'. $status . '</font>
-            <font class="greyTextArea" style="float:right;">' . $maxBid . '</font>
-            <font class="redTextArea" style="float:right;">' . $timeString . '</font>
-        </div>
-        
-        <div class="content">
-        <image class="PFOimage" src="#" />
-        <div class="column1">
-           '.$row2[Address].'<br/>
-           '.$row2[City].'<br/>
-           '.$row2[State].'<br/>
-           '.$row2[Zip].'<br/>
-           '.$row2[PropertyID].'
-        </div>
-        <div class="column2">
-            Bidder ID ---  Price of Bid --- Date <br/>
-            ';
-        
-                    
-                    $result3 = mysql_query("SELECT * FROM BID
-                        INNER JOIN AUCTION
-                        ON AUCTION.AuctionID=BID.AuctionID
-                        INNER JOIN APPLICATION
-                        ON APPLICATION.ApplicationID=BID.ApplicationID
-                        INNER JOIN USER
-                        ON USER.UserID=APPLICATION.UserID
-                        WHERE PropertyID='$row2[PropertyID]'
-                        ORDER BY MonthlyRate DESC");
-                    
-                    $max = 0;
-                    while($row3 = mysql_fetch_array($result3))
-                    {
-                        echo  $row3[UserName] . " " . 
-                            $row3[MonthlyRate]. " " . $row3[TimeReceived] .'<br/> ';
-                        $max += 1;
-                        if($max > 3)
-                        {
-                            break;
-                        }
-                    }
-                    
-                    
-                    
-         
-                
-            
-        echo '</div>
-            <div class="column3">
-            '. $row2[Description] .'
-            
-        </div>
-        <div class="column4">
-            Next Open House<br/>
-            '.$row2[DateTimeOpenHouse1].'<br/>
-            '.$row2[DateTimeOpenHouse2].'
-        </div>
-        
-        <div class="footer">
-        <div class="footer">
-            <a class="button">Move in now at:$price</a>
-            <a href="changeMyPFO.php?bidID='. $row2[BidID] . '" class="button" rel="facebox">Change my PFO</a>
-            <a class="button">Contact Landlord</a>
-        </div>
-        </div>
-        </div>
-    </div>';
-        //added a break to ensure that only one property will be displayed
-        break;
     }
-    
     ?>
-    <h1>My Favorites</h1>
-        <?php
-    //pulling the data from the database and returning the PFO
-    ?>
-    <div id="myHoodListing">
-        <div class="header">
-            <font class="auctionEnding">Action Ends</font>
-            <font class="currentBid">Current Bid</font>
-        </div>
-        
-        <div class="content">
-        <image class="PFOimage" src="#" />
-        <div class="column1">
-            This will contain street address but will run over<br/>
-            City<br/>
-            state<br/>
-            zip<br/>
-            ID CODE<br/>
-        </div>
-        <div class="column2">
-            My bid<br/>
-            time submitted</br>
-            <a>See old bids</a>
-        </div>
-        <div class="column3">
-            Some details<br/>
-            number of rooms<br/>
-            SQ footage<br/>
-            Bathrooms
-        </div>
-        <div class="column4">
-            Open House Details</br>
-            Next Date:
-        </div>
-        
-        <div class="footer">
-            <a class="button">Submit a PFO</a>
-            <a class="button">MOVE IN NOW</a>
-            <a class="button">Contact Landlord</a>
-        </div>
-        </div>
-        
-    </div>
-
-    
-    <div id="myHoodListing">
-        <div class="header">
-            <font class="auctionEnding">Action Ends</font>
-            <font class="currentBid">Current Bid</font>
-        </div>
-        
-        <div class="content">
-        <image class="PFOimage" src="#" />
-        <div class="column1">
-            This will contain street address but will run over<br/>
-            City<br/>
-            state<br/>
-            zip<br/>
-            ID CODE<br/>
-        </div>
-        <div class="column2">
-            My bid<br/>
-            time submitted</br>
-            <a>See old bids</a>
-        </div>
-        <div class="column3">
-            Some details<br/>
-            number of rooms<br/>
-            SQ footage<br/>
-            Bathrooms
-        </div>
-        <div class="column4">
-            Open House Details</br>
-            Next Date:
-        </div>
-        
-        <div class="footer">
-            <a class="button">Submit a PFO</a>
-            <a class="button">MOVE IN NOW</a>
-            <a class="button">Contact Landlord</a>
-        </div>
-        </div>
-        
-    </div>
-    
-    <h1>My Saved Searches</h1>
-    <?php
-    //Populated by PHP the recent searches made by the tenant
-    ?>
-    
-    
     
 </div>

@@ -17,7 +17,7 @@
 ?>
 
 <div id="Application">
-    <div id="Applicationheader"><h1>Tenant Application</h1></div>
+    <div id="Applicationheader"><h1><?php echo $applicationID; ?> Tenant Application</h1></div>
     <div class="content">
         <table>
             <tr>

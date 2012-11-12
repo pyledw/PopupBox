@@ -59,11 +59,6 @@ while($row = mysql_fetch_array($result))
 <form id="placebid" method="post" action="placeBid.php">
 
 <table style="margin-top: -5px;" class="tableForm">
-    <tr>
-        <td>
-            My Proposal for occupancy
-        </td>
-    </tr>
 <?php
 
 if($accept && $active)
@@ -72,24 +67,24 @@ if($accept && $active)
         {
             echo '<tr>
                     <td>
-                        You may continue, The highest bid is:
+                        Ther is another PFO higher than your proposed PFO, The highest bid is:
                         $'.$highestAmount .' 
                     </td>
                   </tr>
                   <tr>
                     <td>
-                        Consider increasing your bid.
+                        Consider increasing your PFO in order to increase your chances.
 ';
         }
     echo'
     <tr>
         <td>
-            Your Bid: '.$_GET["amt"].'
+            Your PFO is: '.$_GET["amt"].'
         </td>
     </tr>
     <tr>
         <td>
-            Are you sure you want to submit your bid?
+            Are you sure you want to submit your PFO?
         </td>
     </tr> 
     <tr>
@@ -102,7 +97,7 @@ if($accept && $active)
     </tr> 
     <tr>
         <td>
-            <button class="button" type="submit">Submit</button>
+            <button class="button" type="submit">Submit PFO</button>
         </td>
     </tr>';
 }
@@ -111,7 +106,7 @@ else
     echo '
         <tr>
             <td>
-                There is an error with your bid.
+                There is an error with your PFO.
             </td>
         </tr> 
     ';
@@ -121,17 +116,17 @@ else
             echo '
                 <tr>
                     <td>
-                        Your Previus Bid was higher than your current offer
+                        Your Previus PFO was higher than your current offer
                     </td>
                 </tr> 
                 <tr>
                     <td>
-                        <label class="label">Your Bid: '.$_GET["amt"].'</label><br/>
+                        <label class="label">Your PFO: '.$_GET["amt"].'</label><br/>
                     </td>
                 </tr> 
                 <tr>
                     <td>
-                        <label class="label">Your Highest Bid: '.$lastBid.'</label>
+                        <label class="label">Your Highest PFO: '.$lastBid.'</label>
                     </td>
                 </tr>
             ';
