@@ -41,66 +41,76 @@
 ?>
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
     <div id="mainContent">
-        <!--Content will be retrieved via php.  This is just a template for user latter-->
-        <h1 class="Title"><?php echo $row[Address] . " - " . $row[PropertyID] ?></h1>
-        <hr class="Title" />
-        
+            <font style="float:right; position:relative; right:20px;">
+                <?php
+                    echo $timeString;
+                    echo $status;
+
+                ?>
+            </font><br/>
         <table id="houseListing">
+
             <tr>
                 <td colspan="3" width="600px">
-                    <?php echo $row[Address] . " - " . $row[PropertyID] ?>  <a href="Http://www.google.com/maps?q=<?php echo $row[Address] . " " . $row[City] . " " . $row[State] ?>">Map It</a> - Print Brochure
+                    <b><?php echo $row[Address] . " - " . $row[PropertyID] . " - " ?>  <a href="Http://www.google.com/maps?q=<?php echo $row[Address] . " " . $row[City] . " " . $row[State] ?>">Map It</a> - Print Brochure</b>
                 </td>
-                <td colspan="1" class="greyBackground">
+                <td Style="background: grey;">
                     Current Rental Rate:
-                    <?php echo "$" . $maxBid;?> 
+                    <?php echo $maxBid;?> 
                     
                 </td>
             </tr>
             <tr>
-                <td>
+                <td width="150px">
                     <img class="mainPhoto" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
                 </td>
                     
                 <td>
                     <img class="thumbs" src="<?php echo $row[ImagePathKitchenThumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePathMainBathThumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePath4Thumb]; ?>" alt="thumbnail" /><br/>
-                    <img class="thumbs" src="<?php echo $row[ImagePath5Thumb]; ?>" alt="thumbnail" />
+                    <img class="thumbs" src="<?php echo $row[ImagePathMainBathThumb]; ?>" alt="thumbnail" /><br/>
+                    <img class="thumbs" src="<?php echo $row[ImagePath4Thumb]; ?>" alt="thumbnail" />
+                    <img class="thumbs" src="<?php echo $row[ImagePath5Thumb]; ?>" alt="thumbnail" /><br/>
                     <img class="thumbs" src="<?php echo $row[ImagePath6Thumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePath7Thumb]; ?>" alt="thumbnail" /><br/>
-                </td>
-                <td class="alignCenter">
-                    <a class="button" href="#">Move in Now <?php echo "$" . $row[RentNowRate] ?></a><br/><br/>
-                    <a class="button" href="#">Save this home</a><br/><br/>
-                    <a class="button" href="#">Print Flyer</a><br/><br/>
+                    <img class="thumbs" src="<?php echo $row[ImagePath7Thumb]; ?>" alt="thumbnail" />
                 </td>
                 <td>
-                    BR: <?php echo $row[Bedroom] ?> BA: <?php echo $row[Bath] ?><br/>
-                    SQ: <?php echo $row[SF] ?><br/>
-                    AC: <?php echo $row[AC] ?> Heat: <?php echo $row[Heating] ?><br/>
-                    Pets: <?php echo $row[AllowDog] ?><br/>
-                    Deposit: <?php echo "$".$row[RequiredDeposit] ?><br/>
-                    Open House 1: <?php echo $row[DateTimeOpenHouse1] ?><br/>
-                    Open House 2: <?php echo $row[DateTimeOpenHouse2] ?><br/>
-                    Listing End: <?php echo $row[DatePFOEndAccept] ?><br/>
-                    Date Available: <?php echo $row[DateAvailable] ?><br/>
+                    <table id="innerTable">
+                        <tr>
+                            <td colspan="2" class="greyBackground">Important Dates</td> 
+                        </tr>
+                        <tr>
+                            <td>
+                                Date Available:
+                            </td>
+                            <td>
+                                <?php
+                                echo " " . convertDate($row[DateAvailable],0); 
+                                        
+                                        
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Date Open House 1:
+                            </td>
+                            <td>
+                                <?php echo " " . convertDate($row[DateTimeOpenHouse1],1) ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Date Open House 2:
+                            </td>
+                            <td>
+                                <?php echo " " . convertDate($row[DateTimeOpenHouse2],1) ?>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <?php echo $row[Description] ?>
-                </td>
-            </tr>
-            <tr>
-                <td class="redBackground" colspan="3">
-                    Bid History
-                </td>
-                <td rowspan="6" align="center">
-                    <?php 
-                    
-                    
-
-                            
+                <td align="center">
+                <?php 
+                             
                              $auctionStatus = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
                              
                              if($auctionStatus == "1")
@@ -109,8 +119,8 @@
                                     if($bidStatus == "0")
                                     {
                                         echo '<form id="placebid" method="post">
-                                         <font class="greyBackground">My Proposal for occupancy</font><br/>
-                                         <label class="label">Bid Amount:</label><input class="required number" type="text" name="amt" /><br/>
+                                         <font>My Proposal for occupancy</font><br/><br/>
+                                         <label class="label">PFO Amount:</label><input class="required number" type="text" name="amt" /><br/>
                                          <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
                                          <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
                                          <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
@@ -142,16 +152,207 @@
                              {
                                  echo "Auciton has Ended";
                              }
-                    
-                    
+
                     ?>
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="4">
+                    <?php echo $row[Description] ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="redBackground" colspan="2">
+                    Bid History
+                </td>
+                <td rowspan="10" colspan="1" align="center">
+                    <table id="innerTable">
+                        <tr>
+                            <td align="right">
+                                Bedrooms: 
+                            </td>
+                            <td align="center">
+                                <?php echo " " . $row[Bedroom] ?>
+                            </td>
+                            <td align="right">
+                                Bathrooms: 
+                            </td>
+                            <td align="center">
+                                <?php echo " " . $row[Bath] ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Square Feet: 
+                            </td>
+                            <td align="center">
+                                <?php echo " " . $row[SF] ?>
+                            </td>
+                            <td align="right">
+                                Air: 
+                            </td>
+                            <td align="center">
+                                <?php echo " " . $row[AC] ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Allows Dogs: 
+                            </td >
+                            <td align="center">
+                                <?php if($row[AllowDog] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                            <td  align="right">
+                                Allow Cats: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[AllowCat] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Ice Maker: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[IceMaker] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                            <td align="right">
+                                Dish Washer: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[DishWasher] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Clothes Washer: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[ClothesWasher] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                            <td align="right">
+                                Clothes Dryer: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[ClothesDryer] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td align="right">
+                                Disposal: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[Disposal] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                            <td align="right">
+                                Washer Hookup: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[ClothesWasherHookup] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                 
+                   
                     
+                </td>
+                <td rowspan="10" colspan="1" align="center">
+
+                    <table id="innerTable">
+                        <tr>
+                            <td  align="right">
+                                Media: 
+                            </td>
+                            <td align="center">
+                                <?php echo " " . $row[Media] ?>
+                            </td>
+                            <td  align="right">
+                                Garage: 
+                            </td>
+                            <td align="center">
+                                <?php echo " " . $row[Garage] ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Deposit: 
+                            </td>
+                            <td align="center">
+                                <?php echo " " . $row[RequiredDeposit] ?>
+                            </td>
+                            <td align="right">
+                                Min Term: 
+                            </td>
+                            <td align="center">
+                                <?php echo " " . $row[MinimumTerm] ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Pet Deposit: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[PetDeposit] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                            <td align="right">
+                                Smoking: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[Smoking] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                ADA: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[ADAComplient] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                            <td align="right">
+                                Fenced: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[Fenced] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Pool: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[Pool] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                            <td align="right">
+                                Deck: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[Deck] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td align="right">
+                                Security: 
+                            </td>
+                            <td align="center">
+                                <?php if($row[SecurityAlarm] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                            <td align="right">
+                                Microwave: 
+                            </td >
+                            <td align="center">
+                                <?php if($row[Microwave] == "1"){echo "Yes";}else{echo "No";} ?>
+                            </td>
+                        </tr>
+                        
+                    </table>
                    
                     
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="1">
                     Username
                 </td>
                 <td>
@@ -171,7 +372,7 @@
                     while($row2 = mysql_fetch_array($result2))
                     {
                         echo '<tr>
-                            <td  colspan="2">
+                            <td  colspan="1">
                                 '. $row2[UserName] .'
                             </td>
                             <td>
@@ -196,12 +397,16 @@
     <script>
         $("#placebid").submit(function(e){
             e.preventDefault();
+            var isValid = $("#placebid").valid();
             
-            var url = "placeBidConfirm.php?";
-            url += "amt=" + $('[name=amt]').val();
-            url += "&auctionID=" + $('[name=auctionID]').val();
-            url += "&propertyID=" + $('[name=propertyID]').val();
-            jQuery.facebox({ ajax: url });
+            if(isValid)
+                {
+                    var url = "placeBidConfirm.php?";
+                    url += "amt=" + $('[name=amt]').val();
+                    url += "&auctionID=" + $('[name=auctionID]').val();
+                    url += "&propertyID=" + $('[name=propertyID]').val();
+                    jQuery.facebox({ ajax: url });
+                }
         })
         $(document).ready(function(){
             $("#placebid").validate({

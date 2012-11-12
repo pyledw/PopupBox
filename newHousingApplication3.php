@@ -525,7 +525,9 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#newApplicationForm").validate({
-        ignoreTitle: true
+        ignoreTitle: true,
+        onkeyup: false,
+        onclick: false
         
     });
   });
