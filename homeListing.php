@@ -116,6 +116,7 @@
                              if($auctionStatus == "1")
                              {
                                  $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
+                                 
                                     if($bidStatus == "0")
                                     {
                                         echo '<form id="placebid" method="post">
@@ -142,6 +143,10 @@
                                     elseif($bidStatus == "4")
                                     {
                                         echo 'You have another active bid';
+                                    }
+                                    elseif($bidStatus == "5")
+                                    {
+                                        echo 'No Applicaiton on File';
                                     }
                              }
                              elseif($auctionStatus == "2")

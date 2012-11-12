@@ -119,13 +119,13 @@
             {
                 $status = "1";
             }
-            elseif($now > $ends)
-            {
-                $status = "3";
-            }
             elseif($now < $start)
             {
                 $status = "2";
+            }
+            elseif($now > $ends)
+            {
+                $status = "3";
             }
             else
             {
@@ -304,7 +304,7 @@
                             echo  '<tr><td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
                             $max += 1;
-                            if($max > 3)
+                            if($max > 2)
                             {
                                 break;
                             }
@@ -660,6 +660,7 @@
     //2 - Applicaiton not authorized
     //3 - Bid fee not paid
     //4 - Another bid is active on a differant auction
+    //5 - No application on file
     function getUsersBidStatus($userID,$propertyID)
         {
 
@@ -669,31 +670,25 @@
 
             $con = get_dbconn("");
 
-            $result = mysql_query("SELECT * FROM BID
-            INNER JOIN APPLICATION
-            ON BID.ApplicationID=APPLICATION.ApplicationID
-            INNER JOIN AUCTION
-            ON BID.AuctionID=AUCTION.AuctionID
+            $result = mysql_query("SELECT * FROM APPLICATION
             WHERE APPLICATION.UserID = '$userID'
             ");
-
 
 
             if(!$result)
                  {
                      die('could not connect: ' .mysql_error());
                  }
-
-            while($row = mysql_fetch_array($result))
+            $row = mysql_fetch_array($result);
+            
+            
+            
+            if(mysql_num_rows($result) == 0)
                 {
-
-
-                    //echo $row[PageCompleted];
-                    //echo $row[IsPaid];
-                    //echo $row[IsApproved];
-                    //echo $row[PropertyID];
-                    //echo '<br/>';
-                    //echo $propertyID;
+                    $status = "5";
+                }
+            else 
+                {
                     if($row[PageCompleted] != "6")
                     {
                         $status = "1";
@@ -706,20 +701,33 @@
                     {
                         $status = "2";
                     }
-                    elseif($row[PropertyID] != $propertyID && $row[IsActive] == "1")
-                    {
-                        $ActiveBids = true;
-                    }
                     else
                     {
-                        $status = "0";
+                        $applicationID = $row[ApplicationID];
+                        $result = mysql_query("SELECT * FROM BID
+                            INNER JOIN AUCTION
+                            ON AUCTION.AuctionID=BID.AuctionID
+                            INNER JOIN PROPERTY
+                            ON AUCTION.PropertyID=PROPERTY.PropertyID
+                            WHERE BID.ApplicationID='$applicationID]'");
+                        
+                        $row = mysql_fetch_array($result);
+                        
+                        if($row[PropertyID] != $propertyID && $row[IsActive] == "1")
+                        {
+                            $ActiveBids = true;
+                        }
+                        else
+                        {
+                            $status = "0";
+                        }
+                        
+                        if($ActiveBids)
+                        {
+                             $status = "4";
+                        }
                     }
                 }
-
-            if($ActiveBids)
-            {
-                $status = "4";
-            }
 
             return $status;
 
