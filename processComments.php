@@ -14,7 +14,6 @@
         <p>Thank you for your feedback. You will receive a reply from our support staff between 1-3 business days.</p>
         
     </div>
-
 <?php
 ?>
     
