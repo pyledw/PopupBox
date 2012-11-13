@@ -1,13 +1,13 @@
 <?php
 
-        $title = "Comments Submmitted";
+        $title = "Comments Submitted";
 	include 'Header.php';
         
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
         $email = $_POST['email'];
         $comments = $_POST['comments'];
-        $user = $_SESSION['userID'];
+        //$user = $_SESSION['userID'];
 ?>
 
 <h1 class="Title">Comments Submitted</h1>
@@ -43,8 +43,9 @@
             $mailcontent = "Name of person is: ".$fname." ".$lname."\n".
                     "Their email is: ".$email."\n".
                     "Their question/concern is: \n".$comments."\n";
-            $from = $email;
-            mail("longas@mail.lipscomb.edu", $subject, $mailcontent, $from);
+            $from = "info@leasehood.com";
+            $to = "longas@mail.lipscomb.edu";
+            mail($to, $subject, $mailcontent, $from);
             echo "<p>Thank you for your feedback. You will receive a reply from our support staff between 1-3 business days.</p>";
          }
         ?>
