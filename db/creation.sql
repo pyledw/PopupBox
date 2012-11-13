@@ -121,7 +121,7 @@ CREATE TABLE PROPERTY (
     IsPaid                          tinyint(1)                     DEFAULT '0',
     Address                         char(50)                       DEFAULT NULL,
     Zip                             char(5)                        DEFAULT NULL,
-    city                            char(20)                       DEFAULT NULL,
+    City                            char(20)                       DEFAULT NULL,
     State                           char(2)                        DEFAULT NULL,
     County                          char(20)                       DEFAULT NULL,
     SF                              int(6)                         DEFAULT NULL,
@@ -165,7 +165,7 @@ CREATE TABLE PROPERTY (
     RentNowRate                     decimal(9,2)                   DEFAULT NULL,
     MinimumTerm                     int(3)                         DEFAULT NULL,
     PreMarket                       tinyint(1)                     DEFAULT '0',
-   	PageCompleted			        int(1)                         DEFAULT '1',
+    PageCompleted                   int(1)            NOT NULL     DEFAULT '1',
  
     FOREIGN KEY (UserID) REFERENCES USER(UserId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
@@ -174,8 +174,8 @@ CREATE TABLE PROPERTY (
 	
 	
 CREATE TABLE IMAGE (
-	ImageId	                    int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
-	PropertyId                  int(8)            NOT NULL,
+	ImageID	                    int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
+	PropertyID                  int(8)            NOT NULL,
 	ImagePathOriginal           char(50),
 	ImagePathThumb              char(50),
 	ImageType                   tinyint(1),
@@ -214,6 +214,7 @@ CREATE TABLE BID (
     MonthlyRate                     decimal(9,2)      NOT NULL     DEFAULT '0.00',
     TimeReceived                    timestamp         NOT NULL     DEFAULT CURRENT_TIMESTAMP,
     IsActive                        tinyint(1)                     DEFAULT '1',
+    IsWinningBid                    tinyint(1)        NOT NULL     DEFAULT '0',
 
     FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE,
     FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId) ON DELETE CASCADE
