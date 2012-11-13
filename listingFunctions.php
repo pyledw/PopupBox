@@ -241,7 +241,7 @@
             
             echo '<tr>
    
-                <td rowspan="5" width="275px" style="padding:0 0 0 0; vertical-align:top;">
+                <td rowspan="4" width="275px" style="padding:0 0 0 0; vertical-align:top;">
                     <table id="innerTable">
                         <tr>
                             <td align="right">

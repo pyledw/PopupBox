@@ -146,7 +146,7 @@
                                     }
                                     elseif($bidStatus == "5")
                                     {
-                                        echo 'No Applicaiton on File';
+                                        echo 'No Application on File';
                                     }
                              }
                              elseif($auctionStatus == "2")
@@ -171,7 +171,7 @@
                 <td class="redBackground" colspan="2">
                     Bid History
                 </td>
-                <td rowspan="10" colspan="1" align="center">
+                <td rowspan="6" colspan="1" align="center">
                     <table id="innerTable">
                         <tr>
                             <td align="right">
@@ -263,7 +263,7 @@
                    
                     
                 </td>
-                <td rowspan="10" colspan="1" align="center">
+                <td rowspan="6" colspan="1" align="center">
 
                     <table id="innerTable">
                         <tr>
