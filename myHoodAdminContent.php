@@ -11,22 +11,25 @@
         $result = mysql_query("SELECT * FROM APPLICATION
             INNER JOIN USER
             ON USER.UserID=APPLICATION.UserID
-            WHERE APPLICATION.IsApproved ='N'");
+            WHERE APPLICATION.IsApproved ='0' AND APPLICATION.IsPaid='1'");
         
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
         }
         
+         include_once 'listingFunctions.php';
+        
         //fetching the array of query elements
         while($row = mysql_fetch_array($result))
         {
             
-            echo '<div style="display:inline;width:500px;">'. $row[UserID] . " " . $row[LastName] .  ", " . $row[FirstName] . '
-                                <a class="button" href="viewApplication.php?applicationID='.$row[ApplicationID].'" rel="facebox" >View Application</a></div><br/><br/>';
+            displayApplications($row);
         }
 
     ?>
+    
+    
     <h1>
         New listings needing review
     </h1>
@@ -42,11 +45,13 @@
             die('could not connect: ' .mysql_error());
         }
         
+        include_once 'listingFunctions.php';
+        
         //fetching the array of query elements
         while($row = mysql_fetch_array($result))
         {
             
-            echo $row[UserID] . " " . $row[PropertyID] .  " " . $row[Address] . '<div style="display:inline;width:500px;"><a class="button" href="viewProperty.php?propertyID='.$row[PropertyID].'" rel="facebox" >View Property</a></div><br/><br/>';
+            displayListings($row);
         }
 
     ?>
