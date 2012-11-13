@@ -114,50 +114,65 @@
                              $auctionStatus = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
                              if(isset($_SESSION[userID]))
                              {
-                                if($auctionStatus == "1")
-                                {
-                                    $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
+                                 if($_SESSION[type] == "1")
+                                     {
+                                       if($auctionStatus == "1")
+                                       {
+                                           $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
 
-                                       if($bidStatus == "0")
-                                       {
-                                           echo '<form id="placebid" method="post">
-                                            <font>My Proposal for occupancy</font><br/><br/>
-                                            <label class="label">PFO Amount:</label><input class="required number" type="text" name="amt" /><br/>
-                                            <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                                            <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                                            <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
-                                            <button class="button" type="submit">Submit</button>
-                                            </form>';
+                                              if($bidStatus == "0")
+                                              {
+                                                  echo '<form id="placebid" method="post">
+                                                   <font>My Proposal for occupancy</font><br/><br/>
+                                                   <label class="label">PFO Amount:</label><input class="required number" type="text" name="amt" /><br/>
+                                                   <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
+                                                   <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
+                                                   <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                                   <button class="button" type="submit">Submit</button>
+                                                   </form>';
+                                              }
+                                              elseif($bidStatus == "1")
+                                              {
+                                                  echo 'Application has not been compleated';
+                                              }
+                                              elseif($bidStatus == "2")
+                                              {
+                                                  echo 'Application has not been authorized';
+                                              }
+                                              elseif($bidStatus == "3")
+                                              {
+                                                  echo 'Bid Fee has not been paid';
+                                              }
+                                              elseif($bidStatus == "4")
+                                              {
+                                                  echo 'You have another active bid';
+                                              }
+                                              elseif($bidStatus == "5")
+                                              {
+                                                  echo 'No Application on File';
+                                              }
                                        }
-                                       elseif($bidStatus == "1")
+                                       elseif($auctionStatus == "2")
                                        {
-                                           echo 'Application has not been compleated';
+                                           echo 'Auciton Has not Started Yet';
                                        }
-                                       elseif($bidStatus == "2")
+                                       else
                                        {
-                                           echo 'Application has not been authorized';
+                                           echo "Auciton has Ended";
                                        }
-                                       elseif($bidStatus == "3")
-                                       {
-                                           echo 'Bid Fee has not been paid';
-                                       }
-                                       elseif($bidStatus == "4")
-                                       {
-                                           echo 'You have another active bid';
-                                       }
-                                       elseif($bidStatus == "5")
-                                       {
-                                           echo 'No Application on File';
-                                       }
-                                }
-                                elseif($auctionStatus == "2")
-                                {
-                                    echo 'Auciton Has not Started Yet';
-                                }
-                                else
-                                {
-                                    echo "Auciton has Ended";
-                                }
+                                    }
+                                    elseif($_SESSION[type] == "2")
+                                    {
+                                        
+                                    }
+                                    elseif($_SESSION[type] == "3")
+                                    {
+                                        echo '<a class="button" href="disableListing.php?listingID='.$row[PropertyID].'">Disable Listing</a>';
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
                              }
                              else
                              {
