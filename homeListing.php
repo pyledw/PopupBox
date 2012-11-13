@@ -112,50 +112,56 @@
                 <?php 
                              
                              $auctionStatus = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
-                             
-                             if($auctionStatus == "1")
+                             if(isset($_SESSION[userID]))
                              {
-                                 $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
-                                 
-                                    if($bidStatus == "0")
-                                    {
-                                        echo '<form id="placebid" method="post">
-                                         <font>My Proposal for occupancy</font><br/><br/>
-                                         <label class="label">PFO Amount:</label><input class="required number" type="text" name="amt" /><br/>
-                                         <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                                         <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                                         <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
-                                         <button class="button" type="submit">Submit</button>
-                                         </form>';
-                                    }
-                                    elseif($bidStatus == "1")
-                                    {
-                                        echo 'Application has not been compleated';
-                                    }
-                                    elseif($bidStatus == "2")
-                                    {
-                                        echo 'Application has not been authorized';
-                                    }
-                                    elseif($bidStatus == "3")
-                                    {
-                                        echo 'Bid Fee has not been paid';
-                                    }
-                                    elseif($bidStatus == "4")
-                                    {
-                                        echo 'You have another active bid';
-                                    }
-                                    elseif($bidStatus == "5")
-                                    {
-                                        echo 'No Application on File';
-                                    }
-                             }
-                             elseif($auctionStatus == "2")
-                             {
-                                 echo 'Auciton Has not Started Yet';
+                                if($auctionStatus == "1")
+                                {
+                                    $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
+
+                                       if($bidStatus == "0")
+                                       {
+                                           echo '<form id="placebid" method="post">
+                                            <font>My Proposal for occupancy</font><br/><br/>
+                                            <label class="label">PFO Amount:</label><input class="required number" type="text" name="amt" /><br/>
+                                            <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
+                                            <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
+                                            <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                            <button class="button" type="submit">Submit</button>
+                                            </form>';
+                                       }
+                                       elseif($bidStatus == "1")
+                                       {
+                                           echo 'Application has not been compleated';
+                                       }
+                                       elseif($bidStatus == "2")
+                                       {
+                                           echo 'Application has not been authorized';
+                                       }
+                                       elseif($bidStatus == "3")
+                                       {
+                                           echo 'Bid Fee has not been paid';
+                                       }
+                                       elseif($bidStatus == "4")
+                                       {
+                                           echo 'You have another active bid';
+                                       }
+                                       elseif($bidStatus == "5")
+                                       {
+                                           echo 'No Application on File';
+                                       }
+                                }
+                                elseif($auctionStatus == "2")
+                                {
+                                    echo 'Auciton Has not Started Yet';
+                                }
+                                else
+                                {
+                                    echo "Auciton has Ended";
+                                }
                              }
                              else
                              {
-                                 echo "Auciton has Ended";
+                                 echo "You must be logged in to place bids";
                              }
 
                     ?>
