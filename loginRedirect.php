@@ -63,7 +63,7 @@
         else{
             
         
-        header( 'Location: /loginFailed.php' );
-        echo "Username does not exist";
+            header( 'Location: /loginFailed.php?errorDisplay=Username or Password is incorrect' );
+            echo "Username does not exist";
         }
 ?>

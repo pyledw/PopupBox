@@ -7,6 +7,17 @@
             header( 'Location: /myHood.php' ) ;
         }
         
+        
+        if(isset($_GET[errorDisplay]))
+        {
+            $errorDisplay = $_GET[errorDisplay];
+        }
+        else
+        {
+            $errorDisplay = "Login is required";
+        }
+        
+        
 
         
 
@@ -14,6 +25,11 @@
 <div id="wrapper">
     <form id="newApplicationForm" method="post" action="loginRedirect.php">
             <table width="350px" class="tableForm" style="margin-top: -5px;">
+                <tr>
+                    <td>
+                       <font color="red"><b><?php echo $errorDisplay; ?></b></font>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <lable class="label">Username:</label><br/><input title="Username" class="required" id="userName" type="text" name="userName">
