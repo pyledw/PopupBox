@@ -11,7 +11,7 @@ CREATE TABLE USER (
     UserName                        varchar(100)      NOT NULL                     UNIQUE,
     IsSuspended                     tinyint(1)        NOT NULL     DEFAULT '0',
     Password                        char(34)                       DEFAULT NULL,
-    Email                           varchar(120)                   DEFAULT NULL,
+    Email                           varchar(120)      NOT NULL                     UNIQUE,
     SSN                             char(9)                        DEFAULT NULL,
     FirstName                       varchar(100)                   DEFAULT NULL,
     LastName                        varchar(100)                   DEFAULT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE APPLICATION (
     ContactCellPhone                varchar(15)                    DEFAULT NULL,
     PageCompleted                   int(1)            NOT NULL     DEFAULT '1',
     
-    FOREIGN KEY (UserId) REFERENCES USER(UserID)
+    FOREIGN KEY (UserId) REFERENCES USER(UserID) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -121,7 +121,7 @@ CREATE TABLE PROPERTY (
     IsPaid                          tinyint(1)                     DEFAULT '0',
     Address                         char(50)                       DEFAULT NULL,
     Zip                             char(5)                        DEFAULT NULL,
-    city                            char(20)                       DEFAULT NULL,
+    City                            char(20)                       DEFAULT NULL,
     State                           char(2)                        DEFAULT NULL,
     County                          char(20)                       DEFAULT NULL,
     SF                              int(6)                         DEFAULT NULL,
@@ -165,19 +165,22 @@ CREATE TABLE PROPERTY (
     RentNowRate                     decimal(9,2)                   DEFAULT NULL,
     MinimumTerm                     int(3)                         DEFAULT NULL,
     PreMarket                       tinyint(1)                     DEFAULT '0',
-    
-    FOREIGN KEY (UserID) REFERENCES USER(UserId)
+    PageCompleted                   int(1)            NOT NULL     DEFAULT '1',
+ 
+    FOREIGN KEY (UserID) REFERENCES USER(UserId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
 	
 	
 CREATE TABLE IMAGE (
-	ImageId	                    int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
-	PropertyId                  int(8)            NOT NULL,
+	ImageID	                    int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
+	PropertyID                  int(8)            NOT NULL,
 	ImagePathOriginal           char(50),
 	ImagePathThumb              char(50),
-	FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId)
+	ImageType                   tinyint(1),
+ 
+	FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -198,7 +201,7 @@ CREATE TABLE AUCTION (
     MinimumTerm                     int(3)                         DEFAULT NULL,
     PreMarket                       tinyint(1)                     DEFAULT '0',
     
-    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId)
+    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -211,9 +214,10 @@ CREATE TABLE BID (
     MonthlyRate                     decimal(9,2)      NOT NULL     DEFAULT '0.00',
     TimeReceived                    timestamp         NOT NULL     DEFAULT CURRENT_TIMESTAMP,
     IsActive                        tinyint(1)                     DEFAULT '1',
+    IsWinningBid                    tinyint(1)        NOT NULL     DEFAULT '0',
 
-    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId),
-    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId)
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE,
+    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -223,7 +227,7 @@ CREATE TABLE DENIEDBREED (
     BreedID                         int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
     PropertyID                      int(8)            NOT NULL,
     BreedName                       char(40)                       DEFAULT NULL,
-    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId)
+    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB DEFAULT 
     CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -241,9 +245,9 @@ CREATE TABLE FEE (
     PaymentToken                    char(40)                       DEFAULT NULL,
     TransactionStatusID             int(1)                         DEFAULT NULL,
     
-    FOREIGN KEY (UserId)            REFERENCES USER            (UserId),
-    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId),
-    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId)
+    FOREIGN KEY (UserId)            REFERENCES USER            (UserId) ON DELETE CASCADE,
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE,
+    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -263,7 +267,7 @@ CREATE TABLE PREVIOUSRESIDENCE (
     TypeOfResidence                 varchar(20)                    DEFAULT NULL,
     PrevMonthlyRent                 int(5)                         DEFAULT NULL,
     TotalMonths                     int(3)                         DEFAULT NULL,
-    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId)
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -282,13 +286,13 @@ CREATE TABLE PREVIOUSRESIDENCE (
 --
 -- ---------------------------------------------------------------------
 
--- insert into USER select * from test.USER;
--- insert into PROPERTY select * from test.PROPERTY;
--- insert into APPLICATION select * from test.APPLICATION;
--- insert into IMAGE select * from test.IMAGE;
--- insert into AUCTION select * from test.AUCTION;
--- insert into BID select * from test.BID;
--- insert into DENIEDBREED select * from test.DENIEDBREED;
--- insert into FEE select * from test.FEE;
--- insert into PREVIOUSRESIDENCE select * from test.PREVIOUSRESIDENCE;
+insert into USER 				select * from leasehood.USER;
+insert into PROPERTY 			select * from leasehood.PROPERTY;
+insert into APPLICATION 		select * from leasehood.APPLICATION;
+insert into IMAGE 				select * from leasehood.IMAGE;
+insert into AUCTION 			select * from leasehood.AUCTION;
+insert into BID 				select * from leasehood.BID;
+insert into DENIEDBREED 		select * from leasehood.DENIEDBREED;
+insert into FEE 				select * from leasehood.FEE;
+insert into PREVIOUSRESIDENCE 	select * from leasehood.PREVIOUSRESIDENCE;
 
