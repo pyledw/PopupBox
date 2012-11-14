@@ -8,7 +8,7 @@ $cfg['show_buildinfo'] = true;
 $db_user 	= 'leasehood';
 $db_pass 	= 'sunlight blanket floating change';  // db password
 $db_server 	= '199.115.231.216';     // server name or IP address
-$db_database 	= 'leasehood';     // database to select
+$db_database 	= 'leasehood1112';     // database to select
 $pw_salt 	= '68f33ecb44592ddd476af4145a2eae9f';
 
 $upload_max_size_mb 		= 1.0;
