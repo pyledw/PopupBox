@@ -7,6 +7,14 @@
             echo "TYPE IS SET";
             header( 'Location: /myHood.php' );
         }
+        if(isset($_GET[error]))
+        {
+            $errorMessage = $_GET[error];
+        }
+        else
+        {
+            $errorMessage = "";
+        }
         
         $title = "Login";
 	include 'Header.php';
@@ -25,9 +33,10 @@
     <div id="mainContent">
         <form id="newApplicationForm" method="post" action="loginRedirect.php">
             <table width="350px" class="tableForm">
+                <?php if($errorMessage != ""){echo '<tr><td><font color="red">'.$errorMessage.'</font></td></tr>';} ?>
                 <tr>
                     <td>
-                        <lable class="label">Username:</label><br/><input title="Username" class="required" id="userName" type="text" name="userName">
+                        <lable class="label">Username or Email:</label><br/><input title="Username" class="required" id="userName" type="text" name="userName">
                     </td>
                 </tr>
                 <tr>
@@ -46,6 +55,7 @@
                         <button type="reset" class="button">Clear</button>
                     </td>
                 </tr>
+                <?php if($errorMessage != ""){echo '<tr><td><font color="red">Forgot password? <a href="resetPassword.php">Reset</a></font></td></tr>';} ?>
             </table>
 
         </form>
