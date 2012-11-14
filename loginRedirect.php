@@ -14,7 +14,7 @@
         $con = get_dbconn("");
 
         //Query the database for only the row containing that users information
-        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' OR Email ='" . $myName . "' AND PASSWORD = '" . crypt($userPassword, $pw_salt) . "'");
+        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . crypt($userPassword, $pw_salt) . "'");
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
