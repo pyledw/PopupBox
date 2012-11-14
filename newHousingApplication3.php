@@ -15,12 +15,19 @@
         $result1 = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='$_SESSION[userID]'");
         
+        if(!$result1)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        
         //casting the query data into a variable
         $row = mysql_fetch_array($result1);
         
         //second query getting all the previous residences of the applicaiton
         $result = mysql_query("SELECT * FROM PREVIOUSRESIDENCE
-            WHERE ApplicationID = $row[ApplicationID] ");
+            WHERE ApplicationID = '$row[ApplicationID]' ");
+        
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
