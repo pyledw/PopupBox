@@ -40,7 +40,7 @@ $title = "New Application #4";
             <font class="formheader" style="left:600px;">Other Information</font>
             <tr>
                 <th colspan="3">
-                    <h3>Emergency Contact</h3>    
+                    <h3>Co Signer</h3>    
                 </th>
                 
             </tr>
