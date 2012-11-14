@@ -29,7 +29,7 @@
             {
                return FALSE;
             }
-         }
+        }
          //testing the email. If mailcheck is true, sends mail out
          $mailcheck = spamcheck($email);
          if($mailcheck == FALSE)
@@ -44,10 +44,9 @@
                     "Their email is: ".$email."\n".
                     "Their question/concern is: \n".$comments."\n";
             $from = "info@leasehood.com";
-            $to = "longas@mail.lipscomb.edu";
-            echo $subject."<br />".$mailcontent."<br />".$from."<br />".$to;
-            //mail($to, $subject, $mailcontent, $from);
-            //echo "<p>Thank you for your feedback. You will receive a reply from our support staff between 1-3 business days.</p>";
+            $to = "megasxlr01@hotmail.com";
+            mail($to, $subject, $mailcontent, $from);
+            echo "<p>Thank you for your feedback. You will receive a reply from our support staff between 1-3 business days.</p>";
          }
         ?>
         
