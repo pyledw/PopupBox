@@ -37,7 +37,7 @@ session_start();
         WHERE UserID = '$_SESSION[userID]'");
     }
     
-    //if this doesnt work or causes errors, change UserID to Username
+    //create finding email query
     $getEmail = $con->query("select Email from USER where UserID ='$_SESSION[userID]'");
     if (!getEmail)
     {
@@ -47,6 +47,7 @@ session_start();
     {
         echo 'UserID not in db';
     }
+    //setting and sending the email and its contents. 
     else
     {
         $row = $getEmail->fetch_object();
@@ -57,7 +58,7 @@ session_start();
                 "Please ignore if you do not know this site.";
         mail($email, $subject, $mesg, $from);
         echo "A confirmation email has been sent to your acount."
-        ."Please check your junk mail if you do not see it in your inbox.";
+        ."If this email appears in your junk folder, please mark it as not junk.";
     }
     
     mysql_close();
