@@ -2,6 +2,11 @@
 <?php
         $title = "New User";
 	include 'Header.php';
+        
+        if(isset($_GET[error]))
+        {
+          $errorMessage = $_GET[error];   
+        }
 ?>
 
 
@@ -22,6 +27,7 @@
                             Landlord<input type="radio" name="classification" value="landlord">
                          </td>
                     </tr>
+                    <?php echo "<tr><td colspan='3'>".$errorMessage."</td></tr>"; ?>
                     <tr>
                          <td>
                          <lable class="label">Username:</label><br/><input type="text" title="User Name" name="username" class="required" minlength="5" />
