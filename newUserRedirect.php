@@ -4,7 +4,7 @@
     session_start();
     $userType = $_POST["classification"];
     $classification = $userType == "tenant" ? "1" : "2";
-     
+    
     $con = get_dbconn("PDO");
     $stmt = $con->prepare("
             INSERT INTO USER (
