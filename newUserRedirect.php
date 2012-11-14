@@ -4,23 +4,7 @@
     session_start();
     $userType = $_POST["classification"];
     $classification = $userType == "tenant" ? "1" : "2";
-    $con = get_dbconn("");
-    $result = mysql_query("SELECT * FROM USER
-                        WHERE UserName='$_POST[username]' OR Email='$_POST[email1]'
-                        ");
-                    if(!$result)
-                    {
-                         die('could not connect: ' .mysql_error());
-                    }
-                    if(mysql_num_rows($result) > 0)
-                    {
-                        header( 'Location: /newUser.php?error=Username or Email Already Exist' );
-                    }
-    
-    
-    
-    
-    
+     
     $con = get_dbconn("PDO");
     $stmt = $con->prepare("
             INSERT INTO USER (
