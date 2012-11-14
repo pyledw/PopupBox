@@ -1,6 +1,4 @@
 <?php
-        $title = "Search Homes";
-	include 'Header.php';
         if(isset($_POST[type]))
         {
             setcookie('searchType',$_POST[type]);
