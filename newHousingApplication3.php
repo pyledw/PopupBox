@@ -13,7 +13,7 @@
     $con = get_dbconn("");
         //Getting the users applicaiton data
         $result1 = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='$_SESSION[userID]'");
+            WHERE UserID ='$_SESSION[userID]' ");
         
         if(!$result1)
         {
