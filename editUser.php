@@ -32,5 +32,5 @@ echo $_GET[userID];
             }
         }
         
-        //header( 'Location: /myHood.php' );
+        header( 'Location: /myHood.php' );
 ?>
