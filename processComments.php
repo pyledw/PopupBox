@@ -45,9 +45,8 @@
                     "Their question/concern is: \n".$comments."\n";
             $from = "info@leasehood.com";
             $to = "longas@mail.lipscomb.edu";
-            echo $subject."<br />".$mailcontent."<br />".$from."<br />".$to;
-            //mail($to, $subject, $mailcontent, $from);
-            //echo "<p>Thank you for your feedback. You will receive a reply from our support staff between 1-3 business days.</p>";
+            mail($to, $subject, $mailcontent, $from);
+            echo "<p>Thank you for your feedback. You will receive a reply from our support staff between 1-3 business days.</p>";
          }
         ?>
         
