@@ -405,12 +405,21 @@
                     Current Bids
                 </td>
             </tr>
-            <tr>
+            <tr>';
+            if($row[PageCompleted] != "6")
+            {
+                $pageCompleated=$row[PageCompleted];
+            }
+            else
+            {
+                $pageCompleated="1";
+            }
+            echo'
                 
                 
                 <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
                     '.substr($row[Description], 0, 150).'<br/><br/>
-                     <form class="buttonForm" method="POST" action="newListing'.$row[PageCompleted].'.php">
+                     <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
                     <input type="text" name="propertyID" style="Display:none" value="' . $propertyID . '" />
                     <button type="submit" class="button">Edit Listing</button>
                 </form>
