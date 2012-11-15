@@ -48,6 +48,7 @@ function upload_get_save_path()
  *
  * @param string $name_thumb The filename of the thumbnail image, relative to document root.
  * 
+ * @return int ID of the inserted database record.
  */
 function upload_write_database_record($propertyid, $name_full, $name_thumb)
 {
