@@ -3,16 +3,47 @@
       Status of their application, and if they still need to pay their fee.-->
 
 
-<div id="mainContent">
+
+    <?php
+        $now = strtotime(date("Y-m-d H:i:s"));
+        $con = get_dbconn("");
+        $result = mysql_query("SELECT * FROM BID
+            INNER JOIN AUCTION
+            ON BID.AuctionID=AUCTION.AuctionID
+            WHERE UserID ='$_SESSION[userID]'");
+        
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        while ($row = mysql_fetch_array($result)) 
+            {
+                $difference = $now - strtotime($row[DatePFOEndAccept]);
+                $years = abs(floor($difference / 31536000));
+                $days = abs(floor(($difference-($years * 31536000))/86400));
+                $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
+                
+                if($hours > 36)
+                {
+                    $con = get_dbconn("");
+                    $result1 = mysql_query("UPDATE BID
+                        SET IsActive='0'
+                        WHERE BidID ='$row[BidID]'");
+                }
+            
+            }
+        
+    ?>
+    <div id="mainContent">
     <h1>Application Status</h1>
     <?php
         //check for application status return color and information
-        
         require_once "config.inc.php";
          
 	$con = get_dbconn("");
         $result = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='" . $_SESSION[userID] . "'");
+            WHERE UserID ='$_SESSION[userID]'");
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
