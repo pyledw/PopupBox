@@ -9,6 +9,7 @@
             $start = strtotime($DateAcceptPFO);
             $now = strtotime(date("Y-m-d H:i:s"));
             $ends = strtotime($DateEndAcceptPFO);
+            
             if($now < $start)
             {
                 //The code below will get the time to the auction begining.
