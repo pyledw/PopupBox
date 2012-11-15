@@ -354,23 +354,23 @@
             //echo $row[PageCompleted];
             //echo $row[IsPaid];
             
-            
+            $propertyStatus ="";
             if($row[IsApproved] == 0)
             {
                 if($row[IsPaid] == 0)
                     {
                             if($row[PageCompleted] != 6)
                             {
-                                echo 'Lisitng not complete.  Click <a href="#">Here to finish</a>';
+                                $propertyStatus = '<font class="redTextArea">Lisitng not complete.  Click edit listing below to finish your listing</font>';
                             }
                             else
                             {
-                                echo "You must pay your fee";
+                                $propertyStatus = "<font class='redTextArea'>You must pay your fee click <a href='payListingFee.php?propertyID=".$row[PropertyID]."'>Here</a></font>";
                             }
                 }
                 else
                 {
-                    echo "Your listing is awaiting approval";
+                    $propertyStatus = "<font class='redTextArea'>Your listing is awaiting approval</font>";
                 }
             }
             
@@ -387,7 +387,7 @@
             $maxBid = getHighBid($row[PropertyID]);
             
             echo '<font style="float:right; position:relative; right:20px;">
-                    '
+                    '.$propertyStatus
                    .$timeString
                    .$status
                    .$maxBid.
@@ -566,6 +566,8 @@
             //this code is retrieving the highest bid of the auction and returning it
 
             $maxBid = getHighBid($row[PropertyID]);
+            
+            
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '
