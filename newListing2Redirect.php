@@ -5,6 +5,19 @@ session_start();
          
     $con = get_dbconn("");
     
+    $result = mysql_query("SELECT PageCompleted FROM PROPERTY
+        WHERE PropertyID='$propertyID'");
+    
+     if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+    $row = mysql_fetch_array($result);
+    
+    echo $row[PageCompleted];
+    
+    //Setting which page has been compleated.  If the form has already been compleated it ignors this
     if($row[PageCompleted] != "6")
     {
         
