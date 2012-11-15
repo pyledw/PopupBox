@@ -3,8 +3,6 @@
 
 <?php
 
-$cfg['show_buildinfo'] = true;
-
 $db_user 	= 'leasehood';
 $db_pass 	= 'sunlight blanket floating change';  // db password
 $db_server 	= '199.115.231.216';     // server name or IP address
@@ -31,21 +29,6 @@ $paypal_returnURL     = "http://199.115.231.216:85/paypal_confirm.php";			// abs
 $paypal_cancelURL     = "http://199.115.231.216:85/ppaypal_cancel.php";			// absolute url for cancelled payments
 
 
-
-function upload_size_is_okay($size_in_bytes) 
-{
-	global $upload_max_size_mb;
-	$MB = 1024 * 1024;
-	return $size_in_bytes / $MB < $upload_max_size_mb;
-}
-
-function upload_get_save_path() 
-{
-	global $upload_save_path;
-	$d = new DateTime();
-	$fn = $d->format("YmdHms") . strval(mt_rand());
-	return $upload_save_path . $fn;
-}
 
 function get_dbconn($api) {
     global $db_user, $db_pass, $db_server, $db_database;
