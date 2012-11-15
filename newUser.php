@@ -7,6 +7,7 @@
         {
           $errorMessage = $_GET[error];   
         }
+        
 ?>
 
 
@@ -27,7 +28,7 @@
                             Landlord<input type="radio" name="classification" value="landlord">
                          </td>
                     </tr>
-                    <?php echo "<tr><td colspan='3'>".$errorMessage."</td></tr>"; ?>
+                    <?php echo "<tr><td colspan='3'><font color='red'>".$errorMessage."</font></td></tr>"; ?>
                     <tr>
                          <td>
                          <lable class="label">Username:</label><br/><input type="text" title="User Name" name="username" class="required" minlength="5" />

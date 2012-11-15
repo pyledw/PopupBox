@@ -4,7 +4,7 @@
     session_start();
     $userType = $_POST["classification"];
     $classification = $userType == "tenant" ? "1" : "2";
-    
+    $exception = '';
     $con = get_dbconn("PDO");
     $stmt = $con->prepare("
             INSERT INTO USER (
@@ -30,15 +30,28 @@
         $stmt->bindValue(':city',           $_POST['city'],             		PDO::PARAM_STR);
         $stmt->bindValue(':state',          $_POST['state'],            		PDO::PARAM_STR);
         $stmt->bindValue(':zip',            $_POST['zip'],              		PDO::PARAM_STR);
-        $stmt->bindValue(':dob',            $_POST['DOB'],              		PDO::PARAM_STR);
+        $stmt->bindValue(':dob',            $_POST['age'],              		PDO::PARAM_STR);
         $stmt->execute();
     } 
     catch (Exception $e) {
-	echo 'Connection failed. ' . $e->getMessage();
+        $exception = $e->getMessage();
+        $pos = strpos($exception, "Email");
+        //echo $line;
+        if(!$pos)
+        {
+            echo $error = "Duplicate Username";
+            header( 'Location: /newUser.php?error='.$error.'' ) ;
+        }
+        else
+        {
+            echo $error = "Duplicate Email";
+            header( 'Location: /newUser.php?error='.$error.'' ) ;
+        }
     }
+    
 
-    echo "1 record added";
-
+    
+    
     
     $con = get_dbconn("");
     $result = mysql_query("SELECT * FROM USER
@@ -49,12 +62,14 @@
     $_SESSION['user'] = $_POST['username'];
     $_SESSION['type'] = $classification;
     
+   
+            
     if($userType == "tenant")
     {
-        header( 'Location: /newHousingApplication.php' ) ;
+        //header( 'Location: /newHousingApplication.php' ) ;
     }
     else 
     {
-        header( 'Location: /newListing1.php' );
+       //header( 'Location: /newListing1.php' );
     }
 ?>
