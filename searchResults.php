@@ -15,7 +15,29 @@
         }
         
         include_once 'listingFunctions.php';
-            
+        
+        $RecentSearch = $_SESSION['recentSearch'];
+        
+        $search = array($type,$val, strtotime(date("Y-m-d H:i:s")));
+        
+        while(count($RecentSearch) > 4)
+        {
+            $RecentSearch = array_reverse($RecentSearch);
+            array_pop($RecentSearch);
+            $RecentSearch = array_reverse($RecentSearch);
+        }
+        if(count($RecentSearch) != 0)
+        {
+            array_push($RecentSearch, $search);
+        }
+        else
+        {
+            $RecentSearch = array($search);
+        }
+        
+        
+        
+        $_SESSION['recentSearch'] = $RecentSearch;
         
         
 ?>
