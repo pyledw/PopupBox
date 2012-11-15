@@ -117,14 +117,16 @@
         displayMyPFOs($row2[PropertyID]);
         
     }
-    ?>
-    <h1>Recent Searches</h1>
-    <?php 
+    
+    if(isset($_SESSION['recentSearch']))
+    {
+        echo '<h3>Recent Searches</h3>';
     foreach (array_reverse($_SESSION['recentSearch']) as $value) 
         {
             echo "<a href='searchRedirect.php?type=".$value[0]."&term=".$value[1]."'>Searched for " . $value[1] . " by " . $value[0] . "</a><br/>";
         }
-    
+    }
     ?>
+    
     
 </div>
