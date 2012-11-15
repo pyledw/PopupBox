@@ -34,8 +34,12 @@ session_start();
 	echo 'Connection failed. ' . $e->getMessage();
     }
     
-    $con = get_dbconn("");
-
+    if($row[PageCompleted] != "6")
+    {
+        
+        mysql_query("UPDATE PROPERTY SET PageCompleted='4'
+        WHERE PropertyID='$_SESSION[propertyID]'");
+    }
     mysql_close();
     
     header( 'Location: /newListing4.php' );

@@ -27,7 +27,13 @@ session_start();
     } catch (Exception $e) {
 	echo 'Connection failed. ' . $e->getMessage();
     }
-
+    
+    if($row[PageCompleted] != "6")
+    {
+        
+        mysql_query("UPDATE PROPERTY SET PageCompleted='5'
+        WHERE PropertyID='$_SESSION[propertyID]'");
+    }
 
     
     header( 'Location: /newListing5.php' );

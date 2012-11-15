@@ -98,11 +98,25 @@ session_start();
 
     echo "1 record UPDATED";
     
+    
+    $row = mysql_query("SELECT PageCompleated FROM PROPERTY
+        WHERE PropertyID='$propertyID'");
+    
+    
+    echo $row;
+    
+    //Setting which page has been compleated.  If the form has already been compleated it ignors this
+    if($row != "6")
+    {
         
+        mysql_query("UPDATE PROPERTY SET PageCompleted='2'
+        WHERE PropertyID='$propertyID'");
+    }
+    
     $_SESSION['propertyID'] = $propertyID;
     
     
     mysql_close();
     
-    header( 'Location: /newListing2.php' );
+    //header( 'Location: /newListing2.php' );
 ?>
