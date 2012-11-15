@@ -185,6 +185,8 @@ function get_uploads_for_property($propertyid)
 	$con = get_dbconn("PDO");
 	$stmt = $con->prepare("SELECT * FROM IMAGE WHERE PropertyID = :propertyid");
 	$stmt->bindValue(":propertyid", $propertyid, PDO::PARAM_INT);
+	$retval = $stmt->fetchAll();
+	return $retval;
 }
 
 

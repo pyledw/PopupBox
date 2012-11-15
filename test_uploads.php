@@ -17,5 +17,22 @@ if (count($_FILES) > 0)
 }
 ?>
 		</pre>
+
+
+
+
+<?
+// THE REST OF THIS IS TO DEMONSTRATE HOW TO USE THE RETURN VALUE
+foreach ($result as $upload)
+{
+	if (!$upload[error]) 
+	{
+?>
+		<img src='<?= $upload[name_full]; ?>'></img>
+		<img src='<?= $upload[name_thumb]; ?>'></img>
+<?
+	}
+}
+?>
 	</body>
 </html> 
