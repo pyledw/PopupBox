@@ -161,7 +161,7 @@ function handle_uploads($propertyid, $files)
 
 	$retval = array();
 	
-	foreach ($_files as $f) {
+	foreach ($files as $f) {
 		$retval[] = handle_single_upload($propertyid, $f);
 	}
 	return $retval;	
