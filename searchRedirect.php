@@ -5,6 +5,12 @@
             setcookie('searchVal',$_POST[search]);
             header( 'Location: /searchResults.php' );
         }
+        elseif($_GET[type])
+        {
+            setcookie('searchType',$_GET[type]);
+            setcookie('searchVal',$_GET[term]);
+            header( 'Location: /searchResults.php' );
+        }
         else
         {
             if(isset($_COOKIE['searchType']))

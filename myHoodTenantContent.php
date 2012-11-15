@@ -120,9 +120,9 @@
     ?>
     <h1>Recent Searches</h1>
     <?php 
-    foreach ($_SESSION['recentSearch'] as $value) 
+    foreach (array_reverse($_SESSION['recentSearch']) as $value) 
         {
-            echo "Term: " . $value[1] . "Type:" . $value[0] . "<br/>";
+            echo "<a href='searchRedirect.php?type=".$value[0]."&term=".$value[1]."'>Searched for " . $value[1] . " by " . $value[0] . "</a><br/>";
         }
     
     ?>
