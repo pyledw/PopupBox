@@ -13,12 +13,12 @@
                 UserName,                 Password,                DateCreated,              AccountType,
                 Email,                    SSN,                     FirstName,                LastName,
                 Street,                   City,                    State,                    Zip, 
-                DateOfBirth,              Phone )
+                DateOfBirth )
             VALUES (
                 :username,                :password,               NOW(),                    :accountType,
                 :email,                   :ssn,                    :firstName,               :lastName,
                 :street,                  :city,                   :state,                   :zip,
-                :dob,                     :phone )
+                :dob                     )
             ");
     try {
         $stmt->bindValue(':username', 	    $_POST['username'],		 		PDO::PARAM_STR);
@@ -33,7 +33,7 @@
         $stmt->bindValue(':state',          $_POST['state'],            		PDO::PARAM_STR);
         $stmt->bindValue(':zip',            $_POST['zip'],              		PDO::PARAM_STR);
         $stmt->bindValue(':dob',            $_POST['age'],              		PDO::PARAM_STR);
-        $stmt->bindValue(':phone',          $_POST['Phone'],              		PDO::PARAM_STR);
+        //$stmt->bindValue(':phone',          $_POST['Phone'],              		PDO::PARAM_STR);
         $stmt->execute();
         
         
@@ -62,6 +62,9 @@
         $exception = $e->getMessage();
         $pos = strpos($exception, "Email");
         //echo $line;
+        echo $exception = $e->getMessage();
+        
+        
         if(!$pos)
         {
             echo $error = "Duplicate Username";
@@ -103,6 +106,7 @@
                         <input type="text" name="error" value="Duplicate Email" />
                   </form>';
         }
+         
     }
     
 
