@@ -6,33 +6,37 @@
 			<br />
 			<input type="submit" name="submit" value="Submit" />
 		</form>
-		<pre>
 
 <?
 include_once 'uploads.inc.php';
+$result = array();
 if (count($_FILES) > 0)
 {
-	$result = handle_uploads(3, $_FILES);
+	$result = handle_uploads(4, $_FILES);
+	echo "<pre>This is the return value from handle_uploads:";
 	print_r($result);
-}
-?>
-		</pre>
-
-
-
-
-<?
-// THE REST OF THIS IS TO DEMONSTRATE HOW TO USE THE RETURN VALUE
-foreach ($result as $upload)
-{
-	if (!$upload[error]) 
+	echo "</pre>";
+	echo "<br /><br />";
+	echo "THIS DEMONSTRATES HOW TO USE THE RETURN VALUE TO GENERATE IMG TAGS <br />";
+	foreach ($result as $upload)
 	{
-?>
-		<img src='<?= $upload[name_full]; ?>'></img>
-		<img src='<?= $upload[name_thumb]; ?>'></img>
-<?
+		if (!$upload[error]) 
+		{
+	?>
+			<img src='<?= $upload[name_full]; ?>'></img>
+			<img src='<?= $upload[name_thumb]; ?>'></img>
+	<?
+		}
 	}
 }
+
+echo "<br /><br />YOU CAN CALL 'get_uploads_for_property(n)' TO GET IMAGES THAT WERE PREVIOUSLY UPLOADED:<br />";
+$result = get_uploads_for_property(4);
+echo "<pre>"; 
+print_r($result);
+echo "</pre>";
+
+
 ?>
 	</body>
 </html> 

@@ -7,6 +7,7 @@
  */
 
 include_once 'config.inc.php';
+include_once 'log.inc.php';
 
 /**
  * Tests that the input file size in bytes is permitted according to configuration.
@@ -36,6 +37,7 @@ function upload_get_save_path()
     global $upload_save_path;
     $d = new DateTime();
     $fn = $d->format("YmdHms") . strval(mt_rand());
+	logdebug("generated save path: $fn");
     return $upload_save_path . $fn;
 }
 
@@ -48,24 +50,19 @@ function upload_get_save_path()
  *
  * @param string $name_thumb The filename of the thumbnail image, relative to document root.
  * 
- * @return int ID of the inserted database record.  NULL is returned if an error occurred.
+ * @return int ID of the inserted database record.
  */
 function upload_write_database_record($propertyid, $name_full, $name_thumb)
 {
-	try 
-	{
-	    $con = get_dbconn("PDO");
-    	$stmt = $con->prepare("INSERT INTO IMAGE 
-        	                         (PropertyID,  ImagePathOriginal, ImagePathThumb) values
-            	                     (:propertyid, :originalpath,     :thumbpath)");
-	    $stmt->bindValue(':propertyid',    $propertyid,  PDO::PARAM_INT);
-    	$stmt->bindValue(':originalpath',  $name_full,   PDO::PARAM_STR);
-	    $stmt->bindValue(':thumbpath',     $name_thumb,  PDO::PARAM_STR);
-    	$stmt->execute();
-	    $id = $con->lastInsertId();
-	} catch (Exception $e) {
-		$id = NULL;
-	}
+    $con = get_dbconn("PDO");
+   	$stmt = $con->prepare("INSERT INTO IMAGE 
+       	                         (PropertyID,  ImagePathOriginal, ImagePathThumb) values
+           	                     (:propertyid, :originalpath,     :thumbpath)");
+    $stmt->bindValue(':propertyid',    $propertyid,  PDO::PARAM_INT);
+   	$stmt->bindValue(':originalpath',  $name_full,   PDO::PARAM_STR);
+    $stmt->bindValue(':thumbpath',     $name_thumb,  PDO::PARAM_STR);
+   	$stmt->execute();
+    $id = $con->lastInsertId();
 	return $id;
 }
 
@@ -139,13 +136,21 @@ function handle_single_upload($propertyid, $file)
         $img->thumbnailImage($upload_thumbnail_size, 200, true);
         $img->writeImage($name_thumb);
 
-		$id = upload_write_database_record($propertyid, $name_full, $name_thumb);
-
-        $retval = array(
-            "error"         => false, 
-            "name_full"     => $name_full, 
-            "name_thumb"    => $name_thumb,
-            "id"            => $id);
+		try {
+			$id = upload_write_database_record($propertyid, $name_full, $name_thumb);
+	        $retval = array(
+    	        "error"         => false, 
+        	    "name_full"     => $name_full, 
+            	"name_thumb"    => $name_thumb,
+	            "id"            => $id);
+			logdebug("Uploaded image result: " . print_r($retval, true));
+		} catch (Exception $e) {
+			// the database insert failed.  
+			logdebug("Database insert failed.  Reason: " . $e->getMessage());
+			$retval = array(
+				"error"         => true,
+				"error_msg"     => $e->getMessage());
+		}
 	}
 	return $retval;
 }
@@ -185,6 +190,7 @@ function get_uploads_for_property($propertyid)
 	$con = get_dbconn("PDO");
 	$stmt = $con->prepare("SELECT * FROM IMAGE WHERE PropertyID = :propertyid");
 	$stmt->bindValue(":propertyid", $propertyid, PDO::PARAM_INT);
+	$stmt->execute();
 	$retval = $stmt->fetchAll();
 	return $retval;
 }
