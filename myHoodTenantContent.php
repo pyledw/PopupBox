@@ -118,5 +118,13 @@
         
     }
     ?>
+    <h1>Recent Searches</h1>
+    <?php 
+    foreach ($_SESSION['recentSearch'] as $value) 
+        {
+            echo "Term: " . $value[1] . "Type:" . $value[0] . "<br/>";
+        }
+    
+    ?>
     
 </div>
