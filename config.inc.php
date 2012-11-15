@@ -1,7 +1,12 @@
-<!-- This file is for the database configuration, and host the Username and Password for database connections.
-     It also hold the function to be called for creating the connection to the database-->
-
 <?php
+/**
+ * Configuration 
+ *
+ * This file is for the database configuration, and host the Username and Password for database connections.
+ * It also hold the function to be called for creating the connection to the database.
+ *
+ * @package Configuration
+ */
 
 $db_user 	= 'leasehood';
 $db_pass 	= 'sunlight blanket floating change';  // db password
