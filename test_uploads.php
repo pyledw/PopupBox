@@ -6,6 +6,8 @@
 			<br />
 			<input type="submit" name="submit" value="Submit" />
 		</form>
+		<pre>
+
 <?
 include_once 'uploads.inc.php';
 if (count($_FILES) > 0)
@@ -13,7 +15,7 @@ if (count($_FILES) > 0)
 	$result = handle_uploads(3, $_FILES);
 	print_r($result);
 }
-
 ?>
+		</pre>
 	</body>
 </html> 

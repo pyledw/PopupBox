@@ -48,19 +48,24 @@ function upload_get_save_path()
  *
  * @param string $name_thumb The filename of the thumbnail image, relative to document root.
  * 
- * @return int ID of the inserted database record.
+ * @return int ID of the inserted database record.  NULL is returned if an error occurred.
  */
 function upload_write_database_record($propertyid, $name_full, $name_thumb)
 {
-    $con = get_dbconn("PDO");
-    $stmt = $con->prepare("INSERT INTO IMAGE 
-                                 (PropertyID,  ImagePathOriginal, ImagePathThumb) values
-                                 (:propertyid, :originalpath,     :thumbpath)");
-    $stmt->bindValue(':propertyid',    $propertyid,  PDO::PARAM_INT);
-    $stmt->bindValue(':originalpath',  $name_full,   PDO::PARAM_STR);
-    $stmt->bindValue(':thumbpath',     $name_thumb,  PDO::PARAM_STR);
-    $stmt->execute();
-    $id = $con->lastInsertId();
+	try 
+	{
+	    $con = get_dbconn("PDO");
+    	$stmt = $con->prepare("INSERT INTO IMAGE 
+        	                         (PropertyID,  ImagePathOriginal, ImagePathThumb) values
+            	                     (:propertyid, :originalpath,     :thumbpath)");
+	    $stmt->bindValue(':propertyid',    $propertyid,  PDO::PARAM_INT);
+    	$stmt->bindValue(':originalpath',  $name_full,   PDO::PARAM_STR);
+	    $stmt->bindValue(':thumbpath',     $name_thumb,  PDO::PARAM_STR);
+    	$stmt->execute();
+	    $id = $con->lastInsertId();
+	} catch (Exception $e) {
+		$id = NULL;
+	}
 	return $id;
 }
 
