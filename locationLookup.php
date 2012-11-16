@@ -1,4 +1,11 @@
 <?php
+/**
+ * These functions are geared to the lookup and retrieval of geolocation of properties
+ * 
+ * @package LocationFunctions
+ */
+
+
 
 /**
  * 
