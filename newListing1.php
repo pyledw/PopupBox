@@ -2,6 +2,17 @@
     $title = "New Listing Part 1";
     include 'Header.php';
     
+    /**
+     * First Check is to ensur ethe user is logged in, and get the data of the correct user and property listing.
+     * 
+     * * Then main content will load with exiting elements being pre filled into the form
+     * * Various testing methods are used to ensure that the display will be identical to the users 
+     * * previus input if the user has already compeleted this page.
+     * 
+     * At the end of the page it check to see that if the Property was complete or not, and increments the page completed acordingly
+     */
+    
+    
     //Test to check if user is logged in or not IF not they will be redirected to the login page
     if(!isset($_SESSION[userID]))
     {

@@ -2,6 +2,17 @@
     $title = "New Application #3";
     include 'Header.php';
     
+    /**
+     * First Check is to ensur ethe user is logged in, and get the data of the correct user.
+     * 
+     * * Then main content will load with exiting elements being pre filled into the form
+     * * Various testing methods are used to ensure that the display will be identical to the users 
+     * * previus input if the user has already compeleted this page.
+     * 
+     * At the end of the page it check to see that if the applicaiton was not complete or not, and increments the page completed acordingly
+     */
+    
+    
     if(!isset($_SESSION[userID]))
     {
         header( 'Location: /loginRequired.php' ) ;
@@ -35,10 +46,6 @@
         
         
     ?>
-
-<!-- Main content will load with exiting elements being pre filled into the form
-     Various testing methods are used to ensure that the display will be identical to the users 
-     previous input if the user has already completed this page-->
 
 <div id="mainContent">
     <form id="newApplicationForm" method="post" action="newHousingApplication3Redirect.php">

@@ -1,7 +1,8 @@
-<!-- This is the home listing page.  It uses the GET method in order to create a static address for each listing
-     It then retrieves the data from the database about the listing and displays it to the screen. -->
 
 <?php
+
+    /** This is the home listing page.  It uses the GET method in order to create a static address for each listing
+     It then retrieves the data from the database about the listing and displays it to the screen. */
     $listingID = $_GET[listingID];
     $title = 'Listing' .$listingID; //This will be retrieved from the element that was clicked on in the search
     include 'Header.php';
@@ -26,16 +27,13 @@
         $row = mysql_fetch_array($result);
         include_once 'listingFunctions.php';
         
-        //below is call to function that returns the timestring of time remaining or time till start
+        // below is call to function that returns the timestring of time remaining or time till start
         $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
         
-        
-        //The code below will return the listings status
+        // The code below will return the listings status
         $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
         
-
         //this code is retrieving the highest bid of the auction and returning it
-        
         $maxBid = getHighBid($row[PropertyID]);
         
 ?>

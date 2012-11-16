@@ -2,6 +2,11 @@
     $title = "Housing Application Part 5";
     include 'Header.php';
     
+    /**
+     * First Check is to ensur ethe user is logged in, and get the data of the correct user.
+     * 
+     * At the end of the page it check to see that if the applicaiton was not complete or not, and increments the page completed acordingly
+     */
     
     if(!isset($_SESSION[userID]))
     {
