@@ -1,5 +1,17 @@
 <?php
+    /** 
+     * This redirect will get all of the inforamiton from the previus page in a form post.
+     * It will check the database to see if an applicaiton is already on file.
+     * It will then insert the new applicaiton info into the APPLICATION table or Update
+     * the previus info acordingly.
+     * 
+     * It finaly checks to see if the user application was completed, and if it was not
+     * it will update the pagecompleted field to the correct page.
+     */
+    
     session_start();
+    
+    
     
     //Creating a conneciton to the database and returning the valuse needed
     include_once 'config.inc.php';
