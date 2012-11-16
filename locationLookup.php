@@ -1,6 +1,24 @@
 <?php
 
-//This function takes the mailing address and retrievs the LAT and LON of the address
+/**
+ * 
+ * This function will recive the address, city, and state of a property.
+ * It then uses a google api to retireve the location based on that address
+ * It will then convert the geolocation into lat and Lon and return it back to where it was called.
+ * 
+ * @global type $lat The Latitude of the location
+ * 
+ * @global type $lng The longitude of the property
+ * 
+ * @param type $addr The address of the property
+ * 
+ * @param type $city The City of the property
+ * 
+ * @param type $state The state of the property
+ * 
+ * @return array $location This contains teh lat and lon in an array
+ * 
+ */
 function getLatandLongAddress($addr,$city,$state)
 { 
 	global $lat;
@@ -28,7 +46,16 @@ function getLatandLongAddress($addr,$city,$state)
         return $location;
 }
 
-//This function takes teh zip code and returns the LAT and LON of the ZIP code
+/**
+ * This funciton returns the Lat and Lon based on the zip code entered
+ * it will use a google api to fint the location and then it converts that location
+ * to a Lat and Lon cordanates.  It then returns them back.
+ * 
+ * @global type $lat The latidute of teh zip code
+ * @global type $lng The longitude of the zip code
+ * @param type $Zip the zip code given to find location on
+ * @return Array $location contains both the lat and lon
+ */
 function getLatandLongZip($Zip)
 { 
 	global $lat;
