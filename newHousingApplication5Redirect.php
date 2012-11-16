@@ -38,7 +38,8 @@ session_start();
     }
     
     //create finding email query
-    $getEmail = $con->query("select Email from USER where UserID ='$_SESSION[userID]'");
+    $gettingEmail = "select Email from USER where UserID ='$_SESSION[userID]'";
+    $getEmail = $con->query($gettingEmail);
     if (!getEmail)
     {
         echo 'Could not find email';
