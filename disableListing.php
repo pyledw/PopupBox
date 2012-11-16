@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * This page disales the listing with the given listing id in the GET variable.
+ * It then returns you back to your myHood page
+ */
 echo "redirect";
 echo $_GET[listingID];
 

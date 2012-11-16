@@ -1,5 +1,11 @@
 <?php
 
+
+/**
+ * This page is used if the user is selecting to change a users account.
+ * If the type of change is 0 it will disable the account.  if 1 it will enable the account.
+ * 
+ */
 echo "redirect";
 echo $_GET[userID];
 

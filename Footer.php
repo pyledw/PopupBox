@@ -1,8 +1,9 @@
 <!-- This document contains all the footer information as well as the closing page elements. -->
 
-</div><!-- Tag for closing the wrapper -->
+<!-- Tag for closing the wrapper -->
+</div>
 
-    <!-- This Portion contains the footer links. -->
+   <!-- This Portion contains the footer links. -->
    <div id="bottomNav">
             <ul>
                     <li>About LeaseHood</li>
