@@ -12,9 +12,10 @@
     {
         $propertyID = $_SESSION[propertyID];
     }
-    else if(isset ($_POST[propertyID]))
+    elseif(isset($_POST[propertyID]))
     {
         $propertyID = $_POST[propertyID];
+        $_SESSION[propertyID] = $_POST[propertyID];
     }
     else
     {
