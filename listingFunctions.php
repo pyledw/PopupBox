@@ -608,7 +608,7 @@
         }
         
     /**
-     *  This function will display the listings on the Tenants MyHood page 
+     * This function will display the listings on the Tenants MyHood page 
      * 
      * @param String $propertyID This variable is the PropertyID of the Property that will be displayed
      *  
@@ -770,14 +770,25 @@
     }
     
     
-    //This funciton will test the user using the given UserID and PropertyID
-    //It will determin the users ability to bid and return an integer to represent thier status
-    //0 - Okay to bid, no other active bids
-    //1 - Application not compleate
-    //2 - Applicaiton not authorized
-    //3 - Bid fee not paid
-    //4 - Another bid is active on a differant auction
-    //5 - No application on file
+    /**
+     * This funciton will test the user using the given UserID and PropertyID
+     * 
+     * * It will determin the users ability to bid and return an integer to represent thier status
+     * * 0 - Okay to bid, no other active bids
+     * * 1 - Application not compleate
+     * * 2 - Applicaiton not authorized
+     * * 3 - Bid fee not paid
+     * * 4 - Another bid is active on a differant auction
+     * * 5 - No application on file
+     * 
+     * @param String $userID This is the userID of the user
+     * 
+     * @param String $property This is the property ID of the orioerty in question
+     * 
+     * @return String $status of the users ability to BID with HTML styling elements
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     function getUsersBidStatus($userID,$propertyID)
         {
 
@@ -852,7 +863,15 @@
         }
         
         
-        //This function returns the date and time of the date from the database so that it looks better.
+        /**
+         * This function returns the date and time of the date from the database so that it looks better.
+         * 
+         * @param string $date Date to be converted
+         * 
+         * @param int $hasTime Integer that test if the date has time attached if 0, no time is attached, if 1 time is attached 
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
         function convertDate($date,$hasTime)
         {
        
@@ -876,7 +895,13 @@
         }
     
         
-        //This function will display basic info from a users applicaiton for that administrator
+        /**
+         * This function will display basic info from a users applicaiton for that administrator
+         * 
+         * @param Array $row Is the row from the query with the application info
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
         function displayApplications($row)
         {
             echo '<table class="tableForm" style="padding:5px 5px 0px 5px; margin:0px 0px 0px 0px;" width="1000">
@@ -891,6 +916,13 @@
                 </table>';
         }
         
+        /**
+         * This function displays the listings based of the given array of elements
+         * 
+         * @param Array $row
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
         function displayListings($row)
         {
             echo '<table class="tableForm" style="padding:0px 5px 5px 5px; margin:0px 0px 0px 0px;" width="1000">

@@ -11,6 +11,8 @@ include_once 'config.inc.php';//retrieving the required config informaiton
  * @param string $term this represents the type of search the user selected.  Is based off of the drop down box on the search form
  *
  * @return array $result A query based off the $type and $term
+ * 
+ * @author David Pyle <Pyledw@Gmail.com>
  */
 function search($type,$term)
     {
