@@ -1,5 +1,15 @@
 <?php
     /**
+    * Functions for the processing, displaying, and searching of listings
+    *
+    * @package ListingFunctions
+    *
+    */
+
+
+
+
+    /**
      * This function retrieve that start and end time of the auciton
      * It then calculates if the auction has has started, has ended, or is
      * currently running.  It will then return the correct string for the result

@@ -1,4 +1,13 @@
 <?php
+    /**
+    * Functions for the Searching of listings
+    *
+    * @package SearchListingFunctions
+    *
+    */
+
+
+
 include_once 'config.inc.php';//retrieving the required config informaiton
 
 /**
