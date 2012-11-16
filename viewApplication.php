@@ -1,5 +1,13 @@
 
 <?php
+
+    /**
+     * This page allows the administrator to view the users applicaiton and approve it acordingly.
+     * 
+     * It recieves the applicaiton ID in a form GET request.
+     * 
+     * It then displays all the data.
+     */
     session_start();
     $applicationID = $_GET[applicationID];
     

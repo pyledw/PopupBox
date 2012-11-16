@@ -1,4 +1,12 @@
 <?php
+
+
+    /**
+     * This page is used in the form of a popup on the administrator page.  It allows the administrator to look at the page and
+     * aprove the listing.  The data comes from a form GET containing the property ID of the listing that the administrator wishes to view.
+     * 
+     * 
+     */
     session_start();
     $propertyID = $_GET[propertyID];
     

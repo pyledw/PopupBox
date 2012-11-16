@@ -1,6 +1,14 @@
-<!-- This window will preform validation as well as an confirmation box. -->
 
 <?php
+
+    /**
+     * This popup box is a confirmation box that ensures the users bid is valid and so that the
+     * user has a chance to confirm his bid.  The window will check to ensure that the 
+     * user does not have an active bid on another listing, it will also check to ensure that
+     * the bid is more than thier last bid.
+     * 
+     * On user confirmation it will send teh data to a redirect page to send the data to the database.
+     */
 session_start();
 $propertyID = $_GET["propertyID"];
 $auctionID = $_GET["auctionID"];

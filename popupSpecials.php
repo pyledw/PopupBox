@@ -1,3 +1,9 @@
+<?php
+    /**
+     * This page is a popup for when the specials icon is clicked.
+     */
+?>
+
 <link rel="stylesheet" type="text/css" href="css/popupStyles.css" />
 <div id="popupContent" style="width:400px;">
 <h1 class="popupHeader">Specials</h1>

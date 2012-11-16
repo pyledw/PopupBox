@@ -1,4 +1,13 @@
 <?php
+
+    /**
+     * This is displayed for the tenant after then have been selected as the winning bid
+     * They will ba able to the the landlords name, phone, and email.
+     * 
+     * This retireves the property ID in a form GET request, and pulls the informaiton based
+     * on the propertyID
+     * 
+     */
     session_start();
     $propertyID = $_GET[propertyID];
     

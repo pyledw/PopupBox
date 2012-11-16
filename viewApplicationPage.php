@@ -1,5 +1,14 @@
 
 <?php
+
+    /**
+     * This page will display the applicaiton page of a applicaiton based on the $post data.
+     * 
+     * It allows the administrator to approve the applicaiton, and is also allows the landlord to
+     * pick the user as the winnind bid of thier auction.
+     * 
+     *
+     */
     include 'Header.php';
     
     

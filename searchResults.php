@@ -1,5 +1,13 @@
 <?php
 
+    /**
+     * This page will recive the search term and search type in the form of a cookie.
+     * 
+     * This page will then save the recent search in the session.
+     * 
+     * Finally it will send the data to the search funciton and display the results acordingly.
+     */
+
         //title is used to set page name
         $title = "Search Homes";
         

@@ -1,4 +1,12 @@
 <?php
+    /**
+     * This page is the results when a administrator chooses to search for a user.
+     * 
+     * It gets all user whos usernames, firstname, or lastname corisponds with the search
+     * It will then display those user accounts and give the option of emailing them, disabling
+     * their account, or enabling thier account.
+     */
+
 
     include_once 'Header.php';
     echo "<div id='wrapper'> ";

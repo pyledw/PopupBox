@@ -1,5 +1,11 @@
 
 <?php
+
+    /**
+     * This page contains the search form for the simple search, and post all the data to the search redirect.
+     * 
+     * 
+     */
         $title = "Search Homes";
 	include 'Header.php';
 ?>

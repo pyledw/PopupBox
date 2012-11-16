@@ -1,3 +1,9 @@
+<?php
+    /**
+     * This popup is for calulating the rent a user can pay.
+     */
+?>
+
 <link rel="stylesheet" type="text/css" href="css/mainStyle.css" />
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
 <link rel="stylesheet" type="text/css" href="css/popupStyles.css" />

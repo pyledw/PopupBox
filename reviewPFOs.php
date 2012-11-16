@@ -1,4 +1,12 @@
 <?php
+    /**
+     * This page will be in the form of a popup showing a list of all the submitted PFOs.
+     * It allows the user to select an applicaiton and view it on a new page.
+     * 
+     * It will retrieve this info ising the property ID that will eb gotten in the form of a GET request.
+     * It will then display the data for the user
+     */
+    
 //echo $_GET[propertyID];
     session_start();
     include_once 'config.inc.php';

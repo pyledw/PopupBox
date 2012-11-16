@@ -1,4 +1,10 @@
 <?php
+
+    /**
+     * This page is the page that actially sends the bid data to the database.
+     * it checks to see if a user has an active bid on this listing, and then
+     * it will either update the old bid, or create a new one.
+     */
     session_start();
     if(isset($_SESSION[userID]))
         {
