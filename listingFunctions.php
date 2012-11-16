@@ -1,17 +1,29 @@
 <?php
-    //This function retrieve that start and end time of the auciton
-    //It then calculates if the auction has has started, has ended, or is
-    //currently running.  It will then return the correct string for the result
+    /**
+     * This function retrieve that start and end time of the auciton
+     * It then calculates if the auction has has started, has ended, or is
+     * currently running.  It will then return the correct string for the result
+     * 
+     * @param string $dateAcceptPFO contains the date PFOs are firs accepted
+     * 
+     * @param string $DateEndAcceptPFO contains teh date PFOs are no longer accepted
+     * 
+     * @return $timeString This is the string that contains the time to the end or begining of the auciton. It also contains all styling elements.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     function getTime($DateAcceptPFO,$DateEndAcceptPFO)
         {
         
 
-            $start = strtotime($DateAcceptPFO);
-            $now = strtotime(date("Y-m-d H:i:s"));
-            $ends = strtotime($DateEndAcceptPFO);
+            $start = strtotime($DateAcceptPFO);     //converting times to str
+            $now = strtotime(date("Y-m-d H:i:s"));  //converting times to str
+            $ends = strtotime($DateEndAcceptPFO);   //converting times to str
             
-            if($now < $start)
+            if($now < $start)   //check to see if the auction has started yet.  Will run if the Auction begin date has not accured yet
             {
+                
+                
                 //The code below will get the time to the auction begining.
                 $difference = $start - $now;
                 $years = abs(floor($difference / 31536000));
@@ -20,7 +32,7 @@
                 $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
 
 
-                
+                //displays for only displaying an element if it is not zero
                 if($days != 0)
                 {
                 $timeString = '<font class="greyTextArea" style="float:right;">Begins in: '.$days .'  Days, '. $hours . ' Hours, '. $mins .' Minutes </font>';
@@ -35,11 +47,11 @@
                 }
 
             }
-            elseif($now > $ends)
+            elseif($now > $ends)    //check to see if the auction is over.  Will run if the currnet time is past the auction end
             {
                 $timeString = '<font class="greyTextArea" style="float:right;">Bidding has ended</font>';
             }
-            else
+            else    //this will run if the auction is currently running
             {
                 //The code below will get the time to the auction ending.
                 $difference = $ends - $now;
@@ -48,7 +60,7 @@
                 $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
                 $mins = abs(floor(($difference-($years * 31536000)-($days * 86400)-($hours * 3600))/60));#floor($difference / 60);
 
-
+                //displays for only displaying an element if it is not zero
                 if($days != 0)
                 {
                 $timeString = '<font class="greyTextArea" style="float:right;">Ends in: '.$days .'  Days, '. $hours . ' Hours, '. $mins .' Minutes </font>';
@@ -70,42 +82,63 @@
             }
             
                 
-            return $timeString;
+            return $timeString;//returning the string with all html formatting
         }
     
-    //This function recieves the starting and end date of the auciton.
-    //It then determins the status of the auciton.
-    //and returns this back
+    /**
+     * This funciton will retrieve the auction status based off of the auciton start and end.
+     * It will then add any needed html elements and return the compleated string back.
+     * 
+     * @param String $dateAcceptPFO This is the date the auction will begin accepting PFOs
+     * 
+     * @param String $DateEndAcceptPFO This is the date the auciton will stop accepting PFOs
+     * 
+     * @return String $status Satus contains the current status with all the needed HTML wrapping.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     function getStatus($DateAcceptPFO,$DateEndAcceptPFO)
         {
-            $start = strtotime($DateAcceptPFO);
-            $now = strtotime(date("Y-m-d H:i:s"));
-            $ends = strtotime($DateEndAcceptPFO);
-            if($now > $start && $now < $ends)
+            $start = strtotime($DateAcceptPFO);     //converting the time to str
+            $now = strtotime(date("Y-m-d H:i:s"));  //converting the time to str
+            $ends = strtotime($DateEndAcceptPFO);   //converting the time to str
+            
+            if($now > $start && $now < $ends)   //check to see if the auction is open for PFOs
             {
                $status = '<font class="greenTextArea" style="float:right;">Satus:Open for PFOs</font>';
             }
-            elseif($now < $start)
+            elseif($now < $start)   //Check to see if the auction has begun
             {
                 $status = '<font class="yellowTextArea" style="float:right;">Satus:Bidding has not yet started</font>';
             }
-            elseif($now > $ends)
+            elseif($now > $ends)    //check to see if the auction has ended
             {
                 $status = '<font class="greyTextArea" style="float:right;">Satus:Bidding Has Ended</font>';
             }
-            else
+            else    //if none are true
             {
                 $status = "";
             }
+            
             unset($start);
             unset($now);
             unset($ends);
-            return $status;
+            
+            
+            return $status;//returning the variable with all html elements added
         }
 
-    //Function gets the two times, and compares them to get the status.
-    //It then returns and int to designate the status of the auction.
-    //1=open 2=Not Started 3=Ended
+    /**
+     * Function gets the two times, and compares them to get the status.
+     * 
+     * @param String $dateAcceptPFO This is the date the auction will begin accepting PFOs
+     * 
+     * @param String $DateEndAcceptPFO This is the date the auciton will stop accepting PFOs
+     * 
+     * @return Int $status This int represents teh current status of the auction.  It will equal 1 if open, 2 if Not started, and 3 if auction has ended.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     function getStatusInt($DateAcceptPFO,$DateEndAcceptPFO)
         {
             $status = "error";
@@ -116,19 +149,19 @@
             //echo $now ."<br/>";
             //echo $ends ."<br/>";
 
-            if($now > $start && $now < $ends)
+            if($now > $start && $now < $ends)   //if the auction is currently running
             {
                 $status = "1";
             }
-            elseif($now < $start)
+            elseif($now < $start)   //if the auction is yet to begin
             {
                 $status = "2";
             }
-            elseif($now > $ends)
+            elseif($now > $ends)    //if the auciton has already ended
             {
                 $status = "3";
             }
-            else
+            else    //error if none detected
             {
                 $status = "error";
             }
@@ -136,15 +169,24 @@
             unset($start);
             unset($now);
             unset($ends);
-            return $status;
+            
+            return $status;     //returning the status int of the auction
         }
 
-    //This funciton retrieves the highest bid on the property that corisponds to the given property ID
+    /**
+     * This funciton retrieves the highest bid on the property that corisponds to the given property ID
+     * 
+     * @param String $propertyID This is teh ID of the property
+     * 
+     * @return String $maxBid Will return the max bid wrapped in html styling
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     function getHighBid($propertyID)
         {
-            include_once 'config.inc.php';
+            include_once 'config.inc.php';//including needed conneciton functions
 
-            $con = get_dbconn("");
+            $con = get_dbconn("");//creating the DB connection
 
             //this code is retrieving the highest bid of the auction and returning it
             $result = mysql_query("SELECT max(MonthlyRate) FROM BID
@@ -153,19 +195,19 @@
                             WHERE PropertyID='$propertyID'");
 
 
-            $row = mysql_fetch_array($result);
+            $row = mysql_fetch_array($result);//setting the query results into an array
 
-            if(isset($row[0]))
+            if(isset($row[0]))//if the check returned a high bid
             {
                 $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[0] .'</font>';
             }
-            else
+            else//if there was no hign bid
             {
                 $maxBid = "" ;
             }
 
 
-            return $maxBid;
+            return $maxBid;//retuning the string with all html elements included
         }
     
     
@@ -173,34 +215,45 @@
         
         
     
-    //This function retrieves the Auction ID and displays the property and infromation based off that ID.
+    /**
+     * This function retrieves the Auction ID and displays the property and information based off that ID.
+     * It will display them using the nedded styles. It echos the results back to the original file.
+     * 
+     * @param String $auctionID This variable is the AuctionID of the auction that will be displayed
+     *  
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     function displaySearchResults($auctionID)
         {
         
-            echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';
-            include_once 'config.inc.php';
+            echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylsheet for the result layout
+            
+            include_once 'config.inc.php';  //config needed
 
-            $con = get_dbconn("");
+            $con = get_dbconn("");  //Creating DB connection
 
-            //this code is retrieving the highest bid of the auction and returning it
+            /** this code is retrieving the highest bid of the auction and returning it */
             $result = mysql_query("SELECT * FROM AUCTION
                 INNER JOIN PROPERTY
                 ON AUCTION.PropertyID=PROPERTY.PropertyID
                 WHERE AuctionID='$auctionID'");
-
-            $row = mysql_fetch_array($result);
-
-            include_once 'listingFunctions.php';
             
-            //below is call to function that returns the timestring of time remaining or time till start
-            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+            /** this is fetching the query results and setting them in an array */
+            $row = mysql_fetch_array($result);
+            
+            /** including teh funcitons needed for the listings */
+            include_once 'listingFunctions.php';    
+            
+            /** call to function that returns the timestring of time remaining or time till start */
+            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]); 
 
-            //The code below will return the listings status
-            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+            /** The code below will return the listings status */
+            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);   
 
-            //this code is retrieving the highest bid of the auction and returning it
-
-            $maxBid = getHighBid($row[PropertyID]);
+            
+            /** this code is retrieving the highest bid of the auction and returning it **/
+            $maxBid = getHighBid($row[PropertyID]);     
+            
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '
@@ -289,7 +342,7 @@
                     </table>
                 </td>
                     </tr>';
-            
+            //This query is retriving all the bids on the auction of the property
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -300,7 +353,9 @@
                             WHERE PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
-                        while($bid = mysql_fetch_array($bids))
+                        
+                        
+                        while($bid = mysql_fetch_array($bids))//while there are bids
                         {
                             echo  '<tr><td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
@@ -310,7 +365,7 @@
                                 break;
                             }
                         }
-                        while($max <= 2)
+                        while($max <= 2)//while there is still empty space in teh table
                         {
                             echo '<tr><td height="19px" ></td><td></td></tr>';
                             $max += 1;
@@ -326,15 +381,24 @@
             mysql_close();
         }
     
+        
+    /**
+     *  This function will display the listings on the Landlords MyHood page 
+     * 
+     * @param String $propertyID This variable is the PropertyID of the User that will be displayed
+     *  
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     function displayMyListings($propertyID)
         {
 
         
         
-        echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';
-        include_once 'config.inc.php';
+        echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylesheet for the html elements
+        
+        include_once 'config.inc.php';//needed configuration functions
 
-            $con = get_dbconn("");
+            $con = get_dbconn("");//creating the DB conneciton
 
             //this code is retrieving the highest bid of the auction and returning it
             $result = mysql_query("SELECT * FROM PROPERTY
@@ -356,36 +420,36 @@
             //echo $row[IsPaid];
             
             $propertyStatus ="";
-            if($row[IsApproved] == 0)
+            if($row[IsApproved] == 0)//check to see if the property is approved
             {
-                if($row[IsPaid] == 0)
+                if($row[IsPaid] == 0)//check to see if the property has been paid
                     {
-                            if($row[PageCompleted] != 6)
+                            if($row[PageCompleted] != 6)//check to see if the listing was completed
                             {
                                 $propertyStatus = '<font class="redTextArea">Lisitng not complete.  Click edit listing below to finish your listing</font>';
                             }
-                            else
+                            else//if the property has not been completed
                             {
                                 $propertyStatus = "<font class='redTextArea'>You must pay your fee click <a href='payListingFee.php?propertyID=".$row[PropertyID]."'>Here</a></font>";
                             }
                 }
-                else
+                else//if the property fee has not been paid
                 {
                     $propertyStatus = "<font class='redTextArea'>Your listing is awaiting approval</font>";
                 }
             }
             
-            include_once 'listingFunctions.php';
             
-            //below is call to function that returns the timestring of time remaining or time till start
-            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+            
+            include_once 'listingFunctions.php';//needed lisgin functions
+            
+            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);//below is call to function that returns the timestring of time remaining or time till start
 
-            //The code below will return the listings status
-            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+            
+            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);//The code below will return the listings status
 
-            //this code is retrieving the highest bid of the auction and returning it
-
-            $maxBid = getHighBid($row[PropertyID]);
+            $maxBid = getHighBid($row[PropertyID]);//this code is retrieving the highest bid of the auction and returning it
+            
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '.$propertyStatus
@@ -407,17 +471,19 @@
                 </td>
             </tr>
             <tr>';
-            if($row[PageCompleted] != "6")
+            
+            //setting the page completed in case the full listing has been completed
+            if($row[PageCompleted] != "6")//if the page completed was not equal to 6
             {
                 $pageCompleated=$row[PageCompleted];
             }
-            else
+            else//if the page was equal to 6
             {
                 $pageCompleated="1";
             }
+            
+            
             echo'
-                
-                
                 <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
                     '.substr($row[Description], 0, 150).'<br/><br/>
                      <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
@@ -426,13 +492,13 @@
                 </form>
                 ';
             
-                if($won)
+                if($won)//Check if the auciton winner has been selected
                 {
                     echo'
                     <a href="viewApplication.php?applicationID='.$winnerID.'" rel="facebox" class="button">Review Choosen Application</a>
                     ';
                 }
-                else
+                else//if no winner has been selected yet
                 {
                     echo'
                     <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2[AuctionID].'" rel="facebox" class="button">Review PFOs</a>
@@ -505,6 +571,7 @@
                 </td>
                     </tr>';
             
+            //Query that will retreive all the bids and the usernames of those bids
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -515,17 +582,18 @@
                             WHERE PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
-                        while($bid = mysql_fetch_array($bids))
+                        
+                        while($bid = mysql_fetch_array($bids))//while there are still bids to be displayed
                         {
                             echo  '<tr><td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
-                            $max += 1;
-                            if($max > 2)
+                            $max += 1;//incrementing the max number displayed
+                            if($max > 2)//if the max number has been displayed
                             {
                                 break;
                             }
                         }
-                        while($max <= 2)
+                        while($max <= 2)//if the max number was not reached
                         {
                             echo '<tr><td height="19px" ></td><td></td></tr>';
                             $max += 1;
@@ -539,8 +607,13 @@
             
         }
         
-    //This function retrieves the PropertyIDs of the listing the user has an active bid on
-    //it then displays the listing with the active bid.
+    /**
+     *  This function will display the listings on the Tenants MyHood page 
+     * 
+     * @param String $propertyID This variable is the PropertyID of the Property that will be displayed
+     *  
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     function displayMyPFOs($propertyID)
     {
         echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';
