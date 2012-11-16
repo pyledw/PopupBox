@@ -5,8 +5,8 @@ session_start();
          
     $con = get_dbconn("");
     
-    $result = mysql_query("SELECT PageCompleted FROM PROPERTY
-        WHERE PropertyID='$propertyID'");
+    $result = mysql_query("SELECT * FROM PROPERTY
+        WHERE PropertyID='$_SESSION[propertyID]'");
     
      if(!$result)
         {
