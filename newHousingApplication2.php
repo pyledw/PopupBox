@@ -14,7 +14,7 @@
 
     //Query that is retrieving the data from the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='" . $_SESSION[userID] . "'");   
+            WHERE UserID ='$_SESSION[userID]'");   
     if(!$result)
     {
         die('could not connect: ' .mysql_error());

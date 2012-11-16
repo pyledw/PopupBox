@@ -1,4 +1,8 @@
 <div id="mainContent">
+    <form  method="post" action="userSearch.php">
+        User Name Search:<input type="text" name="userName" />
+        <button class="button" type="submit">Search</button>
+    </form>
     <h1>
         New users applications needing review
     </h1>

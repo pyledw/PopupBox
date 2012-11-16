@@ -25,4 +25,20 @@
 
         }
     ?>
+
+    
+    
+    <?php 
+    
+    if(isset($_SESSION['recentSearch']))
+    {
+        echo '<b>Recent Searches</b><br/>';
+    foreach (array_reverse($_SESSION['recentSearch']) as $value) 
+        {
+            echo "<a href='searchRedirect.php?type=".$value[0]."&term=".$value[1]."'>Searched for " . $value[1] . " by " . $value[0] . "</a><br/>";
+        }
+    }
+    
+    ?>
+
 </div>

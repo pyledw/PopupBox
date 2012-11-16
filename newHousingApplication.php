@@ -13,7 +13,7 @@ include 'Header.php';
     
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM APPLICATION
-        WHERE UserID ='" . $_SESSION[userID] . "'");
+        WHERE UserID ='$_SESSION[userID]'");
     if(!$result)
     {
         die('could not connect: ' .mysql_error());

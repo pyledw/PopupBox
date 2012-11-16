@@ -13,14 +13,14 @@ $title = "New Application #4";
 
         //Getting the users applicaiton data
         $result1 = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='" . $_SESSION[userID] . "'");
+            WHERE UserID ='$_SESSION[userID]'");
         
         //casting the query data into a variable
         $row = mysql_fetch_array($result1);
         
         //second query getting all the previous residences of the applicaiton
         $result = mysql_query("SELECT * FROM PREVIOUSRESIDENCE
-            WHERE ApplicationID = $row[ApplicationID] ");
+            WHERE ApplicationID = '$row[ApplicationID]' ");
         if(!$result)
         {
             die('could not connect: ' .mysql_error());
@@ -40,7 +40,7 @@ $title = "New Application #4";
             <font class="formheader" style="left:600px;">Other Information</font>
             <tr>
                 <th colspan="3">
-                    <h3>Emergency Contact</h3>    
+                    <h3>Co Signer</h3>    
                 </th>
                 
             </tr>

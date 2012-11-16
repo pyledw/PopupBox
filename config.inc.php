@@ -1,14 +1,17 @@
-<!-- This file is for the database configuration, and host the Username and Password for database connections.
-     It also hold the function to be called for creating the connection to the database-->
-
 <?php
-
-$cfg['show_buildinfo'] = true;
+/**
+ * Configuration 
+ *
+ * This file is for the database configuration, and host the Username and Password for database connections.
+ * It also hold the function to be called for creating the connection to the database.
+ *
+ * @package Configuration
+ */
 
 $db_user 	= 'leasehood';
 $db_pass 	= 'sunlight blanket floating change';  // db password
 $db_server 	= '199.115.231.216';     // server name or IP address
-$db_database 	= 'leasehood';     // database to select
+$db_database 	= 'leasehood1112';     // database to select
 $pw_salt 	= '68f33ecb44592ddd476af4145a2eae9f';
 
 $upload_max_size_mb 		= 1.0;
@@ -31,21 +34,6 @@ $paypal_returnURL     = "http://199.115.231.216:85/paypal_confirm.php";			// abs
 $paypal_cancelURL     = "http://199.115.231.216:85/ppaypal_cancel.php";			// absolute url for cancelled payments
 
 
-
-function upload_size_is_okay($size_in_bytes) 
-{
-	global $upload_max_size_mb;
-	$MB = 1024 * 1024;
-	return $size_in_bytes / $MB < $upload_max_size_mb;
-}
-
-function upload_get_save_path() 
-{
-	global $upload_save_path;
-	$d = new DateTime();
-	$fn = $d->format("YmdHms") . strval(mt_rand());
-	return $upload_save_path . $fn;
-}
 
 function get_dbconn($api) {
     global $db_user, $db_pass, $db_server, $db_database;

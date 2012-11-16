@@ -9,6 +9,7 @@
             $start = strtotime($DateAcceptPFO);
             $now = strtotime(date("Y-m-d H:i:s"));
             $ends = strtotime($DateEndAcceptPFO);
+            
             if($now < $start)
             {
                 //The code below will get the time to the auction begining.
@@ -336,13 +337,44 @@
             $con = get_dbconn("");
 
             //this code is retrieving the highest bid of the auction and returning it
-            $result = mysql_query("SELECT * FROM AUCTION
-                INNER JOIN PROPERTY
-                ON AUCTION.PropertyID=PROPERTY.PropertyID
-                WHERE PROPERTY.PropertyID='$propertyID'");
+            $result = mysql_query("SELECT * FROM PROPERTY
+                WHERE PropertyID='$propertyID'");
+            
+            $result2 = mysql_query("SELECT * FROM AUCTION
+                WHERE PropertyID='$propertyID'");
+            
+            if(!$result)
+            {
+                die('could not connect: ' .mysql_error());
+            }
+            
 
             $row = mysql_fetch_array($result);
-
+            $row2 = mysql_fetch_array($result2);
+            //echo $row[PropertyID];
+            //echo $row[PageCompleted];
+            //echo $row[IsPaid];
+            
+            $propertyStatus ="";
+            if($row[IsApproved] == 0)
+            {
+                if($row[IsPaid] == 0)
+                    {
+                            if($row[PageCompleted] != 6)
+                            {
+                                $propertyStatus = '<font class="redTextArea">Lisitng not complete.  Click edit listing below to finish your listing</font>';
+                            }
+                            else
+                            {
+                                $propertyStatus = "<font class='redTextArea'>You must pay your fee click <a href='payListingFee.php?propertyID=".$row[PropertyID]."'>Here</a></font>";
+                            }
+                }
+                else
+                {
+                    $propertyStatus = "<font class='redTextArea'>Your listing is awaiting approval</font>";
+                }
+            }
+            
             include_once 'listingFunctions.php';
             
             //below is call to function that returns the timestring of time remaining or time till start
@@ -356,7 +388,7 @@
             $maxBid = getHighBid($row[PropertyID]);
             
             echo '<font style="float:right; position:relative; right:20px;">
-                    '
+                    '.$propertyStatus
                    .$timeString
                    .$status
                    .$maxBid.
@@ -368,22 +400,32 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row[Address] . " - " . $row[PropertyID] . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row[Address] . " - " . $propertyID . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
                 </td>
             </tr>
-            <tr>
+            <tr>';
+            if($row[PageCompleted] != "6")
+            {
+                $pageCompleated=$row[PageCompleted];
+            }
+            else
+            {
+                $pageCompleated="1";
+            }
+            echo'
                 
                 
                 <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
                     '.substr($row[Description], 0, 150).'<br/><br/>
-                     <form class="buttonForm" method="POST" action="newListing1.php">
-                    <input type="text" name="propertyID" style="Display:none" value="' . $row[PropertyID] . '" />
+                     <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
+                    <input type="text" name="propertyID" style="Display:none" value="' . $propertyID . '" />
                     <button type="submit" class="button">Edit Listing</button>
                 </form>
                 ';
+            
                 if($won)
                 {
                     echo'
@@ -393,12 +435,12 @@
                 else
                 {
                     echo'
-                    <a href="reviewPFOs.php?propertyID='. $row[PropertyID] . '&auctionID='.$row[AuctionID].'" rel="facebox" class="button">Review PFOs</a>
+                    <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2[AuctionID].'" rel="facebox" class="button">Review PFOs</a>
                     ';
                 }
                 
                 echo'
-                <a href="printFlyer.php?propertyID='. $row[PropertyID] . '" class="button">Print Flyer</a>
+                <a href="printFlyer.php?propertyID='. $propertyID . '" class="button">Print Flyer</a>
                 </td>
                 <td style="text-align: center;" class="greyBackground">
                     Features
@@ -525,6 +567,8 @@
             //this code is retrieving the highest bid of the auction and returning it
 
             $maxBid = getHighBid($row[PropertyID]);
+            
+            
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '

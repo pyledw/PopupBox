@@ -44,7 +44,7 @@
                 </tr>
                 <tr style="height: 35px;">
                     <td>
-                        <a href="#" class="button">I am a Landlord</a><br/>
+                        <a href="howItWorksLandlords.php" class="button">I am a Landlord</a><br/>
                     </td>
                      <td>
                         Learn how Leasehood can help you find your next resident

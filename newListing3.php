@@ -107,7 +107,8 @@
 <script>
     $(function() {
         $( "#datepicker1" ).datepicker({
-            dateFormat: 'yy-mm-dd'
+            dateFormat: 'yy-mm-dd',
+            minDate: 0
         });
         
         
@@ -116,7 +117,8 @@
         $( "#datepicker2" ).datetimepicker({
             timeFormat: 'hh:mm:ss',
             dateFormat: 'yy-mm-dd',
-            showMinute: 'false'
+            showMinute: 'false',
+            minDate: 0
             
             
         });
@@ -126,7 +128,8 @@
         $( "#datepicker3" ).datetimepicker({
             timeFormat: 'hh:mm:ss',
             dateFormat: 'yy-mm-dd',
-            showMinute: 'false'
+            showMinute: 'false',
+            minDate: 0
         });
         
     });
@@ -134,7 +137,8 @@
         $( "#datepicker4" ).datetimepicker({
             timeFormat: 'hh:mm:ss',
             dateFormat: 'yy-mm-dd',
-            showMinute: 'false'
+            showMinute: 'false',
+            minDate: 0
         });
         
     });
@@ -142,7 +146,8 @@
         $( "#datepicker5" ).datetimepicker({
             timeFormat: 'hh:mm:ss',
             dateFormat: 'yy-mm-dd',
-            showMinute: 'false'
+            showMinute: 'false',
+            minDate: 0
         });
         
     });

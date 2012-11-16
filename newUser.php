@@ -2,6 +2,23 @@
 <?php
         $title = "New User";
 	include 'Header.php';
+        
+          $errorMessage = $_POST[error]; 
+          $userName = $_POST['username'];
+          $password = $_POST['password'];
+          $email = $_POST['email'];
+          $SSN = $_POST['ssn'];
+          $firstName = $_POST['firstName'];
+          $lastName = $_POST['lastName'];
+          $phone =  $_POST['phone'];
+          $address = $_POST['address'];
+          $city = $_POST['city'];
+          $state = $_POST['state'];
+          $zip = $_POST['zip'];
+          $age = $_POST['age'];
+          $classification = $_POST['accountType'];
+          
+        
 ?>
 
 
@@ -19,18 +36,19 @@
                          
                             Tenant<input type="radio" checked="checked" name="classification" value="tenant">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            Landlord<input type="radio" name="classification" value="landlord">
+                            Landlord<input type="radio" <?php if($classification != 1){echo 'checked="checked"';} ?> name="classification" value="landlord">
                          </td>
                     </tr>
+                    <?php echo "<tr><td colspan='3'><font color='red'>".$errorMessage."</font></td></tr>"; ?>
                     <tr>
                          <td>
-                         <lable class="label">Username:</label><br/><input type="text" title="User Name" name="username" class="required" minlength="5" />
+                         <lable class="label">Username:</label><br/><input type="text" title="User Name" name="username" class="required" value="<?php echo $userName; ?>" minlength="5" />
                          </td>
                          <td>
-                           <lable class="label">Password:</label><br/><input title="Password" type="password" id="password" class="required" name="password1">
+                           <lable class="label">Password:</label><br/><input title="Password" type="password" id="password" class="required" value="<?php echo $password; ?>" name="password1">
                          </td>
                          <td>
-                           <lable class="label">Confirm Password:</label><br/><input title="Confirm Password" id="password_again" class="required" type="password" name="password_again">
+                           <lable class="label">Confirm Password:</label><br/><input title="Confirm Password" id="password_again" class="required" value="<?php echo $password; ?>" type="password" name="password_again">
                          </td>
                     </tr>
                     <tr class="hr">
@@ -41,22 +59,22 @@
                     <tr>
 
                          <td>
-                           <lable class="label">First Name:</label><br/><input title="First name" type="text" name="fname" class="required">
+                           <lable class="label">First Name:</label><br/><input title="First name" type="text" name="fname" value="<?php echo $firstName; ?>" class="required">
                          </td>
 
                          <td colspan="2">
-                           <lable class="label">Last Name:</label><br/><input title="Last name" type="text" name="lname" class="required">
+                           <lable class="label">Last Name:</label><br/><input title="Last name" type="text" name="lname" value="<?php echo $lastName; ?>" class="required">
                          </td>
                     </tr>
                     <tr>
                          <td>
-                             <lable class="label">Email:</label><br/><input title="Email address" type="text" id="email" name="email1" class="required email">
+                             <lable class="label">Email:</label><br/><input title="Email address" type="text" id="email" value="<?php echo $email; ?>" name="email1" class="required email">
                          </td>
                          <td>
-                             <lable class="label">Confirm Email:</label><br/><input title="Confirm email" type="text" id="email_again" name="email_again" class="required email">
+                             <lable class="label">Confirm Email:</label><br/><input title="Confirm email" type="text" value="<?php echo $email; ?>" id="email_again" name="email_again" class="required email">
                          </td>
                          <td>
-                             <lable class="label">Phone:</label><br/><input title="Phone" type="text" name="phone" class="required">
+                             <lable class="label">Phone:</label><br/><input title="Phone" type="text" name="phone" value="<?php echo $phone; ?>" class="required">
                          </td>
                     </tr>
                     <tr class="hr">
@@ -66,21 +84,21 @@
                     </tr>
                      <tr>
                          <td>
-                             <lable class="label">Address:</label><br/><input title="Address" type="text" name="address" width="400px" class="required">
+                             <lable class="label">Address:</label><br/><input title="Address" type="text" name="address" width="400px" value="<?php echo $address; ?>" class="required">
                          </td>
                          <td>
-                             <lable class="label">City:</label><br/><input title="City" type="text" name="city" class="required">
+                             <lable class="label">City:</label><br/><input title="City" type="text" name="city" value="<?php echo $city; ?>" class="required">
                          </td>
                          <td>
-                             <lable class="label">State:</label><br/><input title="State" type="text" name="state" class="required">
+                             <lable class="label">State:</label><br/><input title="State" type="text" name="state" value="<?php echo $state; ?>" class="required">
                          </td>
                     </tr>
                     <tr>
                          <td>
-                             <lable class="label">Zip:</label><br/><input title="Zip code" type="text" name="zip" class="required">
+                             <lable class="label">Zip:</label><br/><input title="Zip code" type="text" name="zip" value="<?php echo $zip; ?>" class="required">
                          </td>
                          <td>
-                             <lable class="label">Age:</label><br/><input title="Must be over 18 years of age" type="text" name="age" class="required number" min="18">
+                             <lable class="label">Age:</label><br/><input title="Must be over 18 years of age" type="text" value="<?php echo $age; ?>" name="age" class="required number" min="18">
                          </td>
                           
                     </tr>
