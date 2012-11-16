@@ -25,6 +25,8 @@
  * 
  * @return array $location This contains teh lat and lon in an array
  * 
+ * @author David Pyle <Pyledw@Gmail.com>
+ * 
  */
 function getLatandLongAddress($addr,$city,$state)
 { 
@@ -62,6 +64,8 @@ function getLatandLongAddress($addr,$city,$state)
  * @global type $lng The longitude of the zip code
  * @param type $Zip the zip code given to find location on
  * @return Array $location contains both the lat and lon
+ * 
+ * @author David Pyle <Pyledw@Gmail.com>
  */
 function getLatandLongZip($Zip)
 { 
