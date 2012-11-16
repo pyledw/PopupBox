@@ -1,5 +1,16 @@
 <?php
 
+        /**
+         * This page is the redirect page for the user login.
+         * 
+         * It will check to see if the users cradentials were valid.
+         * It will then set the informaiton into sesison variables.
+         * If the login fails the user is redirected back to the login
+         * page with an error message to be displayed.
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
+
         session_start();
         //taking information from login page
         $myName = $_POST["userName"];

@@ -7,6 +7,8 @@
      * This retireves the property ID in a form GET request, and pulls the informaiton based
      * on the propertyID
      * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     * 
      */
     session_start();
     $propertyID = $_GET[propertyID];

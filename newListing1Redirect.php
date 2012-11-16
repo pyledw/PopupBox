@@ -1,12 +1,11 @@
 <?php
     /**
      * This redirect page will retrieve all the application info in a form post.
+     * 
      * it will then check to see if a property ID was given to it in the form of a session.
      * If session data is found it will create a new property record
      * If session data is found it will update the property ID with teh new data
-     * 
      * It also retrieves the Lat and Lon based on the address entered.
-     * 
      * It finally increments the page completed if the property has not already been completed.
      * 
      * @author David Pyle <Pyledw@Gmail.com>

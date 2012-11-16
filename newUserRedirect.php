@@ -1,6 +1,16 @@
 
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script><!--Javascript Reference to Jquery-->
 <?php
+
+    /**
+     * This page is the new user redirect
+     * 
+     * This page will attempt to enter the data into the database.
+     * If the intert fails the user will be redirected to the new user
+     * page with the error message.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
     
     require_once "config.inc.php";
     session_start();

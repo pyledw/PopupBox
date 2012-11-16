@@ -3,6 +3,8 @@
 /**
  * This page disales the listing with the given listing id in the GET variable.
  * It then returns you back to your myHood page
+ * 
+ * @author David Pyle <Pyledw@Gmail.com>
  */
 echo "redirect";
 echo $_GET[listingID];

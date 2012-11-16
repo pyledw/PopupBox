@@ -1,5 +1,14 @@
 <!-- Simply a continuation of the getting started content -->
         <?php
+        
+        /**
+         * This page contains the continued getting started content for the user.
+         * all elements are in HTML
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
+        
+        
         $title = "Getting Started Cont.";
 	include 'Header.php';
         ?>

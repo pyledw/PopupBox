@@ -1,3 +1,14 @@
+<?php
+    /**
+     * This page contains the content if the user is determined to be anadministrator.
+     * 
+     * This page will display all of the listings and applicaitons that are needing to be approved.
+     * The content will only be dsiplayed if the listings and applications have been paid.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
+?>
+
 <div id="mainContent">
     <form  method="post" action="userSearch.php">
         User Name Search:<input type="text" name="userName" />

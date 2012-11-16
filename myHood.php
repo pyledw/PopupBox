@@ -1,8 +1,18 @@
 
 <?php
-        //if(!isset($_SESSION['userID'])){
-          //  header( 'Location: /login.php' );
-        //}
+        /**
+         * This page is the main myhood page.
+         * 
+         * This page will check to ensure the user is logged in.
+         * It will then check to see what the user id is and call
+         * the appropriate content based on the usertype.
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
+        
+        if(!isset($_SESSION['userID'])){
+            header( 'Location: /login.php' );
+        }
         $title = "MyHood - Home";
 	include "Header.php";
         

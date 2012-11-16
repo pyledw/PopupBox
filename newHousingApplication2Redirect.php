@@ -7,6 +7,8 @@
      * 
      * It finaly checks to see if the user application was completed, and if it was not
      * it will update the pagecompleted field to the correct page.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
 
     session_start();

@@ -1,4 +1,15 @@
 <?php 
+
+/**
+ * This page contains the hearder elements and navigation elements.  It includes all the inital page elements
+ * and the navigation bar. Initally it check to see if the user is logged in and if they have a cookie stored.
+ * If a cookie was store the sesion will be reinitated with the previus info.
+ * It also has the user welcom and option to log in.  The navigation portion will determing
+ * the current page and will display the navidation button acordingly.
+ * if the user is on the myhood page the myhood navigation bar will be called as well.
+ * 
+ * @author David Pyle <Pyledw@Gmail.com>
+ */
 	//require 'config.inc.php';
         session_start();
         

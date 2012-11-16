@@ -1,3 +1,11 @@
+<?php
+    /**
+     * This page is a popup for infroming the user as to what each of the status colors means on the myhood page
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
+?>
+
 <link rel="stylesheet" type="text/css" href="css/popupStyles.css" />
 <div id="popupContent" style="width:400px;">
 <h1 class="popupHeader">Application Status</h1>

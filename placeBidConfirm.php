@@ -8,6 +8,8 @@
      * the bid is more than thier last bid.
      * 
      * On user confirmation it will send teh data to a redirect page to send the data to the database.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
 session_start();
 $propertyID = $_GET["propertyID"];

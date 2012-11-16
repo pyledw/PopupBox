@@ -2,6 +2,16 @@
 
 
 <?php
+    /**
+     * This page contains the options fro the user's settings.
+     * 
+     * This page will allow the user to change thier settings.
+     * This includes password, and email.
+     * It will also allow them to chage thier notification level, 
+     * and auto sign in.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
         $title = "MyHood - Home";
 	include 'Header.php';
 ?>

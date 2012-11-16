@@ -1,4 +1,13 @@
 <?php
+    /**
+     * This page is for if the user selects to log out.
+     * 
+     * It will destroy all variables used for keeping any login
+     * credentials.  It then rerouts the user back to the home page.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
+    
     session_start();
     session_destroy();
     setcookie('userID', "", time()-3600);

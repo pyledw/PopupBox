@@ -1,6 +1,17 @@
 <!-- this page contains the navigation elements for MyHood.  These are displayed if the user is logged in and
      at the myHood page.-->
-<?php                    
+<?php               
+    /**
+     * This page contains the MyHood navigation bar.  
+     * 
+     * This is the navigation bar for when the user is on the my hood page.
+     * It will determin the usertype and then display the needed navigaiton
+     * elements.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     * 
+     */
+
 //SETTING USER TYPE - Will be defined by database eventually set from the database
 $userType = $_SESSION["type"];
 ?>

@@ -1,6 +1,8 @@
 <?php
     /**
      * This popup is for calulating the rent a user can pay.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
 ?>
 

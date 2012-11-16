@@ -1,5 +1,16 @@
 
 <?php
+
+    /**
+     * This page is the new user form.
+     * 
+     * This page will retireve any inforamtion posted to if thier is an error message.
+     * It then allows the user to enter thier cradentials.
+     * 
+     * The form validation id done with Jquery
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
         $title = "New User";
 	include 'Header.php';
         

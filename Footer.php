@@ -1,3 +1,14 @@
+<?php
+    /**
+     * This page contains the elements for the footer.  Including the links and formatting options.
+     * 
+     * This page will apear at the bottom of each page.  It floats athe the bottom.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
+?>
+
+
 <!-- This document contains all the footer information as well as the closing page elements. -->
 
 <!-- Tag for closing the wrapper -->

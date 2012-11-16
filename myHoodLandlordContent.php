@@ -1,5 +1,14 @@
-<!-- this content is showed if the user is determined to be a Landlord
-     This page then displays all of their listings, and their status' -->
+<?php
+    /**
+     * This page contains the MyHood content for the landlord.
+     * 
+     * This page will retireve all of the listings of the user.
+     * Is will call the methods for displaying them.
+     * It then also shows and recent searches the user has stored in the session.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
+?>
 
 
 <div id="mainContent">

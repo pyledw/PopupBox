@@ -1,4 +1,11 @@
 <?php
+
+    /**
+     * This page is the confirmation for changing a bid.  It will pull the bid of the user
+     * and allow them to change their current bid.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
 session_start();
 $BidID = $_GET[bidID];
 

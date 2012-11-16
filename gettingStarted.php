@@ -1,5 +1,11 @@
 <!-- This page simply creates the content for the getting started page -->
 <?php
+        /**
+         * This page contains the getting started content for the user.
+         * all elements are in HTML
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
         $title = "Getting Started";
 	include 'Header.php';
 ?>

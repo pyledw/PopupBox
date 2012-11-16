@@ -6,7 +6,9 @@
  * This page is for if a administrator chooses to approve a listing.
  * The data is moved to the auction field so the listing will go live.
  * This creates the actual auction row in the AUCTION table
-*/
+ * 
+ * @author David Pyle <Pyledw@Gmail.com>
+ */
 
 echo "redirect";
 

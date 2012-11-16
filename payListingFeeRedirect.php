@@ -1,4 +1,7 @@
 <?php
+    /**
+     * This page allows teh user to have paid the listing fee and updates the listing.
+     */
     if($_POST[result] == 'SUCCESS')
     {
         include_once 'config.inc.php';

@@ -5,6 +5,8 @@
      * It gets all user whos usernames, firstname, or lastname corisponds with the search
      * It will then display those user accounts and give the option of emailing them, disabling
      * their account, or enabling thier account.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
 
 

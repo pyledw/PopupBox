@@ -4,7 +4,7 @@
     /**
      * This page contains the search form for the simple search, and post all the data to the search redirect.
      * 
-     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
         $title = "Search Homes";
 	include 'Header.php';

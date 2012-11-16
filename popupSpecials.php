@@ -1,6 +1,8 @@
 <?php
     /**
      * This page is a popup for when the specials icon is clicked.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
 ?>
 

@@ -1,5 +1,10 @@
 
 <?php
+    /**
+     * This was going to be used for internal mail, but was scrapped.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
         $title = "MyHood - Home";
 	include 'Header.php';
 ?>

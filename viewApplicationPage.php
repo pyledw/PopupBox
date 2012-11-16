@@ -7,7 +7,7 @@
      * It allows the administrator to approve the applicaiton, and is also allows the landlord to
      * pick the user as the winnind bid of thier auction.
      * 
-     *
+     * @author David Pyle <Pyledw@Gmail.com>
      */
     include 'Header.php';
     

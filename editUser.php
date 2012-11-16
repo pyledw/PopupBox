@@ -5,6 +5,7 @@
  * This page is used if the user is selecting to change a users account.
  * If the type of change is 0 it will disable the account.  if 1 it will enable the account.
  * 
+ * @author David Pyle <Pyledw@Gmail.com>
  */
 echo "redirect";
 echo $_GET[userID];

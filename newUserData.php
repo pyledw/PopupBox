@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This page redirects the user to the correct form depending on thier choosen account type
+ * 
+ * This page will get the users classification and send them to the correct form after they
+ * have creted a new account.
+ * 
+ * @author David Pyle <Pyledw@Gmail.com>
+ */
+
 if($_POST["classification"] == "tenant")
 {
     $title = "New Resident Application";

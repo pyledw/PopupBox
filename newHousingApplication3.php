@@ -3,13 +3,15 @@
     include 'Header.php';
     
     /**
-     * First Check is to ensur ethe user is logged in, and get the data of the correct user.
+     * This page will allow the user to enter new information or edit old information about thier application.
      * 
      * * Then main content will load with exiting elements being pre filled into the form
      * * Various testing methods are used to ensure that the display will be identical to the users 
      * * previus input if the user has already compeleted this page.
      * 
      * At the end of the page it check to see that if the applicaiton was not complete or not, and increments the page completed acordingly
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
     
     

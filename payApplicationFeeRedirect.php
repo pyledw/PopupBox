@@ -1,4 +1,8 @@
 <?php
+        
+        /**
+         * Updating the database if the fee has been paid.
+         */
         session_start();
         $userID = $_SESSION['userID'];
         include_once 'config.inc.php';

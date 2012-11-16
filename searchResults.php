@@ -6,6 +6,8 @@
      * This page will then save the recent search in the session.
      * 
      * Finally it will send the data to the search funciton and display the results acordingly.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
 
         //title is used to set page name

@@ -1,5 +1,15 @@
 <?php
-session_start();
+    /**
+     * This redirect page will retrieve all the application info in a form post.
+     * 
+     * it will then check to see if a property ID was given to it in the form of a session.
+     * If session data is found it will create a new property record
+     * If session data is found it will update the property ID with teh new data
+     * It finally increments the page completed if the property has not already been completed.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
+    session_start();
     
      //Test to check if user is logged in or not IF not they will be redirected to the login page
     if(!isset($_SESSION[userID]))

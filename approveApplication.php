@@ -6,6 +6,7 @@
  * IsApproved feild to 1.  This will allow us to know that the applicaiton was approved
  * This proccess accurs after the administrator has clicked the approve button on the applicaiton
  * 
+ * @author David Pyle <Pyledw@Gmail.com>
  */
 echo "redirect";
 echo $_POST[ApplicationID];

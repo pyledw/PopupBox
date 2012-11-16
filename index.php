@@ -1,6 +1,10 @@
-<!-- This is the index page, or Landing Page.  It displays the inital information and allows the user to search by zip code. -->
+
 
 <?php
+    /**
+     * This page is the landing page for the site.  This is the inital location that any user will reach
+     * if they go to Leasehood.com
+     */
         $title = "Welcome";
 	include 'Header.php';
 ?>

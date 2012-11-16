@@ -5,7 +5,12 @@
     /**
      * This is the logical process that manages when a user tries to edit their application
      * it will route them to the correct page where they left off, or if the application was
-     * completed it will route to the first page.
+     * completed it will route to the first page.  It pulls the number page they completed.
+     * If the number represents the application was complete, the user is rerouted to the inital
+     * application page.  If the users applicaiton was not complete they will be rerouted to the
+     * page they last left.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
     session_start();
     

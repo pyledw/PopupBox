@@ -3,6 +3,8 @@
      * This page will retrieve the search term and search type from a form POST, and set those to a cookie.
      * 
      * It then reroutes the user to the search results.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
         if(isset($_POST[type]))
         {

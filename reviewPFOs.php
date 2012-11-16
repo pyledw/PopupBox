@@ -5,6 +5,8 @@
      * 
      * It will retrieve this info ising the property ID that will eb gotten in the form of a GET request.
      * It will then display the data for the user
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
     
 //echo $_GET[propertyID];

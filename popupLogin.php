@@ -4,6 +4,8 @@
      * It pops up and ask for their credentials. It then submits those to a redirect page.
      * It also keeps track of the page they were on so that they will be redirected back to
      * that page after login is complete.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
 
     session_start();

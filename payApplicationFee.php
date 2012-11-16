@@ -1,5 +1,9 @@
 <?php
 
+    /**
+     * This page is to allow the user to pay thier application fee
+     */
+
         $title = "Contact LeaseHood";
 	include 'Header.php';
         $userID = $_SESSION[userID];

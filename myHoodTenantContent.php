@@ -5,6 +5,17 @@
 
 
     <?php
+    
+        /**
+         * This content is shown if the user is determined to be a Tenant. 
+         * 
+         * It will then 
+         * show them all the active properties that they have bids on.  It also show the 
+         * Status of their application, and if they still need to pay their fee.
+         * It finaly will show the last 4 searches that were made.
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
         $now = strtotime(date("Y-m-d H:i:s"));
         $con = get_dbconn("");
         $result = mysql_query("SELECT * FROM BID

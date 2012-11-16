@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * This page changes the previus users bid to the new bid if an old one exist
+ * otherwise it will create a new bid in the BID table with the needed informaiton.
+ * 
+ * @author David Pyle <Pyledw@Gmail.com>
+ * 
+ */
 
 $BidID = $_POST[bidID];
 

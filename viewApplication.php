@@ -7,6 +7,8 @@
      * It recieves the applicaiton ID in a form GET request.
      * 
      * It then displays all the data.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
     session_start();
     $applicationID = $_GET[applicationID];

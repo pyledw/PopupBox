@@ -1,5 +1,16 @@
 
 <?php
+        /**
+         * This page is the login page for the user.
+         * 
+         * It first checks to see if the user is currently logged in or not. 
+         * It then retireves and arror message that might have been sent to it.
+         * It will then send the data of the user to the login redirect.
+         * It utilizes Jquery for validation to ensure information is entered.
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         *  
+         */
         session_start();
         //Checks to see if the user is already logged in, and rerouts them acordingly
         if(isset($_SESSION['type']))

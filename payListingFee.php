@@ -1,5 +1,7 @@
 <?php
-
+    /**
+     * This page allow the user to pay thier listing fee
+     */
         $title = "Contact LeaseHood";
 	include 'Header.php';
         $propertyID = $_GET[propertyID];
