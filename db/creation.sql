@@ -19,7 +19,8 @@ CREATE TABLE USER (
     City                            varchar(60)                    DEFAULT NULL,
     State                           char(2)                        DEFAULT NULL,
     Zip                             char(5)                        DEFAULT NULL,
-    DateOfBirth                     date              NOT NULL
+    DateOfBirth                     date              NOT NULL,
+    Phone                           char(15)                       DEFAULT NULL
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci 
@@ -286,13 +287,13 @@ CREATE TABLE PREVIOUSRESIDENCE (
 --
 -- ---------------------------------------------------------------------
 
-insert into USER 				select * from leasehood.USER;
-insert into PROPERTY 			select * from leasehood.PROPERTY;
-insert into APPLICATION 		select * from leasehood.APPLICATION;
-insert into IMAGE 				select * from leasehood.IMAGE;
-insert into AUCTION 			select * from leasehood.AUCTION;
-insert into BID 				select * from leasehood.BID;
-insert into DENIEDBREED 		select * from leasehood.DENIEDBREED;
-insert into FEE 				select * from leasehood.FEE;
-insert into PREVIOUSRESIDENCE 	select * from leasehood.PREVIOUSRESIDENCE;
+-- insert into USER 				select * from leasehood.USER;
+-- insert into PROPERTY 			select * from leasehood.PROPERTY;
+-- insert into APPLICATION 		select * from leasehood.APPLICATION;
+-- insert into IMAGE 				select * from leasehood.IMAGE;
+-- insert into AUCTION 			select * from leasehood.AUCTION;
+-- insert into BID 				select * from leasehood.BID;
+-- insert into DENIEDBREED 		select * from leasehood.DENIEDBREED;
+-- insert into FEE 				select * from leasehood.FEE;
+-- insert into PREVIOUSRESIDENCE 	select * from leasehood.PREVIOUSRESIDENCE;
 
