@@ -418,17 +418,37 @@
             $result2 = mysql_query("SELECT * FROM AUCTION
                 WHERE PropertyID='$propertyID'");
             
+            
             if(!$result)
             {
                 die('could not connect: ' .mysql_error());
             }
             
-
+            
             $row = mysql_fetch_array($result);
             $row2 = mysql_fetch_array($result2);
             //echo $row[PropertyID];
             //echo $row[PageCompleted];
             //echo $row[IsPaid];
+            
+            $expire = strtotime('+ 3 day', strtotime($row2[DatePFOEndAccept]));
+            $end = strtotime($row2[DatePFOEndAccept]);
+            $now = strtotime(date("Y-m-d H:i:s"));  //converting times to str
+            
+            //echo 'EXPIRE->'. date("m/d/Y h:i:s A T",$expire) . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
+            
+            $hasExpired = "";
+            if($end < $now)
+            {
+                if($expire < $now)
+                {
+                    $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="#">Repost</a>';
+                }
+                else
+                {
+                    $hasExpired = 'You have 36 hours to choose a winner before all bids are released.';
+                }
+            }
             
             $propertyStatus ="";
             if($row[IsApproved] == 0)//check to see if the property is approved
@@ -463,7 +483,8 @@
             
             
             echo '<font style="float:right; position:relative; right:20px;">
-                    '.$propertyStatus
+                    '.$hasExpired
+                   .$propertyStatus
                    .$timeString
                    .$status
                    .$maxBid.
