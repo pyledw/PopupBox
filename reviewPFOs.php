@@ -9,7 +9,7 @@
      * @author David Pyle <Pyledw@Gmail.com>
      */
     
-//echo $_GET[propertyID];
+    //echo $_GET[propertyID];
     session_start();
     include_once 'config.inc.php';
     $con = get_dbconn("");

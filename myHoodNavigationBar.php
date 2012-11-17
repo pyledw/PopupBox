@@ -12,6 +12,10 @@
      * 
      */
 
+include 'myHoodFunctions.php';
+
+updateBids($_SESSION[UserID]);
+
 //SETTING USER TYPE - Will be defined by database eventually set from the database
 $userType = $_SESSION["type"];
 ?>
