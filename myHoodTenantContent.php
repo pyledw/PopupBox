@@ -20,6 +20,7 @@
         include_once 'config.inc.php';
         $now = strtotime(date("Y-m-d H:i:s"));
         $con = get_dbconn("");
+        
         $result = mysql_query("SELECT * FROM BID
             INNER JOIN AUCTION
             ON BID.AuctionID=AUCTION.AuctionID
@@ -32,22 +33,10 @@
             die('could not connect: ' .mysql_error());
         }
         
-        while ($row = mysql_fetch_array($result)) 
-            {
-                $difference = $now - strtotime($row[DatePFOEndAccept]);
-                $years = abs(floor($difference / 31536000));
-                $days = abs(floor(($difference-($years * 31536000))/86400));
-                $hours = abs(floor(($difference-($years * 31536000)-($days * 86400))/3600));
-                
-                if($hours > 36)
-                {
-                    $con = get_dbconn("");
-                    $result1 = mysql_query("UPDATE BID
-                        SET IsActive='0'
-                        WHERE BidID ='$row[BidID]'");
-                }
             
-            }
+        include 'myHoodFunctions.php';
+
+        updateBids($_SESSION[userID]);
         
     ?>
     <div id="mainContent">

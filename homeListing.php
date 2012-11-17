@@ -116,6 +116,8 @@
                 <?php 
                              
                              $auctionStatus = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
+                             
+                             
                              if(isset($_SESSION[userID]))
                              {
                                  if($_SESSION[type] == "1")
@@ -123,6 +125,8 @@
                                        if($auctionStatus == "1")
                                        {
                                            $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
+                                           //echo $_SESSION[userID] . " " . $row[PropertyID];
+                                           //echo $bidStatus;
 
                                               if($bidStatus == "0")
                                               {
