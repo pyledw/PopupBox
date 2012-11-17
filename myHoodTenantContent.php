@@ -16,12 +16,16 @@
          * 
          * @author David Pyle <Pyledw@Gmail.com>
          */
+    
+        include_once 'config.inc.php';
         $now = strtotime(date("Y-m-d H:i:s"));
         $con = get_dbconn("");
         $result = mysql_query("SELECT * FROM BID
             INNER JOIN AUCTION
             ON BID.AuctionID=AUCTION.AuctionID
-            WHERE UserID ='$_SESSION[userID]'");
+            INNER JOIN APPLICATION
+            ON BID.ApplicationID=APPLICATION.ApplicationID
+            WHERE APPLICATION.UserID ='$_SESSION[userID]'");
         
         if(!$result)
         {
