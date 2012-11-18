@@ -51,7 +51,7 @@ session_start();
     }
     
     //create finding email query
-    $gettingEmail = "select Email from USER where UserID ='$_SESSION[userID]'";
+    /*$gettingEmail = "select Email from USER where UserID ='$_SESSION[userID]'";
     $getEmail = $con->query($gettingEmail);
     if (!getEmail)
     {
@@ -62,7 +62,7 @@ session_start();
         echo 'UserID not in db';
     }
     //setting and sending the email and its contents. 
-    /*else
+    else
     {
         $row = $getEmail->fetch_object();
         $email = $row->Email;
