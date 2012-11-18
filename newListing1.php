@@ -299,15 +299,28 @@
                 </tr>
             </table> 
             <?php
+        //create finding email query
+        $gettingEmail = "select Email from USER where UserID ='$_SESSION[userID]'";
+        $getEmail = $con->query($gettingEmail);
+        if (!getEmail)
+        {   
+            echo 'Could not find email';
+        }   
+        else  
+        {
+        //setting and sending the email and its contents. 
         $row = $getEmail->fetch_object();
-        $email = $row->email;
+        $email = $row->Email;
         $from = "From: noReply@leasehood.com \r\n";
         $subject = "Welcome To LeaseHood.com";
-        $mesg = "Test email. This is sent from the tester at Leasehood.com".
-                "Please ignore if you do not know this site.";
+        $mesg = "Test email. This is sent from the tester at Leasehood.com \n".
+                "Please ignore if you do not know this site. \n";
         mail($email, $subject, $mesg, $from);
-        echo "A confirmation email has been sent to your acount."
+        
+	echo "A confirmation email has been sent to your acount."
         ."If this email appears in your junk folder, please mark it as not junk.";
+    
+        }
             ?>
         </form>
     </div>         
