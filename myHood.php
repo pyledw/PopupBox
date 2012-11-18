@@ -11,7 +11,7 @@
          */
         
         if(!isset($_SESSION[userID])){
-            header( 'Location: /login.php' );
+           // header( 'Location: /login.php' );
         }
         $title = "MyHood - Home";
 	include "Header.php";
