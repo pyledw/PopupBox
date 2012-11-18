@@ -301,7 +301,7 @@
             <?php
         $row = $getEmail->fetch_object();
         $email = $row->email;
-        $from = "From: info@leasehood.com \r\n";
+        $from = "From: noReply@leasehood.com \r\n";
         $subject = "Welcome To LeaseHood.com";
         $mesg = "Test email. This is sent from the tester at Leasehood.com".
                 "Please ignore if you do not know this site.";
