@@ -435,22 +435,25 @@
             $end = strtotime($row[DatePFOEndAccept]);
             $now = strtotime(date("Y-m-d H:i:s"));  //converting times to str
             
-            echo 'EXPIRE->'. date("m/d/Y h:i:s A T",$expire) . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
+            //echo 'EXPIRE->'. $row[DatePFOEndAccept] . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
             
             
             
             $hasExpired = "";
-            if($end < $now)
+            if($row[DatePFOEndAccept] != "")
             {
-                if($expire < $now)
-                {
-                    $_SESSION[propertyID] = $row[PropertyID];
-                    $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php">Repost</a>';
-                }
-                else
-                {
-                    $hasExpired = 'You have 36 hours to choose a winner before all bids are released.';
-                }
+                if($end < $now)
+                    {
+                        if($expire < $now)
+                        {
+                            $_SESSION[propertyID] = $row[PropertyID];
+                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php">Repost</a>';
+                        }
+                        else
+                        {
+                            $hasExpired = 'You have 36 hours to choose a winner before all bids are released.';
+                        }
+                    }
             }
             
             $propertyStatus ="";
