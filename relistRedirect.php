@@ -12,6 +12,8 @@
     session_start();
     include 'config.inc.php';
     
+    $_SESSION[propertyID] = $_POST[propertyID];
+    
     $con = get_dbconn("");
     
     mysql_query("UPDATE PROPERTY

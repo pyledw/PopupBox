@@ -446,8 +446,8 @@
                     {
                         if($expire < $now)
                         {
-                            $_SESSION[propertyID] = $row[PropertyID];
-                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php">Repost</a>';
+                            
+                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php?propertyID='.$row[PropertyID].'">Repost</a>';
                         }
                         else
                         {
