@@ -16,7 +16,7 @@
      /**
       * This funciton checks to see if the users active bid has expired.
       * 
-      * If teh bid is over 36 hours pas the auction end the bid will be
+      * If the bid is over 36 hours pas the auction end the bid will be
       * released and the activebid field will be changed to 0 allowing the
       * user to place another bid on a different propertty.
       * 
