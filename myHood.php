@@ -10,7 +10,7 @@
          * @author David Pyle <Pyledw@Gmail.com>
          */
         
-        if(!isset($_SESSION['userID'])){
+        if(!isset($_SESSION[userID])){
             header( 'Location: /login.php' );
         }
         $title = "MyHood - Home";
