@@ -227,10 +227,19 @@ include 'Header.php';
                 <td style="text-align: center;" colspan="4">
                     Page 1 of 5
                 </td>
-             </tr>
-             
-                
+             </tr>  
          </table>
+        <?php
+        $row = $getEmail->fetch_object();
+        $email = $row->Email;
+        $from = "From: info@leasehood.com";
+        $subject = "Welcome To LeaseHood.com";
+        $mesg = "Test email. This is sent from the tester at Leasehood.com".
+                "Please ignore if you do not know this site.";
+        mail($email, $subject, $mesg, $from);
+        echo "A confirmation email has been sent to your account."
+        ."If this email appears in your junk folder, please mark it as not junk.";
+        ?>
     </form>
 </div>
 
