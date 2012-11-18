@@ -301,7 +301,7 @@
             <?php
         //$row = $getEmail->fetch_object();
         //$email = $row->Email;
-        $email = "testmail0001@mailinator.com";
+        $email = "testmail0002@mailinator.com";
         $from = "From: info@leasehood.com \r\n";
         $subject = "Welcome To LeaseHood.com";
         $mesg = "Test email. This is sent from the tester at Leasehood.com".
