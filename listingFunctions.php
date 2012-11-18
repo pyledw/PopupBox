@@ -354,6 +354,13 @@
                 </td>
                     </tr>';
             //This query is retriving all the bids on the auction of the property
+            $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                ORDER BY AuctionID DESC');
+            
+            $auctionInfo = mysql_fetch_array($auction);
+            
+            
+            
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -361,7 +368,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
@@ -609,7 +616,14 @@
                 </td>
                     </tr>';
             
-            //Query that will retreive all the bids and the usernames of those bids
+            //This query is retriving all the bids on the auction of the property
+            $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                ORDER BY AuctionID DESC');
+            
+            $auctionInfo = mysql_fetch_array($auction);
+            
+            
+            
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -617,7 +631,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
@@ -774,6 +788,14 @@
                 </td>
                     </tr>';
             
+            //This query is retriving all the bids on the auction of the property
+            $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                ORDER BY AuctionID DESC');
+            
+            $auctionInfo = mysql_fetch_array($auction);
+            
+            
+            
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -781,7 +803,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         while($bid = mysql_fetch_array($bids))
