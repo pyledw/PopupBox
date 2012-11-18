@@ -354,6 +354,13 @@
                 </td>
                     </tr>';
             //This query is retriving all the bids on the auction of the property
+            $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                ORDER BY AuctionID DESC');
+            
+            $auctionInfo = mysql_fetch_array($auction);
+            
+            
+            
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -361,7 +368,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
@@ -431,23 +438,29 @@
             //echo $row[PageCompleted];
             //echo $row[IsPaid];
             
-            $expire = strtotime('+ 3 day', strtotime($row2[DatePFOEndAccept]));
-            $end = strtotime($row2[DatePFOEndAccept]);
+            $expire = strtotime('+ 3 day', strtotime($row[DatePFOEndAccept]));
+            $end = strtotime($row[DatePFOEndAccept]);
             $now = strtotime(date("Y-m-d H:i:s"));  //converting times to str
             
-            //echo 'EXPIRE->'. date("m/d/Y h:i:s A T",$expire) . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
+            //echo 'EXPIRE->'. $row[DatePFOEndAccept] . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
+            
+            
             
             $hasExpired = "";
-            if($end < $now)
+            if($row[DatePFOEndAccept] != "")
             {
-                if($expire < $now)
-                {
-                    $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="#">Repost</a>';
-                }
-                else
-                {
-                    $hasExpired = 'You have 36 hours to choose a winner before all bids are released.';
-                }
+                if($end < $now)
+                    {
+                        if($expire < $now)
+                        {
+                            
+                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php?propertyID='.$row[PropertyID].'">Repost</a>';
+                        }
+                        else
+                        {
+                            $hasExpired = 'You have 36 hours to choose a winner before all bids are released.';
+                        }
+                    }
             }
             
             $propertyStatus ="";
@@ -603,7 +616,14 @@
                 </td>
                     </tr>';
             
-            //Query that will retreive all the bids and the usernames of those bids
+            //This query is retriving all the bids on the auction of the property
+            $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                ORDER BY AuctionID DESC');
+            
+            $auctionInfo = mysql_fetch_array($auction);
+            
+            
+            
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -611,7 +631,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
@@ -768,6 +788,14 @@
                 </td>
                     </tr>';
             
+            //This query is retriving all the bids on the auction of the property
+            $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                ORDER BY AuctionID DESC');
+            
+            $auctionInfo = mysql_fetch_array($auction);
+            
+            
+            
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -775,7 +803,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         while($bid = mysql_fetch_array($bids))
