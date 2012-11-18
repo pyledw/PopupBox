@@ -300,16 +300,16 @@
             </table> 
             <?php
         //create finding email query
-        $gettingEmail = "select Email from USER where UserID ='$_SESSION[userID]'";
-        $getEmail = $con->query($gettingEmail);
-        if (!getEmail)
+        $emailQuery = "select Email from USER where UserID ='$_SESSION[userID]'";
+        $emailResult = $con->query($emailQuery);
+        if (!$emailResult)
         {   
             echo 'Could not find email';
         }   
         else  
         {
         //setting and sending the email and its contents. 
-        $row = $getEmail->fetch_object();
+        $row = $emailResult->fetch_object();
         $email = $row->Email;
         $from = "From: noReply@leasehood.com \r\n";
         $subject = "Welcome To LeaseHood.com";
