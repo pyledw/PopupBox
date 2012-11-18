@@ -62,7 +62,7 @@ session_start();
         echo 'UserID not in db';
     }
     //setting and sending the email and its contents. 
-    else
+    /*else
     {
         $row = $getEmail->fetch_object();
         $email = $row->Email;
@@ -73,7 +73,7 @@ session_start();
         mail($email, $subject, $mesg, $from);
         echo "A confirmation email has been sent to your acount."
         ."If this email appears in your junk folder, please mark it as not junk.";
-    }
+    }*/
     
     mysql_close();
     
