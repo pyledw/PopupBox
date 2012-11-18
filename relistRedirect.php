@@ -15,7 +15,7 @@
     $con = get_dbconn("");
     
     mysql_query("UPDATE PROPERTY
-        SET IsApproved=0
-        WHERE PropertyID='$_SESSION[PropertyID]'");
+        SET IsApproved=0, DateAvailable='', DatePFOAccept='', DatePFOEndAccept='', DateTimeOpenHouse1='',DateTimeOpenHouse2='',PageCompleted='3'
+        WHERE PropertyID='$_SESSION[propertyID]'");
     header( 'Location: /newListing3.php' );
 ?>
