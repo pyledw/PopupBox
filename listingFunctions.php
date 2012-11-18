@@ -442,7 +442,7 @@
             {
                 if($expire < $now)
                 {
-                    $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="#">Repost</a>';
+                    $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="#relistRedirect.php?propertyID='.$propertyID.'">Repost</a>';
                 }
                 else
                 {
