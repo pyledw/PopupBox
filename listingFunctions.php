@@ -435,7 +435,9 @@
             $end = strtotime($row[DatePFOEndAccept]);
             $now = strtotime(date("Y-m-d H:i:s"));  //converting times to str
             
-            //echo 'EXPIRE->'. date("m/d/Y h:i:s A T",$expire) . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
+            echo 'EXPIRE->'. date("m/d/Y h:i:s A T",$expire) . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
+            
+            
             
             $hasExpired = "";
             if($end < $now)
