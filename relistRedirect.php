@@ -9,11 +9,13 @@
  *
  * @author David Pyle <Pyledw@Gmail.com>
  */
-
+    session_start();
     include 'config.inc.php';
     
     $con = get_dbconn("");
     
     mysql_query("UPDATE PROPERTY
-        ");
+        SET IsApproved=0
+        WHERE PropertyID='$_SESSION[PropertyID]'");
+    header( 'Location: /newListing3.php' );
 ?>
