@@ -32,6 +32,17 @@
 .mainPhoto{
     width:150px;
     height:150px;
+    float:left; 
+    position: relative; 
+    margin:-150px -150px; 
+    left:145px; 
+    top:140px;
+}
+.ie .mainPhoto{
+    width:115px;
+    height:115px;
+    float:left;
+
 }
 .thumbs{
     width:40px;
