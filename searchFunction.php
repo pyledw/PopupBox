@@ -53,7 +53,7 @@ function search($type,$term)
                     $result = mysql_query("SELECT * FROM AUCTION
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
-                        WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' ");
+                        WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept; ");
 
                     if(!$result)
                     {
@@ -68,7 +68,7 @@ function search($type,$term)
                     $result = mysql_query("SELECT * FROM AUCTION
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
-                        WHERE Address LIKE \"%$trimmed%\"
+                        WHERE Address LIKE \"%$trimmed%\" AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept;
                         ");
                     
                     if(!$result)
@@ -85,7 +85,7 @@ function search($type,$term)
                     $result = mysql_query("SELECT * FROM AUCTION
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
-                        WHERE City LIKE \"%$trimmed%\"
+                        WHERE City LIKE \"%$trimmed%\" AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept;
 
                         ");
                     
@@ -97,11 +97,19 @@ function search($type,$term)
             }
             else  //if the user did not input anything in the search field
             {
+                
+                $date = date("Y-m-d H:i:s");
                 //returns all properties with aucitons
                 $result = mysql_query("SELECT * FROM AUCTION
                             LEFT JOIN PROPERTY
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
+                            WHERE NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept;
                         ");
+                
+                if(!$result)
+                    {
+                         die('could not connect: ' .mysql_error());
+                    }
             }
 
 
