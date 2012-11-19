@@ -525,7 +525,7 @@
         <table id="houseListing">
             <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
             <tr>
-                <td width="102px;" rowspan="6">
+                <td width="102px;" rowspan="5">
                     
                 </td>
                 <td colspan="2" width="600px">
@@ -549,7 +549,7 @@
             
             
             echo'
-                <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
+                <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
                     '.substr($row[Description], 0, 150).'<br/><br/>
                      <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
                     <input type="text" name="propertyID" style="Display:none" value="' . $propertyID . '" />
@@ -588,7 +588,7 @@
             
             echo '<tr>
    
-                <td rowspan="5" width="275px" style="padding:0 0 0 0; vertical-align:top;">
+                <td rowspan="3" width="275px" style="padding:0 0 0 0; vertical-align:top;">
                     <table id="innerTable">
                         <tr>
                             <td align="right">
@@ -634,7 +634,7 @@
                         </tr>
                     </table>
                 </td>
-                    </tr>';
+                ';
             
             //This query is retriving all the bids on the auction of the property
             $auction = mysql_query('SELECT AuctionID FROM AUCTION
@@ -741,7 +741,7 @@
         <table id="houseListing">
             <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
             <tr>
-                <td width="102px;" rowspan="6">
+                <td width="102px;" rowspan="5">
                     
                 </td>
                 <td colspan="2" width="600px">
@@ -754,7 +754,7 @@
             <tr>
                 
                 
-                <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
+                <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
                     '.substr($row[Description], 0, 150).'<br/><br/>
                      <a class="button">Move in now at: $'. $row[RentNowRate] .'</a>
                      <a href="homeListing.php?listingID='. $row[PropertyID] . '" class="button">View Listing</a>
@@ -777,7 +777,7 @@
             
             echo '<tr>
    
-                <td rowspan="5" width="275px" style="padding:0 0 0 0; vertical-align:top;">
+                <td rowspan="3" width="275px" style="padding:0 0 0 0; vertical-align:top;">
                     <table id="innerTable">
                         <tr>
                             <td align="right">
@@ -823,7 +823,7 @@
                         </tr>
                     </table>
                 </td>
-                    </tr>';
+                 ';
             
             //This query is retriving all the bids on the auction of the property
             $auction = mysql_query('SELECT AuctionID FROM AUCTION
