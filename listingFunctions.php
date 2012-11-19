@@ -247,7 +247,7 @@
 
             /** this code is retrieving the highest bid of the auction and returning it */
             $result = mysql_query("SELECT * FROM AUCTION
-                INNER JOIN PROPERTY
+                LEFT JOIN PROPERTY
                 ON AUCTION.PropertyID=PROPERTY.PropertyID
                 WHERE AuctionID='$auctionID'");
             
