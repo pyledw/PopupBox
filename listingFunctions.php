@@ -265,7 +265,12 @@
 
             
             /** this code is retrieving the highest bid of the auction and returning it **/
-            $maxBid = getHighBid($row[PropertyID]);     
+            $maxBid = getHighBid($row[PropertyID]);   
+            
+            if($maxBid == '')
+            {
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+            }
             
             
             echo '<font style="float:right; position:relative; right:20px;">
@@ -514,6 +519,10 @@
 
             $maxBid = getHighBid($row[PropertyID]);//this code is retrieving the highest bid of the auction and returning it
             
+            if($maxBid == '')
+            {
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+            }
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '.$hasExpired
@@ -730,6 +739,10 @@
 
             $maxBid = getHighBid($row[PropertyID]);
             
+            if($maxBid == '')
+            {
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+            }
             
             
             echo '<font style="float:right; position:relative; right:20px;">
