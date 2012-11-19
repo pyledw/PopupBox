@@ -137,7 +137,8 @@
                                               {
                                                   echo '<form id="placebid" method="post">
                                                    <font>My Proposal for occupancy</font><br/><br/>
-                                                   <label class="label">PFO Amount:</label><input title="Minimum bid is set at {0} dollars." class="required number" min='.$row[StartingBid].' type="text" name="amt" /><br/>
+                                                   <font color="red">Minimum Bid Amount: $'.$row[StartingBid].'</font><br/>
+                                                   <label class="label">PFO Amount:</label><input class="required number" min='.$row[StartingBid].' type="text" name="amt" /><br/>
                                                    <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
                                                    <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
                                                    <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
