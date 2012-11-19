@@ -42,6 +42,11 @@
         //this code is retrieving the highest bid of the auction and returning it
         $maxBid = getHighBid($row[PropertyID]);
         
+        if($maxBid == '')
+        {
+            $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+        }
+        
 ?>
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
     <div id="mainContent">
