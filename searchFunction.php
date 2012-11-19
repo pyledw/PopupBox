@@ -51,7 +51,7 @@ function search($type,$term)
 
                     //This query is searching based of the lat and lon.  will return all aucitons wit hproperties within the selected area
                     $result = mysql_query("SELECT * FROM AUCTION
-                        JOIN PROPERTY
+                        LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
                         WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' ");
 
@@ -66,7 +66,7 @@ function search($type,$term)
 
                     //this query will search for any listing address that contains any of the elemens of the term
                     $result = mysql_query("SELECT * FROM AUCTION
-                        JOIN PROPERTY
+                        LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
                         WHERE Address LIKE \"%$trimmed%\"
                         ");
@@ -83,7 +83,7 @@ function search($type,$term)
                     
                     //This query will search for any auctions that the city is like the search term
                     $result = mysql_query("SELECT * FROM AUCTION
-                        JOIN PROPERTY
+                        LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
                         WHERE City LIKE \"%$trimmed%\"
 
@@ -99,7 +99,7 @@ function search($type,$term)
             {
                 //returns all properties with aucitons
                 $result = mysql_query("SELECT * FROM AUCTION
-                            JOIN PROPERTY
+                            LEFT JOIN PROPERTY
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
                         ");
             }
