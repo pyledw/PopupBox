@@ -9,7 +9,7 @@
      * @author David Pyle <Pyledw@Gmail.com>
      */
 
-
+    $title = 'User Search';
     include_once 'Header.php';
     echo "<div id='wrapper'> ";
         include_once 'config.inc.php';

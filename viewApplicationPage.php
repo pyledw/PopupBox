@@ -9,6 +9,8 @@
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
+
+    $title = 'Application';
     include 'Header.php';
     
     
