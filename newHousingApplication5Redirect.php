@@ -50,31 +50,6 @@ session_start();
         WHERE UserID = '$_SESSION[userID]'");
     }
     
-    //create finding email query
-    /*$gettingEmail = "select Email from USER where UserID ='$_SESSION[userID]'";
-    $getEmail = $con->query($gettingEmail);
-    if (!getEmail)
-    {
-        echo 'Could not find email';
-    }
-    else if($getEmail->num_rows == 0) 
-    {
-        echo 'UserID not in db';
-    }
-    //setting and sending the email and its contents. 
-    else
-    {
-        $row = $getEmail->fetch_object();
-        $email = $row->Email;
-        $from = "From: info@leasehood.com \r\n";
-        $subject = "Welcome To LeaseHood.com";
-        $mesg = "Test email. This is sent from the tester at Leasehood.com".
-                "Please ignore if you do not know this site.";
-        mail($email, $subject, $mesg, $from);
-        echo "A confirmation email has been sent to your acount."
-        ."If this email appears in your junk folder, please mark it as not junk.";
-    }*/
-    
     mysql_close();
     
     header( 'Location: /payApplicationFee.php' );
