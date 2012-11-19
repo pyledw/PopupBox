@@ -298,27 +298,6 @@
                     </td>
                 </tr>
             </table> 
-            <?php
-        //create finding email query
-        $emailQuery = "select Email from USER where UserID ='$_SESSION[userID]'";
-        $emailResult = $con->query($emailQuery);
-        if (!$emailResult)
-        {   
-            echo 'Could not find email';
-        }   
-        else  
-        {
-        //setting and sending the email and its contents. 
-        //$row = $emailResult->fetch_object();
-        $email = $_REQUEST['email'];//$row->Email;
-        $from = "From: noReply@leasehood.com \r\n";
-        $subject = "Welcome To LeaseHood.com";
-        $mesg = "Test email. This is sent from the tester at Leasehood.com \n".
-                "Please ignore if you do not know this site. \n";
-        mail($email, $subject, $mesg, $from);
-    
-        }
-            ?>
         </form>
     </div>         
     <?php
