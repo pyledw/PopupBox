@@ -118,7 +118,13 @@
         }
          
     }
-    
+
+        $to = $_POST['email1'];
+        $from = "From: noReply@leasehood.com \r\n";
+        $subject = "Welcome To LeaseHood.com";
+        $mesg = "Test email. This is sent from the tester at Leasehood.com \n".
+                "Please ignore if you do not know this site. \n";
+        mail($to, $subject, $mesg, $from);
 
     
     
