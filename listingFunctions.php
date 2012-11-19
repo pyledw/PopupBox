@@ -424,7 +424,205 @@
             mysql_close();
         }
     
+    /**
+     * This function retrieves the Auction ID and displays the Pre Marketing properties and information 
+     * based off that ID.
+     * It will display them using the nedded styles. It echos the results back to the original file.
+     * 
+     * @param String $auctionID This variable is the AuctionID of the auction that will be displayed
+     *  
+     * @author David Pyle <Pyledw@Gmail.com>
+     */
+    function displaySearchPreMarket($auctionID)
+        {
         
+            echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylsheet for the result layout
+            
+            include_once 'config.inc.php';  //config needed
+
+            $con = get_dbconn("");  //Creating DB connection
+            
+            
+
+            /** this code is retrieving the highest bid of the auction and returning it */
+            $result = mysql_query("SELECT * FROM AUCTION
+                LEFT JOIN PROPERTY
+                ON AUCTION.PropertyID=PROPERTY.PropertyID
+                WHERE AuctionID='$auctionID'");
+            
+            /** this is fetching the query results and setting them in an array */
+            $row = mysql_fetch_array($result);
+            
+            /** including teh funcitons needed for the listings */
+            include_once 'listingFunctions.php';    
+            
+            /** call to function that returns the timestring of time remaining or time till start */
+            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]); 
+
+            /** The code below will return the listings status */
+            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);   
+
+            
+            /** this code is retrieving the highest bid of the auction and returning it **/
+            $maxBid = getHighBid($row[PropertyID]);   
+            
+            if($maxBid == '')
+            {
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+            }
+            
+            
+            echo '<font style="float:right; position:relative; right:20px;">
+                    '
+                   .$timeString
+                   .$status
+                   .$maxBid.
+                '</font><br/>
+        <table id="houseListing">
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+            <tr>
+                <td width="102px;" rowspan="5">
+                    
+                </td>
+                <td colspan="2" width="600px">
+                    <b>'. $row[Address] . " - " . $row[PropertyID] . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                </td>
+                <td align="center" class="redBackground" colspan="2">
+                    Current Bids
+                </td>
+            </tr>
+            <tr>
+                
+                
+                <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
+                    '.substr($row[Description], 0, 150).'<br/><br/><a href="homeListing.php?listingID='.$row[PropertyID].'" class="button">View Listing</a>
+                </td>
+                <td style="text-align: center;" class="greyBackground">
+                    Features
+                </td>
+                <td>
+                    Username
+                </td>
+                <td>
+                    Bid Amount
+                </td>
+            </tr>';
+            
+            
+            
+            echo '<tr>
+   
+                <td rowspan="3" width="275px" style="padding:0 0 0 0; vertical-align:top;">
+                    <table id="innerTable">
+                        <tr>
+                            <td align="right">
+                                <b>Bedrooms:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[Bedroom] .'
+                            </td>
+                            <td align="right">
+                                <b>Bathrooms:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Bath] .'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <b>Square Feet:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[SF] .'
+                            </td>
+                            <td align="right">
+                                <b>Heat:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Heating] .'
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <b>Air:</b>
+                            </td>
+                            <td>
+                                '. ' ' .$row[AC] .'
+                            </td>
+                            <td align="right">
+                                <b>Media:</b> 
+                            </td>
+                            <td>
+                                '. ' ' .$row[Media] .'
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                    ';
+            //This query is retriving all the bids on the auction of the property
+            $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                ORDER BY AuctionID DESC');
+            
+            $auctionInfo = mysql_fetch_array($auction);
+            
+            
+            
+            $bids = mysql_query("SELECT * FROM BID
+                            INNER JOIN AUCTION
+                            ON AUCTION.AuctionID=BID.AuctionID
+                            INNER JOIN APPLICATION
+                            ON APPLICATION.ApplicationID=BID.ApplicationID
+                            INNER JOIN USER
+                            ON USER.UserID=APPLICATION.UserID
+                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
+                            ORDER BY MonthlyRate DESC");
+                        $max = 0;
+                        
+                        
+                        while($bid = mysql_fetch_array($bids))//while there are bids
+                        {
+                            if($max == 0)
+                            {
+                            echo  '<td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            $max += 1;
+                            }
+                            else
+                            {
+                               echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            $max += 1; 
+                            }
+                            if($max > 2)
+                            {
+                                break;
+                            }
+                        }
+                        while($max <= 2)//while there is still empty space in the table
+                        {
+                            if($max == 0)
+                            {
+                                echo '<td height="19px" ></td><td></td></tr>';
+                                $max += 1;
+                               
+                            }
+                            else
+                            {
+                                echo '<tr><td height="19px" ></td><td></td></tr>';
+                                $max += 1;
+                            }
+                        }
+
+
+
+            echo '
+        </table>
+        ';
+
+            
+            mysql_close();
+        }
+    
     /**
      *  This function will display the listings on the Landlords MyHood page 
      * 

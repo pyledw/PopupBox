@@ -1,4 +1,4 @@
-<?php
+ <?php
 
     /**
      * This page will recive the search term and search type in the form of a cookie.
@@ -117,6 +117,25 @@
         //This funciton will display the listing and all informaiton about it
         //in the correct format.
         displaySearchResults($row[AuctionID]);
+    }
+    
+    echo '<h1>Pre-Marketing</h1>';
+    $result = searchPreMarket($type,$val);
+    $pre = 0;
+    //Setting the query results into a variable
+    while($row = mysql_fetch_array($result))
+    {
+        ++$pre;
+        //calling the functions
+        include_once 'listingFunctions.php';
+        
+        //This funciton will display the listing and all informaiton about it
+        //in the correct format.
+        displaySearchPreMarket($row[AuctionID]);
+        if($pre > 2)
+        {
+            break;
+        }
     }
     ?>
 </div>
