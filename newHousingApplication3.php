@@ -1,4 +1,4 @@
-<?php
+ <?php
     $title = "New Application #3";
     include 'Header.php';
     
