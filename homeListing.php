@@ -10,7 +10,7 @@
      * @author David Pyle <Pyledw@Gmail.com>
      */
     $listingID = $_GET[listingID];
-    $title = 'Listing' .$listingID; //This will be retrieved from the element that was clicked on in the search
+    $title = 'Listing #' .$listingID; //This will be retrieved from the element that was clicked on in the search
     include 'Header.php';
 
     

@@ -1,5 +1,5 @@
 <?php
-$title = "New Application";
+$title = "New Application #1";
 include 'Header.php';
 
     /**

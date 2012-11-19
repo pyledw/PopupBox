@@ -1,6 +1,6 @@
 <!-- This page is for the advanced search.  It will allow the user to input any number of constraints for searching -->
 <?php
-        $title = "Search Homes";
+        $title = "Search Homes - Advanced";
 	include 'Header.php';
 ?>
 

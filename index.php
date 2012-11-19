@@ -5,7 +5,7 @@
      * This page is the landing page for the site.  This is the inital location that any user will reach
      * if they go to Leasehood.com
      */
-        $title = "Welcome";
+        $title = "LeaseHood";
 	include 'Header.php';
 ?>
 

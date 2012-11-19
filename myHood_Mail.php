@@ -5,7 +5,7 @@
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
-        $title = "MyHood - Home";
+        $title = "MyHood - Mail";
 	include 'Header.php';
 ?>
 

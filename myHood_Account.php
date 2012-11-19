@@ -12,7 +12,7 @@
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
-        $title = "MyHood - Home";
+        $title = "MyHood - Account";
 	include 'Header.php';
 ?>
 

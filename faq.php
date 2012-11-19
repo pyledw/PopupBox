@@ -1,6 +1,6 @@
 <?php
 
-        $title = "Support";
+        $title = "FAQ";
 	include 'Header.php';
 ?>
 <h1 class="Title">Frequently Asked Questions</h1>

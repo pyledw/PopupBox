@@ -1,5 +1,5 @@
 <?php
-    $title = "New Listing Part 1";
+    $title = "New Listing #1";
     include 'Header.php';
     
     /**
