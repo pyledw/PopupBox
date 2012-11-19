@@ -242,6 +242,8 @@
             include_once 'config.inc.php';  //config needed
 
             $con = get_dbconn("");  //Creating DB connection
+            
+            
 
             /** this code is retrieving the highest bid of the auction and returning it */
             $result = mysql_query("SELECT * FROM AUCTION
@@ -275,7 +277,7 @@
         <table id="houseListing">
             <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
             <tr>
-                <td width="102px;" rowspan="6">
+                <td width="102px;" rowspan="5">
                     
                 </td>
                 <td colspan="2" width="600px">
@@ -288,7 +290,7 @@
             <tr>
                 
                 
-                <td width="350px" rowspan="5" style="vertical-align: top; border-bottom:none;">
+                <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
                     '.substr($row[Description], 0, 150).'<br/><br/><a href="homeListing.php?listingID='.$row[PropertyID].'" class="button">View Listing</a>
                 </td>
                 <td style="text-align: center;" class="greyBackground">
@@ -306,7 +308,7 @@
             
             echo '<tr>
    
-                <td rowspan="4" width="275px" style="padding:0 0 0 0; vertical-align:top;">
+                <td rowspan="3" width="275px" style="padding:0 0 0 0; vertical-align:top;">
                     <table id="innerTable">
                         <tr>
                             <td align="right">
@@ -352,7 +354,7 @@
                         </tr>
                     </table>
                 </td>
-                    </tr>';
+                    ';
             //This query is retriving all the bids on the auction of the property
             $auction = mysql_query('SELECT AuctionID FROM AUCTION
                 ORDER BY AuctionID DESC');
@@ -375,18 +377,36 @@
                         
                         while($bid = mysql_fetch_array($bids))//while there are bids
                         {
-                            echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                            if($max == 0)
+                            {
+                            echo  '<td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
                             $max += 1;
+                            }
+                            else
+                            {
+                               echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            $max += 1; 
+                            }
                             if($max > 2)
                             {
                                 break;
                             }
                         }
-                        while($max <= 2)//while there is still empty space in teh table
+                        while($max <= 2)//while there is still empty space in the table
                         {
-                            echo '<tr><td height="19px" ></td><td></td></tr>';
-                            $max += 1;
+                            if($max == 0)
+                            {
+                                echo '<td height="19px" ></td><td></td></tr>';
+                                $max += 1;
+                               
+                            }
+                            else
+                            {
+                                echo '<tr><td height="19px" ></td><td></td></tr>';
+                                $max += 1;
+                            }
                         }
 
 
@@ -635,22 +655,39 @@
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
-                        while($bid = mysql_fetch_array($bids))//while there are still bids to be displayed
+                        while($bid = mysql_fetch_array($bids))//while there are bids
                         {
-                            echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                            if($max == 0)
+                            {
+                            echo  '<td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
-                            $max += 1;//incrementing the max number displayed
-                            if($max > 2)//if the max number has been displayed
+                            $max += 1;
+                            }
+                            else
+                            {
+                               echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            $max += 1; 
+                            }
+                            if($max > 2)
                             {
                                 break;
                             }
                         }
-                        while($max <= 2)//if the max number was not reached
+                        while($max <= 2)//while there is still empty space in the table
                         {
-                            echo '<tr><td height="19px" ></td><td></td></tr>';
-                            $max += 1;
+                            if($max == 0)
+                            {
+                                echo '<td height="19px" ></td><td></td></tr>';
+                                $max += 1;
+                               
+                            }
+                            else
+                            {
+                                echo '<tr><td height="19px" ></td><td></td></tr>';
+                                $max += 1;
+                            }
                         }
-
 
 
             echo '
@@ -806,20 +843,38 @@
                             WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
-                        while($bid = mysql_fetch_array($bids))
+                        while($bid = mysql_fetch_array($bids))//while there are bids
                         {
-                            echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                            if($max == 0)
+                            {
+                            echo  '<td>' . $bid[UserName] . '</td>' . 
                                    '<td>$'.$bid[MonthlyRate]. "</td></tr>";
                             $max += 1;
+                            }
+                            else
+                            {
+                               echo  '<tr><td>' . $bid[UserName] . '</td>' . 
+                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            $max += 1; 
+                            }
                             if($max > 2)
                             {
                                 break;
                             }
                         }
-                        while($max <= 2)
+                        while($max <= 2)//while there is still empty space in the table
                         {
-                            echo '<tr><td height="19px" ></td><td></td></tr>';
-                            $max += 1;
+                            if($max == 0)
+                            {
+                                echo '<td height="19px" ></td><td></td></tr>';
+                                $max += 1;
+                               
+                            }
+                            else
+                            {
+                                echo '<tr><td height="19px" ></td><td></td></tr>';
+                                $max += 1;
+                            }
                         }
 
 
