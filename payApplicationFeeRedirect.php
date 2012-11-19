@@ -3,6 +3,9 @@
         /**
          * Updating the database if the fee has been paid.
          */
+
+     if($_POST[result] == 'SUCCESS')
+        {
         session_start();
         $userID = $_SESSION['userID'];
         include_once 'config.inc.php';
@@ -13,5 +16,6 @@
             WHERE UserID = '$userID'");
         
         
+        }
         header( 'Location: /myHood.php' );
 ?>

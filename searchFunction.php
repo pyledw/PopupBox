@@ -53,7 +53,11 @@ function search($type,$term)
                     $result = mysql_query("SELECT * FROM AUCTION
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
-                        WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND Longitude <= '$minLon' AND Longitude >= '$maxLon' AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept; ");
+                            WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND 
+                                Longitude <= '$minLon' AND Longitude >= '$maxLon' AND 
+                                    NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept AND
+                                        IsApproved='1'
+                            ");
 
                     if(!$result)
                     {
@@ -68,8 +72,10 @@ function search($type,$term)
                     $result = mysql_query("SELECT * FROM AUCTION
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
-                        WHERE Address LIKE \"%$trimmed%\" AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept;
-                        ");
+                            WHERE Address LIKE \"%$trimmed%\" AND NOW() BETWEEN AUCTION.DatePFOAccept AND
+                                AUCTION.DatePFOEndAccept
+                                    AND IsApproved='1'
+                            ");
                     
                     if(!$result)
                     {
@@ -85,9 +91,10 @@ function search($type,$term)
                     $result = mysql_query("SELECT * FROM AUCTION
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
-                        WHERE City LIKE \"%$trimmed%\" AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept;
-
-                        ");
+                            WHERE City LIKE \"%$trimmed%\" AND 
+                                NOW() BETWEEN AUCTION.DatePFOAccept AND 
+                                    AUCTION.DatePFOEndAccept AND
+                                        IsApproved='1'");
                     
                     if(!$result)
                     {
@@ -103,8 +110,9 @@ function search($type,$term)
                 $result = mysql_query("SELECT * FROM AUCTION
                             LEFT JOIN PROPERTY
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
-                            WHERE NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept;
-                        ");
+                                WHERE NOW() BETWEEN AUCTION.DatePFOAccept AND
+                                    AUCTION.DatePFOEndAccept AND
+                                        IsApproved='1'");
                 
                 if(!$result)
                     {
