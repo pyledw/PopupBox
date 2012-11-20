@@ -80,27 +80,6 @@
 			<label for="file">File #1</label>
 			<input type="file" name="file" id="file" />
 			<br />
-                        <label for="file">File #2</label>
-			<input type="file" name="file" id="file" />
-			<br />
-                        <label for="file">File #3</label>
-			<input type="file" name="file3" id="file" />
-			<br />
-                        <label for="file">File #4</label>
-			<input type="file" name="file4" id="file" />
-			<br />
-                        <label for="file">File #5</label>
-			<input type="file" name="file5" id="file" />
-			<br />
-                        <label for="file">File #6</label>
-			<input type="file" name="file6" id="file" />
-			<br />
-                        <label for="file">File #7</label>
-			<input type="file" name="file7" id="file" />
-			<br />
-                        <label for="file">File #8</label>
-			<input type="file" name="file8" id="file" />
-			<br />
 			<input type="submit" name="submit" value="Submit" />
        </form>
     </div>
