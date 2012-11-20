@@ -1,7 +1,7 @@
 <?php
     $title = "New Listing #2";
     include 'Header.php';
-    
+    include_once 'uploads.inc.php';
     /**
      * First Check is to ensur ethe user is logged in, and get the data of the correct user and property listing.
      * 
@@ -78,6 +78,19 @@
                         </form>
                     </td>
                 </tr>
+                        <?php 
+                        
+                        $result = get_uploads_for_property($propertyID);
+                        
+                        foreach ($result as $value) 
+                            {
+                            
+                                echo $value;
+                            }
+                        
+                        
+                        
+                        ?>
                 <tr>
                     <td>
                         <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
@@ -90,7 +103,7 @@
         
     </div>
 <?php
-include_once 'uploads.inc.php';
+
 $result = array();
 if (count($_FILES) > 0)
 {
