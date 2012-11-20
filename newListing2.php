@@ -80,9 +80,10 @@
                                  die('could not connect: ' .mysql_error());
                              }
                              echo '<tr>';
+                             $num = 0;
                              while($row = mysql_fetch_array($resultImage))
                              {
-
+                                 ++$num;
                                  echo '<td>';
                                  echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a>';
                                  echo '</td>';
@@ -95,6 +96,12 @@
                                  echo '<td>';
                                  echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete Image</a>';
                                  echo '</td>';
+                             }
+                             while($num < 9)
+                             {
+                                 echo '<td>';
+                                 
+                                 echo '</td>'; 
                              }
                              echo '</tr>'
                         
