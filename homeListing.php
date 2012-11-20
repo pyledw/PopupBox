@@ -72,7 +72,7 @@
             </tr>
             <tr>
                 <td width="150px">
-                    <a href="imageDisplayPopup.php?url=<?php echo getMainPath($row[PropertyID]); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" /></a>
+                    <a href="<?php echo getMainPath($row[PropertyID]); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" /></a>
                 </td>
                     
                 <td width="100px" style="vertical-align:text-top;">
@@ -89,7 +89,7 @@
                                    }
                                    while($image = mysql_fetch_array($images))
                                    {
-                                       echo '<a rel="facebox" href="imageDisplayPopup.php?url='.$image[ImagePathOriginal].'"><img class="thumbs" src="'.$image[ImagePathThumb].'" alt="thumbnail" /></a>';
+                                       echo '<a rel="facebox" href='.$image[ImagePathOriginal].'><img class="thumbs" src="'.$image[ImagePathThumb].'" alt="thumbnail" /></a>';
                                    }
                     
                     ?>
@@ -487,6 +487,7 @@
                 onclick: false
             });
         });
+
 
     </script>
         
