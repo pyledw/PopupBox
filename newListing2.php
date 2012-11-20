@@ -70,7 +70,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <form action="newListing2.php" method="post" enctype="multipart/form-data">
+                        <form action="imageUpload.php" method="post" enctype="multipart/form-data">
 			<label for="file">File #1</label>
 			<input type="file" name="file" id="file" />
 			<br />
@@ -112,6 +112,7 @@
     </div>
 <?php
 
+/*
 $result = array();
 if (count($_FILES) > 0)
 {
@@ -131,12 +132,9 @@ if (count($_FILES) > 0)
 		}
 	}
 }
+ * 
+ */
 
-echo "<br /><br />YOU CAN CALL 'get_uploads_for_property(n)' TO GET IMAGES THAT WERE PREVIOUSLY UPLOADED:<br />";
-$result = get_uploads_for_property(4);
-echo "<pre>"; 
-print_r($result);
-echo "</pre>";
 
     include 'Footer.php';
 ?>
