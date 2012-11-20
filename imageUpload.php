@@ -5,13 +5,13 @@
  * 
  * @author David Pyle <Pyledw@gmail.com>
  */
-
+session_start();
 include_once 'uploads.inc.php';
 
 $result = array();
 if (count($_FILES) > 0)
 {
-	$result = handle_uploads($_POST[propertyID], $_FILES);
+	$result = handle_uploads($_SESSION[propertyID], $_FILES);
 	echo 'IMAGE IS UPLOADING';
         
 }
