@@ -224,7 +224,8 @@ function searchPreMarket($type,$term)
                             LEFT JOIN PROPERTY
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
                               WHERE NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
-                                        IsApproved=1 AND AUCTION.PreMarket=1");
+                                        IsApproved=1 AND AUCTION.PreMarket=1
+                                            ORDER BY AUCTION.DatePFOAccept DESC");
                 
                 if(!$result)
                     {
