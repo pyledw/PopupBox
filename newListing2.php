@@ -81,13 +81,15 @@
                         <?php 
                         
                         $result = get_uploads_for_property($propertyID);
-                        
-                        foreach ($result as $value) 
-                            {
+                        echo '<tr>';
+                        while($row = mysql_fetch_array($result))
+                        {
                             
-                                echo $value;
-                            }
-                        
+                            echo '<td>';
+                            echo '<img src="'.$row[ImagePathThumb].'" />';
+                            echo '</td>';
+                        }
+                        echo '</tr>'
                         
                         
                         ?>
