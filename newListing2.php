@@ -85,7 +85,7 @@
                              {
                                  ++$num;
                                  echo '<td align="center">';
-                                 echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a><br/>';
+                                 echo '<a href='.$row[ImagePathOriginal].'><img width="75px" src="'.$row[ImagePathThumb].'" /></a><br/>';
                                  echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete</a>';
                                  echo '</td>';
                                  if($num > 11)
