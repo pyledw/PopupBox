@@ -51,9 +51,9 @@
     <h1 class="Title">New House Listing - Photos</h1>
     <hr class="Title">
     <div id="mainContent">
-        <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
+        
             <table class="tableForm">
-                <font class="formheader">Photo Upload</font>
+                
                 <tr>
                     <td>
                          Photo Policy:
@@ -80,12 +80,14 @@
                 </tr>
                 <tr>
                     <td>
+                        <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
                         <button type="submit" class="button">Save and Continue</button>
                         <button type="reset" class="button">Clear</button>
+                        </form>
                     </td>
                 </tr>
             </table>
-        </form>
+        
     </div>
 <?php
 include_once 'uploads.inc.php';
