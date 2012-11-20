@@ -55,6 +55,7 @@
                 </tr>
                 <tr>
                     <td>
+                        <form action ="newListing5Redirect.php" method="post">
                         <label class="label">Enter Email:</label><input class="required" type="text" name="email"/></br>
                     </td>
                 </tr>
@@ -67,7 +68,7 @@
                 <tr>
                     <td>
                         <button type="submit" class="button">Save and Continue</button>
-                        <button type="reset" class="button">Clear</button>
+                        <button type="reset" class="button">Clear</button></form>
                     </td>
                 </tr>
             </table>
