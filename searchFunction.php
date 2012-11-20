@@ -172,6 +172,7 @@ function searchPreMarket($type,$term)
                                 Longitude <= '$minLon' AND Longitude >= '$maxLon' AND 
                                     NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
                                         IsApproved=1 AND AUCTION.PreMarket=1
+                                            ORDER BY AUCTION.DatePFOAccept DESC
                             ");
 
                     if(!$result)
@@ -190,6 +191,7 @@ function searchPreMarket($type,$term)
                             WHERE Address LIKE \"%$trimmed%\" AND  
                                 NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
                                         IsApproved='1' AND AUCTION.PreMarket='1'
+                                            ORDER BY AUCTION.DatePFOAccept DESC
                             ");
                     
                     if(!$result)
@@ -208,7 +210,8 @@ function searchPreMarket($type,$term)
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
                             WHERE City LIKE \"%$trimmed%\" AND 
                                  NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
-                                        IsApproved='1' AND AUCTION.PreMarket='1'");
+                                        IsApproved='1' AND AUCTION.PreMarket='1'
+                                            ORDER BY AUCTION.DatePFOAccept DESC");
                     
                     if(!$result)
                     {
