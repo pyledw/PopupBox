@@ -79,6 +79,11 @@
                     <?php 
                                    $images = getPhotoThumbs($row[PropertyID]);
                                    
+                                   if(!$images)
+                                    {
+                                        die('could not connect: ' .mysql_error());
+                                    }
+                                   
                                    while($row = mysql_fetch_array($images))
                                    {
                                        echo '<img class="thumbs" src="'.$row[ImagePathThumb].'" alt="thumbnail" />';

@@ -227,7 +227,10 @@ function getPhotoThumbs($propertyID)
 {
     $resultImage = mysql_query("SELECT * FROM IMAGE
                             WHERE PropertyID='$propertyID' AND ImageType!=1");
-    
+    if(!$resultImage)
+        {
+            die('could not connect: ' .mysql_error());
+        }
     return $resultImage;
 }
 
