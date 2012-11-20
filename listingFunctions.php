@@ -240,7 +240,7 @@
             echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylsheet for the result layout
             
             include_once 'config.inc.php';  //config needed
-            include_once 'uploads.inc.php';
+            include_once 'imageFunctions.php';
 
             $con = get_dbconn("");  //Creating DB connection
             
@@ -441,7 +441,7 @@
             echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylsheet for the result layout
             
             include_once 'config.inc.php';  //config needed
-            include_once 'uploads.inc.php';
+            include_once 'imageFunctions.php';
 
             $con = get_dbconn("");  //Creating DB connection
             
@@ -641,7 +641,7 @@
         echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylesheet for the html elements
         
         include_once 'config.inc.php';//needed configuration functions
-        include_once 'uploads.inc.php';
+        include_once 'imageFunctions.php';
 
             $con = get_dbconn("");//creating the DB conneciton
 
@@ -918,7 +918,7 @@
     {
         echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';
         include_once 'config.inc.php';
-        include_once 'uploads.inc.php';
+        include_once 'imageFunctions.php';
 
             $con = get_dbconn("");
 

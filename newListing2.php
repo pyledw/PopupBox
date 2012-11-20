@@ -37,6 +37,7 @@
     
     //Creating connection to the Database
     include_once 'config.inc.php';
+    include_once 'imageFunctions.php';
     $con = get_dbconn("");
     
     //Query to select the user's application using their userID number
@@ -82,22 +83,22 @@
                 </tr>
                         <?php 
                         
-                       $resultImage = mysql_query("SELECT * FROM IMAGE
-                            WHERE PropertyID='$propertyID'");
-                        
-                       if(!$resultImage)
-                        {
-                            die('could not connect: ' .mysql_error());
-                        }
-                        echo '<tr><td>';
-                        while($row = mysql_fetch_array($resultImage))
-                        {
-                            
-                            echo '';
-                            echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a>';
-                            echo '';
-                        }
-                        echo '</td></tr>'
+                            $resultImage = mysql_query("SELECT * FROM IMAGE
+                                 WHERE PropertyID='$propertyID'");
+
+                            if(!$resultImage)
+                             {
+                                 die('could not connect: ' .mysql_error());
+                             }
+                             echo '<tr><td>';
+                             while($row = mysql_fetch_array($resultImage))
+                             {
+
+                                 echo '';
+                                 echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a>';
+                                 echo '';
+                             }
+                             echo '</td></tr>'
                         
                         
                         ?>
