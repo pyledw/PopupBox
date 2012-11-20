@@ -66,6 +66,17 @@
                         Photo formats:		*.jpg, *.tif, __________
                     </td>
                     
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <form action="newListing2.php" method="post" enctype="multipart/form-data">
+			<label for="file">File #1</label>
+			<input type="file" name="file" id="file" />
+			<br />
+			<input type="submit" name="submit" value="Submit" />
+                        </form>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -77,6 +88,33 @@
         </form>
     </div>
 <?php
+include_once 'uploads.inc.php';
+$result = array();
+if (count($_FILES) > 0)
+{
+	$result = handle_uploads($propertyID, $_FILES);
+	echo "<pre>This is the return value from handle_uploads:";
+	print_r($result);
+	echo "</pre>";
+	echo "<br /><br />";
+	echo "THIS DEMONSTRATES HOW TO USE THE RETURN VALUE TO GENERATE IMG TAGS <br />";
+	foreach ($result as $upload)
+	{
+		if (!$upload[error]) 
+		{
+	?>
+			<img src='<?= $upload[name_thumb]; ?>'></img>
+	<?
+		}
+	}
+}
+
+echo "<br /><br />YOU CAN CALL 'get_uploads_for_property(n)' TO GET IMAGES THAT WERE PREVIOUSLY UPLOADED:<br />";
+$result = get_uploads_for_property(4);
+echo "<pre>"; 
+print_r($result);
+echo "</pre>";
+
     include 'Footer.php';
 ?>
 <script type="text/javascript">

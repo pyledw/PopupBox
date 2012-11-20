@@ -35,7 +35,7 @@
     <h1 class="Title">New House Listing - Certification</h1>
     <hr class="Title">
     <div id="mainContent">
-        <form id="listingForm" method="post" action="newListing5Redirect.php">
+        
             <table class="tableForm">
                 <font class="formheader">User Agreement</font>
                 <tr>
@@ -58,16 +58,7 @@
                         <label class="label">Enter Email:</label><input class="required" type="text" name="email"/></br>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <form action="newListing5.php" method="post" enctype="multipart/form-data">
-			<label for="file">File #1</label>
-			<input type="file" name="file" id="file" />
-			<br />
-			<input type="submit" name="submit" value="Submit" />
-                        </form>
-                    </td>
-                </tr>
+                
                 <tr>
                     <td>
                         <input type="checkbox" name="agree" value="agree">I have Read and Agree with these terms and conditions
@@ -89,32 +80,6 @@
         
     </div>
 <?php
-        include_once 'uploads.inc.php';
-$result = array();
-if (count($_FILES) > 0)
-{
-	$result = handle_uploads($propertyID, $_FILES);
-	echo "<pre>This is the return value from handle_uploads:";
-	print_r($result);
-	echo "</pre>";
-	echo "<br /><br />";
-	echo "THIS DEMONSTRATES HOW TO USE THE RETURN VALUE TO GENERATE IMG TAGS <br />";
-	foreach ($result as $upload)
-	{
-		if (!$upload[error]) 
-		{
-	?>
-			<img src='<?= $upload[name_thumb]; ?>'></img>
-	<?
-		}
-	}
-}
-
-echo "<br /><br />YOU CAN CALL 'get_uploads_for_property(n)' TO GET IMAGES THAT WERE PREVIOUSLY UPLOADED:<br />";
-$result = get_uploads_for_property(4);
-echo "<pre>"; 
-print_r($result);
-echo "</pre>";
 
     include 'Footer.php';
 ?>
