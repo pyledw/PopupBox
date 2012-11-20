@@ -84,9 +84,8 @@
        </form>
     </div>
 <?php
-    if (count($_FILES) > 0)
-{
-	$result = handle_uploads(4, $_FILES);
+
+	$result = handle_uploads(4, $_POST[file]);
 	echo "<pre>This is the return value from handle_uploads:";
 	print_r($result);
 	echo "</pre>";
@@ -101,7 +100,6 @@
 			<img src='<?= $upload[name_thumb]; ?>'></img>
 	<?
 		}
-	}
 }
     include 'Footer.php';
 ?>
