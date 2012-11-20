@@ -223,7 +223,7 @@ function getMainThumbPath($propertyID)
  * 
  * @author David Pyle <Pyledw@gmail.com>
  */
-function getPhotoThumbs($propertyID)
+function getPhotoInfo($propertyID)
 {
     $resultImage = mysql_query("SELECT * FROM IMAGE
                             WHERE PropertyID='$propertyID' AND ImageType<>1");
@@ -233,6 +233,7 @@ function getPhotoThumbs($propertyID)
         }
     return $resultImage;
 }
+
 
 
 ?>

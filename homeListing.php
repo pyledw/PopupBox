@@ -72,12 +72,12 @@
             </tr>
             <tr>
                 <td width="150px">
-                    <img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" />
+                    <a href="<?php echo getMainThumbPath($row[ImagePathOriginal]); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" /></a>
                 </td>
                     
                 <td>
                     <?php 
-                                   $images = getPhotoThumbs($row[PropertyID]);
+                                   $images = getPhotoInfo($row[PropertyID]);
                                    
                                    if(!$images)
                                     {
@@ -89,7 +89,7 @@
                                    }
                                    while($image = mysql_fetch_array($images))
                                    {
-                                       echo '<img class="thumbs" src="'.$image[ImagePathThumb].'" alt="thumbnail" />';
+                                       echo '<a rel="facebox" href='.$image[ImagePathOriginal].'><img class="thumbs" src="'.$image[ImagePathThumb].'" alt="thumbnail" /></a>';
                                    }
                     
                     ?>
