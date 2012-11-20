@@ -100,6 +100,7 @@
                              while($num < 9)
                              {
                                  echo '<td>';
+                                 ++$num;
                                  
                                  echo '</td>'; 
                              }
