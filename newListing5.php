@@ -60,6 +60,16 @@
                 </tr>
                 <tr>
                     <td>
+                        <form action="newListing5.php" method="post" enctype="multipart/form-data">
+			<label for="file">File #1</label>
+			<input type="file" name="file" id="file" />
+			<br />
+			<input type="submit" name="submit" value="Submit" />
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <input type="checkbox" name="agree" value="agree">I have Read and Agree with these terms and conditions
                     </td>
                 </tr>
@@ -76,19 +86,14 @@
             
   
         </form>
-        <form action="newListing5.php" method="post" enctype="multipart/form-data">
-			<label for="file">File #1</label>
-			<input type="file" name="file" id="file" />
-			<br />
-			<input type="submit" name="submit" value="Submit" />
-       </form>
+        
     </div>
 <?php
         include_once 'uploads.inc.php';
 $result = array();
 if (count($_FILES) > 0)
 {
-	$result = handle_uploads(4, $_FILES);
+	$result = handle_uploads($propertyID, $_FILES);
 	echo "<pre>This is the return value from handle_uploads:";
 	print_r($result);
 	echo "</pre>";
@@ -99,7 +104,6 @@ if (count($_FILES) > 0)
 		if (!$upload[error]) 
 		{
 	?>
-			<img src='<?= $upload[name_full]; ?>'></img>
 			<img src='<?= $upload[name_thumb]; ?>'></img>
 	<?
 		}
