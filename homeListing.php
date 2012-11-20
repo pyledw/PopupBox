@@ -75,7 +75,7 @@
                     <a href="<?php echo getMainPath($row[PropertyID]); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" /></a>
                 </td>
                     
-                <td>
+                <td width="100px" style="vertical-align:text-top;">
                     <?php 
                                    $images = getPhotoInfo($row[PropertyID]);
                                    
