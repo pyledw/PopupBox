@@ -3,6 +3,10 @@
     /**
      * This page will delete the selected image from the server and database.
      * 
+     * It will get the data and unlink it from the server.
+     * It will then delete the row from the database.
+     * 
+     * @author David Pyle <Pyledw@Gmail.com>
      */
     $_GET[imageID];
     
@@ -32,4 +36,6 @@
         
         
     echo 'This will eventually be a function to delete the listing.'; 
+    
+    header( 'Location: /newListing2.php' );
 ?>
