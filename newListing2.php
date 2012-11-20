@@ -70,16 +70,6 @@
                     
                     
                 </tr>
-                <tr>
-                    <td colspan="8">
-                        <form action="imageUpload.php" method="post" enctype="multipart/form-data">
-			<label for="file">File #1</label>
-			<input type="file" name="file" id="file" />
-                        <input type="text" name="propertyID" style="display: none;" value='<?php echo $propertyID; ?>' />
-			<br />
-			<input type="submit" name="submit" value="Submit" />
-                        </form>
-                    </td>
                 </tr>
                         <?php 
                         
@@ -112,6 +102,17 @@
                         
                         ?>
                 <tr>
+                <tr>
+                    <td colspan="8">
+                        <form action="imageUpload.php" method="post" enctype="multipart/form-data">
+			<label for="file">File #1</label>
+			<input type="file" name="file" id="file" />
+                        <input type="text" name="propertyID" style="display: none;" value='<?php echo $propertyID; ?>' />
+			<br />
+			<input type="submit" name="submit" value="Submit" />
+                        </form>
+                    </td>
+                
                     <td colspan="8">
                         <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
                         <button type="submit" class="button">Save and Continue</button>
