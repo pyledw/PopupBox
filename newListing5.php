@@ -78,10 +78,10 @@
         </form>
         <form action="newListing5.php" method="post" enctype="multipart/form-data">
 			<label for="file">File #1</label>
-			<input type="file" name="file1" id="file" />
+			<input type="file" name="file" id="file" />
 			<br />
                         <label for="file">File #2</label>
-			<input type="file" name="file2" id="file" />
+			<input type="file" name="file" id="file" />
 			<br />
                         <label for="file">File #3</label>
 			<input type="file" name="file3" id="file" />
