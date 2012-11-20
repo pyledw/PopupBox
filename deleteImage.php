@@ -35,9 +35,13 @@
             //echo "Selected Database";
         }
         
-        mysql_query("DELETE * FROM IMAGE
+        $result = mysql_query("DELETE * FROM IMAGE
             WHERE ImageID=$_GET[imageID]");
         
+        if(!$result)
+                             {
+                                 die('could not connect: ' .mysql_error());
+                             }
         
         
     echo 'This will eventually be a function to delete the listing.'; 
