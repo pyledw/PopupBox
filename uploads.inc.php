@@ -7,7 +7,7 @@
  */
 
 include_once 'config.inc.php';
-//include_once 'log.inc.php';
+include_once 'log.inc.php';
 
 /**
  * Tests that the input file size in bytes is permitted according to configuration.
