@@ -72,7 +72,7 @@
             </tr>
             <tr>
                 <td width="150px">
-                    <a href="<?php echo getMainThumbPath($row[ImagePathOriginal]); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" /></a>
+                    <a href="<?php echo getMainPath($row[PropertyID]); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" /></a>
                 </td>
                     
                 <td>
