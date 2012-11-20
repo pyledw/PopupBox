@@ -86,7 +86,8 @@
                              {
                                  echo '<td width="100">';
                                  echo '<a href='.$row[ImagePathOriginal].'><img width="75px" src="'.$row[ImagePathThumb].'" /></a><br/>';
-                                 echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete</a>';
+                                 echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete</a><br/>';
+                                 echo '<a href="makePrimary.php?imageID='.$row[ImageID].'&propertyID='.$propertyID.'">Delete</a><br/>';
                                  echo '</td>';
                                  ++$num;
                              }
