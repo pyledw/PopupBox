@@ -35,7 +35,7 @@
             //echo "Selected Database";
         }
         
-        $result = mysql_query("DELETE * FROM IMAGE
+        $result = mysql_query("DELETE FROM IMAGE
             WHERE ImageID=$_GET[imageID]");
         
         if(!$result)
