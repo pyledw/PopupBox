@@ -34,6 +34,15 @@
         {
             //echo "Selected Database";
         }
+        $image = mysql_query("SELECT * FROM IMAGE
+            WHERE ImageID=$_GET[imageID]");
+        
+        $row = mysql_fetch_array($image);
+        
+        unlink($row[ImagePathOriginal]);
+        unlink($row[ImagePathThumb]);
+        
+        
         
         $result = mysql_query("DELETE FROM IMAGE
             WHERE ImageID=$_GET[imageID]");
