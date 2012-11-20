@@ -80,7 +80,6 @@
                         </form>
                     </td>
                 </tr>
-            <tr>
                         <?php 
                         
                        $resultImage = mysql_query("SELECT * FROM IMAGE
@@ -90,7 +89,7 @@
                         {
                             die('could not connect: ' .mysql_error());
                         }
-                        echo '<tr>';
+                        echo '<tr><td>';
                         while($row = mysql_fetch_array($resultImage))
                         {
                             
@@ -98,11 +97,10 @@
                             echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a>';
                             echo '';
                         }
-                        echo '</tr>'
+                        echo '</td></tr>'
                         
                         
                         ?>
-            </tr>
                 <tr>
                     <td>
                         <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
