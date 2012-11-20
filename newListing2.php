@@ -94,6 +94,7 @@
                              {
                                  echo '<td width="100">';
                                  echo '</td>';
+                                 ++$num;
                              }
 
                              echo '</tr>';
