@@ -83,10 +83,13 @@
                                     {
                                         die('could not connect: ' .mysql_error());
                                     }
-                                   
-                                   while($row = mysql_fetch_array($images))
+                                   if(mysql_num_rows($images) < 1)
                                    {
-                                       echo '<img class="thumbs" src="'.$row[ImagePathThumb].'" alt="thumbnail" />';
+                                       echo 'No Rows';
+                                   }
+                                   while($image = mysql_fetch_array($images))
+                                   {
+                                       echo '<img class="thumbs" src="'.$image[ImagePathThumb].'" alt="thumbnail" />';
                                    }
                     
                     ?>
