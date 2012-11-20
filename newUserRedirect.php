@@ -125,13 +125,13 @@
         $from = "From: noReply@leasehood.com \r\n";
         $subject = "Welcome To LeaseHood.com";
         $mesg = "Dear ".$fName.",\n"."Thank you for using LeaseHood.com for your rental needs. ".
-                "Your LeaseHood account has now been created.\n\n".
+                "Your LeaseHood account has now been created.\n".
                 "Your username is: ".$username."\n".
                 "Your password is: ".$password."\n".
                 "Your username will be visible to others once you sign in. If you are a landlord, ".
                 "we encourage you to complete your listing(s) so that you may expose your vacancy  as soon as possible. ".
                 "If you are a lessee we encourage you to complete your application so that you may submit a Proposal for Occupancy and find your home as soon as possible. ".
-                "Thank you for joining LeaseHood and we hope your experience with us is a positive one.";
+                "Thank you for joining LeaseHood and we hope your experience with us is a positive one."."Regards,\n Mark Gardner\n President|CEO";
         mail($to, $subject, $mesg, $from);
 
     
