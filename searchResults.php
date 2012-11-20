@@ -119,12 +119,17 @@
         displaySearchResults($row[AuctionID]);
     }
     
-    echo '<h1>Pre-Marketing</h1>';
+    
     $result = searchPreMarket($type,$val);
     $pre = 0;
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
     {
+        
+        if($pre == 0 && mysql_num_rows($result)>0)
+        {
+            echo '<h1>Pre-Marketing</h1>';
+        }
         ++$pre;
         //calling the functions
         include_once 'listingFunctions.php';

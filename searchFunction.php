@@ -110,8 +110,7 @@ function search($type,$term)
                 $result = mysql_query("SELECT * FROM AUCTION
                             LEFT JOIN PROPERTY
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
-                                WHERE NOW() BETWEEN AUCTION.DatePFOAccept AND
-                                    AUCTION.DatePFOEndAccept AND
+                                WHERE NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept AND
                                         IsApproved='1'");
                 
                 if(!$result)
@@ -171,7 +170,7 @@ function searchPreMarket($type,$term)
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
                             WHERE Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND 
                                 Longitude <= '$minLon' AND Longitude >= '$maxLon' AND 
-                                    NOW() > AUCTION.DatePFOAccept AND
+                                    NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
                                         IsApproved='1' AND AUCTION.PreMarket='1'
                             ");
 
@@ -189,7 +188,7 @@ function searchPreMarket($type,$term)
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
                             WHERE Address LIKE \"%$trimmed%\" AND  
-                                NOW() > AUCTION.DatePFOAccept AND
+                                NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
                                         IsApproved='1' AND AUCTION.PreMarket='1'
                             ");
                     
@@ -208,7 +207,7 @@ function searchPreMarket($type,$term)
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
                             WHERE City LIKE \"%$trimmed%\" AND 
-                                 NOW() > AUCTION.DatePFOAccept AND
+                                 NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
                                         IsApproved='1' AND AUCTION.PreMarket='1'");
                     
                     if(!$result)
@@ -221,11 +220,12 @@ function searchPreMarket($type,$term)
             {
                 
                 $date = date("Y-m-d H:i:s");
+                $dateAgo = date("Y-m-d H:i:s", strtotime('-3 days'));
                 //returns all properties with aucitons
                 $result = mysql_query("SELECT * FROM AUCTION
                             LEFT JOIN PROPERTY
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
-                                WHERE  NOW() > AUCTION.DatePFOAccept AND
+                              WHERE NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
                                         IsApproved='1' AND AUCTION.PreMarket='1'");
                 
                 if(!$result)
