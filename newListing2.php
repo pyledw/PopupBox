@@ -80,6 +80,7 @@
                         </form>
                     </td>
                 </tr>
+            <tr>
                         <?php 
                         
                        $resultImage = mysql_query("SELECT * FROM IMAGE
@@ -101,6 +102,7 @@
                         
                         
                         ?>
+            </tr>
                 <tr>
                     <td>
                         <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
