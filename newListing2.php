@@ -80,13 +80,13 @@
                 </tr>
                         <?php 
                         
-                        $resultImage = get_uploads_for_property($propertyID);
+                       $resultImage = mysql_query("SELECT * FROM IMAGE
+                            WHERE PropertyID='$propertyID'");
                         
-                        if(!$resultImage)
+                       if(!$resultImage)
                         {
-                               die('could not connect: ' .mysql_error());
+                            die('could not connect: ' .mysql_error());
                         }
-                        
                         echo '<tr>';
                         while($row = mysql_fetch_array($resultImage))
                         {
