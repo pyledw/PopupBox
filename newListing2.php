@@ -111,10 +111,6 @@
                     </td>
                 </tr>
             </table>
-        <div class="progress">
-        <div class="bar"></div >
-        <div class="percent">0%</div >
-    </div>
         
     </div>
 <?php
