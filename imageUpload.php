@@ -12,9 +12,27 @@ $result = array();
 if (count($_FILES) > 0)
 {
 	$result = handle_uploads($_SESSION[propertyID], $_FILES);
-	echo 'IMAGE IS UPLOADING';
-        
+	echo 'IMAGE IS UPLOADING';   
 }
+include 'config.inc.php';
+
+$con = get_dbconn("");
+
+$result2 = mysql_query("SELECT * FROM IMAGE
+    WHERE PropertyID=$_SESSION[propertyID] AND Type='1'");
+
+if(mysql_num_rows($result2) == 0)
+{
+    $result3 = mysql_query("SELECT * FROM IMAGE
+    WHERE PropertyID=$_SESSION[propertyID]");
+    
+    $row3 = mysql_fetch_array($result3);
+    
+    mysql_query("UPDATE IMAGE SET Type=1
+        WHERE PropertyID=$_SESSION[propertyID] AND ImageID=$row3[ImageID]");
+}
+
+
 
 header( 'Location: /newListing2.php' );
 ?>
