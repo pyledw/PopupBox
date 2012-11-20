@@ -76,31 +76,11 @@
             
   
         </form>
-        <form action="newListing5.php" method="post" enctype="multipart/form-data">
-			<label for="file">File #1</label>
-			<input type="file" name="file" id="file" />
-			<br />
-			<input type="submit" name="submit" value="Submit" />
-       </form>
+        
     </div>
-<?php
 
-	$result = handle_uploads(4, $_POST[file]);
-	echo "<pre>This is the return value from handle_uploads:";
-	print_r($result);
-	echo "</pre>";
-	echo "<br /><br />";
-	echo "THIS DEMONSTRATES HOW TO USE THE RETURN VALUE TO GENERATE IMG TAGS <br />";
-	foreach ($result as $upload)
-	{
-		if (!$upload[error]) 
-		{
-	?>
-			<img src='<?= $upload[name_full]; ?>'></img>
-			<img src='<?= $upload[name_thumb]; ?>'></img>
-	<?
-		}
-}
+	
+<?php
     include 'Footer.php';
 ?>
 
