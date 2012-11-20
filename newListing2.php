@@ -57,7 +57,7 @@
             <table class="tableForm">
                 
                 <tr>
-                    <td colspan="16">
+                    <td colspan="10">
                          Photo Policy:
                         LeaseHood believes in providing all interested parties with the tools necessary to make intelligent decisions.  To that end, we believe all advertised homes should be accurately and thoroughly depicted, including those features which uniquely identity the property.  Please submit at least one photo of the front of the house, one kitchen photo, and one photo of the main bathroom. You can download up to 7 photos, which will be visible to all applicants on LeaseHood.com.  However, only the first 4 photos will be submitted for 3rd party advertising media. 
 
@@ -84,19 +84,17 @@
                              while($row = mysql_fetch_array($resultImage))
                              {
                                  ++$num;
-                                 echo '<td align="left">';
-                                 echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a>';
-                                 echo '</td>';
-                                 echo '<td align="left">';
+                                 echo '<td align="center">';
+                                 echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a><br/>';
                                  echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete</a>';
                                  echo '</td>';
-                                 if($num > 16)
+                                 if($num > 11)
                                  {
                                      echo '</tr><tr>';
                                      $num = 0;
                                  }
                              }
-                             while($num < 16)
+                             while($num < 11)
                              {
                                  echo '<td>';
                                  ++$num;
@@ -109,7 +107,7 @@
                         ?>
                 
                 <tr>
-                    <td colspan="16">
+                    <td colspan="10">
                         <form action="imageUpload.php" method="post" enctype="multipart/form-data">
 			<label for="file">File #1</label>
 			<input type="file" name="file" id="file" />
@@ -121,7 +119,7 @@
                 </tr>
                     
                 <tr>
-                    <td colspan="16">
+                    <td colspan="10">
                         <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
                         <button type="submit" class="button">Save and Continue</button>
                         <button type="reset" class="button">Clear</button>
