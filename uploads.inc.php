@@ -7,7 +7,7 @@
  */
 
 include_once 'config.inc.php';
-include_once 'log.inc.php';
+//include_once 'log.inc.php';
 
 /**
  * Tests that the input file size in bytes is permitted according to configuration.
@@ -193,6 +193,18 @@ function get_uploads_for_property($propertyid)
 	$stmt->execute();
 	$retval = $stmt->fetchAll();
 	return $retval;
+}
+
+function getMainThumbPath($propertyID)
+{
+    $resultImage = mysql_query("SELECT * FROM IMAGE
+                            WHERE PropertyID='$propertyID' AND ImageType=1");
+                        
+                      
+    $row = mysql_fetch_array($resultImage);
+    
+    return $row[ImagePathThumb];
+ 
 }
 
 
