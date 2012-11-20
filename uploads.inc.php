@@ -7,7 +7,12 @@
  */
 
 include_once 'config.inc.php';
+try{
 include_once 'log.inc.php';
+} 
+catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
 
 /**
  * Tests that the input file size in bytes is permitted according to configuration.
