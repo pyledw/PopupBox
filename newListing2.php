@@ -93,9 +93,9 @@
                         while($row = mysql_fetch_array($resultImage))
                         {
                             
-                            echo '<td>';
-                            echo '<img src="'.$row[ImagePathThumb].'" />';
-                            echo '</td>';
+                            echo '';
+                            echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a>';
+                            echo '';
                         }
                         echo '</tr>'
                         
