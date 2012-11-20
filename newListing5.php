@@ -85,6 +85,9 @@
     </div>
 <?php
         include_once 'uploads.inc.php';
+$result = array();
+if (count($_FILES) > 0)
+{
 	$result = handle_uploads(4, $_FILES);
 	echo "<pre>This is the return value from handle_uploads:";
 	print_r($result);
@@ -100,7 +103,15 @@
 			<img src='<?= $upload[name_thumb]; ?>'></img>
 	<?
 		}
+	}
 }
+
+echo "<br /><br />YOU CAN CALL 'get_uploads_for_property(n)' TO GET IMAGES THAT WERE PREVIOUSLY UPLOADED:<br />";
+$result = get_uploads_for_property(4);
+echo "<pre>"; 
+print_r($result);
+echo "</pre>";
+
     include 'Footer.php';
 ?>
 
