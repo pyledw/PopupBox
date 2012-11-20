@@ -80,9 +80,15 @@
                 </tr>
                         <?php 
                         
-                        $result = get_uploads_for_property($propertyID);
+                        $resultImage = get_uploads_for_property($propertyID);
+                        
+                        if(!$resultImage)
+                        {
+                               die('could not connect: ' .mysql_error());
+                        }
+                        
                         echo '<tr>';
-                        while($row = mysql_fetch_array($result))
+                        while($row = mysql_fetch_array($resultImage))
                         {
                             
                             echo '<td>';
