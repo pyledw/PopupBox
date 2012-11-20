@@ -87,15 +87,14 @@
                                  echo '<td>';
                                  echo '<a href='.$row[ImagePathOriginal].'><img width="40px" src="'.$row[ImagePathThumb].'" /></a>';
                                  echo '</td>';
-                             }
-                             echo '</tr>';
-                             echo '<tr>';
-                             while($row = mysql_fetch_array($resultImage))
-                             {
-
                                  echo '<td>';
-                                 echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete Image</a>';
+                                 echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete</a>';
                                  echo '</td>';
+                                 if($num > 9)
+                                 {
+                                     echo '</tr><tr>';
+                                     $num = 0;
+                                 }
                              }
                              while($num < 9)
                              {
@@ -104,8 +103,8 @@
                                  
                                  echo '</td>'; 
                              }
-                             echo '</tr>'
-                        
+                             echo '</tr>';
+                             
                         
                         ?>
                 
