@@ -76,12 +76,15 @@
                 </td>
                     
                 <td>
-                    <img class="thumbs" src="<?php echo $row[ImagePathKitchenThumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePathMainBathThumb]; ?>" alt="thumbnail" /><br/>
-                    <img class="thumbs" src="<?php echo $row[ImagePath4Thumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePath5Thumb]; ?>" alt="thumbnail" /><br/>
-                    <img class="thumbs" src="<?php echo $row[ImagePath6Thumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePath7Thumb]; ?>" alt="thumbnail" />
+                    <?php 
+                                   $images = getPhotoThumbs($row[PropertyID]);
+                                   
+                                   while($row = mysql_fetch_array($images))
+                                   {
+                                       echo '<img class="thumbs" src="'.$row[ImagePathThumb].'" alt="thumbnail" />';
+                                   }
+                    
+                    ?>
                 </td>
                 <td>
                     <table id="innerTable">
