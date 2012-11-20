@@ -1,6 +1,7 @@
 <?php
     $title = "New Listing #2";
     include 'Header.php';
+    
     include_once 'uploads.inc.php';
     /**
      * First Check is to ensur ethe user is logged in, and get the data of the correct user and property listing.
@@ -48,6 +49,34 @@
     
     
 ?>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script>
+    (function() {
+
+    var bar = $('.bar');
+    var percent = $('.percent');
+    var status = $('#status');
+
+    $('form').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+                    //console.log(percentVal, position, total);
+        },
+            complete: function(xhr) {
+                    status.html(xhr.responseText);
+            }
+    }); 
+
+    })();       
+</script>
     <h1 class="Title">New House Listing - Photos</h1>
     <hr class="Title">
     <div id="mainContent">
@@ -110,32 +139,14 @@
                     </td>
                 </tr>
             </table>
+        <div class="progress">
+        <div class="bar"></div >
+        <div class="percent">0%</div >
+    </div>
         
     </div>
 <?php
 
-/*
-$result = array();
-if (count($_FILES) > 0)
-{
-	$result = handle_uploads($propertyID, $_FILES);
-	echo "<pre>This is the return value from handle_uploads:";
-	print_r($result);
-	echo "</pre>";
-	echo "<br /><br />";
-	echo "THIS DEMONSTRATES HOW TO USE THE RETURN VALUE TO GENERATE IMG TAGS <br />";
-	foreach ($result as $upload)
-	{
-		if (!$upload[error]) 
-		{
-	?>
-			<img src='<?= $upload[name_thumb]; ?>'></img>
-	<?
-		}
-	}
-}
- * 
- */
 
 
     include 'Footer.php';
