@@ -240,6 +240,7 @@
             echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylsheet for the result layout
             
             include_once 'config.inc.php';  //config needed
+            include_once 'uploads.inc.php';
 
             $con = get_dbconn("");  //Creating DB connection
             
@@ -271,7 +272,7 @@
             {
                 $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
             }
-            include_once 'uploads.inc.php';
+            
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '
@@ -440,6 +441,7 @@
             echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylsheet for the result layout
             
             include_once 'config.inc.php';  //config needed
+            include_once 'uploads.inc.php';
 
             $con = get_dbconn("");  //Creating DB connection
             
@@ -480,7 +482,7 @@
                    .$maxBid.
                 '</font><br/>
         <table id="houseListing">
-            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row[PropertyID]).' alt="Main Photo" />
             <tr>
                 <td width="102px;" rowspan="5">
                     
@@ -639,6 +641,7 @@
         echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';//needed stylesheet for the html elements
         
         include_once 'config.inc.php';//needed configuration functions
+        include_once 'uploads.inc.php';
 
             $con = get_dbconn("");//creating the DB conneciton
 
@@ -731,7 +734,7 @@
                    .$maxBid.
                 '</font><br/>
         <table id="houseListing">
-            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row[PropertyID]).' alt="Main Photo" />
             <tr>
                 <td width="102px;" rowspan="5">
                     
@@ -915,6 +918,7 @@
     {
         echo '<link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->';
         include_once 'config.inc.php';
+        include_once 'uploads.inc.php';
 
             $con = get_dbconn("");
 

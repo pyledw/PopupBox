@@ -195,6 +195,14 @@ function get_uploads_for_property($propertyid)
 	return $retval;
 }
 
+/**
+ * This function will get the main photo thumb image url
+ * 
+ * @param type $propertyID
+ * @return string
+ * 
+ * @author David Pyle <Pyledw@gmail.com>
+ */
 function getMainThumbPath($propertyID)
 {
     $resultImage = mysql_query("SELECT * FROM IMAGE
@@ -205,6 +213,22 @@ function getMainThumbPath($propertyID)
     
     return $row[ImagePathThumb];
  
+}
+
+/**
+ * This function will get the non main photo thumbs
+ * 
+ * @param type $propertyID
+ * @return array
+ * 
+ * @author David Pyle <Pyledw@gmail.com>
+ */
+function getPhotoThumbs($propertyID)
+{
+    $resultImage = mysql_query("SELECT * FROM IMAGE
+                            WHERE PropertyID='$propertyID' AND ImageType!=1");
+    
+    return $resultImage;
 }
 
 

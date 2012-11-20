@@ -32,6 +32,7 @@
         
         $row = mysql_fetch_array($result);
         include_once 'listingFunctions.php';
+        include_once 'uploads.inc.php';
         
         // below is call to function that returns the timestring of time remaining or time till start
         $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
@@ -71,7 +72,7 @@
             </tr>
             <tr>
                 <td width="150px">
-                    <img class="mainPhoto" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+                    <img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" />
                 </td>
                     
                 <td>
