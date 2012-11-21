@@ -118,6 +118,7 @@
         }
          
     }
+    //sending email
         $fName = $_POST['fname'];
         $username = $_POST['username'];
         $password = $_POST['password1'];
