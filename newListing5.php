@@ -1,5 +1,5 @@
 <?php
-    $title = "New Listing Part 5";
+    $title = "New Listing #5";
     include 'Header.php';
     
     
@@ -68,11 +68,6 @@
                     </td>
                 </tr>
             </table>
-
-            
-
-            
-  
         </form>
     </div>
 <?php
