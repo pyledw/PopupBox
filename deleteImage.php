@@ -72,5 +72,5 @@
         
     echo 'This will eventually be a function to delete the listing.'; 
     
-    //header( 'Location: /newListing2.php' );
+    header( 'Location: /newListing2.php' );
 ?>

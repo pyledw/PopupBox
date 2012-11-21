@@ -1,5 +1,10 @@
 <?php
-
+        /**
+         * This page will retireve the image id, and set the selected image as the 
+         * primary after it sets all images of the property as non primary.
+         * 
+         * @author David Pyle <Pyledw@Gmail.com>
+         */
         include_once 'config.inc.php';
         $con = get_dbconn("");
     
