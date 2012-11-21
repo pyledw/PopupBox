@@ -1,6 +1,5 @@
 <?php
 
-        include_once 'imageFunctions.php';
         include_once 'config.inc.php';
         $con = get_dbconn("");
     
