@@ -58,16 +58,27 @@
             </tr>
             <tr>
                 <td width="150px">
-                    <img class="mainPhoto" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+                    <a href="<?php echo getMainPath($row[PropertyID]); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" /></a>
                 </td>
                     
-                <td>
-                    <img class="thumbs" src="<?php echo $row[ImagePathKitchenThumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePathMainBathThumb]; ?>" alt="thumbnail" /><br/>
-                    <img class="thumbs" src="<?php echo $row[ImagePath4Thumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePath5Thumb]; ?>" alt="thumbnail" /><br/>
-                    <img class="thumbs" src="<?php echo $row[ImagePath6Thumb]; ?>" alt="thumbnail" />
-                    <img class="thumbs" src="<?php echo $row[ImagePath7Thumb]; ?>" alt="thumbnail" />
+                <td width="100px" style="vertical-align:text-top;">
+                    <?php 
+                                   $images = getPhotoInfo($row[PropertyID]);
+                                   
+                                   if(!$images)
+                                    {
+                                        die('could not connect: ' .mysql_error());
+                                    }
+                                   if(mysql_num_rows($images) < 1)
+                                   {
+                                       echo 'No Rows';
+                                   }
+                                   while($image = mysql_fetch_array($images))
+                                   {
+                                       echo '<a rel="facebox" href='.$image[ImagePathOriginal].'><img class="thumbs" src="'.$image[ImagePathThumb].'" alt="thumbnail" /></a>';
+                                   }
+                    
+                    ?>
                 </td>
                 <td>
                     <table id="innerTable">

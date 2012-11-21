@@ -706,7 +706,14 @@
                 }
                 else//if the property fee has not been paid
                 {
-                    $propertyStatus = "<font class='redTextArea'>Your listing is awaiting approval</font>";
+                    if($row[PageCompleted] != 6)//check to see if the listing was completed
+                            {
+                                $propertyStatus = '<font class="redTextArea">Lisitng not complete.  Click edit listing below to finish your listing</font>';
+                            }
+                            else
+                            {
+                                $propertyStatus = "<font class='redTextArea'>Your listing is awaiting approval</font>";
+                            }
                 }
             }
             

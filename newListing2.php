@@ -40,6 +40,7 @@
     include_once 'imageFunctions.php';
     $con = get_dbconn("");
     
+    
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM PROPERTY
         WHERE PropertyID ='$propertyID'");
@@ -85,7 +86,8 @@
                              {
                                  echo '<td width="100">';
                                  echo '<a href='.$row[ImagePathOriginal].'><img width="75px" src="'.$row[ImagePathThumb].'" /></a><br/>';
-                                 echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete</a>';
+                                 echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete</a><br/>';
+                                 echo '<a href="makePrimary.php?imageID='.$row[ImageID].'&propertyID='.$propertyID.'">Make Main</a><br/>';
                                  echo '</td>';
                                  ++$num;
                              }
@@ -105,7 +107,7 @@
                 <tr>
                     <td colspan="10">
                         <form action="imageUpload.php" method="post" enctype="multipart/form-data">
-			<label for="file">File #1</label>
+			<label for="file">Select Image</label>
 			<input type="file" name="file" id="file" />
                         <input type="text" name="propertyID" style="display: none;" value='<?php echo $propertyID; ?>' />
 			<br />

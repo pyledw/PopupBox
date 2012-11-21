@@ -10,14 +10,26 @@
  * @author David Pyle <Pyledw@Gmail.com>
  */
     session_start();
-    include 'config.inc.php';
     
-    $_SESSION[propertyID] = $_POST[propertyID];
     
+    
+    $_SESSION[propertyID] = $_GET[propertyID];
+    
+    //Creating conneciton to the Database
+    include_once 'config.inc.php';
+    //Connecting to the sql database
     $con = get_dbconn("");
     
-    mysql_query("UPDATE PROPERTY
-        SET IsApproved=0, DateAvailable=NULL, DatePFOAccept=NULL, DatePFOEndAccept=NULL, DateTimeOpenHouse1=NULL,DateTimeOpenHouse2=NULL,PageCompleted='3'
+    $result = mysql_query("UPDATE PROPERTY
+        SET IsApproved=0, PageCompleted=3, DateAvailable=NULL, DatePFOAccept=NULL, DatePFOEndAccept=NULL, DateTimeOpenHouse1=NULL,DateTimeOpenHouse2=NULL,PageCompleted='3'
         WHERE PropertyID='$_SESSION[propertyID]'");
+    
+    if(!$result)
+    {
+        die('could not connect: ' .mysql_error());
+    }
+    
+    //echo $_SESSION[propertyID];
+    
     header( 'Location: /newListing3.php' );
 ?>

@@ -12,9 +12,42 @@ $result = array();
 if (count($_FILES) > 0)
 {
 	$result = handle_uploads($_SESSION[propertyID], $_FILES);
-	echo 'IMAGE IS UPLOADING';
-        
+	echo 'IMAGE IS UPLOADING';   
 }
 
+
+    include_once 'imageFunctions.php';
+    $con = get_dbconn("");
+    
+    
+
+    $result2 = mysql_query("SELECT * FROM IMAGE
+        WHERE PropertyID=$_SESSION[propertyID] AND ImageType='1'");
+
+    if(!$result2)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+
+    if(mysql_num_rows($result2) == 0)
+    {
+        $result3 = mysql_query("SELECT * FROM IMAGE
+        WHERE PropertyID=$_SESSION[propertyID]");
+
+        if(!$result3)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+
+        $row3 = mysql_fetch_array($result3);
+
+        $result4 = mysql_query("UPDATE IMAGE SET ImageType=1
+            WHERE PropertyID=$_SESSION[propertyID] AND ImageID=$row3[ImageID]");
+
+        if(!$result4)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+    }
 header( 'Location: /newListing2.php' );
 ?>
