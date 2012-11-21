@@ -8,9 +8,12 @@
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
+
+    session_start();
     $_GET[imageID];
     
     echo $_GET[imageID];
+    
     
     include 'config.inc.php';
     
