@@ -56,6 +56,19 @@
         mysql_query("UPDATE PROPERTY SET PageCompleted='6'
         WHERE PropertyID='$_SESSION[propertyID]'");
     }
+    //sending email
+        $to = $_POST['email'];
+        $from = "From: noReply@leasehood.com \r\n";
+        $subject = "Thank you for your Application";
+        $mesg = "Dear landlord,\n"."Thank you for using LeaseHood.com for your rental needs.  Your property listing has been submitted. ".
+                "You will notified within approximately two (2) business days regarding the status of your application with LeaseHood.com, ".
+                "confirming your status to submit a Proposal for Occupancy. " .
+                "Thank you again for joining LeaseHood and we hope your experience with us is a positive one.  Should you have any questions, please email us at info@LeaseHood.com.\n".
+                "Regards,\n Mark Gardner\n President|CEO";
+        mail($to, $subject, $mesg, $from);
+    
+    
+    
 
     mysql_close();
     
