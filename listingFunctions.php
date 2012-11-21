@@ -104,7 +104,7 @@
      * 
      * @param String $DateEndAcceptPFO This is the date the auciton will stop accepting PFOs
      * 
-     * @return String $status Satus contains the current status with all the needed HTML wrapping.
+     * @return String $status Status contains the current status with all the needed HTML wrapping.
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
@@ -116,15 +116,15 @@
             
             if($now > $start && $now < $ends)   //check to see if the auction is open for PFOs
             {
-               $status = '<font class="greenTextArea" style="float:right;">Satus:Open for PFOs</font>';
+               $status = '<font class="greenTextArea" style="float:right;">Status:Open for PFOs</font>';
             }
             elseif($now < $start)   //Check to see if the auction has begun
             {
-                $status = '<font class="yellowTextArea" style="float:right;">Satus:Bidding has not yet started</font>';
+                $status = '<font class="yellowTextArea" style="float:right;">Status:Bidding has not yet started</font>';
             }
             elseif($now > $ends)    //check to see if the auction has ended
             {
-                $status = '<font class="greyTextArea" style="float:right;">Satus:Bidding Has Ended</font>';
+                $status = '<font class="greyTextArea" style="float:right;">Status:Bidding Has Ended</font>';
             }
             else    //if none are true
             {
