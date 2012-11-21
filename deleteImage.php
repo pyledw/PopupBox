@@ -47,7 +47,6 @@
     
     if(mysql_num_rows($result2) == 0)
     {
-        echo mysql_num_rows($result2);
         $result3 = mysql_query("SELECT * FROM IMAGE
         WHERE PropertyID='$_SESSION[propertyID]'");
 
@@ -57,7 +56,7 @@
         }
 
         $row3 = mysql_fetch_array($result3);
-
+        echo $row3[ImageID];
         $result4 = mysql_query("UPDATE IMAGE SET ImageType=1
             WHERE PropertyID='$_SESSION[propertyID]' AND ImageID='$row3[ImageID]'");
 
