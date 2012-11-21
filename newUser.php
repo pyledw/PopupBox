@@ -38,7 +38,7 @@
         <div id="mainContent">
             <form id="newUserForm" method="post" action="newUserRedirect.php">
                 <table class="tableForm" width="900px;">
-                    <font class="formheader">Create and Account</font>
+                    <font class="formheader">Create an Account</font>
                     
                       <tr height="80px" style="vertical-align: top;">
                          <td class="field2" colspan="3">
