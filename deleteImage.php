@@ -54,7 +54,7 @@
         {
             die('could not connect: ' .mysql_error());
         }
-
+        echo mysql_num_rows($result3);
         $row3 = mysql_fetch_array($result3);
         echo $row3[ImageID];
         $result4 = mysql_query("UPDATE IMAGE SET ImageType=1
