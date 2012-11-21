@@ -40,7 +40,7 @@
     
 
     $result2 = mysql_query("SELECT * FROM IMAGE
-        WHERE PropertyID=$_SESSION[propertyID] AND ImageType='1'");
+        WHERE PropertyID=$_SESSION[propertyID] AND ImageType=1");
 
     if(!$result2)
         {
