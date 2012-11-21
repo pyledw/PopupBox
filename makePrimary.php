@@ -1,7 +1,8 @@
 <?php
 
-include_once 'imageFunctions.php';
-    $con = get_dbconn("");
+        include_once 'imageFunctions.php';
+        include_once 'config.inc.php';
+        $con = get_dbconn("");
     
     
         $result = mysql_query("UPDATE IMAGE SET ImageType=0
