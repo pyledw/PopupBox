@@ -40,7 +40,7 @@
     
 
     $result2 = mysql_query("SELECT * FROM IMAGE
-        WHERE PropertyID=$_SESSION[propertyID] AND ImageType=1");
+        WHERE PropertyID='$_SESSION[propertyID]' AND ImageType=1");
 
     if(!$result2)
         {
@@ -50,7 +50,7 @@
     if(mysql_num_rows($result2) == 0)
     {
         $result3 = mysql_query("SELECT * FROM IMAGE
-        WHERE PropertyID=$_SESSION[propertyID]");
+        WHERE PropertyID='$_SESSION[propertyID]'");
 
         if(!$result3)
         {
@@ -60,7 +60,7 @@
         $row3 = mysql_fetch_array($result3);
 
         $result4 = mysql_query("UPDATE IMAGE SET ImageType=1
-            WHERE PropertyID=$_SESSION[propertyID] AND ImageID=$row3[ImageID]");
+            WHERE PropertyID='$_SESSION[propertyID]' AND ImageID='$row3[ImageID]'");
 
         if(!$result4)
         {
