@@ -44,9 +44,10 @@
         {
             die('could not connect: ' .mysql_error());
         }
-    echo mysql_num_rows($result2);
+    
     if(mysql_num_rows($result2) == 0)
     {
+        echo mysql_num_rows($result2);
         $result3 = mysql_query("SELECT * FROM IMAGE
         WHERE PropertyID='$_SESSION[propertyID]'");
 
