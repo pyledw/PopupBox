@@ -179,7 +179,7 @@ CREATE TABLE IMAGE (
 	PropertyID                  int(8)            NOT NULL,
 	ImagePathOriginal           char(50),
 	ImagePathThumb              char(50),
-	ImageType                   tinyint(1),
+	ImageType                   tinyint(1)                     DEFAULT '0',
  
 	FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
