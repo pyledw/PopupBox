@@ -14,8 +14,7 @@
     $con = get_dbconn("");
 
     //Query to select the user's application using their userID number
-    $result = mysql_query("SELECT * FROM PROPERTY
-    WHERE PropertyID ='$propertyID'");
+    $result = mysql_query("SELECT IsPaid FROM PROPERTY WHERE PropertyID ='$propertyID'");
         
     if(!$result)
         {
@@ -23,12 +22,13 @@
         }
     $row = mysql_fetch_array($result);
     
-    
-    
     if($row[IsPaid] == 1)
     {
+		// The fee is already paid, so go back to myHood.
         header( 'Location: /myHood.php' );
     }
+	
+	$_SESSION['fee-type'] = 'listing';
 ?>
 
 
@@ -37,17 +37,11 @@
     <hr class="Title" />
     <div id="mainContent">
         PAY LISTING FEE HERE<br/><br/>
-        <?php 
-        if(!isset($propertyID))
-        {
-            echo 'There is no property specified with this pament.  DO NOT PAY FEE!<br/>';
-        }
-        ?>
         
-        Form
+ <!--       Form
         
         <form action="payListingFeeRedirect.php" method="post">
-            <input type="text" name="propertyID" value="<?php echo $propertyID; ?>" style="display: none;" />
+            <input type="text" name="propertyID" value="<?= $propertyID ?>" style="display: none;" />
         <table class="tableForm" border="0" >
             <tr>
                 <td>First Name: </td>
@@ -63,7 +57,28 @@
         </table>
         </form>
     </div>
-    
-<?php
+    -->
+
+<form action='checkout.php' METHOD='POST'>
+        <input type='image' name='paypal_submit' id='paypal_submit'
+                src='https://www.paypal.com/en_US/i/btn/btn_dg_pay_w_paypal.gif' border='0' align='top' alt='Pay with PayPal' />
+</form>
+
+
+<script src='https://www.paypalobjects.com/js/external/dg.js' type='text/javascript'></script>
+
+
+<script>
+
+        var dg = new PAYPAL.apps.DGFlow(
+        {
+                trigger: 'paypal_submit',
+                expType: 'instant'
+                 //PayPal will decide the experience type for the buyer based on his/her 'Remember me on your computer' option.
+        });
+
+</script>
+
+<?
         include 'Footer.php';
 ?>

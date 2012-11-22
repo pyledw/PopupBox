@@ -33,6 +33,11 @@ $paypal_API_Signature = "APVEl-I7DVPD6FsgN8j9i9uRbqBwAvuRR9R-HmcBImCL3vso7E2pCm6
 $paypal_returnURL     = "http://199.115.231.216:85/paypal_confirm.php";			// absolute url for successful payments
 $paypal_cancelURL     = "http://199.115.231.216:85/ppaypal_cancel.php";			// absolute url for cancelled payments
 
+$feeDescriptions = array(
+	'listing' => 'Leasehood.com Property Listing Fee');
+
+$feePrices = array(
+	'listing' => '10.00');
 
 
 function get_dbconn($api) {
