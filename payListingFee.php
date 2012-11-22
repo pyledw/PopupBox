@@ -2,26 +2,33 @@
     /**
      * This page allow the user to pay thier listing fee
      */
-        $title = "Contact LeaseHood";
-	include 'Header.php';
-        $propertyID = $_GET[propertyID];
-        if(isset($_SESSION['propertyID']))
-        {
-            $propertyID = $_SESSION['propertyID'];
-        }
-        
+    $propertyID = $_GET[propertyID];
+    if(isset($_SESSION['propertyID']))
+    {
+        $propertyID = $_SESSION['propertyID'];
+    }
+
+	include 'dev.php';
+	goto theend;
+
+    if(!isset($propertyID))
+    {
+		header('Location: /myHood.php');
+    }
+
+    $title = "Contact LeaseHood";
+    include 'Header.php';
     include_once 'config.inc.php';
+
     $con = get_dbconn("");
 
-    //Query to select the user's application using their userID number
     $result = mysql_query("SELECT IsPaid FROM PROPERTY WHERE PropertyID ='$propertyID'");
         
     if(!$result)
-        {
-            die('could not connect: ' .mysql_error());
-        }
+    {
+        die('could not connect: ' .mysql_error());
+    }
     $row = mysql_fetch_array($result);
-    
     if($row[IsPaid] == 1)
     {
 		// The fee is already paid, so go back to myHood.
@@ -74,11 +81,10 @@
         {
                 trigger: 'paypal_submit',
                 expType: 'instant'
-                 //PayPal will decide the experience type for the buyer based on his/her 'Remember me on your computer' option.
         });
-
 </script>
 
 <?
+theend:
         include 'Footer.php';
 ?>
