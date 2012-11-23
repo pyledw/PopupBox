@@ -7,30 +7,29 @@ class FeeProcessing
 	constant STATUS_SUCCESS = 2;
 	constant STATUS_CANCEL = 3;
 	constant STATUS_ERROR = 4;
-	
+
 	constant SERVICE_PAYPAL = 1;
 
 	constant FEE_TYPE_LISTING = 1;
 	constant FEE_TYPE_APPLICATION = 2;
 
-
-	public function write_listing_fee_record($userid, $auctionid, $token, $price)
+	public function write_listing_fee_record($userid, $propertyid, $token, $price)
 	{
 	    $con = get_dbconn("PDO");
     	$stmt = $con->prepare("
               INSERT INTO FEE 
-                  (UserID, FeeType, Amount, AuctionID, PaymentServiceID, PaymentToken, 
+                  (UserID, FeeType, Amount, PropertyID, PaymentServiceID, PaymentToken, 
 	               TransactionStatusID) 
               VALUES
-    	          (:userid, :feetype, :amount, :auctionid, :serviceid, :token, :statusid)");
+    	          (:userid, :feetype, :amount, :propertyid, :serviceid, :token, :statusid)");
 
-    	$stmt->bindValue(':userid',    $userid,               PDO::PARAM_INT);
-	    $stmt->bindValue(':feetype',   self:FEE_TYPE_LISTING, PDO::PARAM_INT);
-    	$stmt->bindValue(':amount',    $price,                PDO::PARAM_STR);
-    	$stmt->bindValue(':auctionid', $auctionid,            PDO::PARAM_INT);
-	    $stmt->bindValue(':serviceid', self::SERVICE_PAYPAL,  PDO::PARAM_INT);
-    	$stmt->bindValue(':token',     $token,                PDO::PARAM_STR);
-	    $stmt->bindValue(':statusid',  self::STATUS_BEGIN,    PDO::PARAM_INT);
+    	$stmt->bindValue(':userid',     $userid,               PDO::PARAM_INT);
+	    $stmt->bindValue(':feetype',    self:FEE_TYPE_LISTING, PDO::PARAM_INT);
+    	$stmt->bindValue(':amount',     $price,                PDO::PARAM_STR);
+    	$stmt->bindValue(':propertyid', $propertyid,           PDO::PARAM_INT);
+	    $stmt->bindValue(':serviceid',  self::SERVICE_PAYPAL,  PDO::PARAM_INT);
+    	$stmt->bindValue(':token',      $token,                PDO::PARAM_STR);
+	    $stmt->bindValue(':statusid',   self::STATUS_BEGIN,    PDO::PARAM_INT);
 
     	$stmt->execute();
 	}
