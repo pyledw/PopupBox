@@ -1,20 +1,18 @@
 <?php
     /**
-     * This page allows teh user to have paid the listing fee and updates the listing.
+     * This page updates the listing after the user has paid the fee.
      */
     if($_POST[result] == 'SUCCESS')
     {
         include_once 'config.inc.php';
         $con = get_dbconn("");
-        
-        mysql_query("UPDATE PROPERTY SET IsPaid='1'
-            WHERE PropertyID = '$_POST[propertyID]'");
-        
+
+        mysql_query("UPDATE PROPERTY SET IsPaid='1' WHERE PropertyID = '$_POST[propertyID]'");
         header( 'Location: /myHood.php' );
 
     }
     else
     {
-        
+
     }
 ?>
