@@ -86,9 +86,6 @@ as the Title, and CSS/Javascript References.  It also contains the navigation ba
     <!--CSS Reference to Form Styles-->
     <link rel="stylesheet" type="text/css" href="css/formStyle.css" />
     
-    <!--Javascript Reference to Form Labels-->
-    <script type="text/javascript" src="js/jquery.formLabels1.0.js"></script>
-    
     <!-- These reference the external files for popups -->
     <script type="text/javascript" src="js/facebox.js"></script>
     <link rel="stylesheet" type="text/css" href="css/facebox.css" />
