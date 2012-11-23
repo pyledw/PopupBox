@@ -32,7 +32,7 @@
     }
 
     $_SESSION['fee-type'] = 'listing';
-    $include 'Header.php';		// this should come after all Location redirects
+    include 'Header.php';		// this should come after all Location redirects
 ?>
     <h1 class="Title">Pay for Listing</h1>
     <hr class="Title" />
