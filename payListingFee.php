@@ -1,8 +1,12 @@
 <?
     /**
-     * This page allow the user to pay their listing fee
+     * This page allows the user to pay the fee to list their property.
      */
-    $propertyID = $_GET[propertyID];
+	include_once 'config.inc.php';
+	include_once 'log.inc.php';
+
+	session_start();
+    $propertyID = $_GET['propertyID'];
     if(isset($_SESSION['propertyID']))
     {
         $propertyID = $_SESSION['propertyID'];
@@ -10,14 +14,11 @@
 
     if(!isset($propertyID))
     {
+		loginfo('No property id on session or GET variable?  going back to myHood');
         header('Location: /myHood.php');
     }
 
-    $title = "Contact LeaseHood";
-    include_once 'config.inc.php';
-
     $con = get_dbconn("");
-
     $result = mysql_query("SELECT IsPaid FROM PROPERTY WHERE PropertyID ='$propertyID'");
 
     if(!$result)
@@ -32,6 +33,8 @@
     }
 
     $_SESSION['fee-type'] = 'listing';
+	
+	$title = "Contact LeaseHood";
     include 'Header.php';		// this should come after all Location redirects
 ?>
     <h1 class="Title">Pay for Listing</h1>
