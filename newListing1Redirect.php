@@ -115,7 +115,7 @@
         
     $row = mysql_fetch_array($result);
     
-    echo $row[PageCompleted];
+    echo $row['PageCompleted'];
     
     //Setting which page has been compleated.  If the form has already been compleated it ignors this
     if($row['PageCompleted'] != "6")

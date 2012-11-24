@@ -279,8 +279,8 @@
                     </td>
                     <td>
                         <label class="label">Clothes Washer Hookups?</label><br/>&nbsp;&nbsp;&nbsp;&nbsp;
-                        Yes<input type="radio" name="washerHookup"  value="1" <?php if($row[ClothesWasherHookup] == '1'){echo " checked='checked'";}?>/>
-                        No<input type="radio" name="washerHookup"   value="0" <?php if($row[ClothesWasherHookup] != '1'){echo " checked='checked'";}?>/>
+                        Yes<input type="radio" name="washerHookup"  value="1" <?php if($row['ClothesWasherHookup'] == '1'){echo " checked='checked'";}?>/>
+                        No<input type="radio" name="washerHookup"   value="0" <?php if($row['ClothesWasherHookup'] != '1'){echo " checked='checked'";}?>/>
                     </td>
                 </tr>
                 <tr>

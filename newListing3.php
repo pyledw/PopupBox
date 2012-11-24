@@ -1,7 +1,6 @@
 <?php
     $title = "New Listing #3";
     include 'Header.php';
-    session_start();
     /**
      * First Check is to ensur ethe user is logged in, and get the data of the correct user and property listing.
      * 

@@ -15,19 +15,19 @@
      */
     
     //Test to check if user is logged in or not IF not they will be redirected to the login page
-    if(!isset($_SESSION[userID]))
+    if(!isset($_SESSION['userID']))
     {
         header( 'Location: /loginRequired.php' ) ;
     }
     
-    if(isset($_SESSION[propertyID]))
+    if(isset($_SESSION['propertyID']))
     {
-        $propertyID = $_SESSION[propertyID];
+        $propertyID = $_SESSION['propertyID'];
     }
-    elseif(isset($_POST[propertyID]))
+    elseif(isset($_POST['propertyID']))
     {
-        $propertyID = $_POST[propertyID];
-        $_SESSION[propertyID] = $_POST[propertyID];
+        $propertyID = $_POST['propertyID'];
+        $_SESSION['propertyID'] = $_POST['propertyID'];
     }
     else
     {
@@ -85,9 +85,9 @@
                              while($row = mysql_fetch_array($resultImage))
                              {
                                  echo '<td width="100">';
-                                 echo '<a href='.$row[ImagePathOriginal].'><img width="75px" src="'.$row[ImagePathThumb].'" /></a><br/>';
-                                 echo '<a href="deleteImage.php?imageID='.$row[ImageID].'">Delete</a><br/>';
-                                 echo '<a href="makePrimary.php?imageID='.$row[ImageID].'&propertyID='.$propertyID.'">Make Main</a><br/>';
+                                 echo '<a href='.$row['ImagePathOriginal'].'><img width="75px" src="'.$row['ImagePathThumb'].'" /></a><br/>';
+                                 echo '<a href="deleteImage.php?imageID='.$row['ImageID'].'">Delete</a><br/>';
+                                 echo '<a href="makePrimary.php?imageID='.$row['ImageID'].'&propertyID='.$propertyID.'">Make Main</a><br/>';
                                  echo '</td>';
                                  ++$num;
                              }
