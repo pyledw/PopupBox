@@ -4,15 +4,15 @@ require_once ("log.inc.php");
 
 class FeeProcessing
 {
-    const STATUS_BEGIN = 1;
-    const STATUS_SUCCESS = 2;
-    const STATUS_CANCEL = 3;
-    const STATUS_ERROR = 4;
+    const STATUS_PENDING        = 1;
+    const STATUS_SUCCESS        = 2;
+    const STATUS_CANCEL         = 3;
+    const STATUS_ERROR          = 4;
 
-    const SERVICE_PAYPAL = 1;
+    const SERVICE_PAYPAL        = 1;
 
-    const FEE_TYPE_LISTING = 1;
-    const FEE_TYPE_APPLICATION = 2;
+    const FEE_TYPE_LISTING      = 1;
+    const FEE_TYPE_APPLICATION  = 2;
 
     const FEE_INSERT_SQL = "
               INSERT INTO FEE
@@ -21,9 +21,9 @@ class FeeProcessing
               VALUES
                   (:userid, :feetype, :amount, :propertyid, :applicationid, :serviceid, :token, :statusid)";
 
-    public static function write_listing_fee_record($userid, $propertyid, $token, $price)
+    private static function write_pending_fee_record($userid, $propertyid, $token, $feeType, $applicationid, $price, $serviceid)
     {
-		loginfo('Calling write_listing_fee_record with: ' . print_r(func_get_args(), true));
+		loginfo('Calling write_pending_fee_record with: ' . print_r(func_get_args(), true));
 
         $con = get_dbconn("PDO");
         $stmt = $con->prepare(self::FEE_INSERT_SQL);
@@ -32,32 +32,15 @@ class FeeProcessing
         $stmt->bindValue(':amount',        $price,                 PDO::PARAM_STR);
         $stmt->bindValue(':propertyid',    $propertyid,            PDO::PARAM_INT);
         $stmt->bindValue(':token',         $token,                 PDO::PARAM_STR);
-        $stmt->bindValue(':applicationid', null,                   PDO::PARAM_INT);
-        $stmt->bindValue(':statusid',      self::STATUS_BEGIN,     PDO::PARAM_INT);
-        $stmt->bindValue(':feetype',       self::FEE_TYPE_LISTING, PDO::PARAM_INT);
-        $stmt->bindValue(':serviceid',     self::SERVICE_PAYPAL,   PDO::PARAM_INT);
+        $stmt->bindValue(':applicationid', $applicationid,         PDO::PARAM_INT);
+        $stmt->bindValue(':statusid',      self::STATUS_PENDING,   PDO::PARAM_INT);
+        $stmt->bindValue(':feetype',       $feeType, 		       PDO::PARAM_INT);
+        $stmt->bindValue(':serviceid',     $serviceid,             PDO::PARAM_INT);
 
         $stmt->execute();
 		$id = $con->lastInsertId();
 		loginfo("Resulting ID: $id");
 		return $id;
-    }
-
-    public static function write_application_fee_record($userid, $applicationid, $token, $price)
-    {
-        $con = get_dbconn("PDO");
-        $stmt = $con->prepare(self::FEE_INSERT_SQL);
-
-        $stmt->bindValue(':userid',        $userid,                    PDO::PARAM_INT);
-        $stmt->bindValue(':amount',        $price,                     PDO::PARAM_STR);
-        $stmt->bindValue(':applicationid', $auctionid,                 PDO::PARAM_INT);
-        $stmt->bindValue(':token',         $token,                     PDO::PARAM_STR);
-        $stmt->bindValue(':statusid',      self::STATUS_BEGIN,         PDO::PARAM_INT);
-        $stmt->bindValue(':feetype',       self::FEE_TYPE_APPLICATION, PDO::PARAM_INT);
-        $stmt->bindValue(':serviceid',     self::SERVICE_PAYPAL,       PDO::PARAM_INT);
-
-        $stmt->execute();
-        return $con->lastInsertId();
     }
 
 	private static function update_status($token, $status, $amount)
@@ -117,7 +100,7 @@ class FeeProcessing
 		if($ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
 		{
 			$token = urldecode($resArray["TOKEN"]);
-        	self::write_listing_fee_record($userid, $propertyid, $token, $fee['price']);
+        	self::write_pending_fee_record($userid, $propertyid, $token, self::FEE_TYPE_LISTING, null, $fee['price'], self::SERVICE_PAYPAL);
 	        RedirectToPayPalDG( $token );
 			return true;		// actually, this should never be reached
 		}
