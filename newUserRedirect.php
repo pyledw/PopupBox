@@ -49,7 +49,7 @@
         
         $con = get_dbconn("");
         $result = mysql_query("SELECT * FROM USER
-                WHERE UserName ='" . $_POST[username] . "'");
+                WHERE UserName ='" . $_POST['username'] . "'");
         $userData = mysql_fetch_array($result);
 
         $_SESSION['userID'] = $userData['UserID'];

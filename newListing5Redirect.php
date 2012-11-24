@@ -10,35 +10,38 @@
      * @author David Pyle <Pyledw@Gmail.com>
      */
     session_start();
+	include_once 'log.inc.php';
     
      //Test to check if user is logged in or not IF not they will be redirected to the login page
-    if(!isset($_SESSION[userID]))
+    if(!isset($_SESSION['userID']))
     {
+		loginfo('No user id on session.  Going back to loginRequired.');
         header( 'Location: /loginRequired.php' ) ;
     }
     
-    if(isset($_SESSION[propertyID]))
+    if(isset($_SESSION['propertyID']))
     {
-        $propertyID = $_SESSION[propertyID];
+        $propertyID = $_SESSION['propertyID'];
     }
-    elseif(isset($_POST[propertyID]))
+    elseif(isset($_POST['propertyID']))
     {
-        $propertyID = $_POST[propertyID];
+        $propertyID = $_POST['propertyID'];
         $_SESSION['propertyID'] = $propertyID;
     }
     else
     {
+		loginfo('No property id on session or post?  Going back to myhood');
         header( 'Location: /myHood.php' );
     }
 
+	logdebug("Property id: $propertyID");
     require_once "config.inc.php";
          
     $con = get_dbconn("");
     
     
     
-    $result = mysql_query("SELECT PageCompleted FROM PROPERTY
-        WHERE PropertyID='$_SESSION[propertyID]'");
+    $result = mysql_query("SELECT PageCompleted FROM PROPERTY WHERE PropertyID='$_SESSION[propertyID]'");
     
      if(!$result)
         {
@@ -47,14 +50,13 @@
         
     $row = mysql_fetch_array($result);
     
-    echo $row[PageCompleted];
+    // echo $row[PageCompleted];
     
     //Setting which page has been compleated.  If the form has already been compleated it ignors this
-    if($row[PageCompleted] != "6")
+    if($row['PageCompleted'] != "6")
     {
         
-        mysql_query("UPDATE PROPERTY SET PageCompleted='6'
-        WHERE PropertyID='$_SESSION[propertyID]'");
+        mysql_query("UPDATE PROPERTY SET PageCompleted='6' WHERE PropertyID='$_SESSION[propertyID]'");
     }
     //sending email
         $to = $_POST['email'];

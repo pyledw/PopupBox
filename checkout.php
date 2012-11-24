@@ -1,26 +1,33 @@
 <?php
+session_start();
+
+require_once ("config.inc.php");
 require_once ("paypal.inc.php");
+require_once ("log.inc.php");
+require_once ("feeprocessing.inc.php");
 
-$resArray = SetExpressCheckoutDG("My Little Pony", "15.00");
+$feeType = $_SESSION['fee-type'];
 
-$ack = strtoupper($resArray["ACK"]);
-if($ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
+if(!isset($feeType))
 {
-        $token = urldecode($resArray["TOKEN"]);
-       RedirectToPayPalDG( $token );
-} 
-else  
+	header('Location: myHood.php');
+}
+
+$fee = $cfg_fees[$feeType];
+logdebug('Fee is: ' . print_r($fee, true));
+
+//
+// this may redirect to paypal.  if it doesn't, something went wrong.  oops
+//
+$res = FeeProcessing::begin_paypal_for_listing_fee($_SESSION['userID'], $_SESSION['propertyID'], $fee);
+
+// if we get here, $res should almost certainly be false
+if ($res)
 {
-        //Display a user friendly Error on the page using any of the following error information returned by PayPal
-        $ErrorCode = urldecode($resArray["L_ERRORCODE0"]);
-        $ErrorShortMsg = urldecode($resArray["L_SHORTMESSAGE0"]);
-        $ErrorLongMsg = urldecode($resArray["L_LONGMESSAGE0"]);
-        $ErrorSeverityCode = urldecode($resArray["L_SEVERITYCODE0"]);
-                
-        echo "SetExpressCheckout API call failed. ";
-        echo "Detailed Error Message: " . $ErrorLongMsg;
-        echo "Short Error Message: " . $ErrorShortMsg;
-        echo "Error Code: " . $ErrorCode;
-        echo "Error Severity Code: " . $ErrorSeverityCode;
+	// do nothing, its good
+}
+else 
+{
+	// what should we do?  we've already logged the error
 }
 ?>

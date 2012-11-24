@@ -13,18 +13,18 @@
     
     
     /** Test to check if user is logged in or not IF not they will be redirected to the login page */
-    if(!isset($_SESSION[userID]))
+    if(!isset($_SESSION['userID']))
     {
         header( 'Location: /loginRequired.php' ) ;
     }
     
-    if(isset($_SESSION[propertyID]))
+    if(isset($_SESSION['propertyID']))
     {
-        $propertyID = $_SESSION[propertyID];
+        $propertyID = $_SESSION['propertyID'];
     }
-    elseif(isset($_POST[propertyID]))
+    elseif(isset($_POST['propertyID']))
     {
-        $propertyID = $_POST[propertyID];
+        $propertyID = $_POST['propertyID'];
         $_SESSION['propertyID'] = $propertyID;
     }
     else
