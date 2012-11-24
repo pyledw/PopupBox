@@ -25,7 +25,7 @@ function getMainThumbPath($propertyID)
                       
     $row = mysql_fetch_array($resultImage);
     
-    return $row['ImagePathThumb'];
+    return $row[ImagePathThumb];
  
 }
 
@@ -45,7 +45,7 @@ function getMainPath($propertyID)
                       
     $row = mysql_fetch_array($resultImage);
     
-    return $row['ImagePathOriginal'];
+    return $row[ImagePathOriginal];
  
 }
 

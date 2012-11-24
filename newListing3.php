@@ -14,19 +14,19 @@
      */
     
     //Test to check if user is logged in or not IF not they will be redirected to the login page
-    if(!isset($_SESSION['userID']))
+    if(!isset($_SESSION[userID]))
     {
         header( 'Location: /loginRequired.php' ) ;
     }
     
-    if(isset($_SESSION['propertyID']))
+    if(isset($_SESSION[propertyID]))
     {
-        $propertyID = $_SESSION['propertyID'];
+        $propertyID = $_SESSION[propertyID];
     }
-    else if(isset ($_POST['propertyID']))
+    else if(isset ($_POST[propertyID]))
     {
-        $propertyID = $_POST['propertyID'];
-        $_SESSION['propertyID'] = $propertyID;
+        $propertyID = $_POST[propertyID];
+        $_SESSION[propertyID] = $propertyID;
     }
     else
     {
@@ -57,13 +57,13 @@
                 <font class="formheader">Dates</font>
                 <tr>
                     <td>
-                        <label class="label">Date the property will first be available for occupancy:</label><br/><input type="text" name="available" class="required" id="datepicker1" value="<?php echo $row['DateAvailable']?>" />
+                        <label class="label">Date the property will first be available for occupancy:</label><br/><input type="text" name="available" class="required" id="datepicker1" value="<?php echo $row[DateAvailable]?>" />
                     </td>
                     <td>
-                        <label class="label">Date you will begin accepting PFOs:</label><br/><input type="text" name="acceptingPFO" id="datepicker2" class="required" value="<?php echo $row['DatePFOAccept']?>" />
+                        <label class="label">Date you will begin accepting PFOs:</label><br/><input type="text" name="acceptingPFO" id="datepicker2" class="required" value="<?php echo $row[DatePFOAccept]?>" />
                     </td>
                     <td>
-                        <label class="label">Date you will stop accepting PFOs:</label><br/><input type="text" name="stopAcceptingPFO" id="datepicker3" class="required" value="<?php echo $row['DatePFOEndAccept']?>" />
+                        <label class="label">Date you will stop accepting PFOs:</label><br/><input type="text" name="stopAcceptingPFO" id="datepicker3" class="required" value="<?php echo $row[DatePFOEndAccept]?>" />
                     </td>
                 </tr>
                 <tr>
@@ -80,26 +80,26 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Starting Bid Monthly Rental Rate:</label><br/><input type="text" name="startingBid" class="required" value="<?php echo $row['StartingBid']?>"/>
+                        <label class="label">Starting Bid Monthly Rental Rate:</label><br/><input type="text" name="startingBid" class="required" value="<?php echo $row[StartingBid]?>"/>
                     </td>
                     <td>
-                        <label class="label">Minimum Bid Increment:</label><br/><input type="text" name="bidIncrement" class="required" value="<?php echo $row['MinBidIncrement']?>"/>
+                        <label class="label">Minimum Bid Increment:</label><br/><input type="text" name="bidIncrement" class="required" value="<?php echo $row[MinBidIncrement]?>"/>
                     </td>
                     <td>
-                        <label class="label">Required Deposit:</label><br/><input type="text" name="requiredDeposit" class="required" value="<?php echo $row['RequiredDeposit']?>"/>
+                        <label class="label">Required Deposit:</label><br/><input type="text" name="requiredDeposit" class="required" value="<?php echo $row[RequiredDeposit]?>"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Rent-it-Now Monthly Rental Rate:</label><br/><input type="text" name="rentItNowRate" value="<?php echo $row['RentNowRate']?>"/>
+                        <label class="label">Rent-it-Now Monthly Rental Rate:</label><br/><input type="text" name="rentItNowRate" value="<?php echo $row[RentNowRate]?>"/>
                     </td>
                     <td>
-                        <label class="label">Minimum rental term, months:</label><br/><input type="text" name="minTerm" class="required" value="<?php echo $row['MinimumTerm']?>"/>
+                        <label class="label">Minimum rental term, months:</label><br/><input type="text" name="minTerm" class="required" value="<?php echo $row[MinimumTerm]?>"/>
                     </td>
                     <td>
                         <label class="label">Do you want to Pre-Market?</label><br/>
-                         Yes<input type="radio" name="comingSoon"  value="1" <?php if($row['PreMarket'] == '1'){echo "checked='checked'";}?> />
-                         No<input type="radio" name="comingSoon"checked='checked'  value="0" <?php if($row['PreMarket'] != '1'){echo "checked='checked'";}?> />
+                         Yes<input type="radio" name="comingSoon"  value="1" <?php if($row[PreMarket] == '1'){echo "checked='checked'";}?> />
+                         No<input type="radio" name="comingSoon"checked='checked'  value="0" <?php if($row[PreMarket] != '1'){echo "checked='checked'";}?> />
                     </td>
                 </tr>
                 <tr>
