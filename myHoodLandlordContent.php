@@ -31,7 +31,7 @@
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
         {
-            displayMyListings($row[PropertyID]);
+            displayMyListings($row['PropertyID']);
 
         }
     ?>

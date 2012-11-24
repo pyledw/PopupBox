@@ -1,20 +1,44 @@
+<html>
+<body>
+
 <?php
     /**
-     * This page allows teh user to have paid the listing fee and updates the listing.
+     * This page updates the listing after the user has paid the fee.  It then closes the paypal popup window
+	 * and redirects the main window to myHood.
      */
-    if($_POST[result] == 'SUCCESS')
-    {
-        include_once 'config.inc.php';
-        $con = get_dbconn("");
-        
-        mysql_query("UPDATE PROPERTY SET IsPaid='1'
-            WHERE PropertyID = '$_POST[propertyID]'");
-        
-        header( 'Location: /myHood.php' );
+include_once 'config.inc.php';
+require_once ("feeprocessing.inc.php");
+$res = FeeProcessing::complete_paypal($_REQUEST['token'], $_REQUEST['PayerID']);
 
-    }
-    else
-    {
-        
-    }
+if($res)
+{
+	// Payment was successfully completed!  Hooray!  Set the property ispaid flag now:
+    FeeProcessing::set_property_ispaid($_REQUEST['token']);
+
+	// now close this popup window and redirect the main window back to myHood
 ?>
+	<script>
+		window.onload = function(){
+			if(window.opener){
+				window.opener.window.location.href="myHood.php"; 
+				 window.close();
+			 }
+			else{
+				 if(top.dg.isOpen() == true){
+					 top.dg.closeFlow();
+					 return true;
+				  }
+			  }
+		};
+	</script>
+<?
+}
+else
+{
+	// what's what?  payment failed?  boooooooooo
+	// no idea what to do here yet
+}
+?>
+
+</body>
+</html>

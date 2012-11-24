@@ -62,7 +62,7 @@
         
         //The below if statments are testing to see what point the applicaiton is at.
         //It checks to see if it has been approved, then if it has been paid, and finally
-        //it checks to see if it was compleated.
+        //it checks to see if it was completed.
         if($row['IsApproved'] == '1')
         {
             echo '
@@ -83,7 +83,7 @@
                     echo '<div>
                                <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:orange;height:20px;">
                                </div>
-                                Your Application has been compleated, but you must pay the applicaiton fee <br/> before
+                                Your Application has been completed, but you must pay the applicaiton fee <br/> before
                                 your applicaiton will be reviewed by an administrator.  Please click <a href="payApplicationFee.php">HERE</a> to pay your fee.
                           </div>';
                    }
@@ -107,7 +107,7 @@
                     <div style="float:left; margin: 0px 5px 0px 5px;width:60px;background:yellow;height:20px;">
 
                     </div>
-                    Your application has not yet been compleated, please click to finish your application<br />
+                    Your application has not yet been completed, please click to finish your application<br />
                     <a href="editApplication.php">Edit Your Application</a>
                 </div>';
             }
