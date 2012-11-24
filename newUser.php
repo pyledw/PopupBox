@@ -14,7 +14,7 @@
         $title = "New User";
 	include 'Header.php';
         
-          $errorMessage = $_POST[error]; 
+          $errorMessage = $_POST['error']; 
           $userName = $_POST['username'];
           $password = $_POST['password'];
           $email = $_POST['email'];

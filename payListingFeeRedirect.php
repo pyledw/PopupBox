@@ -2,17 +2,17 @@
     /**
      * This page updates the listing after the user has paid the fee.
      */
-    if($_POST[result] == 'SUCCESS')
-    {
-        include_once 'config.inc.php';
-        $con = get_dbconn("");
+include_once 'config.inc.php';
+require_once ("feeprocessing.inc.php");
+$res = FeeProcessing::complete_paypal($_REQUEST['token'], $_REQUEST['PayerID']);
 
-        mysql_query("UPDATE PROPERTY SET IsPaid='1' WHERE PropertyID = '$_POST[propertyID]'");
-        header( 'Location: /myHood.php' );
+if($res)
+{
+    FeeProcessing::set_property_ispaid($_REQUEST['token']);
+    header( 'Location: /myHood.php' );
 
-    }
-    else
-    {
-
-    }
+}
+else
+{
+}
 ?>

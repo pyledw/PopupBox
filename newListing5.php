@@ -18,13 +18,13 @@
         header( 'Location: /loginRequired.php' ) ;
     }
     
-    if(isset($_SESSION[propertyID]))
+    if(isset($_SESSION['propertyID']))
     {
-        $propertyID = $_SESSION[propertyID];
+        $propertyID = $_SESSION['propertyID'];
     }
-    elseif(isset($_POST[propertyID]))
+    elseif(isset($_POST['propertyID']))
     {
-        $propertyID = $_POST[propertyID];
+        $propertyID = $_POST['propertyID'];
         $_SESSION['propertyID'] = $propertyID;
     }
     else

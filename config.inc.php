@@ -14,6 +14,12 @@ $db_server 	 = '199.115.231.216';                   // server name or IP address
 $db_database = 'leasehood1112';                     // database to select
 $pw_salt     = '68f33ecb44592ddd476af4145a2eae9f';  // salt for password encryption
 
+/**
+ * Set this to the base address for this server.  By default it's the server name and server port.  It must
+ * end with a '/'.
+ */
+$base_address = 'http://' . $_SERVER['SERVER_NAME'] .':'. $_SERVER['SERVER_PORT'] . '/';
+
 $upload_max_size_mb 		= 2.0;          // maximum size of an uploaded image
 $upload_thumbnail_size 		= 200;			// horizontal size of thumbnails, in pixels
 $upload_save_path 		= "uploads/";		// relative to docroot.  Must end with a '/'
@@ -31,20 +37,20 @@ $paypal_API_UserName  = "jcdick_1350762445_biz_api1.mail.lipscomb.edu";			// Get
 $paypal_API_Password  = "1350762468";							// ..
 $paypal_API_Signature = "APVEl-I7DVPD6FsgN8j9i9uRbqBwAvuRR9R-HmcBImCL3vso7E2pCm6- ";	// ..
 
-/* 
+/** 
  * Controls fee payment processing.  URLs for paypal return/cancel must be relative to docroot.
  */
 $cfg_fees = array(
 	'listing' => array(
 		'description'   => 'Leasehood.com Property Listing Fee',
 		'price'         => '10.00',
-		'paypal-return' => 'payListingFeeRedirect.php',
-		'paypal-cancel' => 'payListingFeeRedirect.php'),
+		'paypal-return' => $base_address . 'payListingFeeRedirect.php',
+		'paypal-cancel' => $base_address . 'payListingFeeRedirect.php'),
 	'application' => array(
         'description'   => 'Leasehood.com Application Fee',
         'price'         => '15.00',
-        'paypal-return' => 'payApplicationFeeRedirect.php',
-        'paypal-cancel' => 'payApplicationFeeRedirect.php')
+        'paypal-return' => $base_address . 'payApplicationFeeRedirect.php',
+        'paypal-cancel' => $base_address . 'payApplicationFeeRedirect.php')
 	);
 
 

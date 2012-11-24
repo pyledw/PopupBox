@@ -1,7 +1,10 @@
 <?php
 session_start();
-include_once 'feeprocessing.inc.php';
 
+require_once ("config.inc.php");
+require_once ("paypal.inc.php");
+require_once ("log.inc.php");
+require_once ("feeprocessing.inc.php");
 
 $feeType = $_SESSION['fee-type'];
 
@@ -10,12 +13,9 @@ if(!isset($feeType))
 	header('Location: myHood.php');
 }
 
-require_once ("config.inc.php");
-require_once ("paypal.inc.php");
-require_once ("log.inc.php");
-
 $fee = $cfg_fees[$feeType];
-logdebug('Fee is: ' . print_r($fee, true);
+logdebug('Fee is: ' . print_r($fee, true));
+
 $resArray = SetExpressCheckoutDG($fee['description'], $fee['price'], $fee['paypal-return'], $fee['paypal-cancel']);
 logdebug('Result of SetExpressCheckoutDG: ' . print_r($resArray, true));
 
@@ -23,7 +23,11 @@ $ack = strtoupper($resArray["ACK"]);
 if($ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
 {
     $token = urldecode($resArray["TOKEN"]);
-    RedirectToPayPalDG( $token );
+	if ($feeType == 'listing')
+	{
+		FeeProcessing::write_listing_fee_record($_SESSION['userID'], $_SESSION['propertyID'], $token, $fee['price']);
+		RedirectToPayPalDG( $token );
+	}
 } 
 else  
 {
@@ -39,4 +43,6 @@ else
         logerror("Error Code: " . $ErrorCode);
         logerror("Error Severity Code: " . $ErrorSeverityCode);
 }
+
+include 'dev.php';
 ?>

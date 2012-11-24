@@ -250,7 +250,8 @@ CREATE TABLE FEE (
     FOREIGN KEY (UserID)            REFERENCES USER           (UserID) ON DELETE CASCADE,
     FOREIGN KEY (ApplicationID)     REFERENCES APPLICATION    (ApplicationID) ON DELETE CASCADE,
     FOREIGN KEY (AuctionID)         REFERENCES AUCTION        (AuctionID) ON DELETE CASCADE,
-    FOREIGN KEY (PropertyID)        REFERENCES PROPERTY       (PropertyID) ON DELETE CASCADE
+    FOREIGN KEY (PropertyID)        REFERENCES PROPERTY       (PropertyID) ON DELETE CASCADE,
+	INDEX (PaymentToken)
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
