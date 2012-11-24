@@ -20,6 +20,7 @@ if($res)
 	<script>
 		window.onload = function(){
 			if(window.opener){
+				window.opener.window.location.href="myHood.php"; 
 				 window.close();
 			 }
 			else{
@@ -35,7 +36,7 @@ if($res)
 else
 {
 	// what's what?  payment failed?  boooooooooo
-
+	// no idea what to do here yet
 }
 ?>
 
