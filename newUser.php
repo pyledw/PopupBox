@@ -4,30 +4,38 @@
     /**
      * This page is the new user form.
      * 
-     * This page will retireve any inforamtion posted to if thier is an error message.
-     * It then allows the user to enter thier cradentials.
+     * This page will retireve any inforamtion posted to if their is an error message.
+     * It then allows the user to enter their credentials.
      * 
-     * The form validation id done with Jquery
+     * The form validation id done with jQuery
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
-        $title = "New User";
-	include 'Header.php';
+$title = "New User";
+include 'Header.php';
         
-          $errorMessage = $_POST['error']; 
-          $userName = $_POST['username'];
-          $password = $_POST['password'];
-          $email = $_POST['email'];
-          $SSN = $_POST['ssn'];
-          $firstName = $_POST['firstName'];
-          $lastName = $_POST['lastName'];
-          $phone =  $_POST['phone'];
-          $address = $_POST['address'];
-          $city = $_POST['city'];
-          $state = $_POST['state'];
-          $zip = $_POST['zip'];
-          $age = $_POST['age'];
-          $classification = $_POST['accountType'];
+function getPost($key)
+{
+	if (isset($_POST[$key]))
+	{
+		return $_POST[$key];
+	}
+	return '';
+}
+$errorMessage 	= getPost('error');
+$userName 		= getPost('username');
+$password 		= getPost('password');
+$email 			= getPost('email');
+$SSN 			= getPost('ssn');
+$firstName 		= getPost('firstName');
+$lastName 		= getPost('lastName');
+$phone 			= getPost('phone');
+$address 		= getPost('address');
+$city 			= getPost('city');
+$state 			= getPost('state');
+$zip 			= getPost('zip');
+$age 			= getPost('age');
+$classification = getPost('accountType');
           
         
 ?>
