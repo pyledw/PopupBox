@@ -11,31 +11,32 @@
  * @author David Pyle <Pyledw@Gmail.com>
  */
 	//require 'config.inc.php';
-        session_start();
+    if (session_id() == '')
+	{
+	    session_start();
+    }    
         
-        
-        /** This allow for the user to stay logged in even after the session has expired.
-         *  It will checks to see if cookies were saved with login info */
-        if(isset($_COOKIE['userID']))
-        {
-            $_SESSION['userID'] = $_COOKIE['userID'];
-            $_SESSION['user'] = $_COOKIE['user'];
-            $_SESSION['type'] = $_COOKIE['type'];
-            $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
-        }
-        
-        /** This ensures that the session will expire after 10 minutes of inactivity. */
-        if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60*10)) 
-            {
-                /** last request was more than 10 minates ago */
-                session_unset();     // unset $_SESSION variable for the runtime 
-                session_destroy();   // destroy session data in storage
-            }
+    /** This allow for the user to stay logged in even after the session has expired.
+      *  It will checks to see if cookies were saved with login info 
+      */
+    if(isset($_COOKIE['userID']))
+    {
+        $_SESSION['userID'] = $_COOKIE['userID'];
+        $_SESSION['user'] = $_COOKIE['user'];
+        $_SESSION['type'] = $_COOKIE['type'];
         $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
-         
-
-
-         
+    }
+        
+    /** This ensures that the session will expire after 10 minutes of inactivity. */
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60*10)) 
+    {
+        /** last request was more than 10 minates ago */
+        session_unset();     // unset $_SESSION variable for the runtime 
+        session_destroy();   // destroy session data in storage
+    }
+    
+	$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+       
 ?>
 
 
@@ -47,14 +48,7 @@ as the Title, and CSS/Javascript References.  It also contains the navigation ba
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>
-
-        <?php
-            
-            echo $title;//Element defined in the Html document before the Header.php is called
-        ?>
-
-    </title>
+    <title><?= $title ?></title>
     
     <!--Meta Data-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
