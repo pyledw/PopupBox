@@ -21,7 +21,7 @@
 
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM PROPERTY
-        WHERE UserID ='". $_SESSION['userID'] . "'
+        WHERE UserID ='$_SESSION[userID]'
             ORDER BY DatePFOEndAccept ASC");
     if(!$result)
         {

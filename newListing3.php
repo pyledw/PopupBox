@@ -68,10 +68,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Date and times of 1st Open House:</label><br/><input type="text" name="openHouse1" id="datepicker4" class="required" value="<?php echo $row['DateTimeOpenHouse1']?>" />
+                        <label class="label">Date and times of 1st Open House:</label><br/><input type="text" name="openHouse1" id="datepicker4" class="required" value="<?php echo $row[DateTimeOpenHouse1]?>" />
                     </td>
                     <td>
-                        <label class="label">Date and times of 2nd Open House:</label><br/><input type="text" name="openHouse2" id="datepicker5" value="<?php echo $row['DateTimeOpenHouse2']?>" />
+                        <label class="label">Date and times of 2nd Open House:</label><br/><input type="text" name="openHouse2" id="datepicker5" value="<?php echo $row[DateTimeOpenHouse2]?>" />
                     </td>
                     <td>
                         
