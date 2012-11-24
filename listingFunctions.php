@@ -104,7 +104,7 @@
      * 
      * @param String $DateEndAcceptPFO This is the date the auciton will stop accepting PFOs
      * 
-     * @return String $status Satus contains the current status with all the needed HTML wrapping.
+     * @return String $status Status contains the current status with all the needed HTML wrapping.
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
@@ -116,15 +116,15 @@
             
             if($now > $start && $now < $ends)   //check to see if the auction is open for PFOs
             {
-               $status = '<font class="greenTextArea" style="float:right;">Satus:Open for PFOs</font>';
+               $status = '<font class="greenTextArea" style="float:right;">Status:Open for PFOs</font>';
             }
             elseif($now < $start)   //Check to see if the auction has begun
             {
-                $status = '<font class="yellowTextArea" style="float:right;">Satus:Bidding has not yet started</font>';
+                $status = '<font class="yellowTextArea" style="float:right;">Status:Bidding has not yet started</font>';
             }
             elseif($now > $ends)    //check to see if the auction has ended
             {
-                $status = '<font class="greyTextArea" style="float:right;">Satus:Bidding Has Ended</font>';
+                $status = '<font class="greyTextArea" style="float:right;">Status:Bidding Has Ended</font>';
             }
             else    //if none are true
             {
@@ -259,18 +259,18 @@
             include_once 'listingFunctions.php';    
             
             /** call to function that returns the timestring of time remaining or time till start */
-            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]); 
+            $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']); 
 
             /** The code below will return the listings status */
-            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);   
+            $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);   
 
             
             /** this code is retrieving the highest bid of the auction and returning it **/
-            $maxBid = getHighBid($row[PropertyID]);   
+            $maxBid = getHighBid($row['PropertyID']);   
             
             if($maxBid == '')
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
             }
             
             
@@ -281,14 +281,14 @@
                    .$maxBid.
                 '</font><br/>
         <table id="houseListing">
-            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row[PropertyID]).' alt="Main Photo" />
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="'.  getMainThumbPath($row['PropertyID']).'" alt="Main Photo" />
             <tr>
                 <td width="102px;" rowspan="5">
   
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row[Address] . " - " . $row[PropertyID] . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -298,7 +298,7 @@
                 
                 
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
-                    '.substr($row[Description], 0, 150).'<br/><br/><a href="homeListing.php?listingID='.$row[PropertyID].'" class="button">View Listing</a>
+                    '.substr($row['Description'], 0, 150).'<br/><br/><a href="homeListing.php?listingID='.$row['PropertyID'].'" class="button">View Listing</a>
                 </td>
                 <td style="text-align: center;" class="greyBackground">
                     Features
@@ -322,13 +322,13 @@
                                 <b>Bedrooms:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[Bedroom] .'
+                                '. ' ' .$row['Bedroom'] .'
                             </td>
                             <td align="right">
                                 <b>Bathrooms:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Bath] .'
+                                '. ' ' .$row['Bath'] .'
                             </td>
                         </tr>
                         <tr>
@@ -336,13 +336,13 @@
                                 <b>Square Feet:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[SF] .'
+                                '. ' ' .$row['SF'] .'
                             </td>
                             <td align="right">
                                 <b>Heat:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Heating] .'
+                                '. ' ' .$row['Heating'] .'
                             </td>
                         </tr>
                         <tr>
@@ -350,13 +350,13 @@
                                 <b>Air:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[AC] .'
+                                '. ' ' .$row['AC'] .'
                             </td>
                             <td align="right">
                                 <b>Media:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Media] .'
+                                '. ' ' .$row['Media'] .'
                             </td>
                         </tr>
                     </table>
@@ -386,14 +386,14 @@
                         {
                             if($max == 0)
                             {
-                            echo  '<td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            echo  '<td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1;
                             }
                             else
                             {
-                               echo  '<tr><td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                               echo  '<tr><td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1; 
                             }
                             if($max > 2)
@@ -460,18 +460,18 @@
             include_once 'listingFunctions.php';    
             
             /** call to function that returns the timestring of time remaining or time till start */
-            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]); 
+            $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']); 
 
             /** The code below will return the listings status */
-            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);   
+            $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);   
 
             
             /** this code is retrieving the highest bid of the auction and returning it **/
-            $maxBid = getHighBid($row[PropertyID]);   
+            $maxBid = getHighBid($row['PropertyID']);   
             
             if($maxBid == '')
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
             }
             
             
@@ -482,13 +482,13 @@
                    .$maxBid.
                 '</font><br/>
         <table id="houseListing">
-            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row[PropertyID]).' alt="Main Photo" />
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row['PropertyID']).' alt="Main Photo" />
             <tr>
                 <td width="102px;" rowspan="5">
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row[Address] . " - " . $row[PropertyID] . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -498,7 +498,7 @@
                 
                 
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
-                    '.substr($row[Description], 0, 150).'<br/><br/><a href="homeListing.php?listingID='.$row[PropertyID].'" class="button">View Listing</a>
+                    '.substr($row['Description'], 0, 150).'<br/><br/><a href="homeListing.php?listingID='.$row['PropertyID'].'" class="button">View Listing</a>
                 </td>
                 <td style="text-align: center;" class="greyBackground">
                     Features
@@ -522,13 +522,13 @@
                                 <b>Bedrooms:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[Bedroom] .'
+                                '. ' ' .$row['Bedroom'] .'
                             </td>
                             <td align="right">
                                 <b>Bathrooms:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Bath] .'
+                                '. ' ' .$row['Bath'] .'
                             </td>
                         </tr>
                         <tr>
@@ -536,13 +536,13 @@
                                 <b>Square Feet:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[SF] .'
+                                '. ' ' .$row['SF'] .'
                             </td>
                             <td align="right">
                                 <b>Heat:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Heating] .'
+                                '. ' ' .$row['Heating'] .'
                             </td>
                         </tr>
                         <tr>
@@ -550,13 +550,13 @@
                                 <b>Air:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[AC] .'
+                                '. ' ' .$row['AC'] .'
                             </td>
                             <td align="right">
                                 <b>Media:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Media] .'
+                                '. ' ' .$row['Media'] .'
                             </td>
                         </tr>
                     </table>
@@ -586,14 +586,14 @@
                         {
                             if($max == 0)
                             {
-                            echo  '<td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            echo  '<td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1;
                             }
                             else
                             {
-                               echo  '<tr><td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                               echo  '<tr><td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1; 
                             }
                             if($max > 2)
@@ -665,8 +665,8 @@
             //echo $row[PageCompleted];
             //echo $row[IsPaid];
             
-            $expire = strtotime('+ 3 day', strtotime($row[DatePFOEndAccept]));
-            $end = strtotime($row[DatePFOEndAccept]);
+            $expire = strtotime('+ 3 day', strtotime($row['DatePFOEndAccept']));
+            $end = strtotime($row['DatePFOEndAccept']);
             $now = strtotime(date("Y-m-d H:i:s"));  //converting times to str
             
             //echo 'EXPIRE->'. $row[DatePFOEndAccept] . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
@@ -674,14 +674,14 @@
             
             
             $hasExpired = "";
-            if($row[DatePFOEndAccept] != "")
+            if($row['DatePFOEndAccept'] != "")
             {
                 if($end < $now)
                     {
                         if($expire < $now)
                         {
                             
-                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php?propertyID='.$row[PropertyID].'">Repost</a>';
+                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a>';
                         }
                         else
                         {
@@ -691,22 +691,22 @@
             }
             
             $propertyStatus ="";
-            if($row[IsApproved] == 0)//check to see if the property is approved
+            if($row['IsApproved'] == 0)//check to see if the property is approved
             {
-                if($row[IsPaid] == 0)//check to see if the property has been paid
+                if($row['IsPaid'] == 0)//check to see if the property has been paid
                     {
-                            if($row[PageCompleted] != 6)//check to see if the listing was completed
+                            if($row['PageCompleted'] != 6)//check to see if the listing was completed
                             {
                                 $propertyStatus = '<font class="redTextArea">Lisitng not complete.  Click edit listing below to finish your listing</font>';
                             }
                             else//if the property has not been completed
                             {
-                                $propertyStatus = "<font class='redTextArea'>You must pay your fee click <a href='payListingFee.php?propertyID=".$row[PropertyID]."'>Here</a></font>";
+                                $propertyStatus = "<font class='redTextArea'>You must pay your fee click <a href='payListingFee.php?propertyID=".$row['PropertyID']."'>Here</a></font>";
                             }
                 }
                 else//if the property fee has not been paid
                 {
-                    if($row[PageCompleted] != 6)//check to see if the listing was completed
+                    if($row['PageCompleted'] != 6)//check to see if the listing was completed
                             {
                                 $propertyStatus = '<font class="redTextArea">Lisitng not complete.  Click edit listing below to finish your listing</font>';
                             }
@@ -721,16 +721,16 @@
             
             include_once 'listingFunctions.php';//needed lisgin functions
             
-            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);//below is call to function that returns the timestring of time remaining or time till start
+            $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']);//below is call to function that returns the timestring of time remaining or time till start
 
             
-            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);//The code below will return the listings status
+            $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);//The code below will return the listings status
 
-            $maxBid = getHighBid($row[PropertyID]);//this code is retrieving the highest bid of the auction and returning it
+            $maxBid = getHighBid($row['PropertyID']);//this code is retrieving the highest bid of the auction and returning it
             
             if($maxBid == '')
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
             }
             
             echo '<font style="float:right; position:relative; right:20px;">
@@ -741,13 +741,13 @@
                    .$maxBid.
                 '</font><br/>
         <table id="houseListing">
-            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row[PropertyID]).' alt="Main Photo" />
+            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row['PropertyID']).' alt="Main Photo" />
             <tr>
                 <td width="102px;" rowspan="5">
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row[Address] . " - " . $propertyID . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $propertyID . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -756,9 +756,9 @@
             <tr>';
             
             //setting the page completed in case the full listing has been completed
-            if($row[PageCompleted] != "6")//if the page completed was not equal to 6
+            if($row['PageCompleted'] != "6")//if the page completed was not equal to 6
             {
-                $pageCompleated=$row[PageCompleted];
+                $pageCompleated=$row['PageCompleted'];
             }
             else//if the page was equal to 6
             {
@@ -768,7 +768,7 @@
             
             echo'
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
-                    '.substr($row[Description], 0, 150).'<br/><br/>
+                    '.substr($row['Description'], 0, 150).'<br/><br/>
                      <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
                     <input type="text" name="propertyID" style="Display:none" value="' . $propertyID . '" />
                     <button type="submit" class="button">Edit Listing</button>
@@ -784,7 +784,7 @@
                 else//if no winner has been selected yet
                 {
                     echo'
-                    <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2[AuctionID].'" rel="facebox" class="button">Review PFOs</a>
+                    <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2['AuctionID'].'" rel="facebox" class="button">Review PFOs</a>
                     ';
                 }
                 
@@ -813,13 +813,13 @@
                                 <b>Bedrooms:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[Bedroom] .'
+                                '. ' ' .$row['Bedroom'] .'
                             </td>
                             <td align="right">
                                 <b>Bathrooms:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Bath] .'
+                                '. ' ' .$row['Bath'] .'
                             </td>
                         </tr>
                         <tr>
@@ -827,13 +827,13 @@
                                 <b>Square Feet:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[SF] .'
+                                '. ' ' .$row['SF'] .'
                             </td>
                             <td align="right">
                                 <b>Heat:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Heating] .'
+                                '. ' ' .$row['Heating'] .'
                             </td>
                         </tr>
                         <tr>
@@ -841,13 +841,13 @@
                                 <b>Air:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[AC] .'
+                                '. ' ' .$row['AC'] .'
                             </td>
                             <td align="right">
                                 <b>Media:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Media] .'
+                                '. ' ' .$row['Media'] .'
                             </td>
                         </tr>
                     </table>
@@ -877,14 +877,14 @@
                         {
                             if($max == 0)
                             {
-                            echo  '<td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            echo  '<td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1;
                             }
                             else
                             {
-                               echo  '<tr><td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                               echo  '<tr><td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1; 
                             }
                             if($max > 2)
@@ -940,18 +940,18 @@
             include_once 'listingFunctions.php';
             
             //below is call to function that returns the timestring of time remaining or time till start
-            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+            $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']);
 
             //The code below will return the listings status
-            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+            $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);
 
             //this code is retrieving the highest bid of the auction and returning it
 
-            $maxBid = getHighBid($row[PropertyID]);
+            $maxBid = getHighBid($row['PropertyID']);
             
             if($maxBid == '')
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
             }
             
             
@@ -968,7 +968,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row[Address] . " - " . $row[PropertyID] . " - " . '<a href="Http://www.google.com/maps?q='. $row[Address] . ' ' . $row[City] . ' ' . $row[State] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row[City] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -978,9 +978,9 @@
                 
                 
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
-                    '.substr($row[Description], 0, 150).'<br/><br/>
-                     <a class="button">Move in now at: $'. $row[RentNowRate] .'</a>
-                     <a href="homeListing.php?listingID='. $row[PropertyID] . '" class="button">View Listing</a>
+                    '.substr($row['Description'], 0, 150).'<br/><br/>
+                     <a class="button">Move in now at: $'. $row['RentNowRate'] .'</a>
+                     <a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>
                      ';
                 
                 echo'
@@ -1007,13 +1007,13 @@
                                 <b>Bedrooms:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[Bedroom] .'
+                                '. ' ' .$row['Bedroom'] .'
                             </td>
                             <td align="right">
                                 <b>Bathrooms:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Bath] .'
+                                '. ' ' .$row['Bath'] .'
                             </td>
                         </tr>
                         <tr>
@@ -1021,13 +1021,13 @@
                                 <b>Square Feet:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[SF] .'
+                                '. ' ' .$row['SF'] .'
                             </td>
                             <td align="right">
                                 <b>Heat:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Heating] .'
+                                '. ' ' .$row['Heating'] .'
                             </td>
                         </tr>
                         <tr>
@@ -1035,13 +1035,13 @@
                                 <b>Air:</b>
                             </td>
                             <td>
-                                '. ' ' .$row[AC] .'
+                                '. ' ' .$row['AC'] .'
                             </td>
                             <td align="right">
                                 <b>Media:</b> 
                             </td>
                             <td>
-                                '. ' ' .$row[Media] .'
+                                '. ' ' .$row['Media'] .'
                             </td>
                         </tr>
                     </table>
@@ -1070,14 +1070,14 @@
                         {
                             if($max == 0)
                             {
-                            echo  '<td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            echo  '<td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1;
                             }
                             else
                             {
-                               echo  '<tr><td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                               echo  '<tr><td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1; 
                             }
                             if($max > 2)
@@ -1155,21 +1155,21 @@
                 }
             else 
                 {
-                    if($row[PageCompleted] != "6")
+                    if($row['PageCompleted'] != "6")
                     {
                         $status = "1";
                     }
-                    elseif($row[IsPaid] == "0")
+                    elseif($row['IsPaid'] == "0")
                     {
                         $status = "3";
                     }
-                    elseif($row[IsApproved] == "0")
+                    elseif($row['IsApproved'] == "0")
                     {
                         $status = "2";
                     }
                     else
                     {
-                        $applicationID = $row[ApplicationID];
+                        $applicationID = $row['ApplicationID'];
                         $result = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -1179,7 +1179,7 @@
                         
                         $row = mysql_fetch_array($result);
                         
-                        if($row[PropertyID] != $propertyID && $row[IsActive] == "1")
+                        if($row['PropertyID'] != $propertyID && $row['IsActive'] == "1")
                         {
                             $ActiveBids = true;
                         }
@@ -1245,10 +1245,10 @@
             echo '<table class="tableForm" style="padding:5px 5px 0px 5px; margin:0px 0px 0px 0px;" width="1000">
                         <tr>
                             <td colspan="1">
-                                <b>'.$row[ApplicationID].' - '.$row[LastName].', '.$row[FirstName].'</b>
+                                <b>'.$row['ApplicationID'].' - '.$row['LastName'].', '.$row['FirstName'].'</b>
                             </td>
                             <td>
-                                <a class="button" href="viewApplication.php?applicationID='.$row[ApplicationID].'" rel="facebox" >View Application</a></div><br/><br/>
+                                <a class="button" href="viewApplication.php?applicationID='.$row['ApplicationID'].'" rel="facebox" >View Application</a></div><br/><br/>
                             </td>
                         </tr>
                 </table>';
@@ -1266,15 +1266,15 @@
             echo '<table class="tableForm" style="padding:0px 5px 5px 5px; margin:0px 0px 0px 0px;" width="1000">
                         <tr>
                             <td colspan="2">
-                                <b>'.$row[PropertyID].' - '.$row[LastName].', '.$row[FirstName].'</b>
+                                <b>'.$row['PropertyID'].' - '.$row['LastName'].', '.$row['FirstName'].'</b>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Address:'.$row[Address] .', '.$row[City].' ' . $row[State] . ' '.$row[ZipCode] .'
+                                Address:'.$row['Address'] .', '.$row['City'].' ' . $row['State'] . ' '.$row['ZipCode'] .'
                             </td>
                             <td>
-                                <a class="button" href="viewProperty.php?propertyID='.$row[PropertyID].'" rel="facebox" >View Property</a>
+                                <a class="button" href="viewProperty.php?propertyID='.$row['PropertyID'].'" rel="facebox" >View Property</a>
                             </td>
                         </tr>
                 </table>';
