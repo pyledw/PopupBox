@@ -39,12 +39,14 @@ class FeeProcessing
 
         $stmt->execute();
 		$id = $con->lastInsertId();
-		loginfo("Resulting ID: $id");
+		loginfo("write_pending_fee_record done.  Resulting ID: $id");
 		return $id;
     }
 
 	private static function update_status($token, $status, $amount)
 	{
+		loginfo('Calling update_status with: ' . print_r(func_get_args(), true));
+
 		$con = get_dbconn("PDO");
         $stmt = $con->prepare("UPDATE FEE 
                                SET 
@@ -56,10 +58,13 @@ class FeeProcessing
         $stmt->bindValue(':statusid',  $status,  PDO::PARAM_INT);
 
         $stmt->execute();
+		loginfo('update_status done');
 	}
 
 	public static function complete_paypal($token, $payerID)
 	{
+		loginfo('Calling complete_paypal with: ' . print_r(func_get_args(), true));
+
 		$res = GetExpressCheckoutDetails($token);
 		$finalPaymentAmount = $res["AMT"];
 
@@ -93,6 +98,8 @@ class FeeProcessing
 
 	public static function begin_paypal_for_listing_fee($userid, $propertyid, $fee)
 	{
+		loginfo('Calling begin_paypal_for_listing_fee with: ' . print_r(func_get_args(), true));
+
 		$resArray = SetExpressCheckoutDG($fee['description'], $fee['price'], $fee['paypal-return'], $fee['paypal-cancel']);
 		logdebug('Result of SetExpressCheckoutDG: ' . print_r($resArray, true));
 		
@@ -121,3 +128,4 @@ class FeeProcessing
 		}
 	}
 }
+
