@@ -26,7 +26,7 @@
         die('could not connect: ' .mysql_error());
     }
     $row = mysql_fetch_array($result);
-    if($row[IsPaid] == 1)
+    if($row['IsPaid'] == 1)
     {
 	// The fee is already paid, so go back to myHood.
         header( 'Location: /myHood.php' );
