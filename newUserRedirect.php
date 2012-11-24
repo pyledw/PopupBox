@@ -43,13 +43,12 @@
         $stmt->bindValue(':state',          $_POST['state'],            			PDO::PARAM_STR);
         $stmt->bindValue(':zip',            $_POST['zip'],              			PDO::PARAM_STR);
         $stmt->bindValue(':dob',            $_POST['age'],              			PDO::PARAM_STR);
-        $stmt->bindValue(':phone',          $_POST['Phone'],              			PDO::PARAM_STR);
+        $stmt->bindValue(':phone',          $_POST['phone'],              			PDO::PARAM_STR);
         $stmt->execute();
         
         
         $con = get_dbconn("");
-        $result = mysql_query("SELECT * FROM USER
-                WHERE UserName ='" . $_POST['username'] . "'");
+        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $_POST['username'] . "'");
         $userData = mysql_fetch_array($result);
 
         $_SESSION['userID'] = $userData['UserID'];
