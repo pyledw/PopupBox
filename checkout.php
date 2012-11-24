@@ -14,21 +14,15 @@ require_once ("config.inc.php");
 require_once ("paypal.inc.php");
 require_once ("log.inc.php");
 
-
-$resArray = SetExpressCheckoutDG($feeDescriptions[$feeType], $feePrices[$feeType]);
-logdebug('Fee type is: ' . $feeType);
-logdebug('Description is: ' . $feeDescriptions[$feeType]);
-logdebug('Price is: ' . $feePrices[$feeType]);
-
+$fee = $cfg_fees[$feeType];
+logdebug('Fee is: ' . print_r($fee, true);
+$resArray = SetExpressCheckoutDG($fee['description'], $fee['price'], $fee['paypal-return'], $fee['paypal-cancel']);
+logdebug('Result of SetExpressCheckoutDG: ' . print_r($resArray, true));
 
 $ack = strtoupper($resArray["ACK"]);
 if($ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
 {
     $token = urldecode($resArray["TOKEN"]);
-	
-	
-
-
     RedirectToPayPalDG( $token );
 } 
 else  
