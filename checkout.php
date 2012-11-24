@@ -16,33 +16,18 @@ if(!isset($feeType))
 $fee = $cfg_fees[$feeType];
 logdebug('Fee is: ' . print_r($fee, true));
 
-$resArray = SetExpressCheckoutDG($fee['description'], $fee['price'], $fee['paypal-return'], $fee['paypal-cancel']);
-logdebug('Result of SetExpressCheckoutDG: ' . print_r($resArray, true));
+//
+// this may redirect to paypal.  if it doesn't, something went wrong.  oops
+//
+$res = FeeProcessing::begin_paypal_for_listing_fee($_SESSION['userID'], $_SESSION['propertyID'], $fee);
 
-$ack = strtoupper($resArray["ACK"]);
-if($ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
+// if we get here, $res should almost certainly be false
+if ($res)
 {
-    $token = urldecode($resArray["TOKEN"]);
-	if ($feeType == 'listing')
-	{
-		FeeProcessing::write_listing_fee_record($_SESSION['userID'], $_SESSION['propertyID'], $token, $fee['price']);
-		RedirectToPayPalDG( $token );
-	}
-} 
-else  
-{
-        //Log a Error using any of the following error information returned by PayPal
-        $ErrorCode = urldecode($resArray["L_ERRORCODE0"]);
-        $ErrorShortMsg = urldecode($resArray["L_SHORTMESSAGE0"]);
-        $ErrorLongMsg = urldecode($resArray["L_LONGMESSAGE0"]);
-        $ErrorSeverityCode = urldecode($resArray["L_SEVERITYCODE0"]);
-
-        logerror("SetExpressCheckout API call failed. ");
-        logerror("Detailed Error Message: " . $ErrorLongMsg);
-        logerror("Short Error Message: " . $ErrorShortMsg);
-        logerror("Error Code: " . $ErrorCode);
-        logerror("Error Severity Code: " . $ErrorSeverityCode);
+	// do nothing, its good
 }
-
-include 'dev.php';
+else 
+{
+	// what should we do?  we've already logged the error
+}
 ?>

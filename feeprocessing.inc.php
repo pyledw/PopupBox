@@ -39,7 +39,7 @@ class FeeProcessing
 
         $stmt->execute();
 		$id = $con->lastInsertId();
-		loginfo("Resulting ID: $id";
+		loginfo("Resulting ID: $id");
 		return $id;
     }
 
@@ -107,6 +107,34 @@ class FeeProcessing
         $stmt->bindValue(':token',  $token,  PDO::PARAM_INT);
         $stmt->execute();
 	}
+
+	public static function begin_paypal_for_listing_fee($userid, $propertyid, $fee)
+	{
+		$resArray = SetExpressCheckoutDG($fee['description'], $fee['price'], $fee['paypal-return'], $fee['paypal-cancel']);
+		logdebug('Result of SetExpressCheckoutDG: ' . print_r($resArray, true));
+		
+		$ack = strtoupper($resArray["ACK"]);
+		if($ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
+		{
+			$token = urldecode($resArray["TOKEN"]);
+        	self::write_listing_fee_record($userid, $propertyid, $token, $fee['price']);
+	        RedirectToPayPalDG( $token );
+			return true;		// actually, this should never be reached
+		}
+		else
+		{
+        	//Log a Error using any of the following error information returned by PayPal
+	       	$ErrorCode = urldecode($resArray["L_ERRORCODE0"]);
+		    $ErrorShortMsg = urldecode($resArray["L_SHORTMESSAGE0"]);
+        	$ErrorLongMsg = urldecode($resArray["L_LONGMESSAGE0"]);
+	      	$ErrorSeverityCode = urldecode($resArray["L_SEVERITYCODE0"]);
+
+			logerror("SetExpressCheckout API call failed. ");
+			logerror("Detailed Error Message: " . $ErrorLongMsg);
+			logerror("Short Error Message: " . $ErrorShortMsg);
+			logerror("Error Code: " . $ErrorCode);
+			logerror("Error Severity Code: " . $ErrorSeverityCode);
+			return false;
+		}
+	}
 }
-
-
