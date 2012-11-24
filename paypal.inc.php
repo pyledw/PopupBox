@@ -60,15 +60,18 @@
 	'		amount:			The amount, in dollars.
 	'--------------------------------------------------------------------------------------------------------------------------------------------	
 	*/
-	function SetExpressCheckoutDG($item_description, $amount, $returnURL, $cancelURL) 
+	function SetExpressCheckoutDG($item_description, $amount) 
 	{
+		global $paypal_returnURL;
+		global $paypal_cancelURL;
+
 		//------------------------------------------------------------------------------------------------------------------------------------
 		// Construct the parameter string that describes the SetExpressCheckout API call in the shortcut implementation
 		
 		$nvpstr = "&PAYMENTREQUEST_0_AMT=". $amount;
 		$nvpstr .= "&PAYMENTREQUEST_0_PAYMENTACTION=Sale";
-		$nvpstr .= "&RETURNURL=" . $returnURL;
-		$nvpstr .= "&CANCELURL=" . $cancelURL;
+		$nvpstr .= "&RETURNURL=" . $paypal_returnURL;
+		$nvpstr .= "&CANCELURL=" . $paypal_cancelURL;
 		$nvpstr .= "&PAYMENTREQUEST_0_CURRENCYCODE=USD";
 		$nvpstr .= "&REQCONFIRMSHIPPING=0";
 		$nvpstr .= "&NOSHIPPING=1";

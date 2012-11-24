@@ -1,11 +1,14 @@
-<?
-/**
- *
- * This step is required to get parameters to make DoExpressCheckout API call.
- *
- */
+<html>
+<body>
 
+<?php
 require_once ("paypal.inc.php");
+/*
+ '------------------------------------
+ ' this  step is required to get parameters to make DoExpressCheckout API call, 
+ ' this step is required only if you are not storing the SetExpressCheckout API call's request values in you database.
+ ' ------------------------------------
+ */
 $res = GetExpressCheckoutDetails( $_REQUEST['token'] );
 
 /*
@@ -145,13 +148,11 @@ if( $ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING" )
 	$reasonCode	= $resArray["PAYMENTINFO_0_REASONCODE"];
 	// Add javascript to close Digital Goods frame. You may want to add more javascript code to
 	// display some info message indicating status of purchase in the parent window
-
-	// ------------------------------------------------------------------------------------
-	// ------------------------------------------------------------------------------------
-	// The following block is printed to the response stream if the payment was successful.
 ?>
 
 <script>
+alert("Payment Successful");
+// add relevant message above or remove the line if not required
 window.onload = function(){
     if(window.opener){
          window.close();
@@ -161,31 +162,31 @@ window.onload = function(){
              top.dg.closeFlow();
              return true;
           }
-      }
+      }                              
 };
+                                
 </script>
 
 <?php
 	}
 	else
 	{
-    	// Log an error with the information returned by PayPal
+		//Display a user friendly Error on the page using any of the following error information returned by PayPal
 		$ErrorCode = urldecode($resArray["L_ERRORCODE0"]);
 		$ErrorShortMsg = urldecode($resArray["L_SHORTMESSAGE0"]);
 		$ErrorLongMsg = urldecode($resArray["L_LONGMESSAGE0"]);
 		$ErrorSeverityCode = urldecode($resArray["L_SEVERITYCODE0"]);
 
-		logerror("DoExpressCheckoutDetails API call failed. ");
-		logerror("Detailed Error Message: " . $ErrorLongMsg);
-		logerror("Short Error Message: " . $ErrorShortMsg);
-		logerror("Error Code: " . $ErrorCode);
-		logerror("Error Severity Code: " . $ErrorSeverityCode);
-
-	// ------------------------------------------------------------------------------------
-	// The following block is printed to the response stream if the payment failed.
+		echo "DoExpressCheckoutDetails API call failed. ";
+		echo "Detailed Error Message: " . $ErrorLongMsg;
+		echo "Short Error Message: " . $ErrorShortMsg;
+		echo "Error Code: " . $ErrorCode;
+		echo "Error Severity Code: " . $ErrorSeverityCode;
 ?>
 
 <script>
+alert("Payment failed");
+// add relevant message above or remove the line if not required
 window.onload = function(){
     if(window.opener){
          window.close();
@@ -195,13 +196,12 @@ window.onload = function(){
              top.dg.closeFlow();
              return true;
           }
-      }
+      }                              
 };
+                                
 </script>
 
-<?
-    }   // closes the if block
-?>
+<?	}   ?>
 
 </body>
 </html>

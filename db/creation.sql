@@ -179,7 +179,7 @@ CREATE TABLE IMAGE (
 	PropertyID                  int(8)            NOT NULL,
 	ImagePathOriginal           char(50),
 	ImagePathThumb              char(50),
-	ImageType                   tinyint(1)                     DEFAULT '0',
+	ImageType                   tinyint(1),
  
 	FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
@@ -217,8 +217,8 @@ CREATE TABLE BID (
     IsActive                        tinyint(1)                     DEFAULT '1',
     IsWinningBid                    tinyint(1)        NOT NULL     DEFAULT '0',
 
-    FOREIGN KEY (ApplicationID)     REFERENCES APPLICATION    (ApplicationID) ON DELETE CASCADE,
-    FOREIGN KEY (AuctionID)         REFERENCES AUCTION        (AuctionID) ON DELETE CASCADE
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE,
+    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -228,7 +228,7 @@ CREATE TABLE DENIEDBREED (
     BreedID                         int(8)            NOT NULL                     AUTO_INCREMENT        PRIMARY KEY,
     PropertyID                      int(8)            NOT NULL,
     BreedName                       char(40)                       DEFAULT NULL,
-    FOREIGN KEY (PropertyID) REFERENCES PROPERTY(PropertyID) ON DELETE CASCADE
+    FOREIGN KEY (PropertyId) REFERENCES PROPERTY(PropertyId) ON DELETE CASCADE
 )     ENGINE=InnoDB DEFAULT 
     CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -242,16 +242,13 @@ CREATE TABLE FEE (
     Amount                          decimal(9,2)      NOT NULL     DEFAULT '0.00',
     ApplicationID                   int(8)                         DEFAULT NULL,
     AuctionID                       int(8)                         DEFAULT NULL,
-    PropertyID                      int(8)                         DEFAULT NULL,
     PaymentServiceID                int(1)                         DEFAULT NULL,
     PaymentToken                    char(40)                       DEFAULT NULL,
     TransactionStatusID             int(1)                         DEFAULT NULL,
     
-    FOREIGN KEY (UserID)            REFERENCES USER           (UserID) ON DELETE CASCADE,
-    FOREIGN KEY (ApplicationID)     REFERENCES APPLICATION    (ApplicationID) ON DELETE CASCADE,
-    FOREIGN KEY (AuctionID)         REFERENCES AUCTION        (AuctionID) ON DELETE CASCADE,
-    FOREIGN KEY (PropertyID)        REFERENCES PROPERTY       (PropertyID) ON DELETE CASCADE,
-	INDEX (PaymentToken)
+    FOREIGN KEY (UserId)            REFERENCES USER            (UserId) ON DELETE CASCADE,
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE,
+    FOREIGN KEY (AuctionId)         REFERENCES AUCTION        (AuctionId) ON DELETE CASCADE
 )     ENGINE=InnoDB 
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;
@@ -271,7 +268,7 @@ CREATE TABLE PREVIOUSRESIDENCE (
     TypeOfResidence                 varchar(20)                    DEFAULT NULL,
     PrevMonthlyRent                 int(5)                         DEFAULT NULL,
     TotalMonths                     int(3)                         DEFAULT NULL,
-    FOREIGN KEY (ApplicationID)     REFERENCES APPLICATION    (ApplicationID) ON DELETE CASCADE
+    FOREIGN KEY (ApplicationId)     REFERENCES APPLICATION    (ApplicationId) ON DELETE CASCADE
 )     ENGINE=InnoDB  
     DEFAULT CHARSET=utf8 
     COLLATE=utf8_general_ci;

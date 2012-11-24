@@ -8,21 +8,15 @@
  * @package Configuration
  */
 
-$db_user     = 'leasehood';
-$db_pass     = 'sunlight blanket floating change';  // db password
-$db_server 	 = '199.115.231.216';                   // server name or IP address
-$db_database = 'leasehood1112';                     // database to select
-$pw_salt     = '68f33ecb44592ddd476af4145a2eae9f';  // salt for password encryption
+$db_user 	= 'leasehood';
+$db_pass 	= 'sunlight blanket floating change';  // db password
+$db_server 	= '199.115.231.216';     // server name or IP address
+$db_database 	= 'leasehood1112';     // database to select
+$pw_salt 	= '68f33ecb44592ddd476af4145a2eae9f';
 
-/**
- * Set this to the base address for this server.  By default it's the server name and server port.  It must
- * end with a '/'.
- */
-$base_address = 'http://' . $_SERVER['SERVER_NAME'] .':'. $_SERVER['SERVER_PORT'] . '/';
-
-$upload_max_size_mb 		= 2.0;          // maximum size of an uploaded image
-$upload_thumbnail_size 		= 200;			// horizontal size of thumbnails, in pixels
-$upload_save_path 		= "uploads/";		// relative to docroot.  Must end with a '/'
+$upload_max_size_mb 		= 1.0;
+$upload_thumbnail_size 		= 200;			// horizontal size, pixels
+$upload_save_path 		= "uploads/";		// relative to docroot.  ends with a /.
 $upload_allowed_file_types 	= array(		// all entries must be MIME types and lower-cased
 	"image/jpeg",
 	"image/gif",
@@ -36,22 +30,8 @@ $paypal_SandboxFlag   =  true;								// Set to False to actually process paymen
 $paypal_API_UserName  = "jcdick_1350762445_biz_api1.mail.lipscomb.edu";			// Get these from paypal
 $paypal_API_Password  = "1350762468";							// ..
 $paypal_API_Signature = "APVEl-I7DVPD6FsgN8j9i9uRbqBwAvuRR9R-HmcBImCL3vso7E2pCm6- ";	// ..
-
-/** 
- * Controls fee payment processing.  URLs for paypal return/cancel must be relative to docroot.
- */
-$cfg_fees = array(
-	'listing' => array(
-		'description'   => 'Leasehood.com Property Listing Fee',
-		'price'         => '10.00',
-		'paypal-return' => $base_address . 'payListingFeeRedirect.php',
-		'paypal-cancel' => $base_address . 'payListingFeeRedirect.php'),
-	'application' => array(
-        'description'   => 'Leasehood.com Application Fee',
-        'price'         => '15.00',
-        'paypal-return' => $base_address . 'payApplicationFeeRedirect.php',
-        'paypal-cancel' => $base_address . 'payApplicationFeeRedirect.php')
-	);
+$paypal_returnURL     = "http://199.115.231.216:85/paypal_confirm.php";			// absolute url for successful payments
+$paypal_cancelURL     = "http://199.115.231.216:85/ppaypal_cancel.php";			// absolute url for cancelled payments
 
 
 
