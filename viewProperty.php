@@ -8,35 +8,45 @@
      * @author David Pyle <Pyledw@Gmail.com>
      */
     session_start();
-    $propertyID = $_GET[propertyID];
+    $listingID = $_GET['propertyID'];
     
-    include_once 'config.inc.php';
-            //Connecting to the sql database
-            $con= get_dbconn("");
-            
-            $result = mysql_query("SELECT * FROM PROPERTY
-                INNER JOIN USER
-                ON USER.UserID=PROPERTY.UserID
-                WHERE PropertyID = '$propertyID'");
-            
-            $row = mysql_fetch_array($result);
-            
-            include_once 'listingFunctions.php';
+
+    
+
+        include_once 'config.inc.php';
+        //Connecting to the sql database
+        $con = get_dbconn("");
+
+        //Returning all the information on the property and the auction
+        $result = mysql_query("SELECT * FROM PROPERTY
+            WHERE PROPERTY.PropertyID = $listingID ");
         
-            //below is call to function that returns the timestring of time remaining or time till start
-            $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
-
-
-            //The code below will return the listings status
-            $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
-
-
-            //this code is retrieving the highest bid of the auction and returning it
-
-            $maxBid = getHighBid($row[PropertyID]);
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        $row = mysql_fetch_array($result);
+        include_once 'listingFunctions.php';
+        include_once 'imageFunctions.php';
+        
+        // below is call to function that returns the timestring of time remaining or time till start
+        $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+        
+        // The code below will return the listings status
+        $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+        
+        //this code is retrieving the highest bid of the auction and returning it
+        $maxBid = getHighBid($row[PropertyID]);
+        
+        if($maxBid == '')
+        {
+            $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+        }
+        
 ?>
-
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
+    <div id="mainContent">
             <font style="float:right; position:relative; right:20px;">
                 <?php
                     echo $timeString;
@@ -119,52 +129,72 @@
                 <?php 
                              
                              $auctionStatus = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
+                             
+                             
                              if(isset($_SESSION[userID]))
                              {
-                                if($auctionStatus == "1")
-                                {
-                                    $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
+                                 if($_SESSION[type] == "1")
+                                     {
+                                       if($auctionStatus == "1")
+                                       {
+                                           $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
+                                           //echo $_SESSION[userID] . " " . $row[PropertyID];
+                                           //echo $bidStatus;
 
-                                       if($bidStatus == "0")
-                                       {
-                                           echo '<form id="placebid" method="post">
-                                            <font>My Proposal for occupancy</font><br/><br/>
-                                            <label class="label">PFO Amount:</label><input class="required number" type="text" name="amt" /><br/>
-                                            <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                                            <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                                            <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
-                                            <button class="button" type="submit">Submit</button>
-                                            </form>';
+                                              if($bidStatus == "0")
+                                              {
+                                                  echo '<form id="placebid" method="post">
+                                                   <font>My Proposal for occupancy</font><br/><br/>
+                                                   <font color="red">Minimum Bid Amount: $'.$row[StartingBid].'</font><br/>
+                                                   <label class="label">PFO Amount:</label><input class="required number" min='.$row[StartingBid].' type="text" name="amt" /><br/>
+                                                   <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
+                                                   <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
+                                                   <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                                   <button class="button" type="submit">Submit</button>
+                                                   </form>';
+                                              }
+                                              elseif($bidStatus == "1")
+                                              {
+                                                  echo 'Application has not been compleated';
+                                              }
+                                              elseif($bidStatus == "2")
+                                              {
+                                                  echo 'Application has not been authorized';
+                                              }
+                                              elseif($bidStatus == "3")
+                                              {
+                                                  echo 'Bid Fee has not been paid';
+                                              }
+                                              elseif($bidStatus == "4")
+                                              {
+                                                  echo 'You have another active bid';
+                                              }
+                                              elseif($bidStatus == "5")
+                                              {
+                                                  echo 'No Application on File';
+                                              }
                                        }
-                                       elseif($bidStatus == "1")
+                                       elseif($auctionStatus == "2")
                                        {
-                                           echo 'Application has not been compleated';
+                                           echo 'Auciton Has not Started Yet';
                                        }
-                                       elseif($bidStatus == "2")
+                                       else
                                        {
-                                           echo 'Application has not been authorized';
+                                           echo "Auciton has Ended";
                                        }
-                                       elseif($bidStatus == "3")
-                                       {
-                                           echo 'Bid Fee has not been paid';
-                                       }
-                                       elseif($bidStatus == "4")
-                                       {
-                                           echo 'You have another active bid';
-                                       }
-                                       elseif($bidStatus == "5")
-                                       {
-                                           echo 'No Application on File';
-                                       }
-                                }
-                                elseif($auctionStatus == "2")
-                                {
-                                    echo 'Auciton Has not Started Yet';
-                                }
-                                else
-                                {
-                                    echo "Auciton has Ended";
-                                }
+                                    }
+                                    elseif($_SESSION[type] == "2")
+                                    {
+                                        
+                                    }
+                                    elseif($_SESSION[type] == "3")
+                                    {
+                                        echo '<a class="button" href="disableListing.php?listingID='.$row[PropertyID].'">Disable Listing</a>';
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
                              }
                              else
                              {
@@ -378,15 +408,22 @@
                 </td>
             </tr>
             <?php
-                    //This section is retrieving the bids and adding them to the page
-                    $bids = mysql_query("SELECT * FROM BID
+            //This query is retriving all the bids on the auction of the property
+            $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                ORDER BY AuctionID DESC');
+            
+            $auctionInfo = mysql_fetch_array($auction);
+            
+            
+            
+            $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
                             INNER JOIN APPLICATION
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         $numRows = mysql_num_fields($bids);
@@ -418,6 +455,34 @@
             ?>
             
         </table>
+
+
+
+    </div>
+
+    <script>
+        $("#placebid").submit(function(e){
+            e.preventDefault();
+            var isValid = $("#placebid").valid();
+            
+            if(isValid)
+                {
+                    var url = "placeBidConfirm.php?";
+                    url += "amt=" + $('[name=amt]').val();
+                    url += "&auctionID=" + $('[name=auctionID]').val();
+                    url += "&propertyID=" + $('[name=propertyID]').val();
+                    jQuery.facebox({ ajax: url });
+                }
+        })
+        $(document).ready(function(){
+            $("#placebid").validate({
+                onkeyup: false,
+                onclick: false
+            });
+        });
+
+
+    </script>
 
         <?php
         echo '<form method="post" action="approveListing.php"><button type="submit">Activate</button><input type="text" value="'. $row[PropertyID] .'" style="display:none;" name="propertyID"/></form>';
