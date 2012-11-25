@@ -51,6 +51,5 @@
     </script>
 
 <?
-	include 'dev.php';
         include 'Footer.php';
 ?>
