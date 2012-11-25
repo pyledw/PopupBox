@@ -96,7 +96,7 @@ class FeeProcessing
         $stmt->execute();
 	}
 
-	public static function begin_paypal_for_listing_fee($userid, $propertyid, $fee)
+	private static function begin_paypal($userid, $propertyid, $fee)
 	{
 		loginfo('Calling begin_paypal_for_listing_fee with: ' . print_r(func_get_args(), true));
 
@@ -126,6 +126,11 @@ class FeeProcessing
 			logerror("Error Severity Code: " . $ErrorSeverityCode);
 			return false;
 		}
+	}
+
+	public static begin_paypal_for_listing_fee($userid, $propertyid, $fee)
+	{
+		return self::begin_paypal($userid, $propertyid, $fee);
 	}
 }
 
