@@ -7,7 +7,7 @@
 
 <h1 class="Title">Home Search - Advanced</h1>
 <hr class="Title" />
-<form id="searchForm" method="post" action="searchResults.php">
+<form id="searchForm" method="post" action="advancedSearchRedirect.php">
     <table class="tableForm" width="900">
         <font class="formheader">Advanced Search</font>
         <tr>
