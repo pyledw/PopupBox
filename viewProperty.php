@@ -410,6 +410,7 @@
             <?php
             //This query is retriving all the bids on the auction of the property
             $auction = mysql_query('SELECT AuctionID FROM AUCTION
+                WHERE propertyID="'.$listingID.'"
                 ORDER BY AuctionID DESC');
             
             $auctionInfo = mysql_fetch_array($auction);
