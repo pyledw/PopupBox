@@ -106,7 +106,11 @@
     //This funciton uses the type and value and will return the
     //correct query based on those criteria
     $result = search($type,$val);
-    
+    //echo $_COOKIE['advancedSearchVal'];
+    if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
     
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))

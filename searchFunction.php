@@ -102,10 +102,14 @@ function search($type,$term)
                     }
                 }
             }
-            else  //if the user did not input anything in the search field
+            else  //if the input does not contain anything in the search field
             {
-                
-                $date = date("Y-m-d H:i:s");
+                if(isset($_COOKIE['advancedSearchVal']))
+                {
+                    $result = mysql_query($_COOKIE['advancedSearchVal']);
+                }
+                else
+                {
                 //returns all properties with aucitons
                 $result = mysql_query("SELECT * FROM AUCTION
                             LEFT JOIN PROPERTY
@@ -117,6 +121,7 @@ function search($type,$term)
                     {
                          die('could not connect: ' .mysql_error());
                     }
+                }
             }
 
 

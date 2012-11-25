@@ -12,7 +12,7 @@
                         LEFT JOIN PROPERTY
                         ON PROPERTY.PropertyID=AUCTION.PropertyID
                         WHERE NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept 
-                        AND IsApproved='1'";
+                        AND IsApproved=1";
             
     if($_POST['zip'] != '')
     {
@@ -29,52 +29,52 @@
                     $minLat = $lat - $distance;
                     $minLon = $lon - $distance;
                     
-                    $advancesSearchQuery += "AND Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND 
-                                Longitude <= '$minLon' AND Longitude >= '$maxLon'";
+                    $advancesSearchQuery = $advancesSearchQuery . " AND Lattitude <= $maxLat AND Lattitude >= $minLat AND 
+                                Longitude <= $minLon AND Longitude >= $maxLon";
                     
     }
     if($_POST['city'] != '')
     {
         $trimmed = trim($_POST['city']);//trimming the term to search for any part
         
-        $advancesSearchQuery += "AND Address LIKE \"%$trimmed%\"";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Address LIKE \"%$trimmed%\"";
         
     }
     if($_POST['street'] != '')
     {
         $trimmed = trim($_POST['street']);//trimming the term to search for any part
         
-        $advancesSearchQuery += "AND Street LIKE \"%$trimmed%\"";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Street LIKE \"%$trimmed%\"";
     }
     if($_POST['county'] != '')
     {
         $trimmed = trim($_POST['county']);//trimming the term to search for any part
         
-        $advancesSearchQuery += "AND County LIKE \"%$trimmed%\"";
+        $advancesSearchQuery = $advancesSearchQuery . " AND County LIKE \"%$trimmed%\"";
     }
     if($_POST['min-Bedrooms'] != '')
     {
-        $advancesSearchQuery += "AND Bedroom >".$_POST['min-Bedrooms']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom >".$_POST['min-Bedrooms']."";
     }
     if($_POST['max-Bedrooms'] != '')
     {
-        $advancesSearchQuery += "AND Bedroom <".$_POST['max-Bedrooms']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom <".$_POST['max-Bedrooms']."";
     }
     if($_POST['min-Bathrooms'] != '')
     {
-         $advancesSearchQuery += "AND Bath >".$_POST['min-Bathrooms']."";
+         $advancesSearchQuery = $advancesSearchQuery . " AND Bath >".$_POST['min-Bathrooms']."";
     }
     if($_POST['max-Bathrooms'] != '')
     {
-        $advancesSearchQuery += "AND Bath <".$_POST['max-Bathrooms']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Bath <".$_POST['max-Bathrooms']."";
     }
     if($_POST['min-SquareFeet'] != '')
     {
-        $advancesSearchQuery += "AND SF >".$_POST['min-SquareFeet']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND SF >".$_POST['min-SquareFeet']."";
     }
     if($_POST['max-SquareFeet'] != '')
     {
-        $advancesSearchQuery += "AND SF <".$_POST['max-SquareFeet']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND SF <".$_POST['max-SquareFeet']."";
     }
     if($_POST['min-Price'] != '')
     {
@@ -91,8 +91,10 @@
      
     echo $advancesSearchQuery;
             setcookie('searchType','advanced');
-            setcookie('searchVal',$advancesSearchQuery);
+            setcookie('searchVal','');
+            setcookie('advancedSearchVal',$advancesSearchQuery);
             //header( 'Location: /searchResults.php' );
+    echo $_COOKIE['advancedSearchVal'];
 
             
             
