@@ -23,33 +23,32 @@
                 UserName,                 Password,                DateCreated,              AccountType,
                 Email,                    SSN,                     FirstName,                LastName,
                 Street,                   City,                    State,                    Zip, 
-                DateOfBirth )
+                DateOfBirth,			  Phone)
             VALUES (
                 :username,                :password,               NOW(),                    :accountType,
                 :email,                   :ssn,                    :firstName,               :lastName,
                 :street,                  :city,                   :state,                   :zip,
-                :dob                     )
+                :dob,                     :phone)
             ");
     try {
-        $stmt->bindValue(':username', 	    $_POST['username'],		 		PDO::PARAM_STR);
+        $stmt->bindValue(':username', 	    $_POST['username'],		 				PDO::PARAM_STR);
         $stmt->bindValue(':password', 	    crypt($_POST['password1'], $pw_salt),	PDO::PARAM_STR);
-        $stmt->bindValue(':accountType',    $classification,            		PDO::PARAM_INT);
-        $stmt->bindValue(':email',          $_POST['email1'],           		PDO::PARAM_STR);
-        $stmt->bindValue(':ssn',            $_POST['SSN'],              		PDO::PARAM_STR);
-        $stmt->bindValue(':firstName',      $_POST['fname'],            		PDO::PARAM_STR);
-        $stmt->bindValue(':lastName',       $_POST['lname'],            		PDO::PARAM_STR);
-        $stmt->bindValue(':street',         $_POST['address'],          		PDO::PARAM_STR);
-        $stmt->bindValue(':city',           $_POST['city'],             		PDO::PARAM_STR);
-        $stmt->bindValue(':state',          $_POST['state'],            		PDO::PARAM_STR);
-        $stmt->bindValue(':zip',            $_POST['zip'],              		PDO::PARAM_STR);
-        $stmt->bindValue(':dob',            $_POST['age'],              		PDO::PARAM_STR);
-        //$stmt->bindValue(':phone',          $_POST['Phone'],              		PDO::PARAM_STR);
+        $stmt->bindValue(':accountType',    $classification,            			PDO::PARAM_INT);
+        $stmt->bindValue(':email',          $_POST['email1'],           			PDO::PARAM_STR);
+        $stmt->bindValue(':ssn',            $_POST['SSN'],              			PDO::PARAM_STR);
+        $stmt->bindValue(':firstName',      $_POST['fname'],            			PDO::PARAM_STR);
+        $stmt->bindValue(':lastName',       $_POST['lname'],            			PDO::PARAM_STR);
+        $stmt->bindValue(':street',         $_POST['address'],          			PDO::PARAM_STR);
+        $stmt->bindValue(':city',           $_POST['city'],             			PDO::PARAM_STR);
+        $stmt->bindValue(':state',          $_POST['state'],            			PDO::PARAM_STR);
+        $stmt->bindValue(':zip',            $_POST['zip'],              			PDO::PARAM_STR);
+        $stmt->bindValue(':dob',            $_POST['age'],              			PDO::PARAM_STR);
+        $stmt->bindValue(':phone',          $_POST['phone'],              			PDO::PARAM_STR);
         $stmt->execute();
         
         
         $con = get_dbconn("");
-        $result = mysql_query("SELECT * FROM USER
-                WHERE UserName ='" . $_POST['username'] . "'");
+        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $_POST['username'] . "'");
         $userData = mysql_fetch_array($result);
 
         $_SESSION['userID'] = $userData['UserID'];

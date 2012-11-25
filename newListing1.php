@@ -30,6 +30,10 @@
         $propertyID = $_POST['propertyID'];
         $_SESSION['propertyID'] = $propertyID;
     }
+	else
+	{
+		$propertyID = null;		// the query below croaks if the variable isn't set above.
+	}
 
     include_once 'config.inc.php';
     $con= get_dbconn("");

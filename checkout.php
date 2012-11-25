@@ -19,8 +19,14 @@ logdebug('Fee is: ' . print_r($fee, true));
 //
 // this may redirect to paypal.  if it doesn't, something went wrong.  oops
 //
-$res = FeeProcessing::begin_paypal_for_listing_fee($_SESSION['userID'], $_SESSION['propertyID'], $fee);
-
+if ($feeType == 'listing')
+{
+	$res = FeeProcessing::begin_paypal_for_listing_fee($_SESSION['userID'], $_SESSION['propertyID'], $fee);
+}
+else if ($feeType == 'application')
+{
+	$res = FeeProcessing::begin_paypal_for_application_fee($_SESSION['userID'], $_SESSION['applicationID'] , $fee);
+}
 // if we get here, $res should almost certainly be false
 if ($res)
 {

@@ -4,15 +4,15 @@ require_once ("log.inc.php");
 
 class FeeProcessing
 {
-    const STATUS_BEGIN = 1;
-    const STATUS_SUCCESS = 2;
-    const STATUS_CANCEL = 3;
-    const STATUS_ERROR = 4;
+    const STATUS_PENDING        = 1;
+    const STATUS_SUCCESS        = 2;
+    const STATUS_CANCEL         = 3;
+    const STATUS_ERROR          = 4;
 
-    const SERVICE_PAYPAL = 1;
+    const SERVICE_PAYPAL        = 1;
 
-    const FEE_TYPE_LISTING = 1;
-    const FEE_TYPE_APPLICATION = 2;
+    const FEE_TYPE_LISTING      = 1;
+    const FEE_TYPE_APPLICATION  = 2;
 
     const FEE_INSERT_SQL = "
               INSERT INTO FEE
@@ -21,9 +21,29 @@ class FeeProcessing
               VALUES
                   (:userid, :feetype, :amount, :propertyid, :applicationid, :serviceid, :token, :statusid)";
 
-    public static function write_listing_fee_record($userid, $propertyid, $token, $price)
+	private static function validate_pending_fee_record($userid, $propertyid, $token, $feeType, $applicationid, $price, $serviceid)
+	{
+		if (!isset($userid)) 						{ throw new Exception('userid required'); 	}
+		if (!isset($feeType)) 						{ throw new Exception('feetype not set'); 	}
+		if (!isset($price) or $price < 0) 			{ throw new Exception('price not set or invalid'); 	}
+		if (!isset($token) or strlen($token) == 0)	{ throw new Exception('token not set or invalid');		}
+		if (!isset($serviceid))						{ throw new Exception('serviceid required'); }
+		
+		if ($feeType == self::FEE_TYPE_LISTING and !isset($propertyid))	
+		{ 
+			throw new Exception('fee type is "listing" but propertyid is null'); 
+		}
+		if ($feeType == self::FEE_TYPE_APPLICATION and !isset($applicationid)) 
+		{ 
+			throw new Exception('fee type is "application" but applicationid is null'); 
+		}
+	}
+
+    private static function write_pending_fee_record($userid, $propertyid, $token, $feeType, $applicationid, $price, $serviceid)
     {
-		loginfo('Calling write_listing_fee_record with: ' . print_r(func_get_args(), true));
+		loginfo('Calling write_pending_fee_record with: ' . print_r(func_get_args(), true));
+
+		self::validate_pending_fee_record($userid, $propertyid, $token, $feeType, $applicationid, $price, $serviceid);
 
         $con = get_dbconn("PDO");
         $stmt = $con->prepare(self::FEE_INSERT_SQL);
@@ -32,36 +52,21 @@ class FeeProcessing
         $stmt->bindValue(':amount',        $price,                 PDO::PARAM_STR);
         $stmt->bindValue(':propertyid',    $propertyid,            PDO::PARAM_INT);
         $stmt->bindValue(':token',         $token,                 PDO::PARAM_STR);
-        $stmt->bindValue(':applicationid', null,                   PDO::PARAM_INT);
-        $stmt->bindValue(':statusid',      self::STATUS_BEGIN,     PDO::PARAM_INT);
-        $stmt->bindValue(':feetype',       self::FEE_TYPE_LISTING, PDO::PARAM_INT);
-        $stmt->bindValue(':serviceid',     self::SERVICE_PAYPAL,   PDO::PARAM_INT);
+        $stmt->bindValue(':applicationid', $applicationid,         PDO::PARAM_INT);
+        $stmt->bindValue(':statusid',      self::STATUS_PENDING,   PDO::PARAM_INT);
+        $stmt->bindValue(':feetype',       $feeType, 		       PDO::PARAM_INT);
+        $stmt->bindValue(':serviceid',     $serviceid,             PDO::PARAM_INT);
 
         $stmt->execute();
 		$id = $con->lastInsertId();
-		loginfo("Resulting ID: $id");
+		loginfo("write_pending_fee_record done.  Resulting ID: $id");
 		return $id;
-    }
-
-    public static function write_application_fee_record($userid, $applicationid, $token, $price)
-    {
-        $con = get_dbconn("PDO");
-        $stmt = $con->prepare(self::FEE_INSERT_SQL);
-
-        $stmt->bindValue(':userid',        $userid,                    PDO::PARAM_INT);
-        $stmt->bindValue(':amount',        $price,                     PDO::PARAM_STR);
-        $stmt->bindValue(':applicationid', $auctionid,                 PDO::PARAM_INT);
-        $stmt->bindValue(':token',         $token,                     PDO::PARAM_STR);
-        $stmt->bindValue(':statusid',      self::STATUS_BEGIN,         PDO::PARAM_INT);
-        $stmt->bindValue(':feetype',       self::FEE_TYPE_APPLICATION, PDO::PARAM_INT);
-        $stmt->bindValue(':serviceid',     self::SERVICE_PAYPAL,       PDO::PARAM_INT);
-
-        $stmt->execute();
-        return $con->lastInsertId();
     }
 
 	private static function update_status($token, $status, $amount)
 	{
+		loginfo('Calling update_status with: ' . print_r(func_get_args(), true));
+
 		$con = get_dbconn("PDO");
         $stmt = $con->prepare("UPDATE FEE 
                                SET 
@@ -73,10 +78,13 @@ class FeeProcessing
         $stmt->bindValue(':statusid',  $status,  PDO::PARAM_INT);
 
         $stmt->execute();
+		loginfo('update_status done');
 	}
 
 	public static function complete_paypal($token, $payerID)
 	{
+		loginfo('Calling complete_paypal with: ' . print_r(func_get_args(), true));
+
 		$res = GetExpressCheckoutDetails($token);
 		$finalPaymentAmount = $res["AMT"];
 
@@ -108,8 +116,23 @@ class FeeProcessing
         $stmt->execute();
 	}
 
-	public static function begin_paypal_for_listing_fee($userid, $propertyid, $fee)
+	public static function set_application_ispaid($token)
+    {
+        $con = get_dbconn("PDO");
+        $stmt = $con->prepare("UPDATE APPLICATION
+                               SET
+                                   IsPaid = '1'
+                               WHERE ApplicationID = (SELECT ApplicationID
+                                                   FROM FEE
+                                                   WHERE PaymentToken = :token)");
+        $stmt->bindValue(':token',  $token,  PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+	private static function begin_paypal($userid, $fee, $feeType, $id)
 	{
+		loginfo('Calling begin_paypal_for_listing_fee with: ' . print_r(func_get_args(), true));
+
 		$resArray = SetExpressCheckoutDG($fee['description'], $fee['price'], $fee['paypal-return'], $fee['paypal-cancel']);
 		logdebug('Result of SetExpressCheckoutDG: ' . print_r($resArray, true));
 		
@@ -117,7 +140,14 @@ class FeeProcessing
 		if($ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
 		{
 			$token = urldecode($resArray["TOKEN"]);
-        	self::write_listing_fee_record($userid, $propertyid, $token, $fee['price']);
+			if ($feeType == self::FEE_TYPE_LISTING)
+			{
+        		self::write_pending_fee_record($userid, $id,  $token, $feeType, null, $fee['price'], self::SERVICE_PAYPAL);
+			}
+			else if ($feeType == self::FEE_TYPE_APPLICATION)
+			{
+			 	self::write_pending_fee_record($userid, null, $token, $feeType, $id,  $fee['price'], self::SERVICE_PAYPAL);	
+			}
 	        RedirectToPayPalDG( $token );
 			return true;		// actually, this should never be reached
 		}
@@ -137,4 +167,17 @@ class FeeProcessing
 			return false;
 		}
 	}
+
+	public static function begin_paypal_for_listing_fee($userid, $propertyid, $fee)
+	{
+		return self::begin_paypal($userid, $fee, self::FEE_TYPE_LISTING, $propertyid);
+	}
+
+    public static function begin_paypal_for_application_fee($userid, $applicationid, $fee)
+    {
+        return self::begin_paypal($userid, $fee, self::FEE_TYPE_APPLICATION, $applicationid);
+    }
+
+
 }
+
