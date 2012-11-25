@@ -31,17 +31,17 @@
         include_once 'imageFunctions.php';
         
         // below is call to function that returns the timestring of time remaining or time till start
-        $timeString = getTime($row[DatePFOAccept], $row[DatePFOEndAccept]);
+        $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']);
         
         // The code below will return the listings status
-        $status = getStatus($row[DatePFOAccept], $row[DatePFOEndAccept]);
+        $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);
         
         //this code is retrieving the highest bid of the auction and returning it
-        $maxBid = getHighBid($row[PropertyID]);
+        $maxBid = getHighBid($row['PropertyID']);
         
         if($maxBid == '')
         {
-            $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[StartingBid].'</font>';
+            $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
         }
         
 ?>
@@ -58,7 +58,7 @@
 
             <tr>
                 <td colspan="3" width="600px">
-                    <b><?php echo $row[Address] . " - " . $row[PropertyID] . " - " ?>  <a href="Http://www.google.com/maps?q=<?php echo $row[Address] . " " . $row[City] . " " . $row[State] ?>">Map It</a> - Print Brochure</b>
+                    <b><?php echo $row['Address'] . " - " . $row['PropertyID'] . " - " ?>  <a href="Http://www.google.com/maps?q=<?php echo $row['Address'] . " " . $row['City'] . " " . $row['State'] ?>">Map It</a> - Print Brochure</b>
                 </td>
                 <td Style="background: grey;">
                     Current Rental Rate:
@@ -68,12 +68,12 @@
             </tr>
             <tr>
                 <td width="150px">
-                    <a href="<?php echo getMainPath($row[PropertyID]); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row[PropertyID]); ?>" alt="Main Photo" /></a>
+                    <a href="<?php echo getMainPath($row['PropertyID']); ?>" rel="facebox"><img class="mainPhoto" src="<?php echo getMainThumbPath($row['PropertyID']); ?>" alt="Main Photo" /></a>
                 </td>
                     
                 <td width="100px" style="vertical-align:text-top;">
                     <?php 
-                                   $images = getPhotoInfo($row[PropertyID]);
+                                   $images = getPhotoInfo($row['PropertyID']);
                                    
                                    if(!$images)
                                     {
@@ -85,7 +85,7 @@
                                    }
                                    while($image = mysql_fetch_array($images))
                                    {
-                                       echo '<a rel="facebox" href='.$image[ImagePathOriginal].'><img class="thumbs" src="'.$image[ImagePathThumb].'" alt="thumbnail" /></a>';
+                                       echo '<a rel="facebox" href='.$image['ImagePathOriginal'].'><img class="thumbs" src="'.$image['ImagePathThumb'].'" alt="thumbnail" /></a>';
                                    }
                     
                     ?>
@@ -101,7 +101,7 @@
                             </td>
                             <td>
                                 <?php
-                                echo " " . convertDate($row[DateAvailable],0); 
+                                echo " " . convertDate($row['DateAvailable'],0); 
                                         
                                         
                                 ?>
@@ -112,7 +112,7 @@
                                 Date Open House 1:
                             </td>
                             <td>
-                                <?php echo " " . convertDate($row[DateTimeOpenHouse1],1) ?>
+                                <?php echo " " . convertDate($row['DateTimeOpenHouse1'],1) ?>
                             </td>
                         </tr>
                         <tr>
@@ -120,7 +120,7 @@
                                 Date Open House 2:
                             </td>
                             <td>
-                                <?php echo " " . convertDate($row[DateTimeOpenHouse2],1) ?>
+                                <?php echo " " . convertDate($row['DateTimeOpenHouse2'],1) ?>
                             </td>
                         </tr>
                     </table>
@@ -128,16 +128,16 @@
                 <td align="center">
                 <?php 
                              
-                             $auctionStatus = getStatusInt($row[DatePFOAccept], $row[DatePFOEndAccept]);
+                             $auctionStatus = getStatusInt($row['DatePFOAccept'], $row['DatePFOEndAccept']);
                              
                              
-                             if(isset($_SESSION[userID]))
+                             if(isset($_SESSION['userID']))
                              {
                                  if($_SESSION[type] == "1")
                                      {
                                        if($auctionStatus == "1")
                                        {
-                                           $bidStatus = getUsersBidStatus($_SESSION[userID], $row[PropertyID]);
+                                           $bidStatus = getUsersBidStatus($_SESSION['userID'], $row['PropertyID']);
                                            //echo $_SESSION[userID] . " " . $row[PropertyID];
                                            //echo $bidStatus;
 
@@ -145,11 +145,11 @@
                                               {
                                                   echo '<form id="placebid" method="post">
                                                    <font>My Proposal for occupancy</font><br/><br/>
-                                                   <font color="red">Minimum Bid Amount: $'.$row[StartingBid].'</font><br/>
-                                                   <label class="label">PFO Amount:</label><input class="required number" min='.$row[StartingBid].' type="text" name="amt" /><br/>
-                                                   <input type="text" style="display: none;" name="auctionID" value="'.$row[AuctionID].'" />
-                                                   <input type="text" style="display: none;" name="userID" value="'.$_SESSION[userID].'" />
-                                                   <input type="text" style="display: none;" name="propertyID" value="'.$row[PropertyID].'" />
+                                                   <font color="red">Minimum Bid Amount: $'.$row['StartingBid'].'</font><br/>
+                                                   <label class="label">PFO Amount:</label><input class="required number" min='.$row['StartingBid'].' type="text" name="amt" /><br/>
+                                                   <input type="text" style="display: none;" name="auctionID" value="'.$row['AuctionID'].'" />
+                                                   <input type="text" style="display: none;" name="userID" value="'.$_SESSION['userID'].'" />
+                                                   <input type="text" style="display: none;" name="propertyID" value="'.$row['PropertyID'].'" />
                                                    <button class="button" type="submit">Submit</button>
                                                    </form>';
                                               }
@@ -187,9 +187,9 @@
                                     {
                                         
                                     }
-                                    elseif($_SESSION[type] == "3")
+                                    elseif($_SESSION['type'] == "3")
                                     {
-                                        echo '<a class="button" href="disableListing.php?listingID='.$row[PropertyID].'">Disable Listing</a>';
+                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'">Disable Listing</a>';
                                     }
                                     else
                                     {
@@ -207,7 +207,7 @@
             
             <tr>
                 <td colspan="4">
-                    <?php echo $row[Description] ?>
+                    <?php echo $row['Description'] ?>
                 </td>
             </tr>
             <tr>
@@ -221,13 +221,13 @@
                                 Bedrooms: 
                             </td>
                             <td align="center">
-                                <?php echo " " . $row[Bedroom] ?>
+                                <?php echo " " . $row['Bedroom'] ?>
                             </td>
                             <td align="right">
                                 Bathrooms: 
                             </td>
                             <td align="center">
-                                <?php echo " " . $row[Bath] ?>
+                                <?php echo " " . $row['Bath'] ?>
                             </td>
                         </tr>
                         <tr>
@@ -235,13 +235,13 @@
                                 Square Feet: 
                             </td>
                             <td align="center">
-                                <?php echo " " . $row[SF] ?>
+                                <?php echo " " . $row['SF'] ?>
                             </td>
                             <td align="right">
                                 Air: 
                             </td>
                             <td align="center">
-                                <?php echo " " . $row[AC] ?>
+                                <?php echo " " . $row['AC'] ?>
                             </td>
                         </tr>
                         <tr>
@@ -249,13 +249,13 @@
                                 Allows Dogs: 
                             </td >
                             <td align="center">
-                                <?php if($row[AllowDog] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['AllowDog'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                             <td  align="right">
                                 Allow Cats: 
                             </td>
                             <td align="center">
-                                <?php if($row[AllowCat] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['AllowCat'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                         </tr>
                         <tr>
@@ -263,13 +263,13 @@
                                 Ice Maker: 
                             </td>
                             <td align="center">
-                                <?php if($row[IceMaker] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['IceMaker'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                             <td align="right">
                                 Dish Washer: 
                             </td>
                             <td align="center">
-                                <?php if($row[DishWasher] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['DishWasher'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                         </tr>
                         <tr>
@@ -277,13 +277,13 @@
                                 Clothes Washer: 
                             </td>
                             <td align="center">
-                                <?php if($row[ClothesWasher] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['ClothesWasher'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                             <td align="right">
                                 Clothes Dryer: 
                             </td>
                             <td align="center">
-                                <?php if($row[ClothesDryer] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['ClothesDryer'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                         </tr>
                          <tr>
@@ -291,13 +291,13 @@
                                 Disposal: 
                             </td>
                             <td align="center">
-                                <?php if($row[Disposal] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['Disposal'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                             <td align="right">
                                 Washer Hookup: 
                             </td>
                             <td align="center">
-                                <?php if($row[ClothesWasherHookup] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['ClothesWasherHookup'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                         </tr>
                         
@@ -314,13 +314,13 @@
                                 Media: 
                             </td>
                             <td align="center">
-                                <?php echo " " . $row[Media] ?>
+                                <?php echo " " . $row['Media'] ?>
                             </td>
                             <td  align="right">
                                 Garage: 
                             </td>
                             <td align="center">
-                                <?php echo " " . $row[Garage] ?>
+                                <?php echo " " . $row['Garage'] ?>
                             </td>
                         </tr>
                         <tr>
@@ -328,13 +328,13 @@
                                 Deposit: 
                             </td>
                             <td align="center">
-                                <?php echo " " . $row[RequiredDeposit] ?>
+                                <?php echo " " . $row['RequiredDeposit'] ?>
                             </td>
                             <td align="right">
                                 Min Term: 
                             </td>
                             <td align="center">
-                                <?php echo " " . $row[MinimumTerm] ?>
+                                <?php echo " " . $row['MinimumTerm'] ?>
                             </td>
                         </tr>
                         <tr>
@@ -342,13 +342,13 @@
                                 Pet Deposit: 
                             </td>
                             <td align="center">
-                                <?php if($row[PetDeposit] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['PetDeposit'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                             <td align="right">
                                 Smoking: 
                             </td>
                             <td align="center">
-                                <?php if($row[Smoking] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['Smoking'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                         </tr>
                         <tr>
@@ -356,13 +356,13 @@
                                 ADA: 
                             </td>
                             <td align="center">
-                                <?php if($row[ADAComplient] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['ADAComplient'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                             <td align="right">
                                 Fenced: 
                             </td>
                             <td align="center">
-                                <?php if($row[Fenced] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['Fenced'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                         </tr>
                         <tr>
@@ -370,13 +370,13 @@
                                 Pool: 
                             </td>
                             <td align="center">
-                                <?php if($row[Pool] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['Pool'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                             <td align="right">
                                 Deck: 
                             </td>
                             <td align="center">
-                                <?php if($row[Deck] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['Deck'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                         </tr>
                          <tr>
@@ -384,13 +384,13 @@
                                 Security: 
                             </td>
                             <td align="center">
-                                <?php if($row[SecurityAlarm] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['SecurityAlarm'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                             <td align="right">
                                 Microwave: 
                             </td >
                             <td align="center">
-                                <?php if($row[Microwave] == "1"){echo "Yes";}else{echo "No";} ?>
+                                <?php if($row['Microwave'] == "1"){echo "Yes";}else{echo "No";} ?>
                             </td>
                         </tr>
                         
@@ -423,22 +423,22 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='".$auctionInfo['AuctionID']."' AND PropertyID='".$row['PropertyID']."'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         $numRows = mysql_num_fields($bids);
                         while($bid = mysql_fetch_array($bids))
                         {
                          
-                            echo  '<tr><td>' . $bid[UserName] . '</td>' . 
-                                   '<td>$'.$bid[MonthlyRate]. "</td></tr>";
+                            echo  '<tr><td>' . $bid['UserName'] . '</td>' . 
+                                   '<td>$'.$bid['MonthlyRate']. "</td></tr>";
                             $max += 1;
                             
                             if($max > 2)
                             {
                                 if($numRows > 3)
                                 {
-                                    echo '<tr><td><a rel="facebox" href="seeAllBids.php?auctionID='.$row[AuctionID].'">See all</a></td><td></td></tr>';
+                                    echo '<tr><td><a rel="facebox" href="seeAllBids.php?auctionID='.$row['AuctionID'].'">See all</a></td><td></td></tr>';
                                 }
                                 $max += 1;
                                 break;
