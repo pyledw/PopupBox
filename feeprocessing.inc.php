@@ -109,11 +109,11 @@ class FeeProcessing
 			$token = urldecode($resArray["TOKEN"]);
 			if ($feeType == self::FEE_TYPE_LISTING)
 			{
-        		self::write_pending_fee_record($userid, $id, $token, $feeType, null, $fee['price'], self::SERVICE_PAYPAL);
+        		self::write_pending_fee_record($userid, $id,  $token, $feeType, null, $fee['price'], self::SERVICE_PAYPAL);
 			}
 			else if ($feeType == self::FEE_TYPE_APPLICATION)
 			{
-			 	self::write_pending_fee_record($userid, null, $token, $feeType, $id, $fee['price'], self::SERVICE_PAYPAL);	
+			 	self::write_pending_fee_record($userid, null, $token, $feeType, $id,  $fee['price'], self::SERVICE_PAYPAL);	
 			}
 	        RedirectToPayPalDG( $token );
 			return true;		// actually, this should never be reached
@@ -135,12 +135,12 @@ class FeeProcessing
 		}
 	}
 
-	public static begin_paypal_for_listing_fee($userid, $propertyid, $fee)
+	public static function begin_paypal_for_listing_fee($userid, $propertyid, $fee)
 	{
 		return self::begin_paypal($userid, $fee, self::FEE_TYPE_LISTING, $propertyid);
 	}
 
-    public static begin_paypal_for_application_fee($userid, $applicationid, $fee)
+    public static function begin_paypal_for_application_fee($userid, $applicationid, $fee)
     {
         return self::begin_paypal($userid, $fee, self::FEE_TYPE_APPLICATION, $applicationid);
     }
