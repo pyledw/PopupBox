@@ -96,7 +96,7 @@ class FeeProcessing
         $stmt->execute();
 	}
 
-	private static function begin_paypal($userid, $propertyid, $fee)
+	private static function begin_paypal($userid, $fee, $feeType, $id)
 	{
 		loginfo('Calling begin_paypal_for_listing_fee with: ' . print_r(func_get_args(), true));
 
@@ -107,7 +107,14 @@ class FeeProcessing
 		if($ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING")
 		{
 			$token = urldecode($resArray["TOKEN"]);
-        	self::write_pending_fee_record($userid, $propertyid, $token, self::FEE_TYPE_LISTING, null, $fee['price'], self::SERVICE_PAYPAL);
+			if ($feeType == self::FEE_TYPE_LISTING)
+			{
+        		self::write_pending_fee_record($userid, $id, $token, $feeType, null, $fee['price'], self::SERVICE_PAYPAL);
+			}
+			else if ($feeType == self::FEE_TYPE_APPLICATION)
+			{
+			 	self::write_pending_fee_record($userid, null, $token, $feeType, $id, $fee['price'], self::SERVICE_PAYPAL);	
+			}
 	        RedirectToPayPalDG( $token );
 			return true;		// actually, this should never be reached
 		}
@@ -130,7 +137,14 @@ class FeeProcessing
 
 	public static begin_paypal_for_listing_fee($userid, $propertyid, $fee)
 	{
-		return self::begin_paypal($userid, $propertyid, $fee);
+		return self::begin_paypal($userid, $fee, self::FEE_TYPE_LISTING, $propertyid);
 	}
+
+    public static begin_paypal_for_application_fee($userid, $applicationid, $fee)
+    {
+        return self::begin_paypal($userid, $fee, self::FEE_TYPE_APPLICATION, $applicationid);
+    }
+
+
 }
 
