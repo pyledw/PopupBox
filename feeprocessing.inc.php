@@ -21,9 +21,29 @@ class FeeProcessing
               VALUES
                   (:userid, :feetype, :amount, :propertyid, :applicationid, :serviceid, :token, :statusid)";
 
+	private static function validate_pending_fee_record($userid, $propertyid, $token, $feeType, $applicationid, $price, $serviceid)
+	{
+		if (!isset($userid)) 						{ throw new Exception('userid required'); 	}
+		if (!isset($feeType)) 						{ throw new Exception('feetype not set'); 	}
+		if (!isset($price) or $price < 0) 			{ throw new Exception('price not set or invalid'); 	}
+		if (!isset($token) or strlen($token) == 0)	{ throw new Exception('token not set or invalid');		}
+		if (!isset($serviceid))						{ throw new Exception('serviceid required'); }
+		
+		if ($feeType == self::FEE_TYPE_LISTING and !isset($propertyid))	
+		{ 
+			throw new Exception('fee type is "listing" but propertyid is null'); 
+		}
+		if ($feeType == self::FEE_TYPE_APPLICATION and !isset($applicationid)) 
+		{ 
+			throw new Exception('fee type is "application" but applicationid is null'); 
+		}
+	}
+
     private static function write_pending_fee_record($userid, $propertyid, $token, $feeType, $applicationid, $price, $serviceid)
     {
 		loginfo('Calling write_pending_fee_record with: ' . print_r(func_get_args(), true));
+
+		self::validate_pending_fee_record($userid, $propertyid, $token, $feeType, $applicationid, $price, $serviceid);
 
         $con = get_dbconn("PDO");
         $stmt = $con->prepare(self::FEE_INSERT_SQL);
@@ -95,6 +115,19 @@ class FeeProcessing
         $stmt->bindValue(':token',  $token,  PDO::PARAM_INT);
         $stmt->execute();
 	}
+
+	public static function set_application_ispaid($token)
+    {
+        $con = get_dbconn("PDO");
+        $stmt = $con->prepare("UPDATE APPLICATION
+                               SET
+                                   IsPaid = '1'
+                               WHERE ApplicationID = (SELECT ApplicationID
+                                                   FROM FEE
+                                                   WHERE PaymentToken = :token)");
+        $stmt->bindValue(':token',  $token,  PDO::PARAM_INT);
+        $stmt->execute();
+    }
 
 	private static function begin_paypal($userid, $fee, $feeType, $id)
 	{
