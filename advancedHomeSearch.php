@@ -7,25 +7,149 @@
 
 <h1 class="Title">Home Search - Advanced</h1>
 <hr class="Title" />
-<form class="formStyle" width="90%" height="90%" method="post" action="searchResults.php">
-    Zip Code:<input type="text" name="zip" />
-    City:<input type="text" name="city" />
-    Street:<input type="text" name="street" />
-    County:<input type="text" name="county" />
-    Min-Bedrooms:<input type="text" name="min-Bedrooms" />
-    Max-Bedrooms:<input type="text" name="max-Bedrooms" />
-    Min-Bathrooms:<input type="text" name="min-Bathrooms" />
-    Max-Bathrooms:<input type="text" name="max-Bathrooms" />
-    Min-Square Feet:<input type="text" name="min-SquareFeet" />
-    Max-Square Feet:<input type="text" name="max-SquareFeet" />
-    Min-Price:
-    
-    
-    
-    
-    <br/>
-        <button type="submit" class="button">Save and Continue</button>
-        <button type="reset" class="button">Clear</button>
+<form id="searchForm" method="post" action="searchResults.php">
+    <table class="tableForm" width="900">
+        <font class="formheader">Advanced Search</font>
+        <tr>
+            <td>
+                 <label class="label">Zip Code:</label><br/><input type="text" name="zip" />
+            </td>
+            <td>
+                 <label class="label">City:</label><br/><input type="text" name="city" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                  <label class="label">Street:</label><br/><input type="text" name="street" />
+            </td>
+            
+            <td>
+                  <label class="label">County:</label><br/><input type="text" name="county" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <label class="label">Min-Bedrooms:</label><br/>
+                 
+                        <select name="min-Bedrooms">
+
+                            <option>
+                                1
+                            </option>
+                            <option>
+                                2
+                            </option>
+                            <option>
+                                3
+                            </option >
+                            <option>
+                                4
+                            </option>
+                            <option>
+                                4+
+                            </option>
+                        </select>
+            </td>
+            
+            <td>
+                 <label class="label">Max-Bedrooms:</label><br/>
+                 
+                        <select name="max-Bedrooms">
+
+                            <option>
+                                1
+                            </option>
+                            <option>
+                                2
+                            </option>
+                            <option>
+                                3
+                            </option >
+                            <option>
+                                4
+                            </option>
+                            <option>
+                                4+
+                            </option>
+                        </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <label class="label">Min-Bathrooms:</label><br/>
+                 
+                 <select name="min-Bathrooms">
+                            <option>
+                                1
+                            </option>
+                            <option>
+                                1.5
+                            </option>
+                            <option>
+                                2
+                            </option>
+                            <option>
+                                2.5
+                            </option>
+                            <option>
+                                3
+                            </option>
+                            <option>
+                                3+
+                            </option>
+                        </select>
+            </td>
+            
+            <td>
+                 <label class="label">Max-Bathrooms:</label><br/>
+                 
+                 <select name="max-Bathrooms">
+                            <option>
+                                1
+                            </option>
+                            <option>
+                                1.5
+                            </option>
+                            <option>
+                                2
+                            </option>
+                            <option>
+                                2.5
+                            </option>
+                            <option>
+                                3
+                            </option>
+                            <option>
+                                3+
+                            </option>
+                        </select>
+                 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <label class="label">Min-Square Feet:</label><br/><input type="text" name="min-SquareFeet" />
+            </td>
+            
+            <td> 
+                 <label class="label">Max-Square Feet:</label><br/><input type="text" name="max-SquareFeet" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <label class="label">Min-Price:$</label><br/><input type="text" name="min-Price" />
+            </td>
+            <td>
+                 <label class="label">Max-Price:$</label><br/><input type="text" name="max-Price" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit" class="button">Save and Continue</button>
+                <button type="reset" class="button">Clear</button>
+            </td>
+        </tr>
+   </table>
 </form>
 <?php
 	include 'Footer.php';
