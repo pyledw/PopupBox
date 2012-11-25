@@ -10,15 +10,15 @@
          * @author David Pyle <Pyledw@Gmail.com>
          */
         session_start();
-        if(!isset($_SESSION[userID])){
+        if(!isset($_SESSION['userID'])){
            header( 'Location: /login.php' );
         }
         $title = "MyHood - Home";
 	include "Header.php";
         
-        if(isset($_SESSION[propertyID]))
+        if(isset($_SESSION['propertyID']))
         {
-            unset($_SESSION[propertyID]);
+            unset($_SESSION['propertyID']);
         }
         $userType = $_SESSION["type"];
 ?>
