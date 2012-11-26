@@ -1171,17 +1171,18 @@
                             ON AUCTION.PropertyID=PROPERTY.PropertyID
                             WHERE BID.ApplicationID='$applicationID]'");
                         
-                        $row = mysql_fetch_array($result);
-                        
-                        if($row['PropertyID'] != $propertyID && $row['IsActive'] == "1")
+                        while($row = mysql_fetch_array($result))
                         {
-                            $ActiveBids = true;
+                            if($row['PropertyID'] != $propertyID && $row['IsActive'] == "1")
+                            {
+                                $ActiveBids = true;
+                                break;
+                            }
+                            else
+                            {
+                                $status = "0";
+                            }
                         }
-                        else
-                        {
-                            $status = "0";
-                        }
-                        
                         if($ActiveBids)
                         {
                              $status = "4";
