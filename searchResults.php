@@ -112,6 +112,11 @@
             die('could not connect: ' .mysql_error());
         }
     
+        
+    if(mysql_num_rows($result) == 0)
+    {
+        echo 'No Results Found';
+    }
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))
     {

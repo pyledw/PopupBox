@@ -7,12 +7,12 @@
 
 <h1 class="Title">Home Search - Advanced</h1>
 <hr class="Title" />
-<form id="searchForm" method="post" action="advancedSearchRedirect.php">
+<form id="search" method="post" action="advancedSearchRedirect.php">
     <table class="tableForm" width="900">
         <font class="formheader">Advanced Search</font>
         <tr>
             <td>
-                 <label class="label">Zip Code:</label><br/><input type="text" name="zip" />
+                 <label class="label">Zip Code:</label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zip" />
             </td>
             <td>
                  <label class="label">City:</label><br/><input type="text" name="city" />
@@ -138,19 +138,11 @@
         </tr>
         <tr>
             <td>
-                 <label class="label">Min-Square Feet:</label><br/><input type="text" name="min-SquareFeet" />
+                 <label class="label">Min-Square Feet:</label><br/><input title="Enter valid number" class="number" type="text" name="min-SquareFeet" />
             </td>
             
             <td> 
-                 <label class="label">Max-Square Feet:</label><br/><input type="text" name="max-SquareFeet" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                 <label class="label">Min-Price:$</label><br/><input type="text" name="min-Price" />
-            </td>
-            <td>
-                 <label class="label">Max-Price:$</label><br/><input type="text" name="max-Price" />
+                 <label class="label">Max-Square Feet:</label><br/><input title="Enter valid number" class="number" type="text" name="max-SquareFeet" />
             </td>
         </tr>
         <tr>
@@ -164,3 +156,14 @@
 <?php
 	include 'Footer.php';
 ?>
+
+<script>
+$(document).ready(function(){
+    $("#search").validate({
+        onkeyup: false,
+        onclick: false
+        
+        
+    });
+  });
+</script>

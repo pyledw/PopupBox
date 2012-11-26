@@ -13,7 +13,7 @@
 
 
 <div id="mainContent">
-    <form method="post" action="searchRedirect.php">
+    <form id="search" method="post" action="searchRedirect.php">
         <table width="775px" class="tableForm" style="text-align: center;">
         <font class="formheader">Home Search</font>
         <tr>

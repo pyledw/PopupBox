@@ -29,8 +29,8 @@
                     $minLat = $lat - $distance;
                     $minLon = $lon - $distance;
                     
-                    $advancesSearchQuery = $advancesSearchQuery . " AND Lattitude <= $maxLat AND Lattitude >= $minLat AND 
-                                Longitude <= $minLon AND Longitude >= $maxLon";
+                    $advancesSearchQuery = $advancesSearchQuery . " AND Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND 
+                                Longitude <= '$minLon' AND Longitude >= '$maxLon'";
                     
     }
     if($_POST['city'] != '')
@@ -54,17 +54,33 @@
     }
     if($_POST['min-Bedrooms'] != '0')
     {
-        $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom >=".$_POST['min-Bedrooms']."";
+        if($_POST['min-Bedrooms'] == '4+')
+        {
+            $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom >=4 ";
+        }
+        else
+        {
+            $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom >=".$_POST['min-Bedrooms']."";
+        }
+        
     }
-    if($_POST['max-Bedrooms'] != '0')
+    if($_POST['max-Bedrooms'] != '0' && $_POST['max-Bedrooms'] != '4+')
     {
         $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom <=".$_POST['max-Bedrooms']."";
     }
     if($_POST['min-Bathrooms'] != '0')
     {
-         $advancesSearchQuery = $advancesSearchQuery . " AND Bath >=".$_POST['min-Bathrooms']."";
+        if($_POST['min-Bathrooms'] == '3+')
+        {
+            $advancesSearchQuery = $advancesSearchQuery . " AND Bath >=3 ";
+        }
+        else
+        {
+            $advancesSearchQuery = $advancesSearchQuery . " AND Bath >=".$_POST['min-Bathrooms']."";
+        }
+         
     }
-    if($_POST['max-Bathrooms'] != '0')
+    if($_POST['max-Bathrooms'] != '0' && $_POST['max-Bathrooms'] != '3+')
     {
         $advancesSearchQuery = $advancesSearchQuery . " AND Bath <=".$_POST['max-Bathrooms']."";
     }
@@ -76,19 +92,9 @@
     {
         $advancesSearchQuery = $advancesSearchQuery . " AND SF <=".$_POST['max-SquareFeet']."";
     }
-    if($_POST['min-Price'] != '')
-    {
-        /**
-         * Still working on this, will haev to retireve the bids
-         */
-    }
-    if($_POST['max-Price'] != '')
-    {
-        /**
-         * Still working on this, will haev to retireve the bids
-         */
-    }
      
+    
+    $advancesSearchQuery = $advancesSearchQuery . " ORDER BY AUCTION.DatePFOEndAccept ASC";
     echo $advancesSearchQuery;
             setcookie('searchType','advanced');
             setcookie('searchVal','');
