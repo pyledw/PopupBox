@@ -29,8 +29,8 @@
                     $minLat = $lat - $distance;
                     $minLon = $lon - $distance;
                     
-                    $advancesSearchQuery = $advancesSearchQuery . " AND Lattitude <= $maxLat AND Lattitude >= $minLat AND 
-                                Longitude <= $minLon AND Longitude >= $maxLon";
+                    $advancesSearchQuery = $advancesSearchQuery . " AND Lattitude <= '$maxLat' AND Lattitude >= '$minLat' AND 
+                                Longitude <= '$minLon' AND Longitude >= '$maxLon'";
                     
     }
     if($_POST['city'] != '')
@@ -89,6 +89,8 @@
          */
     }
      
+    
+    $advancesSearchQuery = $advancesSearchQuery . " ORDER BY AUCTION.DatePFOEndAccept ASC";
     echo $advancesSearchQuery;
             setcookie('searchType','advanced');
             setcookie('searchVal','');

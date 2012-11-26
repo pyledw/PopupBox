@@ -58,6 +58,7 @@ function search($type,$term)
                                 Longitude <= '$minLon' AND Longitude >= '$maxLon' AND 
                                     NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept AND
                                         IsApproved='1'
+                                        ORDER BY AUCTION.DatePFOEndAccept ASC
                             ");
 
                     if(!$result)
@@ -76,6 +77,7 @@ function search($type,$term)
                             WHERE Address LIKE \"%$trimmed%\" AND NOW() BETWEEN AUCTION.DatePFOAccept AND
                                 AUCTION.DatePFOEndAccept
                                     AND IsApproved='1'
+                                    ORDER BY AUCTION.DatePFOEndAccept ASC
                             ");
                     
                     if(!$result)
@@ -95,7 +97,8 @@ function search($type,$term)
                             WHERE City LIKE \"%$trimmed%\" AND 
                                 NOW() BETWEEN AUCTION.DatePFOAccept AND 
                                     AUCTION.DatePFOEndAccept AND
-                                        IsApproved='1'");
+                                        IsApproved='1'
+                                        ORDER BY AUCTION.DatePFOEndAccept ASC");
                     
                     if(!$result)
                     {
@@ -105,7 +108,7 @@ function search($type,$term)
             }
             elseif($type == 'advanced')
                 {
-                    echo $_SESSION['advancedSearchVal'];
+                    //echo $_SESSION['advancedSearchVal'];
                     $result = mysql_query($_SESSION['advancedSearchVal']);
                 }
             else  //if the input does not contain anything in the search field
@@ -116,7 +119,8 @@ function search($type,$term)
                             LEFT JOIN PROPERTY
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
                                 WHERE NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept AND
-                                        IsApproved='1'");
+                                        IsApproved='1'
+                                        ORDER BY AUCTION.DatePFOEndAccept ASC");
                 
                 if(!$result)
                     {
