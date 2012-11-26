@@ -12,7 +12,7 @@
         <font class="formheader">Advanced Search</font>
         <tr>
             <td>
-                 <label class="label">Zip Code:</label><br/><input class="number" minlength="5" maxlength="5" type="text" name="zip" />
+                 <label class="label">Zip Code:</label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zip" />
             </td>
             <td>
                  <label class="label">City:</label><br/><input type="text" name="city" />
@@ -138,11 +138,11 @@
         </tr>
         <tr>
             <td>
-                 <label class="label">Min-Square Feet:</label><br/><input class="number" type="text" name="min-SquareFeet" />
+                 <label class="label">Min-Square Feet:</label><br/><input title="Enter valid number" class="number" type="text" name="min-SquareFeet" />
             </td>
             
             <td> 
-                 <label class="label">Max-Square Feet:</label><br/><input class="number" type="text" name="max-SquareFeet" />
+                 <label class="label">Max-Square Feet:</label><br/><input title="Enter valid number" class="number" type="text" name="max-SquareFeet" />
             </td>
         </tr>
         <tr>

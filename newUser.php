@@ -7,7 +7,7 @@
      * This page will retireve any inforamtion posted to if their is an error message.
      * It then allows the user to enter their credentials.
      * 
-     * The form validation id done with jQuery
+     * The form validation is done with jQuery
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
@@ -61,10 +61,10 @@ $classification = getPost('accountType');
                     <?php echo "<tr><td colspan='3'><font color='red'>".$errorMessage."</font></td></tr>"; ?>
                     <tr>
                          <td>
-                         <lable class="label">Username:</label><br/><input type="text" title="User Name" name="username" class="required" value="<?php echo $userName; ?>" minlength="5" />
+                         <lable class="label">Username:</label><br/><input type="text" name="username" class="required" value="<?php echo $userName; ?>" minlength="5" />
                          </td>
                          <td>
-                           <lable class="label">Password:</label><br/><input title="Password" type="password" id="password" class="required" value="<?php echo $password; ?>" name="password1">
+                           <lable class="label">Password:</label><br/><input title="Password must be more than 8 characters" type="password" id="password" class="required" minlength="8" value="<?php echo $password; ?>" name="password1">
                          </td>
                          <td>
                            <lable class="label">Confirm Password:</label><br/><input title="Confirm Password" id="password_again" class="required" value="<?php echo $password; ?>" type="password" name="password_again">
@@ -78,22 +78,22 @@ $classification = getPost('accountType');
                     <tr>
 
                          <td>
-                           <lable class="label">First Name:</label><br/><input title="First name" type="text" name="fname" value="<?php echo $firstName; ?>" class="required">
+                           <lable class="label">First Name:</label><br/><input  type="text" name="fname" value="<?php echo $firstName; ?>" class="required">
                          </td>
 
                          <td colspan="2">
-                           <lable class="label">Last Name:</label><br/><input title="Last name" type="text" name="lname" value="<?php echo $lastName; ?>" class="required">
+                           <lable class="label">Last Name:</label><br/><input  type="text" name="lname" value="<?php echo $lastName; ?>" class="required">
                          </td>
                     </tr>
                     <tr>
                          <td>
-                             <lable class="label">Email:</label><br/><input title="Email address" type="text" id="email" value="<?php echo $email; ?>" name="email1" class="required email">
+                             <lable class="label">Email:</label><br/><input  type="text" id="email" value="<?php echo $email; ?>" name="email1" class="required email">
                          </td>
                          <td>
-                             <lable class="label">Confirm Email:</label><br/><input title="Confirm email" type="text" value="<?php echo $email; ?>" id="email_again" name="email_again" class="required email">
+                             <lable class="label">Confirm Email:</label><br/><input title="Passwords must match" type="text" value="<?php echo $email; ?>" id="email_again" name="email_again" class="required email">
                          </td>
                          <td>
-                             <lable class="label">Phone:</label><br/><input title="Phone" type="text" name="phone" value="<?php echo $phone; ?>" class="required">
+                             <lable class="label">Phone:</label><br/><input id="phone" type="text" name="phone" value="<?php echo $phone; ?>" class="required">
                          </td>
                     </tr>
                     <tr class="hr">
@@ -103,18 +103,18 @@ $classification = getPost('accountType');
                     </tr>
                      <tr>
                          <td>
-                             <lable class="label">Address:</label><br/><input title="Address" type="text" name="address" width="400px" value="<?php echo $address; ?>" class="required">
+                             <lable class="label">Address:</label><br/><input  type="text" name="address" value="<?php echo $address; ?>" class="required">
                          </td>
                          <td>
-                             <lable class="label">City:</label><br/><input title="City" type="text" name="city" value="<?php echo $city; ?>" class="required">
+                             <lable class="label">City:</label><br/><input  type="text" name="city" value="<?php echo $city; ?>" class="required">
                          </td>
                          <td>
-                             <lable class="label">State:</label><br/><input title="State" type="text" name="state" value="<?php echo $state; ?>" class="required">
+                             <lable class="label">State:</label><br/><input title="Enter State Initals" type="text" name="state" maxlength="2" minlength="2" value="<?php echo $state; ?>" class="required">
                          </td>
                     </tr>
                     <tr>
                          <td>
-                             <lable class="label">Zip:</label><br/><input title="Zip code" type="text" name="zip" value="<?php echo $zip; ?>" class="required">
+                             <lable class="label">Zip:</label><br/><input title="Enter valid zip code"  type="text" name="zip" minlength="5" maxlength="5" class="required number" value="<?php echo $zip; ?>">
                          </td>
                          <td>
                              <lable class="label">Age:</label><br/><input title="Must be over 18 years of age" type="text" value="<?php echo $age; ?>" name="age" class="required number" min="18">
@@ -142,14 +142,24 @@ $classification = getPost('accountType');
     
     
 
-  <script>
+<script>
   $(document).ready(function(){
+    jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, ""); 
+	return this.optional(element) || phone_number.length > 9 &&
+		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+}, "Please specify a valid phone number");
+
     $("#newUserForm").validate({
         onkeyup: false,
         onclick: false,
-        ignoreTitle: true,
         
-        rules: {        
+        rules: {
+        phone: {
+            required: true,
+            phoneUS: true
+        },    
+                
         password: "required",
         email: "required",
         email_again:{
