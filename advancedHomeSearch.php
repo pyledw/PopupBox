@@ -146,14 +146,6 @@
             </td>
         </tr>
         <tr>
-            <td>
-                 <label class="label">Min-Price:$</label><br/><input type="text" name="min-Price" />
-            </td>
-            <td>
-                 <label class="label">Max-Price:$</label><br/><input type="text" name="max-Price" />
-            </td>
-        </tr>
-        <tr>
             <td colspan="2">
                 <button type="submit" class="button">Save and Continue</button>
                 <button type="reset" class="button">Clear</button>
