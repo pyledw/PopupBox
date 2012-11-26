@@ -22,17 +22,14 @@
         
         include_once 'config.inc.php';
         //Connecting to the sql database
-        $con = get_dbconn("");
-
-        //Query the database for only the row containing that users information
-        $result = mysql_query("SELECT * FROM USER WHERE UserName ='" . $myName . "' AND PASSWORD = '" . crypt($userPassword, $pw_salt) . "'");
-        if(!$result)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-
+        $con = get_dbconn("PDO");
+		$stmt = $con->prepare("SELECT * FROM USER WHERE UserName = :username AND PASSWORD = :password");
+		$stmt->bindValue(":username", $myName, PDO::PARAM_STR);
+		$stmt->bindValue(":password", crypt($userPassword, $pw_salt), PDO::PARAM_STR);
+		$stmt->execute();
+		
         //fetching the array of query elements
-	$row = mysql_fetch_array($result);
+	    $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($row != NULL)
         {
             $userType = $row['AccountType'];
