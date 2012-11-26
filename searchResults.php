@@ -125,6 +125,12 @@
     
     
     $result = searchPreMarket($type,$val);
+    
+    if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+    
     $pre = 0;
     //Setting the query results into a variable
     while($row = mysql_fetch_array($result))

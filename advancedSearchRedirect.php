@@ -6,7 +6,7 @@
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
-
+    session_start();
 
      $advancesSearchQuery = "SELECT * FROM AUCTION
                         LEFT JOIN PROPERTY
@@ -37,44 +37,44 @@
     {
         $trimmed = trim($_POST['city']);//trimming the term to search for any part
         
-        $advancesSearchQuery = $advancesSearchQuery . " AND Address LIKE \"%$trimmed%\"";
+        $advancesSearchQuery = $advancesSearchQuery . " AND City LIKE '%$trimmed%'";
         
     }
     if($_POST['street'] != '')
     {
         $trimmed = trim($_POST['street']);//trimming the term to search for any part
         
-        $advancesSearchQuery = $advancesSearchQuery . " AND Street LIKE \"%$trimmed%\"";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Address LIKE '%$trimmed%'";
     }
     if($_POST['county'] != '')
     {
         $trimmed = trim($_POST['county']);//trimming the term to search for any part
         
-        $advancesSearchQuery = $advancesSearchQuery . " AND County LIKE \"%$trimmed%\"";
+        $advancesSearchQuery = $advancesSearchQuery . " AND County LIKE '%$trimmed%'";
     }
-    if($_POST['min-Bedrooms'] != '')
+    if($_POST['min-Bedrooms'] != '0')
     {
-        $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom >".$_POST['min-Bedrooms']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom >=".$_POST['min-Bedrooms']."";
     }
-    if($_POST['max-Bedrooms'] != '')
+    if($_POST['max-Bedrooms'] != '0')
     {
-        $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom <".$_POST['max-Bedrooms']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Bedroom <=".$_POST['max-Bedrooms']."";
     }
-    if($_POST['min-Bathrooms'] != '')
+    if($_POST['min-Bathrooms'] != '0')
     {
-         $advancesSearchQuery = $advancesSearchQuery . " AND Bath >".$_POST['min-Bathrooms']."";
+         $advancesSearchQuery = $advancesSearchQuery . " AND Bath >=".$_POST['min-Bathrooms']."";
     }
-    if($_POST['max-Bathrooms'] != '')
+    if($_POST['max-Bathrooms'] != '0')
     {
-        $advancesSearchQuery = $advancesSearchQuery . " AND Bath <".$_POST['max-Bathrooms']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND Bath <=".$_POST['max-Bathrooms']."";
     }
     if($_POST['min-SquareFeet'] != '')
     {
-        $advancesSearchQuery = $advancesSearchQuery . " AND SF >".$_POST['min-SquareFeet']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND SF >=".$_POST['min-SquareFeet']."";
     }
     if($_POST['max-SquareFeet'] != '')
     {
-        $advancesSearchQuery = $advancesSearchQuery . " AND SF <".$_POST['max-SquareFeet']."";
+        $advancesSearchQuery = $advancesSearchQuery . " AND SF <=".$_POST['max-SquareFeet']."";
     }
     if($_POST['min-Price'] != '')
     {
@@ -92,10 +92,10 @@
     echo $advancesSearchQuery;
             setcookie('searchType','advanced');
             setcookie('searchVal','');
-            setcookie('advancedSearchVal',$advancesSearchQuery);
-            //header( 'Location: /searchResults.php' );
-    echo $_COOKIE['advancedSearchVal'];
-
+            $_SESSION['advancedSearchVal'] = $advancesSearchQuery;
+            header( 'Location: /searchResults.php' );
+    
+            echo $_SESSION['advancedSearchVal'];
             
             
 

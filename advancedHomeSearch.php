@@ -32,7 +32,9 @@
                  <label class="label">Min-Bedrooms:</label><br/>
                  
                         <select name="min-Bedrooms">
-
+                            <option>
+                                0
+                            </option>
                             <option>
                                 1
                             </option>
@@ -55,7 +57,9 @@
                  <label class="label">Max-Bedrooms:</label><br/>
                  
                         <select name="max-Bedrooms">
-
+                            <option>
+                                0
+                            </option>
                             <option>
                                 1
                             </option>
@@ -79,6 +83,9 @@
                  <label class="label">Min-Bathrooms:</label><br/>
                  
                  <select name="min-Bathrooms">
+                            <option>
+                                0
+                            </option>
                             <option>
                                 1
                             </option>
@@ -104,6 +111,9 @@
                  <label class="label">Max-Bathrooms:</label><br/>
                  
                  <select name="max-Bathrooms">
+                            <option>
+                                0
+                            </option>
                             <option>
                                 1
                             </option>

@@ -26,6 +26,7 @@ include_once 'config.inc.php';//retrieving the required config informaiton
  */
 function search($type,$term)
     {
+            session_start();
             $con = get_dbconn("");
             if($term != NULL) //Check to ensure the user entered a value
             {
@@ -64,7 +65,7 @@ function search($type,$term)
                          die('could not connect: ' .mysql_error());
                     }
                 }
-                if($type == 'address') // if the type is equal to address meaning the user wants to search by address
+                elseif($type == 'address') // if the type is equal to address meaning the user wants to search by address
                 {
                     $trimmed = trim($term);//trimming the term to search for any part
 
@@ -82,7 +83,7 @@ function search($type,$term)
                          die('could not connect: ' .mysql_error());
                     }
                 }
-                if($type == 'city')// if the type is equal to city meaning the user wishes to search based on city
+                elseif($type == 'city')// if the type is equal to city meaning the user wishes to search based on city
                 {
                     $trimmed = trim($term);//trimming the term to search for any part
                     //echo 'City ' . $term;
@@ -102,14 +103,14 @@ function search($type,$term)
                     }
                 }
             }
+            elseif($type == 'advanced')
+                {
+                    echo $_SESSION['advancedSearchVal'];
+                    $result = mysql_query($_SESSION['advancedSearchVal']);
+                }
             else  //if the input does not contain anything in the search field
             {
-                if(isset($_COOKIE['advancedSearchVal']))
-                {
-                    $result = mysql_query($_COOKIE['advancedSearchVal']);
-                }
-                else
-                {
+                
                 //returns all properties with aucitons
                 $result = mysql_query("SELECT * FROM AUCTION
                             LEFT JOIN PROPERTY
@@ -121,7 +122,7 @@ function search($type,$term)
                     {
                          die('could not connect: ' .mysql_error());
                     }
-                }
+                
             }
 
 
@@ -185,7 +186,7 @@ function searchPreMarket($type,$term)
                          die('could not connect: ' .mysql_error());
                     }
                 }
-                if($type == 'address') // if the type is equal to address meaning the user wants to search by address
+                elseif($type == 'address') // if the type is equal to address meaning the user wants to search by address
                 {
                     $trimmed = trim($term);//trimming the term to search for any part
 
@@ -204,7 +205,7 @@ function searchPreMarket($type,$term)
                          die('could not connect: ' .mysql_error());
                     }
                 }
-                if($type == 'city')// if the type is equal to city meaning the user wishes to search based on city
+                elseif($type == 'city')// if the type is equal to city meaning the user wishes to search based on city
                 {
                     $trimmed = trim($term);//trimming the term to search for any part
                     //echo 'City ' . $term;
@@ -222,6 +223,16 @@ function searchPreMarket($type,$term)
                     {
                          die('could not connect: ' .mysql_error());
                     }
+                }
+                else
+                {
+                    //returns all properties with aucitons
+                    $result = mysql_query("SELECT * FROM AUCTION
+                            LEFT JOIN PROPERTY
+                            ON PROPERTY.PropertyID=AUCTION.PropertyID
+                              WHERE NOW() BETWEEN CURDATE() - INTERVAL 5 DAY AND AUCTION.DatePFOAccept AND
+                                        IsApproved=1 AND AUCTION.PreMarket=1
+                                            ORDER BY AUCTION.DatePFOAccept DESC");
                 }
             }
             else  //if the user did not input anything in the search field
