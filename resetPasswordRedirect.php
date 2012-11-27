@@ -25,6 +25,7 @@
                 "Your password is: ".$password."\n".
                 
         mail($to, $subject, $mesg, $from);
+        
 ?>
 
 
