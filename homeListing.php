@@ -155,7 +155,8 @@
                                                    <input type="text" style="display: none;" name="userID" value="'.$_SESSION['userID'].'" />
                                                    <input type="text" style="display: none;" name="propertyID" value="'.$row['PropertyID'].'" />
                                                    <button class="button" type="submit">Submit</button>
-                                                   </form>';
+                                                   </form><br/>';
+                                                  echo '<a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>';
                                               }
                                               elseif($bidStatus == "1")
                                               {
