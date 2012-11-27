@@ -3,11 +3,11 @@
 
 <?php
     /**
-     * This page contains the options fro the user's settings.
+     * This page contains the options from the user's settings.
      * 
-     * This page will allow the user to change thier settings.
+     * This page will allow the user to change their settings.
      * This includes password, and email.
-     * It will also allow them to chage thier notification level, 
+     * It will also allow them to chage their notification level, 
      * and auto sign in.
      * 
      * @author David Pyle <Pyledw@Gmail.com>
