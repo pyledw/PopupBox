@@ -761,11 +761,16 @@
             echo'
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
                     '.substr($row['Description'], 0, 150).'<br/><br/>
-                     <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
-                    <input type="text" name="propertyID" style="Display:none" value="' . $propertyID . '" />
-                    <button type="submit" class="button">Edit Listing</button>
-                </form>
-                ';
+                        ';
+            if($row['IsApproved'] == 0)
+            {
+                echo'
+                         <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
+                        <input type="text" name="propertyID" style="Display:none" value="' . $propertyID . '" />
+                        <button type="submit" class="button">Edit Listing</button>
+                    </form>
+                    ';
+            }
             
                 if($won)//Check if the auciton winner has been selected
                 {
