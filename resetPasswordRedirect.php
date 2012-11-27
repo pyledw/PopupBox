@@ -13,6 +13,7 @@ session_start();
     $newPW = rand(10,30);
     
     $query2 = "update USER set Password='$newPW' where Email = '$email'"; 
+    $result2 = mysql_query($query2);
     
     
     
