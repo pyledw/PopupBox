@@ -61,18 +61,18 @@
             </tr>
             <tr>
                 <td>
-                    <label class="label">Supervisor Phone: </label><br/><input id="phone1" type="text" name="superVisorPhone1" value="<?php echo $row['CurrentSupPhone']?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input id="phone0" type="text" name="superVisorPhone1" value="<?php echo $row['CurrentSupPhone']?>"/>
                 </td>
                 <td>
                     <label class="label">Position Held: </label><br/><input class="required" type="text" name="position1" value="<?php echo $row['CurrentPositionName']?>"/><br/>
                 </td>
                 <td>
-                    <label class="label">Months Employed: </label><br/><input class="required" type="text" class="number" maxlength="3" name="monthsEmployed1" value="<?php echo $row['CurrentMonthsEmployed']?>"/>
+                    <label class="label">Months Employed: </label><br/><input class="required number" type="text" maxlength="3" name="monthsEmployed1" value="<?php echo $row['CurrentMonthsEmployed']?>"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                     <label class="label">Annual Salary: </label><br/><input class="required" type="text" class="number" name="annualSalary1" value="<?php echo $row['CurrentAnnualSalary']?>"/>
+                     <label class="label">Annual Salary: </label><br/><input class="required number" type="text" name="annualSalary1" value="<?php echo $row['CurrentAnnualSalary']?>"/>
                 </td>
             </tr>
             <tr>
@@ -98,7 +98,7 @@
             </tr>
             <tr>
                 <td>
-                    <label class="label">Supervisor Phone: </label><br/><input id="phone" type="text" name="superVisorPhone2" value="<?php echo $row['PrevSupPhone']?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input id="phone1" type="text" name="superVisorPhone2" value="<?php echo $row['PrevSupPhone']?>"/>
                 </td>
                 <td>
                     <label class="label">Position Held: </label><br/><input type="text" name="position2" value="<?php echo $row['PrevPositionName']?>"/><br/>
@@ -135,7 +135,7 @@
             </tr>
             <tr>
                 <td>
-                    <label class="label">Supervisor Phone: </label><br/><input id="phone" type="text" name="coAppSuperVisorPhone1" value="<?php echo $row[CoAppSupPhone]?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input id="phone2" type="text" name="coAppSuperVisorPhone1" value="<?php echo $row[CoAppSupPhone]?>"/>
                 </td>
                 <td>
                     <label class="label">Position Held: </label><br/><input type="text" name="coAppPosition1" value="<?php echo $row[CoAppPositionName]?>"/><br/>

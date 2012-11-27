@@ -125,7 +125,7 @@
                                 <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row['PrevLandLordLName'].'" />
                             </td>
                             <td>
-                                <label class="label">Phone Number:</label><br/><input id="phone" type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'" />
+                                <label class="label">Phone Number:</label><br/><input id="phone'.$intCount.'" type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'" />
                             </td>
                         </tr>
                         <tr>
@@ -193,7 +193,7 @@
                                 <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row['PrevLandLordLName'].'"/>
                             </td>
                             <td>
-                                <label class="label">Phone Number:</label><br/><input id="phone" type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'"/>
+                                <label class="label">Phone Number:</label><br/><input id="phone'.$intCount.'" type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'"/>
                             </td>
                         </tr>
                         <tr>
@@ -326,7 +326,7 @@
                         <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName2"/>
                     </td>
                     <td>
-                        <label class="label">Phone Number:</label><br/><input id="phone" type="text" name="phoneNumber2"/>
+                        <label class="label">Phone Number:</label><br/><input id="phone2" type="text" name="phoneNumber2"/>
                     </td>
                 </tr>
                 <tr>
@@ -390,7 +390,7 @@
                         <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName3"/>
                     </td>
                     <td>
-                        <label class="label">Phone Number:</label><br/><input id="phone" class="phone" type="text" name="phoneNumber3"/>
+                        <label class="label">Phone Number:</label><br/><input id="phone3" class="phone" type="text" name="phoneNumber3"/>
                     </td>
                 </tr>
                 <tr>
@@ -496,49 +496,6 @@
 
 <!--The script below manages the dynamic data on the page -->
 <script>
-var val1 = 1;
-$(document).ready(function(){
-  $("#addFormerHome").click(function(){
-      if(val1 < 4)
-          {
-            val1 +=1 ;
-            $('#formerHome' + val1).show();
-          }
-      else{
-          alert("You have reached the maximum number of former homes");
-      }
-  });
-  $("#removeFormerHome").click(function(){
-      if(val1 > 1)
-          {
-            $('#formerHome' + val1).hide();
-            val1 -= 1;
-          }
-      else
-      {
-        alert("Must fill in at least one former Home");
-      }
-  });
-});
-
-
-$(document).ready(function(){
-  $("#select").change(function(){
-      var value = $("select").val();
-      if(value == 'Owned')
-          {
-              $('#renter').hide();
-              $('#owner').show();
-          }
-      else
-          {
-              $('#renter').show();
-              $('#owner').hide();
-          }
-  });
-     
-});
-
 $(document).ready(function(){
       jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
     phone_number = phone_number.replace(/\s+/g, ""); 
@@ -552,6 +509,8 @@ $(document).ready(function(){
         onclick: false,
         
         rules: {
+            onkeyup: false,
+            onclick: false,
             phoneNumber1: {
             phoneUS: true
             },   
