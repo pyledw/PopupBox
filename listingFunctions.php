@@ -799,7 +799,7 @@
                 if($intStatus == '3')
                 {
                     
-                   $win = mysql_query("SELECT ApplictionID FROM BID
+                   $win = mysql_query("SELECT * FROM BID
                        WHERE IsWinningBid='1' AND AuctionID='".$row2['AuctionID']."'");
                    
                    if(!$win)
