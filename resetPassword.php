@@ -4,7 +4,6 @@
      */
         $title = "LeaseHood";
 	include 'Header.php';
-        include_once 'config.inc.php';
         
 ?>
 
