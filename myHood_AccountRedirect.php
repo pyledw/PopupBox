@@ -10,17 +10,12 @@ $username = $_SESSION['user'];
 
 if ($username)
 {
-	$autoSignIn = isset($_POST['autoSignIn']) ? $_POST['autoSignIn'] : null;
-	$personalEmail = isset($_POST['personalEmail']) ? $_POST['personalEmail'] : null;
 	$currentPassword = isset($_POST['currentPassword']) ? $_POST['currentPassword'] : null;
 	$newPassword = isset($_POST['newPassword']) ? $_POST['newPassword'] : null;
 	$newPassword2 = isset($_POST['newPassword2']) ? $_POST['newPassword2'] : null;
 	$currentEmail = isset($_POST['currentEmail']) ? $_POST['currentEmail'] : null;
 	$newEmail1 = isset($_POST['newEmail1']) ? $_POST['newEmail1'] : null;
 	$newEmail2 = isset($_POST['newEmail2']) ? $_POST['newEmail2'] : null;
-	
-	//TODO: autoSignIn
-	//TODO: personalEmail - "Would like messages from LeaseHood about specials?"
 	
 	$con = get_dbconn("PDO");
 	if ($newPassword and $newPassword2 and $currentPassword and $newPassword == $newPassword2)
