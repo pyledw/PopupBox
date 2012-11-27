@@ -811,7 +811,7 @@
                    {
                    
                    $winner = mysql_fetch_array($win);
-                   $winnerID=$winner['AuctionID'];
+                   $winnerID=$winner['ApplicationID'];
                    $won = true;
                    }
                    
