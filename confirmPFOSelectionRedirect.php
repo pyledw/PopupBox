@@ -2,7 +2,7 @@
     /**
      * This page will set the selected BID as the winnning bid.  It first changes all the bids in the
      * listing to not being active.  It then selects the bid the landlord specified and changes it to
-     * be set as the winning bid.  It then reroutes the user back to thier myhood page.
+     * be set as the winning bid.  It then reroutes the user back to their myhood page.
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
