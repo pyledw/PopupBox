@@ -14,8 +14,8 @@
     include 'Header.php';
     
     
-    $applicationID = $_POST[applicationID];
-    $auctionID = $_POST[auctionID];
+    $applicationID = $_POST['applicationID'];
+    $auctionID = $_POST['auctionID'];
     
     include_once 'config.inc.php';
             //Connecting to the sql database
@@ -223,7 +223,7 @@
                    Position:
                 </td>
                 <td>
-                   '.$row[PrevPositionName].'
+                   '.$row['PrevPositionName'].'
                 </td>
             </tr>
             
@@ -693,12 +693,16 @@
         
         
         <?php
-            if($_SESSION[type] == 3)
+            if($_SESSION['type'] == 3)
             {
                 
                 echo '<br/>
                  <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['ApplicationID'] .'" style="display:none;" name="ApplicationID"/></form><a href="resetApplicaiton?applicaitonID='.$row['ApplicationID'].'" >Reset Application</a><a href="mailto:'.$row['Email'].'">Email</a>';
             }
+            if(isset($auctionID))
+                        {
+                            echo '<a class="button" rel="facebox" href="confirmPFOSelection.php?auctionID='.$auctionID.'&applicationID='.$applicationID.'">Select as winning Bid</a>';
+                        }
         ?>
     </div>
     </div>
