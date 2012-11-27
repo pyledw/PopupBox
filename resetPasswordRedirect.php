@@ -8,13 +8,14 @@
             ."where Email = '$email'";
 
     $result = mysql_query($query);
-    $newPW = rand(10,30);
+    $newPW = mt_rand(10,1000000000000);
     $cryptPW = crypt($newPW, $pw_salt);
     
     $query2 = "update USER set Password='$cryptPW' where Email = '$email'"; 
     $result2 = mysql_query($query2);     
 
-        $username = $result;
+        $row2 = mysql_fetch_assoc($result);
+        $username = $row2['UserName'];
         $password = $newPW;
         $to = $_POST['email'];
         $from = "From: noReply@leasehood.com \r\n";
@@ -22,7 +23,7 @@
         $mesg = "Thank you for using LeaseHood.com for your rental needs.\n ".
                 "Here is your password and username.\n".
                 "Your username is: ".$username."\n".
-                "Your password is: ".$password."\n".
+                "Your password is: ".$password."\n";
                 
         mail($to, $subject, $mesg, $from);
 ?>
