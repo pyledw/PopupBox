@@ -16,7 +16,7 @@ echo $_GET[userID];
             //Connecting to the sql database
             $con = get_dbconn("");
 
-            $result = mysql_query("UPDATE USER SET IsApproved='0'
+            $result = mysql_query("UPDATE USER SET IsSuspended='1'
             WHERE UserID = '$_GET[userID]'");
 
             if(!$result)
@@ -24,13 +24,13 @@ echo $_GET[userID];
                 die('could not connect: ' .mysql_error());
             }
         }
-    else 
+    elseif($_GET[type] == "1") 
         {
             require_once "config.inc.php";
             //Connecting to the sql database
             $con = get_dbconn("");
 
-            $result = mysql_query("UPDATE USER SET IsApproved='1'
+            $result = mysql_query("UPDATE USER SET IsSuspended='0'
             WHERE UserID = '$_GET[userID]'");
 
             if(!$result)
@@ -38,6 +38,21 @@ echo $_GET[userID];
                 die('could not connect: ' .mysql_error());
             }
         }
+    elseif($_GET[type] == "2") 
+        {
+            require_once "config.inc.php";
+            //Connecting to the sql database
+            $con = get_dbconn("");
+
+            $result = mysql_query("UPDATE USER SET AccountType='3'
+            WHERE UserID = '$_GET[userID]'");
+
+            if(!$result)
+            {
+                die('could not connect: ' .mysql_error());
+            }
+        }
+     
         
         header( 'Location: /myHood.php' );
 ?>

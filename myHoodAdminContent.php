@@ -53,7 +53,7 @@
         $result = mysql_query("SELECT * FROM PROPERTY
             INNER JOIN USER
             ON USER.UserID=PROPERTY.UserID
-            WHERE PROPERTY.IsApproved ='0' AND PROPERTY.IsPaid = '1'");
+            WHERE PROPERTY.PageCompleted='6' AND PROPERTY.IsApproved ='0' AND PROPERTY.IsPaid = '1'");
         
         if(!$result)
         {

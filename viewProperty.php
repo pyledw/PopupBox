@@ -19,6 +19,8 @@
 
         //Returning all the information on the property and the auction
         $result = mysql_query("SELECT * FROM PROPERTY
+            INNER JOIN USER
+            ON PROPERTY.UserID=USER.UserID
             WHERE PROPERTY.PropertyID = $listingID ");
         
         if(!$result)
@@ -183,7 +185,7 @@
                                            echo "Auciton has Ended";
                                        }
                                     }
-                                    elseif($_SESSION[type] == "2")
+                                    elseif($_SESSION['type'] == "2")
                                     {
                                         
                                     }
@@ -486,7 +488,7 @@
     </script>
 
         <?php
-        echo '<form method="post" action="approveListing.php"><button type="submit">Activate</button><input type="text" value="'. $row[PropertyID] .'" style="display:none;" name="propertyID"/></form>';
+        echo '<table><tr><td><form method="post" action="approveListing.php"><button type="submit">Activate</button><input type="text" value="'. $row['PropertyID'] .'" style="display:none;" name="propertyID"/></form></td><td><a href="mailto:'.$row['Email'].'">Email</a></td><td><a href="resetListing.php?propertyID='. $row[PropertyID] .'">Reset Property</a></td></tr></table>';
         ?>
 
     </div>
