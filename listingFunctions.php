@@ -1017,7 +1017,7 @@
                 
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
                     '.substr($row['Description'], 0, 150).'<br/><br/>
-                     <a class="button">Move in now at: $'. $row['RentNowRate'] .'</a>
+                     <a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>
                      <a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>
                      ';
                 
@@ -1170,7 +1170,7 @@
         {
 
             include_once 'config.inc.php';
-            $status = "1";
+            $status = "0";
             $ActiveBids = false;
 
             $con = get_dbconn("");
@@ -1194,17 +1194,19 @@
                 }
             else 
                 {
-                    if($row['PageCompleted'] != "6")
+                    
+                    if($row['PageCompleted'] != 6)
                     {
-                        $status = "1";
+                        
+                        $status = 1;
                     }
-                    elseif($row['IsPaid'] == "0")
+                    elseif($row['IsPaid'] == 0)
                     {
-                        $status = "3";
+                        $status = 3;
                     }
-                    elseif($row['IsApproved'] == "0")
+                    elseif($row['IsApproved'] == 0)
                     {
-                        $status = "2";
+                        $status = 2;
                     }
                     else
                     {
