@@ -34,43 +34,50 @@
         {
             $userType = $row['AccountType'];
             $userID = $row['UserID'];
+            //echo $row['IsSuspended'];
+            if($row['IsSuspended'] == '1')
+            {
+                header( 'Location: /login.php?error=Account is susspended. Please Contact Admin@leasehood.com with questions' );
+                echo "Username does not exist";
+            }
+            else
+            {
 
-            //this will set the  so the session will
-            //be remembered.  Might also eventually use a session to store some of this data
-            //as it is more secure.
-            //It then redirects the user to the myHood page.
-            $_SESSION['userID'] = $userID;
-            $_SESSION['user'] = $row[UserName];
-            $_SESSION['type'] = $userType;
-            
-            if($loggedIn)
-            {
-                setcookie('userID', $userID);
-                setcookie('user', $row[UserName]);
-                setcookie('type', $userType);
-                
-            }
-            else
-            {
-                setcookie('userID', "", time()-3600);
-                setcookie('user', "", time()-3600);
-                setcookie('type', "", time()-3600);
-            }
-            
-            if(isset($lastPage))
-            {
-                header( 'Location: /'. $lastPage . '' ); 
-            }
-            else
-            {
-                header( 'Location: /myHood.php' );  
+                //this will set the  so the session will
+                //be remembered.  Might also eventually use a session to store some of this data
+                //as it is more secure.
+                //It then redirects the user to the myHood page.
+                $_SESSION['userID'] = $userID;
+                $_SESSION['user'] = $row[UserName];
+                $_SESSION['type'] = $userType;
+
+                if($loggedIn)
+                {
+                    setcookie('userID', $userID);
+                    setcookie('user', $row[UserName]);
+                    setcookie('type', $userType);
+
+                }
+                else
+                {
+                    setcookie('userID', "", time()-3600);
+                    setcookie('user', "", time()-3600);
+                    setcookie('type', "", time()-3600);
+                }
+
+                if(isset($lastPage))
+                {
+                    header( 'Location: /'. $lastPage . '' ); 
+                }
+                else
+                {
+                    header( 'Location: /myHood.php' );  
+                }
             }
             
         }
-//endoftheline:
-        else{
-            
-        
+        else
+        {
             header( 'Location: /login.php?error=Username or Password is incorrect' );
             echo "Username does not exist";
         }
