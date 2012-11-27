@@ -36,7 +36,7 @@
     
     ?>
 
-    <table class="tableForm" style="margin-top: -10px;">
+    <table class="tableForm" style="margin-top: -5px;">
         <tr>
             <th colspan="6" style="padding-bottom: 10px; vertical-align: middle;">
                 PFOs on Property #<?php echo $_GET[propertyID]; ?>

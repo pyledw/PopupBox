@@ -15,7 +15,7 @@
      */
     
     //Test if user is logged in IF not they will be prompted to log in
-    if(!isset($_SESSION[userID]))
+    if(!isset($_SESSION['userID']))
     {
         header( 'Location: /loginRequired.php' ) ;
     }
@@ -26,7 +26,7 @@
 
     //Query that is retrieving the data from the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='$_SESSION[userID]'");   
+            WHERE UserID ='".$_SESSION['userID']."'");   
     if(!$result)
     {
         die('could not connect: ' .mysql_error());
@@ -50,29 +50,29 @@
             </tr>
             <tr>
                 <td>
-                    <label class="label">Employer: </label><br/> <input class="required" type="text" name="employerName1" value="<?php echo $row[CurrentEmployerName]?>" />
+                    <label class="label">Employer: </label><br/> <input class="required" type="text" name="employerName1" value="<?php echo $row['CurrentEmployerName']?>" />
                 </td>
                 <td>
-                    <label class="label">Supervisor First Name: </label><br/><input type="text" name="superVisorFName1" value="<?php echo $row[CurrentSupFName]?>" />
+                    <label class="label">Supervisor First Name: </label><br/><input type="text" name="superVisorFName1" value="<?php echo $row['CurrentSupFName']?>" />
                 </td>
                 <td>
-                    <label class="label">Supervisor Last Name: </label><br/><input type="text" name="superVisorLName1" value="<?php echo $row[CurentSupLName]?>"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="label">Supervisor Phone: </label><br/><input type="text" name="superVisorPhone1" value="<?php echo $row[CurrentSupPhone]?>"/>
-                </td>
-                <td>
-                    <label class="label">Position Held: </label><br/><input class="required" type="text" name="position1" value="<?php echo $row[CurrentPositionName]?>"/><br/>
-                </td>
-                <td>
-                    <label class="label">Months Employed: </label><br/><input class="required" type="text" name="monthsEmployed1" value="<?php echo $row[CurrentMonthsEmployed]?>"/>
+                    <label class="label">Supervisor Last Name: </label><br/><input type="text" name="superVisorLName1" value="<?php echo $row['CurentSupLName']?>"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                     <label class="label">Annual Salary: </label><br/><input class="required" type="text" name="annualSalary1" value="<?php echo $row[CurrentAnnualSalary]?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input id="phone0" type="text" name="superVisorPhone1" value="<?php echo $row['CurrentSupPhone']?>"/>
+                </td>
+                <td>
+                    <label class="label">Position Held: </label><br/><input class="required" type="text" name="position1" value="<?php echo $row['CurrentPositionName']?>"/><br/>
+                </td>
+                <td>
+                    <label class="label">Months Employed: </label><br/><input class="required number" type="text" maxlength="3" name="monthsEmployed1" value="<?php echo $row['CurrentMonthsEmployed']?>"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     <label class="label">Annual Salary: </label><br/><input class="required number" type="text" name="annualSalary1" value="<?php echo $row['CurrentAnnualSalary']?>"/>
                 </td>
             </tr>
             <tr>
@@ -87,29 +87,29 @@
             </tr>
             <tr>
                 <td>
-                    <label class="label">Employer: </label><br/><input type="text" name="employerName2" value="<?php echo $row[PrevEmployerName]?>"/>
+                    <label class="label">Employer: </label><br/><input type="text" name="employerName2" value="<?php echo $row['PrevEmployerName']?>"/>
                 </td>
                 <td>
-                    <label class="label">Supervisor First Name: </label><br/><input type="text" name="superVisorFName2" value="<?php echo $row[PrevSupFName]?>"/><br/>
+                    <label class="label">Supervisor First Name: </label><br/><input type="text" name="superVisorFName2" value="<?php echo $row['PrevSupFName']?>"/><br/>
                 </td>
                 <td>
-                    <label class="label">Supervisor Last Name: </label><br/><input type="text" name="superVisorLName2" value="<?php echo $row[PrevSupLName]?>"/><br/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="label">Supervisor Phone: </label><br/><input type="text" name="superVisorPhone2" value="<?php echo $row[PrevSupPhone]?>"/>
-                </td>
-                <td>
-                    <label class="label">Position Held: </label><br/><input type="text" name="position2" value="<?php echo $row[PrevPositionName]?>"/><br/>
-                </td>
-                <td>
-                    <label class="label">Months Employed: </label><br/><input type="text" name="monthsEmployed2" value="<?php echo $row[PrevMonthsEmployed]?>"/>
+                    <label class="label">Supervisor Last Name: </label><br/><input type="text" name="superVisorLName2" value="<?php echo $row['PrevSupLName']?>"/><br/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label class="label">Annual Salary: </label><br/><input type="text" name="annualSalary2" value="<?php echo $row[PrevAnnualSalary]?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input id="phone1" type="text" name="superVisorPhone2" value="<?php echo $row['PrevSupPhone']?>"/>
+                </td>
+                <td>
+                    <label class="label">Position Held: </label><br/><input type="text" name="position2" value="<?php echo $row['PrevPositionName']?>"/><br/>
+                </td>
+                <td>
+                    <label class="label">Months Employed: </label><br/><input type="text" name="monthsEmployed2" class="number" maxlength="3"  value="<?php echo $row['PrevMonthsEmployed']?>"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="label">Annual Salary: </label><br/><input type="text" name="annualSalary2" class="number" value="<?php echo $row['PrevAnnualSalary']?>"/>
                 </td>
             </tr>
             <tr>
@@ -135,18 +135,18 @@
             </tr>
             <tr>
                 <td>
-                    <label class="label">Supervisor Phone: </label><br/><input type="text" name="coAppSuperVisorPhone1" value="<?php echo $row[CoAppSupPhone]?>"/>
+                    <label class="label">Supervisor Phone: </label><br/><input id="phone2" type="text" name="coAppSuperVisorPhone1" value="<?php echo $row[CoAppSupPhone]?>"/>
                 </td>
                 <td>
                     <label class="label">Position Held: </label><br/><input type="text" name="coAppPosition1" value="<?php echo $row[CoAppPositionName]?>"/><br/>
                 </td>
                 <td>
-                    <label class="label">Months Employed: </label><br/><input type="text" name="coAppMonthsEmployed1" value="<?php echo $row[CoAppMonthsEmployed]?>"/>
+                    <label class="label">Months Employed: </label><br/><input type="text" class="number" maxlength="3"  name="coAppMonthsEmployed1" value="<?php echo $row[CoAppMonthsEmployed]?>"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label class="label">Annual Salary: </label><br/><input type="text" name="coAppAnnualSalary1" value="<?php echo $row[CoAppAnnualSalary]?>"/>
+                    <label class="label">Annual Salary: </label><br/><input type="text" class="number" name="coAppAnnualSalary1" value="<?php echo $row[CoAppAnnualSalary]?>"/>
                 </td>
             </tr>
             <tr>
@@ -222,11 +222,27 @@ $(document).ready(function(){
 });
 
  $(document).ready(function(){
+      jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, ""); 
+	return this.optional(element) || phone_number.length > 9 &&
+		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+}, "Please specify a valid phone number");
+
     $("#newApplicationForm").validate({
-        ignoreTitle: true,
         onkeyup: false,
-        onclick: false
+        onclick: false,
         
+        rules: {
+            superVisorPhone1: {
+            phoneUS: true
+            },   
+            superVisorPhone2: {
+            phoneUS: true
+            },   
+            coAppSuperVisorPhone1: {
+            phoneUS: true
+            }   
+        }
     });
   });
 </script>

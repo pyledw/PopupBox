@@ -79,21 +79,21 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Starting Bid Monthly Rental Rate:</label><br/><input type="text" name="startingBid" class="required" value="<?php echo $row['StartingBid']?>"/>
+                        <label class="label">Starting Bid Monthly Rental Rate:</label><br/><input type="text" name="startingBid" class="required number" value="<?php echo $row['StartingBid']?>"/>
                     </td>
                     <td>
-                        <label class="label">Minimum Bid Increment:</label><br/><input type="text" name="bidIncrement" class="required" value="<?php echo $row['MinBidIncrement']?>"/>
+                        <label class="label">Minimum Bid Increment:</label><br/><input type="text" name="bidIncrement" class="required number" value="<?php echo $row['MinBidIncrement']?>"/>
                     </td>
                     <td>
-                        <label class="label">Required Deposit:</label><br/><input type="text" name="requiredDeposit" class="required" value="<?php echo $row['RequiredDeposit']?>"/>
+                        <label class="label">Required Deposit:</label><br/><input type="text" name="requiredDeposit" class="required number" value="<?php echo $row['RequiredDeposit']?>"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Rent-it-Now Monthly Rental Rate:</label><br/><input type="text" name="rentItNowRate" value="<?php echo $row['RentNowRate']?>"/>
+                        <label class="label">Rent-it-Now Monthly Rental Rate:</label><br/><input type="text" class="number" name="rentItNowRate" value="<?php echo $row['RentNowRate']?>"/>
                     </td>
                     <td>
-                        <label class="label">Minimum rental term, months:</label><br/><input type="text" name="minTerm" class="required" value="<?php echo $row['MinimumTerm']?>"/>
+                        <label class="label">Minimum rental term, months:</label><br/><input type="text" name="minTerm" class="required number" value="<?php echo $row['MinimumTerm']?>"/>
                     </td>
                     <td>
                         <label class="label">Do you want to Pre-Market?</label><br/>

@@ -72,12 +72,12 @@ $title = "New Application #4";
                     <label class="label">Address: </label><br/><input type="text" name="address" <?php echo "value='" .$row[ContactAddress] . "'"?>/>
                 </td>
                 <td>
-                    <label class="label">State: </label><br/><input type="text" name="state" <?php echo "value='" .$row[ContactState] . "'"?>/>
+                    <label class="label">State: </label><br/><input maxlength="2" minlength="2" type="text" name="state" <?php echo "value='" .$row[ContactState] . "'"?>/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label class="label">Zip: </label><br/><input type="text" name="zip" <?php echo "value='" .$row[ContactZip] . "'"?>/>
+                    <label class="label">Zip: </label><br/><input maxlength="5" minlength="5" class="number" type="text" name="zip" <?php echo "value='" .$row[ContactZip] . "'"?>/>
                 </td>
                 <td>
                     <label class="label">Relation: </label><br/><input type="text" name="relation" <?php echo "value='" .$row[ContactZip] . "'"?>/>
@@ -88,13 +88,13 @@ $title = "New Application #4";
             </tr>
             <tr>
                 <td>
-                    <label class="label">Home Phone:</label><br/><input type="text" name="homePhone" <?php echo "value='" .$row[ContactHomePhone] . "'"?>/>
+                    <label class="label">Home Phone:</label><br/><input id="phone1" type="text" name="homePhone" <?php echo "value='" .$row[ContactHomePhone] . "'"?>/>
                 </td>
                 <td>
-                    <label class="label">Cell Phone: </label><br/><input type="text" name="cellPhone" <?php echo "value='" .$row[ContactCellPhone] . "'"?>/>
+                    <label class="label">Cell Phone: </label><br/><input id="phone2" type="text" name="cellPhone" <?php echo "value='" .$row[ContactCellPhone] . "'"?>/>
                 </td>
                 <td>
-                    <label class="label">Work Phone: </label><br/><input type="text" name="workPhone" <?php echo "value='" .$row[ContactWorkPhone] . "'"?>/>
+                    <label class="label">Work Phone: </label><br/><input id="phone3" type="text" name="workPhone" <?php echo "value='" .$row[ContactWorkPhone] . "'"?>/>
                 </td>
             </tr>
             <tr>
@@ -110,7 +110,7 @@ $title = "New Application #4";
                     License Plate Number: </label><br/><input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle1LicenseNo] . "'"?>>
                 </td>
                 <td>
-                    <label class="label">State of plate:</label><br/><input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle1LicenseState] . "'"?>>
+                    <label class="label">State of plate:</label><br/><input maxlength="2" minlength="2" type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle1LicenseState] . "'"?>>
                 </td>
             </tr>
             <tr id="vehicle2" style="display: none;">
@@ -121,7 +121,7 @@ $title = "New Application #4";
                     <label class="label">License Plate Number: </label><br/><input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle2LicenseNo] . "'"?>>
                 </td>
                 <td>
-                    <label class="label">State of plate:</label><br/><input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle2LicenseState] . "'"?>>
+                    <label class="label">State of plate:</label><br/><input maxlength="2" minlength="2" type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle2LicenseState] . "'"?>>
                 </td>
             </tr>
             <tr id="vehicle3" style="display: none;">
@@ -132,7 +132,7 @@ $title = "New Application #4";
                     <label class="label">License Plate Number: </label><br/><input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle3LicenseNo] . "'"?>>
                 </td>
                 <td>
-                    <label class="label">State of plate:</label><br/><input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle3LicenseState] . "'"?>>
+                    <label class="label">State of plate:</label><br/><input maxlength="2" minlength="2" type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle3LicenseState] . "'"?>>
                 </td>
             </tr>
             <tr id="vehicle4" style="display: none;">
@@ -143,7 +143,7 @@ $title = "New Application #4";
                     <label class="label">License Plate Number: </label><br/><input type="text" name="carLicenseNumber" <?php echo "value='" .$row[Vehicle4LicenseNo] . "'"?>>
                 </td>
                 <td>
-                    <label class="label">State of plate:</label><br/><input type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle4LicenseState] . "'"?>>
+                    <label class="label">State of plate:</label><br/><input maxlength="2" minlength="2" type="text" name="carPlateState" <?php echo "value='" .$row[Vehicle4LicenseState] . "'"?>>
                 </td>
             </tr>
             <tr>
@@ -206,10 +206,30 @@ $(document).ready(function(){
   });
 });
 $(document).ready(function(){
+    jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, ""); 
+	return this.optional(element) || phone_number.length > 9 &&
+		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+}, "Please specify a valid phone number");
+
+
     $("#newApplicationForm").validate({
-        ignoreTitle: true,
         onkeyup: false,
-        onclick: false
+        onclick: false,
+        
+        rules: {
+            onkeyup: false,
+            onclick: false,
+            homePhone: {
+            phoneUS: true
+            },   
+            cellPhone: {
+            phoneUS: true
+            },   
+            workPhone: {
+            phoneUS: true
+            }   
+        }
         
     });
   });
