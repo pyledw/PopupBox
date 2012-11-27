@@ -14,8 +14,8 @@
     include 'Header.php';
     
     
-    $applicationID = $_POST[applicationID];
-    $auctionID = $_POST[auctionID];
+    $applicationID = $_POST['applicationID'];
+    $auctionID = $_POST['auctionID'];
     
     include_once 'config.inc.php';
             //Connecting to the sql database
@@ -223,7 +223,7 @@
                    Position:
                 </td>
                 <td>
-                   '.$row[PrevPositionName].'
+                   '.$row['PrevPositionName'].'
                 </td>
             </tr>
             
@@ -693,7 +693,7 @@
         
         
         <?php
-            if($_SESSION[type] == 3)
+            if($_SESSION['type'] == 3)
             {
                 
                 echo '<br/>

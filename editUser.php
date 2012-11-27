@@ -7,52 +7,55 @@
  * 
  * @author David Pyle <Pyledw@Gmail.com>
  */
-echo "redirect";
-echo $_GET[userID];
+session_start();
+if($_SESSION['userType'] == '3')
+{
+    echo "redirect";
+    echo $_GET[userID];
 
-    if($_GET[type] == "0")
-        {
-            require_once "config.inc.php";
-            //Connecting to the sql database
-            $con = get_dbconn("");
-
-            $result = mysql_query("UPDATE USER SET IsSuspended='1'
-            WHERE UserID = '$_GET[userID]'");
-
-            if(!$result)
+        if($_GET[type] == "0")
             {
-                die('could not connect: ' .mysql_error());
+                require_once "config.inc.php";
+                //Connecting to the sql database
+                $con = get_dbconn("");
+
+                $result = mysql_query("UPDATE USER SET IsSuspended='1'
+                WHERE UserID = '$_GET[userID]'");
+
+                if(!$result)
+                {
+                    die('could not connect: ' .mysql_error());
+                }
             }
-        }
-    elseif($_GET[type] == "1") 
-        {
-            require_once "config.inc.php";
-            //Connecting to the sql database
-            $con = get_dbconn("");
-
-            $result = mysql_query("UPDATE USER SET IsSuspended='0'
-            WHERE UserID = '$_GET[userID]'");
-
-            if(!$result)
+        elseif($_GET[type] == "1") 
             {
-                die('could not connect: ' .mysql_error());
+                require_once "config.inc.php";
+                //Connecting to the sql database
+                $con = get_dbconn("");
+
+                $result = mysql_query("UPDATE USER SET IsSuspended='0'
+                WHERE UserID = '$_GET[userID]'");
+
+                if(!$result)
+                {
+                    die('could not connect: ' .mysql_error());
+                }
             }
-        }
-    elseif($_GET[type] == "2") 
-        {
-            require_once "config.inc.php";
-            //Connecting to the sql database
-            $con = get_dbconn("");
-
-            $result = mysql_query("UPDATE USER SET AccountType='3'
-            WHERE UserID = '$_GET[userID]'");
-
-            if(!$result)
+        elseif($_GET[type] == "2") 
             {
-                die('could not connect: ' .mysql_error());
+                require_once "config.inc.php";
+                //Connecting to the sql database
+                $con = get_dbconn("");
+
+                $result = mysql_query("UPDATE USER SET AccountType='3'
+                WHERE UserID = '$_GET[userID]'");
+
+                if(!$result)
+                {
+                    die('could not connect: ' .mysql_error());
+                }
             }
-        }
-     
+}
         
         header( 'Location: /myHood.php' );
 ?>
