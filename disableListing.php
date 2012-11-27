@@ -17,9 +17,17 @@ echo $_GET['listingID'];
         $con = get_dbconn("");
         
         $result = mysql_query("UPDATE PROPERTY SET IsApproved='0'
-        WHERE PropertyID = '$_GET[listingID]'");
+        RIGHT JOIN AUCTION
+        ON PROPERTY.PropertyID=AUCTION.PropertyID
+        WHERE PropertyID = '$_GET[listingID]'
+        ORDER BY ASC");
 
-        if(!$result)
+        $row = mysql_affected_rows($result);
+        
+        $result2 = mysql_query("UPDATE BID SET IsActive='0'
+            WHERE AuctionID='".$row['AuctionID']."'");
+        
+        if(!$result2)
         {
             die('could not connect: ' .mysql_error());
         }
