@@ -13,8 +13,9 @@ $title = "Password Reset";
 
     $result = mysql_query($query);
     $newPW = rand(10,30);
+    $cryptPW = crypt($newPW, $pw_salt);
     
-    $query2 = "update USER set Password='$newPW' where Email = '$email'"; 
+    $query2 = "update USER set Password='$cryptPW' where Email = '$email'"; 
     $result2 = mysql_query($query2);
     
     
