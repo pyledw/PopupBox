@@ -66,15 +66,15 @@
                         <label class="label">City:</label><br/><input class="required" type="text" name="city" value="<?php echo $row['City']?>">
                     </td>
                     <td>
-                        <label class="label">State:</label><br/><input class="required" type="text" name="state" value="<?php echo $row['State']?>">
+                        <label class="label">State:</label><br/><input minlength="2" maxlength="2" class="required" type="text" name="state" value="<?php echo $row['State']?>">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Zip Code:</label><br/><input class="required" type="text" name="zipCode" value="<?php echo $row['Zip']?>">
+                        <label class="label">Zip Code:</label><br/><input minlength="5" maxlength="5" class="required number" type="text" name="zipCode" value="<?php echo $row['Zip']?>">
                     </td>
                     <td colspan="2">
-                        <label class="label">Square feet:</label><br/><input class="required" type="text" name="sqrFt" value="<?php echo $row['SF']?>">
+                        <label class="label">Square feet:</label><br/><input class="required number" type="text" name="sqrFt" value="<?php echo $row['SF']?>">
                     </td>
                 </tr>
                 <tr>
