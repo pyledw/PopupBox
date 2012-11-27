@@ -90,7 +90,7 @@ $classification = getPost('accountType');
                              <lable class="label">Email:</label><br/><input  type="text" id="email" value="<?php echo $email; ?>" name="email1" class="required email">
                          </td>
                          <td>
-                             <lable class="label">Confirm Email:</label><br/><input title="Passwords must match" type="text" value="<?php echo $email; ?>" id="email_again" name="email_again" class="required email">
+                             <lable class="label">Confirm Email:</label><br/><input title="Emails must match" type="text" value="<?php echo $email; ?>" id="email_again" name="email_again" class="required email">
                          </td>
                          <td>
                              <lable class="label">Phone:</label><br/><input id="phone" type="text" name="phone" value="<?php echo $phone; ?>" class="required">
@@ -154,7 +154,7 @@ $classification = getPost('accountType');
         onkeyup: false,
         onclick: false,
         
-        rules: {
+        rules: { 
         phone: {
             required: true,
             phoneUS: true
