@@ -71,7 +71,10 @@
 
             </div>
             You are free to submit a Proposal for Occupancy.<br/>
-            <a href="editApplication.php">Edit Your Application</a>
+            ';
+            
+            
+            echo '
         </div>';
         }
         else
