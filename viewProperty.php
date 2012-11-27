@@ -185,7 +185,7 @@
                                            echo "Auciton has Ended";
                                        }
                                     }
-                                    elseif($_SESSION[type] == "2")
+                                    elseif($_SESSION['type'] == "2")
                                     {
                                         
                                     }
