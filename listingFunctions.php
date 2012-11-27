@@ -653,6 +653,13 @@
             $bid = mysql_query("SELECT * FROM BID
                 WHERE AuctionID='".$row2['AuctionID']."' AND IsActive='1' AND IsMoveInNowBid='1'");
             
+            $moveInNow = '';
+            if(mysql_num_rows($bid) != '0')
+            {
+                //echo 'mysql_num_rows($bid)';
+                $moveInNow = '<font class="redTextArea">You have a move in now PFO.  Click below to review PFOs</font>';
+            }
+            
             if(!$result)
             {
                 die('could not connect: ' .mysql_error());
@@ -734,7 +741,8 @@
             }
             
             echo '<font style="float:right; position:relative; right:20px;">
-                  '.$hasExpired
+                  '.$moveInNow
+                   .$hasExpired
                    .$propertyStatus
                    .$timeString
                    .$status
