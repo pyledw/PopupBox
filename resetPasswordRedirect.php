@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$title = "Password Reset";
+    include 'Header.php';
     include_once 'config.inc.php';
     
     $email = $_POST['email'];
@@ -31,6 +33,11 @@ session_start();
                 
         mail($to, $subject, $mesg, $from);
 ?>
+
 <h1 class="Title">Forgot Password</h1>
         <hr class="Title" />
         <h2 class="Title">An email has been sent to your account.</h2>
+        
+<?php
+    include 'Footer.php';
+?>
