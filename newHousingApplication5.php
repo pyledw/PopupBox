@@ -43,7 +43,8 @@
         </tr>
         <tr>
             <td>
-                <label class="label">Email verification</label><br/><input class="required email" type="text" name="email"/>
+                <label class="label">Email verification</label><br/><input class="required email" type="text" name="email"/><br/>
+                I have Read and Agree with these terms and conditions<input title="Must accept to continue" type="checkbox" class="required" name="agree" value="agree">
             </td>
         </tr>
         <tr>
@@ -69,7 +70,6 @@
 <script>
 $(document).ready(function(){
     $("#newApplicationForm").validate({
-        ignoreTitle: true,
         onkeyup: false,
         onclick: false
         
