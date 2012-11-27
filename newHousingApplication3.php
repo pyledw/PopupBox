@@ -119,21 +119,21 @@
                         </tr>
                         <tr>
                             <td>
-                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row['PrevLandLordLName'].'"/>
+                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row['PrevLandLordLName'].'" />
                             </td>
                             <td>
-                                <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row['PrevLandLordLName'].'"/>
+                                <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row['PrevLandLordLName'].'" />
                             </td>
                             <td>
-                                <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'"/>
+                                <label class="label">Phone Number:</label><br/><input id="phone" type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                               <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row['ReasonForLeaving'].'"/>
+                               <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row['ReasonForLeaving'].'" />
                             </td>
                             <td>
-                                <label class="label">Rent:</label><br/><input class="number" type="text" name="rent'.$intCount.'" value="'.$row['PrevMonthlyRent'].'"/>
+                                <label class="label">Rent:</label><br/><input class="number" type="text" name="rent'.$intCount.'" value="'.$row['PrevMonthlyRent'].'" />
                             </td>
                             <td>
                                 <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row['PrevResidenceID'].'" />
@@ -193,7 +193,7 @@
                                 <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row['PrevLandLordLName'].'"/>
                             </td>
                             <td>
-                                <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'"/>
+                                <label class="label">Phone Number:</label><br/><input id="phone" type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'"/>
                             </td>
                         </tr>
                         <tr>
@@ -262,7 +262,7 @@
                         <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName1"/>
                     </td>
                     <td>
-                        <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber1"/>
+                        <label class="label">Phone Number:</label><br/><input id="phone" type="text" name="phoneNumber1" />
                     </td>
                 </tr>
                 <tr>
@@ -326,7 +326,7 @@
                         <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName2"/>
                     </td>
                     <td>
-                        <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber2"/>
+                        <label class="label">Phone Number:</label><br/><input id="phone" type="text" name="phoneNumber2"/>
                     </td>
                 </tr>
                 <tr>
@@ -390,7 +390,7 @@
                         <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName3"/>
                     </td>
                     <td>
-                        <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber3"/>
+                        <label class="label">Phone Number:</label><br/><input id="phone" class="phone" type="text" name="phoneNumber3"/>
                     </td>
                 </tr>
                 <tr>
@@ -459,18 +459,18 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input type="text" name="devitCardDebt" <?php echo "value='" .$row['TotalConsumerDebt'] . "'"?>/>
+                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input class="number" type="text" name="devitCardDebt" <?php echo "value='" .$row['TotalConsumerDebt'] . "'"?>/>
                     </td>
                     <td>
-                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input type="text" name="monthlyPayments" <?php echo "value='" .$row['MonthlyDebtPayment'] . "'"?>/><br/>
+                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input class="number" type="text" name="monthlyPayments" <?php echo "value='" .$row['MonthlyDebtPayment'] . "'"?>/><br/>
                     </td>
                     <td>
-                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input type="text" name="loans" <?php echo "value='" .$row['TotalLoanDebt'] . "'"?>/><br/>
+                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input class="number" type="text" name="loans" <?php echo "value='" .$row['TotalLoanDebt'] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input type="text" name="equity" <?php echo "value='" .$row['TotalAssets'] . "'"?>/><br/>
+                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input class="number" type="text" name="equity" <?php echo "value='" .$row['TotalAssets'] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>
@@ -540,6 +540,13 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+      jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, ""); 
+	return this.optional(element) || phone_number.length > 9 &&
+		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+}, "Please specify a valid phone number");
+
+    
     $("#newApplicationForm").validate({
         onkeyup: false,
         onclick: false,
