@@ -15,7 +15,7 @@ include 'Header.php';
      */
     
     //Test to check if user is logged in or not IF not they will be redirected to the login page
-    if(!isset($_SESSION[userID]))
+    if(!isset($_SESSION['userID']))
     {
         header( 'Location: /loginRequired.php' ) ;
     }
@@ -25,7 +25,7 @@ include 'Header.php';
     
     //Query to select the user's application using their userID number
     $result = mysql_query("SELECT * FROM APPLICATION
-        WHERE UserID ='$_SESSION[userID]'");
+        WHERE UserID ='".$_SESSION['userID']."'");
     if(!$result)
     {
         die('could not connect: ' .mysql_error());
@@ -56,7 +56,7 @@ include 'Header.php';
                      <label class="label">Do you need ADA (Americans with Disability Act) facilities?</label><br/>
                     <?php 
                     //This goes through to ensure that if data already exist the previusly checked will apear checked
-                    if ($row[IsADA] == "1")
+                    if ($row['IsADA'] == "1")
                             {
                                 echo 'Yes<input type="radio" name="ADA" checked="checked"  value="1" />
                                     No<input type="radio" name="ADA"  value="0" /><br/>';
@@ -74,7 +74,7 @@ include 'Header.php';
                      <label class="label">Are you a smoker?</label><br/>
                     <?php 
                     //This goes through to ensure that if data already exist the previusly checked will apear checked
-                    if ($row[IsSmokingRequired] == "1")
+                    if ($row['IsSmokingRequired'] == "1")
                         {
                              echo 'Yes<input type="radio" checked="checked" name="smoking"  value="1" />
                                   No<input type="radio" name="smoking"  value="0" /><br/>';
@@ -91,14 +91,14 @@ include 'Header.php';
                  <td>
                      <label class="label">Number of Occupants:</label><br/>
                 <select name="numbOccupants">
-                    <option<?php if($row[NumOtherOccupants] == "1"){ echo ' selected="selected" ' ; };?>>1</option>
-                    <option<?php if($row[NumOtherOccupants] == "2"){ echo ' selected="selected" ' ; };?>>2</option>
-                    <option<?php if($row[NumOtherOccupants] == "3"){ echo ' selected="selected" ' ; };?>>3</option>
-                    <option<?php if($row[NumOtherOccupants] == "4"){ echo ' selected="selected" ' ; };?>>4</option>
-                    <option<?php if($row[NumOtherOccupants] == "5"){ echo ' selected="selected" ' ; };?>>5</option>
-                    <option<?php if($row[NumOtherOccupants] == "6"){ echo ' selected="selected" ' ; };?>>6</option>
-                    <option<?php if($row[NumOtherOccupants] == "7"){ echo ' selected="selected" ' ; };?>>7</option>
-                    <option<?php if($row[NumOtherOccupants] == "8"){ echo ' selected="selected" ' ; };?>>8</option>
+                    <option<?php if($row['NumOtherOccupants'] == "1"){ echo ' selected="selected" ' ; };?>>1</option>
+                    <option<?php if($row['NumOtherOccupants'] == "2"){ echo ' selected="selected" ' ; };?>>2</option>
+                    <option<?php if($row['NumOtherOccupants'] == "3"){ echo ' selected="selected" ' ; };?>>3</option>
+                    <option<?php if($row['NumOtherOccupants'] == "4"){ echo ' selected="selected" ' ; };?>>4</option>
+                    <option<?php if($row['NumOtherOccupants'] == "5"){ echo ' selected="selected" ' ; };?>>5</option>
+                    <option<?php if($row['NumOtherOccupants'] == "6"){ echo ' selected="selected" ' ; };?>>6</option>
+                    <option<?php if($row['NumOtherOccupants'] == "7"){ echo ' selected="selected" ' ; };?>>7</option>
+                    <option<?php if($row['NumOtherOccupants'] == "8"){ echo ' selected="selected" ' ; };?>>8</option>
                 </select>
                  </td>
              </tr>
@@ -109,18 +109,18 @@ include 'Header.php';
              </tr>
              <tr>
                  <td>
-                     <label class="label">First Name: </label><br/><input type="text" value="<?php echo $row[SecondaryOccupantFName]?>" name="fName" />
+                     <label class="label">First Name: </label><br/><input type="text" value="<?php echo $row['SecondaryOccupantFName']?>" name="fName" />
                  </td>
                  <td>
-                     <label class="label">Last Name: <label><br><input type="text" value="<?php echo $row[SecondaryOccupantLName]?>" name="lName" />
+                     <label class="label">Last Name: <label><br><input type="text" value="<?php echo $row['SecondaryOccupantLName']?>" name="lName" />
                  </td>
                  <td>
-                     <label class="label">Age: </label><input type="text" value="<?php echo $row[SecondaryOccupantAge]?>" name="age"/><br />
+                     <label class="label">Age: </label><input type="text" class="number" minlength="1" maxlength="2" value="<?php echo $row['SecondaryOccupantAge']?>" name="age"/><br />
                  </td>
              </tr>
              <tr>
                  <td>
-                     <label class="label">Relationship: </label><input type="text" value="<?php echo $row[SecondaryOccupantRelationship]?>" name="relationship"/>
+                     <label class="label">Relationship: </label><input type="text" value="<?php echo $row['SecondaryOccupantRelationship']?>" name="relationship"/>
                  </td>
                  <td>
                      
@@ -138,80 +138,80 @@ include 'Header.php';
                  <td>
                      <label class="label">Type:</label><select name="animalType">
 
-                                <option <?php if($row[Pet1Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
-                                <option <?php if($row[Pet1Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
-                                <option <?php if($row[Pet1Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
-                                <option <?php if($row[Pet1Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
+                                <option <?php if($row['Pet1Type'] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
+                                <option <?php if($row['Pet1Type'] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
+                                <option <?php if($row['Pet1Type'] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
+                                <option <?php if($row['Pet1Type'] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
                           </select>
                  </td>
                  <td>
-                      <label class="label">Weight:</label><br/><input type="text" value="<?php echo $row[Pet1Weight]?>" name="animalWeight" />
+                      <label class="label">Weight:</label><br/><input type="text" class="number" minlength="1" maxlength="3" value="<?php echo $row['Pet1Weight']?>" name="animalWeight" />
                  </td>
                  <td>
-                     <label class="label">Breed:</label><br/><input type="text" value="<?php echo $row[Pet1Breed]?>" name="animalBreed" />
+                     <label class="label">Breed:</label><br/><input type="text"  value="<?php echo $row['Pet1Breed']?>" name="animalBreed" />
                  </td>
                  <td>
-                     <label class="label">Age:</label><br/><input type="text" value="<?php echo $row[Pet2Age]?>" name="animalAge2" />
+                     <label class="label">Age:</label><br/><input type="text" class="number" minlength="1" maxlength="2" value="<?php echo $row['Pet2Age']?>" name="animalAge2" />
                  </td>
              </tr>
              
              <tr>
                  <td>
                      <label class="label">Type:</label><select name="animalType2">
-                                <option <?php if($row[Pet2Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
-                                <option <?php if($row[Pet2Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
-                                <option <?php if($row[Pet2Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
-                                <option <?php if($row[Pet2Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
+                                <option <?php if($row['Pet2Type'] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
+                                <option <?php if($row['Pet2Type'] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
+                                <option <?php if($row['Pet2Type'] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
+                                <option <?php if($row['Pet2Type'] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
                             </select>
                  </td>
                  <td>
-                     <label class="label">Weight:</label><br/><input type="text" value="<?php echo $row[Pet2Weight]?>" name="animalWeight2" />
+                     <label class="label">Weight:</label><br/><input type="text" class="number" minlength="1" maxlength="3" value="<?php echo $row['Pet2Weight']?>" name="animalWeight2" />
                  </td>
                  <td>
-                     <label class="label">Breed:</label><br/><input type="text" value="<?php echo $row[Pet2Breed]?>" name="animalBreed2" />
+                     <label class="label">Breed:</label><br/><input type="text" value="<?php echo $row['Pet2Breed']?>" name="animalBreed2" />
                  </td>
                  <td>
-                     <label class="label">Age:</label><br/><input type="text" value="<?php echo $row[Pet2Age]?>" name="animalAge2" />
+                     <label class="label">Age:</label><br/><input type="text" class="number" minlength="1" maxlength="2" value="<?php echo $row['Pet2Age']?>" name="animalAge2" />
                  </td>
                      
              </tr>
              <tr>
                  <td>
                      <label class="label">Type:</label><select name="animalType3">
-                                <option <?php if($row[Pet3Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
-                                <option <?php if($row[Pet3Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
-                                <option <?php if($row[Pet3Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
-                                <option <?php if($row[Pet3Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
+                                <option <?php if($row['Pet3Type'] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
+                                <option <?php if($row['Pet3Type'] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
+                                <option <?php if($row['Pet3Type'] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
+                                <option <?php if($row['Pet3Type'] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
                             </select>
                  </td>
                  <td>
-                     <label class="label">Weight:</label><br/><input type="text" value="<?php echo $row[Pet3Weight]?>" name="animalWeight3" />
+                     <label class="label">Weight:</label><br/><input type="text" class="number" minlength="1" maxlength="3" value="<?php echo $row['Pet3Weight']?>" name="animalWeight3" />
                  </td>
                  <td>
-                     <label class="label">Breed:</label><br/><input type="text" value="<?php echo $row[Pet3Breed]?>" name="animalBreed3" />
+                     <label class="label">Breed:</label><br/><input type="text" value="<?php echo $row['Pet3Breed']?>" name="animalBreed3" />
                  </td>
                  <td>
-                     <label class="label">Age:</label><br/><input type="text" value="<?php echo $row[Pet3Age]?>" name="animalAge3" />
+                     <label class="label">Age:</label><br/><input type="text" class="number" minlength="1" maxlength="2" value="<?php echo $row['Pet3Age']?>" name="animalAge3" />
                  </td>
                      
              </tr>
              <tr>
                  <td>
                      <label class="label">Type:</label><select name="animalType4">
-                                <option <?php if($row[Pet4Type] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
-                                <option <?php if($row[Pet4Type] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
-                                <option <?php if($row[Pet4Type] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
-                                <option <?php if($row[Pet4Type] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
+                                <option <?php if($row['Pet4Type'] == 'Dog'){echo ' selected="selected" ' ;} ?>>Dog</option>
+                                <option <?php if($row['Pet4Type'] == 'Cat'){echo ' selected="selected" ' ;} ?>>Cat</option>
+                                <option <?php if($row['Pet4Type'] == 'Bird'){echo ' selected="selected" ' ;} ?>>Bird</option>
+                                <option <?php if($row['Pet4Type'] == 'Other'){echo ' selected="selected" ' ;} ?>>Other</option>
                             </select>
                  </td>
                  <td>
-                     <label class="label">Weight:</label><br/><input type="text" value="<?php echo $row[Pet4Weight]?>" name="animalWeight4" />
+                     <label class="label">Weight:</label><br/><input type="text" class="number" minlength="1" maxlength="3" value="<?php echo $row['Pet4Weight']?>" name="animalWeight4" />
                  </td>
                  <td>
-                     <label class="label">Breed:</label><br/><input type="text" value="<?php echo $row[Pet4Breed]?>" name="animalBreed4" />
+                     <label class="label">Breed:</label><br/><input type="text" value="<?php echo $row['Pet4Breed']?>" name="animalBreed4" />
                  </td>
                  <td>
-                    <label class="label">Age:</label><br/><input type="text" value="<?php echo $row[Pet4Age]?>" name="animalAge4" />
+                    <label class="label">Age:</label><br/><input type="text" class="number" minlength="1" maxlength="2" value="<?php echo $row['Pet4Age']?>" name="animalAge4" />
                  </td>
                      
              </tr>
@@ -283,7 +283,6 @@ $(document).ready(function(){
 
   $(document).ready(function(){
     $("#newApplicationForm").validate({
-        ignoreTitle: true,
         onkeyup: false,
         onclick: false
         

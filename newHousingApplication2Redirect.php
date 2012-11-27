@@ -21,7 +21,7 @@
 
     //Query that is retrieving the data from the application of the user
     $result = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='" . $_SESSION[userID] . "'");
+            WHERE UserID ='" . $_SESSION['userID'] . "'");
 
     //Casting the query data onto a variable
     $row = mysql_fetch_array($result);
@@ -38,7 +38,7 @@
                 CoAppSupFName=:coAppSuperVisorFName1,           CoAppSupLName=:coAppSuperVisorLName1,       CoAppSupPhone=:coAppSuperVisorPhone1,
                 CoAppPositionName=:coAppPosition1,              CoAppMonthsEmployed=:coAppMonthsEmployed1,  CoAppAnnualSalary=:coAppAnnualSalary1
                 
-            WHERE UserID='$_SESSION[userID]'
+            WHERE UserID='".$_SESSION['userID']."'
             ");
     try {
         $stmt->bindValue(':employerName1',          $_POST['employerName1'],                   PDO::PARAM_STR);
@@ -74,7 +74,7 @@
     {
         
         mysql_query("UPDATE APPLICATION SET PageCompleted='2'
-        WHERE UserID = '$_SESSION[userID]'");
+        WHERE UserID ='".$_SESSION['userID']."'");
     }
     
     mysql_close();

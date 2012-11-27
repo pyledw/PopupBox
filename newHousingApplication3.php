@@ -15,7 +15,7 @@
      */
     
     
-    if(!isset($_SESSION[userID]))
+    if(!isset($_SESSION['userID']))
     {
         header( 'Location: /loginRequired.php' ) ;
     }
@@ -26,7 +26,7 @@
     $con = get_dbconn("");
         //Getting the users applicaiton data
         $result1 = mysql_query("SELECT * FROM APPLICATION
-            WHERE UserID ='$_SESSION[userID]' ");
+            WHERE UserID ='".$_SESSION['userID']."'");
         
         if(!$result1)
         {
@@ -39,7 +39,7 @@
         
         //second query getting all the previous residences of the applicaiton
         $result = mysql_query("SELECT * FROM PREVIOUSRESIDENCE
-            WHERE ApplicationID = '$row[ApplicationID]' ");
+            WHERE ApplicationID ='".$row['ApplicationID']."'");
         
         if(!$result)
         {
@@ -69,7 +69,7 @@
                                 <label class="label">Type Of Residence: </label><br/><select id="select" name="type'.$intCount.'">
                             <option';
                             
-                            if($row[TypeOfResidence] == "Owned")
+                            if($row['TypeOfResidence'] == "Owned")
                             {
                             echo ' selected="selected"'; 
                             
@@ -79,7 +79,7 @@
                             </option>
                             <option ';
                             
-                            if($row[TypeOfResidence] == "Rented")
+                            if($row['TypeOfResidence'] == "Rented")
                             {
                             echo ' selected="selected"'; 
                             
@@ -89,7 +89,7 @@
                             </option>
                             <option ';
                             
-                            if($row[TypeOfResidence] == "Family Friend")
+                            if($row['TypeOfResidence'] == "Family Friend")
                             {
                             echo ' selected="selected"'; 
                             
@@ -100,43 +100,43 @@
                         </select>
                             </td>
                             <td>
-                               <label class="label">Address: </label><br/><input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
+                               <label class="label">Address: </label><br/><input type="text" name="address'.$intCount.'" value="'.$row['PrevStreetAddress'].'"/>
                             </td>
                             <td>
-                                <label class="label">City: </label><br/><input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'"/>
+                                <label class="label">City: </label><br/><input type="text" name="city'.$intCount.'" value="'.$row['PrevCity'].'"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label class="label">State: </label><br/><input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
+                                <label class="label">State: </label><br/><input type="text" maxlength="2" minlength="2" name="state'.$intCount.'" value="'.$row['PrevState'].'"/>
                             </td>
                             <td>
-                                <label class="label">Zip Code: </label><br/><input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
+                                <label class="label">Zip Code: </label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode'.$intCount.'" value="'.$row['PrevZip'].'"/>
                             </td>
                             <td>
-                                <label class="label">months lived there:</label><br/><input  type="text" name="months2" value="'.$row[PrevLandLordFName].'"/>
+                                <label class="label">months lived there:</label><br/><input class="number" maxlength="3" type="text" name="months2" value="'.$row['PrevLandLordFName'].'"/>
                             </td>     
                         </tr>
                         <tr>
                             <td>
-                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row['PrevLandLordLName'].'"/>
                             </td>
                             <td>
-                                <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                                <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row['PrevLandLordLName'].'"/>
                             </td>
                             <td>
-                                <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
+                                <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                               <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
+                               <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row['ReasonForLeaving'].'"/>
                             </td>
                             <td>
-                                <label class="label">Rent:</label><br/><input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
+                                <label class="label">Rent:</label><br/><input class="number" type="text" name="rent'.$intCount.'" value="'.$row['PrevMonthlyRent'].'"/>
                             </td>
                             <td>
-                                <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
+                                <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row['PrevResidenceID'].'" />
                             </td>
                         </tr>
                         <tr>
@@ -168,43 +168,43 @@
                         </select>
                             </td>
                             <td>
-                               <label class="label">Address:</label><br/><input type="text" name="address'.$intCount.'" value="'.$row[PrevStreetAddress].'"/>
+                               <label class="label">Address:</label><br/><input type="text" name="address'.$intCount.'" value="'.$row['PrevStreetAddress'].'"/>
                             </td>
                             <td>
-                                <label class="label">City:</label><br/><input type="text" name="city'.$intCount.'" value="'.$row[PrevCity].'"/>
+                                <label class="label">City:</label><br/><input type="text" name="city'.$intCount.'" value="'.$row['PrevCity'].'"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label class="label">State:</label><br/><input type="text" name="state'.$intCount.'" value="'.$row[PrevState].'"/>
+                                <label class="label">State:</label><br/><input type="text" maxlength="2" minlength="2" name="state'.$intCount.'" value="'.$row['PrevState'].'"/>
                             </td>
                             <td>
-                                <label class="label">Zip Code:</label><br/><input  type="text" name="zipCode'.$intCount.'" value="'.$row[PrevZip].'"/>
+                                <label class="label">Zip Code:</label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode'.$intCount.'" value="'.$row['PrevZip'].'"/>
                             </td>
                             <td>
-                                <label class="label">months lived there:</label><br/><input  type="text" name="months2" value="'.$row[PrevLandLordFName].'"/>
+                                <label class="label">months lived there:</label><br/><input class="number" type="text" name="months2" value="'.$row['PrevLandLordFName'].'"/>
                             </td>     
                         </tr>
                         <tr>
                             <td>
-                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row['PrevLandLordLName'].'"/>
                             </td>
                             <td>
-                                <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row[PrevLandLordLName].'"/>
+                                <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row['PrevLandLordLName'].'"/>
                             </td>
                             <td>
-                                <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber'.$intCount.'" value="'.$row[PrevPhone].'"/>
+                                <label class="label">Phone Number:</label><br/><input type="text" name="phoneNumber'.$intCount.'" value="'.$row['PrevPhone'].'"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row[ReasonForLeaving].'"/>
+                                <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving'.$intCount.'" value="'.$row['ReasonForLeaving'].'"/>
                             </td>
                             <td>
-                                <label class="label">Rent:</label><br/><input type="text" name="rent'.$intCount.'" value="'.$row[PrevMonthlyRent].'"/>
+                                <label class="label">Rent:</label><br/><input type="text" class="number" name="rent'.$intCount.'" value="'.$row['PrevMonthlyRent'].'"/>
                             </td>
                             <td>
-                                <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row[PrevResidenceID].'" />
+                                <input id="number" type="text" name="number'.$intCount.'" style="display: block; visibility: hidden" value="'.$row['PrevResidenceID'].'" />
                             </td>
                         </tr>
                         <tr>
@@ -245,13 +245,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">State:</label><br/><input type="text" name="state1"/>
+                        <label class="label">State:</label><br/><input maxlength="2" minlength="2" type="text" name="state1"/>
                     </td>
                     <td>
-                        <label class="label">Zip Code:</label><br/><input  type="text" name="zipCode1"/>
+                        <label class="label">Zip Code:</label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode1"/>
                     </td>
                     <td>
-                        <label class="label">months lived there:</label><br/><input  type="text" name="months2"/>
+                        <label class="label">months lived there:</label><br/><input class="number" maxlength="3" type="text" name="months1"/>
                     </td>     
                 </tr>
                 <tr>
@@ -270,7 +270,7 @@
                         <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving1"/>
                     </td>
                     <td>
-                        <label class="label">Rent:</label><br/><input type="text" name="rent1"/>
+                        <label class="label">Rent:</label><br/><input class="number" type="text" name="rent1"/>
                     </td>
                     <td>
                         <input id="number" type="text" name="number1" style="display: block; visibility: hidden" value="" />
@@ -309,13 +309,13 @@
                 </tr>
                 <tr>
                     <td>
-                       <label class="label">State:</label><br/><input type="text" name="state2"/>
+                       <label class="label">State:</label><br/><input maxlength="2" minlength="2" type="text" name="state2"/>
                     </td>
                     <td>
-                       <label class="label">Zip Code:</label><br/><input  type="text" name="zipCode2"/>
+                       <label class="label">Zip Code:</label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode2"/>
                     </td>
                     <td>
-                       <label class="label">months lived there:</label><br/><input  type="text" name="months2"/>
+                       <label class="label">months lived there:</label><br/><input class="number" type="text" name="months2"/>
                     </td>     
                 </tr>
                 <tr>
@@ -334,7 +334,7 @@
                         <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving2"/>
                     </td>
                     <td>
-                        <label class="label">Rent:</label><br/><input type="text" name="rent2"/>
+                        <label class="label">Rent:</label><br/><input class="number" type="text" name="rent2"/>
                     </td>
                     <td>
                         <input id="number" type="text" name="number2" style="display: block; visibility: hidden" value="" />
@@ -373,13 +373,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">State:</label><br/><input type="text" name="state3"/>
+                        <label class="label">State:</label><br/><input maxlength="2" minlength="2" type="text" name="state3"/>
                     </td>
                     <td>
-                        <label class="label">Zip Code:</label><br/><input  type="text" name="zipCode3"/>
+                        <label class="label">Zip Code:</label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode3"/>
                     </td>
                     <td>
-                        <label class="label">months lived there:</label><br/><input  type="text" name="months2"/>
+                        <label class="label">months lived there:</label><br/><input class="number" type="text" name="months3"/>
                     </td>     
                 </tr>
                 <tr>
@@ -398,7 +398,7 @@
                         <label class="label">Reason For Leaving:</label><br/><input type="text" name="reasonForLeaving3"/>
                     </td>
                     <td>
-                        <label class="label">Rent:</label><br/><input type="text" name="rent3"/>
+                        <label class="label">Rent:</label><br/><input class="number" type="text" name="rent3"/>
                     </td>
                     <td>
                         <input id="number" type="text" name="number3" style="display: block; visibility: hidden" value="" />
@@ -407,7 +407,7 @@
                 }
                 
                 $result1 = mysql_query("SELECT * FROM APPLICATION
-                WHERE UserID ='" . $_SESSION[userID] . "'");
+                WHERE UserID ='" . $_SESSION['userID'] . "'");
         
                 //casting the query data into a variable
                 $row = mysql_fetch_array($result1);
@@ -422,34 +422,34 @@
                     <td>
                         <label class="label">Have you ever been convicted of a felony?</label><br/>
                         
-                        Yes<input type="radio" name="felony"  value="1" <?php if($row[HasCrimHist] == '1'){echo "checked='checked'";} ?> />
-                        No<input type="radio" name="felony" value="0" <?php if($row[HasCrimHist] != '1'){echo "checked='checked'";}  ?><br/>
+                        Yes<input type="radio" name="felony"  value="1" <?php if($row['HasCrimHist'] == '1'){echo "checked='checked'";} ?> />
+                        No<input type="radio" name="felony" value="0" <?php if($row['HasCrimHist'] != '1'){echo "checked='checked'";}  ?><br/>
                     </td>
                     <td>
                         <label class="label">Explain:</label><br/>
-                        <textarea cols="50" rows="4" name="ifYesFelony"><?php echo $row[CrimHistDesc] ?></textarea>
+                        <textarea cols="50" rows="4" name="ifYesFelony"><?php echo $row['CrimHistDesc'] ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label class="label">Have you ever been evicted?</label><br/>
-                        Yes<input type="radio" name="evicted" <?php if($row[HasEvictHist] == '1'){echo "checked='checked'";}?>  value="1" />
-                        No<input type="radio" name="evicted" <?php if($row[HasEvictHist] != '1'){echo "checked='checked'";}?>  value="0" />
+                        Yes<input type="radio" name="evicted" <?php if($row['HasEvictHist'] == '1'){echo "checked='checked'";}?>  value="1" />
+                        No<input type="radio" name="evicted" <?php if($row['HasEvictHist'] != '1'){echo "checked='checked'";}?>  value="0" />
                     </td>
                     <td>
                         <label class="label">Explain:</label><br/>
-                        <textarea cols="50" rows="4" name="ifYesEvicted"><?php echo $row[EvictHistDescription] ?></textarea>
+                        <textarea cols="50" rows="4" name="ifYesEvicted"><?php echo $row['EvictHistDescription'] ?></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label class="label">Have you ever declared bankruptcy?</label><br/>
-                        Yes<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] == '1'){echo "checked='checked'";}?> value="1" />
-                        No<input type="radio" name="bankruptcy" <?php if($row[HasBankruptHist] != '1'){echo "checked='checked'";}?>  value="0" />
+                        Yes<input type="radio" name="bankruptcy" <?php if($row['HasBankruptHist'] == '1'){echo "checked='checked'";}?> value="1" />
+                        No<input type="radio" name="bankruptcy" <?php if($row['HasBankruptHist'] != '1'){echo "checked='checked'";}?>  value="0" />
                     </td>
                     <td>
                         <label class="label">Explain:</label><br/>
-                        <textarea cols="50" rows="4" name="ifYesBankruptcy"><?php echo $row[BankruptHistDesc] ?></textarea>
+                        <textarea cols="50" rows="4" name="ifYesBankruptcy"><?php echo $row['BankruptHistDesc'] ?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -459,18 +459,18 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input type="text" name="devitCardDebt" <?php echo "value='" .$row[TotalConsumerDebt] . "'"?>/>
+                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input type="text" name="devitCardDebt" <?php echo "value='" .$row['TotalConsumerDebt'] . "'"?>/>
                     </td>
                     <td>
-                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input type="text" name="monthlyPayments" <?php echo "value='" .$row[MonthlyDebtPayment] . "'"?>/><br/>
+                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input type="text" name="monthlyPayments" <?php echo "value='" .$row['MonthlyDebtPayment'] . "'"?>/><br/>
                     </td>
                     <td>
-                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input type="text" name="loans" <?php echo "value='" .$row[TotalLoanDebt] . "'"?>/><br/>
+                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input type="text" name="loans" <?php echo "value='" .$row['TotalLoanDebt'] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input type="text" name="equity" <?php echo "value='" .$row[TotalAssets] . "'"?>/><br/>
+                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input type="text" name="equity" <?php echo "value='" .$row['TotalAssets'] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>
@@ -541,9 +541,20 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#newApplicationForm").validate({
-        ignoreTitle: true,
         onkeyup: false,
-        onclick: false
+        onclick: false,
+        
+        rules: {
+            phoneNumber1: {
+            phoneUS: true
+            },   
+            phoneNumber2: {
+            phoneUS: true
+            },   
+            phoneNumber3: {
+            phoneUS: true
+            }   
+        }
         
     });
   });
