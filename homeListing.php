@@ -143,7 +143,7 @@
                                        {
                                            $bidStatus = getUsersBidStatus($_SESSION['userID'], $row['PropertyID']);
                                            //echo $_SESSION[userID] . " " . $row[PropertyID];
-                                           //echo $bidStatus;
+                                           echo $bidStatus;
 
                                               if($bidStatus == "0")
                                               {

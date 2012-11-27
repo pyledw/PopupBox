@@ -25,7 +25,7 @@
 	$_SESSION['fee-type'] = 'application';
 	$_SESSION['applicationID'] = $row['ApplicationID'];
 
-	$title = "Contact LeaseHood";
+	$title = "Pay Application";
     include 'Header.php';		// needs to come after Location redirects
 ?>
 

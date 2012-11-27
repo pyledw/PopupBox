@@ -35,19 +35,19 @@
                    First Name: 
                 </td>
                 <td>
-                    <?php echo $row[FirstName]; ?>
+                    <?php echo $row['FirstName']; ?>
                 </td>
                 <td>
                     Last Name:
                 </td>
                 <td>
-                    <?php echo $row[LastName]; ?>
+                    <?php echo $row['LastName']; ?>
                 </td>
                 <td>
                     Email:
                 </td>
                 <td>
-                    <?php echo $row[Email]; ?>
+                    <?php echo $row['Email']; ?>
                 </td>
             </tr>
             <tr>
@@ -55,25 +55,25 @@
                    City:
                 </td>
                 <td>
-                    <?php echo $row[City]; ?>
+                    <?php echo $row['City']; ?>
                 </td>
                 <td>
                     State:
                 </td>
                 <td>
-                   <?php echo $row[State]; ?>
+                   <?php echo $row['State']; ?>
                 </td>
                 <td>
                    Earliest Move In: 
                 </td>
                 <td>
-                   <?php echo $row[EarlyMoveIn]; ?>
+                   <?php echo $row['EarlyMoveIn']; ?>
                 </td>
                 <td>
                     Latest Move In:
                 </td>
                 <td>
-                    <?php echo $row[LateMoveIn]; ?>
+                    <?php echo $row['LateMoveIn']; ?>
                 </td>
             </tr>
             <tr>
@@ -82,7 +82,7 @@
                 </td>
                 <td>
                    <?php 
-                   if($row[IsADA] == 1)
+                   if($row['IsADA'] == 1)
                        {
                        echo 'Yes';
                        }
@@ -97,7 +97,7 @@
                 </td>
                 <td>
                     <?php 
-                   if($row[IsSmokingRequired] == 1)
+                   if($row['IsSmokingRequired'] == 1)
                        {
                        echo 'Yes';
                        }
@@ -108,57 +108,67 @@
                    ?>
                 </td>
                 <td>
-                   Number of occupants 
+                   Number of occupants:
                 </td>
                 <td>
-                   <?php echo $row[NumOtherOccupants]; ?>
+                   <?php echo $row['NumOtherOccupants']; ?>
                 </td>
                 <td>
-                    ESignature
+                    ESignature:
                 </td>
                 <td>
-                    <?php echo $row[ESignature]; ?>
+                    <?php echo $row['ESignature']; ?>
                 </td>
             </tr>
-            <tr>
+            
+            <?php 
+            
+            if($row['SecondaryOccupantFName'] != '')
+                {
+                    echo '<tr>
                 <td>
                    Secondary Resident:
                 </td>
                 <td colspan="2">
-                    <?php echo $row[SecondaryOccupantFName] . " " . $row[SecondaryOccupantLName]; ?>
-                </td>
+                    '.$row['SecondaryOccupantFName'] . " " . $row['SecondaryOccupantLName'].'
+                </td
                 <td>
                     Secondary Resident Age:
                 </td>
                 <td>
-                   <?php echo $row[SecondaryOccupantAge]; ?>
+                   '.$row['SecondaryOccupantAge'].'
                 </td>
                 <td>
                    Secondary Resident Relationship:
                 </td>
                 <td>
-                   <?php echo $row[SecondaryOccupantRelationship]; ?>
+                   '.$row['SecondaryOccupantRelationship'].'
                 </td>
-            </tr>
-            
-             <tr>
+            </tr>';
+                }
+                
+                
+                
+            if($row['CurrentEmployerName'] != '')
+            {
+                echo '<tr>
                 <td>
                    Current Employer:
                 </td>
                 <td colspan="2">
-                    <?php echo $row[CurrentEmployerName]; ?>
+                    '.$row['CurrentEmployerName'].'
                 </td>
                 <td>
                     Current Supervisor name:
                 </td>
                 <td>
-                   <?php echo $row[CurrentSupFName] . " " . $row[CurrentSupLName]; ?>
+                   '.$row['CurrentSupFName'] . ' ' . $row['CurrentSupLName'].'
                 </td>
                 <td>
                    Supervisor Phone:
                 </td>
                 <td>
-                   <?php echo $row[CurrentSupPhone]; ?>
+                   '. $row['CurrentSupPhone'] .'
                 </td>
             </tr>
             
@@ -167,46 +177,49 @@
                    Current Position:
                 </td>
                 <td>
-                    <?php echo $row[CurrentPositionName]; ?>
+                    '.$row['CurrentPositionName'].'
                 </td>
                 <td>
                     Months Employed:
                 </td>
                 <td>
-                   <?php echo $row[CurrentMonthsEmployed]; ?>
+                   '.$row['CurrentMonthsEmployed'].'
                 </td>
                 <td>
                    Annual Salary:
                 </td>
                 <td>
-                   <?php echo $row[CurrentAnnualSalary]; ?>
+                   '.$row['CurrentAnnualSalary'].'
                 </td>
-            </tr>
+            </tr>';
+            }
             
-            <tr>
+            if($row['PrevEmployerName'] != '')
+            {
+                echo '<tr>
                 <td>
                    Previous Employer
                 </td>
                 <td>
-                    <?php echo $row[PrevEmployerName]; ?>
+                    '.$row['PrevEmployerName'].'
                 </td>
                 <td>
                     Previous Supervisor Name
                 </td>
                 <td>
-                   <?php echo $row[PrevSupFName] . " " . $row[PrevSupLName]; ?>
+                   '.$row['PrevSupFName'] . " " . $row['PrevSupLName'].'
                 </td>
                 <td>
                    Phone:
                 </td>
                 <td>
-                   <?php echo $row[PrevSupPhone]; ?>
+                   '.$row['PrevSupPhone'].'
                 </td>
                 <td>
                    Position:
                 </td>
                 <td>
-                   <?php echo $row[PrevPositionName]; ?>
+                   '.$row[PrevPositionName].'
                 </td>
             </tr>
             
@@ -215,13 +228,13 @@
                    Previous Job Duration:
                 </td>
                 <td>
-                    <?php echo $row[PrevMonthsEmployed]; ?>
+                    '.$row['PrevMonthsEmployed'].'
                 </td>
                 <td>
                     Previous Annual Salary
                 </td>
                 <td>
-                   <?php echo $row[PrevAnnualSalary]; ?>
+                   '.$row['PrevAnnualSalary'].'
                 </td>
                 <td>
                    
@@ -235,32 +248,35 @@
                 <td>
                    
                 </td>
-            </tr>
+            </tr>';
+            }
             
-            <tr>
+            if($row['CoAppEmployerName'] != '')
+            {
+                echo '<tr>
                 <td>
                    Co Applicant Employer:
                 </td>
                 <td>
-                    <?php echo $row[CoAppEmployerName]; ?>
+                    '.$row['CoAppEmployerName'].'
                 </td>
                 <td>
                     Co Applicant Supervisor Name
                 </td>
                 <td>
-                   <?php echo $row[CoAppSupFName] . " " . $row[CoAppSupLName]; ?>
+                   '.$row['CoAppSupFName'] . " " . $row['CoAppSupLName'].'
                 </td>
                 <td>
                    Co Applicant Employer Phone:
                 </td>
                 <td>
-                   <?php echo $row[CoAppSupPhone]; ?>
+                   '.$row['CoAppSupPhone'].'
                 </td>
                 <td>
                    Co Applicant Position:
                 </td>
                 <td>
-                   <?php echo $row[CoAppPositionName]; ?>
+                   '.$row['CoAppPositionName'].'
                 </td>
             </tr>
             
@@ -269,13 +285,13 @@
                    Co Applicant Job Duration:
                 </td>
                 <td>
-                    <?php echo $row[CoAppMonthsEmployed]; ?>
+                    '.$row['CoAppMonthsEmployed'].'
                 </td>
                 <td>
                     Co Applicant Salary:
                 </td>
                 <td>
-                   <?php echo $row[CoAppAnnualSalary]; ?>
+                   '.$row['CoAppAnnualSalary'].'
                 </td>
                 <td>
                    
@@ -289,198 +305,230 @@
                 <td>
                    
                 </td>
-            </tr>
+            </tr>';
+            }
             
-            <tr>
+            echo '<tr>
                 <td colspan="8">Vehicles</td>
-            </tr>
+            </tr>';
             
-           <tr>
-                <td>
-                   Vehicle Description:
-                </td>
-                <td colspan="3">
-                    <?php echo $row[Vehicle2Desc]; ?>
-                </td>
-                <td>
-                    Vehicle License Number:
-                </td>
-                <td>
-                   <?php echo $row[Vehicle2LicenseNo]; ?>
-                </td>
-                <td>
-                   Vehicle License State:
-                </td>
-                <td>
-                   <?php echo $row[Vehicle2LicenseState]; ?>
-                </td>
+            if($row['Vehicle1Desc'] != '')
+            {
+                echo '<tr>
+                            <td>
+                               Vehicle Description:
+                            </td>
+                            <td colspan="3">
+                                '.$row['Vehicle1Desc'].'
+                            </td>
+                            <td>
+                                Vehicle License Number:
+                            </td>
+                            <td>
+                               '.$row['Vehicle1LicenseNo'].'
+                            </td>
+                            <td>
+                               Vehicle License State:
+                            </td>
+                            <td>
+                               '.$row['Vehicle1LicenseState'].'
+                            </td>
 
-            </tr>
+                    </tr>';
+            }
             
-            <tr>
-                <td>
-                   Vehicle Description:
-                </td>
-                <td colspan="3">
-                    <?php echo $row[Vehicle3Desc]; ?>
-                </td>
-                <td>
-                    Vehicle License Number:
-                </td>
-                <td>
-                   <?php echo $row[Vehicle3LicenseNo]; ?>
-                </td>
-                <td>
-                   Vehicle License State:
-                </td>
-                <td>
-                   <?php echo $row[Vehicle3LicenseState]; ?>
-                </td>
+            if($row['Vehicle2Desc'] != '')
+            {
+                echo '<tr>
+                            <td>
+                               Vehicle Description:
+                            </td>
+                            <td colspan="3">
+                                '.$row['Vehicle2Desc'].'
+                            </td>
+                            <td>
+                                Vehicle License Number:
+                            </td>
+                            <td>
+                               '.$row['Vehicle2LicenseNo'].'
+                            </td>
+                            <td>
+                               Vehicle License State:
+                            </td>
+                            <td>
+                               '.$row['Vehicle2LicenseState'].'
+                            </td>
 
-            </tr>
+                    </tr>';
+            }
+            if($row['Vehicle3Desc'] != '')
+            {
+                echo '<tr>
+                            <td>
+                               Vehicle Description:
+                            </td>
+                            <td colspan="3">
+                                '.$row['Vehicle3Desc'].'
+                            </td>
+                            <td>
+                                Vehicle License Number:
+                            </td>
+                            <td>
+                               '.$row['Vehicle3LicenseNo'].'
+                            </td>
+                            <td>
+                               Vehicle License State:
+                            </td>
+                            <td>
+                               '.$row['Vehicle3LicenseState'].'
+                            </td>
+
+                    </tr>';
+            }
+            if($row['Vehicle4Desc'] != '')
+            {
+                echo '<tr>
+                            <td>
+                               Vehicle Description:
+                            </td>
+                            <td colspan="3">
+                                '.$row['Vehicle4Desc'].'
+                            </td>
+                            <td>
+                                Vehicle License Number:
+                            </td>
+                            <td>
+                               '.$row['Vehicle4LicenseNo'].'
+                            </td>
+                            <td>
+                               Vehicle License State:
+                            </td>
+                            <td>
+                               '.$row['Vehicle4LicenseState'].'
+                            </td>
+
+                    </tr>';
+            }
             
-            <tr>
-                <td>
-                   Vehicle Description:
-                </td>
-                <td colspan="3">
-                    <?php echo $row[Vehicle1Desc]; ?>
-                </td>
-                <td>
-                    Vehicle License Number:
-                </td>
-                <td>
-                   <?php echo $row[Vehicle1LicenseNo]; ?>
-                </td>
-                <td>
-                   Vehicle License State:
-                </td>
-                <td>
-                   <?php echo $row[Vehicle1LicenseState]; ?>
-                </td>
-
-            </tr>
+            echo '
+                <tr>
+                    <td colspan="8">Pets</td>
+                </tr>';
             
-            <tr>
-                <td>
-                   Vehicle Description:
-                </td>
-                <td colspan="3">
-                    <?php echo $row[Vehicle4Desc]; ?>
-                </td>
-                <td>
-                    Vehicle License Number:
-                </td>
-                <td>
-                   <?php echo $row[Vehicle4LicenseNo]; ?>
-                </td>
-                <td>
-                   Vehicle License State:
-                </td>
-                <td>
-                   <?php echo $row[Vehicle4LicenseState]; ?>
-                </td>
-
-            </tr>
-             <tr>
-                <td colspan="8">Pets</td>
-            </tr>
-            <tr>
-                <td>
-                   Pet Type:
-                </td>
-                <td>
-                    <?php echo $row[Pet1Type]; ?>
-                </td>
-                <td>
-                   Pet Breed:
-                </td>
-                <td>
-                   <?php echo $row[Pet1Breed]; ?>
-                </td>
-                <td>
-                    Pet Weight:
-                </td>
-                <td>
-                   <?php echo $row[Pet1Weight]; ?>
-                </td>
-                
-                <td>
-                   Pet1Age
-                </td>
-                <td>
-                   <?php echo $row[Pet1Age]; ?>
-                </td>
-
-            </tr>
             
-            <tr>
-                <td>
-                   Pet Type:
-                </td>
-                <td>
-                    <?php echo $row[Pet2Type]; ?>
-                </td>
-                <td>
-                   Pet Breed:
-                </td>
-                <td>
-                   <?php echo $row[Pet2Breed]; ?>
-                </td>
-                <td>
-                    Pet Weight:
-                </td>
-                <td>
-                   <?php echo $row[Pet2Weight]; ?>
-                </td>
-                
-                <td>
-                   Pet1Age
-                </td>
-                <td>
-                   <?php echo $row[Pet2Age]; ?>
-                </td>
-
-            </tr>
             
-            <tr>
-                <td>
-                   Pet Type:
-                </td>
-                <td>
-                    <?php echo $row[Pet3Type]; ?>
-                </td>
-                <td>
-                   Pet Breed:
-                </td>
-                <td>
-                   <?php echo $row[Pet3Breed]; ?>
-                </td>
-                <td>
-                    Pet Weight:
-                </td>
-                <td>
-                   <?php echo $row[Pet3Weight]; ?>
-                </td>
-                
-                <td>
-                   Pet Age:
-                </td>
-                <td>
-                   <?php echo $row[Pet3Age]; ?>
-                </td>
+            if($row['Pet1Weight'] != '')
+            {
+                echo '<tr>
+                        <td>
+                           Pet Type:
+                        </td>
+                        <td>
+                            '.$row['Pet1Type'].'
+                        </td>
+                        <td>
+                           Pet Breed:
+                        </td>
+                        <td>
+                           '.$row['Pet1Breed'].'
+                        </td>
+                        <td>
+                            Pet Weight:
+                        </td>
+                        <td>
+                           '.$row['Pet1Weight'].'
+                        </td>
 
-            </tr>
-            <tr>
-                <td colspan="8">History Details</td>
-            </tr>
+                        <td>
+                           Pet1Age
+                        </td>
+                        <td>
+                           '.$row['Pet1Age'].'
+                        </td>
+
+                    </tr>';
+            }
+            
+            if($row['Pet2Weight'] != '')
+            {
+                echo '<tr>
+                        <td>
+                           Pet Type:
+                        </td>
+                        <td>
+                            '.$row['Pet2Type'].'
+                        </td>
+                        <td>
+                           Pet Breed:
+                        </td>
+                        <td>
+                           '.$row['Pet2Breed'].'
+                        </td>
+                        <td>
+                            Pet Weight:
+                        </td>
+                        <td>
+                           '.$row['Pet2Weight'].'
+                        </td>
+
+                        <td>
+                           Pet1Age
+                        </td>
+                        <td>
+                           '.$row['Pet2Age'].'
+                        </td>
+
+                    </tr>';
+            }
+            
+            if($row['Pet3Weight'] != '')
+            {
+                echo '<tr>
+                        <td>
+                           Pet Type:
+                        </td>
+                        <td>
+                            '.$row['Pet3Type'].'
+                        </td>
+                        <td>
+                           Pet Breed:
+                        </td>
+                        <td>
+                           '.$row['Pet3Breed'].'
+                        </td>
+                        <td>
+                            Pet Weight:
+                        </td>
+                        <td>
+                           '.$row['Pet3Weight'].'
+                        </td>
+
+                        <td>
+                           Pet1Age
+                        </td>
+                        <td>
+                           '.$row['Pet3Age'].'
+                        </td>
+
+                    </tr>';
+            }
+            
+            
+            echo '  <tr>
+                        <td colspan="8">History Details</td>
+                    </tr>';
+            
+            
+            
+                ?>
+
             <tr>
                 <td>
                    Criminal History
                 </td>
                 <td>
                     <?php 
-                   if($row[HasCrimHist] == 1)
+                   if($row['HasCrimHist'] == 1)
                        {
                        echo 'Yes';
                        }
@@ -495,7 +543,7 @@
                 </td>
                 <td>
                    <?php 
-                   if($row[HasBankruptHist] == 1)
+                   if($row['HasBankruptHist'] == 1)
                        {
                        echo 'Yes';
                        }
@@ -510,7 +558,7 @@
                 </td>
                 <td>
                    <?php 
-                   if($row[HasEvictHist] == 1)
+                   if($row['HasEvictHist'] == 1)
                        {
                        echo 'Yes';
                        }
@@ -535,20 +583,20 @@
                    Criminal History Description:
                 </td>
                 <td>
-                    <?php echo $row[CrimHistDesc]; ?>
+                    <?php echo $row['CrimHistDesc']; ?>
                     
                 </td>
                 <td colspan="2">
                    Bankruptcy History Description: 
                 </td>
                 <td>
-                   <?php echo $row[BankruptHistDesc]; ?>
+                   <?php echo $row['BankruptHistDesc']; ?>
                 </td>
                 <td>
                     Eviction History Description:
                 </td>
                 <td colspan="2">
-                   <?php echo $row[EvictHistDescription]; ?>
+                   <?php echo $row['EvictHistDescription']; ?>
                 </td>
                
 
@@ -559,75 +607,82 @@
                    Consumer Debt:
                 </td>
                 <td>
-                    <?php echo $row[TotalConsumerDebt]; ?>
+                    <?php echo $row['TotalConsumerDebt']; ?>
                 </td>
                 <td>
                    Loan Debt:
                 </td>
                 <td>
-                   <?php echo $row[TotalLoanDebt]; ?>
+                   <?php echo $row['TotalLoanDebt']; ?>
                 </td>
                 <td>
                     Monthly Debt Payment:
                 </td>
                 <td>
-                   <?php echo $row[MonthlyDebtPayment]; ?>
+                   <?php echo $row['MonthlyDebtPayment']; ?>
                 </td>
                 
                 <td>
                    Total Assets:
                 </td>
                 <td>
-                   <?php echo $row[TotalAssets]; ?>
-                </td>
-
-            </tr>
-             <tr>
-                <td colspan="8">Co-Signer</td>
-            </tr>
-            <tr>
-                <td>
-                   Name:
-                </td>
-                <td>
-                    <?php echo $row[ContactFName] . ' ' . $row[ContactLName]; ?>
-                </td>
-                <td>
-                   Address
-                </td>
-                <td>
-                   <?php echo $row[ContactAddress] . ', ' . $row[ContactState] . ' ' . $row[ContactZip] ; ?>
-                </td>
-                <td>
-                    Relation:
-                </td>
-                <td>
-                   <?php echo $row[ContactRelation]; ?>
-                </td>
-                
-                <td>
-                   Home Phone
-                </td>
-                <td>
-                   <?php echo $row[ContactHomePhone]; ?>
+                   <?php echo $row['TotalAssets']; ?>
                 </td>
 
             </tr>
             
-            <tr>
-                <td>
-                   Cell Phone:
-                </td>
-                <td>
-                    <?php echo $row[ContactWorkPhone]; ?>
-                </td>
-                <td>
-                   Work Phone:
-                </td>
-                <td>
-                   <?php echo $row[ContactCellPhone]; ?>
-                </td>
-            </tr>
+            <?php
+            if($row['ContactFName'] != '')
+            {
+                        echo '<tr>
+                        <td colspan="8">Co-Signer</td>
+                    </tr>
+                    <tr>
+                        <td>
+                           Name:
+                        </td>
+                        <td>
+                            '.$row['ContactFName'] . ' ' . $row['ContactLName'].'
+                        </td>
+                        <td>
+                           Address:
+                        </td>
+                        <td>
+                           '.$row['ContactAddress'] . ', ' . $row['ContactState'] . ' ' . $row['ContactZip'].'
+                        </td>
+                        <td>
+                            Relation:
+                        </td>
+                        <td>
+                           '.$row['ContactRelation'].'
+                        </td>
+
+                        <td>
+                           Home Phone:
+                        </td>
+                        <td>
+                           '.$row['ContactHomePhone'].'
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                           Cell Phone:
+                        </td>
+                        <td>
+                            '.$row['ContactWorkPhone'].'
+                        </td>
+                        <td>
+                           Work Phone:
+                        </td>
+                        <td>
+                           '.$row['ContactCellPhone'].'
+                        </td>
+                    </tr>';
+                    }
+            ?>
+             
         </table>
         
         
@@ -638,7 +693,7 @@
             {
                 
                 echo '<br/>
-                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row[ApplicationID] .'" style="display:none;" name="ApplicationID"/></form>';
+                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['ApplicationID'] .'" style="display:none;" name="ApplicationID"/></form><a href="resetApplicaiton?applicaitonID='.$row['ApplicationID'].'" >Reset Application</a><a href="mailto:'.$row['Email'].'">Email</a>';
             }
         ?>
     </div>
