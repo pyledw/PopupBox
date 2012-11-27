@@ -645,7 +645,7 @@
                             '.$row['ContactFName'] . ' ' . $row['ContactLName'].'
                         </td>
                         <td>
-                           Address
+                           Address:
                         </td>
                         <td>
                            '.$row['ContactAddress'] . ', ' . $row['ContactState'] . ' ' . $row['ContactZip'].'
@@ -658,7 +658,7 @@
                         </td>
 
                         <td>
-                           Home Phone
+                           Home Phone:
                         </td>
                         <td>
                            '.$row['ContactHomePhone'].'
