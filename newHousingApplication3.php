@@ -114,12 +114,12 @@
                                 <label class="label">Zip Code: </label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode'.$intCount.'" value="'.$row['PrevZip'].'"/>
                             </td>
                             <td>
-                                <label class="label">months lived there:</label><br/><input class="number" maxlength="3" type="text" name="months2" value="'.$row['PrevLandLordFName'].'"/>
+                                <label class="label">months lived there:</label><br/><input class="number" maxlength="3" type="text" name="months2" value="'.$row['TotalMonths'].'"/>
                             </td>     
                         </tr>
                         <tr>
                             <td>
-                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row['PrevLandLordLName'].'" />
+                                <label class="label">Landlords First Name:</label><br/><input type="text" name="landlordsFName'.$intCount.'" value="'.$row['PrevLandLordFName'].'" />
                             </td>
                             <td>
                                 <label class="label">Landlords Last Name:</label><br/><input type="text" name="landlordsLName'.$intCount.'" value="'.$row['PrevLandLordLName'].'" />
