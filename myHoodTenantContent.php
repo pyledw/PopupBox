@@ -71,10 +71,6 @@
 
             </div>
             You are free to submit a Proposal for Occupancy.<br/>
-            ';
-            
-            
-            echo '
         </div>';
         }
         else
@@ -88,6 +84,7 @@
                                </div>
                                 Your Application has been completed, but you must pay the applicaiton fee <br/> before
                                 your applicaiton will be reviewed by an administrator.  Please click <a href="payApplicationFee.php">HERE</a> to pay your fee.
+                                or <a href="editApplication.php">Edit Your Application</a>
                           </div>';
                    }
                 else
