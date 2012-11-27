@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This page redirects the user to the correct form depending on thier choosen account type
+ * This page redirects the user to the correct form depending on their choosen account type
  * 
  * This page will get the users classification and send them to the correct form after they
  * have creted a new account.

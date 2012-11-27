@@ -1150,7 +1150,7 @@
     /**
      * This funciton will test the user using the given UserID and PropertyID
      * 
-     * * It will determin the users ability to bid and return an integer to represent thier status
+     * * It will determin the users ability to bid and return an integer to represent their status
      * * 0 - Okay to bid, no other active bids
      * * 1 - Application not compleate
      * * 2 - Applicaiton not authorized

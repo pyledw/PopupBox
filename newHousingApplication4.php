@@ -1,6 +1,6 @@
 <?php
     /**
-     * This page will allow the user to enter new information or edit old information about thier application.
+     * This page will allow the user to enter new information or edit old information about their application.
      * 
      * * Then main content will load with exiting elements being pre filled into the form
      * * Various testing methods are used to ensure that the display will be identical to the users 

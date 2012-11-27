@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This page is the redirect for if the user selects that they want to resilt thier posting
+ * This page is the redirect for if the user selects that they want to resilt their posting
  * 
  * It will reset the listing so and seput to create a new auction.  It will do this by 
  * changing the Property IsApproved field back to 0, allowinf the administrator to re 

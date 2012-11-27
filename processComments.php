@@ -44,8 +44,7 @@
                     "Their email is: ".$email."\n".
                     "Their question/concern is: \n".$comments."\n";
             $from = "info@leasehood.com";
-            $to = "megasxlr01@hotmail.com";
-            mail($to, $subject, $mailcontent, $from);
+            mail($email, $subject, $mailcontent, $from);
             echo "<p>Thank you for your feedback. You will receive a reply from our support staff between 1-3 business days.</p>";
          }
         ?>
