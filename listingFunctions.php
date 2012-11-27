@@ -803,7 +803,7 @@
                    {
                    
                    $winner = mysql_fetch_array($win);
-                   //echo $winnerID=$winner['AuctionID'];
+                   $winnerID=$winner['AuctionID'];
                    $won = true;
                    }
                    
