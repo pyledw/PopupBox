@@ -1,9 +1,5 @@
 <?php
-session_start();
-
-$title = "Password Reset";
-    include 'Header.php';
-    include_once 'config.inc.php';
+   include_once 'config.inc.php';
     
     $email = $_POST['email'];
     include_once 'config.inc.php';
@@ -16,12 +12,8 @@ $title = "Password Reset";
     $cryptPW = crypt($newPW, $pw_salt);
     
     $query2 = "update USER set Password='$cryptPW' where Email = '$email'"; 
-    $result2 = mysql_query($query2);
-    
-    
-    
-    
-    
+    $result2 = mysql_query($query2);     
+
         $username = $result;
         $password = $newPW;
         $to = $_POST['email'];
@@ -33,6 +25,22 @@ $title = "Password Reset";
                 "Your password is: ".$password."\n".
                 
         mail($to, $subject, $mesg, $from);
+?>
+
+
+
+<?php
+session_start();
+
+$title = "Password Reset";
+    include 'Header.php';
+    
+    
+    
+    
+    
+    
+        
 ?>
 
 <h1 class="Title">Forgot Password</h1>
