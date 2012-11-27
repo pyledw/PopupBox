@@ -9,8 +9,8 @@
                         
     
 
-    $applicationID = $_POST[applicationID];
-    $auctionID = $_POST[auctionID];
+    $applicationID = $_POST['applicationID'];
+    $auctionID = $_POST['auctionID'];
     
     include_once 'config.inc.php';
     
@@ -29,10 +29,17 @@
         {
             die('could not connect: ' .mysql_error());
         }
+        $result2 = mysql_query("UPDATE AUCTION
+            SET DatePFOEndAccept='date() - 1 Day'
+            WHERE AUCTION.AuctionID='$auctionID'");
+        if(!$result2)
+        {
+            die('could not connect: ' .mysql_error());
+        }
     
     while($row = mysql_fetch_array($result))
     {
-        echo $row[ApplicationID] . ' <-Application ID from row';
+        echo $row['ApplicationID'] . ' <-Application ID from row';
         echo $applicationID . ' <-Application ID from Variable';
         
         if($row[ApplicationID] == $applicationID)
@@ -75,5 +82,5 @@
     }
     
     
-    header( 'Location: /myHood.php' );
+    //header( 'Location: /myHood.php' );
 ?>

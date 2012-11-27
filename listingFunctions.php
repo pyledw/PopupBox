@@ -619,7 +619,7 @@
         }
     
     /**
-     *  This function will display the listings on the Landlords MyHood page 
+     * This function will display the listings on the Landlords MyHood page 
      * 
      * @param String $propertyID This variable is the PropertyID of the User that will be displayed
      *  
@@ -639,11 +639,19 @@
 
             //this code is retrieving the highest bid of the auction and returning it
             $result = mysql_query("SELECT * FROM PROPERTY
-                WHERE PropertyID='$propertyID'");
+                WHERE PropertyID='$propertyID'
+                    ORDER BY DatePFOEndAccept ASC");
+            
+            $row = mysql_fetch_array($result);
             
             $result2 = mysql_query("SELECT * FROM AUCTION
-                WHERE PropertyID='$propertyID'");
+                WHERE PropertyID='$propertyID'
+                    ORDER BY DatePFOEndAccept ASC");
             
+            $row2 = mysql_fetch_array($result2);
+            
+            $bid = mysql_query("SELECT * FROM BID
+                WHERE AuctionID='".$row2['AuctionID']."' AND IsActive='1' AND IsMoveInNowBid='1'");
             
             if(!$result)
             {
@@ -651,8 +659,8 @@
             }
             
             
-            $row = mysql_fetch_array($result);
-            $row2 = mysql_fetch_array($result2);
+            
+            
             //echo $row[PropertyID];
             //echo $row[PageCompleted];
             //echo $row[IsPaid];
@@ -666,7 +674,7 @@
             
             
             $hasExpired = "";
-            if($row['DatePFOEndAccept'] != "")
+            if($row2['DatePFOEndAccept'] != "")
             {
                 if($end < $now)
                     {
@@ -713,20 +721,20 @@
             
             include_once 'listingFunctions.php';//needed lisgin functions
             
-            $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']);//below is call to function that returns the timestring of time remaining or time till start
+            $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//below is call to function that returns the timestring of time remaining or time till start
 
             
-            $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);//The code below will return the listings status
+            $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//The code below will return the listings status
 
-            $maxBid = getHighBid($row['PropertyID']);//this code is retrieving the highest bid of the auction and returning it
+            $maxBid = getHighBid($row2['PropertyID']);//this code is retrieving the highest bid of the auction and returning it
             
             if($maxBid == '')
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
+                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row2['StartingBid'].'</font>';
             }
             
             echo '<font style="float:right; position:relative; right:20px;">
-                    '.$hasExpired
+                  '.$hasExpired
                    .$propertyStatus
                    .$timeString
                    .$status
@@ -765,25 +773,56 @@
             if($row['IsApproved'] == 0)
             {
                 echo'
-                         <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
+                        <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
                         <input type="text" name="propertyID" style="Display:none" value="' . $propertyID . '" />
                         <button type="submit" class="button">Edit Listing</button>
-                    </form>
+                        </form>
                     ';
             }
-            
-                if($won)//Check if the auciton winner has been selected
-                {
-                    echo'
-                    <a href="viewApplication.php?applicationID='.$winnerID.'" rel="facebox" class="button">Review Choosen Application</a>
-                    ';
-                }
-                else//if no winner has been selected yet
+            if(mysql_num_rows($bid) != '0')
                 {
                     echo'
                     <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2['AuctionID'].'" rel="facebox" class="button">Review PFOs</a>
                     ';
                 }
+
+                $intStatus = getStatusInt($row2['DatePFOEndAccept'], $propertyID);
+                //echo $intStatus;
+                if($intStatus == '3')
+                {
+                    
+                   $win = mysql_query("SELECT AuctionID FROM BID
+                       WHERE IsWinningBid='1' AND AuctionID='".$row2['AuctionID']."'");
+                   
+                   if(!$win)
+                    {
+                        die('could not connect: ' .mysql_error());
+                    }
+            
+                   if(mysql_num_rows($win) != '0')
+                   {
+                   
+                   $winner = mysql_fetch_array($win);
+                   //echo $winnerID=$winner['AuctionID'];
+                   $won = true;
+                   }
+                   
+                       
+                   
+                   if($won)//Check if the auciton winner has been selected
+                    {
+                        echo'
+                        <a href="viewApplication.php?applicationID='.$winnerID.'" rel="facebox" class="button">Review Choosen Application</a>
+                        ';
+                    }
+                    else//if no winner has been selected yet
+                    {
+                        echo'
+                        <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2['AuctionID'].'" rel="facebox" class="button">Review PFOs</a>
+                        ';
+                    } 
+                }
+                
                 
                 echo'
                 <a href="printFlyer.php?propertyID='. $propertyID . '" class="button">Print Flyer</a>
@@ -851,13 +890,6 @@
                 </td>
                 ';
             
-            //This query is retriving all the bids on the auction of the property
-            $auction = mysql_query('SELECT AuctionID FROM AUCTION
-                WHERE propertyID="'.$propertyID.'"
-                ORDER BY AuctionID DESC');
-            
-            $auctionInfo = mysql_fetch_array($auction);
-            
             
             
             $bids = mysql_query("SELECT * FROM BID
@@ -867,7 +899,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$row2[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
