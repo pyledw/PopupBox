@@ -36,9 +36,9 @@
 
                 $applicationID = $row[ApplicationID];
                 
-                mysql_query("INSERT INTO BID (AuctionID,ApplicationID,MonthlyRate,IsMoveInNowBid)
+                mysql_query("INSERT INTO BID (AuctionID,ApplicationID,MonthlyRate,IsMoveInNowBid,IsActive)
                     VALUES
-                    ('$auctionID','$applicationID','$amount','1')");
+                    ('$auctionID','$applicationID','$amount','1','1')");
 
 
                 

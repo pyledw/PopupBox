@@ -15,7 +15,7 @@ if(!$result)
 $row = mysql_fetch_array($result);
 
 $result = mysql_query("SELECT BidID FROM BID
-    WHERE AuctionID='".$auctionID."' AND ApplicationID='".$row['ApplicationID']."' AND IsMoveInNowBid='1'");
+    WHERE AuctionID='".$auctionID."' AND ApplicationID='".$row['ApplicationID']."' AND IsMoveInNowBid='1' AND IsActive='1'");
 if(!$result)
         {
             die('could not connect: ' .mysql_error());
@@ -31,7 +31,7 @@ if(mysql_num_rows($result) == 0)
     </tr>
     <tr>
         <td colspan="2">
-            <a class="button" href="rentItNowRedirect.php?auctionID=<?php echo $auctionID; ?>">Confirm</a>
+            <a class="button" href="rentItNowRedirect.php?auctionID='.$auctionID.'">Confirm</a>
         </td>
     </tr>
 </table>
