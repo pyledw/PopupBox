@@ -66,7 +66,7 @@
                         <button type="reset" class="button">Clear</button>
                     </td>
                 </tr>
-                <?php if($errorMessage != ""){echo '<tr><td><font color="red">Forgot password? <a href="resetPassword.php">Reset</a></font></td></tr>';} ?>
+                <?php if($errorMessage != ""){echo '<tr><td><font color="red">Forgot password or Username? <a href="resetPassword.php">Reset</a></font></td></tr>';} ?>
             </table>
 
         </form>

@@ -23,16 +23,8 @@
 <form id="newApplicationForm"  method="post" action="updateAccount.php"> 
     <table width="750px" class="tableForm" style="text-align: center;">
         <font class="formheader">Account Information</font>
-        <tr>
-            <td>
-                 Auto sign in <input type="checkbox" name="autoSignIn" value="1">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Would like messages from LeaseHood about specials? <input type="checkbox" name="personalEmail" value="1">
-            </td>
-        </tr>
+        <?php if(isset($_GET['error'])){echo '<tr><td><font color="red">'.$_GET['error'].'</font></td></tr>';} ?>
+        <?php if(isset($_GET['message'])){echo '<tr><td><font color="green">'.$_GET['message'].'</font></td></tr>';} ?>
         <tr>
             <td>
                 <h3>Change my password</h3>
