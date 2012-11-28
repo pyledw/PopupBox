@@ -7,7 +7,7 @@
  * @author David Pyle <Pyledw@Gmail.com>
  */
 session_start();
-if($_SESSION['userType'] == '3')
+if($_SESSION['type'] == '3')
 {
 echo "redirect";
 echo $_GET['listingID'];
