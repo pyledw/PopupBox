@@ -62,7 +62,7 @@
 
             <tr>
                 <td colspan="3" width="600px">
-                    <b><?php echo $row['Address'] . " - " . $row['PropertyID'] . " - " ?>  <a href="Http://www.google.com/maps?q=<?php echo $row['Address'] . " " . $row['City'] . " " . $row['State'] ?>">Map It</a> - Print Brochure</b>
+                    <b><?php echo $row['Address'] . " - " . $row['PropertyID'] . " - " ?>  <a href="Http://www.google.com/maps?q=<?php echo $row['Address'] . " " . $row['City'] . " " . $row['State'] ?>" target="_blank">Map It</a> - Print Brochure</b>
                 </td>
                 <td Style="background: grey;">
                     Current Rental Rate:
