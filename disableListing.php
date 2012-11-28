@@ -7,7 +7,7 @@
  * @author David Pyle <Pyledw@Gmail.com>
  */
 session_start();
-if($_SESSION['userType'] == '3')
+if($_SESSION['type'] == '3')
 {
 echo "redirect";
 echo $_GET['listingID'];
@@ -17,12 +17,22 @@ echo $_GET['listingID'];
         $con = get_dbconn("");
         
         $result = mysql_query("UPDATE PROPERTY SET IsApproved='0'
-        RIGHT JOIN AUCTION
-        ON PROPERTY.PropertyID=AUCTION.PropertyID
-        WHERE PropertyID = '$_GET[listingID]'
-        ORDER BY ASC");
-
-        $row = mysql_affected_rows($result);
+        WHERE PropertyID = '".$_GET['listingID']."'
+            ");
+        if(!$result)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        $result3 = mysql_query("SELECT AuctionID FROM AUCTION
+        WHERE PropertyID = '".$_GET['listingID']."'
+            ORDER BY DatePFOEndAccept ASC");
+        if(!$result3)
+        {
+            die('could not connect: ' .mysql_error());
+        }
+        
+        $row =  mysql_fetch_array($result3);
         
         $result2 = mysql_query("UPDATE BID SET IsActive='0'
             WHERE AuctionID='".$row['AuctionID']."'");
@@ -32,7 +42,7 @@ echo $_GET['listingID'];
             die('could not connect: ' .mysql_error());
         }
 }        
-        header( 'Location: /myHood.php' );
+        //header( 'Location: /myHood.php' );
 
 
 ?>

@@ -85,7 +85,7 @@
                                     }
                                    if(mysql_num_rows($images) < 1)
                                    {
-                                       echo 'No Rows';
+                                       echo '';
                                    }
                                    while($image = mysql_fetch_array($images))
                                    {
