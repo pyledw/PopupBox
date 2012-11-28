@@ -36,9 +36,24 @@
 
                 $applicationID = $row[ApplicationID];
                 
-                mysql_query("INSERT INTO BID (AuctionID,ApplicationID,MonthlyRate,IsMoveInNowBid,IsActive)
-                    VALUES
-                    ('$auctionID','$applicationID','$amount','1','1')");
+                
+                $result = mysql_query("SELECT * FROM BID
+                    WHERE ApplicaitonID='$applicationID' AND IsActive='1'");
+                
+                if(mysql_num_rows($result) != '0')
+                {
+                    
+                    $BidID = mysql_fetch_field("BidID");
+                    mysql_query("UPDATE BID SET
+                        AuctionID='$auctionID',ApplicationID='$applicationID',MonthlyRate='$amount',IsMoveInNowBid='1',IsActive='1')
+                        WHERE BidID='$BidID'");
+                }
+                else
+                {
+                    mysql_query("INSERT INTO BID (AuctionID,ApplicationID,MonthlyRate,IsMoveInNowBid,IsActive)
+                        VALUES
+                        ('$auctionID','$applicationID','$amount','1','1')");
+                }
 
 
                 
