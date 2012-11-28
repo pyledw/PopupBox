@@ -794,7 +794,7 @@
                     ';
                 }
 
-                $intStatus = getStatusInt($row2['DatePFOEndAccept'], $propertyID);
+                $intStatus = getStatusInt($row2['DatePFOEndAccept'], $row['DateEndAcceptPFO']);
                 //echo $intStatus;
                 if($intStatus == '3')
                 {
@@ -1017,8 +1017,13 @@
                 
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
                     '.substr($row['Description'], 0, 150).'<br/><br/>
-                     <a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>
-                     <a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>
+                     '; 
+                     if(getStatusInt($row['DatePFOAccept'], $row['DatePFOEndAccept']) == '1')
+                     {
+                        echo '<a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>';
+                     }
+
+                        echo '<a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>
                      ';
                 
                 echo'
