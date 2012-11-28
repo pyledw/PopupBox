@@ -25,7 +25,8 @@ echo $_GET['listingID'];
         }
         
         $result3 = mysql_query("SELECT AuctionID FROM AUCTION
-        WHERE PropertyID = '".$_GET['listingID']."'");
+        WHERE PropertyID = '".$_GET['listingID']."'
+            ORDER BY DatePFOEndAccept ASC");
         if(!$result3)
         {
             die('could not connect: ' .mysql_error());
