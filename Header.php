@@ -120,7 +120,7 @@ as the Title, and CSS/Javascript References.  It also contains the navigation ba
                 /** check to see if the user is already logged in. */
                 if(isset($_SESSION["user"]))
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3> Not you <a href="popupLogin.php?URL='. $fileName . '" rel="facebox" >Login</a><br /><a href="logout.php">Logout</a></div>' ; 
+                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome '. $_SESSION["user"] . '</h3><a href="logout.php">Logout</a></div>' ; 
                 }
                 else
                 {
