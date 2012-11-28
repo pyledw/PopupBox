@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <button type="submit" class="button">Save and Continue</button>
+                <button type="submit" class="button">Search</button>
                 <button type="reset" class="button">Clear</button>
             </td>
         </tr>
