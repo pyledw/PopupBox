@@ -59,6 +59,7 @@
                 </tr>
                 <tr>
                     <td>
+                        <a class="button" href="newListing4.php">Back</a>
                         <button type="submit" class="button">Save and Continue</button>
                         <button type="reset" class="button">Clear</button></form>
                     </td>

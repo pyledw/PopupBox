@@ -24,7 +24,8 @@
         $result = mysql_query("SELECT * FROM AUCTION
             INNER JOIN PROPERTY
             ON AUCTION.PropertyID=PROPERTY.PropertyID
-            WHERE PROPERTY.PropertyID = $listingID ");
+            WHERE PROPERTY.PropertyID = $listingID 
+                ORDER BY AUCTION.DatePFOAccept DESC");
         
         if(!$result)
         {
