@@ -20,8 +20,8 @@
         $con = get_dbconn("");
 
         //Returning all the information on the property and the auction
-        $result = mysql_query("SELECT * FROM PROPERTY
-            INNER JOIN AUCTION
+        $result = mysql_query("SELECT * FROM AUCTION
+            INNER JOIN PROPERTY
             ON AUCTION.PropertyID=PROPERTY.PropertyID
             WHERE PROPERTY.PropertyID = $listingID ");
         
@@ -429,8 +429,10 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.IsActive='1' AND AUCTION.AuctionID='".$auctionInfo['AuctionID']."' AND PropertyID='".$row['PropertyID']."'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='".$auctionInfo['AuctionID']."' AND PropertyID='".$row['PropertyID']."'
                             ORDER BY MonthlyRate DESC");
+            
+                        
                         $max = 0;
                         $numRows = mysql_num_fields($bids);
                         while($bid = mysql_fetch_array($bids))
