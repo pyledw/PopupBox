@@ -30,7 +30,7 @@
             }
             else
             {
-                echo 'passowrd incorrect';
+                echo 'password incorrect';
             }
         }
         if($email != '')
