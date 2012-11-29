@@ -214,7 +214,7 @@
 
             if(isset($row[0]))//if the check returned a high bid
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[0] .'</font>';
+                $maxBid = '<font style="float:right;">$'.$row[0] .'</font>';
             }
             else//if there was no hign bid
             {
