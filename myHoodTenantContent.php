@@ -18,25 +18,10 @@
          */
     
         include_once 'config.inc.php';
-        $now = strtotime(date("Y-m-d H:i:s"));
-        $con = get_dbconn("");
         
-        $result = mysql_query("SELECT * FROM BID
-            INNER JOIN AUCTION
-            ON BID.AuctionID=AUCTION.AuctionID
-            INNER JOIN APPLICATION
-            ON BID.ApplicationID=APPLICATION.ApplicationID
-            WHERE APPLICATION.UserID ='$_SESSION[userID]'");
-        
-        if(!$result)
-        {
-            die('could not connect: ' .mysql_error());
-        }
-        
-            
         include 'myHoodFunctions.php';
 
-        updateBids($_SESSION[userID]);
+        updateBids($_SESSION['userID']);
         
     ?>
     <div id="mainContent">
@@ -129,7 +114,7 @@
             ON BID.ApplicationID=APPLICATION.ApplicationID
             INNER JOIN USER
             ON APPLICATION.UserID=USER.UserID
-            WHERE USER.UserID = '$_SESSION[userID]'
+            WHERE BID.IsActive='1' AND USER.UserID = '$_SESSION[userID]'
             ");
     
     
