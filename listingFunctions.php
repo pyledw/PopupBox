@@ -1186,7 +1186,7 @@
      * * It will determin the users ability to bid and return an integer to represent their status
      * * 0 - Okay to bid, no other active bids
      * * 1 - Application not compleate
-     * * 2 - Applicaiton not authorized
+     * * 2 - application not authorized
      * * 3 - Bid fee not paid
      * * 4 - Another bid is active on a differant auction
      * * 5 - No application on file
@@ -1309,7 +1309,7 @@
     
         
         /**
-         * This function will display basic info from a users applicaiton for that administrator
+         * This function will display basic info from a users application for that administrator
          * 
          * @param Array $row Is the row from the query with the application info
          * 

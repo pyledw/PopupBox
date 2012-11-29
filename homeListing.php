@@ -176,7 +176,7 @@
                                                    </form><br/>';
                                                   echo '<a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>';
                                               }
-                                              elseif($bidStatus == "1")//If the users applicaiton is not complete
+                                              elseif($bidStatus == "1")//If the users application is not complete
                                               {
                                                   echo 'Application has not been compleated<br/>Click <a href="myHood.php">here</a> to complete';
                                               }
@@ -193,7 +193,7 @@
                                               {
                                                   echo 'You have another active bid';
                                               }
-                                              elseif($bidStatus == "5")//If the user has no applicaiton on file
+                                              elseif($bidStatus == "5")//If the user has no application on file
                                               {
                                                   echo 'No Application on File<br/>
                                                       Click <a href="myHood.php">here</a> to complete';
