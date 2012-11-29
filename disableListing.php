@@ -11,12 +11,13 @@ if($_SESSION['type'] == '3')
 {
 echo "redirect";
 echo $_GET['listingID'];
+echo $_GET['AuctionID'];
 
         require_once "config.inc.php";
         //Connecting to the sql database
         $con = get_dbconn("");
         
-        $result = mysql_query("UPDATE PROPERTY SET IsApproved='0'
+        $result = mysql_query("UPDATE PROPERTY SET IsApproved='0',PageCompleted='1'
         WHERE PropertyID = '".$_GET['listingID']."'
             ");
         if(!$result)
@@ -24,18 +25,17 @@ echo $_GET['listingID'];
             die('could not connect: ' .mysql_error());
         }
         
-        $result3 = mysql_query("SELECT AuctionID FROM AUCTION
-        WHERE PropertyID = '".$_GET['listingID']."'
-            ORDER BY DatePFOEndAccept ASC");
+        $result3 = mysql_query("UPDATE AUCTION
+            SET DatePFOEndAccept='date() - 1 Day'
+            WHERE AUCTION.AuctionID='".$_GET['AuctionID']."'");
+        
         if(!$result3)
         {
             die('could not connect: ' .mysql_error());
         }
-        
-        $row =  mysql_fetch_array($result3);
-        
+
         $result2 = mysql_query("UPDATE BID SET IsActive='0'
-            WHERE AuctionID='".$row['AuctionID']."'");
+            WHERE AuctionID='".$_GET['AuctionID']."'");
         
         if(!$result2)
         {

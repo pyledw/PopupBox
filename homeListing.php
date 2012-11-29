@@ -194,7 +194,7 @@
                                     }
                                     elseif($_SESSION['type'] == "3")
                                     {
-                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'">Disable Listing</a>';
+                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'&auctionID='.$row['AuctionID'].'">Disable Listing</a>';
                                     }
                                     else
                                     {
