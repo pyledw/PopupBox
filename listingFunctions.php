@@ -203,14 +203,18 @@
             $result = mysql_query("SELECT max(MonthlyRate) FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
-                            WHERE PropertyID='$propertyID'");
-
+                            WHERE PropertyID='$propertyID' AND IsActive='1'");
+            
+            if(!$result)
+            {
+                die('could not connect: ' .mysql_error());
+            }
 
             $row = mysql_fetch_array($result);//setting the query results into an array
 
             if(isset($row[0]))//if the check returned a high bid
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[0] .'</font>';
+                $maxBid = '<font style="float:right;">$'.$row[0] .'</font>';
             }
             else//if there was no hign bid
             {
@@ -255,20 +259,27 @@
             /** this is fetching the query results and setting them in an array */
             $row = mysql_fetch_array($result);
             
+            /** this code is retrieving the highest bid of the auction and returning it */
+            $result2 = mysql_query("SELECT * FROM AUCTION
+                WHERE AuctionID='$auctionID'");
+            
+            /** this is fetching the query results and setting them in an array */
+            $row2 = mysql_fetch_array($result2);
+            
             /** including teh funcitons needed for the listings */
             include_once 'listingFunctions.php';    
             
             /** call to function that returns the timestring of time remaining or time till start */
-            $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']); 
+            $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']); 
 
             /** The code below will return the listings status */
-            $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);   
+            $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);   
 
             
             /** this code is retrieving the highest bid of the auction and returning it **/
             $maxBid = getHighBid($row['PropertyID']);   
             
-            if($maxBid == '')
+            if($maxBid == '')//If there is no max bid
             {
                 $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
             }
@@ -276,7 +287,7 @@
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '
-                   .$timeString
+                   .$timeString//Getting the strings of status displays
                    .$status
                    .$maxBid.
                 '</font><br/>
@@ -373,10 +384,14 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$auctionID' AND PropertyID='$row[PropertyID]'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='$auctionID' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
+                        if(!$bids)
+                        {
+                            die('could not connect: ' .mysql_error());
+                        }
                         
                         while($bid = mysql_fetch_array($bids))//while there are bids
                         {
@@ -452,20 +467,28 @@
             /** this is fetching the query results and setting them in an array */
             $row = mysql_fetch_array($result);
             
+            /** this code is retrieving the highest bid of the auction and returning it */
+            $result2 = mysql_query("SELECT * FROM AUCTION
+                WHERE AuctionID='$auctionID'");
+            
+            /** this is fetching the query results and setting them in an array */
+            $row2 = mysql_fetch_array($result2);
+            
+            
             /** including teh funcitons needed for the listings */
             include_once 'listingFunctions.php';    
             
             /** call to function that returns the timestring of time remaining or time till start */
-            $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']); 
+            $timeString = getTime($row2['DatePFOAccept'], $row22['DatePFOEndAccept']); 
 
             /** The code below will return the listings status */
-            $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);   
+            $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);   
 
             
             /** this code is retrieving the highest bid of the auction and returning it **/
             $maxBid = getHighBid($row['PropertyID']);   
             
-            if($maxBid == '')
+            if($maxBid == '')//If there is no max bid
             {
                 $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
             }
@@ -569,7 +592,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$auctionID' AND PropertyID='$row[PropertyID]'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='$auctionID' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
@@ -728,6 +751,7 @@
             
             include_once 'listingFunctions.php';//needed lisgin functions
             
+            
             $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//below is call to function that returns the timestring of time remaining or time till start
 
             
@@ -787,6 +811,7 @@
                         </form>
                     ';
             }
+            echo '<a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>';
             if(mysql_num_rows($bid) != '0')
                 {
                     echo'
@@ -975,13 +1000,21 @@
 
             $row = mysql_fetch_array($result);
 
+            /** this code is retrieving the highest bid of the auction and returning it */
+            $result2 = mysql_query("SELECT * FROM AUCTION
+                WHERE AuctionID='".$row['AuctionID']."'");
+            
+            /** this is fetching the query results and setting them in an array */
+            $row2 = mysql_fetch_array($result2);
+            
+            
             include_once 'listingFunctions.php';
             
             //below is call to function that returns the timestring of time remaining or time till start
-            $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']);
+            $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);
 
             //The code below will return the listings status
-            $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);
+            $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);
 
             //this code is retrieving the highest bid of the auction and returning it
 
@@ -1018,10 +1051,6 @@
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
                     '.substr($row['Description'], 0, 150).'<br/><br/>
                      '; 
-                     if(getStatusInt($row['DatePFOAccept'], $row['DatePFOEndAccept']) == '1')
-                     {
-                        echo '<a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>';
-                     }
 
                         echo '<a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>
                      ';
@@ -1107,7 +1136,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         while($bid = mysql_fetch_array($bids))//while there are bids

@@ -54,12 +54,13 @@
                     $con = get_dbconn("PDO");
                     $stmt = $con->prepare("
                             UPDATE BID SET
-                                MonthlyRate=:bidAmount
+                                MonthlyRate=:bidAmount, IsMoveInNowBid=:moveInNow
 
                             WHERE AuctionID='$auctionID' AND ApplicationID='$applicationID'
                             ");
                     try {
                         $stmt->bindValue(':bidAmount',          $amount,                   PDO::PARAM_STR);
+                        $stmt->bindValue(':moveInNow',          '0',                       PDO::PARAM_STR);
                         $stmt->execute();
                     } catch (Exception $e) {
                         echo 'Connection failed. ' . $e->getMessage();

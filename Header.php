@@ -19,6 +19,7 @@
     /** This allow for the user to stay logged in even after the session has expired.
       *  It will checks to see if cookies were saved with login info 
       */
+    /*
     if(isset($_COOKIE['userID']))
     {
         $_SESSION['userID'] = $_COOKIE['userID'];
@@ -26,6 +27,13 @@
         $_SESSION['type'] = $_COOKIE['type'];
         $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     }
+     * 
+     */
+    if($_SESSION['loggedIn'] == '1')
+    {
+        
+    }
+ else {
         
     /** This ensures that the session will expire after 10 minutes of inactivity. */
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60*10)) 
@@ -34,6 +42,7 @@
         session_unset();     // unset $_SESSION variable for the runtime 
         session_destroy();   // destroy session data in storage
     }
+ }
     
 	$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
        

@@ -16,7 +16,7 @@
                                 ON APPLICATION.ApplicationID=BID.ApplicationID
                                 INNER JOIN USER
                                 ON USER.UserID=APPLICATION.UserID
-                                WHERE AuctionID='$_GET[auctionID]'
+                                WHERE AuctionID='$_GET[auctionID]' AND IsActive='1'
                                 ORDER BY MonthlyRate DESC");
                             while($bid = mysql_fetch_array($bids))
                             {

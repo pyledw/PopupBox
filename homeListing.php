@@ -4,7 +4,8 @@
     /** 
      * This is the home listing page.  It uses the GET method in order to create a static address for each listing
      * It then retrieves the data from the database about the listing and displays it to the screen. It utilizes
-     * functions from the listingfunctions.
+     * functions from the listingfunctions.  It also inserts all the data from both the auciton and the listing
+     * into the html code below.
      * 
      * 
      * @author David Pyle <Pyledw@Gmail.com>
@@ -20,10 +21,11 @@
         $con = get_dbconn("");
 
         //Returning all the information on the property and the auction
-        $result = mysql_query("SELECT * FROM PROPERTY
-            INNER JOIN AUCTION
+        $result = mysql_query("SELECT * FROM AUCTION
+            INNER JOIN PROPERTY
             ON AUCTION.PropertyID=PROPERTY.PropertyID
-            WHERE PROPERTY.PropertyID = $listingID ");
+            WHERE PROPERTY.PropertyID = $listingID 
+                ORDER BY AUCTION.DatePFOAccept DESC");
         
         if(!$result)
         {
@@ -31,21 +33,30 @@
         }
         
         $row = mysql_fetch_array($result);
+        
         include_once 'listingFunctions.php';
         include_once 'imageFunctions.php';
         
+        /** this code is retrieving the highest bid of the auction and returning it */
+            $result2 = mysql_query("SELECT * FROM AUCTION
+                WHERE AuctionID='$row[AuctionID]'");
+            
+            /** this is fetching the query results and setting them in an array */
+            $row2 = mysql_fetch_array($result2);
+            
         // below is call to function that returns the timestring of time remaining or time till start
-        $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']);
+        $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);
         
         // The code below will return the listings status
-        $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);
+        $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);
         
         //this code is retrieving the highest bid of the auction and returning it
         $maxBid = getHighBid($row['PropertyID']);
         
-        if($maxBid == '')
+        
+        if($maxBid == '')//If there is no max bid yet.  The price will be set to the starting min bid
         {
-            $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
+            $maxBid = '<font style="float:right;">$'.$row['StartingBid'].'</font>';
         }
         
 ?>
@@ -53,6 +64,9 @@
     <div id="mainContent">
             <font style="float:right; position:relative; right:20px;">
                 <?php
+                /**
+                 * Echo of strings calculated earlier.  These will display the time to end and the status
+                 */
                     echo $timeString;
                     echo $status;
 
@@ -77,6 +91,10 @@
                     
                 <td width="100px" style="vertical-align:text-top;">
                     <?php 
+                    /**
+                     * Below is inserting the images into the listing as thumbnails
+                     * When clicked these will use facebox to display the full size in a popup
+                     */
                                    $images = getPhotoInfo($row[PropertyID]);
                                    
                                    if(!$images)
@@ -131,21 +149,21 @@
                 </td>
                 <td align="center">
                 <?php 
+                             //Below retrieves the auction status and returns it in the form of an int.  See function for details
+                             $auctionStatus = getStatusInt($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);
                              
-                             $auctionStatus = getStatusInt($row['DatePFOAccept'], $row['DatePFOEndAccept']);
                              
-                             
-                             if(isset($_SESSION['userID']))
+                             if(isset($_SESSION['userID']))//ensure the user is logged in
                              {
-                                 if($_SESSION['type'] == "1")
+                                 if($_SESSION['type'] == "1")//Check to ensure suer is tenant
                                      {
-                                       if($auctionStatus == "1")
+                                       if($auctionStatus == "1")//Check to ensure auction is live
                                        {
-                                           $bidStatus = getUsersBidStatus($_SESSION['userID'], $row['PropertyID']);
+                                           $bidStatus = getUsersBidStatus($_SESSION['userID'], $row['PropertyID']);//Retreving the status of the users bids
                                            //echo $_SESSION[userID] . " " . $row[PropertyID];
-                                           echo $bidStatus;
+                                           //echo $bidStatus;
 
-                                              if($bidStatus == "0")
+                                              if($bidStatus == "0")//If the user is aproved to bid
                                               {
                                                   echo '<form id="placebid" method="post">
                                                    <font>My Proposal for occupancy</font><br/><br/>
@@ -158,41 +176,43 @@
                                                    </form><br/>';
                                                   echo '<a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>';
                                               }
-                                              elseif($bidStatus == "1")
+                                              elseif($bidStatus == "1")//If the users applicaiton is not complete
                                               {
-                                                  echo 'Application has not been compleated';
+                                                  echo 'Application has not been compleated<br/>Click <a href="myHood.php">here</a> to complete';
                                               }
-                                              elseif($bidStatus == "2")
+                                              elseif($bidStatus == "2")//if the user has not been authorized
                                               {
                                                   echo 'Application has not been authorized';
                                               }
-                                              elseif($bidStatus == "3")
+                                              elseif($bidStatus == "3")//if the user has not paid the bid fee
                                               {
-                                                  echo 'Bid Fee has not been paid';
+                                                  echo 'Bid Fee has not been paid<br/>
+                                                      Click <a href="myHood.php">here</a> to pay';
                                               }
-                                              elseif($bidStatus == "4")
+                                              elseif($bidStatus == "4")//if the user had another bid active
                                               {
                                                   echo 'You have another active bid';
                                               }
-                                              elseif($bidStatus == "5")
+                                              elseif($bidStatus == "5")//If the user has no applicaiton on file
                                               {
-                                                  echo 'No Application on File';
+                                                  echo 'No Application on File<br/>
+                                                      Click <a href="myHood.php">here</a> to complete';
                                               }
                                        }
-                                       elseif($auctionStatus == "2")
+                                       elseif($auctionStatus == "2")//If the auciton has not started
                                        {
                                            echo 'Auciton Has not Started Yet';
                                        }
-                                       else
+                                       else//The auction is over
                                        {
                                            echo "Auciton has Ended";
                                        }
                                     }
-                                    elseif($_SESSION['type'] == "2")
+                                    elseif($_SESSION['type'] == "2")//If the user is a landlord
                                     {
                                         echo 'Only Tenant Accounts can bid on lisitngs';
                                     }
-                                    elseif($_SESSION['type'] == "3")
+                                    elseif($_SESSION['type'] == "3")//If the user is an administrator
                                     {
                                         echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'&auctionID='.$row['AuctionID'].'">Disable Listing</a>';
                                     }
@@ -201,12 +221,15 @@
                                         
                                     }
                              }
-                             else
+                             else//If the user is not logged in
                              {
                                  echo "You must be logged in to place bids";
                              }
 
                     ?>
+                    
+                    
+             <!-- This area is filling information using PHP.  All data is coming from the property Table -->
                 </td>
             </tr>
             
@@ -413,6 +436,11 @@
                 </td>
             </tr>
             <?php
+            /**
+             * This section is getting all the current bids on the property
+             * It will then display 4 of them with the option to display all
+             * if more are there.
+             */
             //This query is retriving all the bids on the auction of the property
             $auction = mysql_query('SELECT AuctionID FROM AUCTION
                 WHERE propertyID="'.$listingID.'"
@@ -421,7 +449,7 @@
             $auctionInfo = mysql_fetch_array($auction);
             
             
-            
+            //Selecting teh bid and the username from the database
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -429,8 +457,10 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='".$auctionInfo['AuctionID']."' AND PropertyID='".$row['PropertyID']."'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='".$auctionInfo['AuctionID']."' AND PropertyID='".$row['PropertyID']."'
                             ORDER BY MonthlyRate DESC");
+            
+                        //Below is keeping track of the number inserted in order to insert a view all option at the botom of the table
                         $max = 0;
                         $numRows = mysql_num_fields($bids);
                         while($bid = mysql_fetch_array($bids))
