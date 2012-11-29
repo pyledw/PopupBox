@@ -34,11 +34,18 @@
         include_once 'listingFunctions.php';
         include_once 'imageFunctions.php';
         
+        /** this code is retrieving the highest bid of the auction and returning it */
+            $result2 = mysql_query("SELECT * FROM AUCTION
+                WHERE AuctionID='$row[AuctionID]'");
+            
+            /** this is fetching the query results and setting them in an array */
+            $row2 = mysql_fetch_array($result2);
+            
         // below is call to function that returns the timestring of time remaining or time till start
-        $timeString = getTime($row['DatePFOAccept'], $row['DatePFOEndAccept']);
+        $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);
         
         // The code below will return the listings status
-        $status = getStatus($row['DatePFOAccept'], $row['DatePFOEndAccept']);
+        $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);
         
         //this code is retrieving the highest bid of the auction and returning it
         $maxBid = getHighBid($row['PropertyID']);
