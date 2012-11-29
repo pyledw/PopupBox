@@ -72,7 +72,7 @@
 
             </p>
             
-            <p><a href="newUser.php" class="button"">Sign Up Now!</a></p>
+            <p><a href="howItWorksRenters.php" class="button">I am a Renter</a> <a href="howItWorksLandlords.php" class="button">I am a Landlord</a><br/>
 	</div>
 	<?php
         
