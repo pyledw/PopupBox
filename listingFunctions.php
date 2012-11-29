@@ -377,10 +377,14 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$auctionID' AND PropertyID='$row[PropertyID]'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='$auctionID' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
+                        if(!$bids)
+                        {
+                            die('could not connect: ' .mysql_error());
+                        }
                         
                         while($bid = mysql_fetch_array($bids))//while there are bids
                         {
@@ -573,7 +577,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$auctionID' AND PropertyID='$row[PropertyID]'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='$auctionID' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
@@ -911,7 +915,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$row2[AuctionID]' AND PropertyID='$row[PropertyID]'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='$row2[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
@@ -1111,7 +1115,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
+                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='$auctionInfo[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         while($bid = mysql_fetch_array($bids))//while there are bids
