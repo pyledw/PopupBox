@@ -915,7 +915,7 @@
                             ON APPLICATION.ApplicationID=BID.ApplicationID
                             INNER JOIN USER
                             ON USER.UserID=APPLICATION.UserID
-                            WHERE BID.IsActive='1' AND AUCTION.AuctionID='$row2[AuctionID]' AND PropertyID='$row[PropertyID]'
+                            WHERE AUCTION.AuctionID='$row2[AuctionID]' AND PropertyID='$row[PropertyID]'
                             ORDER BY MonthlyRate DESC");
                         $max = 0;
                         
