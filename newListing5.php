@@ -54,11 +54,7 @@
                 <tr>
                     <td>
                         <label class="label">Enter Email:</label><input class="required email" type="text" name="email"/></br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="agree" value="agree">I have Read and Agree with these terms and conditions
+                        I have Read and Agree with these terms and conditions<input title="Must accept to continue" type="checkbox" class="required" name="agree" value="agree">
                     </td>
                 </tr>
                 <tr>
@@ -77,7 +73,6 @@
     <script>
         $(document).ready(function(){
     $("#listingForm").validate({
-        ignoreTitle: true,
         onkeyup: false,
         onclick: false
         

@@ -42,7 +42,7 @@ echo $_GET['AuctionID'];
             die('could not connect: ' .mysql_error());
         }
 }        
-        //header( 'Location: /myHood.php' );
+        header( 'Location: /myHood.php' );
 
 
 ?>
