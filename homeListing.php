@@ -220,12 +220,15 @@
                                         
                                     }
                              }
-                             else
+                             else//If the user is not logged in
                              {
                                  echo "You must be logged in to place bids";
                              }
 
                     ?>
+                    
+                    
+             <!-- This area is filling information using PHP.  All data is coming from the property Table -->
                 </td>
             </tr>
             
@@ -432,6 +435,11 @@
                 </td>
             </tr>
             <?php
+            /**
+             * This section is getting all the current bids on the property
+             * It will then display 4 of them with the option to display all
+             * if more are there.
+             */
             //This query is retriving all the bids on the auction of the property
             $auction = mysql_query('SELECT AuctionID FROM AUCTION
                 WHERE propertyID="'.$listingID.'"
@@ -440,7 +448,7 @@
             $auctionInfo = mysql_fetch_array($auction);
             
             
-            
+            //Selecting teh bid and the username from the database
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -451,7 +459,7 @@
                             WHERE BID.IsActive='1' AND AUCTION.AuctionID='".$auctionInfo['AuctionID']."' AND PropertyID='".$row['PropertyID']."'
                             ORDER BY MonthlyRate DESC");
             
-                        
+                        //Below is keeping track of the number inserted in order to insert a view all option at the botom of the table
                         $max = 0;
                         $numRows = mysql_num_fields($bids);
                         while($bid = mysql_fetch_array($bids))
