@@ -52,7 +52,7 @@
         $stmt->bindValue(':numbOccupants',  $_POST['numbOccupants'],		PDO::PARAM_INT);
         $stmt->bindValue(':fName', 	    $_POST['fName'],                    PDO::PARAM_STR);
         $stmt->bindValue(':userID',         $_SESSION['userID'],                PDO::PARAM_STR);
-        $stmt->bindValue(':earliestDate',   $_POST['email1'],                   PDO::PARAM_STR);
+        $stmt->bindValue(':earliestDate',   $_POST['earliestDate'],             PDO::PARAM_STR);
         $stmt->bindValue(':latestDate',     $_POST['latestDate'],               PDO::PARAM_STR);
         $stmt->bindValue(':ADA',            $_POST['ADA'],                      PDO::PARAM_INT);
         $stmt->bindValue(':smoking',        $_POST['smoking'],                  PDO::PARAM_INT);
