@@ -299,7 +299,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a></b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -507,7 +507,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a></b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -779,7 +779,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row['Address'] . " - " . $propertyID . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $propertyID . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a></b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -858,7 +858,6 @@
                 
                 
                 echo'
-                <a href="printFlyer.php?propertyID='. $propertyID . '" class="button">Print Flyer</a>
                 </td>
                 <td style="text-align: center;" class="greyBackground">
                     Features
@@ -1039,7 +1038,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row[City] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a></b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
