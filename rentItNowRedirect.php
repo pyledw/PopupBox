@@ -27,26 +27,48 @@
                 
                 $amount = $row['RentNowRate'];
                 
-                echo $amount;
+                echo ' AMT ->'.$amount;
                 
                 $result = mysql_query("SELECT ApplicationID FROM APPLICATION
                     WHERE UserID = '$userID'");
                 
                 $row = mysql_fetch_array($result);
 
-                $applicationID = $row[ApplicationID];
-                
+                $applicationID = $row['ApplicationID'];
+
+                echo " appID ->" .$applicationID;
                 
                 $result = mysql_query("SELECT * FROM BID
-                    WHERE ApplicaitonID='$applicationID' AND IsActive='1'");
+                    WHERE ApplicationID='$applicationID' AND IsActive='1'");
+                
+                if(!$result)
+                    {
+                        die('could not connect: ' .mysql_error());
+                    }
                 
                 if(mysql_num_rows($result) != '0')
                 {
                     
-                    $BidID = mysql_fetch_field("BidID");
-                    mysql_query("UPDATE BID SET
-                        AuctionID='$auctionID',ApplicationID='$applicationID',MonthlyRate='$amount',IsMoveInNowBid='1',IsActive='1')
-                        WHERE BidID='$BidID'");
+                    $bidID = mysql_fetch_array($result);
+                    //Using the new method for inserting into the Database
+                    $con = get_dbconn("PDO");
+                    $stmt = $con->prepare("
+                            UPDATE BID SET
+                                MonthlyRate=:bidAmount,
+                                IsMoveInNowBid=:moveInNow
+                               
+                            WHERE IsActive='1' AND BidID='$bidID[BidID]'
+                            ");
+                    try {
+                        $stmt->bindValue(':bidAmount',          $amount,                   PDO::PARAM_STR);
+                        $stmt->bindValue(':moveInNow',          '1',                       PDO::PARAM_STR);
+                        $stmt->execute();
+                    } catch (Exception $e) {
+                        echo 'Connection failed. ' . $e->getMessage();
+                    }
+                    //header( 'Location: /homeListing.php?listingID='.$propertyID );
+                    
+                    
                 }
                 else
                 {
@@ -58,7 +80,7 @@
 
                 
                 
-                header( 'Location: /myHood.php ' );
+                //header( 'Location: /myHood.php ' );
         }
 
 
