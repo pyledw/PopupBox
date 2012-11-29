@@ -203,8 +203,12 @@
             $result = mysql_query("SELECT max(MonthlyRate) FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
-                            WHERE PropertyID='$propertyID'");
-
+                            WHERE PropertyID='$propertyID' AND IsActive='1'");
+            
+            if(!$result)
+            {
+                die('could not connect: ' .mysql_error());
+            }
 
             $row = mysql_fetch_array($result);//setting the query results into an array
 
@@ -268,7 +272,7 @@
             /** this code is retrieving the highest bid of the auction and returning it **/
             $maxBid = getHighBid($row['PropertyID']);   
             
-            if($maxBid == '')
+            if($maxBid == '')//If there is no max bid
             {
                 $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
             }
@@ -276,7 +280,7 @@
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '
-                   .$timeString
+                   .$timeString//Getting the strings of status displays
                    .$status
                    .$maxBid.
                 '</font><br/>
@@ -465,7 +469,7 @@
             /** this code is retrieving the highest bid of the auction and returning it **/
             $maxBid = getHighBid($row['PropertyID']);   
             
-            if($maxBid == '')
+            if($maxBid == '')//If there is no max bid
             {
                 $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
             }
