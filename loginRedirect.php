@@ -53,9 +53,13 @@
 
                 if($loggedIn)
                 {
+                    /*
                     setcookie('userID', $userID);
                     setcookie('user', $row[UserName]);
                     setcookie('type', $userType);
+                     * 
+                     */
+                    $_SESSION['loggedIn'] = '1';
 
                 }
                 else

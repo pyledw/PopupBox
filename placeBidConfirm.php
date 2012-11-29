@@ -27,7 +27,7 @@ $result = mysql_query("SELECT * FROM BID
            ON BID.ApplicationID=APPLICATION.ApplicationID
            INNER JOIN USER
            ON APPLICATION.UserID=USER.UserID
-           WHERE AuctionID='$auctionID'");
+           WHERE AuctionID='$auctionID' AND IsActive='1'");
 
  if(!$result)
         {

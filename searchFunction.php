@@ -39,8 +39,15 @@ function search($type,$term)
                     $location = getLatandLongZip($term);//this function will return an array of the lat and long of the zip code
                     $lat = $location[0]; //pulling from array
                     $lon = $location[1]; //pulling from array
-
-                    $distance = .5; //setting distance from the inital point
+                    
+                    $mileInDegrees = .01448288846;
+                    $tenMiles = $mileInDegrees * 10;
+                    $twentyMiles = $mileInDegrees * 20;
+                    $FiftyMiles = $mileInDegrees * 50;
+                    $hundredMiles = $mileInDegrees * 100;
+                    
+                    
+                    $distance = $tenMiles; //setting distance from the inital point
                     
                     //calculating the barriers of the search
                     $maxLat = $lat + $distance;  
