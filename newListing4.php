@@ -108,8 +108,9 @@
                 <tr>
                     <td colspan="3">
                         <a class="button" href="newListing3.php">Back</a>
-                        <button type="submit" class="button">Save and Continue</button>
+                        
                         <button type="reset" class="button">Clear</button>
+                        <button type="submit" class="button">Save and Continue</button>
                     </td>
                 </tr>
             </table>

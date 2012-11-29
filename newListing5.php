@@ -60,8 +60,10 @@
                 <tr>
                     <td>
                         <a class="button" href="newListing4.php">Back</a>
+                        
+                        <button type="reset" class="button">Clear</button>
                         <button type="submit" class="button">Save and Continue</button>
-                        <button type="reset" class="button">Clear</button></form>
+                        </form>
                     </td>
                 </tr>
             </table>

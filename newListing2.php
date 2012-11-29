@@ -120,8 +120,9 @@
                     <td colspan="10">
                         <a class="button" href="newListing1.php">Back</a>
                         <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
-                        <button type="submit" class="button">Save and Continue</button>
+                        
                         <button type="reset" class="button">Clear</button>
+                        <button type="submit" class="button">Save and Continue</button>
                         </form>
                     </td>
                 </tr>

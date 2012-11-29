@@ -297,8 +297,9 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <button type="submit" class="button">Save and Continue</button>
+                        
                         <button type="reset" class="button">Clear</button>
+                        <button type="submit" class="button">Save and Continue</button>
                     </td>
                 </tr>
             </table> 
