@@ -281,7 +281,7 @@
             
             if($maxBid == '')//If there is no max bid
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
+                $maxBid = '$'.$row['StartingBid'].'';
             }
             
             
@@ -289,7 +289,7 @@
                     '
                    .$timeString//Getting the strings of status displays
                    .$status
-                   .$maxBid.
+                   .'<font class="greyTextArea" style="float:right;">'.$maxBid.'</font>'.
                 '</font><br/>
         <table id="houseListing">
             <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="'.  getMainThumbPath($row['PropertyID']).'" alt="Main Photo" />
