@@ -139,7 +139,7 @@
                 <td align="center">
                 <?php 
                              
-                             $auctionStatus = getStatusInt($row['DatePFOAccept'], $row['DatePFOEndAccept']);
+                             $auctionStatus = getStatusInt($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);
                              
                              
                              if(isset($_SESSION['userID']))
@@ -150,7 +150,7 @@
                                        {
                                            $bidStatus = getUsersBidStatus($_SESSION['userID'], $row['PropertyID']);
                                            //echo $_SESSION[userID] . " " . $row[PropertyID];
-                                           echo $bidStatus;
+                                           //echo $bidStatus;
 
                                               if($bidStatus == "0")
                                               {
