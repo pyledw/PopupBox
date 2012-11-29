@@ -80,7 +80,7 @@
 
                 
                 
-                //header( 'Location: /myHood.php ' );
+                header( 'Location: /myHood.php ' );
         }
 
 

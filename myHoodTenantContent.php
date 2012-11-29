@@ -21,7 +21,7 @@
         
         include 'myHoodFunctions.php';
 
-        updateBids($_SESSION['userID']);
+        //updateBids($_SESSION['userID']);
         
     ?>
     <div id="mainContent">
