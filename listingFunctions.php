@@ -646,7 +646,7 @@
             
             $result2 = mysql_query("SELECT * FROM AUCTION
                 WHERE PropertyID='$propertyID'
-                    ORDER BY DatePFOEndAccept ASC");
+                    ORDER BY DatePFOEndAccept DESC");
             
             $row2 = mysql_fetch_array($result2);
             
