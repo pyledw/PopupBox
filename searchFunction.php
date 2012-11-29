@@ -40,7 +40,7 @@ function search($type,$term)
                     $lat = $location[0]; //pulling from array
                     $lon = $location[1]; //pulling from array
 
-                    $distance = .5; //setting distance from the inital point
+                    $distance = .25; //setting distance from the inital point
                     
                     //calculating the barriers of the search
                     $maxLat = $lat + $distance;  
