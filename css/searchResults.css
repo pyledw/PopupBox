@@ -31,9 +31,7 @@ es/*
 .ie #searchResult .PFOimage{
     width:150px;
     height:150px;
-    float:left;
     border:1px solid #000000;
-    position:absolute;
 
 }
 
