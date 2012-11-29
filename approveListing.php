@@ -22,18 +22,18 @@ require_once "config.inc.php";
             WHERE PropertyID = '$_POST[propertyID]'");
         
         $row = mysql_fetch_array($result);
-        $propertyID = $row[PropertyID];
-        $dateAvailable = $row[DateAvailable];
-        $datePFOAccept = $row[DatePFOAccept];
-        $datePFOEndAccept = $row[DatePFOEndAccept];
-        $dateTimeOpenHouse1 = $row[DateTimeOpenHouse1];
-        $dateTimeOpenHouse2 = $row[DateTimeOpenHouse2];
-        $startingBid = $row[StartingBid];
-        $minBidIncrement = $row[MinBidIncrement];
-        $requiredDeposit = $row[RequiredDeposit];
-        $rentNowRate = $row[RentNowRate];
-        $minimumTerm = $row[MinimumTerm];
-        $preMarket = $row[PreMarket];
+        $propertyID = $row['PropertyID'];
+        $dateAvailable = $row['DateAvailable'];
+        $datePFOAccept = $row['DatePFOAccept'];
+        $datePFOEndAccept = $row['DatePFOEndAccept'];
+        $dateTimeOpenHouse1 = $row['DateTimeOpenHouse1'];
+        $dateTimeOpenHouse2 = $row['DateTimeOpenHouse2'];
+        $startingBid = $row['StartingBid'];
+        $minBidIncrement = $row['MinBidIncrement'];
+        $requiredDeposit = $row['RequiredDeposit'];
+        $rentNowRate = $row['RentNowRate'];
+        $minimumTerm = $row['MinimumTerm'];
+        $preMarket = $row['PreMarket'];
         
         
         mysql_query("INSERT INTO AUCTION (PropertyID,DateAvailable,DatePFOAccept,DatePFOEndAccept,DateTimeOpenHouse1,DateTimeOpenHouse2,StartingBid,MinBidIncrement,RequiredDeposit,RentNowRate,MinimumTerm,PreMarket)

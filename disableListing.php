@@ -11,7 +11,7 @@ if($_SESSION['type'] == '3')
 {
 echo "redirect";
 echo $_GET['listingID'];
-echo $_GET['AuctionID'];
+echo $_GET['auctionID'];
 
         require_once "config.inc.php";
         //Connecting to the sql database
@@ -27,19 +27,33 @@ echo $_GET['AuctionID'];
         
         $result3 = mysql_query("UPDATE AUCTION
             SET DatePFOEndAccept='date() - 1 Day'
-            WHERE AUCTION.AuctionID='".$_GET['AuctionID']."'");
+            WHERE AuctionID='".$_GET['auctionID']."'");
         
         if(!$result3)
         {
-            die('could not connect: ' .mysql_error());
+            die('could not connect3: ' .mysql_error());
         }
+        
+        /*
+         * 
+        $result4 = mysql_query("DELETE FROM AUCTION
+         
+            WHERE AuctionID='".$_GET['auctionID']."'");
+        
+        if(!$result4)
+        {
+            die('could not connect4: ' .mysql_error());
+        }
+        
+         * 
+         */
 
         $result2 = mysql_query("UPDATE BID SET IsActive='0'
-            WHERE AuctionID='".$_GET['AuctionID']."'");
+            WHERE AuctionID='".$_GET['auctionID']."'");
         
         if(!$result2)
         {
-            die('could not connect: ' .mysql_error());
+            die('could not connect2: ' .mysql_error());
         }
 }        
         //header( 'Location: /myHood.php' );
