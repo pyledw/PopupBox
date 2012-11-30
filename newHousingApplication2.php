@@ -170,7 +170,7 @@
 include 'Footer.php';
 ?>
 
-//The script below manages the ability to have dynamic fields, and ensures that at least one employer is entered
+<!--//The script below manages the ability to have dynamic fields, and ensures that at least one employer is entered-->
 <script>
 var val1 = 1;
 $(document).ready(function(){

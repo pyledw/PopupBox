@@ -67,10 +67,11 @@
                     }
                     header( 'Location: /homeListing.php?listingID='.$propertyID );
                     
+                    //send the email to the bidder
                     //get the email
-                    $query3 = "select UserName from USER where Email = '$userID'";
+                    $query3 = "select * from USER where Email = '$userID'";
                     $result3 = mysql_query($query3);
-                    $row3 = mysql_fetch_assoc($result3);
+                    $row3 = mysql_fetch_array($result3);
                     $username = $row3['UserName'];
                     
                     //get the monthly rate for the email
@@ -78,7 +79,7 @@
                     $row4 = mysql_fetch_assoc($result4);
                     $monthlyRate = $row4['MonthlyRate'];
                     
-                    //get the address for the email
+                    //get the street address for the email
                     $result5 = mysql_query("select Address from PROPERTY where PropertyID = '$propertyID'");
                     $row5 = mysql_fetch_assoc($result5);
                     $streetAdd = $row5['Address'];
@@ -91,7 +92,7 @@
                     $moveNowPrice = $row6['RentNowRate'];
                     
                     //compile and send the email
-                    $to = "longas@mail.lipscomb.edu";
+                    $to = $username;
                     $from = "From: noReply@leasehood.com \r\n";
                     $subject = "Thank You for Your Proposal for Occupancy-- $".$monthlyRate." at ".$streetAdd;
                     $mesg = "Dear lessee,\n ".
@@ -107,6 +108,35 @@
                         "Regards,\nMark Gardner\nPresident|CEO";
                 
                     mail($to, $subject, $mesg, $from);
+                    
+                    
+                   /* //sending email to landlord
+                    //get landlord's email by getting propertyID and finding the email related to it
+                    $result7 = mysql_query("select * from PROPERTY where PropertyID = '$propertyID'");
+                    $row7 = mysql_fetch_array($result7);
+                    $propAssoc = $row7['UserID'];
+                    //now get email form USER table by matching userID
+                    $result8 = mysql_query("select Email from USER where UserID ='$propAssoc'");
+                    $row8 = mysql_fetc_assoc($result8);
+                    $landlord = $row8['Email'];
+                    
+                    
+                    //compile and send the landlord email
+                    $to2 = "longas@mail.lipscomb.edu";
+                    $from2 = "From: noReply@leasehood.com \r\n";
+                    $subject2 = "A Proposal for Occupancy Has Been Submitted -- $".$monthlyRate." at ".$streetAdd;
+                    $mesg2 = "Dear landlord,\n ".
+                        "A Proposal for Occupancy (PFO) has been submitted for your property at ".$streetAdd.". \n".
+                        "Please note the following information about your property: \n".
+                        "Current PFOs: $".$amount."\n".
+                        "Other PFOs: ".$openHouse1."\n".
+                        "Move-in Now Price: $".$moveNowPrice."/mo \n".
+                        "The Show Window can end at any time if the landlord accepts a Move-in-Now PFO.".  
+                        "You can modify your PFO at any time.\n".
+                        "Should you have any questions, please email us at info@LeaseHood.com.\n".
+                        "Regards,\nMark Gardner\nPresident|CEO";
+                
+                    mail($to2, $subject2, $mesg2, $from2);*/
                     
                 }
         }
