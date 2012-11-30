@@ -22,10 +22,10 @@
 
         //Returning all the information on the property and the auction
         $result = mysql_query("SELECT * FROM AUCTION
-            INNER JOIN PROPERTY
+            LEFT JOIN PROPERTY
             ON AUCTION.PropertyID=PROPERTY.PropertyID
-            WHERE PROPERTY.PropertyID = $listingID 
-                ORDER BY AUCTION.DatePFOAccept DESC");
+            WHERE PROPERTY.PropertyID = $listingID
+                ORDER BY AUCTION.AuctionID DESC");
         
         if(!$result)
         {
@@ -214,7 +214,7 @@
                                     }
                                     elseif($_SESSION['type'] == "3")//If the user is an administrator
                                     {
-                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'&auctionID='.$row['AuctionID'].'">Disable Listing</a>';
+                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'&auctionID='.$row2['AuctionID'].'">Disable Listing</a>';
                                     }
                                     else
                                     {

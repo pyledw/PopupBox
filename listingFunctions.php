@@ -254,14 +254,15 @@
             $result = mysql_query("SELECT * FROM AUCTION
                 LEFT JOIN PROPERTY
                 ON AUCTION.PropertyID=PROPERTY.PropertyID
-                WHERE AuctionID='$auctionID'");
+                WHERE AuctionID='$auctionID'
+                    ORDER BY AUCTION.DatePFOAccept DESC");
             
             /** this is fetching the query results and setting them in an array */
             $row = mysql_fetch_array($result);
             
-            /** this code is retrieving the highest bid of the auction and returning it */
             $result2 = mysql_query("SELECT * FROM AUCTION
-                WHERE AuctionID='$auctionID'");
+                WHERE AuctionID='$row[AuctionID]'
+                    ORDER BY AUCTION.DatePFOAccept ASC");
             
             /** this is fetching the query results and setting them in an array */
             $row2 = mysql_fetch_array($result2);
