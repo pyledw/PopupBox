@@ -20,12 +20,13 @@
         //Connecting to the sql database
         $con = get_dbconn("");
 
-        //Returning all the information on the property and the auction
-        $result = mysql_query("SELECT * FROM AUCTION
-            LEFT JOIN PROPERTY
-            ON AUCTION.PropertyID=PROPERTY.PropertyID
-            WHERE PROPERTY.PropertyID = $listingID
-                ORDER BY AUCTION.AuctionID DESC");
+        
+        //returns all properties with aucitons
+         $result = mysql_query("SELECT * FROM AUCTION
+                            LEFT JOIN PROPERTY
+                            ON PROPERTY.PropertyID=AUCTION.PropertyID
+                                WHERE PROPERTY.PropertyID = '$listingID' AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept AND
+                                        IsApproved='1'");
         
         if(!$result)
         {

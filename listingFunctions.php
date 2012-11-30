@@ -255,7 +255,7 @@
                 LEFT JOIN PROPERTY
                 ON AUCTION.PropertyID=PROPERTY.PropertyID
                 WHERE AuctionID='$auctionID'
-                    ORDER BY AUCTION.DatePFOAccept DESC");
+                    ORDER BY AUCTION.DatePFOEndAccept DESC");
             
             /** this is fetching the query results and setting them in an array */
             $row = mysql_fetch_array($result);
@@ -1001,13 +1001,15 @@
             $result = mysql_query("SELECT * FROM AUCTION
                 INNER JOIN PROPERTY
                 ON AUCTION.PropertyID=PROPERTY.PropertyID
-                WHERE PROPERTY.PropertyID='$propertyID'");
+                WHERE PROPERTY.PropertyID='$propertyID'
+                    ORDER BY AuctionID DESC");
 
             $row = mysql_fetch_array($result);
 
             /** this code is retrieving the highest bid of the auction and returning it */
             $result2 = mysql_query("SELECT * FROM AUCTION
-                WHERE AuctionID='".$row['AuctionID']."'");
+                WHERE AuctionID='".$row['AuctionID']."'
+                    ORDER BY AuctionID DESC");
             
             /** this is fetching the query results and setting them in an array */
             $row2 = mysql_fetch_array($result2);
@@ -1035,7 +1037,7 @@
                     '
                    .$timeString
                    .$status
-                   .$maxBid.
+                   .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>".
                 '</font><br/>
         <table id="houseListing">
             <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
