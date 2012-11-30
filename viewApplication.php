@@ -2,9 +2,9 @@
 <?php
 
     /**
-     * This page allows the administrator to view the users applicaiton and approve it acordingly.
+     * This page allows the administrator to view the users application and approve it acordingly.
      * 
-     * It recieves the applicaiton ID in a form GET request.
+     * It recieves the application ID in a form GET request.
      * 
      * It then displays all the data.
      * 
@@ -693,7 +693,7 @@
             {
                 
                 echo '<br/>
-                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['ApplicationID'] .'" style="display:none;" name="ApplicationID"/></form><a href="resetApplicaiton?applicaitonID='.$row['ApplicationID'].'" >Reset Application</a><a href="mailto:'.$row['Email'].'">Email</a>';
+                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['ApplicationID'] .'" style="display:none;" name="ApplicationID"/></form><a href="resetapplication?applicationID='.$row['ApplicationID'].'" >Reset Application</a><a href="mailto:'.$row['Email'].'">Email</a>';
             }
         ?>
     </div>

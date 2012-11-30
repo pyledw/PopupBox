@@ -22,10 +22,10 @@
 
         //Returning all the information on the property and the auction
         $result = mysql_query("SELECT * FROM AUCTION
-            INNER JOIN PROPERTY
+            LEFT JOIN PROPERTY
             ON AUCTION.PropertyID=PROPERTY.PropertyID
-            WHERE PROPERTY.PropertyID = $listingID 
-                ORDER BY AUCTION.DatePFOAccept DESC");
+            WHERE PROPERTY.PropertyID = $listingID
+                ORDER BY AUCTION.AuctionID DESC");
         
         if(!$result)
         {
@@ -176,7 +176,7 @@
                                                    </form><br/>';
                                                   echo '<a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>';
                                               }
-                                              elseif($bidStatus == "1")//If the users applicaiton is not complete
+                                              elseif($bidStatus == "1")//If the users application is not complete
                                               {
                                                   echo 'Application has not been compleated<br/>Click <a href="myHood.php">here</a> to complete';
                                               }
@@ -193,7 +193,7 @@
                                               {
                                                   echo 'You have another active bid';
                                               }
-                                              elseif($bidStatus == "5")//If the user has no applicaiton on file
+                                              elseif($bidStatus == "5")//If the user has no application on file
                                               {
                                                   echo 'No Application on File<br/>
                                                       Click <a href="myHood.php">here</a> to complete';
@@ -214,7 +214,7 @@
                                     }
                                     elseif($_SESSION['type'] == "3")//If the user is an administrator
                                     {
-                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'&auctionID='.$row['AuctionID'].'">Disable Listing</a>';
+                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'&auctionID='.$row2['AuctionID'].'">Disable Listing</a>';
                                     }
                                     else
                                     {

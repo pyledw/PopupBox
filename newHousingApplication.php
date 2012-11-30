@@ -9,7 +9,7 @@ include 'Header.php';
      * * Various testing methods are used to ensure that the display will be identical to the users 
      * * previus input if the user has already compeleted this page.
      * 
-     * At the end of the page it check to see that if the applicaiton was not complete or not, and increments the page completed acordingly
+     * At the end of the page it check to see that if the application was not complete or not, and increments the page completed acordingly
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */

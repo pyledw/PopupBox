@@ -20,14 +20,15 @@
         header( 'Location: /loginRequired.php' ) ;
     }
     
-    if(isset($_SESSION['propertyID']))
+    //Check to see what property they are wishing to edit.
+    if(isset($_SESSION['propertyID']))//if the property ID is stored in the session
     {
-        $propertyID = $_SESSION['propertyID'];
+        $propertyID = $_SESSION['propertyID'];//setting the variable into the current page
     }
-    elseif(isset($_POST['propertyID']))
+    elseif(isset ($_POST['propertyID']))//If the proeprty id is in the form of a get
     {
-        $propertyID = $_POST['propertyID'];
-        $_SESSION['propertyID'] = $_POST['propertyID'];
+        $propertyID = $_POST['propertyID'];//pulling the post and putting it into the current page
+        $_SESSION['propertyID'] = $propertyID;//Creating a new session variable for the next pages
     }
     else
     {
@@ -120,8 +121,9 @@
                     <td colspan="10">
                         <a class="button" href="newListing1.php">Back</a>
                         <form class="listingForm" width="90%" height="90%" method="post" action="newListing2Redirect.php">
-                        <button type="submit" class="button">Save and Continue</button>
+                        
                         <button type="reset" class="button">Clear</button>
+                        <button type="submit" class="button">Save and Continue</button>
                         </form>
                     </td>
                 </tr>

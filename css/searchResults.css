@@ -28,6 +28,13 @@ es/*
     left:-10px;
     top:-10px;
 }
+.ie #searchResult .PFOimage{
+    width:150px;
+    height:150px;
+    border:1px solid #000000;
+
+}
+
 #searchResult .column1{
     padding:5px 5px 5px 5px;
     width:175px;

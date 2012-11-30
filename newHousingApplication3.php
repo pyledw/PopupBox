@@ -9,7 +9,7 @@
      * * Various testing methods are used to ensure that the display will be identical to the users 
      * * previus input if the user has already compeleted this page.
      * 
-     * At the end of the page it check to see that if the applicaiton was not complete or not, and increments the page completed acordingly
+     * At the end of the page it check to see that if the application was not complete or not, and increments the page completed acordingly
      * 
      * @author David Pyle <Pyledw@Gmail.com>
      */
@@ -24,7 +24,7 @@
     include_once 'config.inc.php';
         //Connecting to the sql database
     $con = get_dbconn("");
-        //Getting the users applicaiton data
+        //Getting the users application data
         $result1 = mysql_query("SELECT * FROM APPLICATION
             WHERE UserID ='".$_SESSION['userID']."'");
         
@@ -37,7 +37,7 @@
         //casting the query data into a variable
         $row = mysql_fetch_array($result1);
         
-        //second query getting all the previous residences of the applicaiton
+        //second query getting all the previous residences of the application
         $result = mysql_query("SELECT * FROM PREVIOUSRESIDENCE
             WHERE ApplicationID ='".$row['ApplicationID']."'");
         
