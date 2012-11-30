@@ -152,7 +152,7 @@
                         "Should you have any questions, please email us at info@LeaseHood.com.\n".
                         "Regards,\nMark Gardner\nPresident|CEO";
                 
-                    mail($to2, $subject2, $mesg2, $from2);*/*/
+                    mail($to2, $subject2, $mesg2, $from2);*/
         }
 
 
