@@ -686,7 +686,7 @@
             if(mysql_num_rows($bid) != '0')
             {
                 //echo 'mysql_num_rows($bid)';
-                $moveInNow = '<font class="redTextArea">You have a move in now PFO.  Click below to review PFOs</font>';
+                $moveInNow = '<font class="redTextArea">You have a move in now PFO.  Click below to review PFOs</font><br />';
             }
             
             if(!$result)
@@ -717,11 +717,11 @@
                         if($expire < $now)
                         {
                             
-                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a>';
+                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a><br />';
                         }
                         else
                         {
-                            $hasExpired = 'You have 36 hours to choose a winner before all bids are released.';
+                            $hasExpired = 'You have 36 hours to choose a winner before all bids are released.<br />';
                         }
                     }
             }
