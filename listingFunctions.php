@@ -719,7 +719,7 @@
                             
                             $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a><br />';
                         }
-                        else
+                        elseif($expire > $now)
                         {
                             $hasExpired = 'You have 36 hours to choose a winner before all bids are released.<br />';
                         }
@@ -767,7 +767,7 @@
             
             if($maxBid == '')
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row2['StartingBid'].'</font>';
+                $maxBid = '$'.$row2['StartingBid'].'</font>';
             }
             
             echo '<font style="float:right; position:relative; right:20px;">
@@ -776,7 +776,7 @@
                    .$propertyStatus
                    .$timeString
                    .$status
-                   .$maxBid.
+                   .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>".
                 '</font><br/>
         <table id="houseListing">
             <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row['PropertyID']).' alt="Main Photo" />
