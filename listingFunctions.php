@@ -1307,7 +1307,7 @@
         }
         else 
         {
-            $new_date = date('D M d, Y H:i A  ', $middle);   // returns Day Month date, Year 00:00pm
+            $new_date = date('D M d, Y h:i A  ', $middle);   // returns Day Month date, Year 00:00pm
         }
         
         
