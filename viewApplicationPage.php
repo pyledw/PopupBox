@@ -2,9 +2,9 @@
 <?php
 
     /**
-     * This page will display the applicaiton page of a applicaiton based on the $post data.
+     * This page will display the application page of a application based on the $post data.
      * 
-     * It allows the administrator to approve the applicaiton, and is also allows the landlord to
+     * It allows the administrator to approve the application, and is also allows the landlord to
      * pick the user as the winnind bid of their auction.
      * 
      * @author David Pyle <Pyledw@Gmail.com>
@@ -697,7 +697,7 @@
             {
                 
                 echo '<br/>
-                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['ApplicationID'] .'" style="display:none;" name="ApplicationID"/></form><a href="resetApplicaiton?applicaitonID='.$row['ApplicationID'].'" >Reset Application</a><a href="mailto:'.$row['Email'].'">Email</a>';
+                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['ApplicationID'] .'" style="display:none;" name="ApplicationID"/></form><a href="resetapplication?applicationID='.$row['ApplicationID'].'" >Reset Application</a><a href="mailto:'.$row['Email'].'">Email</a>';
             }
             if(isset($auctionID))
                         {

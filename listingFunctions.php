@@ -214,7 +214,7 @@
 
             if(isset($row[0]))//if the check returned a high bid
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row[0] .'</font>';
+                $maxBid = '$'.$row[0] .'';
             }
             else//if there was no hign bid
             {
@@ -254,14 +254,15 @@
             $result = mysql_query("SELECT * FROM AUCTION
                 LEFT JOIN PROPERTY
                 ON AUCTION.PropertyID=PROPERTY.PropertyID
-                WHERE AuctionID='$auctionID'");
+                WHERE AuctionID='$auctionID'
+                    ORDER BY AUCTION.DatePFOEndAccept DESC");
             
             /** this is fetching the query results and setting them in an array */
             $row = mysql_fetch_array($result);
             
-            /** this code is retrieving the highest bid of the auction and returning it */
             $result2 = mysql_query("SELECT * FROM AUCTION
-                WHERE AuctionID='$auctionID'");
+                WHERE AuctionID='$row[AuctionID]'
+                    ORDER BY AUCTION.DatePFOAccept ASC");
             
             /** this is fetching the query results and setting them in an array */
             $row2 = mysql_fetch_array($result2);
@@ -281,17 +282,22 @@
             
             if($maxBid == '')//If there is no max bid
             {
-                $maxBid = '<font class="greyTextArea" style="float:right;">$'.$row['StartingBid'].'</font>';
+                $maxBid = '$'.$row['StartingBid'].'';
             }
-            
+            if (isset($_SERVER['HTTP_USER_AGENT']) && 
+            (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false))
+                $isIE = true;
+            else
+                $isIE = false;
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '
                    .$timeString//Getting the strings of status displays
                    .$status
-                   .$maxBid.
+                   .'<font class="greyTextArea" style="float:right;">'.$maxBid.'</font>'.
                 '</font><br/>
         <table id="houseListing">
+            
             <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="'.  getMainThumbPath($row['PropertyID']).'" alt="Main Photo" />
             <tr>
                 <td width="102px;" rowspan="5">
@@ -299,7 +305,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a></b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -507,7 +513,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a></b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -779,7 +785,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row['Address'] . " - " . $propertyID . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $propertyID . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a></b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -858,7 +864,6 @@
                 
                 
                 echo'
-                <a href="printFlyer.php?propertyID='. $propertyID . '" class="button">Print Flyer</a>
                 </td>
                 <td style="text-align: center;" class="greyBackground">
                     Features
@@ -996,13 +1001,15 @@
             $result = mysql_query("SELECT * FROM AUCTION
                 INNER JOIN PROPERTY
                 ON AUCTION.PropertyID=PROPERTY.PropertyID
-                WHERE PROPERTY.PropertyID='$propertyID'");
+                WHERE PROPERTY.PropertyID='$propertyID'
+                    ORDER BY AuctionID DESC");
 
             $row = mysql_fetch_array($result);
 
             /** this code is retrieving the highest bid of the auction and returning it */
             $result2 = mysql_query("SELECT * FROM AUCTION
-                WHERE AuctionID='".$row['AuctionID']."'");
+                WHERE AuctionID='".$row['AuctionID']."'
+                    ORDER BY AuctionID DESC");
             
             /** this is fetching the query results and setting them in an array */
             $row2 = mysql_fetch_array($result2);
@@ -1030,7 +1037,7 @@
                     '
                    .$timeString
                    .$status
-                   .$maxBid.
+                   .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>".
                 '</font><br/>
         <table id="houseListing">
             <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
@@ -1039,7 +1046,7 @@
                     
                 </td>
                 <td colspan="2" width="600px">
-                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row[City] . ' ' . $row['State'] .'" >Map It</a> - Print Brochure</b>
+                    <b>'. $row['Address'] . " - " . $row['PropertyID'] . " - " . '<a href="Http://www.google.com/maps?q='. $row['Address'] . ' ' . $row['City'] . ' ' . $row['State'] .'" >Map It</a></b>
                 </td>
                 <td align="center" class="redBackground" colspan="2">
                     Current Bids
@@ -1187,7 +1194,7 @@
      * * It will determin the users ability to bid and return an integer to represent their status
      * * 0 - Okay to bid, no other active bids
      * * 1 - Application not compleate
-     * * 2 - Applicaiton not authorized
+     * * 2 - application not authorized
      * * 3 - Bid fee not paid
      * * 4 - Another bid is active on a differant auction
      * * 5 - No application on file
@@ -1300,7 +1307,7 @@
         }
         else 
         {
-            $new_date = date('D M d, Y H:ia ', $middle);   // returns Day Month date, Year 00:00pm
+            $new_date = date('D M d, Y H:i A  ', $middle);   // returns Day Month date, Year 00:00pm
         }
         
         
@@ -1310,7 +1317,7 @@
     
         
         /**
-         * This function will display basic info from a users applicaiton for that administrator
+         * This function will display basic info from a users application for that administrator
          * 
          * @param Array $row Is the row from the query with the application info
          * 

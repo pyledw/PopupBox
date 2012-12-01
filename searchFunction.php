@@ -105,7 +105,7 @@ function search($type,$term)
                                 NOW() BETWEEN AUCTION.DatePFOAccept AND 
                                     AUCTION.DatePFOEndAccept AND
                                         IsApproved='1'
-                                        ORDER BY AUCTION.DatePFOEndAccept ASC");
+                                            ORDER BY AUCTION.DatePFOEndAccept ASC");
                     
                     if(!$result)
                     {
@@ -127,7 +127,7 @@ function search($type,$term)
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
                                 WHERE NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept AND
                                         IsApproved='1'
-                                        ORDER BY AUCTION.DatePFOEndAccept ASC");
+                                            ORDER BY AUCTION.DatePFOEndAccept ASC");
                 
                 if(!$result)
                     {

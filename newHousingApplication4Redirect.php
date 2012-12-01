@@ -2,8 +2,8 @@
 
     /** 
      * This redirect will get all of the inforamiton from the previus page in a form post.
-     * It will check the database to see if an applicaiton is already on file.
-     * It will then insert the new applicaiton info into the APPLICATION table or Update
+     * It will check the database to see if an application is already on file.
+     * It will then insert the new application info into the APPLICATION table or Update
      * the previus info acordingly.
      * 
      * It finaly checks to see if the user application was completed, and if it was not

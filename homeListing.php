@@ -20,11 +20,13 @@
         //Connecting to the sql database
         $con = get_dbconn("");
 
-        //Returning all the information on the property and the auction
-        $result = mysql_query("SELECT * FROM AUCTION
-            INNER JOIN PROPERTY
-            ON AUCTION.PropertyID=PROPERTY.PropertyID
-            WHERE PROPERTY.PropertyID = $listingID ");
+        
+        //returns all properties with aucitons
+         $result = mysql_query("SELECT * FROM AUCTION
+                            LEFT JOIN PROPERTY
+                            ON PROPERTY.PropertyID=AUCTION.PropertyID
+                                WHERE PROPERTY.PropertyID = '$listingID' AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept AND
+                                        IsApproved='1'");
         
         if(!$result)
         {
@@ -175,7 +177,7 @@
                                                    </form><br/>';
                                                   echo '<a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>';
                                               }
-                                              elseif($bidStatus == "1")//If the users applicaiton is not complete
+                                              elseif($bidStatus == "1")//If the users application is not complete
                                               {
                                                   echo 'Application has not been compleated<br/>Click <a href="myHood.php">here</a> to complete';
                                               }
@@ -192,7 +194,7 @@
                                               {
                                                   echo 'You have another active bid';
                                               }
-                                              elseif($bidStatus == "5")//If the user has no applicaiton on file
+                                              elseif($bidStatus == "5")//If the user has no application on file
                                               {
                                                   echo 'No Application on File<br/>
                                                       Click <a href="myHood.php">here</a> to complete';
@@ -213,19 +215,22 @@
                                     }
                                     elseif($_SESSION['type'] == "3")//If the user is an administrator
                                     {
-                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'&auctionID='.$row['AuctionID'].'">Disable Listing</a>';
+                                        echo '<a class="button" href="disableListing.php?listingID='.$row['PropertyID'].'&auctionID='.$row2['AuctionID'].'">Disable Listing</a>';
                                     }
                                     else
                                     {
                                         
                                     }
                              }
-                             else
+                             else//If the user is not logged in
                              {
                                  echo "You must be logged in to place bids";
                              }
 
                     ?>
+                    
+                    
+             <!-- This area is filling information using PHP.  All data is coming from the property Table -->
                 </td>
             </tr>
             
@@ -432,6 +437,11 @@
                 </td>
             </tr>
             <?php
+            /**
+             * This section is getting all the current bids on the property
+             * It will then display 4 of them with the option to display all
+             * if more are there.
+             */
             //This query is retriving all the bids on the auction of the property
             $auction = mysql_query('SELECT AuctionID FROM AUCTION
                 WHERE propertyID="'.$listingID.'"
@@ -440,7 +450,7 @@
             $auctionInfo = mysql_fetch_array($auction);
             
             
-            
+            //Selecting teh bid and the username from the database
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
@@ -451,7 +461,7 @@
                             WHERE BID.IsActive='1' AND AUCTION.AuctionID='".$auctionInfo['AuctionID']."' AND PropertyID='".$row['PropertyID']."'
                             ORDER BY MonthlyRate DESC");
             
-                        
+                        //Below is keeping track of the number inserted in order to insert a view all option at the botom of the table
                         $max = 0;
                         $numRows = mysql_num_fields($bids);
                         while($bid = mysql_fetch_array($bids))

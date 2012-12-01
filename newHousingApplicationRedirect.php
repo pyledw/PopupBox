@@ -2,8 +2,8 @@
     /** 
      * This redirect will get all of the inforamiton from the previus page in a form post.
      * 
-     * It will check the database to see if an applicaiton is already on file.
-     * It will then insert the new applicaiton info into the APPLICATION table or Update
+     * It will check the database to see if an application is already on file.
+     * It will then insert the new application info into the APPLICATION table or Update
      * the previus info acordingly.
      * It finaly checks to see if the user application was completed, and if it was not
      * it will update the pagecompleted field to the correct page.
@@ -52,7 +52,7 @@
         $stmt->bindValue(':numbOccupants',  $_POST['numbOccupants'],		PDO::PARAM_INT);
         $stmt->bindValue(':fName', 	    $_POST['fName'],                    PDO::PARAM_STR);
         $stmt->bindValue(':userID',         $_SESSION['userID'],                PDO::PARAM_STR);
-        $stmt->bindValue(':earliestDate',   $_POST['email1'],                   PDO::PARAM_STR);
+        $stmt->bindValue(':earliestDate',   $_POST['earliestDate'],             PDO::PARAM_STR);
         $stmt->bindValue(':latestDate',     $_POST['latestDate'],               PDO::PARAM_STR);
         $stmt->bindValue(':ADA',            $_POST['ADA'],                      PDO::PARAM_INT);
         $stmt->bindValue(':smoking',        $_POST['smoking'],                  PDO::PARAM_INT);

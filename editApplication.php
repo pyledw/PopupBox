@@ -7,7 +7,7 @@
      * it will route them to the correct page where they left off, or if the application was
      * completed it will route to the first page.  It pulls the number page they completed.
      * If the number represents the application was complete, the user is rerouted to the inital
-     * application page.  If the users applicaiton was not complete they will be rerouted to the
+     * application page.  If the users application was not complete they will be rerouted to the
      * page they last left.
      * 
      * @author David Pyle <Pyledw@Gmail.com>
@@ -28,7 +28,7 @@
         $row = mysql_fetch_array($result);
         
         
-        /** Will test to see if the applicaiton was compleate, and go back to the next needed page. */
+        /** Will test to see if the application was compleate, and go back to the next needed page. */
         if($row[PageCompleted] == "1")
         {
             header( "Location: /newHousingApplication.php" );
