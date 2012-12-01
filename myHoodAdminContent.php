@@ -26,7 +26,7 @@
         $result = mysql_query("SELECT * FROM APPLICATION
             INNER JOIN USER
             ON USER.UserID=APPLICATION.UserID
-            WHERE APPLICATION.IsApproved ='0' AND APPLICATION.IsPaid='1'");
+            WHERE APPLICATION.PageCompleted='6' AND APPLICATION.IsApproved ='0' AND APPLICATION.IsPaid='1'");
         
         if(!$result)
         {
