@@ -19,6 +19,9 @@ body
 .ie body{
     cursor: default;
 }
+.ie img{
+    border:none;
+}
 
 
 /*Wrapper element to hold all content on the page*/
