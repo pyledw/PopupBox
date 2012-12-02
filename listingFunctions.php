@@ -1067,7 +1067,7 @@
                    .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>".
                 '</font><br/>
         <table id="houseListing">
-            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
+            <img class="mainPhotoSearch" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
             <tr>
                 <td width="102px;" rowspan="5">
                     
