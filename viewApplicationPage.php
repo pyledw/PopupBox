@@ -31,21 +31,16 @@
 ?>
 
 <div id="mainContent">    
-        <div id="Applicationheader"><h1><?php echo $applicationID; ?> Tenant Application</h1></div>
+       <div id="Application">
+    <div id="Applicationheader"><h1><?php echo $applicationID; ?> Tenant Application</h1></div>
     <div class="content">
         <table>
             <tr>
                 <td>
-                   First Name: 
+                   Name: 
                 </td>
                 <td>
-                    <?php echo $row['FirstName']; ?>
-                </td>
-                <td>
-                    Last Name:
-                </td>
-                <td>
-                    <?php echo $row['LastName']; ?>
+                    <?php echo $row['FirstName'] ." ". $row['LastName']; ?>
                 </td>
                 <td>
                     Email:
@@ -56,28 +51,16 @@
             </tr>
             <tr>
                 <td>
-                   City:
+                   Location
                 </td>
                 <td>
-                    <?php echo $row['City']; ?>
+                    <?php echo $row['City'] . ", ". $row['State']; ?>
                 </td>
                 <td>
-                    State:
+                   Move In Window:
                 </td>
                 <td>
-                   <?php echo $row['State']; ?>
-                </td>
-                <td>
-                   Earliest Move In: 
-                </td>
-                <td>
-                   <?php echo $row['EarlyMoveIn']; ?>
-                </td>
-                <td>
-                    Latest Move In:
-                </td>
-                <td>
-                    <?php echo $row['LateMoveIn']; ?>
+                   <?php echo convertDate($row['EarlyMoveIn'], '0').  " To " .convertDate($row['LateMoveIn'], '0'); ?>
                 </td>
             </tr>
             <tr>
@@ -111,6 +94,8 @@
                        }
                    ?>
                 </td>
+             </tr>
+             <tr>
                 <td>
                    Number of occupants:
                 </td>
@@ -133,7 +118,7 @@
                 <td>
                    Secondary Resident:
                 </td>
-                <td colspan="2">
+                <td>
                     '.$row['SecondaryOccupantFName'] . " " . $row['SecondaryOccupantLName'].'
                 </td
                 <td>
@@ -159,7 +144,7 @@
                 <td>
                    Current Employer:
                 </td>
-                <td colspan="2">
+                <td>
                     '.$row['CurrentEmployerName'].'
                 </td>
                 <td>
@@ -168,6 +153,8 @@
                 <td>
                    '.$row['CurrentSupFName'] . ' ' . $row['CurrentSupLName'].'
                 </td>
+                </tr>
+                <tr>
                 <td>
                    Supervisor Phone:
                 </td>
@@ -189,6 +176,8 @@
                 <td>
                    '.$row['CurrentMonthsEmployed'].'
                 </td>
+            </tr>
+            <tr>
                 <td>
                    Annual Salary:
                 </td>
@@ -313,7 +302,7 @@
             }
             
             echo '<tr>
-                <td colspan="8">Vehicles</td>
+                <td colspan="4">Vehicles</td>
             </tr>';
             
             if($row['Vehicle1Desc'] != '')
@@ -322,7 +311,7 @@
                             <td>
                                Vehicle Description:
                             </td>
-                            <td colspan="3">
+                            <td>
                                 '.$row['Vehicle1Desc'].'
                             </td>
                             <td>
@@ -331,6 +320,8 @@
                             <td>
                                '.$row['Vehicle1LicenseNo'].'
                             </td>
+                            </tr>
+                            <tr>
                             <td>
                                Vehicle License State:
                             </td>
@@ -347,7 +338,7 @@
                             <td>
                                Vehicle Description:
                             </td>
-                            <td colspan="3">
+                            <td>
                                 '.$row['Vehicle2Desc'].'
                             </td>
                             <td>
@@ -356,6 +347,8 @@
                             <td>
                                '.$row['Vehicle2LicenseNo'].'
                             </td>
+                            </tr>
+                            <tr>
                             <td>
                                Vehicle License State:
                             </td>
@@ -371,7 +364,7 @@
                             <td>
                                Vehicle Description:
                             </td>
-                            <td colspan="3">
+                            <td>
                                 '.$row['Vehicle3Desc'].'
                             </td>
                             <td>
@@ -380,6 +373,8 @@
                             <td>
                                '.$row['Vehicle3LicenseNo'].'
                             </td>
+                            </tr>
+                            <tr>
                             <td>
                                Vehicle License State:
                             </td>
@@ -395,7 +390,7 @@
                             <td>
                                Vehicle Description:
                             </td>
-                            <td colspan="3">
+                            <td>
                                 '.$row['Vehicle4Desc'].'
                             </td>
                             <td>
@@ -404,6 +399,8 @@
                             <td>
                                '.$row['Vehicle4LicenseNo'].'
                             </td>
+                            </tr>
+                            <tr>
                             <td>
                                Vehicle License State:
                             </td>
@@ -416,7 +413,7 @@
             
             echo '
                 <tr>
-                    <td colspan="8">Pets</td>
+                    <td colspan="4">Pets</td>
                 </tr>';
             
             
@@ -436,6 +433,8 @@
                         <td>
                            '.$row['Pet1Breed'].'
                         </td>
+                        </tr>
+                        <tr>
                         <td>
                             Pet Weight:
                         </td>
@@ -468,6 +467,8 @@
                         <td>
                            '.$row['Pet2Breed'].'
                         </td>
+                        </tr>
+                        <tr>
                         <td>
                             Pet Weight:
                         </td>
@@ -500,6 +501,8 @@
                         <td>
                            '.$row['Pet3Breed'].'
                         </td>
+                        </tr>
+                        <tr>
                         <td>
                             Pet Weight:
                         </td>
@@ -519,7 +522,7 @@
             
             
             echo '  <tr>
-                        <td colspan="8">History Details</td>
+                        <td colspan="4">History Details</td>
                     </tr>';
             
             
@@ -557,6 +560,8 @@
                        }
                    ?>
                 </td>
+            </tr>
+            <tr>
                 <td>
                     Eviction History
                 </td>
@@ -590,16 +595,19 @@
                     <?php echo $row['CrimHistDesc']; ?>
                     
                 </td>
-                <td colspan="2">
+                <td>
                    Bankruptcy History Description: 
                 </td>
                 <td>
                    <?php echo $row['BankruptHistDesc']; ?>
                 </td>
+            </tr>
+                
+            <tr>
                 <td>
                     Eviction History Description:
                 </td>
-                <td colspan="2">
+                <td>
                    <?php echo $row['EvictHistDescription']; ?>
                 </td>
                
@@ -619,6 +627,8 @@
                 <td>
                    <?php echo $row['TotalLoanDebt']; ?>
                 </td>
+            </tr>
+            <tr>
                 <td>
                     Monthly Debt Payment:
                 </td>
@@ -639,7 +649,7 @@
             if($row['ContactFName'] != '')
             {
                         echo '<tr>
-                        <td colspan="8">Co-Signer</td>
+                        <td colspan="4">Co-Signer</td>
                     </tr>
                     <tr>
                         <td>
@@ -654,6 +664,8 @@
                         <td>
                            '.$row['ContactAddress'] . ', ' . $row['ContactState'] . ' ' . $row['ContactZip'].'
                         </td>
+                        </tr>
+                        <tr>
                         <td>
                             Relation:
                         </td>
