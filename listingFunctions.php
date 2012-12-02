@@ -1029,7 +1029,19 @@
             /** this is fetching the query results and setting them in an array */
             $row2 = mysql_fetch_array($result2);
             
+            $result3 = mysql_query("SELECT * FROM BID
+                INNER JOIN APPLICATION
+                ON APPLICATION.ApplicationID=BID.ApplicationID
+                WHERE UserID='".$_SESSION['userID']."' AND BID.AuctionID='".$row['AuctionID']."' AND IsMoveInNowBid='1'");
             
+            if(!$result3)
+            {
+                die('could not connect: ' .mysql_error());
+            }
+            if(mysql_num_rows($result3))
+            {
+                echo '<font class="redTextArea" style="float:right;">You have and Active move in now PFO</font>';
+            }
             include_once 'listingFunctions.php';
             
             //below is call to function that returns the timestring of time remaining or time till start
