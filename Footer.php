@@ -16,6 +16,10 @@
 
    <!-- This Portion contains the footer links. -->
    <div id="bottomNav">
+                        <img class="bottomImages" src="images/BBB.png" alt="BBB" />
+                        <img class="bottomImages" src="images/Flame.png" alt="Flame" />
+                        <img class="bottomImages" src="images/homes.png" alt="Homes"  />
+                        
             <ul>
                     <li>About LeaseHood</li>
                     <li>

@@ -30,11 +30,12 @@ body
     background-color:#FFFFFF;
     width: 1100px;
     margin: 0 auto;
+    margin-bottom: -40px;
     margin-top: 50px; 
-    padding:0px 0px 20px 0px;
+    padding:0px 0px 80px 0px;
     text-align: left;
     min-width:1000px;
-    min-height:250px;
+    min-height:100px;
     
 }
 .login{
@@ -219,6 +220,7 @@ hr.Title{
 	position:relative;
 	bottom:10px;
         margin: 0 auto;
+        margin-top: 50px;
         padding:0px 0px 0px 0px;
         text-align: left;
         height: 90%;
@@ -232,6 +234,12 @@ hr.Title{
 	background: -ms-linear-gradient(top,  #363636 0%,#3f3f3f 12%,#484848 25%,#323232 39%,#1f1f1f 50%,#000000 51%,#0c0c0c 60%,#1f1f1f 76%,#141414 91%,#0d0d0d 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #363636 0%,#3f3f3f 12%,#484848 25%,#323232 39%,#1f1f1f 50%,#000000 51%,#0c0c0c 60%,#1f1f1f 76%,#141414 91%,#0d0d0d 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#0d0d0d',GradientType=0 ); /* IE6-9 */
+}
+#bottomNav .bottomImages
+{
+   position: relative;
+   top:-70px;
+   float:right;
 }
 #bottomNav ul{
 	float:left;

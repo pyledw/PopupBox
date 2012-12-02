@@ -65,15 +65,6 @@
                         <button class="button" type="submit" name="homeSearch" value="Quick Home Search" style="margin:0 20px 0 20px;">Quick Home Search</button>
 
                     </form>
-
-                <div id="layoutBottom">
-
-                    <p>
-                        <img src="images/BBB.png" alt="BBB" style="float:right" />
-                        <img src="images/Flame.png" alt="Flame" style="float:right" />
-                        <img src="images/homes.png" alt="Homes" style="float:right" />
-                    </p>
-                </div>
         </div>
         
 	<?php
