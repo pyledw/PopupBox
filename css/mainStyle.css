@@ -242,6 +242,13 @@ hr.Title{
    float:right;
    width:50px;
 }
+.ie #bottomNav .bottomImages
+{
+   position: relative;
+   top:0px;
+   float:right;
+   width:50px;
+}
 #bottomNav ul{
 	float:left;
 	
