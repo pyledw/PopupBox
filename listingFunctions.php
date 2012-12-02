@@ -485,7 +485,7 @@
             include_once 'listingFunctions.php';    
             
             /** call to function that returns the timestring of time remaining or time till start */
-            $timeString = getTime($row2['DatePFOAccept'], $row22['DatePFOEndAccept']); 
+            $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']); 
 
             /** The code below will return the listings status */
             $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);   
@@ -686,7 +686,7 @@
             if(mysql_num_rows($bid) != '0')
             {
                 //echo 'mysql_num_rows($bid)';
-                $moveInNow = '<font class="redTextArea">You have a move in now PFO.  Click below to review PFOs</font><br />';
+                $moveInNow = '<font class="redTextArea">You have a move in now PFO.  Click below to review PFOs</font><br /><br />';
             }
             
             if(!$result)
@@ -701,8 +701,8 @@
             //echo $row[PageCompleted];
             //echo $row[IsPaid];
             
-            $expire = strtotime('+ 3 day', strtotime($row['DatePFOEndAccept']));
-            $end = strtotime($row['DatePFOEndAccept']);
+            $expire = strtotime('+ 3 day', strtotime($row2['DatePFOEndAccept']));
+            $end = strtotime($row2['DatePFOEndAccept']);
             $now = strtotime(date("Y-m-d H:i:s"));  //converting times to str
             
             //echo 'EXPIRE->'. $row[DatePFOEndAccept] . " END->" . date("m/d/Y h:i:s A T",$end) . " NOW->" . date("m/d/Y h:i:s A T",$now) . ' DATEEND->' . $row2[DatePFOEndAccept];
@@ -717,11 +717,11 @@
                         if($expire < $now)
                         {
                             
-                            $hasExpired = 'Listing is past PFO experation.  You may repost listing by clicking <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a><br />';
+                            $hasExpired = 'Listing is expired. <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a>';
                         }
                         elseif($expire > $now)
                         {
-                            $hasExpired = 'You have 36 hours to choose a winner before all bids are released.<br />';
+                            $hasExpired = 'You have 36 hours before bid Experation';
                         }
                     }
             }
@@ -733,7 +733,7 @@
                     {
                             if($row['PageCompleted'] != 6)//check to see if the listing was completed
                             {
-                                $propertyStatus = '<font class="redTextArea">Lisitng not complete.  Click edit listing below to finish your listing</font>';
+                                $propertyStatus = '<font class="redTextArea">Lisitng not complete.</font>';
                             }
                             else//if the property has not been completed
                             {
@@ -779,7 +779,7 @@
                    .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>".
                 '</font><br/>
         <table id="houseListing">
-            <img class="mainPhoto" style="float:left; position: relative; margin:-150px -150px; left:145px; top:140px;" src='.  getMainThumbPath($row['PropertyID']).' alt="Main Photo" />
+            <img class="mainPhotoSearch" src='.  getMainThumbPath($row['PropertyID']).' alt="Main Photo" />
             <tr>
                 <td width="102px;" rowspan="5">
                     
