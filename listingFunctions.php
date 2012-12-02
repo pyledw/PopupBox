@@ -812,7 +812,7 @@
                 <td width="350px" rowspan="4" style="vertical-align: top; border-bottom:none;">
                     '.substr($row['Description'], 0, 150).'<br/><br/>
                         ';
-            if($row['IsApproved'] == 0)
+            if($row['IsApproved'] == 0)//If the listing has not been approved
             {
                 echo'
                         <form class="buttonForm" method="POST" action="newListing'.$pageCompleated.'.php">
@@ -820,35 +820,39 @@
                         <button type="submit" class="button">Edit Listing</button>
                         </form>
                     ';
-                $approved=true;
+                $approved=true;//setting a bool to false if the listing has not been aproved.
             }
-            echo '<a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>';
-            if(mysql_num_rows($bid) != '0')
+            
+            echo '<a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>';//recho to allow user to view the listing
+            
+            if(mysql_num_rows($bid) != '0')//if there is a move in now PFO activeo n the property
                 {
                     echo'
                     <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2['AuctionID'].'" rel="facebox" class="button">Review PFOs</a>
                     ';
                 }
 
-                $intStatus = getStatusInt($row2['DatePFOEndAccept'], $row['DateEndAcceptPFO']);
+                
+                $intStatus = getStatusInt($row2['DatePFOEndAccept'], $row['DateEndAcceptPFO']);//getting the int status
+                
                 //echo $intStatus;
-                if($intStatus == '3')
+                if($intStatus == '3')//if the int satus is that the auciton has ended
                 {
                     
                    $win = mysql_query("SELECT * FROM BID
-                       WHERE IsWinningBid='1' AND AuctionID='".$row2['AuctionID']."'");
+                       WHERE IsWinningBid='1' AND AuctionID='".$row2['AuctionID']."'");//Query looking for a winning bid
                    
                    if(!$win)
                     {
                         die('could not connect: ' .mysql_error());
                     }
             
-                   if(mysql_num_rows($win) != '0')
+                   if(mysql_num_rows($win) != '0')//if a winning bid has already been selected on the auciton
                    {
                    
-                   $winner = mysql_fetch_array($win);
-                   $winnerID=$winner['ApplicationID'];
-                   $won = true;
+                        $winner = mysql_fetch_array($win);//getting the winning bid ID
+                        $winnerID=$winner['ApplicationID'];//Getting the applicaitonID for the winnner
+                        $won = true;
                    }
                    
                        
@@ -940,7 +944,7 @@
                 ';
             
             
-            
+            //Below this gets all the bids on the auction and displayes them in the informaiton box.  Max is set to 3
             $bids = mysql_query("SELECT * FROM BID
                             INNER JOIN AUCTION
                             ON AUCTION.AuctionID=BID.AuctionID
