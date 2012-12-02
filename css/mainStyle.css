@@ -222,7 +222,6 @@ hr.Title{
         padding:0px 0px 0px 0px;
         text-align: left;
         height: 90%;
-        min-width:1000px;
 	width:1100px;
 	height:150px;
 	background: #363636; /* Old browsers */
@@ -257,6 +256,7 @@ hr.Title{
 }
 .ie #bottomNav{
     padding: 20px 0 0 20px;
+    width:1100px;
 }
 
 /*Elements for controling the default aperance of the forms
