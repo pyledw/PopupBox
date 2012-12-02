@@ -152,6 +152,7 @@
      */
     function getStatusInt($DateAcceptPFO,$DateEndAcceptPFO)
         {
+        
             $status = "error";
             $start = strtotime($DateAcceptPFO);
             $now = strtotime(date("Y-m-d H:i:s"));
@@ -710,6 +711,7 @@
             
             
             $hasExpired = "";
+            $expired = false;
             if($row2['DatePFOEndAccept'] != "")
             {
                 if($end < $now)
@@ -718,6 +720,7 @@
                         {
                             
                             $hasExpired = 'Listing is expired. <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a>';
+                            $expired = true;
                         }
                         elseif($expire > $now)
                         {
@@ -727,6 +730,7 @@
             }
             
             $propertyStatus ="";
+            $approved = false;
             if($row['IsApproved'] == 0)//check to see if the property is approved
             {
                 if($row['IsPaid'] == 0)//check to see if the property has been paid
@@ -816,6 +820,7 @@
                         <button type="submit" class="button">Edit Listing</button>
                         </form>
                     ';
+                $approved=true;
             }
             echo '<a href="homeListing.php?listingID='. $row['PropertyID'] . '" class="button">View Listing</a>';
             if(mysql_num_rows($bid) != '0')
@@ -856,9 +861,15 @@
                     }
                     else//if no winner has been selected yet
                     {
-                        echo'
-                        <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2['AuctionID'].'" rel="facebox" class="button">Review PFOs</a>
-                        ';
+                        if(!$expire)
+                        {
+                            if($approved)
+                            {
+                                echo'
+                                <a href="reviewPFOs.php?propertyID='. $propertyID . '&auctionID='.$row2['AuctionID'].'" rel="facebox" class="button">Review PFOs</a>
+                                ';
+                            }
+                        }
                     } 
                 }
                 
