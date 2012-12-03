@@ -33,6 +33,24 @@
     width:150px;
     height:150px;
 }
+.ie .mainPhoto{
+    width:125px;
+    height:125px;
+
+}
+.mainPhotoSearch{
+    width:150px;
+    height:150px;
+    float:left; position: relative; margin:-150px -150px; left:145px; top:140px;
+}
+.ie .mainPhotoSearch{
+    width:125px;
+    height:125px;
+    float:left; 
+    position: relative; 
+    margin:-150px -150px; 
+    left:135px; top:140px;
+}
 .thumbs{
     width:40px;
     height:40px;

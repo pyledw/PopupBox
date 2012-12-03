@@ -81,6 +81,9 @@ as the Title, and CSS/Javascript References.  It also contains the navigation ba
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     
     <!--Javascript Reference to Jquery Validator-->
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    
+    <!--Javascript Reference to Jquery Validator-->
     <script type="text/javascript" src="js/jquery.validate.js"></script>
     
     <!--Referance to Search result Style-->

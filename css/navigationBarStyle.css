@@ -21,6 +21,9 @@
 	background: linear-gradient(to bottom,  #363636 0%,#3f3f3f 12%,#484848 25%,#323232 39%,#1f1f1f 50%,#000000 51%,#0c0c0c 60%,#1f1f1f 76%,#141414 91%,#0d0d0d 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#0d0d0d',GradientType=0 ); /* IE6-9 */
 }
+.ie #nav{
+    width:1120px;
+}
 #nav a{
     color:#FFFFFF;
     text-decoration: none;

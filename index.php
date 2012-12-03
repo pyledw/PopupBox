@@ -59,20 +59,12 @@
 
                     <form action="searchRedirect.php" method="post">
                         <input name="type" value="zip" style="display:none;" />
-                        <input type="text" style="color:grey;'" name="search" value="Zip Code" onfocus='this.value = changeTextInBox(this.value,this.defaultValue), this.style.color = changeColorInBox(this.value,this.defaultValue);' 
-                                    onblur="this.value = textBoxExit(this.value, this.defaultValue), this.style.color = textBoxExitColor(this.value,this.defaultValue);"/>
+                        <input type="text" style="color:grey;'" name="search" value="Zip Code" onfocus='if(this.value=="Zip Code"){this.value=""; this.style.color = "black";}'
+                               onblur="if(this.value == ''){this.value='Zip Code';
+                                            this.style.color='grey'}"/>
                         <button class="button" type="submit" name="homeSearch" value="Quick Home Search" style="margin:0 20px 0 20px;">Quick Home Search</button>
 
                     </form>
-
-                <div id="layoutBottom">
-
-                    <p>
-                        <img src="images/BBB.png" alt="BBB" style="float:right" />
-                        <img src="images/Flame.png" alt="Flame" style="float:right" />
-                        <img src="images/homes.png" alt="Homes" style="float:right" />
-                    </p>
-                </div>
         </div>
         
 	<?php

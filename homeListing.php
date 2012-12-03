@@ -27,6 +27,12 @@
                             ON PROPERTY.PropertyID=AUCTION.PropertyID
                                 WHERE PROPERTY.PropertyID = '$listingID' AND NOW() BETWEEN AUCTION.DatePFOAccept AND AUCTION.DatePFOEndAccept AND
                                         IsApproved='1'");
+         
+         if(mysql_num_rows($result) == '0')
+         {
+             $result = mysql_query("SELECT * FROM PROPERTY
+                                WHERE PROPERTY.PropertyID = '$listingID'");
+         }
         
         if(!$result)
         {

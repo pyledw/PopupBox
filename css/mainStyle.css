@@ -19,6 +19,9 @@ body
 .ie body{
     cursor: default;
 }
+.ie img{
+    border:none;
+}
 
 
 /*Wrapper element to hold all content on the page*/
@@ -27,11 +30,12 @@ body
     background-color:#FFFFFF;
     width: 1100px;
     margin: 0 auto;
+    margin-bottom: -40px;
     margin-top: 50px; 
-    padding:0px 0px 20px 0px;
+    padding:0px 0px 70px 0px;
     text-align: left;
     min-width:1000px;
-    min-height:250px;
+    min-height:100px;
     
 }
 .login{
@@ -216,10 +220,10 @@ hr.Title{
 	position:relative;
 	bottom:10px;
         margin: 0 auto;
+        margin-top: 50px;
         padding:0px 0px 0px 0px;
         text-align: left;
         height: 90%;
-        min-width:1000px;
 	width:1100px;
 	height:150px;
 	background: #363636; /* Old browsers */
@@ -230,6 +234,25 @@ hr.Title{
 	background: -ms-linear-gradient(top,  #363636 0%,#3f3f3f 12%,#484848 25%,#323232 39%,#1f1f1f 50%,#000000 51%,#0c0c0c 60%,#1f1f1f 76%,#141414 91%,#0d0d0d 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #363636 0%,#3f3f3f 12%,#484848 25%,#323232 39%,#1f1f1f 50%,#000000 51%,#0c0c0c 60%,#1f1f1f 76%,#141414 91%,#0d0d0d 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#0d0d0d',GradientType=0 ); /* IE6-9 */
+}
+.ie #bottomNav
+{
+    width:1120px;
+    padding:10px 10px 10px 10px;
+}
+#bottomNav .bottomImages
+{
+   position: relative;
+   top:-60px;
+   float:right;
+   width:50px;
+}
+.ie #bottomNav .bottomImages
+{
+   position: relative;
+   top:0px;
+   float:right;
+   width:50px;
 }
 #bottomNav ul{
 	float:left;
@@ -251,9 +274,6 @@ hr.Title{
 #bottomNav li li a:hover{
 	color:#A5A5A5;
 	text-decoration:underline;
-}
-.ie #bottomNav{
-    padding: 20px 0 0 20px;
 }
 
 /*Elements for controling the default aperance of the forms
