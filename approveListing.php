@@ -66,15 +66,21 @@ require_once "config.inc.php";
         $mesg = "Dear landlord,\n ".
             "Congratulations.  Your property listing has been approved! ".
             "To help make your experience with LeaseHood more enjoyable and successful, please note the following tips: \n<table>".
-            "<tr><td>*Some landlords require a monthly income of 4 times the monthly rental rate.\n</td></tr>".
-            "<tr><td>*Consider saving several homes and searches.  By doing so, you can automatically be emailed important messages about the properties. \n</td></tr>".
-            "<tr><td>*Please note that the Proposal for Occupancy (PFO) is package that consists of your proposed rental rate and the information 
-                in your application.  It is very important that your application contains accurate information since it will likely 
-                be verified by the landlord before the lease agreement is presented to you for approval. \n</td></tr>".
-            "<tr><td>*After you submit a PFO, you can change the proposed rental rate at any time or mae changes to your application. \n</td></tr>".
-            "<tr><td>*Only one PFO can be submitted at a time.</td></tr>".
-            "<tr><td>*If your PFO is not selected, you may then submit a PFO for another property free 
-                of charge for 30 days.\n</td></tr>".
+            "<tr><td>*If you receive any Move-in-Now PFOs, you must respond to them within 48 hours.  
+                Otherwise they will be withdrawn without obligation.\n</td></tr>".
+            "<tr><td>*The Show Period is the time frame in which your property will solicit PFOs.  You may end the 
+                Show Period at any time if you accept a PFO, including a Move-in-Now PFO, or if you have not 
+                received any PFOs. \n</td></tr>".
+            "<tr><td>*After the Show Period expires, and if you have received at least one PFO, you must either Accept or Reject the PFO(s) within 24 hours.  
+                This allows applicants to submit PFOs for other properties should you reject their PFO for your property. \n</td></tr>".
+            "<tr><td>*It is suggested you maintain contact with your personal email account during the duration 
+                of the Show Period in the event you receive Move-in-Now PFOs. \n</td></tr>".
+            "<tr><td>*Your keys dates are: </td></tr>".
+                "<tr><td>Property Being Pre-Marketed? </td><td> ".$preMarket."</td></tr>";
+                "<tr><td>Beginning of Show Period: </td><td> ".$datePFOAccept."</td></tr>";
+                "<tr><td>First Open House: </td><td> ".$dateTimeOpenHouse1."</td></tr>";
+                "<tr><td>Second Open House: </td><td> ".$dateTimeOpenHouse2."</td></tr>";
+                "<tr><td>End of Show Period: </td><td> ".$datePFOEndAccept."</td></tr>\n";
             "Should you have any questions, please email us at info@LeaseHood.com.\n</table>".
             "Regards,\nMark Gardner\nPresident|CEO";
                 
