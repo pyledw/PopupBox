@@ -110,7 +110,7 @@
                     mail($to, $subject, $mesg, $from);
                     
                     
-                   /* //sending email to landlord
+                    //sending email to landlord
                     //get landlord's email by getting propertyID and finding the email related to it
                     $result7 = mysql_query("select * from PROPERTY where PropertyID = '$propertyID'");
                     $row7 = mysql_fetch_array($result7);
@@ -122,21 +122,22 @@
                     
                     
                     //compile and send the landlord email
-                    $to2 = "longas@mail.lipscomb.edu";
+                    $to2 = $landlord;
                     $from2 = "From: noReply@leasehood.com \r\n";
                     $subject2 = "A Proposal for Occupancy Has Been Submitted -- $".$monthlyRate." at ".$streetAdd;
                     $mesg2 = "Dear landlord,\n ".
-                        "A Proposal for Occupancy (PFO) has been submitted for your property at ".$streetAdd.". \n".
-                        "Please note the following information about your property: \n".
-                        "Current PFOs: $".$amount."\n".
-                        "Other PFOs: ".$openHouse1."\n".
-                        "Move-in Now Price: $".$moveNowPrice."/mo \n".
-                        "The Show Window can end at any time if the landlord accepts a Move-in-Now PFO.".  
-                        "You can modify your PFO at any time.\n".
+                        "<table><tr><td>A Proposal for Occupancy (PFO) has been submitted for your property at ".$streetAdd.". \n</td></tr>".
+                        "<tr><td>Please note the following information about your property: \n</tr></td>".
+                        "<tr><td>Current PFOs: $".$amount."\n</td></tr>".
+                        "<tr><td>Show Window Ends: ".$endingShow."\n</td></tr>".
+                        "<tr><td>Next Open House: ".$openHouse1."\n</td></tr>".
+                        "<tr><td>Move-in Now Price: $".$moveNowPrice."/mo \n</td></tr>".
+                        "<tr><td>  </td></tr><tr><td>The Show Window can end at any time if the landlord accepts a Move-in-Now PFO.".  
+                        "You can modify your PFO at any time.\n</td></tr>".
                         "Should you have any questions, please email us at info@LeaseHood.com.\n".
                         "Regards,\nMark Gardner\nPresident|CEO";
                 
-                    mail($to2, $subject2, $mesg2, $from2);*/
+                    mail($to2, $subject2, $mesg2, $from2);
                     
                 }
         }
