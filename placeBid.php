@@ -133,7 +133,7 @@
                         "<tr><td>Next Open House: ".$openHouse1."\n</td></tr>".
                         "<tr><td>Move-in Now Price: $".$moveNowPrice."/mo \n</td></tr>".
                         "<tr><td>  </td></tr><tr><td>The Show Window can end at any time if the landlord accepts a Move-in-Now PFO.".  
-                        "You can modify your PFO at any time.\n</td></tr>".
+                        "You can modify your PFO at any time.\n</td></tr></table>".
                         "Should you have any questions, please email us at info@LeaseHood.com.\n".
                         "Regards,\nMark Gardner\nPresident|CEO";
                 
