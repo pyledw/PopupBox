@@ -4,11 +4,11 @@
  *
  * @package Uploads
  *
+ * @author Jason Dickinson <yodaj007@gmail.com>
+ *
  */
 
 include_once 'config.inc.php';
-
-
 include_once 'log.inc.php';
 
 
