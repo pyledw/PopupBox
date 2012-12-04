@@ -95,6 +95,8 @@
                     $monthlyRate = $row4['MonthlyRate'];
                     
                     //get the street address for the email
+                    $result55 = mysql_query("select PropertyID from AUCTION where AuctionID = '$auctionID'");
+                    $propertyID = mysql_fetch_assoc($result55);
                     $result5 = mysql_query("select Address from PROPERTY where PropertyID = '$propertyID'");
                     $row5 = mysql_fetch_assoc($result5);
                     $streetAdd = $row5['Address'];
