@@ -82,7 +82,7 @@
                 
                 header( 'Location: /myHood.php ' );
                 
-                /*//send the email to the bidder
+                    //send the email to the bidder
                     //get the email
                     $query3 = "select * from USER where Email = '$userID'";
                     $result3 = mysql_query($query3);
@@ -109,9 +109,9 @@
                     //compile and send the email
                     $to = $username;
                     $from = "From: noReply@leasehood.com \r\n";
-                    $subject = "Thank You for Your Move-in-Now Proposal for Occupancy -- $".$monthlyRate." at ".$streetAdd;
-                    $mesg = "Dear lessee,\n ".
-                        "Your  Move-in-Now Proposal for Occupancy (PFO) has been submitted for  ".$streetAdd.". ".
+                    $subject = "A Move-in-now PFO Has Been Submitted -- Please Respond ASAP $".$monthlyRate." at ".$streetAdd;
+                    $mesg = "Dear landlord,\n ".
+                        "A Move-in-Now Proposal for Occupancy (PFO) has been submitted for your property at ".$streetAdd.". ".
                         "The landlord will have 48 hours from the submission of your PFO to accept or reject your PFO.  If you do ".
                         "not receive notice from the landlord within 48 hours, you will be relieved from your Move-in-Now ".
                         "PFO obligations and free to submit a PFO for another property.  Please note the following ".
@@ -138,21 +138,17 @@
                     
                     
                     //compile and send the landlord email
-                    $to2 = "longas@mail.lipscomb.edu";
+                    $to2 = $landlord;
                     $from2 = "From: noReply@leasehood.com \r\n";
                     $subject2 = "A Proposal for Occupancy Has Been Submitted -- $".$monthlyRate." at ".$streetAdd;
                     $mesg2 = "Dear landlord,\n ".
-                        "A Proposal for Occupancy (PFO) has been submitted for your property at ".$streetAdd.". \n".
-                        "Please note the following information about your property: \n".
-                        "Current PFOs: $".$amount."\n".
-                        "Other PFOs: ".$openHouse1."\n".
-                        "Move-in Now Price: $".$moveNowPrice."/mo \n".
-                        "The Show Window can end at any time if the landlord accepts a Move-in-Now PFO.".  
-                        "You can modify your PFO at any time.\n".
+                        "<table><tr><td>A Proposal for Occupancy (PFO) has been submitted for your property at ".$streetAdd.". \n</td></tr>".
+                        "<tr><td>By ".$endingShow.", you must either accept or reject the PFO or the applicant will be relieved 
+                            of his obligations and free to submit a PFO for another property. Please <a href='http://199.115.231.216'>login</a> to accept or reject this PFO.\n</tr></td>".
                         "Should you have any questions, please email us at info@LeaseHood.com.\n".
                         "Regards,\nMark Gardner\nPresident|CEO";
                 
-                    mail($to2, $subject2, $mesg2, $from2);*/
+                    mail($to2, $subject2, $mesg2, $from2);
         }
 
 
