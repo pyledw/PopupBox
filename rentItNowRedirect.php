@@ -147,7 +147,7 @@
                         "<table><tr><td>A Proposal for Occupancy (PFO) has been submitted for your property at ".$streetAdd.". \n</td></tr>".
                         "<tr><td>By ".$endingShow.", you must either accept or reject the PFO or the applicant will be relieved 
                             of his obligations and free to submit a PFO for another property. Please <a href='http://199.115.231.216'>login</a> to accept or reject this PFO.\n</tr></td>".
-                        "Should you have any questions, please email us at info@LeaseHood.com.\n".
+                        "Should you have any questions, please email us at info@LeaseHood.com.\n</table>".
                         "Regards,\nMark Gardner\nPresident|CEO";
                 
                     mail($to2, $subject2, $mesg2, $from2);
