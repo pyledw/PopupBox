@@ -542,7 +542,7 @@
                    ?>
                 </td>
                 <td>
-                   Bankrupcy History
+                   Bankruptcy History
                 </td>
                 <td>
                    <?php 
