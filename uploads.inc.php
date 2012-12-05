@@ -108,6 +108,8 @@ function handle_single_upload($propertyid, $file)
     $size = $file['size'];
     $error = $file['error'];
 
+	logdebug(print_r($file, true));
+
     if ($error > 0) {       // non-zero values are error codes
         $retval = array(
 			"error"     => true, 
@@ -155,6 +157,7 @@ function handle_single_upload($propertyid, $file)
 				"error_msg"     => $e->getMessage());
 		}
 	}
+	logdebug(print_r($retval, true));
 	return $retval;
 }
 

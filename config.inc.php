@@ -27,6 +27,7 @@ $upload_allowed_file_types 	= array(		// all entries must be MIME types and lowe
 	"image/jpeg",
 	"image/gif",
 	"image/png",
+    "image/pjpeg",
 	"image/tiff");
 
 /*
