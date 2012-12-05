@@ -10,6 +10,7 @@ include_once 'uploads.inc.php';
 include_once 'log.inc.php';
 
 $result = array();
+
 if (count($_FILES) > 0)
 {
     $result = handle_uploads($_SESSION['propertyID'], $_FILES);
@@ -50,5 +51,5 @@ if (count($_FILES) > 0)
             die('could not connect4: ' .mysql_error());
         }
     }
-//header( 'Location: /newListing2.php' );
+header( 'Location: /newListing2.php' );
 ?>
