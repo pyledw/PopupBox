@@ -58,7 +58,7 @@
         
         mysql_query("UPDATE PROPERTY SET PageCompleted='6' WHERE PropertyID='$_SESSION[propertyID]'");
     }
-    //sending email
+    //sending email to landlord
         $to = $_POST['email'];
         $from = "From: noReply@leasehood.com \r\n";
         $subject = "Thank you for your Application";
@@ -68,8 +68,49 @@
                 "Thank you again for joining LeaseHood and we hope your experience with us is a positive one.  Should you have any questions, please email us at info@LeaseHood.com.\n".
                 "Regards,\n Mark Gardner\n President|CEO";
         mail($to, $subject, $mesg, $from);
-    
-    
+        
+    //sending email to admin 
+        //get everything associated with the new property listing
+        $result2 = mysql_query("select * from PROPERTY where PropertyID = '$propertyID'");
+        $row2 = mysql_fetch_array($result2);
+        $userid = $row2['UserID'];
+        $address = $row2['Address'];
+        $zip = $row2['Zip'];
+        $city = $row2['City'];
+        $state = $row2['State'];
+        $county = $row2['County'];
+        
+        
+        
+        //get landlord name from user table
+        $result3 = mysql_query("select * from USER where UserID = '$userid'");
+        $row3 = mysql_fetch_array($result3);
+        $username = $row3['UserName'];
+        $firstName = $row3['FirstName'];
+        $lastName = $row3['LastName'];
+        
+        
+        //set variable to send email to all existing admins. Must implode to have comma in order to send email to all
+        $result4 = mysql_query("select Email from USER where AccountType = 3");
+        while($row4 = mysql_fetch_array($result4))
+        {
+            $addresses[] = $row4['address'];
+        }
+        $to2 = implode(", ", $addresses);
+        
+        
+        $from2 = "From: noReply@leasehood.com \r\n";
+        $subject2 = "Property Listing Review";
+        $mesg2 = "Dear LeaseHood Administrator,\n ".
+                "<table><tr><td>Please review the following property listing from: </td></tr>".
+                "<tr><td>Property Listing ID:  </td><td>".$propertyID."</td></tr>".
+                "<tr><td>Landlord User ID and Username: </td><td>".$userid.", ".$username."</td></tr>".
+                "<tr><td>First and Last Name: </td><td>".$firstName." ".$lastName."</td></tr>".
+                "<tr><td>Property Address:  </td><td>".$address." ".$county.", ".$city." ".$state." ".$zip."</td></tr>".
+                "Please either approve or deny this listing.\n".
+                "Regards,\nMark Gardner\nPresident|CEO";
+                
+        mail($to2, $subject2, $mesg2, $from2);
     
 
     mysql_close();
