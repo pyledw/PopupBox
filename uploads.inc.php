@@ -151,7 +151,7 @@ function handle_single_upload($propertyid, $file)
 			logdebug("Uploaded image result: " . print_r($retval, true));
 		} catch (Exception $e) {
 			// the database insert failed.  
-			logdebug("Database insert failed.  Reason: " . $e->getMessage());
+			logerror("Database insert failed.  Reason: " . $e->getMessage());
 			$retval = array(
 				"error"         => true,
 				"error_msg"     => $e->getMessage());
