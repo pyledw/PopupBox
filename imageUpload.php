@@ -12,14 +12,15 @@ include_once 'log.inc.php';
 $result = array();
 if (count($_FILES) > 0)
 {
-	$result = handle_uploads($_SESSION['propertyID'], $_FILES);
+    $result = handle_uploads($_SESSION['propertyID'], $_FILES);
+    echo 'files upload';
 }
 
 
     include_once 'imageFunctions.php';
     $con = get_dbconn("");
     
-    
+    echo 'File should have been uploaded';
 
     $result2 = mysql_query("SELECT * FROM IMAGE WHERE PropertyID='".$_SESSION['propertyID']."' AND ImageType='1'");
 
@@ -49,5 +50,5 @@ if (count($_FILES) > 0)
             die('could not connect4: ' .mysql_error());
         }
     }
-header( 'Location: /newListing2.php' );
+//header( 'Location: /newListing2.php' );
 ?>
