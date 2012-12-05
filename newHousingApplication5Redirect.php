@@ -59,6 +59,80 @@ session_start();
                 "Thank you again for joining LeaseHood and we hope your experience with us is a positive one.  Should you have any questions, please email us at info@LeaseHood.com.\n".
                 "Regards,\n Mark Gardner\n President|CEO";
         mail($to, $subject, $mesg, $from);
+        
+        
+    //sending email to admin 
+        //get applicant name from user table
+        $result2 = mysql_query("select * from USER where UserID = '$_SESSION[userid]'");
+        $row2 = mysql_fetch_array($result2);
+        $username = $row2['UserName'];
+        $firstName = $row2['FirstName'];
+        $lastName = $row2['LastName'];
+        $address = $row2['Address'];
+        $zip = $row2['Zip'];
+        $city = $row2['City'];
+        $state = $row2['State'];
+        
+        //get stuff from application table
+        $result3 = mysql_query("select * from APPLICATION where UserID = '$_SESSION[userid]'");
+        $row3 = mysql_fetch_array($result3);
+        $appID = $row3['ApplicationID'];
+        $secondaryOccF = $row3['SecondaryOccupantFName'];
+        $secondaryOccL = $row3['SecondaryOccupantLName'];
+        $petBreed = $row3['Pet1Breed'];
+        $employer = $row3['CurrentEmployerName'];
+        $supervisorF = $row3['CurrentSupFName'];
+        $supervisorL = $row3['CurrentSupLName'];
+        $positionHeld = $row3['CurrentPositionName'];
+        $prevEmp = $row3['PrevEmployerName'];
+        $prevSupervisorF = $row3['PrevSupFName'];
+        $prevSupervisorL = $row3['PrevSupLName'];
+        $prevPosition = $row3['PrevPositionName'];
+        
+        //Previous Residence stuff
+        $result4 = mysql_query("select * from PREVIOUSRESIDENCE where ApplicationID = '$appID'");
+        $row4 = mysql_fetch_array($result4);
+        $prevStreet = $row4['PrevStreetAddress'];
+        $prevCity = $row4['PrevCity'];
+        $prevState = $row4['PrevState'];
+        $prevZip = $row4['PrevZip'];
+        $prevLandlordF = $row4['PrevLandLordFName'];
+        $prevLandlordL = $row4['PrevLandLordLName'];
+        $prevReason = $row4['ReasonForLeaving'];
+        
+        
+        
+        //set variable to send email to all existing admins. Must implode to have comma in order to send email to all
+        $result5 = mysql_query("select Email from USER where AccountType = 3");
+        while($row5 = mysql_fetch_array($result5))
+        {
+            $addresses[] = $row5['address'];
+        }
+        $to2 = implode(", ", $addresses);
+        
+        
+        $from2 = "From: noReply@leasehood.com \r\n";
+        $subject2 = "Application Review";
+        $mesg2 = "Dear LeaseHood Administrator,\n ".
+                "<table><tr><td>Please review the following application listing: </td></tr>".
+                "<tr><td>Applicant First and Last name:  </td><td>".$firstName." ".$lastName."</td></tr>".
+                "<tr><td>Applicant User ID and Username: </td><td>".$_SESSION[userid].", ".$username."</td></tr>".
+                "<tr><td>Applicant Current Address:  </td><td>".$address." ".$city." ".$state." ".$zip."</td></tr>".
+                "<tr><td>Secondary Occupant Names: </td><td>".$secondaryOccF." ".$secondaryOccL."</td></tr>".
+                "<tr><td>Pet Breed: </td><td>".$petBreed."</td></tr>".
+                "<tr><td>Employer: </td><td>".$employer."</td></tr>".
+                "<tr><td>Supervisor Name: </td><td>".$supervisorF." ".$supervisorL."</td></tr>".
+                "<tr><td>Position Held: </td><td>".$positionHeld."</td></tr>".
+                "<tr><td>Previous Employer: </td><td>".$prevEmp."</td></tr>".
+                "<tr><td>Previous Supervisor Name: </td><td>".$prevSupervisorF." ".$prevSupervisorL."</td></tr>".
+                "<tr><td>Previous Position: </td><td>".$prevPosition."</td></tr>".
+                "<tr><td>Applicant Previous Address:  </td><td>".$prevStreet." ".$prevCity." ".$prevState." ".$prevZip."</td></tr>".
+                "<tr><td>Previous Apartment Landlord Name: </td><td>".$prevLandlordF." ".$prevLandlordL."</td></tr>".
+                "<tr><td>Reason for leaving: </td><td>".$prevReason."</td></tr>".
+                "Please either approve or deny this listing.</table>\n".
+                "Regards,\nMark Gardner\nPresident|CEO";
+                
+        mail($to2, $subject2, $mesg2, $from2);
     
     mysql_close();
     
