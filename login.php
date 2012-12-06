@@ -62,6 +62,11 @@
                 </tr>
                 <tr>
                     <td>
+                        New Here? <a href="newUser.php">Create an account</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <button id="submit" type="submit" class="button">Save and Continue</button>
                         <button type="reset" class="button">Clear</button>
                     </td>
