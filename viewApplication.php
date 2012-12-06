@@ -707,7 +707,7 @@
             {
                 
                 echo '<br/>
-                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['ApplicationID'] .'" style="display:none;" name="ApplicationID"/></form><a href="resetApplication.php?applicationID='.$row['ApplicationID'].'" >Reset Application</a><a href="mailto:'.$row['Email'].'">Email</a>';
+                 <form method="post" action="approveApplication.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['ApplicationID'] .'" style="display:none;" name="ApplicationID"/></form><a class="button" href="resetApplication.php?applicationID='.$row['ApplicationID'].'" >Reset Application</a><a class="button" href="mailto:'.$row['Email'].'">Email</a>';
             }
         ?>
     </div>
