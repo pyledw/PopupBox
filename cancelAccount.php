@@ -13,6 +13,7 @@
         header( 'Location: /loginRequired.php' ) ;
     }
     
+    //sending email to account cancellation
     $userid = $_SESSION['userID'];
     $result1 = mysql_query("update USER set IsSuspended='1' where UserID = '$userid'");
     $result2 = mysql_query("select Email from USER where UserID = '$userid'");
