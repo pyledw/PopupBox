@@ -97,9 +97,12 @@
                         <label class="label">Minimum rental term, months:</label><br/><input type="text" name="minTerm" class="required number" value="<?php echo $row['MinimumTerm']?>"/>
                     </td>
                     <td>
+                        <!-- This was where the pre market option was, deleted due to non usage -->
+                        <!--
                         <label class="label">Do you want to Pre-Market?</label><br/>
-                         Yes<input type="radio" name="comingSoon"  value="1" <?php if($row['PreMarket'] == '1'){echo "checked='checked'";}?> />
-                         No<input type="radio" name="comingSoon"checked='checked'  value="0" <?php if($row['PreMarket'] != '1'){echo "checked='checked'";}?> />
+                         Yes<input type="radio" name="comingSoon"  value="1" <?php// if($row['PreMarket'] == '1'){echo "checked='checked'";}?> />
+                         No<input type="radio" name="comingSoon"checked='checked'  value="0" <?php// if($row['PreMarket'] != '1'){echo "checked='checked'";}?> />
+                        -->
                     </td>
                 </tr>
                 <tr>
