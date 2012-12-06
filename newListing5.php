@@ -52,6 +52,12 @@
                          to abide by the Fair Housing Laws and Fair Credit Lawsâ€¦
                     </td>
                 </tr>
+                <?php
+                    if(isset($_GET['error']))
+                    {
+                        echo '<tr><td><font color="red">'.$_GET['error'].'</font></td></tr>';
+                    }
+                ?>
                 <tr>
                     <td>
                         <label class="label">Enter Email:</label><input class="required email" type="text" name="email"/></br>
