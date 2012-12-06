@@ -54,6 +54,12 @@
             <table class="tableForm" width="1000px">
                 <font class="formheader" style="left:400px;">Residence History</font>
                 <?php
+                
+                if(isset($_GET['error']))
+                {
+                    echo '<tr><td colspan="3"><font color="red">'.$_GET['error'].'</font></td></tr>';
+                }
+                
                 if(mysql_num_rows($result) > 0)
                 {
                     $intCount=1;
@@ -114,7 +120,7 @@
                                 <label class="label">Zip Code: </label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode'.$intCount.'" value="'.$row['PrevZip'].'"/>
                             </td>
                             <td>
-                                <label class="label">months lived there:</label><br/><input class="number" maxlength="3" type="text" name="months2" value="'.$row['TotalMonths'].'"/>
+                                <label class="label">months lived there:</label><br/><input class="number" maxlength="3" type="text" name="months'.$intCount.'" value="'.$row['TotalMonths'].'"/>
                             </td>     
                         </tr>
                         <tr>
