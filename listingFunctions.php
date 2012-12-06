@@ -687,7 +687,7 @@
             if(mysql_num_rows($bid) != '0')
             {
                 //echo 'mysql_num_rows($bid)';
-                $moveInNow = '<font class="redTextArea">You have a move in now PFO.  Click below to review PFOs</font><br /><br />';
+                $moveInNow = '<font class="grayTextArea" style="float:right;">You have a move in now PFO.  Click below to review PFOs</font><br /><br />';
             }
             
             if(!$result)
@@ -719,12 +719,12 @@
                         if($expire < $now)
                         {
                             
-                            $hasExpired = 'Listing is expired. <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a>';
+                            $hasExpired = '<font class="greyTextArea" style="float:right;">Listing is expired. <a href="relistRedirect.php?propertyID='.$row['PropertyID'].'">Repost</a></font>';
                             $expired = true;
                         }
                         elseif($expire > $now)
                         {
-                            $hasExpired = 'You have 36 hours before bid Experation';
+                            $hasExpired = '<font class="greyTextArea" style="float:right;">You have 36 hours before bid Experation</font>';
                         }
                     }
             }
@@ -737,22 +737,22 @@
                     {
                             if($row['PageCompleted'] != 6)//check to see if the listing was completed
                             {
-                                $propertyStatus = '<font class="redTextArea">Lisitng not complete.</font>';
+                                $propertyStatus = '<font class="greyTextArea" style="float:right;">Lisitng not complete.</font>';
                             }
                             else//if the property has not been completed
                             {
-                                $propertyStatus = "<font class='redTextArea'>You must pay your fee click <a href='payListingFee.php?propertyID=".$row['PropertyID']."'>Here</a></font>";
+                                $propertyStatus = "<font class='greyTextArea' style='float:right;'>You must pay your fee click <a href='payListingFee.php?propertyID=".$row['PropertyID']."'>Here</a></font>";
                             }
                 }
                 else//if the property fee has not been paid
                 {
                     if($row['PageCompleted'] != 6)//check to see if the listing was completed
                             {
-                                $propertyStatus = '<font class="redTextArea">Lisitng not complete.  Click edit listing below to finish your listing</font>';
+                                $propertyStatus = '<font class="greyTextArea" style="float:right;">Lisitng not complete.  Click edit listing below to finish your listing</font>';
                             }
                             else
                             {
-                                $propertyStatus = "<font class='redTextArea'>Your listing is awaiting approval</font>";
+                                $propertyStatus = "<font class='greyTextArea' style='float:right;'>Your listing is awaiting approval</font>";
                             }
                 }
             }
