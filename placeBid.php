@@ -69,15 +69,12 @@
                     
                     //send the email to the bidder
                     //get the email
-                    $query3 = "select * from USER where Email = '$userID'";
-                    $result3 = mysql_query($query3);
-                    $row3 = mysql_fetch_array($result3);
-                    $username = $row3['UserName'];
+                    $result3 = mysql_query("select * from USER where Email = '$userID'");
+                    $username = mysql_fetch_array($result3);
                     
                     //get the street address for the email
                     $result5 = mysql_query("select Address from PROPERTY where PropertyID = '$propertyID'");
-                    $row5 = mysql_fetch_assoc($result5);
-                    $streetAdd = $row5['Address'];
+                    $streetAdd = mysql_fetch_assoc($result5);
                     
                     //get the ending show window 
                     $result6 = mysql_query("select * from AUCTION where AuctionID = '$auctionID'");
@@ -111,10 +108,10 @@
                     $result7 = mysql_query("select * from PROPERTY where PropertyID = '$propertyID'");
                     $row7 = mysql_fetch_array($result7);
                     $propAssoc = $row7['UserID'];
+                    
                     //now get email form USER table by matching userID
                     $result8 = mysql_query("select Email from USER where UserID ='$propAssoc'");
-                    $row8 = mysql_fetc_assoc($result8);
-                    $landlord = $row8['Email'];
+                    $landlord = mysql_fetc_assoc($result8);
                     
                     
                     //compile and send the landlord email
