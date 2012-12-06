@@ -18,6 +18,7 @@
     $auctionID = $_POST['auctionID'];
     
     include_once 'config.inc.php';
+    include_once 'listingFunctions.php';
             //Connecting to the sql database
             $con = get_dbconn("");
             
@@ -120,7 +121,7 @@
                 </td>
                 <td>
                     '.$row['SecondaryOccupantFName'] . " " . $row['SecondaryOccupantLName'].'
-                </td
+                </td>
                 <td>
                     Secondary Resident Age:
                 </td>

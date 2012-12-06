@@ -16,6 +16,21 @@ session_start();
 
     include_once 'config.inc.php';
         //Connecting to the sql database
+    $con = get_dbconn("");
+    
+    $result = mysql_query("SELECT Email FROM USER
+        WHERE UserID='".$_SESSION['userID']."'");
+    $row = mysql_fetch_array($result);
+    
+    echo $row['Email'];
+    echo $_POST['email'];
+    if($row['Email'] != $_POST['email'])
+    {
+        header( 'Location: /newHousingApplication5.php?error=Email must match your email on file.' );
+    }
+    else
+    {
+    
     
     //Using the new method for inserting into the Database
     $con = get_dbconn("PDO");
@@ -23,7 +38,7 @@ session_start();
             UPDATE APPLICATION SET
                 ESignature=:email
                 
-            WHERE UserID='$_SESSION[userID]'
+            WHERE UserID='".$_SESSION['userID']."'
             ");
     try {
         $stmt->bindValue(':email',              $_POST['email'],             PDO::PARAM_STR);
@@ -137,5 +152,5 @@ session_start();
     mysql_close();
     
     header( 'Location: /payApplicationFee.php' );
-    
+    }
 ?>

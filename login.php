@@ -60,10 +60,16 @@
                         Remember Me: <input type="checkbox" name="rememberMe">
                     </td>
                 </tr>
+                
                 <tr>
                     <td>
                         <button id="submit" type="submit" class="button">Save and Continue</button>
                         <button type="reset" class="button">Clear</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        New Here? <a href="newUser.php">Create an account</a>
                     </td>
                 </tr>
                 <?php if($errorMessage != ""){echo '<tr><td><font color="red">Forgot password or Username? <a href="resetPassword.php">Reset</a></font></td></tr>';} ?>

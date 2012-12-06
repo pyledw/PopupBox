@@ -13,7 +13,12 @@
      */
 $title = "New User";
 include 'Header.php';
-        
+if(isset($_SESSION['userID']))
+{
+    header( 'Location: /myHood.php' );
+}
+
+
 function getPost($key)
 {
 	if (isset($_POST[$key]))

@@ -386,18 +386,35 @@
     } catch (Exception $e) {
 	echo 'Connection failed at update. ' . $e->getMessage();
     }
-        
-    //Setting which page has been compleated.  If the form has already been compleated it ignors this
-    if($row[PageCompleted] != "6")
+    
+    
+    $result = mysql_query("SELECT * FROM PREVIOUSRESIDENCE
+        WHERE ApplicationID='$appID'");
+    
+    $numMonths = 0;
+    while($row = mysql_fetch_array($result))
     {
-        
-        mysql_query("UPDATE APPLICATION SET PageCompleted='4'
-        WHERE UserID = '$_SESSION[userID]'");
+        $numMonths = $numMonths + $row['TotalMonths'];
     }
     
+    if($numMonths < 36)
+    {
+        header( 'Location: /newHousingApplication3.php?error=Must input at least 36 months of history' );
+    }
+    else 
+    {
+        //Setting which page has been compleated.  If the form has already been compleated it ignors this
+        if($row[PageCompleted] != "6")
+        {
 
-    mysql_close();
-    
-    //rerouting the user to the next application page
-    header( 'Location: /newHousingApplication4.php' );
+            mysql_query("UPDATE APPLICATION SET PageCompleted='4'
+            WHERE UserID = '$_SESSION[userID]'");
+        }
+
+
+        mysql_close();
+
+        //rerouting the user to the next application page
+        header( 'Location: /newHousingApplication4.php' );
+    }
 ?>

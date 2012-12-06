@@ -39,7 +39,20 @@
          
     $con = get_dbconn("");
     
+    $con = get_dbconn("");
     
+    $result = mysql_query("SELECT Email FROM USER
+        WHERE UserID='".$_SESSION['userID']."'");
+    $row = mysql_fetch_array($result);
+    
+    echo $row['Email'];
+    echo $_POST['email'];
+    if($row['Email'] != $_POST['email'])
+    {
+        header( 'Location: /newListing5.php?error=Email must match your email on file.' );
+    }
+    else
+    {
     
     $result = mysql_query("SELECT PageCompleted FROM PROPERTY WHERE PropertyID='$_SESSION[propertyID]'");
     
@@ -116,4 +129,5 @@
     mysql_close();
     
     header( 'Location: /payListingFee.php' );
+    }
 ?>

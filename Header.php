@@ -199,13 +199,16 @@ as the Title, and CSS/Javascript References.  It also contains the navigation ba
                                                             echo '<a href="login.php">Login</a>';
                                                     }
                                             }
-                                        /** Testing to see if the current window corisponds to the tab on the navigation bar */
-	       				if ($fileName == 'newUser.php') {
-							echo '<a href="newUser.php" class="current">New User</a>';
-						}
-						else {
-							echo '<a href="newUser.php">New User</a>';
-						}
+                                        if(!isset($_SESSION['userID']))
+                                        {
+                                            /** Testing to see if the current window corisponds to the tab on the navigation bar */
+                                            if ($fileName == 'newUser.php') {
+                                                            echo '<a href="newUser.php" class="current">New User</a>';
+                                                    }
+                                                    else {
+                                                            echo '<a href="newUser.php">New User</a>';
+                                                    }
+                                        }
                                         /** Testing to see if the current window corisponds to the tab on the navigation bar */
 	       				if ($fileName == 'resources.php') {
 							echo '<a href="resources.php" class="current">Resources</a>';

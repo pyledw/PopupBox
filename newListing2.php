@@ -61,7 +61,7 @@
                 <tr>
                     <td colspan="10">
                          Photo Policy:
-                        LeaseHood believes in providing all interested parties with the tools necessary to make intelligent decisions.  To that end, we believe all advertised homes should be accurately and thoroughly depicted, including those features which uniquely identity the property.  Please submit at least one photo of the front of the house, one kitchen photo, and one photo of the main bathroom. You can download up to 7 photos, which will be visible to all applicants on LeaseHood.com.  However, only the first 4 photos will be submitted for 3rd party advertising media. 
+                        LeaseHood believes in providing all interested parties with the tools necessary to make intelligent decisions.  To that end, we believe all advertised homes should be accurately and thoroughly depicted, including those features which uniquely identity the property.  Please submit at least one photo of the front of the house, one kitchen photo, and one photo of the main bathroom. You can upload up to <?= $upload_max_uploads ?> photos, which will be visible to all applicants on LeaseHood.com.  However, only the first 4 photos will be submitted for 3rd party advertising media. 
 
                         Please Note: LeaseHood reserves the right to remove photos and/or listings at any time if inappropriate or explicit content has been downloaded to or input into LeaseHood.com by a user.
 
@@ -92,6 +92,7 @@
                                  echo '</td>';
                                  ++$num;
                              }
+							$numimages = $num;
                              
                              while($num < 10)
                              {
@@ -102,21 +103,20 @@
 
                              echo '</tr>';
                              
-                        
+                             if ($numimages < $upload_max_uploads) {
                         ?>
                 
                 <tr>
                     <td colspan="10">
                         <form action="imageUpload.php" method="post" enctype="multipart/form-data">
-			<label for="file">Select Image</label>
+			<label for="file">Select Image</label><br/>
 			<input type="file" name="file" id="file" />
                         <input type="text" name="propertyID" style="display: none;" value='<?php echo $propertyID; ?>' />
-			<br />
 			<input type="submit" name="submit" value="Submit" />
                         </form>
                     </td>
                 </tr>
-                    
+                    <? } ?>
                 <tr>
                     <td colspan="10">
                         

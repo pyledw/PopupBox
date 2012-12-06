@@ -488,7 +488,7 @@
     </script>
 
         <?php
-        echo '<table><tr><td><form method="post" action="approveListing.php"><button type="submit">Activate</button><input type="text" value="'. $row['PropertyID'] .'" style="display:none;" name="propertyID"/></form></td><td><a href="mailto:'.$row['Email'].'">Email</a></td><td><a href="resetListing.php?propertyID='. $row[PropertyID] .'">Reset Property</a></td></tr></table>';
+        echo '<table><tr><td><form method="post" action="approveListing.php"><button class="button" type="submit">Activate</button><input type="text" value="'. $row['PropertyID'] .'" style="display:none;" name="propertyID"/></form></td><td><a class="button" href="mailto:'.$row['Email'].'">Email</a></td><td><a class="button" href="resetListing.php?propertyID='. $row[PropertyID] .'">Reset Property</a></td></tr></table>';
         ?>
 
     </div>

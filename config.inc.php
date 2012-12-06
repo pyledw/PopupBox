@@ -22,6 +22,7 @@ $base_address = 'http://' . $_SERVER['SERVER_NAME'] .':'. $_SERVER['SERVER_PORT'
 
 $upload_max_size_mb 		= 2.0;          // maximum size of an uploaded image
 $upload_thumbnail_size 		= 200;			// horizontal size of thumbnails, in pixels
+$upload_max_uploads         = 7;            // a property can only have so many images uploaded
 $upload_save_path 		= "uploads/";		// relative to docroot.  Must end with a '/'
 $upload_allowed_file_types 	= array(		// all entries must be MIME types and lower-cased
 	"image/jpeg",

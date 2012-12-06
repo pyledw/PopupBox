@@ -30,6 +30,7 @@
             }
             else
             {
+                header( 'Location: /myHood_Account.php?error=Password incorrect' );
                 echo 'password incorrect';
             }
         }
@@ -63,4 +64,6 @@
                header( 'Location: /myHood_Account.php?error=Our records show a differant email than the one entered.' );
            }
         }
+        
+        //header( 'Location: /myHood_Account.php?error=An Error has happend' );
 ?>

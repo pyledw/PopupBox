@@ -54,6 +54,12 @@
             <table class="tableForm" width="1000px">
                 <font class="formheader" style="left:400px;">Residence History</font>
                 <?php
+                
+                if(isset($_GET['error']))
+                {
+                    echo '<tr><td colspan="3"><font color="red">'.$_GET['error'].'</font></td></tr>';
+                }
+                
                 if(mysql_num_rows($result) > 0)
                 {
                     $intCount=1;
@@ -114,7 +120,7 @@
                                 <label class="label">Zip Code: </label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode'.$intCount.'" value="'.$row['PrevZip'].'"/>
                             </td>
                             <td>
-                                <label class="label">months lived there:</label><br/><input class="number" maxlength="3" type="text" name="months2" value="'.$row['TotalMonths'].'"/>
+                                <label class="label">months lived there:</label><br/><input class="number" maxlength="3" type="text" name="months'.$intCount.'" value="'.$row['TotalMonths'].'"/>
                             </td>     
                         </tr>
                         <tr>
@@ -459,18 +465,18 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input class="number" type="text" name="devitCardDebt" <?php echo "value='" .$row['TotalConsumerDebt'] . "'"?>/>
+                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input class="required number" type="text" name="devitCardDebt" <?php echo "value='" .$row['TotalConsumerDebt'] . "'"?>/>
                     </td>
                     <td>
-                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input class="number" type="text" name="monthlyPayments" <?php echo "value='" .$row['MonthlyDebtPayment'] . "'"?>/><br/>
+                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input class="required number" type="text" name="monthlyPayments" <?php echo "value='" .$row['MonthlyDebtPayment'] . "'"?>/><br/>
                     </td>
                     <td>
-                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input class="number" type="text" name="loans" <?php echo "value='" .$row['TotalLoanDebt'] . "'"?>/><br/>
+                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input class="required number" type="text" name="loans" <?php echo "value='" .$row['TotalLoanDebt'] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input class="number" type="text" name="equity" <?php echo "value='" .$row['TotalAssets'] . "'"?>/><br/>
+                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input class="required number" type="text" name="equity" <?php echo "value='" .$row['TotalAssets'] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>

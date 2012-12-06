@@ -52,16 +52,21 @@
                          to abide by the Fair Housing Laws and Fair Credit Lawsâ€¦
                     </td>
                 </tr>
+                <?php
+                    if(isset($_GET['error']))
+                    {
+                        echo '<tr><td><font color="red">'.$_GET['error'].'</font></td></tr>';
+                    }
+                ?>
                 <tr>
-                    <td>
-                        <label class="label">Enter Email:</label><input class="required email" type="text" name="email"/></br>
+                    <td style="text-align: left; vertical-align: center;">
+                        <b>Enter Email:</b><input class="required email" type="text" name="email"/></br>
                         I have Read and Agree with these terms and conditions<input title="Must accept to continue" type="checkbox" class="required" name="agree" value="agree">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <a class="button" href="newListing4.php">Back</a>
-                        
                         <button type="reset" class="button">Clear</button>
                         <button type="submit" class="button">Save and Continue</button>
                         </form>
