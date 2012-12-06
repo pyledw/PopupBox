@@ -737,7 +737,7 @@
                     {
                             if($row['PageCompleted'] != 6)//check to see if the listing was completed
                             {
-                                $propertyStatus = '<font class="greyTextArea" style="float:right;">Lisitng not complete.</font>';
+                                $propertyStatus = '<font class="greyTextArea" style="float:right;">Listing not complete.</font>';
                             }
                             else//if the property has not been completed
                             {
