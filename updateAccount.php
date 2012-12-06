@@ -30,7 +30,7 @@
             }
             else
             {
-                header( 'Location: /myHood_Account.php?message=Password incorrect' );
+                header( 'Location: /myHood_Account.php?error=Password incorrect' );
                 echo 'password incorrect';
             }
         }
@@ -65,5 +65,5 @@
            }
         }
         
-        header( 'Location: /myHood_Account.php' );
+        //header( 'Location: /myHood_Account.php?error=An Error has happend' );
 ?>
