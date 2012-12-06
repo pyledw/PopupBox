@@ -32,9 +32,9 @@
         </tr>
         <tr>
             <td>
-                <label class="label">Enter old Password:</label><br/><input type="text" name="currentPassword" /><br/>
-                <label class="label">Enter New Password:</label><br/><input type="text" name="newPassword1" /><br/>
-                <label class="label">Confirm New Password:</label><br/><input type="text" name="newPassword2" />
+                <label class="label">Enter old Password:</label><br/><input type="password" name="currentPassword" /><br/>
+                <label class="label">Enter New Password:</label><br/><input type="password" name="newPassword1" /><br/>
+                <label class="label">Confirm New Password:</label><br/><input type="password" name="newPassword2" />
             </td>
         </tr>
         <tr>
