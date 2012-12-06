@@ -120,7 +120,7 @@
                 </td>
                 <td>
                     '.$row['SecondaryOccupantFName'] . " " . $row['SecondaryOccupantLName'].'
-                </td
+                </td>
                 <td>
                     Secondary Resident Age:
                 </td>
