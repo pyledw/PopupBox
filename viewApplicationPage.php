@@ -18,6 +18,7 @@
     $auctionID = $_POST['auctionID'];
     
     include_once 'config.inc.php';
+    include_once 'listingFunctions.php';
             //Connecting to the sql database
             $con = get_dbconn("");
             
