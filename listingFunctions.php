@@ -1364,10 +1364,10 @@
         {
             echo '<table class="tableForm" style="padding:5px 5px 0px 5px; margin:0px 0px 0px 0px;" width="1000">
                         <tr>
-                            <td colspan="1">
+                            <td>
                                 <b>'.$row['ApplicationID'].' - '.$row['LastName'].', '.$row['FirstName'].'</b>
                             </td>
-                            <td>
+                            <td verticle-align="middle">
                                 <a class="button" href="viewApplication.php?applicationID='.$row['ApplicationID'].'" rel="facebox" >View Application</a></div><br/><br/>
                             </td>
                         </tr>
@@ -1385,17 +1385,18 @@
         {
             echo '<table class="tableForm" style="padding:0px 5px 5px 5px; margin:0px 0px 0px 0px;" width="1000">
                         <tr>
-                            <td colspan="2">
+                            <td>
                                 <b>'.$row['PropertyID'].' - '.$row['LastName'].', '.$row['FirstName'].'</b>
+                            </td>
+                            <td rowspan="2">
+                                <a class="button" href="viewProperty.php?propertyID='.$row['PropertyID'].'" rel="facebox" >View Property</a>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 Address:'.$row['Address'] .', '.$row['City'].' ' . $row['State'] . ' '.$row['ZipCode'] .'
                             </td>
-                            <td>
-                                <a class="button" href="viewProperty.php?propertyID='.$row['PropertyID'].'" rel="facebox" >View Property</a>
-                            </td>
+                            
                         </tr>
                 </table>';
         }
