@@ -741,7 +741,7 @@
                             }
                             else//if the property has not been completed
                             {
-                                $propertyStatus = "<font class='greyTextArea' style='float:right;'>You must pay your fee click <a href='payListingFeeSessionRedirect.php?propertyID=".$row['PropertyID']."'>Here</a></font>";
+                                $propertyStatus = "<font class='greyTextArea' style='float:right;'>You must pay your fee click <a href='payHousingFeeSessionRedirect.php?propertyID=".$row['PropertyID']."'>Here</a></font>";
                             }
                 }
                 else//if the property fee has not been paid
