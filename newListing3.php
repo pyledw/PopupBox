@@ -53,11 +53,11 @@
     <hr class="Title">
     <div id="mainContent">
         <form id="listingForm" method="post" action="newListing3Redirect.php">
-            <table class="tableForm">
+            <table class="tableForm" width="1000">
                 <font class="formheader">Dates</font>
                 <tr>
                     <td>
-                        <label class="label">Date the property will first be available for occupancy:</label><br/><input type="text" name="available" class="required" id="datepicker1" value="<?php echo $row['DateAvailable']?>" />
+                        <label class="label">Date the property will be available:</label><br/><input type="text" name="available" class="required" id="datepicker1" value="<?php echo $row['DateAvailable']?>" />
                     </td>
                     <td>
                         <label class="label">Date you will begin accepting PFOs:</label><br/><input type="text" name="acceptingPFO" id="datepicker2" class="required" value="<?php echo $row['DatePFOAccept']?>" />
