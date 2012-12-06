@@ -74,11 +74,6 @@
                     $row3 = mysql_fetch_array($result3);
                     $username = $row3['UserName'];
                     
-                    //get the monthly rate for the email
-                    $result4 = mysql_query("select MonthlyRate from BID where AuctionID = '$auctionID'");
-                    $row4 = mysql_fetch_assoc($result4);
-                    $monthlyRate = $row4['MonthlyRate'];
-                    
                     //get the street address for the email
                     $result5 = mysql_query("select Address from PROPERTY where PropertyID = '$propertyID'");
                     $row5 = mysql_fetch_assoc($result5);
@@ -90,6 +85,7 @@
                     $endingShow = $row6['DatePFOEndAccept'];
                     $openHouse1 = $row6['DateTimeOpenHouse1'];
                     $moveNowPrice = $row6['RentNowRate'];
+                    $monthlyRate = $row6['MonthlyRate'];
                     
                     //compile and send the email
                     $to = $username;
