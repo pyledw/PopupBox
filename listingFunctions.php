@@ -1366,10 +1366,10 @@
         {
             echo '<table class="tableForm" style="padding:5px 5px 5px 5px; margin:0px 0px 0px 0px;" width="1000">
                         <tr>
-                            <td>
+                            <td width="600px">
                                 <b>'.$row['ApplicationID'].' - '.$row['LastName'].', '.$row['FirstName'].'</b>
                             </td>
-                            <td>
+                            <td width="300px">
                                 <a class="button" href="viewApplication.php?applicationID='.$row['ApplicationID'].'" rel="facebox" >View Application</a></div>
                             </td>
                         </tr>
@@ -1387,15 +1387,15 @@
         {
             echo '<table class="tableForm" style="padding:5px 5px 5px 5px; margin:0px 0px 0px 0px;" width="1000">
                         <tr>
-                            <td>
+                            <td width="600px">
                                 <b>'.$row['PropertyID'].' - '.$row['LastName'].', '.$row['FirstName'].'</b>
                             </td>
-                            <td rowspan="2">
+                            <td width="300px" rowspan="2">
                                 <a class="button" href="viewProperty.php?propertyID='.$row['PropertyID'].'" rel="facebox" >View Property</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td width="600px">
                                 Address:'.$row['Address'] .', '.$row['City'].' ' . $row['State'] . ' '.$row['ZipCode'] .'
                             </td>
                             
