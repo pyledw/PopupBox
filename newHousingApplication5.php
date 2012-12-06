@@ -41,6 +41,12 @@
                 <a href="#">TERMS AND CONDITIONS</a>
             </td>
         </tr>
+        <?php
+            if(isset($_GET['error']))
+            {
+                echo '<tr><td><font color="red">'.$_GET['error'].'</font></td></tr>';
+            }
+        ?>
         <tr>
             <td>
                 <label class="label">Email verification</label><br/><input class="required email" type="text" name="email"/><br/>
