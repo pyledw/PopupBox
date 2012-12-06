@@ -465,18 +465,18 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input class="number" type="text" name="devitCardDebt" <?php echo "value='" .$row['TotalConsumerDebt'] . "'"?>/>
+                        <label class="label">Total outstanding balance on consumer debt (credit cards, charge accounts, etc.): </label><br/><input class="required number" type="text" name="devitCardDebt" <?php echo "value='" .$row['TotalConsumerDebt'] . "'"?>/>
                     </td>
                     <td>
-                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input class="number" type="text" name="monthlyPayments" <?php echo "value='" .$row['MonthlyDebtPayment'] . "'"?>/><br/>
+                        <label class="label">Total monthly payment on all credit/loan accounts: </label><br/><input class="required number" type="text" name="monthlyPayments" <?php echo "value='" .$row['MonthlyDebtPayment'] . "'"?>/><br/>
                     </td>
                     <td>
-                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input class="number" type="text" name="loans" <?php echo "value='" .$row['TotalLoanDebt'] . "'"?>/><br/>
+                        <label class="label">Total outstanding balance on loans (auto, education, mortgage, etc.)</label><br/><input class="required number" type="text" name="loans" <?php echo "value='" .$row['TotalLoanDebt'] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input class="number" type="text" name="equity" <?php echo "value='" .$row['TotalAssets'] . "'"?>/><br/>
+                        <label class="label">Approximate total assets (cash, investments, property equity, etc.): </label><br/><input class="required number" type="text" name="equity" <?php echo "value='" .$row['TotalAssets'] . "'"?>/><br/>
                     </td>
                 </tr>
                 <tr>
