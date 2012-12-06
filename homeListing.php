@@ -74,8 +74,11 @@
                 /**
                  * Echo of strings calculated earlier.  These will display the time to end and the status
                  */
+                if(isset($row2['DatePFOAccept']))
+                {
                     echo $timeString;
                     echo $status;
+                }
 
                 ?>
             </font><br/>
