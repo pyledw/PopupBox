@@ -112,7 +112,7 @@ include 'Header.php';
                      <label class="label">First Name: </label><br/><input type="text" value="<?php echo $row['SecondaryOccupantFName']?>" name="fName" />
                  </td>
                  <td>
-                     <label class="label">Last Name: <label><br><input type="text" value="<?php echo $row['SecondaryOccupantLName']?>" name="lName" />
+                     <label class="label">Last Name: </label><br><input type="text" value="<?php echo $row['SecondaryOccupantLName']?>" name="lName" />
                  </td>
                  <td>
                      <label class="label">Age: </label><input type="text" class="number" minlength="1" maxlength="2" value="<?php echo $row['SecondaryOccupantAge']?>" name="age"/><br />
