@@ -760,16 +760,23 @@
             
             
             include_once 'listingFunctions.php';//needed lisgin functions
-            
-            
+            $maxBid = '';
+            if(isset($row2['DatePFOAccept']))
+            {
             $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//below is call to function that returns the timestring of time remaining or time till start
 
             
             $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//The code below will return the listings status
 
             $maxBid = getHighBid($row2['PropertyID']);//this code is retrieving the highest bid of the auction and returning it
-            
-            if($maxBid == '')
+            }
+            else
+            {
+                $timeString = '';
+                $status = '';
+                $maxBid = '';
+            }
+            if($maxBid == '' && isset($row2['StartingBid']))
             {
                 $maxBid = '$'.$row2['StartingBid'].'</font>';
             }
@@ -779,9 +786,12 @@
                    .$hasExpired
                    .$propertyStatus
                    .$timeString
-                   .$status
-                   .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>".
-                '</font><br/>
+                   .$status;
+                    if($maxBid != '')
+                    {
+                        echo '<font class="greyTextArea" style="float:right;">'.$maxBid."</font>";
+                    }
+                echo '</font><br/>
         <table id="houseListing">
             <img class="mainPhotoSearch" src='.  getMainThumbPath($row['PropertyID']).' alt="Main Photo" />
             <tr>
