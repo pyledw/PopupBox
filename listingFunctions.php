@@ -1043,14 +1043,14 @@
                 INNER JOIN APPLICATION
                 ON APPLICATION.ApplicationID=BID.ApplicationID
                 WHERE UserID='".$_SESSION['userID']."' AND BID.AuctionID='".$row['AuctionID']."' AND IsMoveInNowBid='1'");
-            
+            $moveIn= "";
             if(!$result3)
             {
                 die('could not connect: ' .mysql_error());
             }
             if(mysql_num_rows($result3))
             {
-                echo '<font class="redTextArea" style="float:right;">You have an active move in now PFO</font>';
+                $moveIn = '<font class="redTextArea" style="float:right;">You have an active move in now PFO</font>';
             }
             include_once 'listingFunctions.php';
             
@@ -1072,9 +1072,11 @@
             
             echo '<font style="float:right; position:relative; right:20px;">
                     '
+                   
                    .$timeString
                    .$status
-                   .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>".
+                   .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>"
+                   .$moveIn.
                 '</font><br/>
         <table id="houseListing">
             <img class="mainPhotoSearch" src="<?php echo $row[ImagePathPrimary]; ?>" alt="Main Photo" />
