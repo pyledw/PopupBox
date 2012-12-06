@@ -1050,7 +1050,7 @@
             }
             if(mysql_num_rows($result3))
             {
-                echo '<font class="redTextArea" style="float:right;">You have and Active move in now PFO</font>';
+                echo '<font class="redTextArea" style="float:right;">You have an active move in now PFO</font>';
             }
             include_once 'listingFunctions.php';
             
