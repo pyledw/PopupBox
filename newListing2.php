@@ -109,10 +109,9 @@
                 <tr>
                     <td colspan="10">
                         <form action="imageUpload.php" method="post" enctype="multipart/form-data">
-			<label for="file">Select Image</label>
+			<label for="file">Select Image</label><br/>
 			<input type="file" name="file" id="file" />
                         <input type="text" name="propertyID" style="display: none;" value='<?php echo $propertyID; ?>' />
-			<br />
 			<input type="submit" name="submit" value="Submit" />
                         </form>
                     </td>
