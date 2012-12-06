@@ -110,19 +110,21 @@
             
             if($row['SecondaryOccupantFName'] != '')
                 {
-                    echo '<tr>
-                <td>
-                   Secondary Resident:
-                </td>
-                <td>
-                    '.$row['SecondaryOccupantFName'] . " " . $row['SecondaryOccupantLName'].'
-                </td
-                <td>
-                    Secondary Resident Age:
-                </td>
-                <td>
-                   '.$row['SecondaryOccupantAge'].'
-                </td>
+          echo '<tr>
+                    <td>
+                       Secondary Resident:
+                    </td>
+                    <td>
+                        '.$row['SecondaryOccupantFName'] . " " . $row['SecondaryOccupantLName'].'
+                    </td>
+                    <td>
+                        Secondary Resident Age:
+                    </td>
+                    <td>
+                       '.$row['SecondaryOccupantAge'].'
+                    </td>
+                </tr>
+                <tr>
                 <td>
                    Secondary Resident Relationship:
                 </td>
