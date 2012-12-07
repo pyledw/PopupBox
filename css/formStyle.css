@@ -70,27 +70,15 @@ root {
     font-size:inherit;
 }
 
-label {
-    font-size: 15px;
+label { 
+    font-size: 12px;
     }
 label.error { 
-     color: red;
-     font-size: 12px;
-     margin:-200px -200px -200px -200px;
-     position:relative;
-     top:10px;
-     left:-40px;
-    }
+     color: red; }
 .ie label{
     width:255px;
 }
 .ie label.error{
-     color: red;
-     font-size: 12px;
-     position:relative;
-     margin:0px 0px 0px 0px;
-     top:0px;
-     left:0px;
 }
 .formheader{
     font-size: 24px;

@@ -86,7 +86,7 @@ $classification = getPost('accountType');
                            <lable class="label">First Name:</label><br/><input  type="text" name="fname" value="<?php echo $firstName; ?>" class="required">
                          </td>
 
-                         <td colspan="2">
+                         <td>
                            <lable class="label">Last Name:</label><br/><input  type="text" name="lname" value="<?php echo $lastName; ?>" class="required">
                          </td>
                     </tr>

@@ -46,7 +46,7 @@ include 'Header.php';
                  <td>
                      <label class="label">Earliest Move in Date:</label><br/><input class="required" type="text" name="earliestDate" value="<?php echo $row['EarlyMoveIn']?>" id="datepicker" />
                  </td>
-                 <td colspan="2">
+                 <td>
                      <label class="label">Latest Move in Date:</label><br/> <input class="required" type="text" name="latestDate" value="<?php echo $row['LateMoveIn']?>" id="datepicker2" />
                  </td>
 
