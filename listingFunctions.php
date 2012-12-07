@@ -1076,7 +1076,7 @@
                    
                    .$timeString
                    .$status
-                   .'<font class="greyTextArea" style="float:right;">'.$maxBid."</font>"
+                   .$maxBid
                    .$moveIn.
                 '</font><br/>
         <table id="houseListing">

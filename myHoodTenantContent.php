@@ -114,7 +114,7 @@
             ON BID.ApplicationID=APPLICATION.ApplicationID
             INNER JOIN USER
             ON APPLICATION.UserID=USER.UserID
-            WHERE BID.IsActive='1' AND USER.UserID = '$_SESSION[userID]'
+            WHERE BID.IsActive='1' AND USER.UserID = '$_SESSION[userID]' OR BID.IsWinningBid='1' AND USER.UserID = '$_SESSION[userID]'
             ");
     
     
@@ -130,7 +130,7 @@
        if($row2[IsWinningBid] == "1")
         {
            
-            Echo 'You have been selected as the winner for this auciton!  Please click <a rel="facebox" href="viewLandlordContactInfo.php?propertyID='.$row2[PropertyID].'">here</a> to see the landlords contact info.';
+            Echo 'You have been selected as the winner for this auciton!  Please click <a rel="facebox" href="viewLandlordContactInfo.php?propertyID='.$row2[PropertyID].'">here</a> to see the landlords contact info.<br/><br/>';
         }
         include_once 'listingFunctions.php';
         
