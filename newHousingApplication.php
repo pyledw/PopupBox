@@ -222,7 +222,12 @@ include 'Header.php';
         $( "#datepicker" ).datepicker({
             minDate: 0,
             showButtonPanel: true,
-            dateFormat:"yy-mm-dd"
+            dateFormat:"yy-mm-dd",
+            onSelect: function(dateStr) {
+            var min = $(this).datepicker('getDate') || new Date(); // Selected date or today if none
+            $('#datepicker2').datepicker('option', {minDate: min});
+        
+            }
         });
     });
     $(function() {

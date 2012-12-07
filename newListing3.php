@@ -134,8 +134,13 @@
             timeFormat: 'hh:mm:ss',
             dateFormat: 'yy-mm-dd',
             showMinute: 'false',
-            minDate: 0
-            
+            minDate: 0,
+            onSelect: function(dateStr) {
+            var min = $(this).datepicker('getDate') || new Date(); // Selected date or today if none
+            $('#datepicker3').datepicker('option', {minDate: min});
+            $('#datepicker4').datepicker('option', {minDate: min});
+            $('#datepicker5').datepicker('option', {minDate: min});
+            }
             
         });
         
@@ -145,7 +150,12 @@
             timeFormat: 'hh:mm:ss',
             dateFormat: 'yy-mm-dd',
             showMinute: 'false',
-            minDate: 0
+            minDate: 0,
+            onSelect: function(dateStr) {
+            var max = $(this).datepicker('getDate') || new Date(); // Selected date or today if none
+            $('#datepicker4').datepicker('option', {maxDate: max});
+            $('#datepicker5').datepicker('option', {maxDate: max});
+            }
         });
         
     });
@@ -154,7 +164,12 @@
             timeFormat: 'hh:mm:ss',
             dateFormat: 'yy-mm-dd',
             showMinute: 'false',
-            minDate: 0
+            minDate: 0,
+            onSelect: function(dateStr) {
+            var min = $(this).datepicker('getDate') || new Date(); // Selected date or today if none
+            $('#datepicker5').datepicker('option', {minDate: min});
+        
+            }
         });
         
     });
