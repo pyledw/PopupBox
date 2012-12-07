@@ -8,7 +8,7 @@
         $newPassowrd = $_POST['newPassword1'];
         $newEmail = $_POST['newEmail1'];
         
-        if($userPassword != '')
+        if($userPassword != '' && $newPassowrd != '')
         {
             $con = get_dbconn("PDO");
                     $stmt = $con->prepare("SELECT * FROM USER WHERE UserID = :userID AND PASSWORD = :password");
@@ -34,7 +34,8 @@
                 echo 'password incorrect';
             }
         }
-        if($email != '')
+     
+        elseif($email != '' && $newEmail != '')
         {
             $con = get_dbconn("PDO");
                    $stmt = $con->prepare("SELECT * FROM USER WHERE UserID = :userID AND Email = :email");
@@ -44,6 +45,7 @@
            $row = $stmt->fetch(PDO::FETCH_ASSOC);
            if($row != NULL)
            {
+               $message = 'Email Updated';
                echo 'correct email';
                $con = get_dbconn("PDO");
                    $stmt = $con->prepare("UPDATE USER SET Email = :email
@@ -54,16 +56,25 @@
                    $stmt->execute();
                    } catch (Exception $e) 
                        {
-                           header( 'Location: /myHood_Account.php?error=error, email already exist in the database' );
+                           $error = 'error, email already exist in the database';
                        }
-               header( 'Location: /myHood_Account.php?message=fields were updated' );     
-
            }
            else
            {
-               header( 'Location: /myHood_Account.php?error=Our records show a differant email than the one entered.' );
+               $error = 'Our records show a differant email than the one entered.';
+           }
+           if(isset($error))
+           {
+               header( 'Location: /myHood_Account.php?error='.$error.'');
+           }
+           else
+           {
+               header( 'Location: /myHood_Account.php?message='.$message.'');
            }
         }
+        else
+        {
+            header( 'Location: /myHood_Account.php?message=No data was entered' );
+        }
         
-        //header( 'Location: /myHood_Account.php?error=An Error has happend' );
 ?>
