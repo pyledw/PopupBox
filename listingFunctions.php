@@ -712,6 +712,7 @@
             
             $hasExpired = "";
             $expired = false;
+            
             if($row2['DatePFOEndAccept'] != "")
             {
                 if($end < $now)
@@ -761,14 +762,14 @@
             
             include_once 'listingFunctions.php';//needed lisgin functions
             $maxBid = '';
-            if(isset($row2['DatePFOAccept']))
+            if(isset($row2['DatePFOAccept']) && $expired == false)
             {
-            $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//below is call to function that returns the timestring of time remaining or time till start
+                $timeString = getTime($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//below is call to function that returns the timestring of time remaining or time till start
 
-            
-            $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//The code below will return the listings status
 
-            $maxBid = getHighBid($row2['PropertyID']);//this code is retrieving the highest bid of the auction and returning it
+                $status = getStatus($row2['DatePFOAccept'], $row2['DatePFOEndAccept']);//The code below will return the listings status
+
+                $maxBid = getHighBid($row2['PropertyID']);//this code is retrieving the highest bid of the auction and returning it
             }
             else
             {
