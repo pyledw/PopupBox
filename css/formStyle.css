@@ -84,6 +84,14 @@ label.error {
 .ie label{
     width:255px;
 }
+.ie label.error{
+     color: red;
+     font-size: 12px;
+     position:relative;
+     margin:0px 0px 0px 0px;
+     top:0px;
+     left:0px;
+}
 .formheader{
     font-size: 24px;
     font-weight: bold;
