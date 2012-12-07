@@ -76,6 +76,10 @@ label {
 label.error { 
      color: red;
      font-size: 12px;
+     margin:-200px -200px -200px -200px;
+     position:relative;
+     top:10px;
+     left:-40px;
     }
 .ie label{
     width:255px;

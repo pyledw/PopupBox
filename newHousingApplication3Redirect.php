@@ -402,7 +402,7 @@
     echo $numMonths;
     if($numMonths < 36)
     {
-        header( 'Location: /newHousingApplication3.php?error=Must input at least 36 months of history' );
+        header( 'Location: /newHousingApplication3.php?error=Must input at least 36 months of residence history' );
     }
     else 
     {
