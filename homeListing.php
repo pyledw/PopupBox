@@ -536,6 +536,9 @@
 ?>
 
     <script>
+        //This script is controlling the bid function.
+        //It will create a popup for the confirmation
+        //if the fields are valid
         $("#placebid").submit(function(e){
             e.preventDefault();
             var isValid = $("#placebid").valid();
@@ -549,6 +552,8 @@
                     jQuery.facebox({ ajax: url });
                 }
         })
+        
+        //Validator on the blace bids form
         $(document).ready(function(){
             $("#placebid").validate({
                 onkeyup: false,

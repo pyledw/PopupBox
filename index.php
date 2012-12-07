@@ -71,7 +71,11 @@
 	include 'Footer.php';
         ?>
 
+        
+        
         <script>
+        //This script is setting the input field to nothing if the user searches
+        //without having entered anything.
             $(document).ready(function(){
                 $("#searchForm").submit(function(){
                     if($("#input").val() == 'Zip Code')
