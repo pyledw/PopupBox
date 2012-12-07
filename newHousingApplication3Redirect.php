@@ -121,11 +121,14 @@
      
      
      //IF the address has data in it
-     if($_POST[address2] != "")
+     if($_POST['address2'] != "")
         {
+            //echo "Address 2 contains data";
+            //echo "ID NUMBER->" . $_POST['number2'];
             //If the address did not exist before fields are created
-            if($_POST[number2] == '')
+            if($_POST['number2'] == '')
             {
+                echo "address 2 contains no data from the database to update";
                //Using the new method for inserting into the Database
                 $con = get_dbconn("PDO");
                 $stmt = $con->prepare("INSERT INTO PREVIOUSRESIDENCE (
@@ -160,12 +163,11 @@
                     echo 'Connection failed. ' . $e->getMessage();
                 }
             }
-            
             //If the address already existed - Fields are updated
             else
             {
-                
-                
+                echo "address 2 contains data from the database to update";
+                echo $_POST['months2'];
                 //Using the new method for inserting into the Database
                 $con = get_dbconn("PDO");
                 $stmt = $con->prepare("UPDATE PREVIOUSRESIDENCE 
@@ -397,6 +399,7 @@
         $numMonths = $numMonths + $row['TotalMonths'];
     }
     
+    echo $numMonths;
     if($numMonths < 36)
     {
         header( 'Location: /newHousingApplication3.php?error=Must input at least 36 months of history' );

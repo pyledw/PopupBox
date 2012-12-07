@@ -188,7 +188,7 @@
                                 <label class="label">Zip Code:</label><br/><input title="Enter valid Zip Code" class="number" minlength="5" maxlength="5" type="text" name="zipCode'.$intCount.'" value="'.$row['PrevZip'].'"/>
                             </td>
                             <td>
-                                <label class="label">months lived there:</label><br/><input class="number" type="text" name="months2" value="'.$row['PrevLandLordFName'].'"/>
+                                <label class="label">months lived there:</label><br/><input class="number" type="text" name="months'.$intCount.'" value="'.$row['PrevLandLordFName'].'"/>
                             </td>     
                         </tr>
                         <tr>
