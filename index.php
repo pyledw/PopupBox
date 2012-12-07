@@ -57,9 +57,9 @@
             </table>
 
 
-                    <form action="searchRedirect.php" method="post">
+                    <form id="searchForm" action="searchRedirect.php" method="post">
                         <input name="type" value="zip" style="display:none;" />
-                        <input type="text" style="color:grey;'" name="search" value="Zip Code" onfocus='if(this.value=="Zip Code"){this.value=""; this.style.color = "black";}'
+                        <input id="input" type="text" style="color:grey;'" name="search" value="Zip Code" onfocus='if(this.value=="Zip Code"){this.value=""; this.style.color = "black";}'
                                onblur="if(this.value == ''){this.value='Zip Code';
                                             this.style.color='grey'}"/>
                         <button class="button" type="submit" name="homeSearch" value="Quick Home Search" style="margin:0 20px 0 20px;">Quick Home Search</button>
@@ -69,4 +69,16 @@
         
 	<?php
 	include 'Footer.php';
-?>
+        ?>
+
+        <script>
+            $(document).ready(function(){
+                $("#searchForm").submit(function(){
+                    if($("#input").val() == 'Zip Code')
+                        {
+                            $("#input").val("");
+                        }
+                });
+            
+        });
+        </script>
