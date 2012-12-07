@@ -84,22 +84,13 @@
                 
                     //send the email to the bidder
                     //get the email
-                    $query3 = "select * from USER where Email = '$userID'";
-                    $result3 = mysql_query($query3);
-                    $row3 = mysql_fetch_assoc($result3);
-                    $username = $row3['UserName'];
+                    $result3 = mysql_query("select Email from USER where Email = '$userID'");
+                    $email = mysql_fetch_assoc($result3);
+                    
                     
                     //get the monthly rate for the email
                     $result4 = mysql_query("select MonthlyRate from BID where AuctionID = '$auctionID'");
-                    $row4 = mysql_fetch_assoc($result4);
-                    $monthlyRate = $row4['MonthlyRate'];
-                    
-                    //get the street address for the email
-                    $result55 = mysql_query("select PropertyID from AUCTION where AuctionID = '$auctionID'");
-                    $propertyID = mysql_fetch_assoc($result55);
-                    $result5 = mysql_query("select Address from PROPERTY where PropertyID = '$propertyID'");
-                    $row5 = mysql_fetch_assoc($result5);
-                    $streetAdd = $row5['Address'];
+                    $monthlyRate = mysql_fetch_assoc($result4);
                     
                     //get the ending show window 
                     $result6 = mysql_query("select * from AUCTION where AuctionID = '$auctionID'");
@@ -107,9 +98,14 @@
                     $endingShow = $row6['DatePFOEndAccept'];
                     $openHouse1 = $row6['DateTimeOpenHouse1'];
                     $moveNowPrice = $row6['RentNowRate'];
+                    $propertyID = $row6['PropertyID'];
+                    
+                    //get the street address for the email
+                    $result5 = mysql_query("select Address from PROPERTY where PropertyID = '$propertyID'");
+                    $streetAdd = mysql_fetch_assoc($result5);
                     
                     //compile and send the email
-                    $to = $username;
+                    $to = $email;
                     $from = "From: noReply@leasehood.com \r\n";
                     $subject = "A Move-in-now PFO Has Been Submitted -- Please Respond ASAP $".$monthlyRate." at ".$streetAdd;
                     $mesg = "Dear landlord,\n ".

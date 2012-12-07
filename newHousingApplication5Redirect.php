@@ -64,7 +64,7 @@ session_start();
         mysql_query("UPDATE APPLICATION SET PageCompleted='6'
         WHERE UserID = '$_SESSION[userID]'");
     }
-    //sending email
+    //sending email tenant
         $to = $_POST['email'];
         $from = "From: noReply@leasehood.com \r\n";
         $subject = "Thank you for your Application";

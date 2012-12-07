@@ -69,20 +69,12 @@
                     
                     //send the email to the bidder
                     //get the email
-                    $query3 = "select * from USER where Email = '$userID'";
-                    $result3 = mysql_query($query3);
-                    $row3 = mysql_fetch_array($result3);
-                    $username = $row3['UserName'];
-                    
-                    //get the monthly rate for the email
-                    $result4 = mysql_query("select MonthlyRate from BID where AuctionID = '$auctionID'");
-                    $row4 = mysql_fetch_assoc($result4);
-                    $monthlyRate = $row4['MonthlyRate'];
+                    $result3 = mysql_query("select * from USER where Email = '$userID'");
+                    $username = mysql_fetch_array($result3);
                     
                     //get the street address for the email
                     $result5 = mysql_query("select Address from PROPERTY where PropertyID = '$propertyID'");
-                    $row5 = mysql_fetch_assoc($result5);
-                    $streetAdd = $row5['Address'];
+                    $streetAdd = mysql_fetch_assoc($result5);
                     
                     //get the ending show window 
                     $result6 = mysql_query("select * from AUCTION where AuctionID = '$auctionID'");
@@ -90,6 +82,7 @@
                     $endingShow = $row6['DatePFOEndAccept'];
                     $openHouse1 = $row6['DateTimeOpenHouse1'];
                     $moveNowPrice = $row6['RentNowRate'];
+                    $monthlyRate = $row6['MonthlyRate'];
                     
                     //compile and send the email
                     $to = $username;
@@ -115,10 +108,10 @@
                     $result7 = mysql_query("select * from PROPERTY where PropertyID = '$propertyID'");
                     $row7 = mysql_fetch_array($result7);
                     $propAssoc = $row7['UserID'];
+                    
                     //now get email form USER table by matching userID
                     $result8 = mysql_query("select Email from USER where UserID ='$propAssoc'");
-                    $row8 = mysql_fetc_assoc($result8);
-                    $landlord = $row8['Email'];
+                    $landlord = mysql_fetc_assoc($result8);
                     
                     
                     //compile and send the landlord email
