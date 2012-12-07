@@ -68,6 +68,7 @@
         
 ?>
     <link rel="stylesheet" type="text/css" href="css/homeListing.css" /><!--Link to Main css file -->
+    <link rel="stylesheet" type="text/css" href="css/formStyle.css" /><!--Link to Main css file -->
     <div id="mainContent">
             <font style="float:right; position:relative; right:20px;">
                 <?php
@@ -175,16 +176,41 @@
 
                                               if($bidStatus == "0")//If the user is aproved to bid
                                               {
-                                                  echo '<form id="placebid" method="post">
-                                                   <font>My Proposal for occupancy</font><br/><br/>
-                                                   <font color="red">Minimum Bid Amount: $'.$row['StartingBid'].'</font><br/>
-                                                   <label class="label">PFO Amount:</label><input class="required number" min='.$row['StartingBid'].' type="text" name="amt" /><br/>
+                                                  echo '<form id="placebid" method="post" style="margin-top:-30px;">
+                                                      <table width="200px" class="tableForm" style="border:none;background:white;">
+                                                   <tr>
+                                                    <td style="border:none;">
+                                                        <font><b>My Proposal for occupancy</b></font>
+                                                    </td>
+                                                   </tr>
+                                                   <tr>
+                                                    <td style="border:none;">
+                                                        <font color="red">Minimum Bid Amount: $'.$row['StartingBid'].'</font>
+                                                    </td>
+                                                   </tr>
+                                                   <tr>
+                                                    <td style="border:none;">
+                                                        <label class="label">PFO Amount:</label><input title="Check Bid Amount" class="required number" min='.$row['StartingBid'].' type="text" name="amt" />
+                                                    </td>
+                                                   </tr>
+                                                   
                                                    <input type="text" style="display: none;" name="auctionID" value="'.$row['AuctionID'].'" />
                                                    <input type="text" style="display: none;" name="userID" value="'.$_SESSION['userID'].'" />
                                                    <input type="text" style="display: none;" name="propertyID" value="'.$row['PropertyID'].'" />
-                                                   <button class="button" type="submit">Submit</button>
-                                                   </form><br/>';
-                                                  echo '<a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>';
+                                                   
+                                                   
+                                                   <tr>
+                                                    <td style="border:none;">
+                                                        <button class="button" type="submit">Submit</button>
+                                                    </td>
+                                                   </tr>
+                                                   <tr>
+                                                    <td style="border:none;">
+                                                        <a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>
+                                                    </td>
+                                                   </tr>
+                                                   </table>
+                                                   </form>';
                                               }
                                               elseif($bidStatus == "1")//If the users application is not complete
                                               {
