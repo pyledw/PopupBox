@@ -43,7 +43,6 @@ root {
     
 }
 .tableForm input{
-    height:24px;
     font-size: 22px;
     margin-top: -4px;
 }
@@ -80,8 +79,7 @@ label.error {
 .ie label{
     width:255px;
 }
-.ie label.error{
-}
+
 .formheader{
     font-size: 24px;
     font-weight: bold;

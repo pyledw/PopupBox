@@ -122,7 +122,7 @@ $classification = getPost('accountType');
                              <lable class="label">Zip:</label><br/><input title="Enter valid zip code"  type="text" name="zip" minlength="5" maxlength="5" class="required number" value="<?php echo $zip; ?>">
                          </td>
                          <td>
-                             <lable class="label">Age:</label><br/><input title="Must be over 18 years of age" type="text" value="<?php echo $age; ?>" name="age" class="required number" min="18">
+                             <lable class="label">Age:</label><br/><input title="Must be over 18 years of age" type="text" value="<?php echo $age; ?>" name="age" class="required number" minlength="2" maxlength="2" min="18">
                          </td>
                           
                     </tr>

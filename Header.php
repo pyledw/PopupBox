@@ -136,7 +136,10 @@ as the Title, and CSS/Javascript References.  It also contains the navigation ba
                 }
                 else
                 {
-                    echo '<div style="float:right; margin-right:20px;"><h3>Welcome</h3><a href="popupLogin.php?URL='. $fileName . '" rel="facebox" >Login</a></div>';
+                    if($fileName != 'login.php')
+                    {
+                        echo '<div style="float:right; margin-right:20px;"><h3>Welcome</h3><a href="popupLogin.php?URL='. $fileName . '" rel="facebox" >Login</a></div>';
+                    }
                 }
             ?>
             </div>
