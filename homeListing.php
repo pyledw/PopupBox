@@ -210,9 +210,9 @@
                                                     <td style="border:none;text-align:center;">
                                                         <a rel="facebox" href="rentItNow.php?auctionID='.$row['AuctionID'].'" class="button">Move In Now at $'.$row['RentNowRate'].'</a>
                                                     </td>
-                                                   </tr>
+                                                   </tr>';
                                                    }
-                                                   </table>
+                                                   echo '</table>
                                                    </form>';
                                               }
                                               elseif($bidStatus == "1")//If the users application is not complete
